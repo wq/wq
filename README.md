@@ -1,5 +1,8 @@
-# wq
-
+[<img src="https://raw.github.com/wq/wq/master/images/512/wq.png"
+  width="256" height="256"
+  alt="wq">]
+  (http://wq.io)
+  
 A modular framework for mobile & desktop geographic data collection applications.
 
 Includes the following submodules:
