@@ -7,7 +7,7 @@ A modular framework for mobile & desktop geographic data collection applications
 
 Includes the following submodules:
 <table>
-<tr><td>
+<tr><td width="90">
 <a href="https://github.com/wq/wq.app">
 <img src="https://raw.github.com/wq/wq/master/images/80/wq.app.png"
   width="80" height="80"
