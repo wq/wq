@@ -11,7 +11,7 @@ Includes the following submodules:
 <a href="https://github.com/wq/wq.app">
 <img src="https://raw.github.com/wq/wq/master/images/80/wq.app.png"
   width="80" height="80"
-  alt="wq.app" alight="left">
+  alt="wq.app">
 </td><td>
 
 A JavaScript+Python library for building robust offline-capable HTML5 data entry apps.
@@ -21,7 +21,7 @@ A JavaScript+Python library for building robust offline-capable HTML5 data entry
 <a href="https://github.com/wq/wq.db">
 <img src="https://raw.github.com/wq/wq/master/images/80/wq.db.png"
   width="80" height="80"
-  alt="wq.db" alight="left">
+  alt="wq.db">
 </td><td>
 
 Django database models and REST framework to support design patterns common to data collection systems.
@@ -31,7 +31,7 @@ Django database models and REST framework to support design patterns common to d
 <a href="https://github.com/wq/wq.io">
 <img src="https://raw.github.com/wq/wq/master/images/80/wq.io.png"
   width="80" height="80"
-  alt="wq.io" alight="left">
+  alt="wq.io">
 </td><td>
 
 Python interoperability library for consuming and generating data resources in various formats.
