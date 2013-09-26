@@ -20,7 +20,7 @@ Obviously if you want to use the defaults you don't actually need to specify the
 
 ### `themes.scss`
 
-```css
+```scss
 @import "wq/jquery-mobile";
 
 @include jquery-mobile-theme(
