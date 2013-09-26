@@ -18,7 +18,7 @@ Below is an example `themes.scss` for a project.
 All of the options are shown with their default values.
 Obviously if you want to use the defaults you don't actually need to specify them when calling the mixins.
 
-### `themes.css`
+### `themes.scss`
 
 ```css
 @import "wq/jquery-mobile";
