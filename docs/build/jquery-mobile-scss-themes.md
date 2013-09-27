@@ -98,8 +98,8 @@ Obviously if you want to use the defaults you don't actually need to specify the
 
 ```
 
-[wq.app]: /wq.app
-[scss]: /docs/scss
+[wq.app]: http://wq.io/wq.app
+[scss]: http://wq.io/docs/scss
 [Compass]: http://compass-style.org/
 [theme roller]: http://jquerymobile.com/themeroller/
-[wq build]: /docs/wq-build
+[wq build]: http://wq.io/docs/build
