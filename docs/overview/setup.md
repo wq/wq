@@ -22,7 +22,7 @@ Copy the folder wq/app/js into your project's js folder and rename it to "wq".  
 ### Utilizing wq.app
 Once you have done this you should be able to reference [wq.app's modules] from your JavaScript code:
 ```javascript
-# mymodule.js
+// mymodule.js
 define(['wq/chart'], function(chart) {
 // do something
 });
