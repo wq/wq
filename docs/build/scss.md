@@ -1,13 +1,27 @@
-SCSS and Compass
-================
+SCSS
+====
 
-SCSS (a.k.a. SASS) is a superset of CSS that helps streamline common CSS patterns.
-The [Compass] framework provides a number of patterns particularly useful for
-SCSS can be compiled to regular CSS using compilers like [pyScss].
-The [wq build] process provides a simple configuration-based way to utilize pyScss.
-wq.app includes a Compass-based SCSS stylesheet for generating [custom jQuery mobile themes].
+SCSS (a form of [SASS]) is a superset of CSS that helps streamline common CSS patterns.  The [wq build] process provides a simple configuration-based way to utilize SCSS, based on the [pyScss] Python library. wq.app also includes a Compass-based SCSS stylesheet for generating [custom jQuery mobile themes].
 
-[Compass]: http://compass-style.org/
+To utilize the `scss` feature of wq build, add the following to your build configuration file.
+
+```javascript
+{
+   // ...
+   
+   'scss': {
+       'indir': 'scss',
+       'outdir': 'css'
+   }
+}
+```
+This will cause all .scss files in the scss/ folder to be processed into .css files in the css/ folder.  Be sure to use different file names for any CSS files you create directly!  You may also want to avoid checking in the css versions of your SCSS files to avoid duplicate code.
+
+The [Compass] framework provides a number of useful functions for generating cross-browser CSS3 styles including gradients and rounded corners.  To utilize these features, you may need to link or copy the assets from Compass and from wq.app's scss folder into your project's scss folder to ensure the build process can find them. The [scss source for this website] may be useful as example.
+
+[SASS]: http://sass-lang.com/
 [pyScss]: https://github.com/Kronuz/pyScss
 [wq build]: http://wq.io/docs/build
 [custom jQuery mobile themes]: http://wq.io/docs/jquery-mobile-scss-themes
+[Compass]: http://compass-style.org/
+[scss source for this website]: https://github.com/wq/wq-site/tree/master/app/scss
