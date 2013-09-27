@@ -24,7 +24,7 @@ The actual build process is broken into several steps.  Most of these steps can 
 
 [installing]: http://wq.io/docs/setup
 [django-wq-template]: https://github.com/wq/django-wq-template
-[example config]: https://github.com/wq/django-wq-template/blob/master/app/app.build.json
+[example config file]: https://github.com/wq/django-wq-template/blob/master/app/app.build.json
 [#6]: https://github.com/wq/wq.app/issues/6
 [SCSS]: http://wq.io/docs/scss
 [r.js]: http://requirejs.org/docs/optimization.html
