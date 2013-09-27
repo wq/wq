@@ -11,35 +11,27 @@ The major modules are the following:
  * [pages.js], a PJAX-style pushState URL router, template renderer, and page injector
  * [store.js], a robust localStorage-cached JSON REST client (with a lightweight implementation of models and collections)
  
-There are also number of other smaller modules:
+There are also number of other [smaller modules]:
 
- * [appcache.js]: Event connectors for reporting application cache status to the user
- * [console.js]: Shim for code using `console` where it doesn't exist (looking at you, IE)
- * [json.js]: Generic AJAX/JSON module to allow jQuery dependency to be factored out
- * [online.js]: Event connectors for handling online/offline status
- * [photos.js]: Helpers for requesting and displaying user photos on a mobile device
- * [router.js]: Simple API wrapper around jQuery Mobile Router (used by **pages.js**)
- * [spinner.js]: Simple API wrapper around jQuery Mobile's built-in spinner
- * [template.js]: Simple API wrapper around Mustache.js (used by **pages.js**)
+ * **appcache.js**: Event connectors for reporting application cache status to the user
+ * **console.js**: Shim for code using `console` where it doesn't exist (looking at you, IE)
+ * **json.js**: Generic AJAX/JSON module to allow jQuery dependency to be factored out
+ * **online.js**: Event connectors for handling online/offline status
+ * **photos.js**: Helpers for requesting and displaying user photos on a mobile device
+ * **router.js**: Simple API wrapper around jQuery Mobile Router (used by **pages.js**)
+ * **spinner.js**: Simple API wrapper around jQuery Mobile's built-in spinner
+ * **template.js**: Simple API wrapper around Mustache.js (used by **pages.js**)
   
 wq.app is bundled with a number of [third-party libraries] including RequireJS, jQuery Mobile, Leaflet, d3, and Mustache.js.  For best results, the libraries bundled with wq.app should be used instead of the official versions.  There are [plans] to enable use of the standard libraries in the future.
 
 [AMD]: http://wq.io/docs/amd
 [app.js]: http://wq.io/docs/app.js
-[appcache.js]: http://wq.io/docs/appcache.js
 [chart.js]: http://wq.io/docs/chart.js
-[console.js]: http://wq.io/docs/console.js
-[json.js]: http://wq.io/docs/json.js
 [locate.js]: http://wq.io/docs/locate.js
 [map.js]: http://wq.io/docs/map.js
-<!-- [markdown.js]: http://wq.io/docs/markdown.js -->
-[online.js]: http://wq.io/docs/online.js
 [pages.js]: http://wq.io/docs/pages.js
-[photos.js]: http://wq.io/docs/photos.js
-[router.js]: http://wq.io/docs/router.js
-[spinner.js]: http://wq.io/docs/spinner.js
 [store.js]: http://wq.io/docs/store.js
-[template.js]: http://wq.io/docs/template.js
+[smaller modules]: http://wq.io/docs/sup
 [third-party libraries]: http://wq.io/docs/third-party
 [plans]: https://github.com/wq/wq.app/issues/1
 [wq.db]: http://wq.io/wq.db
