@@ -1,4 +1,4 @@
-HTML5: It's just a website
+HTML5: Not just a website
 ==========================
 
 Discussion
