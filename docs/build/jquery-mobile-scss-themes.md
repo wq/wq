@@ -1,5 +1,5 @@
-Custom jQuery Mobile Themes via SCSS
-====================================
+jQuery Mobile SCSS Themes
+=========================
 [jquery-mobile.scss]
 
 [wq.app] provides the ability to generate custom jQuery Mobile Themes via custom [SCSS] mixins based on [Compass].
