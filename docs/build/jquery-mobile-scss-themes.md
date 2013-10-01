@@ -1,5 +1,6 @@
 Custom jQuery Mobile Themes via SCSS
 ====================================
+[jquery-mobile.scss]
 
 [wq.app] provides the ability to generate custom jQuery Mobile Themes via custom [SCSS] mixins based on [Compass].
 These mixins can be compiled into CSS via the `scss` option in the [wq build] process.
@@ -97,7 +98,7 @@ Obviously if you want to use the defaults you don't actually need to specify the
 );
 
 ```
-
+[jquery-mobile.scss]: https://github.com/wq/wq.app/blob/master/scss/jquery-mobile.scss
 [wq.app]: http://wq.io/wq.app
 [scss]: http://wq.io/docs/scss
 [Compass]: http://compass-style.org/
