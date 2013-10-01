@@ -10,7 +10,7 @@ wq build [version] [configfile]
 Where:
 
   * `[version]` is the version of the application being built (if none given it will be read from version.txt)
-  * `[configfile]` is the name of a configuration file to use (default is to look for app.build.json in the current directory).  The [django-wq-template] project contains an [example config file].
+  * `[configfile]` is the name of a configuration file to use (default is to look for app.build.json in the current directory).  The [django-wq-template] project contains an example [app.build.json].
 
 The actual build process is broken into several steps.  Most of these steps can be configured with the corresponding key in the configuration file.
 
@@ -26,7 +26,7 @@ The actual build process is broken into several steps.  Most of these steps can 
 
 [installing]: http://wq.io/docs/setup
 [django-wq-template]: https://github.com/wq/django-wq-template
-[example config file]: https://github.com/wq/django-wq-template/blob/master/app/app.build.json
+[app.build.json]: https://github.com/wq/django-wq-template/blob/master/app/app.build.json
 [#6]: https://github.com/wq/wq.app/issues/6
 [`scss`]: http://wq.io/docs/scss
 [custom jQuery Mobile themes]: http://wq.io/docs/jquery-mobile-scss-themes
