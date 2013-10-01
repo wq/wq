@@ -2,7 +2,7 @@ Other Modules
 =============
 
 ## appcache.js
-[appcache.js] provides event connectors for reporting application cache status to the user
+The [appcache.js] module provides event connectors for reporting application cache status to the user
 
 ## console.js
 [console.js] provides a shim for code using `console.log`, which will fail in environments where `console` doesn't exist (looking at you, IE).  Alternative of course is to never use `console.log` in production code.
