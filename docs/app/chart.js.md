@@ -1,6 +1,8 @@
 chart.js
 ========
-**[chart.js]** is an implementation of [reusable charts] powered by the excellent [d3] library.  Four basic chart types (scatter, timeSeries, boxplot, contour) are included, as well as the ability to create new chart types.
+[chart.js]
+
+**chart.js** is an implementation of [reusable charts] powered by the excellent [d3] library.  Four basic chart types (scatter, timeSeries, boxplot, contour) are included, as well as the ability to create new chart types.
 
 ## Basic usage
 The chart functions return a [configurable function] that can be called on an d3 selection that already has data bound to it.  By convention, the generated chart function is referred to as `plot` to differentiate it from the chart module.  However, any variable name can be used.
