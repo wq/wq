@@ -2,22 +2,23 @@ jQuery Mobile SCSS Themes
 =========================
 [jquery-mobile.scss]
 
-[wq.app] provides the ability to generate custom jQuery Mobile Themes via custom [SCSS] mixins based on [Compass].
-These mixins can be compiled into CSS via the `scss` option in the [wq build] process.
-The output CSS can be used together with the file `jquery.mobile.structure.css` to provide a complete custom alternative to the default `jquery.mobile.css`.
+[wq.app] provides the ability to generate custom jQuery Mobile Themes via `jquery-mobile.scss`, which defines some useful SCSS mixins based on the [Compass] framework.
+These mixins can be compiled into CSS via the [scss] option in the [wq build] process.
+
+`jquery-mobile.scss` can be used to define additional theme swatches (e.g. 'f', 'g', and so on) for use together with the default swatches (a to e) provided in `jquery.mobile.css`.  It can also be used to define a fully custom theme, in which case the resulting CSS file should be used together with `jquery.mobile.structure.css` to provide a complete custom alternative to the default `jquery.mobile.css`.
 
 The file `jquery-mobile.scss` provides three mixins:
 
-  - `jquery-mobile-theme()` sets the colors and fonts for each theme swatch (typically `a` through `e`).
+  - `jquery-mobile-theme()` sets the colors and fonts for each theme swatch.
      It should be called once for each swatch.
   - `jquery-mobile-global()` configures global settings (in particular the highlight colors) and should be called once.
   - `jquery-mobile-icons()` sets up the default icon sprites.
 
+If you are only adding additional swatches to the default themes, you will only need to use `jquery-mobile-theme()`.  If you are creating a full custom theme, you will want to use all three as in the example below.
+
 Most of the arguments for the theme mixins are optional,
 with defaults that mostly correspond to the generic theme created by opening the jQuery Mobile [theme roller].
-Below is an example `themes.scss` for a project.
-All of the options are shown with their default values.
-Obviously if you want to use the defaults you don't actually need to specify them when calling the mixins.
+In the example below, all of the options are shown with their default values.  In an actual project options with default values can be ommitted.  (For an example of an actual project, you may be interested in viewing the [themes.scss] for this website.)
 
 ### `themes.scss`
 
@@ -98,9 +99,11 @@ Obviously if you want to use the defaults you don't actually need to specify the
 );
 
 ```
+
 [jquery-mobile.scss]: https://github.com/wq/wq.app/blob/master/scss/jquery-mobile.scss
 [wq.app]: http://wq.io/wq.app
 [scss]: http://wq.io/docs/scss
 [Compass]: http://compass-style.org/
 [theme roller]: http://jquerymobile.com/themeroller/
 [wq build]: http://wq.io/docs/build
+[themes.scss]: https://github.com/wq/wq-site/blob/master/app/scss/themes.scss
