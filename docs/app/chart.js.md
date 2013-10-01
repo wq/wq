@@ -12,9 +12,9 @@ var svg = d3.select('svg#chart');
 var plot = chart.timeSeries()
     .width(800)
     .height(300);
-svg.datum([data]).call(plot);
+svg.datum([dataset]).call(plot);
 ```
-The `data` in the example above would typically be a JavaScript object of the form:
+The `dataset` in the example above would typically be a JavaScript object of the form:
 ```javascript
 {
   'id': 'temp-data',
@@ -29,7 +29,7 @@ The `data` in the example above would typically be a JavaScript object of the fo
 ```
 
 ## Chart Options
-The [base chart] generator includes a number of built-in setup routines that are utilized by each of the four chart types.  All chart types inherit the base chart options, and some include additional options unique to each chart.  All options have reasonable defaults that can be re-configured using d3-style [getter/setter functions].
+The core chart generator ([chart.base()]) includes a number of built-in setup routines that are utilized by each of the four chart types.  All chart types inherit the base chart options, and some include additional options unique to each chart.  All options have reasonable defaults that can be re-configured using d3-style [getter/setter functions].
 
 ### Options
 These options control basic chart formatting and layout.
@@ -62,8 +62,8 @@ Accessors control how the data object is parsed.  Overriding the defaults makes 
 | `plot.ymin(fn(dataset))` | `d3.min(items,yvalue)` | Function to determine minimum y value of the dataset.
 | `plot.ymax(fn(dataset))` | `d3.max(items,yvalue)` | Function to determine maximum y value of the dataset.
  
-## chart.scatter()
-[Scatter charts] are useful for drawing basic x-y scatterplots.
+## Scatter plots
+[chart.scatter()] returns a function useful for drawing basic x-y scatterplots.
 
 ### Default Overrides
 `scatter` defines and/or overrides the following base chart defaults:
@@ -83,8 +83,8 @@ Scatter extends the base chart with two new options:
 | `plot.cscale(fn)` | `d3.scale.category20()` | Color scale to use (one color for each dataset)
 | `plot.legend(obj)` | auto | Legend size and position (`'right'` or `'bottom'`).  If position is `'right'`, `size` refers to the width of the legend, while if position is `'bottom'`, `size` refers to the height.  The default is to place the legend on the bottom if there are 5 or fewer datasets, and on the right if there are more.
 
-## chart.timeSeries()
-[Time series charts] are a simple extension to `scatter` that assumes time as the x value.
+## Time series plots
+[chart.timeSeries()] is a simple extension to `scatter` that assumes time as the x value.
 
 ### Default Overrides
 `timeSeries` defines and/or overrides the following `scatter` chart defaults:
@@ -103,6 +103,37 @@ Scatter extends the base chart with one new option:
 |--------|---------|---------|
 | `plot.timeFormat(val)` | `"%Y-%m-%d"` | Format string (converted to function) to use to parse time values.
 
+## Box & whisker plots
+
+[chart.boxplot()] returns a function useful for rendering simple box-and-whisker plots.  (Note that the "whisker" part has yet to be implemented).  The quartile data for each box should be precomputed.  Currently `boxplot` expects each `dataset` to have the following format:
+
+```javascript
+{
+  'id': 'temp-data',
+  'label': 'Temperature',
+  'units': 'C'
+  'list': [
+    {
+      'year': "2013",
+      'min': 3,
+      'p25', 8
+      'median': 17,
+      'p75': 20,
+      'max': 25
+    }
+    // ...
+  ]
+}
+```
+
+The x value (`year` in the above example) is used to define an ordinal scale where each item on the x axis corresponds to a box.  Thus, any text or numeric attribute can be defined as the x value, provided that the `xvalue` accesor is defined.
+
+```javascript
+var plot = chart.boxplot().xvalue(function(d) { return d.year });
+```
+
+The maximum, minimum, median, and 25th and 75th percentiles must be defined with the attribute names shown in the above example.  In the future the boxplot function will support custom accessors for these values as well.
+
 ## Custom Charts
 The base chart provides "hooks" that allow for specifying the chart rendering process before, during, and after each dataset is rendered.  Each of the chart types above defines one or more of these functions.  They can also be used if you want to define a new chart type or significantly alter the behavior of one of the existing types.
 
@@ -112,12 +143,36 @@ The base chart provides "hooks" that allow for specifying the chart rendering pr
 | `plot.init(fn(dataset))` | Actual rendering routine for each dataset.
 | `plot.wrapup(fn(datasets, opts))` | Wrapup routine, useful for drawing e.g. legends.  `opts` will be an object containing computed widths and heights for the actual chart inner and outer drawing areas.
 
+To define your own chart function generator, you could do something like the following:
+
+```javascript
+function myChart() {
+    var plot = chart.base()
+        .render(render);
+
+    function render(dataset) {
+        var items = plot.items()(dataset);
+        d3.select(this)
+           .selectAll('g.data')
+           .data(items)
+           .append('g').attr('class', 'data')
+           /* do something cool with d3 */
+    }
+
+    return plot;
+}
+
+var plot = myChart();
+svg.datum([dataset]).call(plot);
+```
+
 
 [chart.js]: https://github.com/wq/wq.app/blob/master/js/chart.js
 [d3]: http://d3js.org
 [reusable charts]: http://bost.ocks.org/mike/chart/
 [configurable function]: http://bost.ocks.org/mike/chart/#configuration
 [getter/setter functions]: http://bost.ocks.org/mike/chart/#reconfiguration
-[base chart]: https://github.com/wq/wq.app/blob/master/js/chart.js#L21-L356
-[Scatter charts]: https://github.com/wq/wq.app/blob/master/js/chart.js#L358-L498
-[Time series charts]: https://github.com/wq/wq.app/blob/master/js/chart.js#L500-L522
+[chart.base()]: https://github.com/wq/wq.app/blob/master/js/chart.js#L21-L356
+[chart.scatter()]: https://github.com/wq/wq.app/blob/master/js/chart.js#L358-L498
+[chart.timeSeries()]: https://github.com/wq/wq.app/blob/master/js/chart.js#L500-L522
+[chart.boxplot()]: https://github.com/wq/wq.app/blob/master/js/chart.js#L556-L662
