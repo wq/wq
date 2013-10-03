@@ -1,5 +1,6 @@
 wq build
 ========
+[wq.app.util.build]
 
 `wq` is a configuration-based command-line tool that can be used to compile application code into a compact offline-capable format.  It is included in wq.app and should be available from the command line after [installing] wq or wq.app.
 
@@ -24,6 +25,7 @@ The actual build process is broken into several steps.  Most of these steps can 
 | `appcache` | Creates HTML5 application cache manifests for both the source and compiled applications by examining the logs from build process.
 | `build` | runs all of the above in order.
 
+[wq.app.util.build]: https://github.com/wq/wq.app/blob/master/util/build.py
 [installing]: http://wq.io/docs/setup
 [django-wq-template]: https://github.com/wq/django-wq-template
 [app.build.json]: https://github.com/wq/django-wq-template/blob/master/app/app.build.json
