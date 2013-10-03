@@ -8,7 +8,7 @@ A modular framework for mobile & desktop geographic data collection applications
 Includes the following submodules:
 <table>
 <tr><td width="90">
-<a href="https://github.com/wq/wq.app">
+<a href="http://wq.io/wq.app">
 <img src="https://raw.github.com/wq/wq/master/images/80/wq.app.png"
   width="80" height="80"
   alt="wq.app">
@@ -18,7 +18,7 @@ A JavaScript+Python library for building robust offline-capable HTML5 data entry
 
 </td></tr>
 <tr><td>
-<a href="https://github.com/wq/wq.db">
+<a href="http://wq.io/wq.db">
 <img src="https://raw.github.com/wq/wq/master/images/80/wq.db.png"
   width="80" height="80"
   alt="wq.db">
@@ -28,7 +28,7 @@ Django database models and REST framework to support design patterns common to d
 
 </td></tr>
 <tr><td>
-<a href="https://github.com/wq/wq.io">
+<a href="http://wq.io/wq.io">
 <img src="https://raw.github.com/wq/wq/master/images/80/wq.io.png"
   width="80" height="80"
   alt="wq.io">
