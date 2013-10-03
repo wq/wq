@@ -1,4 +1,6 @@
-## collectjson
+collectjson
+===========
+
 [wq.app.util.collect.collectjson]
 
 WIP
