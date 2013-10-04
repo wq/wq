@@ -1,7 +1,7 @@
 Introduction
 ============
 
-![wq](http://wq.io/images/114/wq.png)
+<img align=right alt=wq src="http://wq.io/images/114/wq.png">
 
 **wq** is a collection of Python and JavaScript modules that facilitate the development of robust, offline-capable mobile / web apps.  wq is also a distillation of a number of recommended best practices for ensuring long-term software sustainability.  The primary use case for wq is mobile data collection, whether by professional field staff or by volunteers in e.g. [citizen science] and mobile crowdsourcing projects.  However, it is also useful as a platform for building a wide variety of mobile-first websites and applications.
 
