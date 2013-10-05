@@ -28,6 +28,8 @@ The `dataset` in the example above would typically be a JavaScript object of the
 }
 ```
 
+<svg data-interactive style="width:700px;height:300px"></svg>
+
 ## Chart Options
 The core chart generator ([chart.base()]) includes a number of built-in setup routines that are utilized by each of the four chart types.  All chart types inherit the base chart options, and some include additional options unique to each chart.  All options have reasonable defaults that can be re-configured using d3-style [getter/setter functions].
 
