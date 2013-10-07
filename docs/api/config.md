@@ -7,7 +7,7 @@ The wq Configuration object is used by [app.js] to configure the underlying modu
 {
     'pages': {
      // Default URL routes
-        '[model_name]': {'list': true, url='[model]s'
+        '[model_name]': {'list': true, url='[model]s'}
     },
     'defaults': {
     // Default template context variables
