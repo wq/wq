@@ -32,7 +32,7 @@ This object is typically defined as an AMD module `config.js` and imported as `c
 ## pages
 The pages configuration section contains detailed information about the URL structure of the application.  This is used by [pages.js] to map URL requests to page templates to render, and also to provide hints to [store.js] as to the structure of the REST API containing the actual data.
 
-> **Note**: The `pages` section of the wq configuration object can be generated automatically by [wq.db] based on your installed Django models.  The information below is for those interested in fine-tuning the individual settings.
+> **Note**: The `pages` section of the wq configuration object can be generated automatically by [wq.db] based on your installed Django models.  The information below is for those interested in fine-tuning the individual settings.  If you need to customize an entry in the wq.db-generated `pages` configuration, you should do so by calling `app.router.customize_page` from [wq.db.rest].
 
 Each key in `config.pages` is the name of a page, which may either be a collection of list, detail, and edit views for a database entity (a *list* page), or a single *simple* page.  In either case, the page name should typically be a singular noun.  For each key in `config.pages`, a configuration object is defined with the following attributes.
 
@@ -93,6 +93,7 @@ config.store = {
 [template.js]: http://wq.io/docs/template.js
 [store.js]: http://wq.io/docs/store.js
 [wq.db]: http://wq.io/wq.db
+[wq.db.rest]: http://wq.io/docs/rest
 [templates]: http://wq.io/docs/templates
 [map.js]: http://wq.io/docs/map.js
 [PJAX-style]: http://wq.io/docs/web-app
