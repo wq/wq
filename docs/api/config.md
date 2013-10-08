@@ -17,7 +17,7 @@ The wq Configuration object is used by [app.js] to configure the underlying modu
     },
     
     // Default jQuery Mobile transitions
-    'transitions: {
+    'transitions': {
         'default': 'slide'
     },
     
