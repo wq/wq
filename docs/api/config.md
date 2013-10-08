@@ -21,9 +21,15 @@ The wq Configuration object is used by [app.js] to configure the underlying modu
         'default': 'slide'
     },
     
-    // Datastore options
+    // store.js settings (optional)
     'store': {
         'debug': true
+    },
+    
+    // map.js settings (optional)
+    'map': {
+        'zoom': 13,
+        'center': [44.98, -93.27]
     }
 }
 ```
@@ -87,6 +93,9 @@ config.store = {
     }
 };
 ```
+
+## map
+Configuration options for [map.js].
 
 [app.js]: http://wq.io/docs/app.js
 [pages.js]: http://wq.io/docs/pages.js
