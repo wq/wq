@@ -27,7 +27,7 @@ The wq Configuration object is used by [app.js] to configure the underlying modu
     }
 }
 ```
-This object is typically defined as an AMD module `config.js` and imported as `config`.  Each of these sections is described in detail below.
+This object is typically defined as an AMD module `config.js` and imported as `config`.  Note that the `pages` and `transition` sections are JSON objects, but `defaults` and `store` can have JavaScript functions as values for their subproperties.  Each of these sections is described in detail below.
 
 ## pages
 The pages configuration section contains detailed information about the URL structure of the application.  This is used by [pages.js] to map URL requests to page templates to render, and also to provide hints to [store.js] as to the structure of the REST API containing the actual data.
@@ -48,10 +48,10 @@ Each key in `config.pages` is the name of a page, which may either be a collecti
 ------|-------
 `parents` | A list of models that can be considered "parents" to this model.  Typically this means that this model contains a foreign key pointing to the parent model(s).
 `children` | A list of models that can be considered "children" to this model.  Typically this means that the child model(s) contain foreign keys pointing to this model.
-`map` | Whether or not this page includes a map.  (Used with the [map.js] plugin)
+`map` | Whether or not this page includes a map (as implemented in the [map.js] plugin).  wq.db will set this automatically on models that follow the [locate design pattern] or have a field named `latitude`, `longitude`, or `geometry`.  
 `annotated`<br>`identified`<br>`located`<br>`related` | Boolean options, indicating that the model follows one or more of the [wq.db design patterns].
-`can_add`<br>`can_edit`<br>`can_delete` | Flags indicating which permissions the current user has on the model.  This information is computed and enforced by wq.db.  It is useful as a [template rendering context] variable for showing and hiding available options to the user.  It is not strictly enforsed by app.js since wq.db handles permissions already.
-`partial` | Indicates that the REST service is filtering results from the list view JSON payload (typically to conserve localStorage usage).  If this is set to false or unset, app.js will immediately return a faux 404 page if the user attempts to navigate to the detail view of an object not found in the local store.  If it is true, app.js will instead attempt to request the detail view as HTML from the server and display it if successful.
+`can_add`<br>`can_edit`<br>`can_delete` | Flags indicating which permissions the current user has on the model.  This information can be computed and enforced by wq.db.  It is useful as a [template rendering context] variable for showing and hiding available options to the user.  It is not strictly enforsed by app.js since wq.db (or a compatible REST service) should be handling permissions on the server side.
+`partial` | Indicates that the REST service is filtering results from the list view JSON payload (typically to conserve localStorage usage).  If `partial` is set to false or unset, app.js will immediately return a faux 404 page if the user attempts to navigate to the detail view of an object not found in the local store.  If `partial` is true, app.js will instead attempt to request the detail view as HTML directly from the server and display it if successful.
 `max_local_pages` | Used for pagination control, to set a limit on how many paginated pages of list JSON to load and store locally when searching for an individual item.  Typically used with the `partial` option.
 `choices` | A set of valid choices for enum-style fields on the model.  If set this should contain an object of the following form:
 ```javascript
@@ -98,6 +98,7 @@ config.store = {
 [map.js]: http://wq.io/docs/map.js
 [PJAX-style]: http://wq.io/docs/web-app
 [wq.db design patterns]: http://wq.io/docs/about-patterns
+[locate design pattern]: http://wq.io/docs/locate
 [template rendering context]: http://wq.io/docs/templates
 [page transitions]: http://view.jquerymobile.com/1.3.2/dist/demos/widgets/transitions/
 [$.mobile.defaultPageTransition]: http://view.jquerymobile.com/1.3.2/dist/demos/widgets/transitions/#Globalconfiguration
