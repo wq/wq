@@ -8,7 +8,7 @@ The wq Configuration object is used by [app.js] to configure the underlying modu
      // Application router configuration
     'pages': {
         '[model_name]': {'list': true, 'url': '[model_name]s'},
-        '[simple_page]': {'list': false, 'url': '[simple_page]'}
+        '[simple_page]': {'url': '[simple_page]'}
     },
     
     // Default template context variables
@@ -41,7 +41,7 @@ Each key in `config.pages` is the name of a page, which may either be a collecti
 ------|-------
 `list` | Boolean.  Sets whether or this is a *list* page or a *simple* page.  If true, it is assumed that there will be a set of [templates] named `[model_name]_list`, `[model_name]_detail`, and optionally `[model_name]_edit`.  If false, it is assumed that there will be a single template with the same name as the page.  Not setting this value is the same as setting it to false.
 `url` | The URL of the page.  **This is the only required setting**.  For simple pages, this is conventionally the same as the name of the page.  For list views, it is typically the plural name of the model.  The list view will be rendered at `[url]/`, while detail and edit views will be constructed from this value as `[url]/[item_id]` and `[url]/[item_id]/edit`, respectively.
-`once` | Whether to only render this page once or every time it is opened during a browsing session.  The default is fals (render every time), which is usually acceptible and is the recommended setting for list pages.  The primary use for this value is with simple pages such as overview maps. Setting `once` to true in this case means that the user can browse around the application then come back to the overview map and find it in the same position as when they left. This option only makes sense in a browser context that supports [PJAX-style] dynamic page loading (this includes most modern browsers).
+`once` | Whether to only render this page once or every time it is opened during a browsing session.  The default is false (render every time), which is usually acceptible and is the recommended setting for list pages.  The primary use for this value is with simple pages such as overview maps. Setting `once` to true in this case means that the user can browse around the application then come back to the overview map and find it in the same position as when they left. This option only makes sense in a browser context that supports [PJAX-style] dynamic page loading (this includes most modern browsers).
 
 ### Additional Options for Lists
  Name | Usage
