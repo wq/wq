@@ -1,6 +1,8 @@
 [![wq](https://raw.github.com/wq/wq/master/images/128/wq.png)](http://wq.io)
   
-[wq](http://wq.io) is a modular framework for mobile & desktop geographic data collection applications.  Documentation at <http://wq.io>.
+[wq](http://wq.io) is a modular framework for mobile & desktop geographic data collection applications.
+
+Documentation available at <http://wq.io>.
 
 wq includes the following submodules:
 <table>
@@ -21,7 +23,7 @@ A JavaScript+Python library for building robust offline-capable HTML5 data entry
   alt="wq.db">
 </td><td>
 
-A aollection of Django database models and REST framework to support design patterns common to data collection systems.
+A collection of Django database models and REST framework to support design patterns common to data collection systems.
 
 </td></tr>
 <tr><td>
