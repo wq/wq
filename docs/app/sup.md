@@ -10,6 +10,9 @@ The [appcache.js] module provides event connectors for reporting application cac
 ## json.js
 [json.js] is a generic AJAX/JSON module to allow the jQuery dependency to be factored out of `map.js`.
 
+## markdown.js
+[markdown.js] simplifies Markdown integration for template.js by providing an `{{html}}` template default.
+
 ## online.js
 [online.js] provides event connectors for handling online/offline status
 
@@ -28,10 +31,11 @@ The [appcache.js] module provides event connectors for reporting application cac
 [appcache.js]: https://github.com/wq/wq.app/blob/master/js/appcache.js
 [console.js]: https://github.com/wq/wq.app/blob/master/js/console.js
 [json.js]: https://github.com/wq/wq.app/blob/master/js/json.js
+[markdown.js]: https://github.com/wq/wq.app/blob/master/js/markdown.js
 [online.js]: https://github.com/wq/wq.app/blob/master/js/online.js
 [photos.js]: https://github.com/wq/wq.app/blob/master/js/photos.js
 [router.js]: https://github.com/wq/wq.app/blob/master/js/router.js
 [spinner.js]: https://github.com/wq/wq.app/blob/master/js/spinner.js
 [template.js]: https://github.com/wq/wq.app/blob/master/js/template.js
 
-[pages.js]: http://wq.io/docs/pages.js
+[pages.js]: http://wq.io/docs/pages-js
