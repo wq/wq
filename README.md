@@ -1,39 +1,31 @@
 [![wq](https://raw.github.com/wq/wq/master/images/128/wq.png)](http://wq.io)
   
-[wq](http://wq.io) is a modular framework for mobile & desktop geographic data collection applications.
+[wq] is a modular framework for mobile & desktop geographic data collection applications.
 
-Documentation available at <http://wq.io>.
+## Getting Started
 
-wq includes the following submodules:
-<table>
-<tr><td width="90">
-<a href="http://wq.io/wq.app">
-<img src="https://raw.github.com/wq/wq/master/images/80/wq.app.png"
-  width="80" height="80"
-  alt="wq.app">
-</td><td>
+```bash
+pip install wq
+```
 
-A JavaScript+Python library for building robust offline-capable HTML5 data entry apps.
+See [the documentation] for more information.
 
-</td></tr>
-<tr><td>
-<a href="http://wq.io/wq.db">
-<img src="https://raw.github.com/wq/wq/master/images/80/wq.db.png"
-  width="80" height="80"
-  alt="wq.db">
-</td><td>
+## Features
 
-A collection of Django database models and REST framework to support design patterns common to data collection systems.
+wq is made up of the following submodules, which are maintained as separate packages.
 
-</td></tr>
-<tr><td>
-<a href="http://wq.io/wq.io">
-<img src="https://raw.github.com/wq/wq/master/images/80/wq.io.png"
-  width="80" height="80"
-  alt="wq.io">
-</td><td>
+Module | PyPI | Github | Description
+-------|------|--------|-------------
+[![wq.app](https://raw.github.com/wq/wq/master/images/80/wq.app.png)](http://wq.io/wq.app) | [wq.app] | [wq/wq.app] | A JavaScript+Python library for building robust offline-capable HTML5 data entry apps.
+[![wq.db](https://raw.github.com/wq/wq/master/images/80/wq.db.png)](http://wq.io/wq.db) | [wq.db] | [wq/wq.db] | A collection of Django database models and REST framework to support design patterns common to data collection systems.
+[![wq.io](https://raw.github.com/wq/wq/master/images/80/wq.io.png)](http://wq.io/wq.io) | [wq.io] | [wq/wq.io] | A Python interoperability library for consuming and generating data resources in various formats.
 
-Python interoperability library for consuming and generating data resources in various formats.
+[wq]: http://wq.io
+[the documentation]: http://wq.io/docs
 
-</td></tr>
-</table>
+[wq.app]: https://pypi.python.org/pypi/wq.app
+[wq.db]: https://pypi.python.org/pypi/wq.db
+[wq.io]: https://pypi.python.org/pypi/wq.io
+[wq/wq.app]: https://github.com/wq/wq.app
+[wq/wq.db]: https://github.com/wq/wq.db
+[wq/wq.io]: https://github.com/wq/wq.io
