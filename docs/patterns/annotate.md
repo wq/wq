@@ -27,7 +27,7 @@ Instances of your model (e.g. `Report`) will have an `annotations` attribute, wh
 
 For ease of use, `AnnotatedModel`s will also have a `vals` attribute, which is a Python dictionary with keys representing `AnnotationType`s and values representing `Annotation`s.  This is a settable attribute, so it is even possible to do the following:
 
-```
+```python
 report = Report.objects.create(date=datetime.date.today())
 report.vals = {
     'Temperature': 25,
