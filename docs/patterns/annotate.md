@@ -15,7 +15,8 @@ from wq.db.patterns import models
 class Report(models.AnnotatedModel):
    date = models.DateField()
    # ...
- ```
+```
+
 Instances of your model (e.g. `Report`) will have an `annotations` attribute, which is essentially a [GenericRelation] to the provided `Annotation` model.  Each `Annotation` has a `type` attribute, which is a `ForeignKey` to the `AnnotationType` table.  Thus, the implementation of EAV is represented in annotate as follows:
 
  EAV | wq.db.patterns.annotate
