@@ -28,14 +28,14 @@ The [appcache.js] module provides event connectors for reporting application cac
 ## template.js
 [template.js] is a simple API wrapper around Mustache.js (used by [pages.js])
 
-[appcache.js]: https://github.com/wq/wq.app/blob/master/js/appcache.js
-[console.js]: https://github.com/wq/wq.app/blob/master/js/console.js
-[json.js]: https://github.com/wq/wq.app/blob/master/js/json.js
-[markdown.js]: https://github.com/wq/wq.app/blob/master/js/markdown.js
-[online.js]: https://github.com/wq/wq.app/blob/master/js/online.js
-[photos.js]: https://github.com/wq/wq.app/blob/master/js/photos.js
-[router.js]: https://github.com/wq/wq.app/blob/master/js/router.js
-[spinner.js]: https://github.com/wq/wq.app/blob/master/js/spinner.js
-[template.js]: https://github.com/wq/wq.app/blob/master/js/template.js
+[appcache.js]: https://github.com/wq/wq.app/blob/master/js/wq/appcache.js
+[console.js]: https://github.com/wq/wq.app/blob/master/js/wq/console.js
+[json.js]: https://github.com/wq/wq.app/blob/master/js/wq/json.js
+[markdown.js]: https://github.com/wq/wq.app/blob/master/js/wq/markdown.js
+[online.js]: https://github.com/wq/wq.app/blob/master/js/wq/online.js
+[photos.js]: https://github.com/wq/wq.app/blob/master/js/wq/photos.js
+[router.js]: https://github.com/wq/wq.app/blob/master/js/wq/router.js
+[spinner.js]: https://github.com/wq/wq.app/blob/master/js/wq/spinner.js
+[template.js]: https://github.com/wq/wq.app/blob/master/js/wq/template.js
 
 [pages.js]: http://wq.io/docs/pages-js

@@ -1,4 +1,4 @@
-define(['wq/lib/leaflet', 'wq/locate', 'wq/map'],
+define(['leaflet', 'wq/locate', 'wq/map'],
 function(L, locate, map) {
 
 function main($elems) {

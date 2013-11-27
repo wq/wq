@@ -1,1 +1,1 @@
-../../wq/app/js/lib/README.md
+../../wq/app/js/README.md

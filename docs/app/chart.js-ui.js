@@ -1,4 +1,4 @@
-define(['wq/lib/d3', 'wq/chart', './chart.js-data'],
+define(['d3', 'wq/chart', './chart.js-data'],
 function(d3, chart, data) {
 
 function main($elems) {

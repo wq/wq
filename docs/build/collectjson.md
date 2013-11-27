@@ -1,8 +1,8 @@
 collectjson
 ===========
 
-[wq.app.util.collect.collectjson]
+[wq.app.build.collect.collectjson]
 
 WIP
 
-[wq.app.util.collect.collectjson]: https://github.com/wq/wq.app/blob/master/util/collect.py#L54-L82
+[wq.app.build.collect.collectjson]: https://github.com/wq/wq.app/blob/master/build/collect.py#L54-L82

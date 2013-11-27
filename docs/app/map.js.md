@@ -19,4 +19,4 @@ map.init(config.map);
 ```
 
 [wq configuration object]: http://wq.io/docs/config
-[map.js]: https://github.com/wq/wq.app/blob/master/js/map.js
+[map.js]: https://github.com/wq/wq.app/blob/master/js/wq/map.js

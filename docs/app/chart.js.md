@@ -169,12 +169,12 @@ svg.datum([dataset]).call(plot);
 ```
 
 
-[chart.js]: https://github.com/wq/wq.app/blob/master/js/chart.js
+[chart.js]: https://github.com/wq/wq.app/blob/master/js/wq/chart.js
 [d3]: http://d3js.org
 [reusable charts]: http://bost.ocks.org/mike/chart/
 [configurable function]: http://bost.ocks.org/mike/chart/#configuration
 [getter/setter functions]: http://bost.ocks.org/mike/chart/#reconfiguration
-[chart.base()]: https://github.com/wq/wq.app/blob/master/js/chart.js#L21-L356
-[chart.scatter()]: https://github.com/wq/wq.app/blob/master/js/chart.js#L358-L498
-[chart.timeSeries()]: https://github.com/wq/wq.app/blob/master/js/chart.js#L500-L522
-[chart.boxplot()]: https://github.com/wq/wq.app/blob/master/js/chart.js#L556-L662
+[chart.base()]: https://github.com/wq/wq.app/blob/master/js/wq/chart.js#L21-L356
+[chart.scatter()]: https://github.com/wq/wq.app/blob/master/js/wq/chart.js#L358-L498
+[chart.timeSeries()]: https://github.com/wq/wq.app/blob/master/js/wq/chart.js#L500-L522
+[chart.boxplot()]: https://github.com/wq/wq.app/blob/master/js/wq/chart.js#L556-L662

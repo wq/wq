@@ -89,7 +89,7 @@ WIP
 ## Internal API
 WIP
 
-[app.js]: https://github.com/wq/wq.app/blob/master/js/app.js
+[app.js]: https://github.com/wq/wq.app/blob/master/js/wq/app.js
 [store.js]: http://wq.io/docs/store.js
 [pages.js]: http://wq.io/docs/pages.js
 [wq.db]: http://wq.io/wq.db

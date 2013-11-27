@@ -1,7 +1,7 @@
 SCSS
 ====
 
-[wq.app.util.compilers.scss]
+[wq.app.build.compilers.scss]
 
 The [wq build] process provides a simple configuration-based way to utilize SCSS, based on the [pyScss] Python library. SCSS (a form of [SASS]) is a superset of CSS that helps streamline common CSS patterns.
 
@@ -21,7 +21,7 @@ This will cause all `.scss` files in the `scss/` folder to be processed into `.c
 
 The [Compass] framework provides a number of useful functions for generating cross-browser CSS3 styles including gradients and rounded corners.  wq.app includes a Compass-based SCSS stylesheet for generating [custom jQuery mobile themes].  To utilize these features, you may need to link or copy the assets from Compass and from wq.app's scss folder into your project's scss folder to ensure the build process can find them. The [scss source for this website] may be useful as example.
 
-[wq.app.util.compilers.scss]: https://github.com/wq/wq.app/blob/master/util/compilers.py#L26-L46
+[wq.app.build.compilers.scss]: https://github.com/wq/wq.app/blob/master/build/compilers.py#L26-L46
 [SASS]: http://sass-lang.com/
 [pyScss]: https://github.com/Kronuz/pyScss
 [wq build]: http://wq.io/docs/build

@@ -5,4 +5,4 @@ store.js
 
 WIP
 
-[store.js]: https://github.com/wq/wq.app/blob/master/js/store.js
+[store.js]: https://github.com/wq/wq.app/blob/master/js/wq/store.js
