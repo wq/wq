@@ -5,6 +5,7 @@ LONG_DESCRIPTION = """
 A modular framework for building custom offline-capable desktop and mobile web apps.
 """
 
+
 def long_description():
     """Return long description from README.rst if it's present
     because it doesn't get installed."""
@@ -14,16 +15,16 @@ def long_description():
         return LONG_DESCRIPTION
 
 setup(
-    name = 'wq',
-    version = '0.4.0-dev',
+    name='wq',
+    version='0.4.0-dev',
     author='S. Andrew Sheppard',
     author_email='andrew@wq.io',
     url='http://wq.io/',
     license='MIT',
-    description='A modular framework for building custom offline-capable desktop and mobile web apps.',
+    description=LONG_DESCRIPTION.strip(),
     long_description=long_description(),
     install_requires=['wq.app==0.5.0-dev', 'wq.io==0.4.0-dev', 'wq.db==0.4.0-dev'],
-    classifiers = [
+    classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Web Environment',
         'License :: OSI Approved :: MIT License',
