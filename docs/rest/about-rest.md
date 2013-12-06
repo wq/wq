@@ -1,5 +1,5 @@
-wq.db.rest
-==========
+About wq.db.rest
+================
 
 [wq.db.rest]
 
