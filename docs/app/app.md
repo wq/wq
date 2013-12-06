@@ -38,4 +38,4 @@ wq.app is bundled with a number of [third-party libraries] including RequireJS, 
 [third-party libraries]: http://wq.io/docs/third-party
 [plans]: https://github.com/wq/wq.app/issues/1
 [wq.db]: http://wq.io/wq.db
-[app.py]: http://wq.io/docs/rest
+[app.py]: http://wq.io/docs/app.py

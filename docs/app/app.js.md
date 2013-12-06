@@ -93,8 +93,8 @@ WIP
 [store.js]: http://wq.io/docs/store.js
 [pages.js]: http://wq.io/docs/pages.js
 [wq.db]: http://wq.io/wq.db
-[REST service]: http://wq.io/docs/rest
-[wq.db.rest]: http://wq.io/docs/rest
+[REST service]: http://wq.io/docs/about-rest
+[wq.db.rest]: http://wq.io/docs/about-rest
 [wq configuration object]: http://wq.io/docs/config
 [client-side rendering]: http://wq.io/docs/web-app
 [Mustache templates]: http://wq.io/docs/templates

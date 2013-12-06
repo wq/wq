@@ -19,7 +19,7 @@ wq is as much a **set of principles** as it is a software platform, and we hope 
 [build process]: http://wq.io/docs/build
 [wq.db]: http://wq.io/wq.db
 [design patterns]: http://wq.io/docs/about-patterns
-[REST API generator]: http://wq.io/docs/rest
+[REST API generator]: http://wq.io/docs/about-rest
 [wq.io]: http://wq.io/wq.io
 [Philosophy]: http://wq.io/docs/?section=philosophy
 

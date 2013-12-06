@@ -102,7 +102,7 @@ Configuration options for [map.js].
 [template.js]: http://wq.io/docs/template.js
 [store.js]: http://wq.io/docs/store.js
 [wq.db]: http://wq.io/wq.db
-[wq.db.rest]: http://wq.io/docs/rest
+[wq.db.rest]: http://wq.io/docs/about-rest
 [templates]: http://wq.io/docs/templates
 [map.js]: http://wq.io/docs/map.js
 [PJAX-style]: http://wq.io/docs/web-app
