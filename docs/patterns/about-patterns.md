@@ -1,4 +1,4 @@
-Design Patterns
+About wq.db's Design Patterns
 ===============
 
 [wq.db.patterns]
