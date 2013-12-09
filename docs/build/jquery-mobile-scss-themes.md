@@ -94,8 +94,9 @@ In the example below, all of the options are shown with their default values.  I
 )
 
 @include jquery-mobile-icons(
-    /* This option should be set to wherever the sprite images are located in your project. */
-    $url: "wq/lib/images" 
+    /* This option should be set to wherever the sprite images are located in your project,
+       relative to the CSS folder. */
+    $url: "lib/images" 
 );
 
 ```
