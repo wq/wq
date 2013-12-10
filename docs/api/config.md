@@ -43,6 +43,7 @@ The pages configuration section contains detailed information about the URL stru
 Each key in `config.pages` is the name of a page, which may either be a collection of list, detail, and edit views for a database entity (a *list* page), or a single *simple* page.  In either case, the page name should typically be a singular noun.  For each key in `config.pages`, a configuration object is defined with the following attributes.
 
 ### General Options
+
  Name | Usage
 ------|-------
 `list` | Boolean.  Sets whether or this is a *list* page or a *simple* page.  If true, it is assumed that there will be a set of [templates] named `[model_name]_list`, `[model_name]_detail`, and optionally `[model_name]_edit`.  If false, it is assumed that there will be a single template with the same name as the page.  Not setting this value is the same as setting it to false.
@@ -50,6 +51,7 @@ Each key in `config.pages` is the name of a page, which may either be a collecti
 `once` | Whether to only render this page once or every time it is opened during a browsing session.  The default is false (render every time), which is usually acceptible and is the recommended setting for list pages.  The primary use for this value is with simple pages such as overview maps. Setting `once` to true in this case means that the user can browse around the application then come back to the overview map and find it in the same position as when they left. This option only makes sense in a browser context that supports [PJAX-style] dynamic page loading (this includes most modern browsers).
 
 ### Additional Options for Lists
+
  Name | Usage
 ------|-------
 `parents` | A list of models that can be considered "parents" to this model.  Typically this means that this model contains a foreign key pointing to the parent model(s).
@@ -75,6 +77,7 @@ The `defaults` configuration section is used to set default values that will be 
 
 ## transitions
 Configuration for jQuery Mobile's built in [page transitions].  Where applicable, this information is mapped to jQuery Mobile's built-in configuration options.
+
  Name | Usage
 ------|-------
 `default` | A shortcut for [$.mobile.defaultPageTransition].  Often set to `slide`.
