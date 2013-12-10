@@ -5,4 +5,4 @@ Search
 
 WIP
 
-[wq.db.contrib.search]: https://github.com/wq/wq.db/tree/master/contrib/search
+[wq.db.contrib.search]: https://github.com/wq/wq.db/blob/master/contrib/search

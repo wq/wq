@@ -5,4 +5,4 @@ Files
 
 WIP
 
-[wq.db.contrib.files]: https://github.com/wq/wq.db/tree/master/contrib/files
+[wq.db.contrib.files]: https://github.com/wq/wq.db/blob/master/contrib/files
