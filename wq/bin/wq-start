@@ -1,0 +1,27 @@
+#!/usr/bin/python
+
+import sys
+import os
+from django.core.management import call_command
+from pkg_resources import resource_filename
+
+if len(sys.argv) < 2:
+    print """Usage: wq-start <projectname> [destination]"""
+    exit()
+
+template = resource_filename('wq', 'template')
+
+# resource_filename not returning absolute path after pip install
+if os.sep not in template:
+    import wq
+    template = wq.__path__[0] + os.sep + template
+
+project_name = sys.argv[1]
+destination = sys.argv[2] if len(sys.argv) > 2 else None
+call_command(
+    'startproject',
+    project_name,
+    destination,
+    template=template,
+    extension="py,json,conf,html,sh,js",
+)
