@@ -61,7 +61,7 @@ export PROJECTNAME=myproject
 
 # Create project directory from wq template
 cd $PROJECTSDIR
-django-admin.py startproject $PROJECTNAME --template https://github.com/wq/django-wq-template/archive/master.zip --extension py,json,conf,html,sh,js
+wq-start $PROJECTNAME
 cd $PROJECTNAME
 chmod +x deploy.sh db/manage.py
 ./deploy.sh 0.0.1 # generates htdocs folder via wq build
