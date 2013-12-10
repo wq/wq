@@ -1,5 +1,5 @@
-app.py REST controller
-=======================
+REST controller (app.py)
+========================
 
 [wq.db.rest.app]
 
