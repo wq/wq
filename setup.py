@@ -29,14 +29,14 @@ def list_package_data(root):
 
 setup(
     name='wq',
-    version='0.4.0-dev',
+    version='0.4.0',
     author='S. Andrew Sheppard',
     author_email='andrew@wq.io',
     url='http://wq.io/',
     license='MIT',
     description=LONG_DESCRIPTION.strip(),
     long_description=long_description(),
-    install_requires=['wq.app==0.5.0-dev', 'wq.io==0.4.0-dev', 'wq.db==0.4.0-dev'],
+    install_requires=['wq.app==0.5.0', 'wq.io==0.4.0', 'wq.db==0.4.0'],
     scripts=['wq/bin/wq-start'],
     packages=['wq'],
     namespace_packages=['wq'],
