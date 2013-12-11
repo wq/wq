@@ -41,7 +41,7 @@ setup(
     packages=['wq'],
     namespace_packages=['wq'],
     package_data={'wq': list_package_data('template')},
-    exclude_package_data={'wq': ['template/README.md']},
+    exclude_package_data={'wq': ['template/README.md', 'template/.git']},
     classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Web Environment',
