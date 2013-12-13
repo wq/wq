@@ -3,7 +3,7 @@ REST controller (app.py)
 
 [wq.db.rest.app]
 
-**app.py** is the controller at the core of wq.db.rest.  The name reflects the fact that this module serves server-side counterpart to [app.js] in [wq.app].  app.py's singleton router instance generates a URL structure with REST endpoints for all models registered with it, and produces a [wq configuration object] for consumption by app.js' client-side router.
+**app.py** is the controller at the core of [wq.db.rest].  The name reflects the fact that this module serves server-side counterpart to [app.js] in [wq.app].  app.py's singleton router instance generates a URL structure with REST endpoints for all models registered with it, and produces a [wq configuration object] for consumption by app.js' client-side router.
 
 ## Usage
 
@@ -83,6 +83,7 @@ Any other options given will be assigned to the model's [page configuration].
 | `register(prefix, viewset, base_name=None)` | (DRF) Underlying register function, not usually called directly.
 
 [wq.db.rest.app]: https://github.com/wq/wq.db/blob/master/rest/app.py
+[wq.db.rest]: http://wq.io/docs/about-rest
 [app.js]: http://wq.io/docs/app-js
 [wq.app]: http://wq.io/wq.app
 [wq configuration object]: http://wq.io/docs/config
