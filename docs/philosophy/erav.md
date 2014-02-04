@@ -19,7 +19,10 @@ Without ERAV, tracking changes to individual entities (events) will be quite dif
 
 The ERAV model solves this versioning challenge by making it possible to import data for the same entity more than once.  Each subsequent import is treated as a separate record, but linked back to the entity so that the data can be merged for operational use.  (ERAV can be interpreted in this case to mean Event-Report-Attribute-Value - which is the definition used in the [paper introducing the model](http://wq.io/research/provenance).)
 
+![ERAV](http://wq.io/media/images/erav.png)
+
 ## Important Concepts
+
 ### Natural Key
 
 A critical component to ERAV is the concept of a *natural key* for the Entity/Event model.  Without a usable natural key, there is no easy way to determine which entity is being described in subsequent reports.  For many periodic monitoring projects, a natural key might just be a location and date.  If two or more reports are entered or uploaded containing the same location and date, they will be interpreted as describing the same event.
