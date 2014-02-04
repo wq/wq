@@ -21,7 +21,7 @@ date,,,
 ```
 
 Into an array of datasets with the following structure:
-```js
+```javascript
 [
   {
     'site': 'SITE1',
@@ -46,7 +46,7 @@ date,,
 ```
 Which will be parsed into:
 
-```
+```javascript
 [
   {
     'site': 'SITE1',
