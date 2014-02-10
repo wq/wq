@@ -5,7 +5,7 @@ About wq.app's Modules
 
 <img align=right alt="wq.app" src="http://wq.io/images/128/wq.app.png">
 
-The core of wq.app is a collection of [AMD] modules that can be mixed and matched in a client application.  Unlike traditional JavaScript libraries, there is no browser-global `wq`, or even a canonical `wq.js` for inclusion in your projects.  Instead, the assumption is that projects utilizing wq.app will be fully AMD compliant, and project-specific code will AMD-depend directly on the specific modules within wq.app that it needs.  See [this article] for a discussion of this design decision.
+The core of [wq.app] is a collection of [AMD] modules that can be mixed and matched in a client application.  Unlike traditional JavaScript libraries, there is no browser-global `wq`, or even a canonical `wq.js` for inclusion in your projects.  Instead, the assumption is that projects utilizing wq.app will be fully AMD compliant, and project-specific code will AMD-depend directly on the specific modules within wq.app that it needs.  See [this article] for a discussion of this design decision.
 
 The major modules are the following:
 
@@ -35,6 +35,7 @@ wq.app is also bundled with a number of [third-party libraries] including Requir
 
 See the notes in [Getting Started] for more information about setting up a project layout that utilizes wq.app and/or its bundled third-party libraries.
 
+[wq.app]: http://wq.io/wq.app
 [wq.app/js/wq]: https://github.com/wq/wq.app/blob/master/js/wq/
 [AMD]: http://requirejs.org/
 [this article]: http://wq.io/docs/amd
