@@ -30,7 +30,7 @@ WIP
 [wq.db]: http://wq.io/wq.db
 [Mustache]: http://mustache.github.io
 [wq]: http://wq.io
-[MVC]: http://en.wikipedia.org/wiki/Model–view–controller
+[MVC]: http://en.wikipedia.org/wiki/Model-view-controller
 [wq collectjson]: http://wq.io/docs/collectjson
 [offline first]: http://offlinefirst.org/
 [Progressive enhancement]: http://jakearchibald.com/2013/progressive-enhancement-still-important/
