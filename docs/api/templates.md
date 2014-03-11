@@ -11,19 +11,42 @@ Specifically, there are three ways a page can be rendered by the wq stack in res
 
 Importantly, any of these three options can be used to respond to the same URL, depending on what will provide the best experience to the user.  For example, consider the following scenario.
 
- * A visitor searching for specific information finds a deep link to a page within your application.  Upon visiting this link, the page is rendered *on the server* and is immediately ready for viewing, while the rest of the application loads in the background.
- * Among the items loading in the background are the full set of templates and a cache of JSON objects for the most commonly accessed pages.  When the visitor clicks on a link to one of these pages, it is rendered instantly *on the client* without any additional network traffic.
- * As the visitor continues to explore the application, they eventually navigate to less critical that is not stored locally (perhaps due to `localStorage` limitations).  Rather than requesting JSON from the server and then rendering it, the application simply requests a complete HTML snippet from the server via AJAX and injects it into the DOM.
+ * A visitor searching for specific information finds a deep link to a page within your application.  Upon visiting this link, the page is rendered *on the server* (option 3) and is immediately ready for viewing, while the rest of the application loads in the background.
+ * Among the items loading in the background are the full set of templates and a cache of JSON objects for the most commonly accessed pages.  When the visitor clicks on a link to one of these pages, it is rendered instantly *on the client* (option 1) without any additional network traffic.
+ * As the visitor continues to explore the application, they eventually navigate to less critical content that is not stored locally (perhaps due to `localStorage` limitations).  Rather than requesting JSON from the server and then rendering it, the application simply requests a complete HTML snippet from the server via AJAX and injects it into the DOM (option 2).
  
 This approach makes it possible to build very scalable [offline first] mobile applications, while maintaining backwards compatibility with older browsers and search engines.  This not only makes [progressive enhancement] a natural part of the development process, but makes the choice of whether to render server or client-side a run-time decision, rather than a design-time decision.  While wq.db and wq.app are designed to work together, the same approach can be taken with select parts of wq (or even without using wq at all) as long as the recommended [REST structure] is used.
 
 There are three primary components to the use of Mustache templates in wq: the template syntax, the context object, and the naming convention.
 
 ## Mustache Syntax
-WIP
+The Mustache template syntax is used as-is in wq - there are no added features (other than the comprehensive context object, discussed next).  Again, the goal of using the same server and client templates is a higher priority in wq than providing enhanced client-side rendering features that are inaccessible without JavaScript.
+
+The available placeholders in Mustache templates include:
+
+Syntax | Description
+-------|-------------
+`{{variable}}` | Replaced with the content of `context.variable` (see below) in the HTML output
+`{{#variable}}Content{{/variable}}` | Content is rendered only if `context.variable` is truthy (i.e. defined, non-null, and non-zero).  If `context.variable` is an array, content will be rendered once for each item in the array.
+`{{^variable}}Content{{/variable}}` | Content is rendered only if `context.variable` is falsy (e.g. undefined, null, or zero)
+`{{>partial}}` | Loads and renders the content from the `partial` template in the partials collection (see naming convention below)
+`{{{variable}}}` | `context.variable` is rendered without HTML escaping.  This should only be used with trusted input.
 
 ## The Context Object
-WIP
+Like most templating systems, Mustache and wq require a context object - or more precisely, a context stack - that contains the necessary information needed to fill the placeholders in a given template.  Context variables can be simple scalar values, objects, arrays, or even functions - which are executed to find the value to use.  When a the template is rendered, the context is consulted for matching variable names, perhaps iterating up through the stack until a match is found.  A stack is important as it allows for nexted contexts (as well as default variables that can easily be overridden).  For example, accessing an object (or array of objects) with `{{#variable}}` causes the object to be applied to the top of the stack, so that any inner `{{variables}}` found before the closing `{{/variable}}` will first be assumed to be properties on the object.  
+
+wq.app and wq.db each provide a robust, automatically generated context object that includes (among other things):
+ - The URL of the current page (`{{pages_info.path}}`)
+ - Whether or not the visitor is logged in (`{{#is_authenticated}}`) as well as information about the user (e.g. `{{user.username}}` and `{{csrftoken}}`)
+ - Unique identifiers and user-friendly labels for primary and foreign keys on the current object (e.g. `{{id}}`, `{{label}}`, `{{parent_id}}`, `{{parent_label}}`).
+ - In "list" views, the number of items in the list (`{{count}}`), the number of pages in the list (`{{pages}}`), and links to navigate between pages (`{{next}}` and `{{previous}}`).
+ - In "detail" views, nested objects for foreign keys with additional properties (e.g. `{{#parent}}{{description}}{{/parent}}`)
+ - In "edit" views, arrays containing potential choices for foreign keys (useful for rendering `<select>`s or `<input type=radio>`), complete with a `{{#selected}}` property for the current value.
+ - If [wq/markdown.js] is present, an `{{{html}}}` function that will look for and render `context.markdown`.
+
+The JSON objects generated by the wq.db REST API are effectively identical to the context objects used when rendering templates in wq.db and wq.app.  This makes it straighforward to verify that the context contains the right information simply by appending `.json` to the end of a URL (see [My Website is its own REST API](http://wq.io/docs/website-rest-api)).  That said, there are a number of differences in how contexts are actually generated between wq.app and wq.db.  In particular, the context objects created by [wq/app.js] make heavy use of asyncronous function callbacks to reduce the amount of redundant information that needs to be stored locally.
+
+While wq.db does not use the Django template syntax, it can usually be used seamlessly with other Django apps (like `django.contrib.admin`) that do use Django templates.  wq.db provides a template loader (`wq.db.rest.template.Loader`) that uses Mustache templates but otherwise acts like a normal template loader.  wq.db's template system uses the normal `context_processors` to set some of the above values on the context.
 
 ## Template Naming Convention
 WIP
@@ -37,3 +60,5 @@ WIP
 [offline first]: http://offlinefirst.org/
 [progressive enhancement]: http://jakearchibald.com/2013/progressive-enhancement-still-important/
 [REST structure]: http://wq.io/docs/rest-structure
+[wq/markdown.js]: http://wq.io/docs/sup
+[wq/app.js]: http://wq.io/docs/app-js
