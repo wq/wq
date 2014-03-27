@@ -1,7 +1,7 @@
-app.js
+wq/app.js
 ======
 
-[app.js]
+[wq/app.js]
 
 **wq/app.js** is an configuration-driven application controller that leverages the capabilities of [store.js] and [pages.js] to facilitate the creation of complete mobile web apps for viewing and submitting field data.  It is primarily intended for use as a client for [wq.db.rest]'s [app.py], but can be used with any REST service with the same structure.
 
@@ -100,7 +100,7 @@ WIP
 ## Internal API
 WIP
 
-[app.js]: https://github.com/wq/wq.app/blob/master/js/wq/app.js
+[wq/app.js]: https://github.com/wq/wq.app/blob/master/js/wq/app.js
 [store.js]: http://wq.io/docs/store-js
 [My website is its own REST API]: http://wq.io/docs/website-rest-api
 [pages.js]: http://wq.io/docs/pages-js

@@ -1,8 +1,8 @@
-store.js
+wq/store.js
 ========
 
-[store.js]
+[wq/store.js]
 
 WIP
 
-[store.js]: https://github.com/wq/wq.app/blob/master/js/wq/store.js
+[wq/store.js]: https://github.com/wq/wq.app/blob/master/js/wq/store.js

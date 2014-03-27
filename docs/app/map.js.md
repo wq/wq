@@ -1,7 +1,7 @@
-map.js
+wq/map.js
 ======
 
-[map.js]
+[wq/map.js]
 
 **wq/map.js** is a plugin for [app.js] that adds mapping capabilities.  map.js can  leverage the [wq configuration object] to generate Leaflet maps on pages rendered via app.js.
 
@@ -19,4 +19,4 @@ map.init(config.map);
 ```
 
 [wq configuration object]: http://wq.io/docs/config
-[map.js]: https://github.com/wq/wq.app/blob/master/js/wq/map.js
+[wq/map.js]: https://github.com/wq/wq.app/blob/master/js/wq/map.js
