@@ -9,7 +9,24 @@ Introduction
 
 **wq is comprised of** three major submodules, all of which can be [installed] together or separately.  **[wq.app]** is the frontend component, a collection of [JavaScript modules] and a [build process].  **[wq.db]** contains a collection of [design patterns] for common database layouts, and a [REST API generator] that routes requests from the client application.  **[wq.io]** is a standalone Python library for dealing specifically with data import and export.
 
-wq is as much a **set of principles** as it is a software platform, and we hope to expand the [Philosophy] section of the documentation with implementation-independent principles that we have found useful when building these applications.
+wq is as much a **set of principles** as it is a software platform.  With this in mind, the [Philosophy] section of the documentation contains a number of implementation-independent principles for mobile/web app development, while the [API Conventions] section proposes interoperable solutions for addressing these concerns.
+
+## Documentation Outline
+The documentation is structured to lay the foundation and conventions before getting into the implementation details.  The chapters are as follows:
+
+1. [Overview]
+2. [Philosophy]
+3. [API Conventions]
+4. Module Documentation
+  1. **wq.app**
+    1. [JavaScript Modules]
+    2. [Build Process]
+  2. **wq.db**
+    1. [Design Patterns]
+    2. [REST API generator]
+    3. [Contrib apps]
+  3. **wq.io**
+    1. [Dataset IO]
 
 [citizen science]: http://wq.io/research/quality
 [The goal of wq]: http://wq.io/research/framework
@@ -22,4 +39,8 @@ wq is as much a **set of principles** as it is a software platform, and we hope 
 [REST API generator]: http://wq.io/docs/about-rest
 [wq.io]: http://wq.io/wq.io
 [Philosophy]: http://wq.io/docs/?section=philosophy
+[API Conventions]: http://wq.io/docs/?section=api
+[Overview]: http://wq.io/docs/?section=overview
+[Contrib apps]: http://wq.io/docs/?section=contrib
+[Dataset IO]: http://wq.io/docs/?section=io
 
