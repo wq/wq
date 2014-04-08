@@ -6,8 +6,43 @@ The easiest way to install wq is via the [Python Package Index].  Any of [wq.app
 ```bash
 pip install wq
 ```
+## Using wq.db and wq.app
 
-## Creating a Simple HTML5 Application
+If you are using wq.app and wq.db together, you may find it useful to take advantage of the [Django wq template] available on GitHub.  You will need a WGSI-capable webserver like [Apache], and a database to host the application.  In theory any Django-supported database will work, but wq.db is optimized for use with [PostgreSQL] and [PostGIS].  You should be able to use something like the following to start a new wq-based Django project.
+
+### On Ubuntu
+```bash
+sudo apt-get install libapache2-mod-wsgi postgresql-9.3-postgis-2.1
+sudo pip install wq
+
+export PROJECTSDIR=/path/to/projects
+export PROJECTNAME=myproject
+
+# Create project directory from wq template
+cd $PROJECTSDIR
+wq-start $PROJECTNAME
+cd $PROJECTNAME
+chmod +x deploy.sh db/manage.py
+./deploy.sh 0.0.1 # generates htdocs folder via wq build
+
+# Install database tables
+(edit db/$PROJECTNAME/local_settings.py with database information)
+cd db/
+./manage.py syncdb
+./manage.py migrate
+
+# Configure and restart Apache
+(edit conf/$PROJECTNAME.conf with correct domain name)
+sudo ln -s $PROJECTSDIR/$PROJECTNAME/conf/$PROJECTNAME.conf /etc/apache2/sites-available/
+sudo a2ensite $PROJECTNAME
+sudo service apache2 reload
+```
+
+### On Windows
+WIP
+
+
+## Using only wq.app
 
 If you are only interested in using wq.app, you can run `pip install wq.app` or simply download the [latest release] directly from Github.  You will likely want to set up your project with the following layout (inspired by [volo]):
 ```bash
@@ -50,42 +85,13 @@ define(['wq/chart'], function(chart) {
 ```
 See the [wq.app module list] for available modules, and the [build docs] for information about available build options.
 
-## Creating a Django Project
-
-If you are using wq.app and wq.db together, you may find it useful to take advantage of the [Django wq template] available on GitHub.  You will need a WGSI-capable webserver and a database to host the application.  In theory any Django-supported database will work, but wq.db is optimized for use with PostgreSQL and PostGIS.  After you have installed wq, you should be able to use something like the following to start a new wq-based Django project.
-
-### On Ubuntu
-```bash
-export PROJECTSDIR=/path/to/projects
-export PROJECTNAME=myproject
-
-# Create project directory from wq template
-cd $PROJECTSDIR
-wq-start $PROJECTNAME
-cd $PROJECTNAME
-chmod +x deploy.sh db/manage.py
-./deploy.sh 0.0.1 # generates htdocs folder via wq build
-
-# Install database tables
-(edit db/$PROJECTNAME/local_settings.py with database information)
-cd db/
-./manage.py syncdb
-./manage.py migrate
-
-# Configure and restart Apache
-(edit conf/httpd.conf with correct domain name)
-sudo ln -s $PROJECTSDIR/$PROJECTNAME/conf/httpd.conf /etc/apache2/sites-available/$PROJECTNAME
-sudo a2ensite $PROJECTNAME
-sudo service apache2 reload
-```
-
-### On Windows
-WIP
-
 [Python Package Index]: https://pypi.python.org/pypi/wq
 [wq.app]: http://wq.io/wq.app
 [wq.db]: http://wq.io/wq.db
 [wq.io]: http://wq.io/wq.io
+[Apache]: http://httpd.apache.org/
+[PostgreSQL]: http://www.postgresql.org/
+[PostGIS]: http://postgis.net/
 [latest release]: https://github.com/wq/wq.app/releases
 [js/wq]: http://wq.io/docs/app
 [JavaScript dependencies]: http://wq.io/docs/third-party
