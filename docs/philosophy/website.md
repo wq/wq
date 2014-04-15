@@ -10,7 +10,7 @@ In this post, we argue that an essential criteria in evaluating web-based techno
 Our argument is threefold:
 
  1. First, the robust (if at times cumbersome) technical capabilities of the traditional client-server web stack (and "hypertext" in particular) are lost when too much emphasis is placed on browser-only JavaScript features.
- 2. Second, the choice to limit an application to only the latest versions of a subset of popular browsers is inherently exclusionary, and (more to the point) unnecessarily, as the web has been dealing with the "fragmentation" issue for years.
+ 2. Second, the choice to limit an application to only the latest versions of a subset of popular browsers is inherently exclusionary, and (more to the point) unnecessary, as the web has been dealing with the "fragmentation" issue for years.
  3. Finally, while it is tempting for library authors to abstract away standard web languages for the sake of brevity and convenience, doing so ultimately results in a contingent of developers that only know the conventions of the library, and are unable to transfer their knowledge to another platform.
  
 We explore these arguments in depth below.
