@@ -5,7 +5,7 @@ HTML5: Still just a website
 
 Okay, so suppose you've been convinced that [HTML5 is not "just" a website](http://wq.io/docs/web-app), or simply have found JavaScript to be the most cost-effective programming language for your multi-platform app. Further, suppose that you've found a cutting-edge JavaScript library that promises to take away the pain of developing with HTML - perhaps by abstracting away the DOM entirely. More likely, suppose that you've found several such libraries and are trying to choose between them. How do you move forward in this fast-paced ecosystem?
 
-In this post, we argue that an essential criteria in evaluating web-based technologies is the extent to which they utilize and promote *existing web standards*.  We would like to point out a number of features of the traditional web that are still important (even in mobile app contexts), but are often ignored or actively avoided by JavaScript library authors anxious to exploit the latest capabilities of HTML5.
+In this post, we argue that an essential criteria in evaluating web-based technologies is the extent to which they utilize and promote **existing web standards**.  We would like to point out a number of features of the traditional web that are still important (even in mobile app contexts), but are often ignored or actively avoided by JavaScript library authors anxious to exploit the latest capabilities of HTML5.
 
 Our argument is threefold:
 
