@@ -12,10 +12,10 @@ If you are using wq.app and wq.db together, you may find it useful to take advan
 
 ### On Ubuntu
 ```bash
-sudo apt-get install libapache2-mod-wsgi postgresql-9.3-postgis-2.1
+sudo apt-get install apache2 libapache2-mod-wsgi postgresql-9.3-postgis-2.1 python-pip python-psycopg2
 sudo pip install wq
 
-export PROJECTSDIR=/path/to/projects
+export PROJECTSDIR=/path/to/projects #e.g. /var/www
 export PROJECTNAME=myproject
 
 # Create project directory from wq template
@@ -25,17 +25,25 @@ cd $PROJECTNAME
 chmod +x deploy.sh db/manage.py
 ./deploy.sh 0.0.1 # generates htdocs folder via wq build
 
+# Create database
+(edit /etc/postgresql/9.3/main/pg_hba.conf and/or pg_ident.conf to set permissions)
+createuser -Upostgres $PROJECTNAME
+createdb -Upostgres -O$PROJECTNAME $PROJECTNAME
+psql -Upostgres $PROJECTNAME -c "CREATE EXTENSION postgis;"
+
 # Install database tables
-(edit db/$PROJECTNAME/local_settings.py with database information)
+(edit db/$PROJECTNAME/local_settings.py with database info, if different than above)
 cd db/
+chmod +x manage.py
 ./manage.py syncdb
 ./manage.py migrate
 
 # Configure and restart Apache
 (edit conf/$PROJECTNAME.conf with correct domain name)
 sudo ln -s $PROJECTSDIR/$PROJECTNAME/conf/$PROJECTNAME.conf /etc/apache2/sites-available/
+sudo a2enmod wsgi
 sudo a2ensite $PROJECTNAME
-sudo service apache2 reload
+sudo service apache2 restart
 ```
 
 ### On Windows
