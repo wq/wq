@@ -36,6 +36,7 @@ Syntax | Description
 Like most templating systems, Mustache and wq require a context object - or more precisely, a context stack - that contains the necessary information needed to fill the placeholders in a given template.  Context variables can be simple scalar values, objects, arrays, or even functions - which are executed to find the value to use.  When a the template is rendered, the context is consulted for matching variable names, perhaps iterating up through the stack until a match is found.  A stack is important as it allows for nexted contexts (as well as default variables that can easily be overridden).  For example, accessing an object (or array of objects) with `{{#variable}}` causes the object to be applied to the top of the stack, so that any inner `{{variables}}` found before the closing `{{/variable}}` will first be assumed to be properties on the object.  
 
 wq.app and wq.db each provide a robust, automatically generated context object that includes (among other things):
+
  - The URL of the current page (`{{pages_info.path}}`)
  - Whether or not the visitor is logged in (`{{#is_authenticated}}`) as well as information about the user (e.g. `{{user.username}}` and `{{csrftoken}}`)
  - Unique identifiers and user-friendly labels for primary and foreign keys on the current object (e.g. `{{id}}`, `{{label}}`, `{{parent_id}}`, `{{parent_label}}`).
