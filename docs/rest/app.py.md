@@ -26,10 +26,10 @@ urlpatterns = patterns('',
 )
 ```
 
-Whereas admin's autodiscover searches for and imports `admin.py` in each installed app's directory, app's autodiscover searches for and imports any `serializers.py` or `views.py`.  A typical views.py has some similarity to the [example admin.py] in Django's docs:
+Whereas admin's autodiscover searches for and imports `admin.py` in each installed app's directory, app's autodiscover searches for and imports `rest.py`.  A typical rest.py has some similarity to the [example admin.py] in Django's docs:
 
 ```python
-# myapp/views.py
+# myapp/rest.py
 
 from wq.db.rest import app
 from .models import MyModel
@@ -38,19 +38,21 @@ app.router.register_model(MyModel)
 
 Note that the function is `register_model()` and not `register()`, since the API is quite different from the DRF DefaultRouter's `register()`, which can still be called directly if needed.
 
-The above will cause MyModel to be accessible as a JSON list at `/mymodels.json` (and as a regular HTML page at `/mymodels/`).  Individual models will be accessible via `/mymodels/1(.json)`, etc..  All of the typical HTTP verbs for a viewset (i.e. `GET`, `POST`, `PUT`, `PATCH`, `DELETE`) are supported by default.  Reasonable default classes will be generated for the [viewset] and [serializer], but there is often a need to override these.  They 
-can be specified as keyword arguments to the function.
+The above will cause MyModel to be accessible as a JSON list at `/mymodels.json` (and as a regular HTML page at `/mymodels/`).  Individual models will be accessible via `/mymodels/1(.json)`, etc..  All of the typical HTTP verbs for a viewset (i.e. `GET`, `POST`, `PUT`, `PATCH`, `DELETE`) are supported by default.  Reasonable default classes will be generated for the [viewset] and [serializer], but there is often a need to override these.  They can be specified as keyword arguments to the function:
 
 ```python
 # myapp/views.py
 
-from wq.db.rest import app
 from wq.db.rest.views import ModelViewSet
-from .models import MyModel
-
 class CustomViewSet(ModelViewSet):
     # custom features
-    
+```
+```
+# myapp/rest.py
+
+from wq.db.rest import app
+from .models import MyModel
+from .views import CustomViewSet
 app.router.register_model(MyModel, viewset=CustomViewSet)
 ```
 
