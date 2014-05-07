@@ -47,7 +47,7 @@ from wq.db.rest.views import ModelViewSet
 class CustomViewSet(ModelViewSet):
     # custom features
 ```
-```
+```python
 # myapp/rest.py
 
 from wq.db.rest import app
