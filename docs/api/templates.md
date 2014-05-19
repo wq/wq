@@ -65,7 +65,7 @@ Because templates are equally shared between the server and the client, they are
 [offline first]: http://offlinefirst.org/
 [progressive enhancement]: http://jakearchibald.com/2013/progressive-enhancement-still-important/
 [REST structure]: http://wq.io/docs/rest-structure
-[wq/markdown.js]: http://wq.io/docs/sup
+[wq/markdown.js]: http://wq.io/docs/other-modules
 [wq/app.js]: http://wq.io/docs/app-js
 [wq Configuration Object]: http://wq.io/docs/config
 [wq project template for Django]: https://github.com/wq/django-wq-template

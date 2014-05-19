@@ -48,7 +48,7 @@ See the notes in [Getting Started] for more information about setting up a proje
 [wq/pages.js]: http://wq.io/docs/pages-js
 [wq/pandas.js]: http://wq.io/docs/pandas-js
 [wq/store.js]: http://wq.io/docs/store-js
-[smaller modules]: http://wq.io/docs/sup
+[smaller modules]: http://wq.io/docs/other-modules
 [third-party libraries]: http://wq.io/docs/third-party
 [wq.db]: http://wq.io/wq.db
 [app.py]: http://wq.io/docs/app.py
