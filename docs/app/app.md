@@ -41,13 +41,13 @@ See the notes in [Getting Started] for more information about setting up a proje
 [wq.app/js/wq]: https://github.com/wq/wq.app/blob/master/js/wq/
 [AMD]: http://wq.io/docs/amd
 [this article]: http://wq.io/docs/amd
-[wq/app.js]: http://wq.io/docs/app.js
-[wq/chart.js]: http://wq.io/docs/chart.js
-[wq/locate.js]: http://wq.io/docs/locate.js
-[wq/map.js]: http://wq.io/docs/map.js
-[wq/pages.js]: http://wq.io/docs/pages.js
-[wq/pandas.js]: http://wq.io/docs/pandas.js
-[wq/store.js]: http://wq.io/docs/store.js
+[wq/app.js]: http://wq.io/docs/app-js
+[wq/chart.js]: http://wq.io/docs/chart-js
+[wq/locate.js]: http://wq.io/docs/locate-js
+[wq/map.js]: http://wq.io/docs/map-js
+[wq/pages.js]: http://wq.io/docs/pages-js
+[wq/pandas.js]: http://wq.io/docs/pandas-js
+[wq/store.js]: http://wq.io/docs/store-js
 [smaller modules]: http://wq.io/docs/sup
 [third-party libraries]: http://wq.io/docs/third-party
 [wq.db]: http://wq.io/wq.db
