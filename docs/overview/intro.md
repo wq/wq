@@ -38,9 +38,9 @@ The documentation is structured to lay the foundation and conventions before get
 [design patterns]: http://wq.io/docs/about-patterns
 [REST API generator]: http://wq.io/docs/about-rest
 [wq.io]: http://wq.io/wq.io
-[Philosophy]: http://wq.io/docs/?section=philosophy
-[API Conventions]: http://wq.io/docs/?section=api
-[Overview]: http://wq.io/docs/?section=overview
-[Contrib apps]: http://wq.io/docs/?section=contrib
-[Dataset IO]: http://wq.io/docs/?section=io
+[Philosophy]: http://wq.io/docs/chapters/philosophy/docs
+[API Conventions]: http://wq.io/chapters/api/docs
+[Overview]: http://wq.io/chapters/overview/docs
+[Contrib apps]: http://wq.io/chapters/contrib/docs
+[Dataset IO]: http://wq.io/chapters/io/docs
 
