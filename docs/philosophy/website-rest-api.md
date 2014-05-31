@@ -3,14 +3,14 @@ order: 3
 title: My website is its own REST API
 ---
 
-My website is its own REST API<br><small>(and it's own mobile app)</small>
+My website is its own REST API<br><small>(and its own mobile app)</small>
 ==============================
 
 Managing support for the growing array of web-capable device formats can be a daunting challenge.  The use of [HTML5 as a cross-platform solution](http://wq.io/docs/web-app) can help mitigate this complexity, but there are still a variety of use cases and device capabilities that need to be accounted for.  In particular, as more and more users switch to mobile devices as their primary platform, it is important to support the ability to cache and render content locally, [offline first](http://offlinefirst.org/), for users with limited or no connectivity.
 
 As we noted [previously](http://wq.io/docs/website), it is still important to support traditional web-based navigation via server-rendered HTML pages.  However, proper offline support typically requires a **REST API** coupled with a lightweight data format (i.e. JSON) to minimize download time and offline storage space.  For many websites, a REST API is thrown together as an afterthought, and almost always is given a distinct URL space and authentication mechanism, both completely separate from the main website.
 
-This duplication is unnecessary and costly.  [You don't need an API.](http://ruben.verborgh.org/blog/2013/11/29/the-lie-of-the-api/)
+**This duplication is unnecessary** and costly.  [You don't need an API.](http://ruben.verborgh.org/blog/2013/11/29/the-lie-of-the-api/)
 
 More precisely, your website should serve as its own API.  In general, every page should have a machine readable representation - accessible at the same URL (plus or minus an extension or HTTP `Accepts: ` header).  Try this as an example:
  - View the JSON version of this page at <a href="http://wq.io/docs/website-rest-api.json" rel="external">http://wq.io/docs/website-rest-api.json</a> in a new tab.
