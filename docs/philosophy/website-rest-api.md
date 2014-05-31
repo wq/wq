@@ -13,8 +13,8 @@ As we noted [previously](http://wq.io/docs/website), it is still important to su
 This duplication is unnecessary and costly.  [You don't need an API.](http://ruben.verborgh.org/blog/2013/11/29/the-lie-of-the-api/)
 
 More precisely, your website should serve as its own API.  In general, every page should have a machine readable representation - accessible at the same URL (plus or minus an extension or HTTP `Accepts: ` header).  Try this as an example:
- - View [the source for this page](view-source:http://wq.io/docs/website-rest-api) in a new tab.  The HTML should have been rendered by the server.
- - Now view the JSON version at <http://wq.io/docs/website-rest-api.json>
+ - View the JSON version of this page at <a href="http://wq.io/docs/website-rest-api.json" rel="external">http://wq.io/docs/website-rest-api.json</a> in a new tab.
+ - Then, view [the source for this page](view-source:http://wq.io/docs/website-rest-api) at the same URL.  The HTML should have been rendered by the server.
 
 The same content is being displayed at the same URL - but with different formats for different use cases.  (Note that in practice, these documentation pages are downloaded at one time from <http://wq.io/docs.json> when the application loads.  More on that later.)
  
