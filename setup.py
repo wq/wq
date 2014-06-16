@@ -29,7 +29,7 @@ def list_package_data(root):
 
 setup(
     name='wq',
-    version='0.5.0',
+    version='0.6.0',
     author='S. Andrew Sheppard',
     author_email='andrew@wq.io',
     url='http://wq.io/',
@@ -37,9 +37,9 @@ setup(
     description=LONG_DESCRIPTION.strip(),
     long_description=long_description(),
     install_requires=[
-        'wq.app==0.5.1',
-        'wq.db==0.5.0',
-        'wq.io==0.4.2',
+        'wq.app==0.6.0',
+        'wq.db==0.6.0',
+        'wq.io==0.5.0',
     ],
     scripts=['wq/bin/wq-start'],
     packages=['wq'],
