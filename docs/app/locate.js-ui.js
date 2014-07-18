@@ -32,7 +32,16 @@ function locator($elems) {
        'accuracy': $elems.find('#loc-acc'),
        'toggle': $elems.find('input[name=mode]')
     }
-    locate.Locator(m, fields);
+    var locator = locate.Locator(m, fields);
+    locator.onupdate = function(loc, accuracy) {
+        if (accuracy > 1000) {
+            $elems.find('#loc-message').html(
+                "Note: your location accuracy appears to be off by more than 1km."
+            );
+        } else {
+            $elems.find('#loc-message').html("");
+        }
+    };
 }
 
 return main;
