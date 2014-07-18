@@ -26,7 +26,7 @@ The entered coordinates are automatically displayed on a Leaflet map.  "Accuracy
 
 The Locator widget accepts two arguments: a Leaflet map object, and a mapping of jQuery-wrapped fields to use for setting and storing location information.  The expected fields are:
 
- * `mode`: A set of radio buttons (or a select menu) that will change the widget mode.  The values for each option should be one or more the modes listed above.
+ * `toggle`: A set of radio buttons (or a select menu) that will change the widget mode.  The values for each option should be one or more the modes listed above.
  * `latitude`: A text input that will recieve (or provide) the latitude
  * `longitude`: A text input that will recieve (or provide) the longitude
  * `accuracy`: A text input that will recieve the computed accuracy
