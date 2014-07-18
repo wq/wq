@@ -5,7 +5,7 @@ wq/locate.js
 
 **wq/locate.js** provides utilities for requesting the user's latitude and longitude, a common use case in many VGI, citizen science, and crowdsourcing applications.  Two utilities are provided:
 
-  * The `locate.Locator` widget utilizes Leaflet and form <input>s to facilitate multiple ways of providing location information (e.g. GPS or a map click).
+  * The `locate.Locator` widget utilizes Leaflet and form `<input>`s to facilitate multiple ways of providing location information (e.g. GPS or a map click).
   * The `locate.locate()` function is a lower-level function for directly obtaining GPS coordinates.
 
 ## Locator widget
