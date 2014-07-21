@@ -37,17 +37,19 @@ To accomplish these functions, BaseIO contains a number of methods and propertie
 
 ### Assigning Values to Properties
 
-Most properties can be set by passing them as arguments when initializing the class.  However, in general it is better to create a subclass with the properities pre-set.
+Most properties (including mixin properties) can be set by passing them as arguments when initializing the class.  However, in general it is better to create a subclass with the properities pre-set.
 
 ```python
 # Works, but less re-usable
 instance = CustomIO(field_names=['id','name'])
 
-# Better
+# Usually better
 class MyCustomIO(CustomIO)
     field_names = ['id', 'name']
 instance = MyCustomIO()
 ```
+
+The main exception to this rule is for properties that are almost guaranteed to be different every time the IO is instantiated, e.g. [FileLoader]'s  `filename` property.
 
 ### Nested IOs
 
@@ -85,5 +87,6 @@ Note that none of the pre-mixed IO classes in wq.io are nested.  The [climata li
 [parse]: http://wq.io/docs/parsers
 [mapper]: http://wq.io/docs/mappers
 [Parsers]: http://wq.io/docs/parsers
+[FileLoader]: http://wq.io/docs/loaders
 [dbio]: http://wq.io/docs/dbio
 [climata library]: https://github.com/heigeo/climata
