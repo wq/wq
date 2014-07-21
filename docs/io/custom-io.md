@@ -4,6 +4,9 @@ order: 1
 
 Extending wq.io
 ===============
+
+<img align=right alt="wq.io" src="http://wq.io/images/128/wq.io.png">
+
 [wq.io] provides a consistent interface for working with data from a variety of common formats.  However, it is not possible to support every conceivable file format and data structure in a single library.  Because of this, wq.io is designed primarily to be customized and extended.  To facilitate fully modular customization, the wq.io APIs are designed as combinations of a `BaseIO` class and several mixin classes.
 
 The `BaseIO` class and mixins break the process into several steps:
