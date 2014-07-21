@@ -8,16 +8,18 @@ wq.io: The BaseIO class
 [wq.io.base]
 
 The `BaseIO` class forms the core of [wq.io]'s built-in classes, and should also be extened when defining [custom IO] classes.  `BaseIO` serves two primary functions:
+
  * Initializing the class and orchestrating the [load] and [parse] mixin tasks
  * Providing a convenient `iterable` interface for working with the parsed data (with support from a [mapper] mixin)
 
 To accomplish these functions, BaseIO contains a number of methods and properties:
 
-1. Synchronization methods and configuration properties.  These are discussed below.
-2. Stub functions meant to be overridden by the mixin classes.
-3. Magic methods to facilitate iteration and data manipulation.  These should rarely need to be called directly or overidden.
+ 1. Synchronization methods and configuration properties.  These are discussed below.
+ 2. Stub functions meant to be overridden by the mixin classes.
+ 3. Magic methods to facilitate iteration and data manipulation.  These should rarely need to be called directly or overidden.
 
 ## Methods
+
  name | purpose
 ------|--------
 `refresh()` | Triggers the [load] and [parse] mixins to ensure the dataset is ready for iteration.  Called automatically when the class is initialized.
