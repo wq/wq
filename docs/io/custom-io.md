@@ -1,26 +1,64 @@
+--
+order: 1
+--
+
 Extending wq.io
 ===============
+[wq.io] provides a consistent interface for working with data from a variety of common formats.  However, it is not possible to support every conceivable file format and data structure in a single library.  Because of this, wq.io is designed primarily to be customized and extended.  To facilitate fully modular customization, the wq.io APIs are designed as combinations of a `BaseIO` class and several mixin classes.
 
-wq.io classes are the combination of several mixin classes that break the process into several steps ([load], [parse], and [map]).  These mixins are combined with a `BaseIO` class to provide "IO" classes that can load and iterate over files.
+Together with the BaseIO class, the mixins break the process into several steps:
 
-There are a number of pre-mixed classes listed in wq.io's [__init__.py].  To extend wq.io, one can either subclass one of these pre-mixed classes, or subclass one of the mixins and create a new class as the below example shows.
+1. The [BaseIO] class initializes the process, saving any passed arguments as properties on the class, then immediately triggering the next two steps.
+2. A [Loader] mixin loads an external resource into file-like object and saves it to a `file` property
+3. A [Parser] mixin extracts data from the `file` property and saves it to a `data` property, which should almost always be a `list` of `dicts`.
+4. After initialization, the BaseIO class and a [Mapper] mixin provide a transparent interface for iterating over the `data`, optionally transforming each row into a `namedtuple` for convenience.
+
+There are a number of pre-mixed classes provided by wq.io's [top level module].  By convention, each pre-mixed class has a suffix "IO" (e.g. `ExcelFileIO`).  Note that `IO` in this context is a reference to wq.io, not Python's built-in `io` module or it's `StringIO` class.  The class names provide hints to the mixins that were used in their creation: for example, `JsonFileIO` extends `FileLoader`, `JsonParser`, `TupleMapper`, and `BaseIO`.  Note that all of the pre-mixed classes extend `TupleMapper`, and all IO classes extend `BaseIO` by definition.
+
+To extend wq.io, you can subclass one of these pre-mixed classes:
 
 ```python
-from wq.io import make_io
+from wq.io import JsonFileIO
+
+class MyJsonFileIO(JsonFileIO):
+    def parse(self):
+        # custom parsing code...
+```
+
+... or, subclass one of the mixins and mix your own class:
+
+```python
+# Load base classes
+from wq.io.base import BaseIO
 from wq.io.loaders import FileLoader
 from wq.io.parsers import JsonParser
+from wq.io.mappers import TupleMapper
 
+# Equivalent:
+# from wq.io import BaseIO, FileLoader, JsonParser, TupleMapper
+
+# Define custom mixin class
 class MyJsonParser(JsonParser):
     def parse(self):
-    # custom parsing code ...
-    
-MyJsonFileIO = make_io(FileLoader, MyJsonParser)
+        # custom parsing code ...
 
+# Mix together a usable IO class
+class MyJsonFileIO(FileLoader, JsonParser, TupleMapper, BaseIO):
+    pass
+```
+
+Note that the order of classes is important: BaseIO should always be listed last to ensure the correct method resolution order.
+
+You can then use your new class like any other IO class:
+
+```python
 for record in MyJsonFileIO(filename='file.json'):
     print record.id
 ```
 
-[load]: http://wq.io/docs/loaders
-[parse]: http://wq.io/docs/parsers
-[map]: http://wq.io/docs/mappers
-[__init__.py]: https://github.com/wq/wq.io/blob/master/__init__.py
+[wq.io]: http://wq.io/wq.io
+[BaseIO]: http://wq.io/docs/base-io
+[Loader]: http://wq.io/docs/loaders
+[Parser]: http://wq.io/docs/parsers
+[Mapper]: http://wq.io/docs/mappers
+[top level module]: https://github.com/wq/wq.io/blob/master/__init__.py
