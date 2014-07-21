@@ -9,7 +9,7 @@ wq.io: The BaseIO class
 
 The `BaseIO` class forms the core of [wq.io]'s built-in classes, and should also be extened when defining [custom IO] classes.  `BaseIO` serves two primary functions:
  * Initializing the class and orchestrating the [load] and [parse] mixin tasks
- * Providing a convinient `iterable` interface for working with the parsed data (with support from a [mapper] mixin)
+ * Providing a convenient `iterable` interface for working with the parsed data (with support from a [mapper] mixin)
 
 To accomplish these functions, BaseIO contains a number of methods and properties:
 
@@ -31,7 +31,7 @@ To accomplish these functions, BaseIO contains a number of methods and propertie
 `field_names` | The field or column names in the dataset.  This can usually be determined automatically.
 `key_field` | A "primary key" on the dataset.  If `key_field` is set, the IO will behave more like a dictionary, e.g. the default iteration will be over the key field values instead of over the rows.
 `nested` | Boolean indicating whether the IO has a two-tiered API (see below).
-`tabular` | Boolean indicating whether the dataset comes from inherently tabular file format (e.g. a spreadsheet).  See [Mappers] for more details.
+`tabular` | Boolean indicating whether the dataset comes from an inherently tabular file format (e.g. a spreadsheet).  See [Parsers] for more details.
 
 ### Assigning Values to Properties
 
@@ -82,6 +82,6 @@ Note that none of the pre-mixed IO classes in wq.io are nested.  The [climata li
 [load]: http://wq.io/docs/loaders
 [parse]: http://wq.io/docs/parsers
 [mapper]: http://wq.io/docs/mappers
-[Mappers]: http://wq.io/docs/mappers
+[Parsers]: http://wq.io/docs/parsers
 [dbio]: http://wq.io/docs/dbio
 [climata library]: https://github.com/heigeo/climata
