@@ -22,23 +22,58 @@ class HypotheticalParser(BaseParser):
 
 As can be seen in the above example, the `parse()` function takes no arguments, instead assuming `self.file` has already been defined by a [Loader] mixin.  The data object should be defined as a `list` of `dict`s (e.g. `[{"id":1},{"id":2}]`.  If the result returned by the API has some other structure, it should be processed to match the expected format.  The `dump()` function should accept a writable file handle as an argument and use the API to write the data object back to the file.
 
-# Extending Parser Classes
+## Extending Parser Classes
 There are two main ways in which parser classes are customized.  One way is to define a completely new class to support a file format or API not currently supported by the built-in wq.io parsers.  The other way, which is much more common, is to extend change the behavior of an existing parser.  With that in mind, each of the built-in parser classes is discussed below together with common customization options and techniques.
 
-## Non-Tabular Parsers
+### Non-Tabular Parsers
 Two of the built-in parsers are used for file formats that are *not* inherently tabular and can describe arbitrary data structures.  While these file data formats are not inherently tabular, they often are used represent table-like data.  These parsers directly extend `BaseParser` and have the `tabular` property set to `False`.
 
-## [JsonParser]
+#### [JsonParser]
 
-The JSON parser is a simple wrapper around Python's built-in [json] API.  `JsonParser` assumes the result of `json.load(self.file)` will either be an array or an object with an array somewhere in an inner property.  If the top-level object is not an array, the `namespace` property should be set on the IO instance to tell it the path to the array.  For example, if the JSON is `{"data":[{"id":1},{"id":2}]}` then the namespace would be "data".  The `dump()` method on `JsonParser` checks for an optional `indent` property on the IO instance and passes that on to `json.dump`.
+The JSON parser is a simple wrapper around Python's built-in [json] API.  `JsonParser` assumes the result of `json.load(self.file)` will either be an array or an object with an array somewhere in an inner property (in which case `namespace` should be set).  Each item in the array is assumed to be a relatively flat key-value mapping.  The keys of the first item in the array will be assumed to be the same for the rest of the items.
 
-## [XmlParser]
+JsonParser supports the following options, specified as properties on the class or instance:
 
-## Tabular Parsers
+##### Properties
 
-### [CsvParser]
+name | purpose
+-----|---------
+`namespace` | The dotted path to the array within the JSON object.  For example, if the expected JSON will be of the form `{"records":[{"id":1},{"id":2}]}` then the namespace should be "records".
+`indent` | Used by the `dump()` method, which passes it on to `json.dump` to "pretty-print" the output JSON file.
 
-### [ExcelParser]
+#### [XmlParser]
+
+The XML parser is a simple wrapper around Python's built-in [xml.etree] API.  While it can be adapted to work with arbitrary XML documents, it assumes a basic structure like the following:
+
+```xml
+<root>
+  <item>
+    <id>1</id>
+    <value>val</value>
+  </item>
+  <item>
+    <id>2</id>
+    <value>val</value>
+  </item>
+</root>
+```
+
+In addition to the `parse()` and `dump()` methods, `XmlParser` provides row-level methods, described below.
+
+##### Properties & Methods
+
+name | purpose
+-----|---------
+`root_tag` | The name of the top level XML tag.  Determined automatically by `parse()`; only required for `dump()`.
+`item_tag` | The name of the series tag.  Defaults to the name of the first child tag under the root.  `parse()` will conduct a search for all instances of `item_tag` (whether explicitly specified or computed) and call `parse_item()` on each result.  Required for `dump_item()`.
+`parse_item(elem)` | If overridden, should return a `dict` corresponding to the item.  The default implementation assumes each property is specified as an inner tag name and XML attributes are ignored.
+`dump_item(obj)` | The inverse of `parse_item()`; if overridden, should accept a `dict` and return an `Element` instance.
+
+### Tabular Parsers
+
+#### [CsvParser]
+
+#### [ExcelParser]
 
 [wq.io.parsers]: https://github.com/wq/wq.io/blob/master/parsers/
 [wq.io]: http://wq.io/wq.io
