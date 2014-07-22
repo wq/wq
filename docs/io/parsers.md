@@ -94,8 +94,8 @@ delimiter | Column separator, default is `,`
 quotechar | Quotation character for text values containing spaces or delimiters, default is `"`
 reader_class() | Method returning an uninstantiated `DictReader` class for use in parsing the data.  The default method returns a subclass of `SkipPreludeReader` that passes along the `max_header_row` option.
 
-#### [ExcelParser] (`SpreadsheetParser`)
-`ExcelParser` provides support for both "old" (.xls) and "new" (.xlsx) files via the [xlrd] module.  Write support can be enabled by installing the [xlwt] and/or [xlsxwrite] modules.  `ExcelParser` extends a somewhat more generic `SpreadsheetParser`, with the idea that the latter could eventually be extended to other "workbook" style formats like ODS.
+#### [ExcelParser] (`WorkbookParser`)
+`ExcelParser` provides support for both "old" (.xls) and "new" (.xlsx) files via the [xlrd] module.  Write support can be enabled by installing the [xlwt] and/or [xlsxwrite] modules.  `ExcelParser` extends a somewhat more generic `WorkbookParser`, with the idea that the latter could eventually be extended to other "workbook" style formats like ODS.
 
 ##### Properties
 name | purpose
@@ -111,7 +111,7 @@ name | purpose
 `parse_row(row)` | Convert the given row object into a dict, usually by mapping the column header to the value in each cell
 `get_value(cell)` | Retrieve the actual value from the cell.
 
-The methods listed above are called in turn by `parse()`, which is defined by `SpreadsheetParser`.  Working implementations of the methods are defined in `ExcelParser`.
+The methods listed above are called in turn by `parse()`, which is defined by `WorkbookParser`.  Working implementations of the methods are defined in `ExcelParser`.
 
 [wq.io.parsers]: https://github.com/wq/wq.io/blob/master/parsers/
 [wq.io]: http://wq.io/wq.io
