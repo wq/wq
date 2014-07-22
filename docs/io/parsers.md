@@ -23,7 +23,7 @@ class HypotheticalParser(BaseParser):
 As can be seen in the above example, the `parse()` function takes no arguments, instead assuming `self.file` has already been defined by a [Loader] mixin.  The data object should be defined as a `list` of `dict`s (e.g. `[{"id":1},{"id":2}]`.  If the result returned by the API has some other structure, it should be processed to match the expected format.  The `dump()` function should accept a writable file handle as an argument and use the API to write the data object back to the file.
 
 ## Extending Parser Classes
-There are two main ways in which parser classes are customized.  One way is to define a completely new class to support a file format or API not currently supported by the built-in wq.io parsers.  The other way, which is much more common, is to extend change the behavior of an existing parser.  With that in mind, each of the built-in parser classes is discussed below together with common customization options and techniques.
+There are two main ways in which parser classes are customized.  One way is to define a completely new class to support a file format or API not currently supported by the built-in wq.io parsers.  The other way, which is much more common, is to extend or change the behavior of an existing parser.  With that in mind, each of the built-in parser classes is discussed below together with common customization options and techniques.
 
 ### Non-Tabular Parsers
 Two of the built-in parsers are used for file formats that are *not* inherently tabular and can describe arbitrary data structures.  While these file data formats are not inherently tabular, they often are used represent table-like data.  These parsers directly extend `BaseParser` and have the `tabular` property set to `False`.
@@ -85,7 +85,33 @@ name | purpose
 
 #### [CsvParser]
 
-#### [ExcelParser]
+`CsvParser` utilizes Python's [csv] module to provide a CSV-capable `TableParser`.  `CsvParser` leverages [SkipPreludeReader], a customized [DictReader] that adds support for files that have extra "prelude" text before the actual header row.
+
+##### Properties & Methods
+name | purpose
+-----|-----------
+delimiter | Column separator, default is `,`
+quotechar | Quotation character for text values containing spaces or delimiters, default is `"`
+reader_class() | Method returning an uninstantiated `DictReader` class for use in parsing the data.  The default method returns a subclass of `SkipPreludeReader` that passes along the `max_header_row` option.
+
+#### [ExcelParser] (`SpreadsheetParser`)
+`ExcelParser` provides support for both "old" (.xls) and "new" (.xlsx) files via the [xlrd] module.  Write support can be enabled by installing the [xlwt] and/or [xlsxwrite] modules.  `ExcelParser` extends a somewhat more generic `SpreadsheetParser`, with the idea that the latter could eventually be extended to other "workbook" style formats like ODS.
+
+##### Properties
+name | purpose
+-----|---------
+`sheet_name` | Determines which sheet to load data from in an multi-sheet workbook.  Defaults to `0` (the first sheet)
+
+##### Methods
+name | purpose
+-----|---------
+`sheet_names` | List the available sheets in the workbook (declared as a `@property` method).
+`parse_workbook()` | Load `self.file` into a `Workbook` or equivalent class and save it to `self.workbook`
+`parse_worksheet(name)` | Load the specified worksheet into memory and save an array of row objects to `self.worksheet`
+`parse_row(row)` | Convert the given row object into a dict, usually by mapping the column header to the value in each cell
+`get_value(cell)` | Retrieve the actual value from the cell.
+
+The methods listed above are called in turn by `parse()`, which is defined by `SpreadsheetParser`.  Working implementations of the methods are defined in `ExcelParser`.
 
 [wq.io.parsers]: https://github.com/wq/wq.io/blob/master/parsers/
 [wq.io]: http://wq.io/wq.io
@@ -97,5 +123,11 @@ name | purpose
 [JsonParser]: https://github.com/wq/wq.io/blob/master/parsers/text.py
 [json]: https://docs.python.org/3/library/json.html
 [XmlParser]: https://github.com/wq/wq.io/blob/master/parsers/text.py
+[wq.io.base.TableParser]:  https://github.com/wq/wq.io/blob/master/parsers/base.py
+[dbio]: http://wq.io/docs/dbio
 [CsvParser]: https://github.com/wq/wq.io/blob/master/parsers/text.py
+[SkipPreludeReader]: https://github.com/wq/wq.io/blob/master/parsers/readers.py
+[DictReader]: https://docs.python.org/3/library/csv.html#csv.DictReader
 [ExcelParser]: https://github.com/wq/wq.io/blob/master/parsers/xls.py
+[xlwt]: http://www.python-excel.org/
+[xlsxwrite]: https://xlsxwriter.readthedocs.org/
