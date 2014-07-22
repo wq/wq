@@ -30,7 +30,7 @@ A mapper class should have two methods to accomplish the mapping:
 name | purpose
 -----|---------
 `usable_item(row)` | Convert the source `dict` into a "usable item", e.g. a `namedtuple`.  (This is just the method name, it's not meant to imply that dicts are unusable.)
-`parse_usable_item(item)` | Convert a usable item back into the source `dict` format.  This is needed to support data modification.
+`parse_usable_item(item)` | Convert a usable item back into the source `dict` format.  This is needed for full read+write support.
 
 wq.io's [built-in mapper classes] build on this foundation and on each other.
 
@@ -53,17 +53,33 @@ name | purpose
 `value_map` | Map of values to be replaced with usable equivalents.  If a value is not found in the map it will be preserved as is.
 
 ### TupleMapper
-`TupleMapper` extends `DictMapper` with a `usable_item()` that returns a [namedtuple] instead of a `dict`.  Since `namedtuple` field names cannot contain spaces or punctuation, `TuppleMapper` automatically computes a `field_map` with compatible values.  `TupleMapper` defines the following method to facilitate adding new records.
+`TupleMapper` extends `DictMapper` with a `usable_item()` that returns a [namedtuple] instead of a `dict`.  Since `namedtuple` field names cannot contain spaces or punctuation, `TupleMapper` automatically computes a `field_map` with compatible values.  `TupleMapper` defines the following method to facilitate adding new records.
 
 name | purpose
 -----|---------
-`create(**kwargs)` | Create an instance of the internal `namedtuple` class with values for each field given as keyword arguments.
+`create(**kwargs)` | Create an instance of the internal `namedtuple` class with values for each field given as keyword arguments.  This can be passed to `append()` which will update the underlying dataset as shown in the example below.
 
-To create a new record in e.g. a CSV file, one could do this:
 ```python
+from wq.io import CsvFileIO
+instance = CsvFileIO(filename="example.csv")
+# len(instance) == len(instance.data) == 2
 
+record = instance.create(name='test', value=123)
+instance.append(record)
+instance.save()
+
+# len(instance) == len(instance.data) == 3
 
 ```
+
+### TimeSeriesMapper
+
+`TimeSeriesMapper` extends `TupleMapper` with a `map_value()` implementation that automatically converts string dates into [datetime] objects.  It can also automatically convert string number into `float`s.  Two properties are used to configure `TimeSeriesMapper`:
+
+name | purpose
+-----|---------
+`date_formats` | A list of [format strings] to use when attempting to parse dates.
+`map_floats` | Whether to attempt to map string numbers into floats (default `True`)
 
 [wq.io.mappers]: https://github.com/wq/wq.io/blob/master/mappers.py
 [wq.io]: http://wq.io/wq.io
@@ -71,3 +87,5 @@ To create a new record in e.g. a CSV file, one could do this:
 [parser]: http://wq.io/docs/parsers
 [namedtuple]: https://docs.python.org/3/library/collections.html#collections.namedtuple
 [built-in mapper classes]: https://github.com/wq/wq.io/blob/master/mappers.py
+[datetime]: https://docs.python.org/3/library/datetime.html
+[format strings]: https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior
