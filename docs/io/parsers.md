@@ -71,6 +71,18 @@ name | purpose
 
 ### Tabular Parsers
 
+The tabular parsers are geared toward handling spreadsheets and other tabular data formats.  These formats are differentiated from the non-tabular formats in that there is typically a single grid structure encompassing the entire file, and the field names / column headings are listed only once (usually, but not always, in the first row of the file).
+
+The tabular parsers extend [wq.io.base.TableParser], which defines the following properties:
+
+name | purpose
+-----|-----------
+`tabular = True` | The `tabular` property is used to signify the presence of these other properties.  It is checked by [dbio] when importing data.
+`header_row` | The location of the column headers within the table.  This is often 0 (the first row), but can be determined automatically by examining the first few rows of the table.
+`max_header_row` | The maximum number of rows to scan looking for the column headers.  The default is 20.
+`start_row` | The first row containing actual data.  This defaults to `header_row` + 1.  Useful when there is an empty row or two between the column headers and data in a spreadsheet.
+`extra_data` | A sparse matrix containing any data found in the cells above the header row.  The format is `{row: {col: "Data"}}`.  Currently only supported by `ExcelParser`.
+
 #### [CsvParser]
 
 #### [ExcelParser]
