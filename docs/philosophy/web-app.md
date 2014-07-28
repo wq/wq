@@ -5,7 +5,7 @@ order: 1
 Not Just a Website: The Case for HTML5
 ======================================
 
-*This is the first in a two part series promoting the use of HTML5 for app development.  This section focuses on the "app" side of the equation, but please also read [Still a Website: Keeping the HTML in HTML5] for a perspective on why the "website" part is still important.*
+*This is the first in a two part series promoting the use of HTML5 for app development.  This section focuses on the "app" side of the equation, but please also read [Still a Website: Preserving the "HT" in "HTML5"] for a perspective on why the "website" part is still important.*
 
 **"But it's just a website!"**  This was our initial response to the prospect of using HTML5* for app development, particularly when looking at [PhoneGap] as a cross-platform solution.  And in a sense it is true - in its default usage, PhoneGap simply creates a webview and loads an `index.html` file with references to JavaScript and CSS.  HTML5 definitely didn't seem nearly as cool as creating a truly "native" app with the programming languages dedicated to each platform.  However, the practicality of using a single, standardized environment for cross-platform app development won out.  It was simply unfeasible to recreate the same app for two or three platforms given our typical time and budget constraints.
 
