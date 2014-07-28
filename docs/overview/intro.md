@@ -22,8 +22,8 @@ The documentation is structured to lay the foundation and conventions before get
     1. [JavaScript Modules]
     2. [Build Process]
   2. **wq.db**
-    1. [Design Patterns]
-    2. [REST API generator]
+    1. [REST API generator]
+    2. [Design Patterns]
   3. **wq.io**
     1. [Dataset IO]
   4. [wq.db: Contrib apps]
