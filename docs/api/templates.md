@@ -15,7 +15,7 @@ Importantly, any of these three options can be used to respond to the same URL, 
  * Among the items loading in the background are the full set of templates and a cache of JSON objects for the most commonly accessed pages.  When the visitor clicks on a link to one of these pages, it is rendered instantly *on the client* (option 1) without any additional network traffic.
  * As the visitor continues to explore the application, they eventually navigate to less critical content that is not stored locally (perhaps due to `localStorage` limitations).  Rather than requesting JSON from the server and then rendering it, the application simply requests a complete HTML snippet from the server via AJAX and injects it into the DOM (option 2).
  
-This approach makes it possible to build very scalable [offline first] mobile applications, while maintaining backwards compatibility with older browsers and search engines.  This not only makes [progressive enhancement] a natural part of the development process, but makes the choice of whether to render server or client-side a run-time decision, rather than a design-time decision.  While wq.db and wq.app are designed to work together, the same approach can be taken with select parts of wq (or even without using wq at all) as long as the recommended [REST structure] is used.
+This approach makes it possible to build very scalable [offline first] mobile applications, while maintaining backwards compatibility with older browsers and search engines.  This not only makes [progressive enhancement] a natural part of the development process, but makes the choice of whether to render server or client-side a run-time decision, rather than a design-time decision.  While wq.db and wq.app are designed to work together, the same approach can be taken with select parts of wq (or even without using wq at all) as long as the recommended REST [URL structure] is used.
 
 There are three primary components to the use of Mustache templates in wq: the template syntax, the context object, and the naming convention.
 
@@ -64,7 +64,7 @@ Because templates are equally shared between the server and the client, they are
 [wq collectjson]: http://wq.io/docs/collectjson
 [offline first]: http://offlinefirst.org/
 [progressive enhancement]: http://jakearchibald.com/2013/progressive-enhancement-still-important/
-[REST structure]: http://wq.io/docs/rest-structure
+[URL structure]: http://wq.io/docs/url-structure
 [wq/markdown.js]: http://wq.io/docs/other-modules
 [wq/app.js]: http://wq.io/docs/app-js
 [wq Configuration Object]: http://wq.io/docs/config
