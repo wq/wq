@@ -9,7 +9,7 @@ Introduction
 
 **wq is comprised of** three major submodules, all of which can be [installed] together or separately.  **[wq.app]** is the frontend component, a collection of [JavaScript modules] and a [build process].  **[wq.db]** contains a collection of [design patterns] for common database layouts, and a [REST API generator] that routes requests from the client application.  **[wq.io]** is a standalone Python library for dealing specifically with data import and export.
 
-wq is as much a **set of principles** as it is a software platform.  With this in mind, the [Philosophy] section of the documentation contains a number of implementation-independent principles for mobile/web app development, while the [API Conventions] section proposes interoperable solutions for addressing these concerns.
+wq is as much a **set of principles** as it is a software platform.  The documentation includes a [Philosophy] chapter with a number of implementation-independent principles for mobile/web app development, and an [API Conventions] chapter proposing interoperable solutions for addressing these concerns.  This approach gives individual projects the flexibility to replace parts (or all!) of the wq stack with alternatives built with other platforms and programming languages.  The Python + JavaScript implementation of wq is essentially the reference implementation of these ideals.
 
 ## Documentation Outline
 The documentation is structured to lay the foundation and conventions before getting into the implementation details.  The chapters are as follows:
