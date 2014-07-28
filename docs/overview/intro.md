@@ -24,9 +24,9 @@ The documentation is structured to lay the foundation and conventions before get
   2. **wq.db**
     1. [Design Patterns]
     2. [REST API generator]
-    3. [Contrib apps]
   3. **wq.io**
     1. [Dataset IO]
+  4. [wq.db: Contrib apps]
 
 [citizen science]: http://wq.io/research/quality
 [The goal of wq]: http://wq.io/research/framework
@@ -41,6 +41,5 @@ The documentation is structured to lay the foundation and conventions before get
 [Philosophy]: http://wq.io/chapters/philosophy/docs
 [API Conventions]: http://wq.io/chapters/api/docs
 [Overview]: http://wq.io/chapters/overview/docs
-[Contrib apps]: http://wq.io/chapters/contrib/docs
+[wq.db: Contrib apps]: http://wq.io/chapters/contrib/docs
 [Dataset IO]: http://wq.io/chapters/io/docs
-
