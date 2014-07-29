@@ -62,6 +62,7 @@ Each key in `config.pages` is the name of a page, which may either be a collecti
 `partial` | Indicates that the REST service is filtering results from the list view JSON payload (typically to conserve localStorage usage).  If `partial` is set to false or unset, wq/app.js will immediately return a faux 404 page if the user attempts to navigate to the detail view of an object not found in the local store.  If `partial` is true, wq/app.js will instead attempt to request the detail view as HTML directly from the server and display it if successful.
 `reversed` | Indicates that the REST service orders results in reverse order (e.g. newest to oldest).  Used by [wq/app.js] to append newly saved items to the beginning of the cached list.
 `max_local_pages` | Used for pagination control, to set a limit on how many paginated pages of list JSON to load and store locally when searching for an individual item.  Typically used with the `partial` option.
+`postsave` | The name or URL of a page to return to after saving a record.  The default is to return to the detail view of the newly saved item.  If `postsave` is set to a list page that is the parent of the current page, this will return to the detail view for the parent item referenced in the newly saved item.
 `choices` | A set of valid choices for enum-style fields on the model.  If set this should contain an object of the following form:
 ```javascript
 {
