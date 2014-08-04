@@ -23,9 +23,9 @@ The primary (and currently only) configuration section in the wq configuration o
 
 As its name implies, the `pages` section summarizes all of the available "pages" in the application.  The section is a mapping of page "names" to simple configuration objects describing each respective page.  Pages fall into two categories depending on whether or not they are backed by a database table (i.e. ORM model in a Django application).
 
-Pages backed by a database table are indicated with `"list": true`.  The name of these pages is the name of the underlying database model.  Marking a page as `"list": true` indicates the presence of list, detail, and edit views for a database entity - all with [corresponding URLs] defined relative to the `url` property defined for the page.
+ * Pages backed by a database table are indicated with `"list": true`.  The name of these pages is the name of the underlying database model.  Marking a page as `"list": true` indicates the presence of list, detail, and edit views for a database entity - all with [corresponding URLs] defined relative to the `url` property defined for the page.
 
-Pages without a corresponding model do not have the `list` property set, and have only a single URL which is specified by the `url` property.  By convention, the name of these pages is usually the same as the URL.
+ * Pages without a corresponding model do not have the `list` property set, and have only a single URL which is specified by the `url` property.  By convention, the name of these pages is usually the same as the URL.
 
 The full listing of page configuration options is described below.
 
