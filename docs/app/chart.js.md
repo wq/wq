@@ -4,7 +4,17 @@ wq/chart.js
 
 **wq/chart.js** is a [wq.app module] providing [reusable charts] powered by the excellent [d3] library.  Four basic chart types (scatter, timeSeries, boxplot, contour) are included, as well as the ability to create new chart types.
 
-## Basic usage
+## API
+
+`wq/chart.js` is typically imported via [AMD] as `chart`, though any local variable name can be used.
+
+```javascript
+// myapp.js
+define(['wq/chart', ...], function(chart, ...) {
+    chart.timeSeries(...);
+}
+```
+
 The chart functions return a [configurable function] that can be called on an d3 selection that already has data bound to it.  By convention, the generated chart function is referred to as `plot` to differentiate it from the chart module.  However, any variable name can be used.
 
 ```javascript
@@ -168,10 +178,11 @@ var plot = myChart();
 svg.datum([dataset]).call(plot);
 ```
 
-[wq.app module]: http://wq.io/docs/app
 [wq/chart.js]: https://github.com/wq/wq.app/blob/master/js/wq/chart.js
+[wq.app module]: http://wq.io/docs/app
 [d3]: http://d3js.org
 [reusable charts]: http://bost.ocks.org/mike/chart/
+[AMD]: http://wq.io/docs/amd
 [configurable function]: http://bost.ocks.org/mike/chart/#configuration
 [getter/setter functions]: http://bost.ocks.org/mike/chart/#reconfiguration
 [chart.base()]: https://github.com/wq/wq.app/blob/master/js/wq/chart.js#L21-L356
