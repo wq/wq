@@ -19,6 +19,17 @@ The specific concepts leveraged by wq/app.js include:
 
 ## API
 
+`wq/app.js` is typically imported via [AMD] as `app`, though any local variable name can be used.
+
+```javascript
+// myapp.js
+define(['wq/app', ...], function(app, ...) {
+    app.init(...);
+}
+```
+
+The app module provides the following methods and properties.
+
 ### `app.init()`
 In a simple project, the only required usage of wq/app.js is to initialize it:
 
@@ -330,6 +341,7 @@ app.attachmentTypes.annotation.getTypeFilter = function(page, context) {
 [URL structure]: http://wq.io/docs/url-structure
 [shared client/server templates]: http://wq.io/docs/templates
 [authentication]: http://wq.io/docs/auth
+[AMD]: http://wq.io/docs/amd
 [app.router.register_model]: http://wq.io/docs/app.py
 [wq.db.rest]: http://wq.io/docs/about-rest
 [wq configuration object]: http://wq.io/docs/config
