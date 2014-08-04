@@ -7,7 +7,7 @@ wq/app.js
 
 ## Overview
 
-wq/app.js is the highest-level wq.app module, and brings together a number of lower-level modules and wq conventions into an integrated API.  As a primarily configuration-driven module, wq/app.js is relatively easy to use, but enforces a number of constraints on the design of your project.  In particular, it works best with [wq.db.rest] or a compatible REST service.  Depending on your project needs, it may be better to forego wq/app.js and directly utilize the underlying APIs in [wq/store.js] and [wq/pages.js].  The documentation for these modules is also useful as a background to this module.
+wq/app.js is the highest-level wq.app module, and brings together a number of lower-level modules and wq conventions into an integrated API.  As a primarily configuration-driven module, wq/app.js is relatively easy to use, but enforces a number of constraints on the design of your project.  In particular, it works best with [wq.db.rest] or a compatible REST service.  Depending on your project needs, it may be better to forego wq/app.js and directly utilize the underlying APIs in [wq/store.js] and [wq/pages.js].  The documentation for those modules is also useful as a background to this module.
 
 The specific concepts leveraged by wq/app.js include:
 
@@ -37,9 +37,27 @@ name | purpose
 
 `app.init()` internally calls [pages.register()] for each page in the `pages` configuration section.  The callbacks sent to `pages.register()` are simple wrappers around `app.go()`.
 
+`app.init()` also registers a custom submit handler that takes normal form POSTs and converts them to REST API calls.  To avoid interaction with jQuery Mobile's own AJAX form handler, it is recommended to set `data-ajax="false"` on all forms.
+
+```xml
+<form method="post" action="/listview" data-ajax="false">
+```
+
+By default wq/app.js' form handler is applied to every form in the website.  This functionality can be disabled on a per-form basis by setting `data-json=false` on the form tag:
+
+```xml
+<form method="post" action="/custom" data-json="false">
+```
+
+To disable both jQuery Mobile's AJAX form handler and wq/app.js' AJAX+JSON form handlers, specify both properties:
+
+```xml
+<form method="post" action="/custom" data-json="false" data-ajax="false">
+```
+
 ### `app.go()`
 
-`app.go()` is called automatically whenever the URL changes, e.g. in response to the user clicking on a link.  However, there are rare cases where you may need to call it directly.  app.go() is essentially a wrapper for [pages.go()] that automatically generates there appropriate context for a given page (as long as there is a configuration for that page).  
+`app.go()` is called automatically whenever the URL changes, e.g. in response to the user clicking on a link.  However, there are rare cases where you may need to call it directly.  app.go() is essentially a wrapper for [pages.go()] that automatically generates the appropriate [template context] for list, detail, edit, and simple views.
 
 ```javascript
 app.go(page, ui, params, [itemid], [edit], [url], [context])
@@ -57,6 +75,18 @@ name | purpose
 `url` | (optional) URL to display for the rendered page.  Usually this is automatically computed.
 `context` | (optional) Initial template context variable (will be merged with the automatically generated context).
 
+The default template contexts for detail and edit views contain a number of context variables that assist in looking up and displaying information from related models, e.g. a list of potential values for a foreign key.  These lookup contexts can be customized by overriding hooks (see Advanced Customization, below).
+
+### `app.user`
+
+If the application supports authentication and the user is logged in, `app.user` will be set with information about the current user provided by the server.  This information will also be available in the [template context], e.g. `{{is_authenticated}}{{user.username}}{{/is_authenticated}}`.
+
+### `app.config`, `app.default_config`
+A copy of the configuration object (see below).  Initially `app.config` and `app.default_config` are the same, but after logging in, `app.config` is overwritten with a [wq configuration object] with permissions information specific to the logged-in user.  `app.config` is also made available in the [template context] as `{{app_config}}`.
+
+### `app.native`
+
+Whether the application is running under [PhoneGap] / [Cordova] or as a web app (`true` and `false` respectively).  Available in the [template context] as `{{native}}`.
 
 ## Configuration
 
@@ -198,9 +228,98 @@ If you are utilizing both wq.app and wq.db in your project, you may find it usef
 
 ## Advanced Customization
 
-wq/app.js provides a number of "hooks" for additional customization.  Unlike the configuration objects above, most of these hooks are customized by directly overriding properties on the wq.app module.
+wq/app.js provides a number of events and hooks for additional customization.  These hooks are not (currently) customized through configuration and instead must be registered separately.
 
-WIP
+### Events
+
+#### `login`
+
+Callbacks registered with the `login` event will be called whenever the user logs in (as well as at the start of the application if the user is already logged in).
+
+```javascript
+$('body').on('login', function(){
+    /*...*/
+});
+```
+
+#### `logout`
+
+Callbacks registered with the `logout` event will be called whenever the user logs out.
+
+```javascript
+$('body').on('logout', function() {
+    /*...*/
+});
+```
+
+### Hooks
+
+These hooks are customized by directly overriding properties on the wq.app module.
+
+#### `app.postsave()`
+
+`app.postsave()` is called after a successful form post with the `item` and `result` from [ds.save()], as well as the configuration for the page that initialized the save.  The default implementation of `app.postsave()` navigates to the detail view of the newly saved item (unless the [page configuration] has a `postsave` property).  `app.postsave()` is meant to be overridden in cases where `conf.postsave` does not provide enough flexibility.
+
+```javascript
+app.postsave = function(item, result, conf) {
+    /*...*/
+}
+```
+
+#### `app.saveerror()`
+
+`app.saveerror()` is called when [ds.save()] fails, with the `item` from ds.save(), the reason for the failure, and the configuration for the page that initiated the save.  The `reason` will be one of the constants `app.OFFLINE`, `app.FAILURE`, or `app.ERROR`.  `app.FAILURE` usually indicates a server 500 failure, while `app.ERROR` usually indicates a 400 validation error.
+
+```javascript
+app.saveerror = function(item, reason, conf) {
+    if (reason == app.OFFLINE)
+        alert("You are currently working offline.  Your record is in the outbox");
+}
+```
+
+#### `app.parentFilters`
+
+`app.parentFilters` is a set of hooks to customize the options listed for foreign keys in `edit` views.  (The default is to list all available items for each foreign key.)  `app.parentFilters` is a mapping of field names to functions that accept the name of the referenced model, the name of the model being edited, and a copy of the context variable.  The functions should return a filter object compatible with [ds.filter()].
+
+```javascript
+// app.config.pages = {'parent': {...}, 'child': {..., 'parents': ['parent']}}
+app.parentFilters.parent_id = function(parent_page, page, context) {
+    if (context.id) {
+        // Previously saved items can reference all parents
+        return {};
+    } else {
+        // new items can only reference active parents
+        return {'active': true};
+    }
+}
+```
+
+#### `app.attachmentTypes`
+
+`app.attachmentTypes` is a relatively complex set of hooks for working with the context variables that are automatically generated in edit views for models with "attachments", i.e. models that incorporate one or more of [wq.db]'s [design patterns].  They are grouped by the name of the attachement model (e.g. `annotation`, `identifier`).  The [default implementation] should give a sense of the overall options available, which are also described here.
+
+name | purpose
+-----|---------
+`predicate` | Name of the property on the page configuration that indicates this attachment is applicable
+`type` | Name of the "type" model corresponding to this attachment, if any (e.g. each `annotation` has a `type_id` which references `annotationtype`)
+`typeColumn` | The name of the foreign key field pointing to the type model (if not `type_id`).
+`getTypeFilter(page, context)` | Should return a [ds.filter()]-compatible filter to run on the type list when generating default attachment sets for new items.
+`getDefaults(type, context)` | Should return a set of context variables to add for a given type when generating default attachment lists for new items.
+`getChoiceList(type, context)` | Should return the name of the model to use when generating a list of options for a `relationship` or `inverserelationship` (the default is to use the `to_type` or `from_type` field on the `relationshiptype`). 
+`getChoiceListFilter(type, context)` | Should return the name of a [ds.filter()]-compatible filter to run on the list of options for a `relationship` or `inverserelationship`.
+
+```javascript
+// app.config.pages = {'mymodel': {..., 'annotated': true}}
+app.attachmentTypes.annotation.getTypeFilter = function(page, context) {
+    var filter = {'for': page};
+    
+    // New models only have "Notes" type annotations
+    if (page == 'mymodel')
+        filter['name'] = "Notes";
+        
+    return filter;
+);
+```
 
 [wq/app.js]: https://github.com/wq/wq.app/blob/master/js/wq/app.js
 [wq.app]: http://wq.io/wq.app
@@ -217,7 +336,10 @@ WIP
 [My website is its own REST API]: http://wq.io/docs/website-rest-api
 [pages.register()]: http://wq.io/docs/pages-js
 [pages.go()]: http://wq.io/docs/pages-js
+[template context]: http://wq.io/docs/templates
 [ui object]: http://api.jquerymobile.com/pagecontainer/
+[PhoneGap]: http://phonegap.com
+[Cordova]: http://cordova.io
 [client-side rendering]: http://wq.io/docs/web-app
 [template rendering context]: http://wq.io/templates
 [template context processors]: https://docs.djangoproject.com/en/1.6/ref/templates/api/#subclassing-context-requestcontext
@@ -229,3 +351,8 @@ WIP
 [collectjson]: http://wq.io/docs/collectjson
 [wq build process]: http://wq.io/docs/build
 [Django wq template]: https://github.com/wq/django-wq-template
+[ds.save()]: http://wq.io/docs/store-js
+[page configuration]: http://wq.io/docs/config
+[design patterns]: http://wq.io/docs/about-patterns
+[default implementation]: https://github.com/wq/wq.app/blob/master/js/wq/app.js#L191
+[ds.filter()]: http://wq.io/docs/store-js
