@@ -19,7 +19,7 @@ The object is typically made available as `config.json` at the top level of the 
 > **Implementation Note**: If you are using [wq.db], a usable `config.json` (and `config.js`) will be generated automatically by [app.py] based on your registered Django models.  The information below is for those interested in fine-tuning the individual settings, and for those using [wq/app.js] without [wq.db].  If you need to customize an entry in the wq.db-generated `pages` configuration, you should generally do so by supplying additional arguments to  `app.router.register_model` in [wq.db.rest] - otherwise the server and client configurations may be out of sync.
 
 ## Configuration Options
-The primary (and currently only) configuration section in the wq configuration object contains detailed information about the [URL structure] of the application.  For example, this is used by [wq/app.js] to map URL requests to page templates to render, and also to provide hints to [wq/store.js] as to the structure of the REST API containing the actual data.
+The primary (and currently only) configuration section in the wq configuration object is `pages`, which contains detailed information about the [URL structure] of the application.  For example, the `pages` configuration is used by [wq/app.js] to map URL requests to page templates to render, and also to provide hints to [wq/store.js] as to the structure of the REST API containing the actual data.
 
 As its name implies, the `pages` section summarizes all of the available "pages" in the application.  The section is a mapping of page "names" to simple configuration objects describing each respective page.  Pages fall into two categories depending on whether or not they are backed by a database table (i.e. ORM model in a Django application).
 
@@ -69,6 +69,7 @@ The full listing of page configuration options is described below.
 [corresponding URLs]: http://wq.io/docs/url-structure
 [URL structure]: http://wq.io/docs/url-structure
 [wq.db]: http://wq.io/wq.db
+[wq.app]: http://wq.io/wq.app
 [wq.db.rest]: http://wq.io/docs/about-rest
 [templates]: http://wq.io/docs/templates
 [PJAX-style]: http://wq.io/docs/web-app
