@@ -46,6 +46,7 @@ app.go(page, ui, params, [itemid], [edit], [url], [context])
 ```
 
 `app.go()` accepts up to seven arguments:
+
 name | purpose
 -----|---------
 `name` | The name of a page listed in `config.pages` (described below)
