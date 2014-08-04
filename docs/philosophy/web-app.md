@@ -19,7 +19,7 @@ As we dived further into application development, it became clear that many feat
  * Web apps can request GPS coordinates via the [navigator.geolocation] API, and photographs with just an `<input type=file>`
  * Complex charts can be rendered without the need for browser plugins, by using embedded [SVG] graphics (or Canvas, which can draw faster but is somewhat less interactive)
  * [CSS3 Transforms] can be used to add hardware-accelerated transition animations when navigating between screens.
- * Finally, the combined use of AJAX and [History.pushState] makes it possible to maintain a consistent URL structure without actually requiring the entire page to reload every time the user navigates between screens.
+ * Finally, the combined use of AJAX and [History.pushState] makes it possible to maintain a consistent URL structure without actually requiring the entire page to reload every time the user navigates between screens.  (A technique known as [PJAX]).
 
 
 ## Re: Performance
@@ -48,6 +48,7 @@ With the above considerations, we argue that the new features in the latest vers
 [SVG]: http://www.w3.org/Graphics/SVG/
 [CSS3 Transforms]: http://www.w3.org/TR/css-transforms-1/
 [History.pushState]: http://www.whatwg.org/specs/web-apps/current-work/multipage/history.html
+[PJAX]: https://github.com/defunkt/jquery-pjax
 [real possibility]: http://www.mozilla.org/en-US/firefox/os/
 [wq]: http://wq.io/
 [templates]: http://wq.io/docs/templates
