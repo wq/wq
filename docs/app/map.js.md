@@ -70,6 +70,40 @@ map.init(config.map);
 });
 ```
 
+### `map.addLayerConf()`
+
+`map.addLayerConf()` takes the name of an existing map and a layer configuration to add to it.  `addLayerConf()` is primarily useful for adding boundary layers to list views, or for configuring simple (non-list) pages that don't have a default layer.  The default layer configuration for a list view is its corresponding `[list_url].geojson`, while a detail view will automatically get a corresponding `[list_url]/[id].geojson`.  For instance, the example map at the top of this document page should have automatically loaded <a href="http://wq.io/docs/map-js.geojson" rel="external">docs/map-js.geojson</a> when the page opened.
+
+A layer configuration consists of the following options:
+
+name | purpose
+-----|---------
+`name` | The name of the layer to show in the layer list
+`url` | The path to a geojson file to download (minus the `.geojson` extension)
+`style` | ...
+`oneach` | A function to call for each feature in the GeoJSON.  Usually used with `map.renderPopup()`
+`icon` | ...
+`cluster` | ...
+`clusterIcon` | ...
+
+```javascript
+// app.config.pages = {'mainmap': {'url': 'map', 'list': false, 'map': true}} 
+map.addLayerConf('mainmap', {
+    'name': "Items",
+    'url': "items", //i.e. /items.geojson
+    'oneach': map.renderPopup('item')
+})
+```
+
+WIP:
+map.createIcon(name, options)
+map.createMap(page, [itemid], [override])
+map.createBaseMaps()
+map.getLayerConfs(page, itemid)
+map.renderPopup(page)
+map.loadLayer(url, callback)
+
+
 [wq/map.js]: https://github.com/wq/wq.app/blob/master/js/wq/map.js
 [wq configuration object]: http://wq.io/docs/config
 [wq.db]: http://wq.io/wq.db
