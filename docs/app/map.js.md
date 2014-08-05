@@ -5,6 +5,10 @@ wq/map.js
 
 **wq/map.js** is a plugin for [wq/app.js] that adds mapping capabilities.  wq/map.js can leverage the [wq configuration object] to generate Leaflet maps for pages rendered via wq/app.js.  The generated maps can automatically download and display GeoJSON data rendered by [wq.db]'s [REST API].
 
+<div data-interactive id='map-example'>
+  <div id='doc-map-js-map' style='height:300px;background:#ccc;border:1px solid black'></div>
+</div>
+
 ## API
 
 `wq/map.js` is typically imported via [AMD] as `map`, though any local variable name can be used.
