@@ -62,6 +62,8 @@ name | default | purpose
 
 By convention, the map defaults configuration is put as a section on the [wq/app.js config object] though it is not actually used by wq/app.js.
 
+#### Example
+
 ```javascript
 // config.js
 define(['db/config'], function(config) {
@@ -97,6 +99,8 @@ After initialization, `map.config.maps` will be populated with map configuration
 name | default | purpose
 -----|---------|---------
 `autoLayers` | `true` | If `true`, the maps created for the page will automatically include a default layer as discussed above, as well as any explicitly defined layers.  Set to `false` to only include layers explicitly added via `addLayerConf()`.
+`autoZoom` | global setting | Set to `false` to disable autozooming on a per-map basis.
+`onshow` | none | Function to call after map is created with `map.createMap()`.  The function will be passed the newly created `L.Map` object.
 `div` | `[page]-map` | The id of the `<div>` tag to place the Leaflet map into.  The div should be present in the template in order for the automatic map creation to work.  When using the defaults, the id of each div should be `[page]-map` for list views, and `[page]-[itemid]-map` for detail views.
 
 Like all Leaflet maps, the height of the div should be explicitly specified in an attribute or in CSS.
@@ -137,6 +141,8 @@ name | purpose
 `cluster` | Boolean indicating whether or not to cluster markers.  The default for auto-generated layers is `true` as long as the Leaflet.markercluster plugin is present.  A copy of the plugin is included with wq.app but is not imported by default.
 `clusterIcon` | Custom function to use to create cluster icons.  Equivalent to `L.MarkerClusterGroup`'s [iconCreateFunction].
 
+#### Example
+
 ```javascript
 define(['leaflet', 'wq/map', 'leaflet.markercluster'],
 
@@ -155,11 +161,37 @@ map.addLayerConf('mainmap', {
 
 ### `map.createIcon(name, options)`
 
-WIP
+`map.createIcon` defines and names an [L.Icon] for later use in layer configurations.  The function accepts a string name and an object containing options for the icon.  Options are the same as those for [L.Icon], but with a number of built-in defaults.  These defaults are optimized to make it trivial to define icons that have the same dimensions and shadow as Leaflet's default icon:
+
+name | default
+-----|---------
+`iconSize` | `[25, 41]`
+`iconAnchor` | `[12, 41]`
+`popupAnchor` | `[1, -34]`
+`shadowSize` | `[41, 41]`
+`shadowUrl` | `L.Icon.Default.imagePath + '/marker-shadow.png'`
+
+#### Example
+
+```javascript
+map.createIcon("green", {'iconUrl': "/images/green.png"});
+```
 
 ### `map.createMap(page, [itemid], [override])`
 
+`map.createMap()` does the actual work of generating a map based on the existing configuration.  If `map.init()` is used, `map.createMap()` will be called automatically whenever map-capable pages are shown.
+
+`map.createMap()` takes up to three arguments:
+
+name | purpose
+-----|---------
+`page` | The name of the page/map configuration to create a map for.
+`itemid` | The id of an individual item in a list (only applies to detail views).
+`override` | A mapping of layer configuration options to override on a per layer basis.  The keys should be layer names and the values should be options to override.
+
 ### `map.createBaseMaps()`
+
+WIP
 
 ### `map.getLayerConfs(page, itemid)`
 
@@ -181,3 +213,4 @@ WIP
 [style]: http://leafletjs.com/reference.html#geojson-style
 [onEachFeature]: http://leafletjs.com/reference.html#geojson-oneachfeature
 [iconCreateFunction]: https://github.com/Leaflet/Leaflet.markercluster#customising-the-clustered-markers
+[L.Icon]: http://leafletjs.com/reference.html#icon
