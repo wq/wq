@@ -132,7 +132,6 @@ name | purpose
 `name` | The name of the layer to show in the layer list
 `url` | The path to a geojson file to download (minus the `.geojson` extension)
 `style` | A function to define styles based on the properties of each feature in the GeoJSON.  The function should take a feature and return a style object.  Available style options are listed in the documentation for [L.Path].  Equivalent to `L.GeoJSON`s [style] option.
-
 `oneach` | A function to call for each feature in the GeoJSON.  The function should take a Leaflet layer object and a GeoJSON feature.  `map.renderPopup()` can automatically create a compatible function that will attach a templated popup to each layer using the properties in the GeoJSON feature.  Equivalent to `L.GeoJSON`'s [onEachFeature] option.
 `icon` | The name of an icon to use, or a function returning an icon name.  If a function, it will be called with the `feature.properties` for each feature in the dataset.  Icons should first be registered via `map.createIcon()`.
 `cluster` | Boolean indicating whether or not to cluster markers.  The default for auto-generated layers is `true` as long as the Leaflet.markercluster plugin is present.  A copy of the plugin is included with wq.app but is not imported by default.
