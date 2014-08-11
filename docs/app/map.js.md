@@ -3,7 +3,7 @@ wq/map.js
 
 [wq/map.js]
 
-**wq/map.js** is a plugin for [wq/app.js] that adds mapping capabilities.  wq/map.js can leverage the [wq configuration object] to generate Leaflet maps for pages rendered via wq/app.js.  The generated maps can automatically download and display GeoJSON data rendered by [wq.db]'s [REST API].
+**wq/map.js** is a plugin for [wq/app.js] that adds mapping capabilities.  wq/map.js can leverage the [wq configuration object] to generate [Leaflet] maps for pages rendered via wq/app.js.  The generated maps can automatically download and display GeoJSON data rendered by [wq.db]'s [REST API].
 
 <div data-interactive id='map-example'>
   <div id='doc-map-js-map' style='height:300px;background:#ccc;border:1px solid black'></div>
@@ -90,11 +90,36 @@ map.init(config.map);
 });
 ```
 
-### `map.config.maps[name]`
+### `map.config.maps[page]`
 
-After initialization, `map.config.maps` will be populated with map configurations for each page in the [wq configuration object] with `"map": true`.  There is usually no need to change these configurations, except to disable the automatic layer configuration discussed above.
+After initialization, `map.config.maps` will be populated with map configurations for each page in the [wq configuration object] with `"map": true`.  Each map config is directly derived from the equivalent page config and reuses the `url` and `list` settings.  The following extra attributes are defined for maps:
 
-To disable automatic layer configuration, ...
+name | default | purpose
+-----|---------|---------
+`autoLayers` | `true` | If `true`, the maps created for the page will automatically include a default layer as discussed above, as well as any explicitly defined layers.  Set to `false` to only include layers explicitly added via `addLayerConf()`.
+`div` | `[page]-map` | The id of the `<div>` tag to place the Leaflet map into.  The div should be present in the template in order for the automatic map creation to work.  When using the defaults, the id of each div should be `[page]-map` for list views, and `[page]-[itemid]-map` for detail views.
+
+Like all Leaflet maps, the height of the div should be explicitly specified in an attribute or in CSS.
+
+#### Example
+
+```css
+/* main.css */
+.my-map-class {
+  border: 1px solid black;
+  height: 300px;
+}
+```
+
+```xml
+<!-- model_list.html -->
+<div id="model-map" class="my-map-class"></div>
+```
+
+```xml
+<!-- model_detail.html -->
+<div id="model-{{id}}-map" class="my-map-class"></div>
+```
 
 ### `map.addLayerConf()`
 
@@ -106,32 +131,46 @@ name | purpose
 -----|---------
 `name` | The name of the layer to show in the layer list
 `url` | The path to a geojson file to download (minus the `.geojson` extension)
-`style` | ...
-`oneach` | A function to call for each feature in the GeoJSON.  Usually used with `map.renderPopup()`
-`icon` | ...
-`cluster` | ...
-`clusterIcon` | ...
+`style` | A function to define styles based on the properties of each feature in the GeoJSON.  The function should take a feature and return a style object.  Available style options are listed in the documentation for [L.Path].  Equivalent to `L.GeoJSON`s [style] option.
+
+`oneach` | A function to call for each feature in the GeoJSON.  The function should take a Leaflet layer object and a GeoJSON feature.  `map.renderPopup()` can automatically create a compatible function that will attach a templated popup to each layer using the properties in the GeoJSON feature.  Equivalent to `L.GeoJSON`'s [onEachFeature] option.
+`icon` | The name of an icon to use, or a function returning an icon name.  If a function, it will be called with the `feature.properties` for each feature in the dataset.  Icons should first be registered via `map.createIcon()`.
+`cluster` | Boolean indicating whether or not to cluster markers.  The default for auto-generated layers is `true` as long as the Leaflet.markercluster plugin is present.  A copy of the plugin is included with wq.app but is not imported by default.
+`clusterIcon` | Custom function to use to create cluster icons.  Equivalent to `L.MarkerClusterGroup`'s [iconCreateFunction].
 
 ```javascript
+define(['leaflet', 'wq/map', 'leaflet.markercluster'],
+
+// Don't need a reference for markercluster, just need it to be imported somewhere
+function(L, map) {
+
 // app.config.pages = {'mainmap': {'url': 'map', 'list': false, 'map': true}} 
 map.addLayerConf('mainmap', {
     'name': "Items",
     'url': "items", //i.e. /items.geojson
+    'cluster': true,
     'oneach': map.renderPopup('item')
 })
+
 ```
 
-WIP:
-map.createIcon(name, options)
-map.createMap(page, [itemid], [override])
-map.createBaseMaps()
-map.getLayerConfs(page, itemid)
-map.renderPopup(page)
-map.loadLayer(url, callback)
+### `map.createIcon(name, options)`
 
+WIP
+
+### `map.createMap(page, [itemid], [override])`
+
+### `map.createBaseMaps()`
+
+### `map.getLayerConfs(page, itemid)`
+
+### `map.renderPopup(page)`
+
+### `map.loadLayer(url, callback)`
 
 [wq/map.js]: https://github.com/wq/wq.app/blob/master/js/wq/map.js
 [wq configuration object]: http://wq.io/docs/config
+[Leaflet]: http://leafletjs.com
 [wq.db]: http://wq.io/wq.db
 [REST API]: http://wq.io/docs/about-rest
 [wq/app.js]: http://wq.io/docs/app-js
@@ -139,3 +178,7 @@ map.loadLayer(url, callback)
 [pages.addRoute()]: http://wq.io/docs/pages-js
 [wq/app.js config object]: http://wq.io/docs/app-js
 [URL Structure]: http://wq.io/docs/url-structure
+[L.Path]: http://leafletjs.com/reference.html#path
+[style]: http://leafletjs.com/reference.html#geojson-style
+[onEachFeature]: http://leafletjs.com/reference.html#geojson-oneachfeature
+[iconCreateFunction]: https://github.com/Leaflet/Leaflet.markercluster#customising-the-clustered-markers
