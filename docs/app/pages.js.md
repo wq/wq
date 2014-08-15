@@ -33,6 +33,7 @@ name | purpose
 -----|---------
 `tmpl404` | The name of the template to use in `pages.notFound()`  The default is "404".
 `injectOnce` | Whether to render and inject templates once (`true`) or every time they are requested (`false`).  The default is `false`.
+`debug` | When debug is active, each call to `pages.go()` will be logged with template and context information.
 
 ```javascript
 // Basic usage (assumes application is at /)
@@ -88,12 +89,33 @@ name | purpose
 
 
 ### `pages.go()`
-WIP
+
+`pages.go()` is the primary rendering function in the pages module.  `pages.go()` takes a URL, a template, and a context object, renders and inserts HTML into the DOM, and displays the resulting page.  `pages.go()` is usually referenced within a callback provided to `pages.register()`, though it can also be called directly.  `pages.go()` accepts up to 6 arguments, specified in order below.  The first 3 arguments are required.
+
+name | purpose
+-----|---------
+`path` | The URL path of the inserted page (relative to the base url).  This will be displayed in the location bar if the browser supports the `History.pushState` API.  For the best user experience, we [recommend] providing a server-rendered equivalent at the same URL.
+`template` | The name of a [Mustache template] to use.  This should have previously been registered with [wq/template.js], either directly or via [wq/app.js].
+`context` | A context object to use with the template.
+`ui` | The jQuery Mobile [ui object] from the original navigation event, if applicable.
+`once` | If `once` is true (or if `injectOnce` is set in `init()`), the template will only be rendered if there isn't already a jQuery Mobile page with the same URL path.  If `false` (the default), any existing page will be overwritten with contents from newly rendered template.
+`pageid` | If set, `pages.go()` will use the specified `pageid` instead of the URL path when checking for existing jQuery Mobile pages.
 
 ### `pages.info`
-### `pages.inject()`
-### `pages.injectOnce()`
-### `pages.notFound()`
+
+`pages.info` is automatically updated during each call to `pages.go()`.  `pages.info` is also available as a default template variable, `{{pages_info}}`.  `pages.info` has a number of properties that are useful in template rendering and navigation:
+
+name | purpose
+-----|---------
+`path` | The path of the current page being rendered (relative to the `base_url`).
+`base_url` | The root url of the application, as passed to `pages.init()`.
+`full_path` | The root url and the path (concatenated for convenience).
+`prev_path` | The path of the previous page.
+`context` | The last context object passed to `pages.go()`.  Only available if `debug` is active.
+
+### `pages.notFound(url)`
+
+`pages.notFound(url)` is a shortcut for `pages.go()` that uses the pre-configured 404 template and a simple context of `{"url": url}`.  It is leveraged by [wq/app.js] when items are not found in the local store.
 
 [wq/pages.js]: https://github.com/wq/wq.app/blob/master/js/wq/pages.js
 [wq.app]: http://wq.io/wq.app
@@ -106,3 +128,6 @@ WIP
 [app.init()]: http://wq.io/docs/app-js
 [ui object]: http://api.jquerymobile.com/pagecontainer/
 [jQueryMobile-router documentation]: https://github.com/azicchetti/jquerymobile-router
+[recommend]: http://wq.io/docs/website
+[Mustache template]: http://wq.io/docs/templates
+[wq/template.js]: http://wq.io/docs/other-modules
