@@ -48,10 +48,12 @@ name | purpose
 
 `app.init()` internally calls [pages.register()] for each page in the `pages` configuration section.  The callbacks sent to `pages.register()` are simple wrappers around `app.go()`.
 
-`app.init()` also registers a custom submit handler that takes normal form POSTs and converts them to REST API calls.  To avoid interaction with jQuery Mobile's own AJAX form handler, it is recommended to set `data-ajax="false"` on all forms.
+### `<form>` Handler
+
+`app.init()` registers a custom submit handler that takes normal form POSTs and converts them to REST API calls.  To avoid interaction with jQuery Mobile's own AJAX form handler, it is recommended to set `data-ajax="false"` on all forms using this functionality.  For model-backed list pages, these forms would normally be placed in `[page]_edit.html` templates and accessed via `/[page_url]/new` `/[page_url]/[id]/edit` .
 
 ```xml
-<form method="post" action="/listview" data-ajax="false">
+<form method="post" action="/items" data-ajax="false">
 ```
 
 By default wq/app.js' form handler is applied to every form in the website.  This functionality can be disabled on a per-form basis by setting `data-json=false` on the form tag:
@@ -64,6 +66,46 @@ To disable both jQuery Mobile's AJAX form handler and wq/app.js' AJAX+JSON form 
 
 ```xml
 <form method="post" action="/custom" data-json="false" data-ajax="false">
+```
+
+The form handler can automatically display any error messages returned from the REST API, both per-field errors and general validation errors.  This functionality can be leveraged by placing `<span>` or `<p>` tags next to the fields and near the submit button.  The tags should have two classes: `error` and `[page]-[field]-errors`, where `page` is the name of the of the wq page config and `field` is the name of the form field.
+
+When working with list pages, the same template (`[page]_edit.html`) is used for both new and existing items.  The presence of an `id` attribute in the context can be used to distinguish between the two use cases.
+
+#### Example
+
+```xml
+<-- item_edit.html -->
+
+<!-- Different action/method depending on whether this is a new or existing item -->
+<form action="/items/{{id}}" data-ajax="false"
+      method="{{#id}}post{{/id}}{{^id}}put{{/id}}"
+  <ul>
+  
+    <li>
+      <label for="item-name">Name</label>
+      <input name="name" value="{{name}}" id="item-name">
+      
+      <!-- Placeholder for "name" errors -->
+      <span class="error item-name-errors"></span>
+    </li>
+    
+    <li>
+      <label for="item-date">Date</label>
+      <input name="date" type="date" value="{{date}}" id="item-date">
+      
+      <!-- Placeholder for "date" errors -->
+      <span class="error item-date-errors"></span>
+    </li>
+    
+    <li>
+      <!-- Placeholder for general errors -->
+      <span class="error item-errors"></span>
+      
+      <button type="submit">Save Changes</button>
+    </li>
+  </ul>
+</form>
 ```
 
 ### `app.go()`
