@@ -75,7 +75,7 @@ When working with list pages, the same template (`[page]_edit.html`) is used for
 #### Example
 
 ```xml
-<-- item_edit.html -->
+<!-- item_edit.html -->
 
 <!-- Different action/method depending on whether this is a new or existing item -->
 <form action="/items/{{id}}" data-ajax="false"
