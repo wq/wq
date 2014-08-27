@@ -79,7 +79,7 @@ When working with list pages, the same template (`[page]_edit.html`) is used for
 
 <!-- Different action/method depending on whether this is a new or existing item -->
 <form action="/items/{{id}}" data-ajax="false"
-      method="{{#id}}post{{/id}}{{^id}}put{{/id}}">
+      method="{{#id}}put{{/id}}{{^id}}post{{/id}}">
   <ul>
   
     <li>
