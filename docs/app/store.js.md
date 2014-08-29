@@ -3,9 +3,9 @@ wq/store.js
 
 [wq/store.js]
 
-**wq/store.js** provides a `localStorage` and AJAX-backed JSON storage API.
+> **Note:** This document page is a work in progress (WIP).  See [wq/wq.app#20].
 
-WIP
+**wq/store.js** provides a `localStorage` and AJAX-backed JSON storage API.
 
 ## API
 
@@ -144,6 +144,7 @@ Note that `ds.get()` will do a synchronous AJAX request to load data immediately
 
 #### `list.getQuery(page_num)`
 
+[wq/wq.app#20]: https://github.com/wq/wq.app/issues/20
 [wq/store.js]: https://github.com/wq/wq.app/blob/master/js/wq/store.js
 [AMD]: http://wq.io/docs/amd
 [wq.db]: http://wq.io/wq.db
