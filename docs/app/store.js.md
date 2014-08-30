@@ -343,9 +343,10 @@ Search through the list to find items matching the specified `filter` (which sho
 
 `list.getQuery()` returns the appropriate web query needed to retreive the data for the specified `page_num`.
 
-[wq/wq.app#20]: https://github.com/wq/wq.app/issues/20
 [wq/store.js]: https://github.com/wq/wq.app/blob/master/js/wq/store.js
+[wq.app]: http://wq.io/wq.app
 [wq/app.js]: http://wq.io/docs/app-js
+[wq/wq.app#20]: https://github.com/wq/wq.app/issues/20
 [AMD]: http://wq.io/docs/amd
 [wq.db]: http://wq.io/wq.db
 [#17]: https://github.com/wq/wq.app/issues/17
