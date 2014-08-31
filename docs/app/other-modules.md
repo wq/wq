@@ -26,7 +26,7 @@ function _onUpdate(status, msg) {
 ```
 
 ## wq/autocomplete.js
-[wq/autocomplete.js] provides a simple implementation of an AJAX autocomplete via the HTML5 [<datalist>] element.
+[wq/autocomplete.js] provides a simple implementation of an AJAX autocomplete via the HTML5 [`<datalist>`] element.
 
 ### API
 
@@ -69,7 +69,7 @@ console.log(...);
 [wq/photos.js] includes some helpers for requesting and displaying user photos on a mobile device
 
 ## wq/progress.js
-[wq/progress.js] provides a simple way to create AJAX-powered auto-updating HTML5 [<progress>] bars.
+[wq/progress.js] provides a simple way to create AJAX-powered auto-updating HTML5 [`<progress>`] bars.
 
 ## wq/router.js
 [wq/router.js] is a simple API wrapper around jQuery Mobile Router (used by [wq/pages.js])
@@ -98,5 +98,5 @@ console.log(...);
 
 [AMD]: http://wq.io/docs/amd
 [application cache]: https://developer.mozilla.org/en-US/docs/Web/HTML/Using_the_application_cache
-[<datalist>]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist
-[<progress>]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress
+[`<datalist>`]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist
+[`<progress>`]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress
