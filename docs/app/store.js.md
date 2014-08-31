@@ -17,7 +17,7 @@ This design philosophy is reflected in wq/store.js with a built-in **outbox** th
 
 ```javascript
 // myapp.js
-define(['wq/pages', ...], function(ds, ...) {
+define(['wq/store', ...], function(ds, ...) {
    ds.init(...);
 }
 ```
@@ -35,11 +35,11 @@ The `query` argument, used by `ds.get()`, `ds.prefetch()`, and other functions, 
  - a JSON object, which is assumed to describe a "web query" for the configured webservice.
  - a simple string, which is assumed to be a key to a value that only exists locally.
  
-For example, a `query` value of `"outbox"` is treated as corresponding to a local variable, while a `query` of `{"param1": "value"}` would be converted to the query "?param1=value" and appended to the datastore's base `service` url to make a request.  The following attributes have special meaning for web query objects:
+For example, a `query` value of `"outbox"` is treated as corresponding to a local variable, while a `query` of `{"param1": "value"}` would be converted to the query "?param1=value" and appended to the datastore's base `service` URL to make a request.  The following attributes have special meaning for web query objects:
 
 name | purpose
 -----|---------
-`url` | If the web service is a full REST api (like [wq.db]), the `url` argument can be used to define URL paths relative to the base `service` url.
+`url` | If the web service is a full REST API (like [wq.db]), the `url` argument can be used to define URL paths relative to the base `service` URL.
 `format` | If set, the `format` value will be appended to the end of the base URL rather than included as a parameter (unless `formatKeyword` is set)
 `page` | The `page` number is used to control server paginated data lists.
 
@@ -104,7 +104,7 @@ name | purpose
 `functions` | An object containing a set of "computable" fields to use when filtering (see `ds.filter()` below).
 `parseData(result)` | Defines a callback to be used when parsing JSON results from the web service.  Typically only needed if the top level of the JSON object is not the actual result (e.g. responses of the form `{"response": [ actual data ] }`).
 `parseBatchResult(result)` | A callback to use when parsing the result of a batch submit.  If not specified, `parseData` will be used.
-`applyResult(item, result)` | Defines a callback that takes a outbox item and a web service result and determines whether the result web service indicates a succesful save.  If the result was successfull, the `applyResult` callback should mark `item.saved = true`.
+`applyResult(item, result)` | Defines a callback that takes a outbox item and a web service result and determines whether the result web service indicates a successful save.  If the result was successful, the `applyResult` callback should mark `item.saved = true`.
 `localStorageFail(value, error)` | Defines a callback to use when `localStorage.setItem()` fails for any reason (e.g. when offline storage is full or disabled).  The callback will be provided with the value being saved as well as the error object.
 `fetchFail(query, error)` | Defines a callback to use when a network request fails or the result is unparseable.  The callback will be passed the original `query` and a description of the error.
 
@@ -119,7 +119,7 @@ var name = ds.get("name");
 var items = ds.get({'url': 'items'}, true);
 ```
 
-Note that `ds.get()` is a synchronous API, and using it with a web query will cause a synchronous AJAX request to load data immediately if it isn't already present.  Syncronous AJAX is considered bad practice (it locks up the browser), and this "feature" will not be supported in future versions of wq.app (see [#17]).
+Note that `ds.get()` is a synchronous API, and using it with a web query will cause a synchronous AJAX request to load data immediately if it isn't already present.  Synchronous AJAX is considered bad practice (it locks up the browser), and this "feature" will not be supported in future versions of wq.app (see [#17]).
 
 #### `ds.getList(query, callback)`
 
@@ -181,7 +181,7 @@ Note that `list.filter()` provides a similar API that also handles paginated ser
 
 #### `ds.find(query, value, [attr], [usesvc])`
 
-`ds.find()` retreives a `query` value from the datastore (via `ds.get()`) and then finds a single item in the list that has the specified `value` for the given `attr`.  `ds.find()` is primarily used to retreive items from a list by their primary key, and accordingly the default `attr` is `"id"`.
+`ds.find()` retrieves a `query` value from the datastore (via `ds.get()`) and then finds a single item in the list that has the specified `value` for the given `attr`.  `ds.find()` is primarily used to retrieve items from a list by their primary key, and accordingly the default `attr` is `"id"`.
 
 ```javascript
 
@@ -216,7 +216,7 @@ While `ds.get()` and `ds.getList()` can automatically handle AJAX requests as ne
 
 #### `ds.fetch(query, [async], [callback], [nocache])`
 
-`ds.fetch()` submits a web query to the datastore's web service and stores the result in the local store.  `ds.fetch()` is *synchronous* by default unless the `async` argument is given.  As discussed in `ds.get()` above, This "feature" will be removed in future versions (see [#17]).  The `async` argument is typically used with a `callback` that will be provided with the retreived values.  Use `nocache` to prevent the data from being stored in the local store.
+`ds.fetch()` submits a web query to the datastore's web service and stores the result in the local store.  `ds.fetch()` is *synchronous* by default unless the `async` argument is given.  As discussed in `ds.get()` above, This "feature" will be removed in future versions (see [#17]).  The `async` argument is typically used with a `callback` that will be provided with the retrieved values.  Use `nocache` to prevent the data from being stored in the local store.
 
 `ds.prefetch()` provides a shorter API for the common `async` use case.
 
@@ -244,7 +244,7 @@ Note that `ds.getList()` automatically calls `ds.prefetch()` if necessary.
 
 #### `ds.updateList(query, data, idcol, [opts])`
 
-`ds.updateList()` provides a way to partially update the local cache of a list without needing to reload the entire list from the server again.  The `query` object is the web query used to retreive the list and the `data` object should be an array of items to place into the list.  The `idcol` is used to distinguish between new records and updates to existing records.  The optional `opts` argument is used to specify additional options: `prepend`, which prepends new items at the beginning of the list instead of appending them to the end (useful when the list is sorted in reverse chronological order), and `updateOnly` which only updates existing items and does not append new items.  If `updateOnly` is set, any new items will be returned.
+`ds.updateList()` provides a way to partially update the local cache of a list without needing to reload the entire list from the server again.  The `query` object is the web query used to retrieve the list and the `data` object should be an array of items to place into the list.  The `idcol` is used to distinguish between new records and updates to existing records.  The optional `opts` argument is used to specify additional options: `prepend`, which prepends new items at the beginning of the list instead of appending them to the end (useful when the list is sorted in reverse chronological order), and `updateOnly` which only updates existing items and does not append new items.  If `updateOnly` is set, any new items will be returned.
 
 ```javascript
 var items = [{'id': 35, 'name': "New Item"}];
@@ -252,7 +252,7 @@ ds.updateList({'url': 'items'}, items, 'id', {'prepend': true});
 ```
 
 #### `ds.fetchListUpdate(query, params, idcol, [opts])`
-`ds.fetchListUpdate()` retreives and applies an update to a locally cached list.  The `query` is the web query used to retreive the original list, while the `params` object is any additional params used to tell the server that a partial update is wanted.  The idcol and opts are passed on to `ds.updateList()`.
+`ds.fetchListUpdate()` retrieves and applies an update to a locally cached list.  The `query` is the web query used to retrieve the original list, while the `params` object is any additional URL parameters used to tell the server that a partial update is wanted.  The idcol and opts are passed on to `ds.updateList()`.
 
 ```javascript
 // Assuming server supports query "/items?since=-2h"
@@ -261,7 +261,7 @@ ds.fetchListUpdate({'url': 'items'}, {'since': '-2h'}, 'id'}
 
 ### Outbox Methods
 
-As discussed above, all data being sent to the server (e.g. as a result of a form submisison) is queued through an outbox.  This section describes the available functions for working with the outbox.
+As discussed above, all data being sent to the server (e.g. as a result of a form submission) is queued through an outbox.  This section describes the available functions for working with the outbox.
 
 #### `ds.save(data, [id], [callback])`
 
@@ -275,7 +275,7 @@ $form.submit(function() {
 
 #### `ds.sendItem(id, callback)`
 
-`ds.sendItem()` retrieves the outbox item specified by `id` and submits it to the web service.  The callback will be passed two arguments: the outbox `item`, and the `result` returned by the web service (if any).  The outbox `item` will have a property `saved` that indicates whether the item succesfully made it to the server.  (Success is determined in part by the `applyResult` setting, see `ds.init()` above).  Any errors will be made available on `item.error`.
+`ds.sendItem()` retrieves the outbox item specified by `id` and submits it to the web service.  The callback will be passed two arguments: the outbox `item`, and the `result` returned by the web service (if any).  The outbox `item` will have a property `saved` that indicates whether the item successfully made it to the server.  (Success is determined in part by the `applyResult` setting, see `ds.init()` above).  Any errors will be made available on `item.error`.
 
 #### `ds.sendAll(callback)`
 `ds.sendAll()` sends all unsaved items in the outbox to the server.  `ds.sendBatch()` will be used if a batch service is available, otherwise each item will be sent separately with `ds.sendItem()`.  The callback will be called with a `result` variable with one of three values: `true`, indicating all items were sent successfully; `false`, indicating one or more requests failed, or `null`, indicating an unexpected error sending the data (e.g. a request to send data that was already successfully saved).
@@ -361,7 +361,7 @@ Search through the list to find items matching the specified `filter` (which sho
 
 #### `list.getQuery(page_num)`
 
-`list.getQuery()` returns the appropriate web query needed to retreive the data for the specified `page_num`.
+`list.getQuery()` returns the appropriate web query needed to retrieve the data for the specified `page_num`.
 
 [wq/store.js]: https://github.com/wq/wq.app/blob/master/js/wq/store.js
 [wq.app]: http://wq.io/wq.app
