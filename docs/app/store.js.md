@@ -3,8 +3,6 @@ wq/store.js
 
 [wq/store.js]
 
-> **Note:** This document page is a work in progress (WIP).
-
 **wq/store.js** is a [wq.app] module providing a `localStorage`-backed storage API for retrieving and querying JSON data from a web service via AJAX.  wq/store.js is used internally by [wq/app.js], and could be considered the "model" layer of wq.app.
 
 Unlike other similar libraries, wq/store.js does not attempt to immediately and transparently mirror local changes to the server via a REST API.  This is by design.  wq/store.js is meant to be used in offline-capable mobile applications that require explicit control over when and how local changes are "synced" to the server.
@@ -34,16 +32,16 @@ There are a number of object types that are used as arguments to various `ds` fu
 
 The `query` argument, used by `ds.get()`, `ds.prefetch()`, and other functions, specifies a query to retrieve from the datastore (and potentially from the web service).  A query can be:
 
- - a "web query" object, which is assumed to describe a query for the web service.
+ - a JSON object, which is assumed to describe a "web query" for the configured webservice.
  - a simple string, which is assumed to be a key to a value that only exists locally.
  
 For example, a `query` value of `"outbox"` is treated as corresponding to a local variable, while a `query` of `{"param1": "value"}` would be converted to the query "?param1=value" and appended to the datastore's base `service` url to make a request.  The following attributes have special meaning for web query objects:
 
 name | purpose
 -----|---------
-`url` | If the web service is a full REST api (like [wq.db], the `url` argument can be used to define URL paths relative to the base `service` url.
+`url` | If the web service is a full REST api (like [wq.db]), the `url` argument can be used to define URL paths relative to the base `service` url.
 `format` | If set, the `format` value will be appended to the end of the base URL rather than included as a parameter (unless `formatKeyword` is set)
-`page` | The `page` is used to control server paginated data lists.
+`page` | The `page` number is used to control server paginated data lists.
 
 ```javascript
 // query:
@@ -80,17 +78,37 @@ name | purpose
 `listQuery` | If applicable, the `listQuery` passed to `ds.save()` as a property of the form `data` object.
 `newid` | The server-generated identifier for the newly saved item, if applicable.  This property is technically defined by [wq/app.js], not wq/store.js.
 
-### Primary Functions
+### Initialization
 
-#### `ds.init([svc], [defaults], [opts])`
+#### `ds.init([service], [defaults], [opts])`
 
-##### `parseData(result)`
+`ds.init()` configures the datastore with the necessary information to communicate with a web service.  `ds.init()` is not required for stores that only contain local values.  `ds.init()` takes up to three arguments: an web service URL (absolute, without trailing slash), a set of default `query` arguments to apply to every web query, and an optional "options" object with all other options.  For example, [wq/app.js] typically initializes `ds` like this:
 
-##### `localStorageFail(item, error)`
+```javascript
+var options = {
+    'applyResult': _applyResult,
+    'fetchFail': _fetchFail
+};
+ds.init('', {'format': 'json'}, options);
+```
 
-##### `fetchFail(query, error)`
+The full list of options is described below:
 
-##### `applyResult(item, result)`
+name | purpose
+-----|---------
+`debug` | Set the debug level for `console.log()` information.  Level 0 (or false) disables debugging.  Level 1 logs network requests, 2 logs all data lookups, and 3 logs actual data values.
+`jsonp` | Whether to use jsonp instead of AJAX (for cross-domain requests)
+`formatKeyword` | If `true`, disables special handling of the "format" `query` argument (see above).
+`saveMethod` | Default method to use for saving data to the server.  The "default" default is `POST`.
+`batchService` | An alternate webservice URL to use when submitting batch requests (see `sendBatch()` below)
+`functions` | An object containing a set of "computable" fields to use when filtering (see `ds.filter()` below).
+`parseData(result)` | Defines a callback to be used when parsing JSON results from the web service.  Typically only needed if the top level of the JSON object is not the actual result (e.g. responses of the form `{"response": [ actual data ] }`).
+`parseBatchResult(result)` | A callback to use when parsing the result of a batch submit.  If not specified, `parseData` will be used.
+`applyResult(item, result)` | Defines a callback that takes a outbox item and a web service result and determines whether the result web service indicates a succesful save.  If the result was successfull, the `applyResult` callback should mark `item.saved = true`.
+`localStorageFail(value, error)` | Defines a callback to use when `localStorage.setItem()` fails for any reason (e.g. when offline storage is full or disabled).  The callback will be provided with the value being saved as well as the error object.
+`fetchFail(query, error)` | Defines a callback to use when a network request fails or the result is unparseable.  The callback will be passed the original `query` and a description of the error.
+
+### Storage Methods
 
 #### `ds.get(query, [useservice])`
 
@@ -192,7 +210,9 @@ function localStorageFail(item, error) {
 
 `ds.reset()` clears out all values created by the `ds`.  Values not created by the `ds` are left alone.  Specify `all` to clear out everything via `localStorage.clear()`.
 
-### AJAX Functions (GET)
+### AJAX Methods
+
+While `ds.get()` and `ds.getList()` can automatically handle AJAX requests as needed, it is sometimes necessary to access those functions directly.  The available methods are listed here.
 
 #### `ds.fetch(query, [async], [callback], [nocache])`
 
@@ -239,7 +259,9 @@ ds.updateList({'url': 'items'}, items, 'id', {'prepend': true});
 ds.fetchListUpdate({'url': 'items'}, {'since': '-2h'}, 'id'}
 ```
 
-### AJAX Functions (POST), Outbox
+### Outbox Methods
+
+As discussed above, all data being sent to the server (e.g. as a result of a form submisison) is queued through an outbox.  This section describes the available functions for working with the outbox.
 
 #### `ds.save(data, [id], [callback])`
 
@@ -295,9 +317,7 @@ $form.submit(function() {
 
 The List API provides a convenient shorthand for dealing with the most common web query objects: lists of items (usually from a server table / ORM model).  The `query` object is bound to the list item so it doesn't need to be passed every time.  The List API also transparently handles navigation across server-paginated lists.
 
-#### `ds.getList(query, callback(list))`
-
-Also discussed above, `ds.getList()` is the API for getting a new list.  This is an async-only API, so the actual list is provided to the callback.
+As discussed above, `ds.getList(query, callback)` is the API for getting a new list.  This is an async-only API, so the actual list is provided to the callback.
 
 #### `list.info`
 
