@@ -5,7 +5,7 @@ order: 1
 Not Just a Website: The Case for HTML5
 ======================================
 
-*This is the first in a two part series promoting the use of HTML5 for app development.  This section focuses on the "app" side of the equation, but please also read [Still a Website: Preserving the "HT" in "HTML5"] for a perspective on why the "website" part is still important.*
+*This is the first in a two part series promoting the use of HTML5 for app development.  This section focuses on the "app" side of the equation, but please also read [Still a Website: Preserving the "HT" in HTML5] for a perspective on why the "website" part is still important.*
 
 **"But it's just a website!"**  This was our initial response to the prospect of using HTML5* for app development, particularly when looking at [PhoneGap] as a cross-platform solution.  And in a sense it is true - in its default usage, PhoneGap simply creates a webview and loads an `index.html` file with references to JavaScript and CSS.  HTML5 definitely didn't seem nearly as cool as creating a truly "native" app with the programming languages dedicated to each platform.  However, the practicality of using a single, standardized environment for cross-platform app development won out.  It was simply unfeasible to recreate the same app for two or three platforms given our typical time and budget constraints.
 
@@ -40,7 +40,7 @@ With the above considerations, we argue that the new features in the latest vers
 
 *_Note: HTML5 is used here in its commonly understood meaning of "HTML, JavaScript, and CSS features available in the latest versions of all popular browsers", which mostly correspond to the actual HTML5 standard and related specifications.  If semantics are important to you, replace HTML5 with "web standards" as you read this document._
 
-[Still a Website: Preserving the "HT" in "HTML5"]: http://wq.io/docs/website
+[Still a Website: Preserving the "HT" in HTML5]: http://wq.io/docs/website
 [PhoneGap]: http://phonegap.com
 [Application Cache]: http://www.whatwg.org/specs/web-apps/current-work/multipage/offline.html
 [Web Storage]: http://www.w3.org/TR/webstorage/
