@@ -107,8 +107,11 @@ function _onUpdate(status, msg) {
 
 ### API
 wq/photos.js is typically imported via AMD as `photos`, though any local variable name can be used.  `photos` provides three methods:
+
   * `photos.preview()` accepts the id of an `<img>` element, the local path to a file to load, and a fallback URL to use if file loading fails.  `photos.preview()` is meant to be used with `<input type=file>` in web and hybrid apps.
-  * `photos.take()` and `photos.pick()` are wrappers for PhoneGap/Cordova's [camera.getPicture()] API, meant to be used in hybrid apps where `<input type=file>` doesn't work (e.g. on older devices or [broken Android implementations]).  Both `photos.take()` and `photos.pick()` accept two arguments: the id of a form `<input>` (often `type=hidden`) and the id of an `<img>` tag to place the preview in.  `photos.take()` requests a new photo from the camera, while `photos.pick()` requests a previously captured photo from the user's albums.
+  * `photos.take()` and `photos.pick()` are wrappers for PhoneGap/Cordova's [camera.getPicture()] API, meant to be used in hybrid apps where `<input type=file>` doesn't work (e.g. on older devices or [broken Android implementations]).
+
+Both `photos.take()` and `photos.pick()` accept two arguments: the id of a form `<input>` (often `type=hidden`) and the id of an `<img>` tag to place the preview in.  `photos.take()` requests a new photo from the camera, while `photos.pick()` requests a previously captured photo from the user's albums.
 
 ```javascript
 define(['jquery', 'wq/photos', ...], function($, photos, ...) {
@@ -131,7 +134,7 @@ The above might be used with a Mustache template like this:
 ```xml
 <img id=preview-image>
 
-{{#native}}
+{{^native}}
 <input type=file name=file>
 {{/native}}
 
@@ -148,6 +151,7 @@ The above might be used with a Mustache template like this:
 ### API
 
 wq/progress.js is typically imported via AMD as `progress`, though any local variable name can be used.  `progress` provides a number of functions:
+
  * `progress.init()` takes up to four arguments: a URL route path (see [wq/pages.js]) for pages that are expected to have `<progress>` elements, and up to three callback functions (`onComplete`, `onFail`, and `onProgress`).  All three of the functions will be passed the `<progress>` element and the JSON data from the web services.
  * `progress.start($progress)` starts polling for a specified, jQuery-wrapped `<progress>` element
  * `progress.stop($progress)` cancels polling for a started progress process
