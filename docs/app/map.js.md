@@ -21,6 +21,7 @@ wq/map.js leverages three configuration objects:
  * *Layer configurations*, which describe individual GeoJSON layers in a map configuration.  See `map.addLayerConf()` below for options.
 
 By default, each map will automatically get a single layer configuration pointing to the GeoJSON equivalent of the page:
+
   * The default layer for a simple page (e.g `/simple`)  will be `/simple.geojson`
   * The default layer for a list page's list view (e.g. `/list`) will be `/list.geojson`
   * The default layer for a list page's detail view (e.g. `/list/itemid`) will be `/list/itemid.geojson`
