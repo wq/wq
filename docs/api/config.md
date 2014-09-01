@@ -43,11 +43,11 @@ The full listing of page configuration options is described below.
 
  Name | Usage
 ------|-------
-`parents` | A list of models that can be considered "parents" to this model.  Typically this means that this model contains a foreign key pointing to the parent model(s).
+`parents` | A list of models that can be considered "parents" to this model.  Typically this means that this model contains a foreign key pointing to the parent model(s).  If the model contains more than one foreign key to the same parent model, `parents` should be a mapping of field names to parent models, e.g. `{"createdby": "user", "assignedto": "user"}`.
 `children` | A list of models that can be considered "children" to this model.  Typically this means that the child model(s) contain foreign keys pointing to this model.
 `map` | Whether or not this page includes a map (as implemented in the [wq/map.js] plugin).  wq.db will set this automatically on models that follow the [locate design pattern] or have a field named `latitude`, `longitude`, or `geometry`.  
 `annotated`<br>`identified`<br>`located`<br>`related` | Boolean options, indicating that the model follows one or more of the [wq.db design patterns].
-`can_add`<br>`can_edit`<br>`can_delete` | Flags indicating which permissions the current user has on the model.  This information can be computed and enforced by wq.db.  It is useful as a [template rendering context] variable for showing and hiding available options to the user.  It is not strictly enforsed by wq/app.js since wq.db (or a compatible REST service) should be handling permissions on the server side.
+`can_add`<br>`can_edit`<br>`can_delete` | Flags indicating which permissions the current user has on the model.  This information can be computed and enforced by wq.db.  It is useful as a [template rendering context] variable for showing and hiding available options to the user.  It is not strictly enforced by wq/app.js since wq.db (or a compatible REST service) should be handling permissions on the server side.
 `per_page` | Number of results to return per page in paginated lists by default.  Enforced by wq.db, but can be overridden by the `limit` url argument.
 `lookup` | Name of identifier column to use when looking up objects for detail views, and to use as the `id` attribute in serialized JSON data.  Defaults to `obj.pk`, except for `identified` models where the default is `obj.primary_identifier.slug`.  Enforced by wq.db; mostly invisible to wq.app.
 `partial` | Indicates that the REST service is filtering results from the list view JSON payload (typically to conserve localStorage usage).  If `partial` is set to false or unset, wq/app.js will immediately return a faux 404 page if the user attempts to navigate to the detail view of an object not found in the local store.  If `partial` is true, wq/app.js will instead attempt to request the detail view as HTML directly from the server and display it if successful.
@@ -80,3 +80,4 @@ The full listing of page configuration options is described below.
 [wq.db design patterns]: http://wq.io/docs/about-patterns
 [locate design pattern]: http://wq.io/docs/locate
 [template rendering context]: http://wq.io/docs/templates
+[wq/map.js]: http://wq.io/docs/map-js
