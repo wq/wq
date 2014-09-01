@@ -1,7 +1,7 @@
 Mustache Templates in wq
 ========================
 
-[wq.app] and [wq.db] both use [Mustache]-powered HTML templates as the primary means of generating and displaying application screens.  Mustache was selected because it forces a strict separation of logic and presentation, and because there are implementations in both Python and JavaScript (as well as a number of other languages).  By sharing identical templates between the client and the server, [wq] is able to leverage the advantages of both server and client-side [MVC], while adding a powerful flexibility that neither provides alone.
+HTML5 is a [compelling technology] for building modern cross-platform applications, but it is still important for HTML5 "apps" to [work as websites].  In light of this principle, [wq.app] and [wq.db] both use [Mustache]-powered HTML templates as the primary means of generating and displaying application screens.  Mustache was selected because it forces a strict separation of logic and presentation, and because there are implementations in both Python and JavaScript (as well as a number of other languages).  By sharing identical templates between the client and the server, [wq] is able to leverage the advantages of both server and client-side [MVC], while adding a powerful flexibility and robustness that neither provides alone.
 
 Specifically, there are three ways a page can be rendered by the wq stack in response to a navigation event.
 
@@ -56,6 +56,8 @@ To reduce the amount of configuration needed when rendering application screens,
 
 Because templates are equally shared between the server and the client, they are typically placed in `myproject/templates`, a sibling directory to `myproject/app` and `myproject/db` (see the [wq project template for Django]).  Partial templates (accessed via the `{{>partial}}` syntax) should be placed in `myproject/templates/partials`.
 
+[compelling technology]: http://wq.io/docs/web-app
+[work as websites]: http://wq.io/docs/website
 [wq.app]: http://wq.io/wq.app
 [wq.db]: http://wq.io/wq.db
 [Mustache]: http://mustache.github.io
