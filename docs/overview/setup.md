@@ -8,7 +8,7 @@ pip install wq
 ```
 ## Using wq.db and wq.app
 
-If you are using wq.app and wq.db together, you may find it useful to take advantage of the [Django wq template] available on GitHub.  You will need a WGSI-capable webserver like [Apache], and a database to host the application.  In theory any Django-supported database will work, but wq.db is optimized for use with [PostgreSQL] and [PostGIS].  You should be able to use something like the following to start a new wq-based Django project.
+If you are using wq.app and wq.db together, you may find it useful to take advantage of the [Django wq template] available on GitHub and via the `wq-start` command.  You will need a WGSI-capable webserver like [Apache], and a database to host the application.  In theory any Django-supported database will work, but wq.db is optimized for use with [PostgreSQL] and [PostGIS].  You should be able to use something like the following to start a new wq-based Django project.
 
 ### On Ubuntu
 ```bash
