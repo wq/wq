@@ -2,8 +2,8 @@
 order: 2
 ---
 
-Still a Website: Preserving the "HT" in "HTML5"
-===============================================
+Still a Website: Preserving the "HT" in HTML5
+=============================================
 
 *This is the second post in a two part series promoting the use of HTML5 for app development. This section focuses on the features unique to "websites" that are often neglected in the performance-focused [native-vs-web discussion (Part 1)](http://wq.io/docs/web-app).*
 
