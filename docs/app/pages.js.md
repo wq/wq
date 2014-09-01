@@ -27,7 +27,7 @@ The pages module provides the following methods and properties.
 
 `pages.init(baseurl, opts)` initializes the pages router with a base url (`baseurl`) and other configuration options (`opts`).  If your application is not running at the top level of your website, you should call `pages.init()` before registering any URLs or the URL matching will not work.  If specified, `baseurl` should not have a trailing slash.
 
-There are two available options:
+There are three available options:
 
 name | purpose
 -----|---------
