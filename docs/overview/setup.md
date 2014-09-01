@@ -47,8 +47,7 @@ sudo service apache2 restart
 ```
 
 ### On Windows
-WIP
-
+wq.db works best in a Linux environment, but should work fine on Windows.  Please leave a comment at [wq/wq#11] if you would like the setup process for Windows (or other operating systems) to be documented.
 
 ## Using only wq.app
 
@@ -110,3 +109,4 @@ See the [wq.app module list] for available modules, and the [build docs] for inf
 [near future]: https://github.com/wq/wq.db/issues/2
 [volo]: http://volojs.org
 [build docs]: http://wq.io/docs/build
+[wq/wq#11]: https://github.com/wq/wq/issues/11
