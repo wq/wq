@@ -177,7 +177,7 @@ To configure a `<progress>` instance, a number of `data-*` attributes can be use
 For older browsers, the `<progress>` bar will automatically fall back to text showing the current status.
 
 wq/progress.js assumes a specific structure for the data from the web service.  The following attributes should be specified on the returned JSON object:
- * `total`: the total number of items remaining to be processed
+ * `total`: the total number of items being processed
  * `current`: the rank of the currently processing item.  (`current / total` will be used to determine the % complete)
  * `status`: A text status indicating task state.  A status of `"SUCCESS"` or `"FAILURE"` will cause polling to cease and the `onComplete` or `onFailure` callbacks to be called.  The status names are taken from the [task state names in Celery].
 
