@@ -70,7 +70,7 @@ To disable both jQuery Mobile's AJAX form handler and wq/app.js' AJAX+JSON form 
 
 The form handler can automatically display any error messages returned from the REST API, both per-field errors and general validation errors.  This functionality can be leveraged by placing `<span>` or `<p>` tags next to the fields and near the submit button.  The tags should have two classes: `error` and `[page]-[field]-errors`, where `page` is the name of the of the wq page config and `field` is the name of the form field.
 
-When working with list pages, the same template (`[page]_edit.html`) is used for both new and existing items.  The presence of an `id` attribute in the context can be used to distinguish between the two use cases.
+When working with list pages, the same template (`[page]_edit.html`) is used for both new and existing items.  The presence of an `id` attribute in the context can be used to distinguish between the two use cases.  In addition, a number of other useful context variables are provided to assist with rendering e.g. `<select>` menus for foreign keys.  See the [template context] documentation for more details.
 
 #### Example
 
