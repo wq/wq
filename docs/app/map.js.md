@@ -25,7 +25,7 @@ By default, each map will automatically get a single layer configuration pointin
   * The default layer for a list page's list view (e.g. `/list`) will be `/list.geojson`
   * The default layer for a list page's detail view (e.g. `/list/itemid`) will be `/list/itemid.geojson`
 
-For example, the content you are reading is a `Doc` instance with an identifier of `map-js`, rendered in a "detail" view for the `docs` list page.  `docs` is registered in the <a href="http://wq.io/config.json" rel="external">wq configuration for this website</a> as `"map": true`.  Since wq/map.js is loaded for this website, the map at the top of this document should have automatically loaded <a href="http://wq.io/docs/map-js.geojson" rel="external">/docs/map-js.geojson</a> when the page opened.
+> For example, the content you are reading is a `Doc` instance with an identifier of `map-js`, rendered in a "detail" view for the `docs` list page.  `docs` is registered in the <a href="http://wq.io/config.json" rel="external">wq configuration for this website</a> as `"map": true`.  Since wq/map.js is loaded for this website, the map at the top of this document should have automatically loaded <a href="http://wq.io/docs/map-js.geojson" rel="external">/docs/map-js.geojson</a> when the page opened.
 
 The default GeoJSON layers should work as long as your webserver is running [wq.db] or a service with a compatible [URL Structure].
 
