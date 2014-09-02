@@ -270,5 +270,5 @@ Rather than writing out the template objects by hand, you may be interested in t
 [camera.getPicture()]: http://plugins.cordova.io/#/package/org.apache.cordova.camera
 [broken Android implementations]: http://code.google.com/p/android/issues/detail?id=62220
 [dbio]: http://wq.io/docs/dbio
-[wq.db]: http://wq.io/docs/wq.db
+[wq.db]: http://wq.io/wq.db
 [task state names in Celery]: http://docs.celeryproject.org/en/latest/userguide/tasks.html#states
