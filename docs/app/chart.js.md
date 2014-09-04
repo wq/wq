@@ -50,29 +50,66 @@ These options control basic chart formatting and layout.
 |--------|---------|---------|
 | `plot.width(val)` | `700` | Sets the drawing width in pixels (including margins).  The `<svg>` object should generally have the same dimensions.
 | `plot.height(val)` | `300`| Sets the drawing height in pixels (including margins).
-| `plot.margins(obj)` | `{'left': 80, 'right': 10,`<br>`'top': 10, 'bottom': 30}` | Margins to leave between the actual plot and the edge of the SVG graphic.
+| `plot.legend(obj)` | auto | Legend size and position (`'right'` or `'bottom'`).  If position is `'right'`, `size` refers to the width of the legend, while if position is `'bottom'`, `size` refers to the height.  The default is to place the legend on the bottom if there are 5 or fewer datasets, and on the right if there are more.
 | `plot.xscale(obj)` | auto | Domain of x values in the dataset.  If unset, will be automatically determined from the data and optionally "niced" to a round range.  If set, should be an object of the form `{'xmin': val, 'xmax': val}`.
 | `plot.xscalefn(fn)` | `d3.scale.linear` | Actual d3 function to use to generate the scale.
 | `plot.xnice(fn)` | `null` | Function to use to generate a nice scale.
+| `plot.xticks(val)` | `null` | Explicitly set the number of ticks to use for the x axis.
 | `plot.yscales(obj)` | auto | Domain(s) of y values in the dataset.  If unset, will be automatically determined from the data and niced to a round range.  If there are multiple datasets with different units, a separate yscale will be computed for each unit.  If set, should be an object of the form `{unit1: {'ymin': val, 'ymax': val}, unit2: {'ymin': val, 'ymax': val}`
 | `plot.yscalefn(fn)` | `d3.scale.linear` | Actual d3 function to use to generate the y scale(s)
+| `plot.cscale(fn)` | `d3.scale.category20()` | Color scale to use (one color for each dataset)
+
+### Margins
+
+There is also a special method, `plot.setMargin(name, margin)`, that can be used to "reserve" named spaces at the margins of the chart.  `setMargin` takes two arguments: a unique margin `name`, and a `margin` object which should have at least one of `left`, `right`, `top`, or `bottom` set.  The values should be distances measured in pixels.  All of the set margins are aggregated by `plot.getMargins()` to determine the final margins for the chart.
+
+```javascript
+// Reserve 30px at the top for a custom header
+plot.setMargin("myheader", {'top': 30});
+
+var allMargins = plot.getMargins();
+// allMargins.top == 5 + 30 == 35
+```
+
+Margins for the legend and axes are set automatically using the `setMargin()` mechanism.  The margin names `padding`, `xaxis`, `yaxis`, and `legend` are reserved for this purpose.
 
 ### Accessors
-Accessors control how the data object is parsed.  Overriding the defaults makes it possible to chart data objects that may not be of the format shown above.
+
+Accessors control how the data object is parsed, i.e. how data properties are accessed.  Accessors are simple functions that take an object and return a value.  Overriding the default accessor makes it possible to chart data structures that are not of the format shown above.
+
+#### Dataset Accessors
 
 | Option | Default | Purpose |
 |--------|---------|---------|
-| `plot.id(fn(dataset))` | `dataset.id` | Unique identifier for the dataset as a whole.
-| `plot.label(fn(dataset))` | `dataset.label` | Label to be shown in the legend.
+| `plot.datasets(fn(rootObj))` | `rootObj.data` or `rootObj` | Returns the array of datasets within `rootObj`.  If `rootObj` is already an array, it can be used directly.
+| `plot.id(fn(dataset))` | `dataset.id` | Accesses the unique identifier for the dataset as a whole.
+| `plot.label(fn(dataset))` | `dataset.label` | Accesses the label to be shown in the legend for this dataset.
 | `plot.items(fn(dataset))` | `dataset.list` | Accessor for the actual data values to be plotted.
 | `plot.yunits(fn(dataset))` | `dataset.units` | Units for the dataset y values (determines which y scale will be used).
 | `plot.xunits(fn(dataset))` | `unset` | Units for the dataset x values.  Defined differently by each chart type.
+| `plot.xmin(fn(dataset))` | `d3.min(items(dataset),xvalue)` | Function to determine minimum x value of the dataset.
+| `plot.xmax(fn(dataset))` | `d3.max(items(dataset),xvalue)` | Function to determine maximum x value of the dataset.
+| `plot.ymin(fn(dataset))` | `d3.min(items(dataset),yvalue)` | Function to determine minimum y value of the dataset.
+| `plot.ymax(fn(dataset))` | `d3.max(items(dataset),yvalue)` | Function to determine maximum y value of the dataset.
+| `plot.xset(fn(rootObj))` | all unique x values | Function to access an array containing all unique x values across all datasets in `rootObj`.  Not meant to be overridden.
+
+#### Legend Accessors
+
+| Option | Default | Purpose |
+|--------|---------|---------|
+| `plot.legendItems(fn(rootObj))` | `datasets(rootObj)` | Returns an array of legend items.  Can be overridden if there are fewer (or more) legend items than datasets for some reason.
+| `plot.legendItemId(fn(legendItem))` | `id(legendItem)` | Returns the unique identifier for a legend item.  Can be overridden if this is not the same as the dataset id.
+| `plot.legendItemLabel(fn(legendItem))` | `label(legendItem)` | Returns the label for a legend item.  Can be overridden if this is not the same as the dataset label.
+
+#### Accessors for Individual Values
+
+| Option | Default | Purpose |
+|--------|---------|---------|
 | `plot.xvalue(fn(d))` | `unset` | Accessor for x values of individual data points.  Defined differently by each chart type.
-| `plot.xmin(fn(dataset))` | `d3.min(items,xvalue)` | Function to determine minimum x value of the dataset.
-| `plot.xmax(fn(dataset))` | `d3.max(items,xvalue)` | Function to determine maximum x value of the dataset.
-| `plot.yvalue(fn(d))` | `unset` | Accessor for x values of individual data points.  Defined differently by each chart type.
-| `plot.ymin(fn(dataset))` | `d3.min(items,yvalue)` | Function to determine minimum y value of the dataset.
-| `plot.ymax(fn(dataset))` | `d3.max(items,yvalue)` | Function to determine maximum y value of the dataset.
+| `plot.xscaled(fn(d))` | `xscale(xvalue(d))` | Convenience function to access an x value and return its scaled equivalent.  Not meant to be overridden.
+| `plot.yvalue(fn(d))` | `unset` | Accessor for y values of individual data points.  Defined differently by each chart type.
+| `plot.yscaled(fn(scaleid)(d))` | `yscales[scaleid](yvalue(d))` | Convenience function to access a function that can take a y value and return its scaled equivalent.  (The nested function is needed since there may be more than one y axis).  Not meant to be overridden.
+| `plot.itemid(fn(d))` | `xvalue(d)+'='+yvalue(d)` | Accessor for uniquily identifying individual data values.
  
 ## Scatter plots
 [chart.scatter()] returns a function useful for drawing basic x-y scatterplots.
@@ -88,12 +125,7 @@ Accessors control how the data object is parsed.  Overriding the defaults makes 
 | `plot.yunits(fn(dataset))` | `dataset.yunits` |
     
 ### Additional Options
-Scatter extends the base chart with two new options:
-
-| Option | Default | Purpose |
-|--------|---------|---------|
-| `plot.cscale(fn)` | `d3.scale.category20()` | Color scale to use (one color for each dataset)
-| `plot.legend(obj)` | auto | Legend size and position (`'right'` or `'bottom'`).  If position is `'right'`, `size` refers to the width of the legend, while if position is `'bottom'`, `size` refers to the height.  The default is to place the legend on the bottom if there are 5 or fewer datasets, and on the right if there are more.
+WIP
 
 ## Time series plots
 [chart.timeSeries()] is a simple extension to `scatter` that assumes time as the x value.
@@ -152,7 +184,8 @@ The base chart provides "hooks" that allow for specifying the chart rendering pr
 | Option | Purpose |
 |--------|---------|
 | `plot.init(fn(datasets))` | Initial chart configuration.  If defined, the init function will be passed an array of all of the datasets.
-| `plot.init(fn(dataset))` | Actual rendering routine for each dataset.
+| `plot.renderBackground(fn(dataset))` | Render a background layer for each dataset
+| `plot.render(fn(dataset))` | Render the primary layer for each dataset.
 | `plot.wrapup(fn(datasets, opts))` | Wrapup routine, useful for drawing e.g. legends.  `opts` will be an object containing computed widths and heights for the actual chart inner and outer drawing areas.
 
 To define your own chart function generator, you could do something like the following:
