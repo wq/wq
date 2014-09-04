@@ -132,7 +132,7 @@ The default template contexts for detail and edit views contain a number of cont
 
 ### `app.sync()`
 
-Triggers a background sync of pending outbox items in [wq/store.js].  Called automatically at regular intervals if `backgroundSync` is enabled (see Configuration below).
+Triggers a background sync of pending outbox items in [wq/store.js].  Called automatically at regular intervals if `backgroundSync` is enabled (see Configuration below).  Outbox items causing server errors will be excluded from further syncs after 3 sync attempts (This threshold can be controlled via [wq/store.js]' `maxRetries` option.)  To try resending all unsaved items, including those causing server errors (for example in response to a user-initiated sync), call `app.sync(true)` instead of `app.sync()`.
 
 ### `app.user`
 
