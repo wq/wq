@@ -39,7 +39,7 @@ The default GeoJSON layers should work as long as your webserver is running [wq.
 define(['leaflet', 'wq/app', 'wq/map', ...], function(L, app, map, ...) {
     app.init(...);
     map.init(...);
-}
+});
 ```
 
 The map module provides the following methods and properties.

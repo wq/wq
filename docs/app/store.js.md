@@ -19,7 +19,7 @@ This design philosophy is reflected in wq/store.js with a built-in **outbox** th
 // myapp.js
 define(['wq/store', ...], function(ds, ...) {
    ds.init(...);
-}
+});
 ```
 
 The ds module object is a singleton instance of an internal `_Store` "class".  The class provides the following methods and properties.  The main ds object contains an additional method, `getStore()`, which can be used to retrieve other _Store instances.

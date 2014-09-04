@@ -18,7 +18,7 @@ If you are using both [wq.app] and [wq.db] together, you may be interested in [w
 // myapp.js
 define(['wq/pages', ...], function(pages, ...) {
     pages.init(...);
-}
+});
 ```
 
 The pages module provides the following methods and properties.

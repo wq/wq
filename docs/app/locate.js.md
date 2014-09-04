@@ -13,7 +13,7 @@ wq/locate.js
 // myapp.js
 define(['wq/locate', ...], function(locate, ...) {
     locate.locate(...);
-}
+});
 ```
 
 The locate module provides the following methods and properties:

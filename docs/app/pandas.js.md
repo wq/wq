@@ -19,7 +19,7 @@ The typical workflow is something like this:
 // myapp.js
 define(['d3', 'wq/pandas', ...], function(d3, pandas, ...) {
     pandas.get(...);
-}
+});
 ```
 
 The pandas module provides two functions: `pandas.parse()` and `pandas.get()`.  For similarity with `d3.csv()`, these are also added to the `d3` object as `d3.pandas.parse()` and `d3.pandas()`, respectively.

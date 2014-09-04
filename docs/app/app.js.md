@@ -25,7 +25,7 @@ The specific concepts leveraged by wq/app.js include:
 // myapp.js
 define(['wq/app', ...], function(app, ...) {
     app.init(...);
-}
+});
 ```
 
 The app module provides the following methods and properties.

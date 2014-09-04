@@ -12,7 +12,7 @@ wq/chart.js
 // myapp.js
 define(['wq/chart', ...], function(chart, ...) {
     chart.timeSeries(...);
-}
+});
 ```
 
 The chart functions return a [configurable function] that can be called on an d3 selection that already has data bound to it.  By convention, the generated chart function is referred to as `plot` to differentiate it from the chart module.  However, any variable name can be used.
