@@ -98,6 +98,7 @@ name | purpose
 -----|---------
 `debug` | Set the debug level for `console.log()` information.  Level 0 (or false) disables debugging.  Level 1 logs network requests, 2 logs all data lookups, and 3 logs actual data values.
 `jsonp` | Whether to use jsonp instead of AJAX (for cross-domain requests)
+`maxRetries` | The maximum number of times to send an outbox item causing server errors before giving up.  The default is 3.  Send failures due to being offline are not counted.  Used by `ds.sendAll()` and [wq/app.js]' `app.sync()`
 `formatKeyword` | If `true`, disables special handling of the "format" `query` argument (see above).
 `saveMethod` | Default method to use for saving data to the server.  The "default" default is `POST`.
 `batchService` | An alternate webservice URL to use when submitting batch requests (see `sendBatch()` below)
@@ -277,10 +278,10 @@ $form.submit(function() {
 
 `ds.sendItem()` retrieves the outbox item specified by `id` and submits it to the web service.  The callback will be passed two arguments: the outbox `item`, and the `result` returned by the web service (if any).  The outbox `item` will have a property `saved` that indicates whether the item successfully made it to the server.  (Success is determined in part by the `applyResult` setting, see `ds.init()` above).  Any errors will be made available on `item.error`.
 
-#### `ds.sendAll(callback)`
-`ds.sendAll()` sends all unsaved items in the outbox to the server.  `ds.sendBatch()` will be used if a batch service is available, otherwise each item will be sent separately with `ds.sendItem()`.  The callback will be called with a `result` variable with one of three values: `true`, indicating all items were sent successfully; `false`, indicating one or more requests failed, or `null`, indicating an unexpected error sending the data (e.g. a request to send data that was already successfully saved).
+#### `ds.sendAll(callback, [retryAll])`
+`ds.sendAll()` sends all unsaved items in the outbox to the server, except for those items that have previously been sent up to `maxRetries` times without success.  `retryAll` can be specified to retry sending everything, including repeatedly failing items.  `ds.sendBatch()` will be used if a batch service is available, otherwise each item will be sent separately with `ds.sendItem()`.  The callback will be called with a `result` variable with one of three values: `true`, indicating all items were sent successfully; `false`, indicating one or more requests failed, or `null`, indicating an unexpected error sending the data (e.g. a request to send data that was already successfully saved).
 
-#### `ds.sendBatch(callback)`
+#### `ds.sendBatch(callback, [retryAll])`
 `ds.sendBatch()` sends all unsent items in the outbox to the server in a single request.  The server needs to have an API capable of handling multiple requests, and the URL for that service should have been provided to `ds.init()` as the `batchService` option.
 
 #### `ds.unsaved([listQuery])`
@@ -351,9 +352,11 @@ Search through the list to find items matching the specified `filter` (which sho
 
 `list.forEach()` mimics `Array.prototype.forEach` to provide a simple way to iterate over all values in the list, automatically moving between data pages as needed.
 
-#### `list.update(items, key, prepend)`
+#### `list.update(items, key, [prepend], [max_pages])`
 
-`list.update()` updates the locally stored list with new items.  The `items` should be an array of items to update, and the `prepend` should be specified if new items should be added at the beginning of the first page of data, rather than at the end of the last page. `list.update()` calls `ds.updateList()` internally.
+`list.update()` updates the locally stored list with new and updated items.  The `items` should be an array of items to update, and the `key` should be the name of a primary key to use to differentiate between existing and new items (usually `"id"`).  `prepend` can be specified if new items should be added at the beginning of the first page of data, rather than at the end of the last page.   Like `list.find()` and `list.filter()`, `max_pages` can be used to restrict how many data pages to search locally for existing items.  If `max_pages` is reached and `prepend` is false, any new items will be returned.
+
+`list.update()` calls `ds.updateList()` internally.
 
 #### `list.prefetch(callback)`
 
