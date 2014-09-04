@@ -37,14 +37,17 @@ The entered coordinates are automatically displayed on a Leaflet map.  "Accuracy
 >
 > Similarly, having a user tap the map to specify their location is practically guaranteed to provide inaccurate results unless they zoom in first.  For this reason, the `interactive` mode approximates an accuracy measurement based on zoom level (accuracy = 2 pixels of screen space converted to meters based on the zoom level).  Accuracy can serve as a reminder to the user to zoom in, or even to enforce a minimum level of accuracy in your form processing logic.
 
-The Locator widget accepts two arguments: a Leaflet map object, and a mapping of jQuery-wrapped fields to use for setting and storing location information.  The expected fields are:
+The Locator widget accepts up to three arguments: a Leaflet map object, a mapping of jQuery-wrapped `fields` to use for setting and storing location information, and an optional `config` object.  The expected `fields` are:
 
  * `toggle`: A set of radio buttons (or a select menu) that will change the widget mode.  The values for each option should be one or more the modes listed above.
  * `latitude`: A text input that will recieve (or provide) the latitude
  * `longitude`: A text input that will recieve (or provide) the longitude
  * `accuracy`: A text input that will recieve the computed accuracy
 
-In addition to automatically updating the form inputs, the locator provides an `onupdate()` hook for custom handling of entered locations.
+If specified, the locator `config` option should have up to three callback functions that will be executed at various points in the process:
+ * `onSetMode(mode)`: Called whenever the locator mode changes, e.g. in response to the user clicking the `toggle` button.
+ * `onUpdate(location, accuracy)`: Called when ever a new location is determined.
+ * `onError(event)`: Called when GPS lookup fails.
 
 ### Example
 
@@ -86,25 +89,31 @@ var map = L.map('map-div-id');
 // Initialize basemaps & location ...
 
 // Configure Locator
-var locator = locate.locator(map, {
+
+var fields = {
     'toggle': $('input[name=mode]'),
     'latitude': $('input[name=latitude]'),
     'longitude': $('input[name=longitude]'),
     'accuracy': $('input[name=accuracy]')
-});
-// Equivalent:
-// var locator = new locate.Locator(map, {...});
+};
 
-// Custom handler for location updates
-locator.onupdate = function(loc, accuracy) {
-    if (accuracy > 1000) {
-        $('#message').html(
-            "Note: your location accuracy appears to be off by more than 1km."
-        );
-    } else {
-        $('#message').html("");
+var config = {
+    // Custom handler for location updates
+    'onUpdate': function(loc, accuracy) {
+        if (accuracy > 1000) {
+            $('#message').html(
+                "Note: your location accuracy appears to be off by more than 1km."
+            );
+        } else {
+            $('#message').html("");
+        }
     }
 }
+
+var locator = locate.locator(map, fields, config);
+// Equivalent:
+// var locator = new locate.Locator(map, fields, options);
+
 
 });
 ```
@@ -172,9 +181,14 @@ function error(evt) {
 });
 ```
 
-### Advanced Options
+`locate.locate()` takes up to 5 arguments:
 
-Additional options...
+ - a `success` callback
+ - an `error` callback
+ - `highAccuracy` boolean (equivalent to `opts.enableHighAccuracy` with a 1 min `timeout`)
+ - `watch` boolean (equivalent to `opts.watch`)
+ - `opts` object, which will be updated per the preceding arguments and then passed on to [L.Map.locate()]
 
 [wq/locate.js]: https://github.com/wq/wq.app/blob/master/js/wq/locate.js
 [AMD]: http://wq.io/docs/amd
+[L.Map.locate()]: http://leafletjs.com/reference.html#map-locate-options
