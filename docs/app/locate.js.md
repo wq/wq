@@ -45,6 +45,7 @@ The Locator widget accepts up to three arguments: a Leaflet map object, a mappin
  * `accuracy`: A text input that will recieve the computed accuracy
 
 If specified, the locator `config` option should have up to three callback functions that will be executed at various points in the process:
+
  * `onSetMode(mode)`: Called whenever the locator mode changes, e.g. in response to the user clicking the `toggle` button.
  * `onUpdate(location, accuracy)`: Called when ever a new location is determined.
  * `onError(event)`: Called when GPS lookup fails.
