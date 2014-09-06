@@ -2,7 +2,7 @@ wq/chart.js
 ========
 [wq/chart.js]
 
-**wq/chart.js** is a [wq.app module] providing [reusable charts] powered by the excellent [d3.js] library.  Some basic chart types (`scatter`, `timeSeries`, `boxplot`) are included, as well as the ability to create new chart types.  The [chart] contrib module in [wq.db] can generate data for each of these chart types.
+**wq/chart.js** is a [wq.app module] providing [reusable charts] powered by the excellent [d3.js] library.  Some basic chart types (`scatter`, `timeSeries`, `boxplot`) are included, as well as the ability to create new chart types.  Any data source can be used, as long as enough information is provided to understand the structure of the data.
 
 <svg data-interactive style="width:700px;height:300px"></svg>
 
@@ -103,7 +103,7 @@ Accessors control how the data object is parsed, i.e. how data properties are ac
 | `plot.legendItemId(fn(legendItem))` | `id(legendItem)` | Returns the unique identifier for a legend item.  Can be overridden if this is not the same as the dataset id.
 | `plot.legendItemLabel(fn(legendItem))` | `label(legendItem)` | Returns the label for a legend item.  Can be overridden if this is not the same as the dataset label.
 | `plot.legendItemShape(fn(legItemId))` | `"rect"` | The name of an SVG tag to use for legend items.
-| `plot.legendItemStyle(fn(legItemId)(sel))` | `plot.rectStyle` | Returns a function for the given legend item id (`legItemId`) that can set the appropriate attributes necessary to style the provided d3 selection (`sel`) which will be the SVG tag of the type specified by `legendItemShape`.
+| `plot.legendItemStyle(fn(legItemId)(sel))` | `plot.rectStyle` | Returns a function for the given legend item id (`legItemId`) that can set the appropriate attributes necessary to style the provided d3 selection (`sel`) which will be an SVG tag of the type specified by `legendItemShape`.
 
 #### Accessors for Individual Values
 
@@ -116,10 +116,14 @@ Accessors control how the data object is parsed, i.e. how data properties are ac
 | `plot.translate(fn(scaleid)(d))` | `"translate(x,y)"` | Returns a function that can generate a `translate()` string (for use as a SVG transform value), containing the `xscaled` and `yscaled` values for a given data point.
 | `plot.itemid(fn(d))` | `xvalue(d)+'='+yvalue(d)` | Accessor for uniquily identifying individual data values.
 ## Scatter plots
-[chart.scatter()] returns a function useful for drawing basic x-y scatterplots.
+
+[chart.scatter()] returns a function useful for drawing basic x-y scatterplots and line charts.  One or more datasets containing x and y values should be provided.  All datasets should have the same units for x values, but can can have different y units if needed.  Alternating left and right-side y axes will be created for each unique y unit (so it's best to have no more than two).
+
+`chart.scatter()` can be used with `ScatterView` in [wq.db]'s [chart] contrib module.
 
 ### Default Overrides
-`scatter` defines and/or overrides the following base chart defaults:
+
+`chart.scatter()` overrides the following base chart defaults:
 
 | Option | scatter Default |
 |--------|-----------------|
@@ -127,15 +131,32 @@ Accessors control how the data object is parsed, i.e. how data properties are ac
 | `plot.xunits(fn(dataset))` | `dataset.xunits` |
 | `plot.yvalue(fn(d))` | `d.y` |
 | `plot.yunits(fn(dataset))` | `dataset.yunits` |
-    
+| `plot.legendItemShape(fn(legItemId))` | Same as `pointShape()` (see below) |
+| `plot.legendItemStyle(fn(legItemId)(sel))` | Same as `pointStyle()` (see below) |
+
 ### Additional Options
-WIP
+
+`chart.scatter()` defines these additional options:
+
+| Option | Default | Purpose |
+|--------|---------|---------|
+| `plot.drawPointsIf(fn(dataset))` | Up to 50 items | Whether to draw points for the given dataset.  Can be a function returning `true` if you always want points drawn.
+| `plot.drawLinesIf(fn(dataset))` | &gt; 50 items | Whether to draw lines for the given dataset.  Can be a function returning `true` if you always want lines drawn.  Specified separately from `drawPointsIf()` in case you want to have both lines and points for some reason.
+| `plot.lineStyle(fn(datasetId)(sel))` | Sets `stroke` with `plot.cscale` | Used when the `drawLinesIf()` function returns true. Returns a function for the given dataset id that can the appropriate attributes necessary to style the provided d3 selection (`sel`) which will be an SVG `<path>`.
+| `plot.pointShape(datasetId)` | `"circle"` | Used when the `drawPointsIf()` function returns true. Specifies the shape to use when rendering points for each dataset. This value will also be used for legend items for consistency.
+| `plot.pointStyle(fn(datasetId)(sel))` | `plot.circleStyle` | Returns a function for the given dataset id that can set the appropriate attributes necessary to style the provided d3 selection (`sel`) which will be an SVG tag of the type specified by `pointShape`.
+| `plot.pointover(fn(datasetId)(d))` | Adds highlight | Returns a function for the given dataset id that will be called with the data for a point whenever the point is hovered over.
+| `plot.pointout(fn(datasetId)(d))` | Removes highlight | " " the point is no longer being hovered over.
+| `plot.pointLabel(fn(datasetId)(d))` | `"{datasetId} at {d.x}: {d.y}"` | Returns a function for the given dataset id that can generate tooltip labels for data points.  These will be added via an SVG `<title>` tag.  Note that the tooltip is distinct from the `pointover()` functionality even though both appear at the same time.
 
 ## Time series plots
-[chart.timeSeries()] is a simple extension to `scatter` that assumes time as the x value.
+
+[chart.timeSeries()] is a simple extension to `chart.scatter()` that assumes the x values are times or dates.
+
+`chart.timeSeries()` can be used with `TimeSeriesView` in [wq.db]'s [chart] contrib module.
 
 ### Default Overrides
-`timeSeries` defines and/or overrides the following `scatter` chart defaults:
+`chart.timeSeries()` overrides the following `scatter` chart defaults:
 
 | Option | timeSeries Default |
 |--------|--------------------|
@@ -145,15 +166,17 @@ WIP
 | `plot.xnice(fn)` | `d3.time.year` |
     
 ### Additional Options
-Scatter extends the base chart with one new option:
+`chart.timeSeries()` defines one additional option:
 
 | Option | Default | Purpose |
 |--------|---------|---------|
-| `plot.timeFormat(val)` | `"%Y-%m-%d"` | Format string (converted to function) to use to parse time values.
+| `plot.timeFormat(val)` | `"%Y-%m-%d"` | Format string to use to parse time values.
 
-## Box & whisker plots
+## Box & Whisker plots
 
-[chart.boxplot()] returns a function useful for rendering simple box-and-whisker plots.    The quartile data for each box should be precomputed.  Currently `boxplot` expects each `dataset` to have the following format:
+[chart.boxplot()] returns a function useful for rendering simple box-and-whisker plots.  The quartile data for each box should be precomputed.
+
+Currently `boxplot` expects each `dataset` to have the following format:
 
 ```javascript
 {
@@ -180,9 +203,12 @@ The x value (`year` in the above example) is used to define an ordinal scale whe
 var plot = chart.boxplot().xvalue(function(d) { return d.year });
 ```
 
-The maximum, minimum, median, and 25th and 75th percentiles must be defined with the attribute names shown in the above example.  In the future the boxplot function will support custom accessors for these values as well.
+The minimum, 25th percentile, median, 75th percentile, and maximum must be defined with the attribute names shown in the above example (`min`, `p25`, `median`, `p75` and `max`, respectively).  In the future the boxplot function will support custom accessors for these values as well.
+
+`chart.boxplot()` can be used with `BoxPlotView` in [wq.db]'s [chart] contrib module.
 
 ## Custom Charts
+
 The base chart provides "hooks" that allow for specifying the chart rendering process before, during, and after each dataset is rendered.  Each of the chart types above defines one or more of these functions.  They can also be used if you want to define a new chart type or significantly alter the behavior of one of the existing types.
 
 | Option | Purpose |
@@ -191,8 +217,8 @@ The base chart provides "hooks" that allow for specifying the chart rendering pr
 | `plot.renderBackground(fn(dataset))` | Render a background layer for each dataset
 | `plot.render(fn(dataset))` | Render the primary layer for each dataset.
 | `plot.wrapup(fn(datasets, opts))` | Wrapup routine, useful for drawing e.g. legends.  `opts` will be an object containing computed widths and heights for the actual chart inner and outer drawing areas.
-| `plot.rectStyle(dsid)(sel)` | Returns a function for the given dataset id (`dsid`) that can set the appropriate attributes necessary to style the provided d3 selection (`sel`) which would normally be an SVG `<rect>` object.
-| `plot.circleStyle(dsid)(sel)` | Like `rectStyle` but for `<circle>`.
+| `plot.rectStyle(dsid)(sel)` | Returns a function for the given dataset id (`dsid`) that can set the appropriate attributes necessary to style the provided d3 selection (`sel`), which would normally be an SVG `<rect>` tag.
+| `plot.circleStyle(dsid)(sel)` | " " `<circle>` tag.
 
 To define your own chart function generator, you could do something like the following:
 
