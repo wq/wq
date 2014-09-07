@@ -1,5 +1,5 @@
 ---
-order: 9
+order: 8
 ---
 
 Other Modules
@@ -15,7 +15,6 @@ wq/appcache.js is typically imported via [AMD] as `ac`, though any local variabl
 
 ```javascript
 define(['wq/appcache', ...], function(ac, ...) {
-
 ac.init(_onUpdate);
 
 function _onUpdate(status, msg) {

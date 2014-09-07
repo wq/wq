@@ -1,3 +1,7 @@
+---
+order: 2
+---
+
 wq/chart.js
 ========
 [wq/chart.js]
