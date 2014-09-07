@@ -29,7 +29,7 @@ The pages module provides the following methods and properties.
 
 ### `pages.init()`
 
-`pages.init(baseurl, opts)` initializes the pages router with a base url (`baseurl`) and other configuration options (`opts`).  If your application is not running at the top level of your website, you should call `pages.init()` before registering any URLs or the URL matching will not work.  If specified, `baseurl` should not have a trailing slash.
+`pages.init(baseurl, opts)` initializes the pages router with a base url (`baseurl`) and other configuration options (`opts`).  If your application is not running at the top level of your website, you should call `pages.init()` before registering any URLs, or the URL matching will not work.  If specified, `baseurl` should not have a trailing slash.
 
 There are three available options:
 
@@ -57,18 +57,26 @@ pages.init("/app", {'tmpl404': "notfound"});
 
 name | purpose
 -----|---------
-`path` | A string containing regular expression with the URL route to watch for.  The path will be automatically prepended with the `baseurl` and appended with a regular expression that matches URL parameters.  For convenience, any instances of the string `<slug>` will be converted to an appropriate regex as well.  (See the examples below).
+`path` | A string containing a partial regular expression indicating the URL route / path to watch for.  The path will be automatically prepended with the `baseurl` and appended with a regular expression that matches URL parameters.  For convenience, any instances of the string `<slug>` will be converted to a regex group matching url fragments.  (See the example below).
 `fn` | A callback function (or the name of a callback function if `obj` is specified).  When a URL matches, the callback function will be called with the arguments listed below (see "Callback Arguments").
 `obj` | (Optional) An object that contains a callback function (used with a string `fn`).
 `prevent` | (Optional) Whether or not to prevent the default navigation action.  Should be a boolean or a function that returns a boolean.  If a function is given, it will be called with the first three callback arguments (see "Callback Arguments" below).  The default `prevent` function returns `true` except for in a few edge cases around form handling.
 
 The callback function for `pages.register()` should almost always call `pages.go()` with appropriate arguments as described below.
 
+```javascript
+pages.register('custompage/<slug>', function(match, ui, params) {
+    var url = match[0], slug = match[1];
+    var context = customContext(slug, params);
+    pages.go(url, "custompage", context, ui);
+});
+```
+
 ### `pages.addRoute()`
 
 `pages.addRoute()` is used to register custom behaviors in response to page events other than initial navigation.  The most common use case is to customize a page after it rendered via the `pageshow` event.   `pages.addRoute()` is called internally by `pages.register()`.
 
-`pages.register()` takes up to four arguments, specified in order below.
+`pages.addRoute()` takes up to four arguments, specified in order below.
 
 name | purpose
 -----|---------
@@ -77,6 +85,13 @@ name | purpose
 `fn` | A callback function (or the name of a callback function if `obj` is specified).  When a URL matches, the callback function will be called with the arguments listed below (see "Callback Arguments").
 `obj` | (Optional) An object that contains a callback function (used with a string `fn`).
 
+
+```javascript
+pages.addRoute('custompage/<slug>', 's', onShow);
+function onShow(match, ui, params, hash, evt, $page) {
+    $page.find('div.hidden').hide();
+});
+```
 
 ### Callback Arguments
 
