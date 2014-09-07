@@ -4,7 +4,7 @@ wq/chart.js
 
 **wq/chart.js** is a [wq.app module] providing [reusable charts] powered by the excellent [d3.js] library.  Some basic chart types (`scatter`, `timeSeries`, `boxplot`) are included, as well as the ability to create new chart types.  Any data source can be used, as long as enough information is provided to understand the structure of the data.
 
-<svg data-interactive style="width:700px;height:300px"></svg>
+<svg data-interactive="top" style="width:700px;height:400px;border:1px solid #ccc;margin-left:auto;margin-right:auto;display:block;"></svg>
 
 ## API
 
@@ -115,9 +115,12 @@ Accessors control how the data object is parsed, i.e. how data properties are ac
 | `plot.yscaled(fn(scaleid)(d))` | `yscales[scaleid](yvalue(d))` | Convenience function to access a function that can take a y value and return its scaled equivalent.  (The nested function is needed since there may be more than one y axis).  Not meant to be overridden.
 | `plot.translate(fn(scaleid)(d))` | `"translate(x,y)"` | Returns a function that can generate a `translate()` string (for use as a SVG transform value), containing the `xscaled` and `yscaled` values for a given data point.
 | `plot.itemid(fn(d))` | `xvalue(d)+'='+yvalue(d)` | Accessor for uniquily identifying individual data values.
+
 ## Scatter plots
 
 [chart.scatter()] returns a function useful for drawing basic x-y scatterplots and line charts.  One or more datasets containing x and y values should be provided.  All datasets should have the same units for x values, but can can have different y units if needed.  Alternating left and right-side y axes will be created for each unique y unit (so it's best to have no more than two).
+
+<svg data-interactive="scatter" style="width:700px;height:300px;border:1px solid #ccc;margin-left:auto;margin-right:auto;display:block;"></svg>
 
 `chart.scatter()` can be used with `ScatterView` in [wq.db]'s [chart] contrib module.
 
@@ -153,6 +156,8 @@ Accessors control how the data object is parsed, i.e. how data properties are ac
 
 [chart.timeSeries()] is a simple extension to `chart.scatter()` that assumes the x values are times or dates.
 
+<svg data-interactive="timeSeries" style="width:700px;height:400px;border:1px solid #ccc;margin-left:auto;margin-right:auto;display:block;"></svg>
+
 `chart.timeSeries()` can be used with `TimeSeriesView` in [wq.db]'s [chart] contrib module.
 
 ### Default Overrides
@@ -175,6 +180,8 @@ Accessors control how the data object is parsed, i.e. how data properties are ac
 ## Box & Whisker plots
 
 [chart.boxplot()] returns a function useful for rendering simple box-and-whisker plots.  The quartile data for each box should be precomputed.
+
+<svg data-interactive="boxplot" style="width:700px;height:300px;border:1px solid #ccc;margin-left:auto;margin-right:auto;display:block;"></svg>
 
 Currently `boxplot` expects each `dataset` to have the following format:
 
