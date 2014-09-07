@@ -62,7 +62,7 @@ name | default | purpose
 `autoZoom.animate` | `true` | Whether to animate the auto-zooming.  Incorporating animation is valuable as it gives the user a chance to visually orient the rendered features in relation to the original zoom level.
 `autoZoom.wait` | `0.5` | How long to wait before triggering auto-zooming, in seconds.  Waiting gives the map a chance to settle and makes the animation more salient.
 `autoZoom.sticky` | `true` | Whether to save the last zoom and center (from auto-zooming and/or regular panning) for use in the next map (`true`) or to always start out new maps from the default zoom and center (`false`).  Particularly useful in maintaining visual consistency for the user when they are quickly navigating between a series of list or detail pages in succession.
-`autoZoom.maxZoom` | `13` | The maximum zoom level to use when auto-zooming.  (Useful to avoid zooming in to far when the only feature is a single point)
+`autoZoom.maxZoom` | `13` | The maximum zoom level to use when auto-zooming.  (Useful to avoid zooming in too far when the only feature is a single point)
 `icon` | Object | Default icon settings for use with `map.createIcon()`.  The "default" default icon settings correspond to the default icon created by Leaflet (`L.Icon.Default`).
 
 By convention, the map defaults configuration is put as a section on the [wq/app.js config object] though it is not actually used by wq/app.js.
