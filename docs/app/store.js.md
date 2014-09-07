@@ -26,7 +26,7 @@ define(['wq/store', ...], function(ds, ...) {
 });
 ```
 
-The ds module object is a singleton instance of an internal `_Store` "class".  The class provides the following methods and properties.  The main ds object contains an additional method, `getStore()`, which can be used to retrieve other _Store instances.
+The ds module object is a singleton instance of an internal `_Store` "class".  The class provides the following methods and properties.  The main ds object contains an additional method, `ds.getStore(name)`, which can be used to create and/or retrieve other _Store instances.
 
 ### Argument Types
 
@@ -109,7 +109,7 @@ name | purpose
 `functions` | An object containing a set of "computable" fields to use when filtering (see `ds.filter()` below).
 `parseData(result)` | Defines a callback to be used when parsing JSON results from the web service.  Typically only needed if the top level of the JSON object is not the actual result (e.g. responses of the form `{"response": [ actual data ] }`).
 `parseBatchResult(result)` | A callback to use when parsing the result of a batch submit.  If not specified, `parseData` will be used.
-`applyResult(item, result)` | Defines a callback that takes a outbox item and a web service result and determines whether the result web service indicates a successful save.  If the result was successful, the `applyResult` callback should mark `item.saved = true`.
+`applyResult(item, result)` | Defines a callback that takes a outbox item and a web service result and determines whether the result from the web service indicates a successful save.  If the result was successful, the `applyResult` callback should mark `item.saved = true`.
 `localStorageFail(value, error)` | Defines a callback to use when `localStorage.setItem()` fails for any reason (e.g. when offline storage is full or disabled).  The callback will be provided with the value being saved as well as the error object.
 `fetchFail(query, error)` | Defines a callback to use when a network request fails or the result is unparseable.  The callback will be passed the original `query` and a description of the error.
 
@@ -140,14 +140,14 @@ The full API of the `list` object is documented in the List API section below.
 
 #### `ds.set(query, value, [memonly])`
 
-`ds.set()` is used to save a value to the local datastore.  Usually used with non-web `query` objects - use `ds.fetch()` to load and store web queries.  `memonly` causes the value to be saved to memory only and not to `localStorage`. 
+`ds.set()` is used to assign a value for the specified query to the local datastore.  `memonly` causes the value to be saved to memory only and not to `localStorage`. 
 
 ```javascript
 ds.set('name', "Example");
 // ds.get('name') == "Example";
 ```
 
-If `query` is a web query, it is assumed that `value` contains the results of a `ds.fetch()`. `ds.set()` does **not** update the server with the new value, so this function is not symmetric with `ds.get()`.   Use `ds.save()` for changes meant to be posted to the server.
+`ds.set()` is usually used with non-web `query` objects.  For web query objects, it's generally better to use `ds.fetch()` which can automatically cache web query results.  If `ds.set()` is used with a web query, it is assumed that `value` contains the results of a `ds.fetch()`. `ds.set()` does **not** update the server with the new value, so this function is not symmetric with `ds.get()`.   Use `ds.save()` for changes meant to be posted to the server.
 
 #### `ds.exists(query)`
 
@@ -213,7 +213,7 @@ function localStorageFail(item, error) {
 
 #### `ds.reset([all])`
 
-`ds.reset()` clears out all values created by the `ds`.  Values not created by the `ds` are left alone.  Specify `all` to clear out everything via `localStorage.clear()`.
+`ds.reset()` clears out all values created by the `ds`.  By default, values not created by the `ds` are left alone.  Specify `all` to clear out everything via `localStorage.clear()`.
 
 ### AJAX Methods
 
@@ -296,6 +296,10 @@ $form.submit(function() {
 
 `ds.unsavedItems()` returns the actual items in the outbox that haven't been saved yet.
 
+#### `ds.pendingItems([listQuery])`
+
+`ds.pendingItems()` returns the `unsavedItems` that haven't been sent at all (or at least haven't failed more than `maxRetries` times).
+
 ### Advanced Functions
 
 #### ```ds.toKey(query)```
@@ -343,7 +347,9 @@ Retrieve the items in the list at the provided page number (starting with page 1
 Search through the list to find the item matching the specified value (usually a primary key).  The `attr` (default `"id"`) and `usesvc` items are passed on to `ds.find()`.
 
 ```javascript
-var item27 = ds.find({'url': 'items'}, 27);
+ds.getList({'url': 'items'}, function(list) {
+    var item27 = list.find(27);
+});
 ```
 
 For server-paginated lists, all data pages will be searched until the item is found.  This can get out of hand for large datasets, so the `max_pages` argument can be used to limit the search to only the number of data pages you are comfortable storing locally.  (See also the `max_local_pages` option in the [wq config object], which is automatically passed to `list.find()` by [wq/app.js] when rendering detail views).
@@ -351,6 +357,12 @@ For server-paginated lists, all data pages will be searched until the item is fo
 #### `list.filter(filter, [any], [usesvc], [max_pages])`
 
 Search through the list to find items matching the specified `filter` (which should be an object of key-value pairs).  The `filter`, `any`, and `usesvc` options are passed on to `ds.filter()`.  Like `list.find()`, the `max_pages` argument can be used to restrict how many pages of data to search.
+
+```javascript
+ds.getList({'url': 'items'}, function(list) {
+    var type3items = list.filter({'type_id': 3});
+});
+```
 
 #### `list.forEach(callback, thisarg)`
 
