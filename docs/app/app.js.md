@@ -54,7 +54,7 @@ name | purpose
 
 ### `<form>` Handler
 
-`app.init()` registers a custom submit handler that takes normal form POSTs and converts them to REST API calls.  To avoid interaction with jQuery Mobile's own AJAX form handler, it is recommended to set `data-ajax="false"` on all forms using this functionality.  For model-backed list pages, these forms would normally be placed in `[page]_edit.html` templates and accessed via `/[page_url]/new` `/[page_url]/[id]/edit` .
+`app.init()` registers a custom submit handler that takes normal form POSTs and converts them to REST API calls.  To avoid interaction with jQuery Mobile's own AJAX form handler, it is recommended to set `data-ajax="false"` on all forms using this functionality.  For model-backed list pages, these forms would normally be placed in `[page]_edit.html` templates and accessed via `/[page_url]/new` and/or `/[page_url]/[id]/edit` .
 
 ```xml
 <form method="post" action="/items" data-ajax="false">
@@ -124,7 +124,7 @@ app.go(page, ui, params, [itemid], [edit], [url], [context])
 
 name | purpose
 -----|---------
-`name` | The name of a page listed in `config.pages` (described below)
+`page` | The name of a page listed in `config.pages` (described below)
 `ui` | A jQuery Mobile [ui object] describing options for an event
 `params` | Any additional URL parameters (`?name1=value1&name2=value2` etc.)
 `itemid` | (optional) The id for an individual item in a list (triggers a detail view instead of a list view)
@@ -140,7 +140,7 @@ Triggers a background sync of pending outbox items in [wq/store.js].  Called aut
 
 ### `app.user`
 
-If the application supports authentication and the user is logged in, `app.user` will be set with information about the current user provided by the server.  This information will also be available in the [template context], e.g. `{{is_authenticated}}{{user.username}}{{/is_authenticated}}`.
+If the application supports authentication and the user is logged in, `app.user` will be set with information about the current user provided by the server.  This information will also be available in the [template context], e.g. `{{#is_authenticated}}{{user.username}}{{/is_authenticated}}`.
 
 ### `app.config`, `app.wq_config`
 A copy of the wq/app.js configuration object (see below) and the [wq configuration object], respectively.  Initially `app.config.pages` and `app.wq_config.pages` are the same, but after logging in, `app.wq_config` is overwritten with an updated wq configuration object with permissions information specific to the logged-in user.  `app.config` is made available in the [template context] as `{{app_config}}`, while `app.wq_config` is provided as `{{wq_config}}`.
@@ -286,7 +286,7 @@ requirejs.config({
 requirejs(['myapp/main']);
 
 // js/myapp/main.js
-require(['wq/app', './config', './templates'],
+define(['wq/app', './config', './templates'],
 function(app, config, templates) {
    app.init(config, templates);
 });
@@ -331,7 +331,7 @@ These hooks can be customized by adding additional options to the wq/app.js conf
 
 #### `postsave(item, result, conf)`
 
-If background sync is disabled, `postsave()` is called after a successful form post with the `item` and `result` from [ds.save()], as well as the configuration for the page that initialized the save.  The default implementation of `postsave()` navigates to the detail view of the newly saved item (unless the [page configuration] has a `postsave` property).  `postsave()` is meant to be overridden in cases where `conf.postsave` does not provide enough flexibility.
+If background sync is disabled, `postsave()` is called after a successful form post with the `item` and `result` from [ds.save()], as well as the configuration for the page that initialized the save.  The default implementation of `postsave()` navigates to the detail view of the newly saved item, unless the [page configuration] has a `postsave` property.  `postsave()` is meant to be overridden in cases where `config.pages[name].postsave` does not provide enough flexibility.
 
 ```javascript
 config.postsave = function(item, result, conf) {
