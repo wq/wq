@@ -25,6 +25,7 @@ To accomplish these functions, BaseIO contains a number of methods and propertie
 `refresh()` | Triggers the [load] and [parse] mixins to ensure the dataset is ready for iteration.  Called automatically when the class is initialized.
 `copy(other_io, save=True)` | Copy the entire dataset to another IO instance, which presumably uses a different loader or parser.  This method provides a means of converting data between formats.  Any existing data on the other IO instance will be erased.  If `save` is `True` (the default), the `save()` method on the other IO will be immediately triggered after the data is copied.
 `sync(other_io, save=True)` | Like `copy()`, but uses `key_field` (see below) to update existing records in the other IO rather than replacing the entire dataset.  If a key is not found it is added automatically.
+`as_dataframe()` | Generates a [Pandas DataFrame] containing the data in the IO instance.  Useful for more complex data analysis tasks.  Requires Pandas which is not installed by default.
 
 ## Properties
 
@@ -86,6 +87,7 @@ Note that none of the pre-mixed IO classes in wq.io are nested.  The [climata li
 [load]: http://wq.io/docs/loaders
 [parse]: http://wq.io/docs/parsers
 [mapper]: http://wq.io/docs/mappers
+[Pandas DataFrame]: http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html
 [Parsers]: http://wq.io/docs/parsers
 [FileLoader]: http://wq.io/docs/loaders
 [dbio]: http://wq.io/docs/dbio
