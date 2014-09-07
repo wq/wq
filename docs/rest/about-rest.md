@@ -32,7 +32,6 @@ Submodule                | Description
 ------------------------ | -------------------------------------------
 [app]                    | Application controller/router (counterpart to [app.js])
 [auth]                   | Authentication API
-[caching]                | Compatibility layer for optional queryset and response caching
 context_processors       | Adds variables to template context for server-side rendering
 filters                  | Support for URL-based queryset filtering
 models                   | Custom [ContentType] model proxy to simplify common routing tasks
