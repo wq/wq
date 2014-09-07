@@ -38,10 +38,11 @@ The appropriate `Annotation`s will automatically be created behind the scenes.
 
 ## Extensions
 
-The [Vera module] adds extends annotate to provide support for tracking multiple versions of reported data with different provenance.
+The [Vera module] provides an implementation of [ERAV], which extends EAV with support for tracking multiple versions of reported data with different provenance.
  
 [wq.db.patterns.annotate]: https://github.com/wq/wq.db/blob/master/patterns/annotate
 [design pattern]: http://wq.io/docs/about-patterns
 [entity-attribute-value (EAV)]: http://en.wikipedia.org/wiki/Entity%E2%80%93attribute%E2%80%93value_model
 [Vera module]: http://wq.io/vera
+[ERAV]: http://wq.io/docs/erav
 [GenericRelation]: https://docs.djangoproject.com/en/dev/ref/contrib/contenttypes/#django.contrib.contenttypes.generic.GenericRelation
