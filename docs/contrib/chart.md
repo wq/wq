@@ -26,7 +26,7 @@ The chart module includes a very flexible URL-based filtering mechanism that lev
 
 `http://website/chart/site1/param1/param2/timeseries.csv`
 
-Will return two timeries datasets, corresponding to each of two parameters measured at site1.  Similarly, a URL of the form:
+Will return two timeseries datasets, corresponding to each of two parameters measured at site1.  Similarly, a URL of the form:
 
 `http://website/chart/site1/site2/param1/boxplot.csv`
 

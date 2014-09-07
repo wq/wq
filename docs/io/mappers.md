@@ -41,8 +41,8 @@ name | purpose
 -----|---------
 `map_field(field)` | Map a field name into its "usable" equivalent
 `unmap_field(field)` | Map a "usable" field name back to its original name
-`map_value(field, vield)` | Map a field value into its "usable" equivalent
-`unmap_value(field, vield)` | Map a "usable" value back into the source value
+`map_value(field, value)` | Map a field value into its "usable" equivalent
+`unmap_value(field, value)` | Map a "usable" value back into the source value
 
 ### DictMapper
 `DictMapper` extends `BaseMapper` with two simple dictionaries that facilitate field and value mapping.  The usable item `DictMapper` returns is still a `dict`.

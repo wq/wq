@@ -18,7 +18,7 @@ If you are only adding additional swatches to the default themes, you will only 
 
 Most of the arguments for the theme mixins are optional,
 with defaults that mostly correspond to the generic theme created by opening the jQuery Mobile [theme roller].
-In the example below, all of the options are shown with their default values.  In an actual project options with default values can be ommitted.  (For an example of an actual project, you may be interested in viewing the [themes.scss] for this website.)
+In the example below, all of the options are shown with their default values.  In an actual project options with default values can be omitted.  (For an example of an actual project, you may be interested in viewing the [themes.scss] for this website.)
 
 ### `themes.scss`
 

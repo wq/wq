@@ -118,11 +118,11 @@ Accessors control how the data object is parsed, i.e. how data properties are ac
 | `plot.yvalue(fn(d))` | *unset* | Accessor for y values of individual data points.  Defined differently by each chart type.
 | `plot.yscaled(fn(scaleid)(d))` | `yscales[scaleid](yvalue(d))` | Convenience function to access a function that can take a y value and return its scaled equivalent.  (The nested function is needed since there may be more than one y axis).  Not meant to be overridden.
 | `plot.translate(fn(scaleid)(d))` | `"translate(x,y)"` | Returns a function that can generate a `translate()` string (for use as a SVG transform value), containing the `xscaled` and `yscaled` values for a given data point.
-| `plot.itemid(fn(d))` | `xvalue(d)+'='+yvalue(d)` | Accessor for uniquily identifying individual data values.
+| `plot.itemid(fn(d))` | `xvalue(d)+'='+yvalue(d)` | Accessor for uniquely identifying individual data values.
 
 ## Scatter plots
 
-[chart.scatter()] returns a function useful for drawing basic x-y scatterplots and line charts.  One or more datasets containing x and y values should be provided.  All datasets should have the same units for x values, but can can have different y units if needed.  Alternating left and right-side y axes will be created for each unique y unit (so it's best to have no more than two).
+[chart.scatter()] returns a function useful for drawing basic x-y scatter plots and line charts.  One or more datasets containing x and y values should be provided.  All datasets should have the same units for x values, but can can have different y units if needed.  Alternating left and right-side y axes will be created for each unique y unit (so it's best to have no more than two).
 
 <svg data-interactive="scatter" style="width:700px;height:300px;border:1px solid #ccc;margin-left:auto;margin-right:auto;display:block;"></svg>
 
@@ -208,7 +208,7 @@ Currently `boxplot` expects each `dataset` to have the following format:
 }
 ```
 
-The x value (`year` in the above example) is used to define an ordinal scale where each item on the x axis corresponds to a box.  Thus, any text or numeric attribute can be defined as the x value, provided that the `xvalue` accesor is defined.
+The x value (`year` in the above example) is used to define an ordinal scale where each item on the x axis corresponds to a box.  Thus, any text or numeric attribute can be defined as the x value, provided that the `xvalue` accessor is defined.
 
 ```javascript
 var plot = chart.boxplot().xvalue(function(d) { return d.year });

@@ -45,7 +45,7 @@ A core priority of wq is compatibility with the widest possible array of technol
 ### The Tenuous Present: AMD
 The Asynchronous Module Definition API, pioneered by [RequireJS], is a backwards-compatible solution to the need for modules in the browser.  AMD modules can be used directly in the browser without any browserifying or transpiling.  As the name implies, dependencies can be loaded asynchronously on demand - though in practice they are often built together into a single file for deployment.  Importantly, there are a number of competing AMD-compatible module loaders beyond RequireJS, ensuring that the technology isn't limited to a single user community.
 
-In order to support asynchronous dependency loading while maintaining backwards compatiblity with old browsers, AMD modules are defined by calling a function (`define`), with the content of the module as a callback function.  Needless to say, this is a bit ugly compared to the simple elegance of ES6 modules (and, to a lesser extent, CommonJS/Node modules).  Nevertheless, the wide cross-platform capabilities of AMD make it a compelling choice as the module system for wq.app.
+In order to support asynchronous dependency loading while maintaining backwards compatibility with old browsers, AMD modules are defined by calling a function (`define`), with the content of the module as a callback function.  Needless to say, this is a bit ugly compared to the simple elegance of ES6 modules (and, to a lesser extent, CommonJS/Node modules).  Nevertheless, the wide cross-platform capabilities of AMD make it a compelling choice as the module system for wq.app.
 
 [wq.app]: http://wq.io/wq.app
 [wq framework]: http://wq.io

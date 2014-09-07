@@ -51,7 +51,7 @@ wq.db works best in a Linux environment, but should work fine on Windows.  Pleas
 
 ## Using only wq.app
 
-If you are only interested in using wq.app, you can run `pip install wq.app` or simply download the [latest release] directly from Github.  You will likely want to set up your project with the following layout (inspired by [volo]):
+If you are only interested in using wq.app, you can run `pip install wq.app` or simply download the [latest release] directly from GitHub.  You will likely want to set up your project with the following layout (inspired by [volo]):
 ```bash
 project/
   js/

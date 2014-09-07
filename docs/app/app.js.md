@@ -136,7 +136,7 @@ The default template contexts for detail and edit views contain a number of cont
 
 ### `app.sync()`
 
-Triggers a background sync of pending outbox items in [wq/store.js].  Called automatically at regular intervals if `backgroundSync` is enabled (see Configuration below).  Outbox items causing server errors will be excluded from further syncs after 3 sync attempts (This threshold can be controlled via [wq/store.js]' `maxRetries` option.)  To try resending all unsaved items, including those causing server errors (for example in response to a user-initiated sync), call `app.sync(true)` instead of `app.sync()`.
+Triggers a background sync of pending outbox items in [wq/store.js].  Called automatically at regular intervals if `backgroundSync` is enabled (see Configuration below).  Outbox items causing server errors will be excluded from further syncs after 3 sync attempts (This threshold can be controlled via [wq/store.js]' `maxRetries` option.)  To try re-sending all unsaved items, including those causing server errors (for example in response to a user-initiated sync), call `app.sync(true)` instead of `app.sync()`.
 
 ### `app.user`
 
@@ -384,7 +384,7 @@ app.init(config, templates);
 
 #### `attachmentTypes`
 
-`attachmentTypes` is a relatively complex set of hooks for working with the context variables that are automatically generated in edit views for models with "attachments", i.e. models that incorporate one or more of [wq.db]'s [design patterns].  They are grouped by the name of the attachement model (e.g. `annotation`, `identifier`).  The [default implementation] should give a sense of the overall options available, which are also described here.
+`attachmentTypes` is a relatively complex set of hooks for working with the context variables that are automatically generated in edit views for models with "attachments", i.e. models that incorporate one or more of [wq.db]'s [design patterns].  They are grouped by the name of the attachment model (e.g. `annotation`, `identifier`).  The [default implementation] should give a sense of the overall options available, which are also described here.
 
 An `attachmentTypes` section on the wq/app.js configuration object will be merged with the default options (unlike the other hook configurations, which replace the default implementations entirely).
 

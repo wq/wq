@@ -16,7 +16,7 @@ To accomplish these functions, BaseIO contains a number of methods and propertie
 
  1. Synchronization methods and configuration properties.  These are discussed below.
  2. Stub functions meant to be overridden by the mixin classes.
- 3. Magic methods to facilitate iteration and data manipulation.  These should rarely need to be called directly or overidden.
+ 3. Magic methods to facilitate iteration and data manipulation.  These should rarely need to be called directly or overridden.
 
 ## Methods
 
@@ -37,7 +37,7 @@ To accomplish these functions, BaseIO contains a number of methods and propertie
 
 ### Assigning Values to Properties
 
-Most properties (including mixin properties) can be set by passing them as arguments when initializing the class.  However, in general it is better to create a subclass with the properities pre-set.
+Most properties (including mixin properties) can be set by passing them as arguments when initializing the class.  However, in general it is better to create a subclass with the properties pre-set.
 
 ```python
 # Works, but less re-usable
