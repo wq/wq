@@ -262,7 +262,7 @@ svg.datum([dataset]).call(plot);
 [wq/pandas.js]: http://wq.io/docs/pandas-js
 [Django REST Pandas]: https://github.com/wq/django-rest-pandas
 [getter/setter functions]: http://bost.ocks.org/mike/chart/#reconfiguration
-[chart.base()]: https://github.com/wq/wq.app/blob/master/js/wq/chart.js#L21-L356
-[chart.scatter()]: https://github.com/wq/wq.app/blob/master/js/wq/chart.js#L358-L498
-[chart.timeSeries()]: https://github.com/wq/wq.app/blob/master/js/wq/chart.js#L500-L522
-[chart.boxplot()]: https://github.com/wq/wq.app/blob/master/js/wq/chart.js#L556-L662
+[chart.base()]: https://github.com/wq/wq.app/blob/master/js/wq/chart.js#L35-L676
+[chart.scatter()]: https://github.com/wq/wq.app/blob/master/js/wq/chart.js#L679-L845
+[chart.timeSeries()]: https://github.com/wq/wq.app/blob/master/js/wq/chart.js#L848-L879
+[chart.boxplot()]: https://github.com/wq/wq.app/blob/master/js/wq/chart.js#L923-L1048

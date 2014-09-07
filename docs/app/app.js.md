@@ -443,5 +443,5 @@ app.init(config, templates)
 [ds.save()]: http://wq.io/docs/store-js
 [page configuration]: http://wq.io/docs/config
 [design patterns]: http://wq.io/docs/about-patterns
-[default implementation]: https://github.com/wq/wq.app/blob/master/js/wq/app.js#L260
+[default implementation]: https://github.com/wq/wq.app/blob/master/js/wq/app.js#L262-L338
 [ds.filter()]: http://wq.io/docs/store-js
