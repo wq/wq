@@ -194,6 +194,19 @@ function error(evt) {
  - `watch` boolean (equivalent to `opts.watch`)
  - `opts` object, which will be updated per the preceding arguments and then passed on to [L.Map.locate()]
 
+To use `locate.locate()` with an existing map (e.g. in conjunction with `opts.setView`), call `locate.init()` before calling `locate.locate()`:
+
+```javascript
+define(['jquery', 'leaflet', 'wq/locate'], function($, L, locate) {
+var m = L.map(...);
+locate.init(m);
+locate.locate(success, error, true, true, {'setView': true});
+
+function success(evt) {
+...
+});
+```
+
 [wq/locate.js]: https://github.com/wq/wq.app/blob/master/js/wq/locate.js
 [AMD]: http://wq.io/docs/amd
 [L.Map.locate()]: http://leafletjs.com/reference.html#map-locate-options
