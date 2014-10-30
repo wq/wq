@@ -173,6 +173,7 @@ You can also request a location programmatically with the lower level locate() f
 ```javascript
 define(['jquery', 'wq/locate'], function($, locate) {
 
+// Request location once & show result
 locate.locate(success, error);
 
 function success(evt) {
@@ -190,20 +191,31 @@ function error(evt) {
 
  - a `success` callback
  - an `error` callback
- - `highAccuracy` boolean (equivalent to `opts.enableHighAccuracy` with a 1 min `timeout`)
- - `watch` boolean (equivalent to `opts.watch`)
+ - `highAccuracy` boolean, equivalent to `opts.enableHighAccuracy` with a 1 min `timeout`.  Default is `false`.
+ - `watch` boolean, triggers `watchPosition`, and also returns an object with a `stop()` method (see below).  Default is `false`.
  - `opts` object, which will be updated per the preceding arguments and then passed on to [L.Map.locate()]
 
-To use `locate.locate()` with an existing map (e.g. in conjunction with `opts.setView`), call `locate.init()` before calling `locate.locate()`:
+> **Pro-Tip: Use `watchPosition` for better results!**
+>
+> When requesting the user's location in a web app, it's generally better to use `watchPosition` by setting `watch = true`, even when you only need a single point and not a GPS trace.  The reason for this is that the first result returned by the GPS may be inaccurate, and the longer the GPS is on, the more time it has to lock on to the satellites.  If you take this approach, be sure to set up your success callback to handle being called more than once.
+
+To use `locate.locate()` with an existing map (e.g. in conjunction with `opts.setView`), call `locate.init()` before calling `locate.locate()`.
 
 ```javascript
 define(['jquery', 'leaflet', 'wq/locate'], function($, L, locate) {
+
+// Bind locate to existing map
 var m = L.map(...);
 locate.init(m);
-locate.locate(success, error, true, true, {'setView': true});
+
+// Enable watchPosition & other options; save reference to result
+var gps = locate.locate(success, error, true, true, {'setView': true});
 
 function success(evt) {
-...
+    if (evt.accuracy < 1000) {
+        gps.stop(); // Stop watchPosition
+    }
+    // ...
 });
 ```
 
