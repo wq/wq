@@ -434,7 +434,7 @@ app.init(config, templates)
 [PhoneGap]: http://phonegap.com
 [Cordova]: http://cordova.io
 [client-side rendering]: http://wq.io/docs/web-app
-[template rendering context]: http://wq.io/templates
+[template rendering context]: http://wq.io/docs/templates
 [template context processors]: https://docs.djangoproject.com/en/1.6/ref/templates/api/#subclassing-context-requestcontext
 [page transitions]: http://view.jquerymobile.com/1.3.2/dist/demos/widgets/transitions/
 [$.mobile.defaultPageTransition]: http://view.jquerymobile.com/1.3.2/dist/demos/widgets/transitions/#Globalconfiguration

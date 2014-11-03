@@ -57,7 +57,6 @@ renderers                | Supplemental response rendering formats, including Ge
 [app]: http://wq.io/docs/app.py
 [app.js]: http://wq.io/docs/app-js
 [auth]: http://wq.io/docs/auth
-[caching]: http://wq.io/docs/caching
 [filters]: http://wq.io/docs/filters
 [ContentType]: https://docs.djangoproject.com/en/dev/ref/contrib/contenttypes/
 [permissions]: http://wq.io/docs/permissions
