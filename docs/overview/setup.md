@@ -89,7 +89,7 @@ wq init
 ```
 
 ### On Windows
-Download and install [Python 3] and [Node] if you don't have them already.  When installing Python, be sure to enable the option to add Python to the sytem path.  Then run the following from a command prompt:
+Download and install [Python 3] and [Node] if you don't have them already.  When installing Python, be sure to enable the option to add Python.exe to the system path.  Then run the following from a command prompt:
 
 ```bash
 pip install wq.app
