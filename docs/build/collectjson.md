@@ -1,13 +1,13 @@
-collectjson
-===========
+wq collectjson
+==============
 
 [wq.app.build.collect.collectjson]
 
-wq collectjson is a component of the [wq build process] that collects the contents of files a directory into a single JSON or JavaScript (JSONP/AMD) file.  Where keys are the filenames (without suffix) and values are the file contents.  Useful for inlining templates or for splitting a large JSON configuration object into separate files for development.
+**wq collectjson** is a component of the [wq build process] that collects the contents of files a directory into a single JSON or JavaScript (JSONP/AMD) file.  The keys in the output object will be the filenames (without suffix) and the values will contain the contents of each file.  wq collectjson is useful for inlining templates or for splitting a large JSON configuration object into separate files for development.
 
-Most files will be inlined as strings, but JSON and YAML files can be embedded as nested objects.  YAML support requires PyYAML to be installed.  The output can be either JSON or a JSONP file (using `define` as the callback will create an AMD module).
+Most files will be inlined as strings, but JSON and YAML files can be embedded as nested objects (YAML support requires PyYAML).  The output can be either JSON or a JSONP file (using `define` as the callback will create an AMD module).
 
-The `collectjson` section in `app.build.json` can be a single configuration object or an array of configuration objects.  The available options are:
+The `collectjson` section in `app.build.json` can be a single configuration object or an array of configuration objects (to create multiple output files).  The available options are:
 
  name | purpose
 ------|---------
