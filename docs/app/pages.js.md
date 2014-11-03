@@ -22,6 +22,8 @@ If you are using both [wq.app] and [wq.db] together, you may be interested in [w
 // myapp.js
 define(['wq/pages', ...], function(pages, ...) {
     pages.init(...);
+    pages.addRoute(...);
+    pages.jqmInit();
 });
 ```
 
@@ -48,6 +50,12 @@ pages.init("/app", {'tmpl404': "notfound"});
 ```
 
 `pages.init()` is automatically called from [app.init()].
+
+### `pages.jqmInit()` (new in 0.7.0)
+
+The version of jQuery Mobile included with wq.app 0.7.0 is customized to disable automatic initialization on startup.  The purpose of this change is to make it easier to register custom routes before jQuery Mobile starts up, to ensure they are executed when it does.  To start up jQuery mobile, call `pages.jqmInit()` after calling `pages.init()` and registering your custom routes.
+
+`pages.jqmInit()` is automatically called from [app.jqmInit()].
 
 ### `pages.register()`
 
@@ -145,6 +153,7 @@ name | purpose
 [wq configuration object]: http://wq.io/docs/config
 [AMD]: http://wq.io/docs/amd
 [app.init()]: http://wq.io/docs/app-js
+[app.jqmInit()]: http://wq.io/docs/app-js
 [ui object]: http://api.jquerymobile.com/pagecontainer/
 [jQueryMobile-router documentation]: https://github.com/azicchetti/jquerymobile-router
 [recommend]: http://wq.io/docs/website

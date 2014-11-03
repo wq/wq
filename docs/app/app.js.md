@@ -52,6 +52,16 @@ name | purpose
 
 `app.init()` internally calls [pages.register()] for each page in the `pages` configuration section.  The callbacks sent to `pages.register()` are simple wrappers around `app.go()`.
 
+### `app.jqmInit()` (new in 0.7.0)
+
+The version of jQuery Mobile included with wq.app 0.7.0 is customized to disable automatic initialization on startup.  The purpose of this change is to make it easier to register custom routes via [wq/pages.js] before jQuery Mobile starts up, to ensure they are executed when it does.  To start up jQuery mobile, call `app.jqmInit()` after calling `app.init()` and registering your custom routes.  If you have no custom routes, you can set `config.jqmInit = true` to have `app.init()` call `app.jqmInit()` for you.
+
+```javascript
+app.init();
+myModule.setup();
+app.jqmInit();
+```
+
 ### `<form>` Handler
 
 `app.init()` registers a custom submit handler that takes normal form POSTs and converts them to REST API calls.  To avoid interaction with jQuery Mobile's own AJAX form handler, it is recommended to set `data-ajax="false"` on all forms using this functionality.  For model-backed list pages, these forms would normally be placed in `[page]_edit.html` templates and accessed via `/[page_url]/new` and/or `/[page_url]/[id]/edit` .
@@ -175,6 +185,8 @@ The wq/app.js configuration object has one or more of the following properties.
 The `debug` option enables console logging in wq/app.js, [wq/store.js] and [wq/pages.js].  If specified as a number, `debug` will set the verbosity level in wq/store.js.
 
 The `backgroundSync` option tells wq/app.js not to make the user wait for forms to be submitted to the server, and instead to handle all wq/store.js syncing in the background.  If specified as a number, `backgroundSync` will set the number of seconds between sync attempts (default 30).  `backgroundSync` can be overridden on a per-form basis by setting `<form data-background-sync=[value]>`.
+
+The `jqmInit` option tells `app.init()` to immediately trigger `app.jqmInit()` on startup.  The default is false, to give you a chance to register additional custom routes before initializing jQuery Mobile.
 
 ### `pages`: URL routes
 
