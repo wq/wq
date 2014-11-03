@@ -1,19 +1,22 @@
 Getting Started
 ===============
 
-The easiest way to install wq is via the [Python Package Index].  Any of [wq.app], [wq.db], or [wq.io] can be installed separately, or all three can be installed by simply installing the **wq** metapackage.  Either easy_install or pip should work.  wq currently only supports Python 2.7, though it will support Python 3 in the [near future].
+The easiest way to install wq is via the [Python Package Index].  Any of [wq.app], [wq.db], or [wq.io] can be installed separately, or all three can be installed by simply installing the **wq** metapackage.  Either easy_install or pip should work.
+
+> **Note:** As of version 0.7.0, wq is optimized for Python 3.  Python 2.7 is still supported for the time being but should be considered deprecated.
 
 ```bash
-pip install wq
+pip3 install wq
 ```
+
 ## Using wq.db and wq.app
 
 If you are using wq.app and wq.db together, you may find it useful to take advantage of the [Django wq template] available on GitHub and via the `wq-start` command.  You will need a WGSI-capable webserver like [Apache], and a database to host the application.  In theory any Django-supported database will work, but wq.db is optimized for use with [PostgreSQL] and [PostGIS].  You should be able to use something like the following to start a new wq-based Django project.
 
 ### On Ubuntu
 ```bash
-sudo apt-get install apache2 libapache2-mod-wsgi postgresql-9.3-postgis-2.1 python-pip python-psycopg2
-sudo pip install wq
+sudo apt-get install apache2 libapache2-mod-wsgi-py3 postgresql-9.3-postgis-2.1 python-pip python-psycopg2
+sudo pip3 install wq
 
 export PROJECTSDIR=/path/to/projects #e.g. /var/www
 export PROJECTNAME=myproject
@@ -51,7 +54,7 @@ wq.db works best in a Linux environment, but should work fine on Windows.  Pleas
 
 ## Using only wq.app
 
-If you are only interested in using wq.app, you can run `pip install wq.app` or simply download the [latest release] directly from GitHub.  You will likely want to set up your project with the following layout (inspired by [volo]):
+If you are only interested in using wq.app, you can run `pip3 install wq.app` or simply download the [latest release] directly from GitHub.  You will likely want to set up your project with the following layout (inspired by [volo]):
 ```bash
 project/
   js/
@@ -68,19 +71,42 @@ project/
   app.build.json
 ```
 
-The typical workflow is to copy or link to wq.app's `js` folder from your app's `js/lib` folder and similarly for css.  Note that wq.app currently comes bundled with all of its [JavaScript dependencies] vendored in.  So, for many applications, you should be able to use wq.app's `js` folder directly as your `js/lib/` folder.  If you have other dependencies, or want to use different versions of the vendored apps, create your `js/lib/` folder first, and link to wq.app's [js/wq] folder from your `js/lib/wq`.  In either case, [wq init] can do the linking automatically.
+Note that wq.app currently comes bundled with all of its [JavaScript dependencies] vendored in.  So, for many applications, you should be able to use wq.app's `js` folder directly as your `js/lib/` folder.  The typical workflow is to symbolically link to wq.app's `js` folder from your app's `js/lib` folder and similarly for css (and scss).  If you have other dependencies, or want to use different versions of the vendored apps, create your `js/lib/` folder first, and link to wq.app's [js/wq] folder from your `js/lib/wq`.  In either case, [wq init] can do the linking automatically.  An example app.build.json can be obtained from the [Django wq template].  The full list of options are documented in the [wq build] section.
 
 ### On Ubuntu
 ```bash
+sudo pip3 install wq.app
+mkdir /path/to/my/project
 cd /path/to/my/project
-wq init
+mkdir js
+mkdir css
+(create app.build.json using your editor of choice)
 
-# Or
-ln -s /path/to/wq/app/js /path/to/my/project/js/lib
-ln -s /path/to/wq/app/css /path/to/my/project/css/lib
+# Link to wq.app assets
+wq init
+# ln -s /path/to/wq/app/js /path/to/my/project/js/lib
+# ln -s /path/to/wq/app/css /path/to/my/project/css/lib
 ```
+
 ### On Windows
-As Python 2.7 on Windows does not support symbolic links, `wq init` will not work.  You can copy the folder wq/app/js into your project's js folder and rename it to "lib".  Similarly, copy wq/app/css into your project's css folder and rename it to "lib".
+Download and install [Python 3] and [Node] if you don't have them already.  When installing Python, be sure to enable the option to add Python to the sytem path.  Then run the following from a command prompt:
+
+```bash
+pip install wq.app
+```
+
+Next, create a project folder with js & css subdirectories and an app.build.json.  Then run the following from a command prompt:
+
+```bash
+cd C:\path\to\my\project
+wq init
+```
+
+If you get an error about `symbolic link privilege not held`, try running the command prompt as administrator.  If you are unable to do this, follow the Python 2 instructions below.
+
+#### Python 2.7
+
+You can also use wq.app with Python 2.7, though this usage is deprecated.  Python 2.7 on Windows does not support symbolic links, so `wq init` will not work.  You can copy the folder wq/app/js into your project's js folder and rename it to "lib".  Similarly, copy wq/app/css into your project's css folder and rename it to "lib".
 
 ### Utilizing wq.app
 Once you have done this you should be able to reference wq.app's modules from your JavaScript code:
@@ -110,3 +136,5 @@ See the [wq.app module list] for available modules, and the [build docs] for inf
 [volo]: http://volojs.org
 [build docs]: http://wq.io/docs/build
 [wq/wq#11]: https://github.com/wq/wq/issues/11
+[Python 3]: https://www.python.org/downloads/
+[Node]: http://nodejs.org
