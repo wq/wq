@@ -105,6 +105,7 @@ name | default | purpose
 -----|---------|---------
 `autoLayers` | `true` | If `true`, the maps created for the page will automatically include a default layer as discussed above, as well as any explicitly defined layers.  Set to `false` to only include layers explicitly added via `addLayerConf()`.
 `autoZoom` | global setting | Set to `false` to disable auto-zooming on a per-map basis.
+`minBounds` | none | Minimum bounds to set when auto-zooming.  Should be a Leaflet [LatLngBounds] or compatible array.  **New in 0.7.0**
 `onshow` | none | Function to call after map is created with `map.createMap()`.  The function will be passed the newly created `L.Map` object.
 `div` | `[page]-map` | The id of the `<div>` tag to place the Leaflet map into.  The div should be present in the template in order for the automatic map creation to work.  When using the defaults, the id of each div should be `[page]-map` for list views, and `[page]-[itemid]-map` for detail views.
 
@@ -262,6 +263,7 @@ layer.addTo(customMap);
 [pages.addRoute()]: http://wq.io/docs/pages-js
 [wq/app.js config object]: http://wq.io/docs/app-js
 [URL Structure]: http://wq.io/docs/url-structure
+[LatLngBounds]: http://leafletjs.com/reference.html#latlngbounds
 [L.Path]: http://leafletjs.com/reference.html#path
 [style]: http://leafletjs.com/reference.html#geojson-style
 [onEachFeature]: http://leafletjs.com/reference.html#geojson-oneachfeature

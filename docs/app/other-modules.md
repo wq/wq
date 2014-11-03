@@ -43,6 +43,15 @@ To configure the `<datalist>` for an autocompleted form input, a number of `data
 <datalist id="example-list" data-url="/autocomplete.json" data-query="q" data-min="4">
 </datalist>
 ```
+
+**New in 0.7.0**: When using a custom template, the following attributes will be available on the context object:
+
+name | purpose
+-----|---------
+`list` | An array of available options, as returned by the web service.  These would normally have `id` and `label` attributes.
+`count` | The number of items in the list
+`multi` | Whether there is more than one item in the list.
+
 ## wq/console.js
 [wq/console.js] provides a shim for code using `console.log`, which will fail in environments where `console` doesn't exist (looking at you, IE).  The alternative of course is to never use `console.log` in production code.
 

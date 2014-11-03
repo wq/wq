@@ -215,6 +215,10 @@ function localStorageFail(item, error) {
 
 `ds.reset()` clears out all values created by the `ds`.  By default, values not created by the `ds` are left alone.  Specify `all` to clear out everything via `localStorage.clear()`.
 
+#### `ds.keys()` (new in 0.7.0)
+
+`ds.keys()` lists all of the `localStorage` keys created by the `ds` (without the internal prefix).
+
 ### AJAX Methods
 
 While `ds.get()` and `ds.getList()` can automatically handle AJAX requests as needed, it is sometimes necessary to access those functions directly.  The available methods are listed here.
