@@ -145,7 +145,7 @@ The above might be used with a Mustache template like this:
 ```
 
 ## wq/progress.js
-[wq/progress.js] provides a simple way to create AJAX-powered auto-updating HTML5 [progress] elements.  wq/progress.js is meant to be used with a JSON web service that provides updates as to the current status of a long-running task.  wq/progress.js was originally created for use with the data import tasks in [wq.db]'s [dbio] contrib module.
+[wq/progress.js] provides a simple way to create AJAX-powered auto-updating HTML5 [progress] elements.  wq/progress.js is meant to be used with a JSON web service that provides updates as to the current status of a long-running task.  wq/progress.js was originally created for use with the data import tasks in the [dbio] module.
 
 ### API
 
@@ -268,6 +268,6 @@ Rather than writing out the template objects by hand, you may be interested in t
 [jQuery Mobile loader]: http://api.jquerymobile.com/1.3/loader/
 [camera.getPicture()]: http://plugins.cordova.io/#/package/org.apache.cordova.camera
 [broken Android implementations]: http://code.google.com/p/android/issues/detail?id=62220
-[dbio]: http://wq.io/docs/dbio
+[dbio]: http://wq.io/dbio
 [wq.db]: http://wq.io/wq.db
 [task state names in Celery]: http://docs.celeryproject.org/en/latest/userguide/tasks.html#states

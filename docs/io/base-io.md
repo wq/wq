@@ -90,5 +90,5 @@ Note that none of the pre-mixed IO classes in wq.io are nested.  The [climata li
 [Pandas DataFrame]: http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html
 [Parsers]: http://wq.io/docs/parsers
 [FileLoader]: http://wq.io/docs/loaders
-[dbio]: http://wq.io/docs/dbio
+[dbio]: http://wq.io/dbio
 [climata library]: https://github.com/heigeo/climata

@@ -48,7 +48,7 @@ class ChartView(PandasView)
 [wq.db.contrib.chart]: https://github.com/wq/wq.db/blob/master/contrib/chart
 [wq.db]: http://wq.io/wq.db
 [vera]: http://wq.io/vera
-[vera.EventResult]: http://wq.io/docs/vera
+[vera.EventResult]: http://wq.io/vera
 [wq/chart.js]: http://wq.io/docs/chart-js
 [Django REST Pandas]: https://github.com/wq/django-rest-pandas
 [format features]: https://github.com/wq/django-rest-pandas#supported-formats

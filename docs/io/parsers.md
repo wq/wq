@@ -124,7 +124,7 @@ The methods listed above are called in turn by `parse()`, which is defined by `W
 [json]: https://docs.python.org/3/library/json.html
 [XmlParser]: https://github.com/wq/wq.io/blob/master/parsers/text.py
 [wq.io.base.TableParser]:  https://github.com/wq/wq.io/blob/master/parsers/base.py
-[dbio]: http://wq.io/docs/dbio
+[dbio]: http://wq.io/dbio
 [CsvParser]: https://github.com/wq/wq.io/blob/master/parsers/text.py
 [SkipPreludeReader]: https://github.com/wq/wq.io/blob/master/parsers/readers.py
 [DictReader]: https://docs.python.org/3/library/csv.html#csv.DictReader
