@@ -15,8 +15,11 @@ If you are using wq.app and wq.db together, you may find it useful to take advan
 
 ### On Ubuntu
 ```bash
-sudo apt-get install apache2 libapache2-mod-wsgi-py3 postgresql-9.3-postgis-2.1 python-pip python-psycopg2
+sudo apt-get install apache2 libapache2-mod-wsgi-py3 postgresql-9.3-postgis-2.1 python3-pip python3-psycopg2
 sudo pip3 install wq
+
+# For wq.app build process (see [wq/wq.app#14](https://github.com/wq/wq.app/issues/14))
+sudo apt-get install nodejs-legacy
 
 export PROJECTSDIR=/path/to/projects #e.g. /var/www
 export PROJECTNAME=myproject
@@ -29,22 +32,19 @@ chmod +x deploy.sh db/manage.py
 ./deploy.sh 0.0.1 # generates htdocs folder via wq build
 
 # Create database
-(edit /etc/postgresql/9.3/main/pg_hba.conf and/or pg_ident.conf to set permissions)
+# (edit /etc/postgresql/9.3/main/pg_hba.conf and/or pg_ident.conf to set permissions)
 createuser -Upostgres $PROJECTNAME
 createdb -Upostgres -O$PROJECTNAME $PROJECTNAME
 psql -Upostgres $PROJECTNAME -c "CREATE EXTENSION postgis;"
 
 # Install database tables
-(edit db/$PROJECTNAME/local_settings.py with database info, if different than above)
+# (edit db/$PROJECTNAME/local_settings.py with database info, if different than above)
 cd db/
-chmod +x manage.py
-./manage.py syncdb
 ./manage.py migrate
 
 # Configure and restart Apache
-(edit conf/$PROJECTNAME.conf with correct domain name)
+# (edit conf/$PROJECTNAME.conf with correct domain name)
 sudo ln -s $PROJECTSDIR/$PROJECTNAME/conf/$PROJECTNAME.conf /etc/apache2/sites-available/
-sudo a2enmod wsgi
 sudo a2ensite $PROJECTNAME
 sudo service apache2 restart
 ```
