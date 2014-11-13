@@ -29,7 +29,8 @@ cd $PROJECTSDIR
 wq-start $PROJECTNAME
 cd $PROJECTNAME
 chmod +x deploy.sh db/manage.py
-./deploy.sh 0.0.1 # generates htdocs folder via wq build
+./deploy.sh 0.0.1 # generate htdocs folder via wq build
+sudo chown www-data media/ # give Apache user permission to save uploads
 
 # Create database
 # (edit /etc/postgresql/9.3/main/pg_hba.conf and/or pg_ident.conf to set permissions)
