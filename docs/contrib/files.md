@@ -1,5 +1,5 @@
-Files
-=====
+wq.db: files
+============
 
 [wq.db.contrib.files]
 
@@ -50,7 +50,7 @@ class PhotoFile(File):
 
 ## Custom `FileField`
 
-The `FileField` class defined in files' [models] module extends [ImageField] by removing the requirement that all uploaded files be images.  The `FileField` also checks for a function `get_directory()` on the model to determine which folder to place the uploaed file in.  The `get_directory()` function on the `BaseFile` model places images in `images/` and all other files in `files/`.
+The `FileField` class defined in files' [models] module extends [ImageField] by removing the requirement that all uploaded files be images.  The `FileField` also checks for a function `get_directory()` on the model to determine which folder to place the uploaded file in.  The `get_directory()` function on the `BaseFile` model places images in `images/` and all other files in `files/`.
 
 [wq.db.contrib.files]: https://github.com/wq/wq.db/blob/master/contrib/files
 [wq.db]: http://wq.io/wq.db
