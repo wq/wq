@@ -51,7 +51,7 @@ class ChartView(chart.ChartView):
     # ...
 ```
 
-Any unrecognized identifiers in the URL will be passed as-is to the function `filter_by_extra(qs, slugs)`.  This function will simply ignore the unknown identifiers unless `ignore_extra = False` is set on the view.
+Any unrecognized identifiers in the URL will be passed as-is to the function `filter_by_extra(qs, slugs)`.  The default implementation of this function will simply ignore the unknown identifiers unless `ignore_extra = False` is set on the view.
 
 ### `urls.py` Configuration
 To leverage the URL-based filters, you will want to configure your `urls.py` with something like the following.
@@ -62,9 +62,9 @@ from wq.db.contrib.chart.urls import make_urls
 
 from myapp.views import TimeSeriesView, ScatterView, BoxPlotView
 chart_urls = make_urls({
-    'timeseries': views.TimeSeriesView,
-    'scatter': views.ScatterView,
-    'boxplot': views.BoxPlotView,
+    'timeseries': TimeSeriesView,
+    'scatter': ScatterView,
+    'boxplot': BoxPlotView,
 })
 
 urlpatterns = patterns('',
