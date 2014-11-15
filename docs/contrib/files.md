@@ -36,16 +36,15 @@ All `File` models are associated with a `FileType`.  By default, there is one `F
 
 To create more than one `FileType` for the same mimetype (e.g. to differentiate between photographs and drawings), you can define [proxy classes] extending file and override the `type_name` setting.  Proxy classes can also be used to set a custom upload directory (see `FileField` below).
 
-
 ```python
 class PhotoFile(File):
-   type_name = "Photo"
+    type_name = "Photo"
    
-   def get_directory(self);
-       return "photos"
+    def get_directory(self);
+        return "photos"
        
-   class Meta:
-      proxy = True
+    class Meta:
+       proxy = True
 ```
 
 ## Custom `FileField`
