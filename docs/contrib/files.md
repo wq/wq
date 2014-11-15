@@ -40,7 +40,7 @@ To create more than one `FileType` for the same mimetype (e.g. to differentiate 
 class PhotoFile(File):
     type_name = "Photo"
    
-    def get_directory(self);
+    def get_directory(self):
         return "photos"
        
     class Meta:
