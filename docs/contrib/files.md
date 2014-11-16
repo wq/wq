@@ -13,6 +13,7 @@ files includes a pair of [models] that can be leveraged to build a quick file ma
 ### `File`
 
 The included `BaseFile` is an [abstract model] that includes fields for:
+
  * the actual `file` and `name`,
  * its `size` in bytes,
  * its `width` & `height` (if applicable),
