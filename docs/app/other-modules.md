@@ -44,6 +44,8 @@ To configure the `<datalist>` for an autocompleted form input, a number of `data
 </datalist>
 ```
 
+The [search] module in [wq.db] can be used as a convenient AJAX API for wq/autocomplete.js.
+
 **New in 0.7.0**: When using a custom template, the following attributes will be available on the context object:
 
 name | purpose
@@ -270,6 +272,7 @@ Rather than writing out the template objects by hand, you may be interested in t
 [AMD]: http://wq.io/docs/amd
 [application cache]: https://developer.mozilla.org/en-US/docs/Web/HTML/Using_the_application_cache
 [datalist]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist
+[search]: http://wq.io/docs/search
 [progress]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress
 [wq/wq.app#26]: https://github.com/wq/wq.app/issues/26
 [wq/wq#10]: https://github.com/wq/wq/issues/10
