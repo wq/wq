@@ -17,7 +17,7 @@ The identify module enables a number of related tasks:
  * Generating "permalinks" or user-friendly URLs for project web pages that correspond to database records (e.g. in the general [REST API] and in the [chart] contrib module)
  * Searching the entire database for entities in any table with a given identifier (in the [search] contrib module)
 
-> The identify module is among the original wq.db modules discussed in the paper [wq: A modular framework for collecting, storing, and utilizing experiential VGI](http://wq.io/docs/framework).  Since that paper, this module has been renamed from `wq.db.identify` to `wq.db.patterns.identify`.
+> The identify module is among the original wq.db modules discussed in the paper [wq: A modular framework for collecting, storing, and utilizing experiential VGI](http://wq.io/research/framework).  Since that paper, this module has been renamed from `wq.db.identify` to `wq.db.patterns.identify`.
 
 ## Usage
 
@@ -44,9 +44,9 @@ class MyModel(models.IdentifiedModel):
 
 The full API is described below.
 
-### Model Classes
+## Model Classes
 
-#### `IdentifiedModel`
+### `IdentifiedModel`
 `IdentifiedModel` is an [abstract base class] that enables the `identify` API for models that extend it.  It extends [NaturalKeyModel] and provides the following additional and overridden attributes.
 
 name | purpose
@@ -58,7 +58,7 @@ name | purpose
 `__str__` | A string representation of the object.  Defaults to the `name` of the `primary_identifier`, or the `name` of the model itself if the model has no identifiers but has a name property.  Override `fallback_identifier` to customize this functionality.
 `natural_key` | A unique [natural key] for the model.  Defaults to the `slug` of the `primary_identifier`, or the primary key of the model if there is no primary identifier.
 
-##### Manager Class
+#### Manager Class
 
 All `IdentifiedModel` subclasses come with an enhanced [ModelManager] that simplifies common operations affecting both `IdentifiedModel` classes and the `Identifier` class.
 
@@ -80,17 +80,17 @@ instance = MyModel.objects.find("EXAMPLE-0001")
 
 The custom manager class also includes a custom queryset that orders regular `filter()` and `all()` results by their identifiers.
 
-#### `Authority`
+### `Authority`
 
 WIP
 
-#### `Identifier`
+### `Identifier`
 
-### Web Interface
+## Web Interface
 
-#### wq.db.rest configuration
+### wq.db.rest configuration
 
-#### Template Conventions
+### Template Conventions
 
 [wq.db.patterns.identify]: https://github.com/wq/wq.db/blob/master/patterns/identify
 [wq.db]: http://wq.io/wq.db
