@@ -93,7 +93,7 @@ The router can generate a JSON-formatted [wq configuration object] for use by [w
 
 # Alternative
 curl http://$MYPROJECT/config.json
-````
+```
 
 You can load the AMD equivalent (/config.js) in your JavaScript code when the application starts up, though this will take longer to load.
 
@@ -106,28 +106,28 @@ requirejs.config({
 
 define(["db/config", ...],
 function(config, ...) {
-   // Do stuff with config
+    // Do stuff with config
 });
 ```
 
 A better option is to wrap the output of `dump_config` as an AMD module as part of your build process.
 
 ```bash
-# build.sh
+# deploy.sh
 CONFIG=`db/manage.py dump_config`
 echo "define($CONFIG);" > app/js/data/config.js
 ```
 
 ```javascript
-myapp/main.js
+// myapp/main.js
 requirejs.config({
-  'paths': {
-    'data': '../data/',
-  }
+    'paths': {
+        'data': '../data/',
+    }
 });
 define(["data/config", ...],
 function(config, ...) {
-   // Do stuff with config
+    // Do stuff with config
 });
 ```
 
