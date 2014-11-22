@@ -3,7 +3,7 @@ REST controller (app.py)
 
 [wq.db.rest.app]
 
-**app.py** is the controller at the core of [wq.db.rest].  The name reflects the fact that this module serves server-side counterpart to [app.js] in [wq.app].  app.py's singleton router instance generates a [URL structure] with REST endpoints for all models registered with it, and produces a [wq configuration object] for consumption by app.js' client-side router.
+**app.py** is the controller at the core of [wq.db.rest].  The name reflects the fact that this module serves server-side counterpart to [wq/app.js] in [wq.app].  app.py's singleton router instance generates a [URL structure] with REST endpoints for all models registered with it, and produces a [wq configuration object] for consumption by wq/app.js' client-side router.
 
 ## Usage
 
@@ -84,9 +84,58 @@ Any other options given will be assigned to the model's [page configuration].
 | `urls` | (DRF) Returns a url `patterns` for inclusion in urls.py
 | `register(prefix, viewset, base_name=None)` | (DRF) Underlying register function, not usually called directly.
 
+## Config Object (`dump_config`)
+
+The router can generate a JSON-formatted [wq configuration object] for use by [wq/app.js].  There are two ways to obtain this object:
+
+```bash
+./manage.py dump_config  # New in wq.db 0.7.0; requires Django 1.7
+
+# Alternative
+curl http://$MYPROJECT/config.json
+````
+
+You can load the AMD equivalent (/config.js) in your JavaScript code when the application starts up, though this will take longer to load.
+
+```javascript
+requirejs.config({
+    'paths': {
+        'db': '/'
+    }
+});
+
+define(["db/config", ...],
+function(config, ...) {
+   // Do stuff with config
+});
+```
+
+A better option is to wrap the output of `dump_config` as an AMD module as part of your build process.
+
+```bash
+# build.sh
+CONFIG=`db/manage.py dump_config`
+echo "define($CONFIG);" > app/js/data/config.js
+```
+
+```javascript
+myapp/main.js
+requirejs.config({
+  'paths': {
+    'data': '../data/',
+  }
+});
+define(["data/config", ...],
+function(config, ...) {
+   // Do stuff with config
+});
+```
+
+As of wq 0.7.0, the default [wq Django Template] uses `dump_config` in the provided `deploy.sh`.
+
 [wq.db.rest.app]: https://github.com/wq/wq.db/blob/master/rest/app.py
 [wq.db.rest]: http://wq.io/docs/about-rest
-[app.js]: http://wq.io/docs/app-js
+[wq/app.js]: http://wq.io/docs/app-js
 [wq.app]: http://wq.io/wq.app
 [URL structure]: http://wq.io/docs/url-structure
 [wq configuration object]: http://wq.io/docs/config
@@ -97,3 +146,4 @@ Any other options given will be assigned to the model's [page configuration].
 [viewset]: http://wq.io/docs/views
 [serializer]: http://wq.io/docs/serializers
 [page configuration]: http://wq.io/docs/config
+[wq Django Template]: https://github.com/wq/django-wq-template
