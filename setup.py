@@ -17,16 +17,6 @@ def long_description():
         return LONG_DESCRIPTION
 
 
-def list_package_data(root):
-    """
-    Include django-wq-template as package data
-    """
-    paths = []
-    for base, dirs, files in os.walk(os.path.join('wq', root)):
-        base = base.replace('wq' + os.sep, '', 1)
-        paths.extend([os.path.join(base, name) for name in files])
-    return paths
-
 setup(
     name='wq',
     version='0.6.2',
@@ -41,11 +31,8 @@ setup(
         'wq.db==0.6.2',
         'wq.io==0.6.2',
     ],
-    scripts=['wq/bin/wq-start'],
     packages=['wq'],
     namespace_packages=['wq'],
-    package_data={'wq': list_package_data('template')},
-    exclude_package_data={'wq': ['template/README.md', 'template/.git']},
     classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Web Environment',

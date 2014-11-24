@@ -7,6 +7,6 @@
 [submodule "wq/io"]
 	path = wq/io
 	url = git@github.com:wq/wq.io.git
-[submodule "wq/template"]
-	path = wq/template
-	url = git@github.com:wq/django-wq-template.git
+[submodule "wq/start"]
+	path = wq/start
+	url = git@github.com:wq/wq-django-template.git
