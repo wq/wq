@@ -11,7 +11,7 @@ Getting Started
 
 ::
 
-    pip install wq
+    pip3 install wq
 
 See `the documentation <http://wq.io/docs>`_ for more information.
 See https://github.com/wq/wq to report any issues.
