@@ -14,6 +14,9 @@ pip3 install wq
 If you are using wq.app and wq.db together, you may find it useful to take advantage of the [Django wq template] available on GitHub and via the `wq-start` command.  You will need a WGSI-capable webserver like [Apache], and a database to host the application.  In theory any Django-supported database will work, but wq.db is optimized for use with [PostgreSQL] and [PostGIS].  You should be able to use something like the following to start a new wq-based Django project.
 
 ### On Ubuntu
+
+Tested on Ubuntu 14.04 LTS.
+
 ```bash
 sudo apt-get install apache2 libapache2-mod-wsgi-py3 postgresql-9.3-postgis-2.1 python3-pip python3-psycopg2
 sudo pip3 install wq
@@ -51,7 +54,9 @@ sudo service apache2 restart
 ```
 
 ### On Windows
-wq.db works best in a Linux environment, but should work fine on Windows.  Please leave a comment at [wq/wq#11] if you would like the setup process for Windows (or other operating systems) to be documented.
+wq.db is used and tested primarily in a Linux environment, but should work fine on Windows.  Please leave a comment at [wq/wq#11] if you would like the setup process for Windows (or other operating systems) to be documented.
+
+By contrast, wq.app is well-tested on both Windows and Linux - see the Windows instructions below.
 
 ## Using only wq.app
 
