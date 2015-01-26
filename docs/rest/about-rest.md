@@ -34,7 +34,7 @@ wq.db.rest includes a number of submodules, many of which are extensions of thei
 
 Submodule                | Description
 ------------------------ | -------------------------------------------
-[app]                    | Application controller/router (counterpart to [app.js])
+[app]                    | Application controller/router (counterpart to [wq/app.js])
 [auth]                   | Authentication API
 context_processors       | Adds variables to template context for server-side rendering
 filters                  | Support for URL-based queryset filtering
@@ -59,7 +59,7 @@ renderers                | Supplemental response rendering formats, including Ge
 [autodiscover()]: http://wq.io/docs/app.py
 [Django wq template]: https://github.com/wq/django-wq-template
 [app]: http://wq.io/docs/app.py
-[app.js]: http://wq.io/docs/app-js
+[wq/app.js]: http://wq.io/docs/app-js
 [auth]: http://wq.io/docs/auth
 [filters]: http://wq.io/docs/filters
 [ContentType]: https://docs.djangoproject.com/en/dev/ref/contrib/contenttypes/
