@@ -26,13 +26,13 @@ The most common type of URL structure in a REST API is the list, or collection. 
 
 verb | path | template | purpose
 -----|------|----------|--------
-`GET` | `/[list]` | `[list]_list.html` | Retrieve all items from the list (or all items from the first page of the list, if the list is paginated).
-`GET` | `/[list]?page=[num]` | `[list]_list.html` | Retrieve items from page `num` in a paginated list.
-`POST` | `/[list]` | `[list]_detail.html` | Add a new member to the list.  The properties of the new member should be specified in the POST data (either JSON or form data).
-`GET` | `/[list]/new` | `[list]_edit.html` | *(HTML only)* Display an HTML form suitable for creating a new member of the list.  The form will presumably POST to the list URL above.
-`GET` | `/[list]/[id]` | `[list]_detail.html` | Retrieve a single member from the list via primary key or identifier.
-`PUT` | `/[list]/[id]` | `[list]_detail.html` | Update a single member in the list.  The properties should be specified in the PUT data (either JSON or form data).
-`GET` | `/[list]/[id]/[edit]` | `[list]_edit.html` | *(HTML only)* Display an HTML form suitable for editing an existing member of the list.  The form will presumably PUT to the detail URL above.  ([wq.app] can handle AJAX form submissions automatically.  For regular / non-AJAX form submissions, a hidden input named `_method` should be used to ensure the right method is set since many browsers don't support `PUT` as a form method.)
+`GET` | `/[list_url]` | `[list]_list.html` | Retrieve all items from the list (or all items from the first page of the list, if the list is paginated).
+`GET` | `/[list_url]?page=[num]` | `[list]_list.html` | Retrieve items from page `num` in a paginated list.
+`POST` | `/[list_url]` | `[list]_detail.html` | Add a new member to the list.  The properties of the new member should be specified in the POST data (either JSON or form data).
+`GET` | `/[list_url]/new` | `[list]_edit.html` | *(HTML only)* Display an HTML form suitable for creating a new member of the list.  The form will presumably POST to the list URL above.
+`GET` | `/[list_url]/[id]` | `[list]_detail.html` | Retrieve a single member from the list via primary key or identifier.
+`PUT` | `/[list_url]/[id]` | `[list]_detail.html` | Update a single member in the list.  The properties should be specified in the PUT data (either JSON or form data).
+`GET` | `/[list_url]/[id]/[edit]` | `[list]_edit.html` | *(HTML only)* Display an HTML form suitable for editing an existing member of the list.  The form will presumably PUT to the detail URL above.  ([wq.app] can handle AJAX form submissions automatically.  For regular / non-AJAX form submissions, a hidden input named `_method` should be used to ensure the right method is set since many browsers don't support `PUT` as a form method.)
 
 ### Optional List Extensions
 
@@ -65,6 +65,6 @@ verb | path | template | purpose
 [web apps]: http://wq.io/docs/web-app
 [rendered on the client or on the server]: http://wq.io/docs/templates
 [as well as its REST API]: http://wq.io/docs/website-rest-api
-[template]: http://wq.io/docs/web-app
+[template]: http://wq.io/docs/templates
 [wq website]: http://wq.io/
 [wq configuration object]: http://wq.io/docs/config
