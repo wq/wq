@@ -27,7 +27,7 @@ To use the `identify` pattern in your project, add the following to your setting
 # myproject/settings.py
 INSTALLED_APPS = (
    ...
-   'wq.db.patterns.identify`
+   'wq.db.patterns.identify'
 )
 ```
 
@@ -82,15 +82,95 @@ The custom manager class also includes a custom queryset that orders regular `fi
 
 ### `Authority`
 
-WIP
+The `Authority` model provides an optional means of organizing `Identifier`s by the authority that assigned them, if any.  (Another potential name for this class would have been `IdentifierType`.)  `Authority` instances have the following fields:
+
+field | purpose
+------|---------
+`name` | The name of an organization or agency that creates identifiers
+`homepage` | The homepage of the organization or agency
+`object_url` | A string template to be used when generating URLs pointing to the authoritative page for an identifier (e.g. `http://example.com/widgets.php?id=%s`).  The `%s` placeholder will be replaced with the `slug` from each identifier.
 
 ### `Identifier`
+
+The `Identifier` model contains the identifiers for all `IdentifiedModel`s in the database. It includes the following fields:
+
+field | purpose
+------|---------
+`name` | The human-readable version of the identifier
+`slug` | The machine-readable version of the identifier (if different than the `name`)
+`authority` | An optional reference to the `Authority` that created the identifier
+`content_object` | A `GenericForeignKey` referencing the model the identifier refers to
+`is_primary` | Whether the identifier is the primary identifier for the referenced model
+
+`Identifier` model instances have a `url` property that is automatically generated from `authority.object_url` and `slug`.
+
+#### `IdentifierManager`
+
+`Identifier.objects` is a custom manager class that provides a number of additional capabilities for working with identifiers.
+
+method | purpose
+-------|--------
+`get_for_object(obj)` | Retreives all of the identifier instances for the given object.  Faster than a normal get() since the results are cached.
+`filter_by_identifier(identifier)` | Return `Identifier` instances with either a slug or a name that matches the given text, prioritizing those with `is_primary=True`
+`resolve(identifiers, exclude_apps=[])` | Attempt to resolve a list of identifiers.  Returns two dictionaries, `resolved` and `unresolved`, with the keys corresponding to the input identifiers and the values corresponding to the results.  Identifiers that matched exactly one object will be listed in the `resolved` dict, those that matched zero or more than one will be listed in the `unresolved` dict with an array of potential matches.
+`find_unique_slug(name, model)` | Determine a unique (at least within the model) slug for an identifier name (used to generate slugs for `Identifier`s that don't have them).
 
 ## Web Interface
 
 ### wq.db.rest configuration
+By default, `IdentifiedModels` are serialized by wq.db using the slug of the primary identifier as the "id" field.  The same slug is also used to look up identifiers sent in a client request.  This makes it appear from the API that the Identifier slug is the primary key, even though a different key is actually used by Django internally.
+
+In addition to the custom id field, IdentifiedModels are serialized with an `identifiers` attribute that lists all of the identifiers assigned to the model.
+ 
+ ```javascript
+{
+  "id": "my-instance",
+  "label": "My Instance",
+  "identifiers": [
+    {
+      "id": 123, 
+      "name": "My Instance", 
+      "slug": "my-instance", 
+      "is_primary": true, 
+      "url": null, 
+      "authority_id": null, 
+      "authority_label": null
+    },
+    {
+      "id": 124, 
+      "name": "ABC123", 
+      "slug": "ABC123", 
+      "is_primary": false,
+      "url": "http://example.com/widgets.php?id=ABC123",
+      "authority_id": 5, 
+      "authority_label": "Example Authority"
+    }
+  ]
+}
+````
 
 ### Template Conventions
+
+When rendering the list of identifiers in detail or edit views, the above representation can be used to retrieve the existing values.  When rendering a form, specially-named form fields should be used to ensure the proper identifiers are created or updated on the server when the form is submitted.  The basic naming convention is `identifier-[authority_id]-[field]`.  For example, the second identifier in the above example might be rendered into `<input>`s as follows:
+
+```xml
+<input name="identifier-5-name" value="ABC123">
+<input name="identifier-5-slug" value="ABC123">
+<input name="identifier-5-is_primary" value="">
+```
+
+To accomplish this, the Mustache template might look something like this:
+```xml
+{{#identifiers}}
+<input name="identifier-{{authority_id}}-name" value="{{name}}">
+<input name="identifier-{{authority_id}}-slug" value="{{slug}}">
+<input name="identifier-{{authority_id}}-is_primary" value="{{#is_primary}}1{{/is_primary}}">
+{{/identifiers}}
+```
+
+The field names for the authority-less identifier will be e.g. `identifier--name`.  Note that this naming convention means there can be only one identifier assigned by each authority (and only one authority-less identifier).
+
+When rendering "new" screens (which use the same template as edit screens), [wq/app.js] will automatically generate a list of blank identifiers for all authorities.  This makes it possible to generate form widgets for all potential identifiers.  Any identifier fields that are left blank will not be created.  To customize which Authorities are listed for new items, override the `getTypeFilter()` function in `attachmentTypes.identifier` (see [wq/app.js] for more information).
 
 [wq.db.patterns.identify]: https://github.com/wq/wq.db/blob/master/patterns/identify
 [wq.db]: http://wq.io/wq.db
@@ -105,3 +185,4 @@ WIP
 [natural key]: http://wq.io/docs/natural-key
 [ModelManager]: https://docs.djangoproject.com/en/1.7/topics/db/managers/
 [GenericRelation]: https://docs.djangoproject.com/en/1.7/ref/contrib/contenttypes/#django.contrib.contenttypes.fields.GenericRelation
+[wq/app.js]: http://wq.io/docs/app-js
