@@ -394,4 +394,4 @@ ds.getList({'url': 'items'}, function(list) {
 [AMD]: http://wq.io/docs/amd
 [wq.db]: http://wq.io/wq.db
 [#17]: https://github.com/wq/wq.app/issues/17
-[wq config object]: http://wq.io/config
+[wq config object]: http://wq.io/docs/config
