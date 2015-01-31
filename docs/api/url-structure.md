@@ -1,7 +1,7 @@
 The wq URL Structure
 ====================
 
-The wq stack is designed to support building offline-capable [websites] / [web apps] with application screens that can be [rendered on the client or on the server] depending on what will provide the best user experience.  To faciliate this design, wq defines a consistent but flexible **URL structure** that is shared throughout the application [as well as its REST API].  This structure is defined here independently of the implementations in [wq.app](http://wq.io/docs/app-js) and [wq.db](http://wq.io/docs/app.py), with the idea that either library can be exchanged for another architecture as long as the URL structure is maintained.
+The wq stack is designed to support building offline-capable [websites] / [web apps] with application screens that can be [rendered on the client or on the server] depending on what will provide the best user experience.  To facilitate this design, wq defines a consistent but flexible **URL structure** that is shared throughout the application [as well as its REST API].  This structure is defined here independently of the implementations in [wq.app](http://wq.io/docs/app-js) and [wq.db](http://wq.io/docs/app.py), with the idea that either library can be exchanged for another architecture as long as the URL structure is maintained.
 
 ## Basic URL Structure
 
@@ -16,7 +16,7 @@ Below are the format types supported by [wq.db].  Only the HTML and JSON formats
 format | extension | content type | purpose
 -------|-----------|--------------|---------
 HTML | `.html` | `text/html` | **(Default)** This is the format used for application screens shown to the user.  This format is used when no format is specified (i.e. the URL does not end in an file extension).  The client application (i.e. [wq.app]) should typically be able to render extension-free URLs locally using data requested via the JSON version.
-JSON | `.json` | `application/json` | This is the basic format used by clients to retreive data collections from the server.
+JSON | `.json` | `application/json` | This is the basic format used by clients to retrieve data collections from the server.
 GeoJSON | `.geojson` | `application/vnd.geo+json` | *(Optional)* This format can be used to load and display data collections that incorporate geographic coordinates, for example in [wq/map.js].
 AMD (JSONP) | `.js` | `text/javascript` | *(Optional)* This format exists to make it easy to load data from the REST API as a JavaScript module.
 

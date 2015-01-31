@@ -12,7 +12,7 @@ Authentication
 url | purpose
 ----|--------
 `/login` | Displays a form for entering username and password.  Note that it is up to you to provide the required template, `login.html`.
-`/login.json` | Used by [wq/app.js] to submit and/or verify login information.  A successfull login will return the user information as well as a user-specific [wq configuration object].
+`/login.json` | Used by [wq/app.js] to submit and/or verify login information.  A successful login will return the user information as well as a user-specific [wq configuration object].
 `/logout` | Logs out the user and displays a success message.  Note that it is up to you to provide the required template, `logout.html`.
 `/logout.json` | Used by [wq/app.js] to log out the user via AJAX.
 

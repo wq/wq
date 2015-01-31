@@ -110,7 +110,7 @@ field | purpose
 
 method | purpose
 -------|--------
-`get_for_object(obj)` | Retreives all of the identifier instances for the given object.  Faster than a normal get() since the results are cached.
+`get_for_object(obj)` | Retrieves all of the identifier instances for the given object.  Faster than a normal get() since the results are cached.
 `filter_by_identifier(identifier)` | Return `Identifier` instances with either a slug or a name that matches the given text, prioritizing those with `is_primary=True`
 `resolve(identifiers, exclude_apps=[])` | Attempt to resolve a list of identifiers.  Returns two dictionaries, `resolved` and `unresolved`, with the keys corresponding to the input identifiers and the values corresponding to the results.  Identifiers that matched exactly one object will be listed in the `resolved` dict, those that matched zero or more than one will be listed in the `unresolved` dict with an array of potential matches.
 `find_unique_slug(name, model)` | Determine a unique (at least within the model) slug for an identifier name (used to generate slugs for `Identifier`s that don't have them).
