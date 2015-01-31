@@ -135,8 +135,11 @@ name | purpose
 name | purpose
 -----|---------
 `path` | The path of the current page being rendered (relative to the `base_url`).
+`path_enc` | URL-encoded version of the path for use in e.g. other URLs.  **New in 0.7.1**
+`params` | Any URL query parameters will be available as properties (e.g. "/path?filter=1" will be available as `pages.info.params.filter`).  **New in 0.7.1**
 `base_url` | The root url of the application, as passed to `pages.init()`.
 `full_path` | The root url and the path (concatenated for convenience).
+`full_path_enc` | URL-encoded version of the full path for use in e.g. other URLs.  **New in 0.7.1**
 `prev_path` | The path of the previous page.
 `context` | The last context object passed to `pages.go()`.  Only available if `debug` is active.
 
