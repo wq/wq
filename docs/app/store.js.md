@@ -102,6 +102,7 @@ name | purpose
 -----|---------
 `debug` | Set the debug level for `console.log()` information.  Level 0 (or false) disables debugging.  Level 1 logs network requests, 2 logs all data lookups, and 3 logs actual data values.
 `jsonp` | Whether to use jsonp instead of AJAX (for cross-domain requests)
+`cleanOutbox` | Whether to clean up saved outbox items when the application starts (default `true`).  **New in 0.7.1**
 `maxRetries` | The maximum number of times to send an outbox item causing server errors before giving up.  The default is 3.  Send failures due to being offline are not counted.  Used by `ds.sendAll()` and [wq/app.js]' `app.sync()`
 `formatKeyword` | If `true`, disables special handling of the "format" `query` argument (see above).
 `saveMethod` | Default method to use for saving data to the server.  The "default" default is `POST`.
