@@ -19,4 +19,4 @@ The `collectjson` section in `app.build.json` can be a single configuration obje
 `jsonp` | JSONP callback (use `"define"` to create an AMD module)
 
 [wq build process]: http://wq.io/docs/build
-[wq.app.build.collect.collectjson]: https://github.com/wq/wq.app/blob/master/build/collect.py#L56-L84
+[wq.app.build.collect.collectjson]: https://github.com/wq/wq.app/blob/v0.7.1/build/collect.py#L56-L84

@@ -114,4 +114,4 @@ See vera's [EventResultSerializer] for an example of how to customize `ChartSeri
 [ChartSerializer]: https://github.com/wq/wq.db/blob/master/contrib/chart/serializers.py
 [PandasSerializer]: https://github.com/wq/django-rest-pandas/#implementation-notes
 [ERAV]: http://wq.io/docs/erav
-[EventResultSerializer]: https://github.com/wq/vera/blob/master/vera/serializers.py#L74-L107
+[EventResultSerializer]: https://github.com/wq/vera/blob/v0.7.0/vera/serializers.py#L74-L107

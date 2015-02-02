@@ -270,7 +270,7 @@ svg.datum([dataset]).call(plot);
 [Django REST Pandas]: https://github.com/wq/django-rest-pandas
 [getter/setter functions]: http://bost.ocks.org/mike/chart/#reconfiguration
 [viewBox]: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/viewBox
-[chart.base()]: https://github.com/wq/wq.app/blob/master/js/wq/chart.js#L34-L679
-[chart.scatter()]: https://github.com/wq/wq.app/blob/master/js/wq/chart.js#L681-L852
-[chart.timeSeries()]: https://github.com/wq/wq.app/blob/master/js/wq/chart.js#L854-L886
-[chart.boxplot()]: https://github.com/wq/wq.app/blob/master/js/wq/chart.js#L929-L1058
+[chart.base()]: https://github.com/wq/wq.app/blob/v0.7.1/js/wq/chart.js#L34-L713
+[chart.scatter()]: https://github.com/wq/wq.app/blob/v0.7.1/js/wq/chart.js#L715-L886
+[chart.timeSeries()]: https://github.com/wq/wq.app/blob/v0.7.1/js/wq/chart.js#L888-L920
+[chart.boxplot()]: https://github.com/wq/wq.app/blob/v0.7.1/js/wq/chart.js#L963-L1089

@@ -21,7 +21,7 @@ This will cause all `.scss` files in the `scss/` folder to be processed into `.c
 
 The [Compass] framework provides a number of useful functions for generating cross-browser CSS3 styles including gradients and rounded corners.  wq.app includes a Compass-based SCSS stylesheet for generating [custom jQuery mobile themes].  To utilize these features, you may need to link or copy the assets from Compass and from wq.app's scss folder into your project's scss folder to ensure the build process can find them. The [scss source for this website] may be useful as example.
 
-[wq.app.build.compilers.scss]: https://github.com/wq/wq.app/blob/master/build/compilers.py#L28-L48
+[wq.app.build.compilers.scss]: https://github.com/wq/wq.app/blob/v0.7.1/build/compilers.py#L28-L48
 [SASS]: http://sass-lang.com/
 [pyScss]: https://github.com/Kronuz/pyScss
 [wq build]: http://wq.io/docs/build
