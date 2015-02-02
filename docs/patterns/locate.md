@@ -56,7 +56,7 @@ name | purpose
 
 ### `Location`
 
-The `Location` model contains the identifiers for all `LocatedModel`s in the database. It includes the following fields:
+The `Location` model contains the locations for all `LocatedModel`s in the database. It includes the following fields:
 
 field | purpose
 ------|---------

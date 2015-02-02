@@ -151,7 +151,7 @@ In addition to the custom id field, IdentifiedModels are serialized with an `ide
     }
   ]
 }
-````
+```
 
 ### Template Conventions
 

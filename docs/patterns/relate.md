@@ -119,14 +119,14 @@ property | `Relationship` | `InverseRelationship`
 ```python
 Relationship.objects.create_relationship(from_obj, to_obj, name, inverse_name=None, computed=False)
 ```
-This function is used internally by the `create_relationship()` function on `RelatedModel` instances (see above).   Without this function, you'd have to look up the appropriate [ContentType] instances, then find or create a `RelationshipType` instance, then finally create the actual relationship.
+This function is used internally by the `create_relationship()` method on `RelatedModel` instances (see above).   Without this function, you'd have to look up the appropriate [ContentType] instances, then find or create a `RelationshipType` instance, then finally create the actual relationship.
 
 ## Web Interface
 
 ### wq.db.rest configuration
 By default, `RelatedModels` are serialized by wq.db with both `"relationship"` and `"inverserelationship"` properties, corresponding to the model and proxy model described above.
 
- ```javascript
+```javascript
 {
   "id": 1,
   "label": "My Instance",
@@ -161,7 +161,7 @@ By default, `RelatedModels` are serialized by wq.db with both `"relationship"` a
 
 ### Template Conventions
 
-When rendering detail views, the above representation makes it easy to describe the relationships as well as link to the detail views of the referenced enteties.  When rendering a form, specially-named form fields should be used to ensure the proper relationships are created or updated on the server when the form is submitted.  The basic naming convention is `(inverse)relationship-[type_id]-[field]`.  For example, the inverse relationship in the above example might be rendered into `<input>`s as follows:
+When rendering detail views, the above representation makes it easy to describe the relationships as well as link to the detail views of the referenced entities.  When rendering a form, specially-named form fields should be used to ensure the proper relationships are created or updated on the server when the form is submitted.  The basic naming convention is `(inverse)relationship-[type_id]-[field]`.  For example, the inverse relationship in the above example might be rendered into `<input>`s as follows:
 
 ```xml
 <input name="inverserelationship-5-id" value="124">
@@ -186,7 +186,7 @@ To accomplish this, the Mustache template might look something like this:
 <input name="inverserelationship-{{type_id}}-id" value="{{id}}">
 <select name="inverserelationship-{{type_id}}-item_id">
 {{#item_choices}}
-  <option value="{{id}}"{{#selected}} selected{{/selected}}>{{label}}</option>
+  <option value="{{id}}" {{#selected}}selected{{/selected}}>{{label}}</option>
 {{/item_choices}}
 </select>
 {{/inverserelationships}}
