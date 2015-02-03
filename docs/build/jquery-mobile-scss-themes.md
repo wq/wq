@@ -23,6 +23,16 @@ In the example below, all of the options are shown with their default values.  I
 
 **New in 0.7.0:** In keeping with current design trends an jQuery Mobile 1.4 styles, support for gradient backgrounds has been removed.  This simplifies both the implementation and usage of jquery-mobile.scss.
 
+Note that the generated theme CSS should be loaded *before* jQuery Mobile's structure.css for correct rule ordering.
+
+### `myproject.css`
+```css
+@import url(themes.css);
+@import url(lib/jquery.mobile.icons.css);
+@import url(lib/jquery.mobile.structure.css);
+@import url(myproject/base.css);
+```
+
 ### `themes.scss`
 
 ```scss
