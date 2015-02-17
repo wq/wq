@@ -388,10 +388,10 @@ ds.getList({'url': 'items'}, function(list) {
 `list.getQuery()` returns the appropriate web query needed to retrieve the data for the specified `page_num`.
 
 [wq/store.js]: https://github.com/wq/wq.app/blob/master/js/wq/store.js
-[wq.app]: http://wq.io/wq.app
-[wq/app.js]: http://wq.io/docs/app-js
+[wq.app]: https://wq.io/wq.app
+[wq/app.js]: https://wq.io/docs/app-js
 [wq/wq.app#20]: https://github.com/wq/wq.app/issues/20
-[AMD]: http://wq.io/docs/amd
-[wq.db]: http://wq.io/wq.db
+[AMD]: https://wq.io/docs/amd
+[wq.db]: https://wq.io/wq.db
 [#17]: https://github.com/wq/wq.app/issues/17
-[wq config object]: http://wq.io/docs/config
+[wq config object]: https://wq.io/docs/config

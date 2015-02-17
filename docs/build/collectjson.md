@@ -18,5 +18,5 @@ The `collectjson` section in `app.build.json` can be a single configuration obje
 `json` | Configuration options for `json.dumps` (default is `{"indent": 4}`)
 `jsonp` | JSONP callback (use `"define"` to create an AMD module)
 
-[wq build process]: http://wq.io/docs/build
+[wq build process]: https://wq.io/docs/build
 [wq.app.build.collect.collectjson]: https://github.com/wq/wq.app/blob/v0.7.1/build/collect.py#L56-L84

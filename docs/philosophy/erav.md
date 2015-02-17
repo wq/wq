@@ -21,9 +21,9 @@ Suppose you are maintaining a dataset of time series data, and that the list of 
 
 Without ERAV, tracking changes to individual entities (events) will be quite difficult.  A wiki or similar versioning scheme would help, but only to the extent that changes to data happened within the system.  In this example (and in many real-world use cases), the changes may happen in Excel, or in third party systems with different goals or revision tracking requirements.
 
-The ERAV model solves this versioning challenge by making it possible to import data for the same entity more than once.  Each subsequent import is treated as a separate record, but linked back to the entity so that the data can be merged for operational use.  (ERAV can be interpreted in this case to mean Event-Report-Attribute-Value - which is the definition used in the [paper introducing the model](http://wq.io/research/provenance).)
+The ERAV model solves this versioning challenge by making it possible to import data for the same entity more than once.  Each subsequent import is treated as a separate record, but linked back to the entity so that the data can be merged for operational use.  (ERAV can be interpreted in this case to mean Event-Report-Attribute-Value - which is the definition used in the [paper introducing the model](https://wq.io/research/provenance).)
 
-![ERAV](http://wq.io/media/images/erav.png)
+![ERAV](https://wq.io/media/images/erav.png)
 
 ## Important Concepts
 
@@ -38,4 +38,4 @@ ERAV is particularly useful for combining values from two records with different
 However, it is certainly possible that two reports will contain an overlapping attribute set.  This is especially likely if data is exported, reviewed offline, and uploaded again.  In this case, the values may conflict.  In traditional versioning models, any conflicts would need to be resolved immediately, as there can usually be only one active version of an entity.  This is not always practical, especially when dealing with bulk uploads of data.  ERAV smooths over these conflicts, allowing them to be resolved at a later time.  Until the conflicts are resolved, the value from the most authoritative report is selected for each attribute when merging data for analysis.  "Authoritative" could often just be the most recent value, or indicated with a status ("Final" reports would take precedence over "Provisional" reports, etc.).
 
 ## Implementation Notes
-The reference implementation of ERAV is [vera](http://wq.io/vera), a [wq.db](http://wq.io/wq.db) module that is particularly suited for the time series use case.
+The reference implementation of ERAV is [vera](https://wq.io/vera), a [wq.db](https://wq.io/wq.db) module that is particularly suited for the time series use case.

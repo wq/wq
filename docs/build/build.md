@@ -26,12 +26,12 @@ The actual build process is broken into several steps.  Most of these steps can 
 | `build` | runs all of the above in order.
 
 [wq.app.build]: https://github.com/wq/wq.app/blob/master/build/
-[installing]: http://wq.io/docs/setup
+[installing]: https://wq.io/docs/setup
 [django-wq-template]: https://github.com/wq/django-wq-template
 [app.build.json]: https://github.com/wq/django-wq-template/blob/master/app/app.build.json
 [#6]: https://github.com/wq/wq.app/issues/6
-[scss]: http://wq.io/docs/scss
-[collectjson]: http://wq.io/docs/collectjson
-[custom jQuery Mobile themes]: http://wq.io/docs/jquery-mobile-scss-themes
+[scss]: https://wq.io/docs/scss
+[collectjson]: https://wq.io/docs/collectjson
+[custom jQuery Mobile themes]: https://wq.io/docs/jquery-mobile-scss-themes
 [r.js]: http://requirejs.org/docs/optimization.html
 [node.js]: http://nodejs.org

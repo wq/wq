@@ -43,11 +43,11 @@ method | purpose
 
 [wq.db.patterns.base.models]: https://github.com/wq/wq.db/blob/master/patterns/base/models.py
 [in Django]: https://docs.djangoproject.com/en/1.7/topics/serialization/#natural-keys
-[wq.db]: http://wq.io/wq.db
-[design patterns]: http://wq.io/docs/about-patterns
-[identify]: http://wq.io/docs/identify
-[vera]: http://wq.io/vera
-[dbio]: http://wq.io/dbio
+[wq.db]: https://wq.io/wq.db
+[design patterns]: https://wq.io/docs/about-patterns
+[identify]: https://wq.io/docs/identify
+[vera]: https://wq.io/vera
+[dbio]: https://wq.io/dbio
 [abstract base class]: https://docs.djangoproject.com/en/1.7/topics/db/models/#abstract-base-classes
 [Manager]: https://docs.djangoproject.com/en/1.7/topics/db/managers/
 [natural_key method]: https://docs.djangoproject.com/en/1.7/topics/serialization/#serialization-of-natural-keys

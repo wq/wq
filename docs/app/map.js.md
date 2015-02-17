@@ -30,7 +30,7 @@ By default, each map will automatically get a single layer configuration pointin
   * The default layer for a list page's list view (e.g. `/list`) will be `/list.geojson`
   * The default layer for a list page's detail view (e.g. `/list/itemid`) will be `/list/itemid.geojson`
 
-> For example, the content you are reading is a `Doc` instance with an identifier of `map-js`, rendered in a "detail" view for the `docs` list page.  `docs` is registered in the <a href="http://wq.io/config.json" rel="external">wq configuration for this website</a> as `"map": true`.  Since wq/map.js is loaded for this website, the map at the top of this document should have automatically loaded <a href="http://wq.io/docs/map-js.geojson" rel="external">/docs/map-js.geojson</a> when the page opened.
+> For example, the content you are reading is a `Doc` instance with an identifier of `map-js`, rendered in a "detail" view for the `docs` list page.  `docs` is registered in the <a href="https://wq.io/config.json" rel="external">wq configuration for this website</a> as `"map": true`.  Since wq/map.js is loaded for this website, the map at the top of this document should have automatically loaded <a href="https://wq.io/docs/map-js.geojson" rel="external">/docs/map-js.geojson</a> when the page opened.
 
 The default GeoJSON layers should work as long as your webserver is running [wq.db] or a service with a compatible [URL Structure].
 
@@ -254,15 +254,15 @@ layer.addTo(customMap);
 `map.loadLayer()` is what `map.createMap()` calls to actually retrieve the GeoJSON data for each layer configuration.  The default implementation caches each GeoJSON object, so you can call `map.loadLayer()` to prefetch layers that you expect to appear in later maps.  The `url` argument is assumed to be relative to the webservice root used by [wq/store.js].
 
 [wq/map.js]: https://github.com/wq/wq.app/blob/master/js/wq/map.js
-[wq configuration object]: http://wq.io/docs/config
+[wq configuration object]: https://wq.io/docs/config
 [Leaflet]: http://leafletjs.com
-[wq.db]: http://wq.io/wq.db
-[REST API]: http://wq.io/docs/about-rest
-[wq/app.js]: http://wq.io/docs/app-js
-[AMD]: http://wq.io/docs/amd
-[pages.addRoute()]: http://wq.io/docs/pages-js
-[wq/app.js config object]: http://wq.io/docs/app-js
-[URL Structure]: http://wq.io/docs/url-structure
+[wq.db]: https://wq.io/wq.db
+[REST API]: https://wq.io/docs/about-rest
+[wq/app.js]: https://wq.io/docs/app-js
+[AMD]: https://wq.io/docs/amd
+[pages.addRoute()]: https://wq.io/docs/pages-js
+[wq/app.js config object]: https://wq.io/docs/app-js
+[URL Structure]: https://wq.io/docs/url-structure
 [LatLngBounds]: http://leafletjs.com/reference.html#latlngbounds
 [L.Path]: http://leafletjs.com/reference.html#path
 [style]: http://leafletjs.com/reference.html#geojson-style
@@ -271,4 +271,4 @@ layer.addTo(customMap);
 [L.Icon]: http://leafletjs.com/reference.html#icon
 [MapQuest-OSM and MapQuest Open Aerial]: http://developer.mapquest.com/web/products/open/map
 [L.Control.Layers]: http://leafletjs.com/reference.html#control-layers
-[wq/store.js]: http://wq.io/docs/store-js
+[wq/store.js]: https://wq.io/docs/store-js

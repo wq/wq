@@ -104,9 +104,9 @@ function render(error, data) {
 [wq/chart.js] provides some example charts that work well with the output of `pandas.parse()`.
 
 [wq/pandas.js]: https://github.com/wq/wq.app/blob/master/js/wq/pandas.js
-[AMD]: http://wq.io/docs/amd
+[AMD]: https://wq.io/docs/amd
 [Pandas]: http://pandas.pydata.org
 [d3.js]: http://d3js.org/
-[wq.app module]: http://wq.io/docs/app
-[wq/chart.js]: http://wq.io/docs/chart-js
+[wq.app module]: https://wq.io/docs/app
+[wq/chart.js]: https://wq.io/docs/chart-js
 [Django REST Pandas]: https://github.com/wq/django-rest-pandas

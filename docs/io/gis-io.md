@@ -70,16 +70,16 @@ dest = ShapeIO(filename="dest.geojson")
 source.sync(dest)
 ```
 
-[wq.io]: http://wq.io/wq.io
+[wq.io]: https://wq.io/wq.io
 [wq.io.gis]:  https://github.com/wq/wq.io/blob/master/gis/
 [gis submodule]:  https://github.com/wq/wq.io/blob/master/gis/
 [Fiona]: https://github.com/Toblerity/Shapely
 [Shapely]: https://github.com/Toblerity/Shapely
 [GeoPandas]: http://geopandas.org/
-[loader]: http://wq.io/docs/loaders
-[parser]: http://wq.io/docs/parsers
-[mapper]: http://wq.io/docs/mappers
-[BaseIO]: http://wq.io/docs/base-io
+[loader]: https://wq.io/docs/loaders
+[parser]: https://wq.io/docs/parsers
+[mapper]: https://wq.io/docs/mappers
+[BaseIO]: https://wq.io/docs/base-io
 [GeoJSON-like objects]: http://toblerity.org/fiona/manual.html#data-model
 [Shapely geometry object]: http://toblerity.org/shapely/manual.html#geometric-objects
 [WKT String]: http://en.wikipedia.org/wiki/Well-known_text

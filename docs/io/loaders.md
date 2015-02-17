@@ -55,7 +55,7 @@ name | purpose
 The built in loaders should be enough for many use cases.  The most common use for a custom loader is to encapsulate a number of `NetLoader` options into a reusable mixin class.  For example, the [climata library] defines a `WebserviceLoader` for this purpose.
 
 [wq.io.loaders]: https://github.com/wq/wq.io/blob/master/loaders.py
-[wq.io]: http://wq.io/wq.io
-[mixin classes]: http://wq.io/docs/custom-io
-[BaseIO]: http://wq.io/docs/base-io
+[wq.io]: https://wq.io/wq.io
+[mixin classes]: https://wq.io/docs/custom-io
+[BaseIO]: https://wq.io/docs/base-io
 [climata library]: https://github.com/heigeo/climata

@@ -258,15 +258,15 @@ svg.datum([dataset]).call(plot);
 ```
 
 [wq/chart.js]: https://github.com/wq/wq.app/blob/master/js/wq/chart.js
-[wq.app module]: http://wq.io/docs/app
+[wq.app module]: https://wq.io/docs/app
 [d3.js]: http://d3js.org
 [reusable charts]: http://bost.ocks.org/mike/chart/
-[wq.db]: http://wq.io/wq.db
-[chart]: http://wq.io/docs/chart
-[AMD]: http://wq.io/docs/amd
+[wq.db]: https://wq.io/wq.db
+[chart]: https://wq.io/docs/chart
+[AMD]: https://wq.io/docs/amd
 [configurable function]: http://bost.ocks.org/mike/chart/#configuration
 [d3 selection]: https://github.com/mbostock/d3/wiki/Selections
-[wq/pandas.js]: http://wq.io/docs/pandas-js
+[wq/pandas.js]: https://wq.io/docs/pandas-js
 [Django REST Pandas]: https://github.com/wq/django-rest-pandas
 [getter/setter functions]: http://bost.ocks.org/mike/chart/#reconfiguration
 [viewBox]: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/viewBox

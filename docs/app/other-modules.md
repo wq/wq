@@ -252,9 +252,9 @@ tmpl.render("Another {{>example_partial}}", {'name': 'first'});
 
 Rather than writing out the template objects by hand, you may be interested in the [wq collectjson] command which can load HTML files from a folder and create a JSON object for you.
 
-[wq.app modules]: http://wq.io/docs/app
-[wq.app]: http://wq.io/wq.app
-[third-party dependencies]: http://wq.io/docs/third-party
+[wq.app modules]: https://wq.io/docs/app
+[wq.app]: https://wq.io/wq.app
+[third-party dependencies]: https://wq.io/docs/third-party
 
 [wq/appcache.js]: https://github.com/wq/wq.app/blob/master/js/wq/appcache.js
 [wq/autocomplete.js]: https://github.com/wq/wq.app/blob/master/js/wq/autocomplete.js
@@ -267,19 +267,19 @@ Rather than writing out the template objects by hand, you may be interested in t
 [wq/router.js]: https://github.com/wq/wq.app/blob/master/js/wq/router.js
 [wq/spinner.js]: https://github.com/wq/wq.app/blob/master/js/wq/spinner.js
 [wq/template.js]: https://github.com/wq/wq.app/blob/master/js/wq/template.js
-[wq/pages.js]: http://wq.io/docs/pages-js
+[wq/pages.js]: https://wq.io/docs/pages-js
 
-[AMD]: http://wq.io/docs/amd
+[AMD]: https://wq.io/docs/amd
 [application cache]: https://developer.mozilla.org/en-US/docs/Web/HTML/Using_the_application_cache
 [datalist]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist
-[search]: http://wq.io/docs/search
+[search]: https://wq.io/docs/search
 [progress]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress
 [wq/wq.app#26]: https://github.com/wq/wq.app/issues/26
 [wq/wq#10]: https://github.com/wq/wq/issues/10
-[wq collectjson]: http://wq.io/docs/collectjson
+[wq collectjson]: https://wq.io/docs/collectjson
 [jQuery Mobile loader]: http://api.jquerymobile.com/1.3/loader/
 [camera.getPicture()]: http://plugins.cordova.io/#/package/org.apache.cordova.camera
 [broken Android implementations]: http://code.google.com/p/android/issues/detail?id=62220
-[dbio]: http://wq.io/dbio
-[wq.db]: http://wq.io/wq.db
+[dbio]: https://wq.io/dbio
+[wq.db]: https://wq.io/wq.db
 [task state names in Celery]: http://docs.celeryproject.org/en/latest/userguide/tasks.html#states

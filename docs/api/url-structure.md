@@ -1,7 +1,7 @@
 The wq URL Structure
 ====================
 
-The wq stack is designed to support building offline-capable [websites] / [web apps] with application screens that can be [rendered on the client or on the server] depending on what will provide the best user experience.  To facilitate this design, wq defines a consistent but flexible **URL structure** that is shared throughout the application [as well as its REST API].  This structure is defined here independently of the implementations in [wq.app](http://wq.io/docs/app-js) and [wq.db](http://wq.io/docs/app.py), with the idea that either library can be exchanged for another architecture as long as the URL structure is maintained.
+The wq stack is designed to support building offline-capable [websites] / [web apps] with application screens that can be [rendered on the client or on the server] depending on what will provide the best user experience.  To facilitate this design, wq defines a consistent but flexible **URL structure** that is shared throughout the application [as well as its REST API].  This structure is defined here independently of the implementations in [wq.app](https://wq.io/docs/app-js) and [wq.db](https://wq.io/docs/app.py), with the idea that either library can be exchanged for another architecture as long as the URL structure is maintained.
 
 ## Basic URL Structure
 
@@ -42,7 +42,7 @@ verb | path | template | purpose
 -----|------|----------|--------
 `GET` | `/` | `[list]_list.html` | It is possible in wq to have lists directly attached to the root URL.  This usually used for the most important list in the site.  For example, the [wq website] has a `Page` model that is attached to the root URL so all "pages" can be accessed as e.g. `/about` rather than `/pages/about`.
 `GET` | `/[id]` | `[list]_detail.html` | An individual member of a list attached to the root URL (e.g. `/about`). 
-`GET` |  `/[parent_list]/[id]/[child_list]` | `[child_list]_list.html` | The members of `child_list`, filtered by a common foreign key.  For example, in the wq website, [/chapters/api/docs](http://wq.io/chapters/api/docs) lists all of the `Doc` instances with a foreign key pointing to the "api" `Chapter`.
+`GET` |  `/[parent_list]/[id]/[child_list]` | `[child_list]_list.html` | The members of `child_list`, filtered by a common foreign key.  For example, in the wq website, [/chapters/api/docs](https://wq.io/chapters/api/docs) lists all of the `Doc` instances with a foreign key pointing to the "api" `Chapter`.
 `GET` | `/[list]-by-[parent_list]` | `[parent_list]_list.html` | A helper view for generating `/[parent_list]/[id]/[list]`-style links.  Identical to a normal list view, but with an extra `target` context variable with the URL of the intended child list.
 
 ## Special Pages
@@ -56,15 +56,15 @@ verb | path | template | purpose
 `GET` | `/` | `[name].html` | If the root URL is not a list URL, and it's not a static page controlled by the webserver, then it should be specified as a simple non-list page.  (A common name for this page would be `index`).
 `GET` | `/config.json` | n/a | The auto-generated [wq configuration object].  This object is used to communicate the entire URL structure to the client application.  As of wq.db 0.7.0, this file can also be generated on the command line via `./manage.py dump_config` if `wq.db.rest` is in your application's `INSTALLED_APPS`.
  
-[wq.db]: http://wq.io/wq.db
-[app.py]: http://wq.io/docs/app.py
-[wq.app]: http://wq.io/wq.app
-[wq/app.js]: http://wq.io/docs/app-js
-[wq/map.js]: http://wq.io/docs/map-js
-[websites]: http://wq.io/docs/website
-[web apps]: http://wq.io/docs/web-app
-[rendered on the client or on the server]: http://wq.io/docs/templates
-[as well as its REST API]: http://wq.io/docs/website-rest-api
-[template]: http://wq.io/docs/templates
-[wq website]: http://wq.io/
-[wq configuration object]: http://wq.io/docs/config
+[wq.db]: https://wq.io/wq.db
+[app.py]: https://wq.io/docs/app.py
+[wq.app]: https://wq.io/wq.app
+[wq/app.js]: https://wq.io/docs/app-js
+[wq/map.js]: https://wq.io/docs/map-js
+[websites]: https://wq.io/docs/website
+[web apps]: https://wq.io/docs/web-app
+[rendered on the client or on the server]: https://wq.io/docs/templates
+[as well as its REST API]: https://wq.io/docs/website-rest-api
+[template]: https://wq.io/docs/templates
+[wq website]: https://wq.io/
+[wq configuration object]: https://wq.io/docs/config

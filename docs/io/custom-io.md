@@ -5,7 +5,7 @@ order: 1
 Extending wq.io
 ===============
 
-<img align=right alt="wq.io" src="http://wq.io/images/128/wq.io.png">
+<img align=right alt="wq.io" src="https://wq.io/images/128/wq.io.png">
 
 [wq.io] provides a consistent interface for working with data from a variety of common formats.  However, it is not possible to support every conceivable file format and data structure in a single library.  Because of this, wq.io is designed primarily to be customized and extended.  To facilitate fully modular customization, the wq.io APIs are designed as combinations of a `BaseIO` class and several mixin classes.
 
@@ -61,9 +61,9 @@ for record in MyJsonFileIO(filename='file.json'):
     print record.id
 ```
 
-[wq.io]: http://wq.io/wq.io
-[BaseIO]: http://wq.io/docs/base-io
-[Loader]: http://wq.io/docs/loaders
-[Parser]: http://wq.io/docs/parsers
-[Mapper]: http://wq.io/docs/mappers
+[wq.io]: https://wq.io/wq.io
+[BaseIO]: https://wq.io/docs/base-io
+[Loader]: https://wq.io/docs/loaders
+[Parser]: https://wq.io/docs/parsers
+[Mapper]: https://wq.io/docs/mappers
 [top level module]: https://github.com/wq/wq.io/blob/master/__init__.py

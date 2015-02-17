@@ -426,38 +426,38 @@ app.init(config, templates)
 ```
 
 [wq/app.js]: https://github.com/wq/wq.app/blob/master/js/wq/app.js
-[wq.app]: http://wq.io/wq.app
-[wq.db]: http://wq.io/wq.db
-[wq/store.js]: http://wq.io/docs/store-js
-[wq/pages.js]: http://wq.io/docs/pages-js
-[app.py]: http://wq.io/docs/app.py
-[URL structure]: http://wq.io/docs/url-structure
-[shared client/server templates]: http://wq.io/docs/templates
-[authentication]: http://wq.io/docs/auth
-[AMD]: http://wq.io/docs/amd
-[app.router.register_model]: http://wq.io/docs/app.py
-[wq.db.rest]: http://wq.io/docs/about-rest
-[wq configuration object]: http://wq.io/docs/config
-[My website is its own REST API]: http://wq.io/docs/website-rest-api
-[pages.register()]: http://wq.io/docs/pages-js
-[pages.go()]: http://wq.io/docs/pages-js
-[template context]: http://wq.io/docs/templates
+[wq.app]: https://wq.io/wq.app
+[wq.db]: https://wq.io/wq.db
+[wq/store.js]: https://wq.io/docs/store-js
+[wq/pages.js]: https://wq.io/docs/pages-js
+[app.py]: https://wq.io/docs/app.py
+[URL structure]: https://wq.io/docs/url-structure
+[shared client/server templates]: https://wq.io/docs/templates
+[authentication]: https://wq.io/docs/auth
+[AMD]: https://wq.io/docs/amd
+[app.router.register_model]: https://wq.io/docs/app.py
+[wq.db.rest]: https://wq.io/docs/about-rest
+[wq configuration object]: https://wq.io/docs/config
+[My website is its own REST API]: https://wq.io/docs/website-rest-api
+[pages.register()]: https://wq.io/docs/pages-js
+[pages.go()]: https://wq.io/docs/pages-js
+[template context]: https://wq.io/docs/templates
 [ui object]: http://api.jquerymobile.com/pagecontainer/
 [PhoneGap]: http://phonegap.com
 [Cordova]: http://cordova.io
-[client-side rendering]: http://wq.io/docs/web-app
-[template rendering context]: http://wq.io/docs/templates
+[client-side rendering]: https://wq.io/docs/web-app
+[template rendering context]: https://wq.io/docs/templates
 [template context processors]: https://docs.djangoproject.com/en/1.6/ref/templates/api/#subclassing-context-requestcontext
 [page transitions]: http://view.jquerymobile.com/1.3.2/dist/demos/widgets/transitions/
 [$.mobile.defaultPageTransition]: http://view.jquerymobile.com/1.3.2/dist/demos/widgets/transitions/#Globalconfiguration
 [$.mobile.defaultDialogTransition]: http://view.jquerymobile.com/1.3.2/dist/demos/widgets/transitions/#Globalconfiguration
 [$.mobile.maxTransitionWidth]: http://view.jquerymobile.com/1.3.2/dist/demos/widgets/transitions/#Maxwidthfortransitions
-[Mustache templates]: http://wq.io/docs/templates
-[collectjson]: http://wq.io/docs/collectjson
-[wq build process]: http://wq.io/docs/build
+[Mustache templates]: https://wq.io/docs/templates
+[collectjson]: https://wq.io/docs/collectjson
+[wq build process]: https://wq.io/docs/build
 [Django wq template]: https://github.com/wq/django-wq-template
-[ds.save()]: http://wq.io/docs/store-js
-[page configuration]: http://wq.io/docs/config
-[design patterns]: http://wq.io/docs/about-patterns
+[ds.save()]: https://wq.io/docs/store-js
+[page configuration]: https://wq.io/docs/config
+[design patterns]: https://wq.io/docs/about-patterns
 [default implementation]: https://github.com/wq/wq.app/blob/v0.7.1/js/wq/app.js#L312-L396
-[ds.filter()]: http://wq.io/docs/store-js
+[ds.filter()]: https://wq.io/docs/store-js

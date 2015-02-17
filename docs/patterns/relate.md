@@ -16,7 +16,7 @@ The relate module facilitates replacing all of these tables with a single table 
 
 Note that while it is possible to replace all relationship definitions with the relate model, this is not necessarily the best approach.  In particular, one-to-many relationships that have particular significance (i.e. the application code relies on them) should typically be implemented as `ForeignKey`s rather than using the generic many-to-many interface provided here.  The relate model is designed to be used to enumerate informative - but not critical -  many-to-many relationships between entities in the database.
 
-> The relate module is among the original wq.db modules discussed in the paper [wq: A modular framework for collecting, storing, and utilizing experiential VGI](http://wq.io/research/framework).  Since that paper, this module has been renamed from `wq.db.relate` to `wq.db.patterns.relate`.
+> The relate module is among the original wq.db modules discussed in the paper [wq: A modular framework for collecting, storing, and utilizing experiential VGI](https://wq.io/research/framework).  Since that paper, this module has been renamed from `wq.db.relate` to `wq.db.patterns.relate`.
 
 ## Usage
 
@@ -195,12 +195,12 @@ To accomplish this, the Mustache template might look something like this:
 When rendering "new" screens (which use the same template as edit screens), [wq/app.js] will automatically generate a list of blank relationships for all potential relationship types.  To customize which relationship types are listed for new items, override the `getTypeFilter()` function in `attachmentTypes.relationship` and/or `attachmentTypes.inverserelationship` (see [wq/app.js] for more information).
 
 [wq.db.patterns.relate]: https://github.com/wq/wq.db/blob/master/patterns/relate
-[wq.db]: http://wq.io/wq.db
-[design pattern]: http://wq.io/docs/about-patterns
+[wq.db]: https://wq.io/wq.db
+[design pattern]: https://wq.io/docs/about-patterns
 [Entity-Attribute-Value (EAV)]: http://en.wikipedia.org/wiki/Entity%E2%80%93attribute%E2%80%93value_model
 [abstract base class]: https://docs.djangoproject.com/en/1.7/topics/db/models/#abstract-base-classes
 [ModelManager]: https://docs.djangoproject.com/en/1.7/topics/db/managers/
 [GenericRelation]: https://docs.djangoproject.com/en/1.7/ref/contrib/contenttypes/#django.contrib.contenttypes.fields.GenericRelation
-[wq/app.js]: http://wq.io/docs/app-js
+[wq/app.js]: https://wq.io/docs/app-js
 [proxy class]: https://docs.djangoproject.com/en/1.7/topics/db/models/#proxy-models
 [ContentType]: https://docs.djangoproject.com/en/1.7/ref/contrib/contenttypes/#the-contenttype-model

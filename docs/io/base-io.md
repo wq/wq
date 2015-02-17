@@ -82,13 +82,13 @@ To be compatible with `flattened()`, nested IOs need to have the following chara
 Note that none of the pre-mixed IO classes in wq.io are nested.  The [climata library] provides a number of examples of nested IO classes.
 
 [wq.io.base]: https://github.com/wq/wq.io/blob/master/base.py
-[wq.io]: http://wq.io/wq.io
-[custom IO]: http://wq.io/docs/custom-io
-[load]: http://wq.io/docs/loaders
-[parse]: http://wq.io/docs/parsers
-[mapper]: http://wq.io/docs/mappers
+[wq.io]: https://wq.io/wq.io
+[custom IO]: https://wq.io/docs/custom-io
+[load]: https://wq.io/docs/loaders
+[parse]: https://wq.io/docs/parsers
+[mapper]: https://wq.io/docs/mappers
 [Pandas DataFrame]: http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html
-[Parsers]: http://wq.io/docs/parsers
-[FileLoader]: http://wq.io/docs/loaders
-[dbio]: http://wq.io/dbio
+[Parsers]: https://wq.io/docs/parsers
+[FileLoader]: https://wq.io/docs/loaders
+[dbio]: https://wq.io/dbio
 [climata library]: https://github.com/heigeo/climata

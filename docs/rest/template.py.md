@@ -25,10 +25,10 @@ There are two caveats:
  * Second, the `user` template context variable provided by Django doesn't work well with the Mustache loader due to issues with lazy evaluation.  The simple workaround is to always wrap references to `user` with an `{{#is_authenticated}}` block in your Mustache templates (something you probably want to do anyway).  See the [auth] documentation for more information.
  
 [wq.db.rest.template]: https://github.com/wq/wq.db/blob/master/rest/template.py
-[wq.db]: http://wq.io/wq.db
-[Mustache templates]: http://wq.io/docs/templates
-[websites]: http://wq.io/docs/website
-[offline]: http://wq.io/docs/web-app
+[wq.db]: https://wq.io/wq.db
+[Mustache templates]: https://wq.io/docs/templates
+[websites]: https://wq.io/docs/website
+[offline]: https://wq.io/docs/web-app
 [Pystache]: https://github.com/defunkt/pystache
-[settings.py]: http://wq.io/docs/settings
-[auth]: http://wq.io/docs/auth
+[settings.py]: https://wq.io/docs/settings
+[auth]: https://wq.io/docs/auth

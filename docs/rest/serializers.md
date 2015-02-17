@@ -38,11 +38,11 @@ Other enhancements provided by wq.db's ModelSerializer include:
  * Automatic "nested" serializers for foreign keys when rendering detail views.
 
 [wq.db.rest.serializers]: https://github.com/wq/wq.db/blob/master/rest/serializers.py
-[wq.db]: http://wq.io/wq.db
-[REST API]: http://wq.io/docs/about-rest
+[wq.db]: https://wq.io/wq.db
+[REST API]: https://wq.io/docs/about-rest
 [ModelSerializer]: http://www.django-rest-framework.org/api-guide/serializers/#modelserializer
-[app.py]: http://wq.io/docs/app.py
-[template rendering]: http://wq.io/docs/templates
+[app.py]: https://wq.io/docs/app.py
+[template rendering]: https://wq.io/docs/templates
 [prefetch_related()]: https://docs.djangoproject.com/en/1.7/ref/models/querysets/#prefetch-related
 [select_related()]: https://docs.djangoproject.com/en/1.7/ref/models/querysets/#select-related
-[IdentifiedModel]: http://wq.io/docs/identify
+[IdentifiedModel]: https://wq.io/docs/identify

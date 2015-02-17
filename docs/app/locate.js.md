@@ -220,5 +220,5 @@ function success(evt) {
 ```
 
 [wq/locate.js]: https://github.com/wq/wq.app/blob/master/js/wq/locate.js
-[AMD]: http://wq.io/docs/amd
+[AMD]: https://wq.io/docs/amd
 [L.Map.locate()]: http://leafletjs.com/reference.html#map-locate-options

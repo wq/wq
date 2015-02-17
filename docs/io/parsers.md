@@ -116,21 +116,21 @@ name | purpose
 The methods listed above are called in turn by `parse()`, which is defined by `WorkbookParser`.  Working implementations of the methods are defined in `ExcelParser`.
 
 [wq.io.parsers]: https://github.com/wq/wq.io/blob/master/parsers/
-[wq.io]: http://wq.io/wq.io
+[wq.io]: https://wq.io/wq.io
 [csv]: https://docs.python.org/3/library/csv.html
 [xml.etree]: https://docs.python.org/3/library/xml.etree.elementtree.html
 [xlrd]: http://www.python-excel.org/
-[mixin classes]: http://wq.io/docs/custom-io
-[Loader]: http://wq.io/docs/loaders
+[mixin classes]: https://wq.io/docs/custom-io
+[Loader]: https://wq.io/docs/loaders
 [JsonParser]: https://github.com/wq/wq.io/blob/master/parsers/text.py
 [json]: https://docs.python.org/3/library/json.html
 [XmlParser]: https://github.com/wq/wq.io/blob/master/parsers/text.py
 [wq.io.base.TableParser]:  https://github.com/wq/wq.io/blob/master/parsers/base.py
-[dbio]: http://wq.io/dbio
+[dbio]: https://wq.io/dbio
 [CsvParser]: https://github.com/wq/wq.io/blob/master/parsers/text.py
 [SkipPreludeReader]: https://github.com/wq/wq.io/blob/master/parsers/readers.py
 [DictReader]: https://docs.python.org/3/library/csv.html#csv.DictReader
 [ExcelParser]: https://github.com/wq/wq.io/blob/master/parsers/xls.py
 [xlwt]: http://www.python-excel.org/
 [xlsxwrite]: https://xlsxwriter.readthedocs.org/
-[TupleMapper]: http://wq.io/docs/mappers
+[TupleMapper]: https://wq.io/docs/mappers

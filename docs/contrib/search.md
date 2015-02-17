@@ -122,9 +122,9 @@ results = search("test", authority_id=1)
 ```
 
 [wq.db.contrib.search]: https://github.com/wq/wq.db/blob/master/contrib/search
-[wq.db]: http://wq.io/wq.db
-[identify]: http://wq.io/docs/identify
-[annotate]: http://wq.io/docs/annotate
-[wq/autocomplete.js]: http://wq.io/docs/other-modules
-[app.py REST API]: http://wq.io/docs/app.py
+[wq.db]: https://wq.io/wq.db
+[identify]: https://wq.io/docs/identify
+[annotate]: https://wq.io/docs/annotate
+[wq/autocomplete.js]: https://wq.io/docs/other-modules
+[app.py REST API]: https://wq.io/docs/app.py
 [wq.db.contrib.search.util]: https://github.com/wq/wq.db/blob/master/contrib/search/util.py

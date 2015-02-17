@@ -102,16 +102,16 @@ The chart views are meant to be used with a special [ChartSerializer] class that
 See vera's [EventResultSerializer] for an example of how to customize `ChartSerializer`.  Be sure to set the `serializer_class` on your custom chart view as in [vera.views.ChartView].
 
 [wq.db.contrib.chart]: https://github.com/wq/wq.db/blob/master/contrib/chart
-[wq.db]: http://wq.io/wq.db
-[vera]: http://wq.io/vera
-[wq/chart.js]: http://wq.io/docs/chart-js
+[wq.db]: https://wq.io/wq.db
+[vera]: https://wq.io/vera
+[wq/chart.js]: https://wq.io/docs/chart-js
 [Django REST Pandas]: https://github.com/wq/django-rest-pandas
 [format features]: https://github.com/wq/django-rest-pandas#supported-formats
 [PandasView]: https://github.com/wq/django-rest-pandas#usage
 [matplotlib]: https://github.com/matplotlib/matplotlib
-[identify]: http://wq.io/docs/identify
+[identify]: https://wq.io/docs/identify
 [vera.views.ChartView]: https://github.com/wq/vera/blob/master/vera/views.py
 [ChartSerializer]: https://github.com/wq/wq.db/blob/master/contrib/chart/serializers.py
 [PandasSerializer]: https://github.com/wq/django-rest-pandas/#implementation-notes
-[ERAV]: http://wq.io/docs/erav
+[ERAV]: https://wq.io/docs/erav
 [EventResultSerializer]: https://github.com/wq/vera/blob/v0.7.0/vera/serializers.py#L74-L107

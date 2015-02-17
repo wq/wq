@@ -148,17 +148,17 @@ name | purpose
 `pages.notFound(url)` is a shortcut for `pages.go()` that uses the pre-configured 404 template and a simple context of `{"url": url}`.  It is leveraged by [wq/app.js] when items are not found in the local store.
 
 [wq/pages.js]: https://github.com/wq/wq.app/blob/master/js/wq/pages.js
-[wq.app]: http://wq.io/wq.app
+[wq.app]: https://wq.io/wq.app
 [jQuery Mobile]: http://jquerymobile.com
-[PJAX-style]: http://wq.io/docs/web-app
-[wq.db]: http://wq.io/wq.app
-[wq/app.js]: http://wq.io/docs/app-js
-[wq configuration object]: http://wq.io/docs/config
-[AMD]: http://wq.io/docs/amd
-[app.init()]: http://wq.io/docs/app-js
-[app.jqmInit()]: http://wq.io/docs/app-js
+[PJAX-style]: https://wq.io/docs/web-app
+[wq.db]: https://wq.io/wq.app
+[wq/app.js]: https://wq.io/docs/app-js
+[wq configuration object]: https://wq.io/docs/config
+[AMD]: https://wq.io/docs/amd
+[app.init()]: https://wq.io/docs/app-js
+[app.jqmInit()]: https://wq.io/docs/app-js
 [ui object]: http://api.jquerymobile.com/pagecontainer/
 [jQueryMobile-router documentation]: https://github.com/azicchetti/jquerymobile-router
-[recommend]: http://wq.io/docs/website
-[Mustache template]: http://wq.io/docs/templates
-[wq/template.js]: http://wq.io/docs/other-modules
+[recommend]: https://wq.io/docs/website
+[Mustache template]: https://wq.io/docs/templates
+[wq/template.js]: https://wq.io/docs/other-modules

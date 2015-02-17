@@ -142,21 +142,21 @@ map.on('draw:created', function(e){
 ```
 
 [wq.db.patterns.locate]: https://github.com/wq/wq.db/blob/master/patterns/locate
-[wq.db]: http://wq.io/wq.db
-[design pattern]: http://wq.io/docs/about-patterns
+[wq.db]: https://wq.io/wq.db
+[design pattern]: https://wq.io/docs/about-patterns
 [Entity-Attribute-Value (EAV)]: http://en.wikipedia.org/wiki/Entity%E2%80%93attribute%E2%80%93value_model
 [PostGIS]: http://postgis.net/
 [GeoDjango]: https://docs.djangoproject.com/en/1.7/ref/contrib/gis/
 [abstract base class]: https://docs.djangoproject.com/en/1.7/topics/db/models/#abstract-base-classes
 [GenericRelation]: https://docs.djangoproject.com/en/1.7/ref/contrib/contenttypes/#django.contrib.contenttypes.fields.GenericRelation
-[wq/app.js]: http://wq.io/docs/app-js
-[wq/locate.js]: http://wq.io/docs/locate-js
-[wq/map.js]: http://wq.io/docs/map-js
-[URL structure]: http://wq.io/docs/url-structure
-[wq configuration]: http://wq.io/docs/config
+[wq/app.js]: https://wq.io/docs/app-js
+[wq/locate.js]: https://wq.io/docs/locate-js
+[wq/map.js]: https://wq.io/docs/map-js
+[URL structure]: https://wq.io/docs/url-structure
+[wq configuration]: https://wq.io/docs/config
 [GeoManager]: https://docs.djangoproject.com/en/1.7/ref/contrib/gis/model-api/#geomanager
 [GeoJSON]: http://geojson.org
-[wq.app]: http://wq.io/wq.app
+[wq.app]: https://wq.io/wq.app
 [support is planned]: https://github.com/wq/wq.app/issues/36
 [leaflet.draw]: https://github.com/Leaflet/Leaflet.draw
 [LocationSerializer]: https://github.com/wq/wq.db/blob/master/patterns/locate/serializers.py

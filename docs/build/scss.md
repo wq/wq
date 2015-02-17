@@ -24,8 +24,8 @@ The [Compass] framework provides a number of useful functions for generating cro
 [wq.app.build.compilers.scss]: https://github.com/wq/wq.app/blob/v0.7.1/build/compilers.py#L28-L48
 [SASS]: http://sass-lang.com/
 [pyScss]: https://github.com/Kronuz/pyScss
-[wq build]: http://wq.io/docs/build
-[build configuration]: http://wq.io/docs/build
-[custom jQuery mobile themes]: http://wq.io/docs/jquery-mobile-scss-themes
+[wq build]: https://wq.io/docs/build
+[build configuration]: https://wq.io/docs/build
+[custom jQuery mobile themes]: https://wq.io/docs/jquery-mobile-scss-themes
 [Compass]: http://compass-style.org/
 [scss source for this website]: https://github.com/wq/wq-site/tree/master/app/scss

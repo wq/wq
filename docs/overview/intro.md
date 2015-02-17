@@ -1,7 +1,7 @@
 Introduction
 ============
 
-<img align=right alt=wq src="http://wq.io/images/128/wq.png">
+<img align=right alt=wq src="https://wq.io/images/128/wq.png">
 
 **wq** is a collection of Python and JavaScript modules that facilitate the development of robust, offline-capable mobile / web apps.  wq is also a distillation of a number of recommended best practices for ensuring long-term software sustainability.  The primary use case for wq is mobile data collection, whether by professional field staff or by volunteers in e.g. [citizen science] and mobile crowdsourcing projects.  However, it is also useful as a platform for building a wide variety of mobile-first websites and applications.
 
@@ -28,18 +28,18 @@ The documentation is structured to lay the foundation and conventions before get
     1. [Dataset IO]
   4. [wq.db: Contrib apps]
 
-[citizen science]: http://wq.io/research/quality
-[The goal of wq]: http://wq.io/research/framework
-[installed]: http://wq.io/docs/setup
-[wq.app]: http://wq.io/wq.app
-[JavaScript modules]: http://wq.io/docs/app
-[build process]: http://wq.io/docs/build
-[wq.db]: http://wq.io/wq.db
-[design patterns]: http://wq.io/docs/about-patterns
-[REST API generator]: http://wq.io/docs/about-rest
-[wq.io]: http://wq.io/wq.io
-[Philosophy]: http://wq.io/chapters/philosophy/docs
-[API Conventions]: http://wq.io/chapters/api/docs
-[Overview]: http://wq.io/chapters/overview/docs
-[wq.db: Contrib apps]: http://wq.io/chapters/contrib/docs
-[Dataset IO]: http://wq.io/chapters/io/docs
+[citizen science]: https://wq.io/research/quality
+[The goal of wq]: https://wq.io/research/framework
+[installed]: https://wq.io/docs/setup
+[wq.app]: https://wq.io/wq.app
+[JavaScript modules]: https://wq.io/docs/app
+[build process]: https://wq.io/docs/build
+[wq.db]: https://wq.io/wq.db
+[design patterns]: https://wq.io/docs/about-patterns
+[REST API generator]: https://wq.io/docs/about-rest
+[wq.io]: https://wq.io/wq.io
+[Philosophy]: https://wq.io/chapters/philosophy/docs
+[API Conventions]: https://wq.io/chapters/api/docs
+[Overview]: https://wq.io/chapters/overview/docs
+[wq.db: Contrib apps]: https://wq.io/chapters/contrib/docs
+[Dataset IO]: https://wq.io/chapters/io/docs

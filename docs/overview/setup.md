@@ -125,22 +125,22 @@ define(['wq/chart'], function(chart) {
 See the [wq.app module list] for available modules, and the [build docs] for information about available build options.
 
 [Python Package Index]: https://pypi.python.org/pypi/wq
-[wq.app]: http://wq.io/wq.app
-[wq.db]: http://wq.io/wq.db
-[wq.io]: http://wq.io/wq.io
+[wq.app]: https://wq.io/wq.app
+[wq.db]: https://wq.io/wq.db
+[wq.io]: https://wq.io/wq.io
 [Apache]: http://httpd.apache.org/
 [PostgreSQL]: http://www.postgresql.org/
 [PostGIS]: http://postgis.net/
 [latest release]: https://github.com/wq/wq.app/releases
-[js/wq]: http://wq.io/docs/app
-[JavaScript dependencies]: http://wq.io/docs/third-party
-[wq.app module list]: http://wq.io/docs/app
+[js/wq]: https://wq.io/docs/app
+[JavaScript dependencies]: https://wq.io/docs/third-party
+[wq.app module list]: https://wq.io/docs/app
 [Django wq template]: https://github.com/wq/django-wq-template
-[wq init]: http://wq.io/docs/build
-[wq build]: http://wq.io/docs/build
+[wq init]: https://wq.io/docs/build
+[wq build]: https://wq.io/docs/build
 [near future]: https://github.com/wq/wq.db/issues/2
 [volo]: http://volojs.org
-[build docs]: http://wq.io/docs/build
+[build docs]: https://wq.io/docs/build
 [wq/wq#11]: https://github.com/wq/wq/issues/11
 [Python 3]: https://www.python.org/downloads/
 [Node]: http://nodejs.org

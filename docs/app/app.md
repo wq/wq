@@ -7,7 +7,7 @@ About wq.app's Modules
 
 [wq.app/js/wq]
 
-<img align=right alt="wq.app" src="http://wq.io/images/128/wq.app.png">
+<img align=right alt="wq.app" src="https://wq.io/images/128/wq.app.png">
 
 The core of [wq.app] is a collection of [AMD] modules that can be mixed and matched in a client application.  Unlike traditional JavaScript libraries, there is no browser-global `wq`, or even a canonical `wq.js` for inclusion in your projects.  Instead, the assumption is that projects utilizing wq.app will be fully AMD compliant, and project-specific code will AMD-depend directly on the specific modules within wq.app that it needs.  See [this article] for a discussion of this design decision.
 
@@ -43,19 +43,19 @@ wq.app is also bundled with a number of [third-party libraries] including Requir
 
 See the notes in [Getting Started] for more information about setting up a project layout that utilizes wq.app and/or its bundled third-party libraries.
 
-[wq.app]: http://wq.io/wq.app
+[wq.app]: https://wq.io/wq.app
 [wq.app/js/wq]: https://github.com/wq/wq.app/blob/master/js/wq/
-[AMD]: http://wq.io/docs/amd
-[this article]: http://wq.io/docs/amd
-[wq/app.js]: http://wq.io/docs/app-js
-[wq/chart.js]: http://wq.io/docs/chart-js
-[wq/locate.js]: http://wq.io/docs/locate-js
-[wq/map.js]: http://wq.io/docs/map-js
-[wq/pages.js]: http://wq.io/docs/pages-js
-[wq/pandas.js]: http://wq.io/docs/pandas-js
-[wq/store.js]: http://wq.io/docs/store-js
-[smaller modules]: http://wq.io/docs/other-modules
-[third-party libraries]: http://wq.io/docs/third-party
-[wq.db]: http://wq.io/wq.db
-[app.py]: http://wq.io/docs/app.py
-[Getting Started]: http://wq.io/docs/setup
+[AMD]: https://wq.io/docs/amd
+[this article]: https://wq.io/docs/amd
+[wq/app.js]: https://wq.io/docs/app-js
+[wq/chart.js]: https://wq.io/docs/chart-js
+[wq/locate.js]: https://wq.io/docs/locate-js
+[wq/map.js]: https://wq.io/docs/map-js
+[wq/pages.js]: https://wq.io/docs/pages-js
+[wq/pandas.js]: https://wq.io/docs/pandas-js
+[wq/store.js]: https://wq.io/docs/store-js
+[smaller modules]: https://wq.io/docs/other-modules
+[third-party libraries]: https://wq.io/docs/third-party
+[wq.db]: https://wq.io/wq.db
+[app.py]: https://wq.io/docs/app.py
+[Getting Started]: https://wq.io/docs/setup

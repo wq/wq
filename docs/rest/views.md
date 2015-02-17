@@ -52,14 +52,14 @@ Note that it is not necessary to explicitly set the `model` or `queryset` attrib
 `ModelViewSet` also includes code to automatically determine whether a POST was submitted via an AJAX JSON request or via a traditional form request.  In the former case, a JSON response is returned, while in the latter case, the client is redirected via HTTP to the detail view for the new item.  This allows for progressive enhancement to support a wide array of browsers. 
 
 [wq.db.rest.views]: https://github.com/wq/wq.db/blob/master/rest/views.py
-[wq.db]: http://wq.io/wq.db
-[REST API]: http://wq.io/docs/about-rest
+[wq.db]: https://wq.io/wq.db
+[REST API]: https://wq.io/docs/about-rest
 [views]: http://www.django-rest-framework.org/api-guide/views/
 [viewsets]: http://www.django-rest-framework.org/api-guide/viewsets/
 [viewset]: http://www.django-rest-framework.org/api-guide/viewsets/
-[app.py]: http://wq.io/docs/app.py
+[app.py]: https://wq.io/docs/app.py
 [class-based views]: https://docs.djangoproject.com/en/1.7/topics/class-based-views/
 [GenericAPIView]: http://www.django-rest-framework.org/api-guide/generic-views/#genericapiview
-[config.json]: http://wq.io/docs/config
+[config.json]: https://wq.io/docs/config
 [ModelViewSet]: http://www.django-rest-framework.org/api-guide/viewsets/#modelviewset
-[wq URL structure]: http://wq.io/docs/url-structure
+[wq URL structure]: https://wq.io/docs/url-structure

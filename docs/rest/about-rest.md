@@ -7,7 +7,7 @@ About wq.db.rest
 
 [wq.db.rest]
 
-<img align=right alt="wq.db" src="http://wq.io/images/128/wq.db.png">
+<img align=right alt="wq.db" src="https://wq.io/images/128/wq.db.png">
 
 **wq.db.rest** facilitates the creation of REST-ful APIs that also function as complete websites.  When combined with a compatible client library (i.e. [wq.app]), this flexibility makes it possible to create progressively-enhanced websites that also function well offline (via client-side rendering).  While it is nominally a REST interface, wq.db.rest is intended to be used as the core controller in a web application, rather than to build a supplemental API (see "[My website is its own REST API]").  That said, like the rest of wq.db, individual parts of wq.db.rest you find useful can be integrated into your application without requiring the whole module.
 
@@ -47,25 +47,25 @@ renderers                | Supplemental response rendering formats, including Ge
 [views]                  | Custom router-aware viewsets
 
 [wq.db.rest]: https://github.com/wq/wq.db/blob/master/rest/
-[wq.app]: http://wq.io/wq.app
-[My website is its own REST API]: http://wq.io/docs/website-rest-api
+[wq.app]: https://wq.io/wq.app
+[My website is its own REST API]: https://wq.io/docs/website-rest-api
 [Django REST Framework]: http://django-rest-framework.org/
 [django.contrib.admin]: https://docs.djangoproject.com/en/dev/ref/contrib/admin/
-[Router]: http://wq.io/docs/app.py
+[Router]: https://wq.io/docs/app.py
 [Django REST Framework docs]: http://django-rest-framework.org/
 [routers]: http://django-rest-framework.org/api-guide/routers
 [viewsets]: http://django-rest-framework.org/api-guide/viewsets
 [serializers]: http://django-rest-framework.org/api-guide/serializers
-[autodiscover()]: http://wq.io/docs/app.py
+[autodiscover()]: https://wq.io/docs/app.py
 [Django wq template]: https://github.com/wq/django-wq-template
-[app]: http://wq.io/docs/app.py
-[wq/app.js]: http://wq.io/docs/app-js
-[auth]: http://wq.io/docs/auth
-[filters]: http://wq.io/docs/filters
+[app]: https://wq.io/docs/app.py
+[wq/app.js]: https://wq.io/docs/app-js
+[auth]: https://wq.io/docs/auth
+[filters]: https://wq.io/docs/filters
 [ContentType]: https://docs.djangoproject.com/en/dev/ref/contrib/contenttypes/
-[permissions]: http://wq.io/docs/permissions
-[renderers]: http://wq.io/docs/renderers
-[wqserial]: http://wq.io/docs/serializers
-[settings]: http://wq.io/docs/settings
-[template]: http://wq.io/docs/template.py
-[views]: http://wq.io/docs/views
+[permissions]: https://wq.io/docs/permissions
+[renderers]: https://wq.io/docs/renderers
+[wqserial]: https://wq.io/docs/serializers
+[settings]: https://wq.io/docs/settings
+[template]: https://wq.io/docs/template.py
+[views]: https://wq.io/docs/views

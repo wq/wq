@@ -40,7 +40,7 @@ With the above considerations, we argue that the new features in the latest vers
 
 *_Note: HTML5 is used here in its commonly understood meaning of "HTML, JavaScript, and CSS features available in the latest versions of all popular browsers", which mostly correspond to the actual HTML5 standard and related specifications.  If semantics are important to you, replace HTML5 with "web standards" as you read this document._
 
-[Still a Website: Preserving the "HT" in HTML5]: http://wq.io/docs/website
+[Still a Website: Preserving the "HT" in HTML5]: https://wq.io/docs/website
 [PhoneGap]: http://phonegap.com
 [Application Cache]: http://www.whatwg.org/specs/web-apps/current-work/multipage/offline.html
 [Web Storage]: http://www.w3.org/TR/webstorage/
@@ -50,8 +50,8 @@ With the above considerations, we argue that the new features in the latest vers
 [History.pushState]: http://www.whatwg.org/specs/web-apps/current-work/multipage/history.html
 [PJAX]: https://github.com/defunkt/jquery-pjax
 [real possibility]: http://www.mozilla.org/en-US/firefox/os/
-[wq]: http://wq.io/
-[templates]: http://wq.io/docs/templates
+[wq]: https://wq.io/
+[templates]: https://wq.io/docs/templates
 [Apache Cordova]: http://cordova.io
 [PhoneGap Build]: http://build.phonegap.com
 [will no longer be necessary]: http://phonegap.com/2012/05/09/phonegap-beliefs-goals-and-philosophy/

@@ -21,7 +21,7 @@ The identify module enables a number of related tasks:
  * Generating "permalinks" or user-friendly URLs for project web pages that correspond to database records (e.g. in the general [REST API] and in the [chart] contrib module)
  * Searching the entire database for entities in any table with a given identifier (in the [search] contrib module)
 
-> The identify module is among the original wq.db modules discussed in the paper [wq: A modular framework for collecting, storing, and utilizing experiential VGI](http://wq.io/research/framework).  Since that paper, this module has been renamed from `wq.db.identify` to `wq.db.patterns.identify`.
+> The identify module is among the original wq.db modules discussed in the paper [wq: A modular framework for collecting, storing, and utilizing experiential VGI](https://wq.io/research/framework).  Since that paper, this module has been renamed from `wq.db.identify` to `wq.db.patterns.identify`.
 
 ## Usage
 
@@ -177,16 +177,16 @@ The field names for the authority-less identifier will be e.g. `identifier--name
 When rendering "new" screens (which use the same template as edit screens), [wq/app.js] will automatically generate a list of blank identifiers for all authorities.  This makes it possible to generate form widgets for all potential identifiers.  Any identifier fields that are left blank will not be created.  To customize which Authorities are listed for new items, override the `getTypeFilter()` function in `attachmentTypes.identifier` (see [wq/app.js] for more information).
 
 [wq.db.patterns.identify]: https://github.com/wq/wq.db/blob/master/patterns/identify
-[wq.db]: http://wq.io/wq.db
-[design pattern]: http://wq.io/docs/about-patterns
+[wq.db]: https://wq.io/wq.db
+[design pattern]: https://wq.io/docs/about-patterns
 [Entity-Attribute-Value (EAV)]: http://en.wikipedia.org/wiki/Entity%E2%80%93attribute%E2%80%93value_model
-[dbio]: http://wq.io/dbio
-[REST API]: http://wq.io/docs/about-rest
-[chart]: http://wq.io/docs/chart
-[search]: http://wq.io/docs/search
+[dbio]: https://wq.io/dbio
+[REST API]: https://wq.io/docs/about-rest
+[chart]: https://wq.io/docs/chart
+[search]: https://wq.io/docs/search
 [abstract base class]: https://docs.djangoproject.com/en/1.7/topics/db/models/#abstract-base-classes
-[NaturalKeyModel]: http://wq.io/docs/natural-key
-[natural key]: http://wq.io/docs/natural-key
+[NaturalKeyModel]: https://wq.io/docs/natural-key
+[natural key]: https://wq.io/docs/natural-key
 [ModelManager]: https://docs.djangoproject.com/en/1.7/topics/db/managers/
 [GenericRelation]: https://docs.djangoproject.com/en/1.7/ref/contrib/contenttypes/#django.contrib.contenttypes.fields.GenericRelation
-[wq/app.js]: http://wq.io/docs/app-js
+[wq/app.js]: https://wq.io/docs/app-js

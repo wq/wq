@@ -138,16 +138,16 @@ function(config, ...) {
 As of wq 0.7.0, the default [wq Django Template] uses `dump_config` in the provided `deploy.sh`.
 
 [wq.db.rest.app]: https://github.com/wq/wq.db/blob/master/rest/app.py
-[wq.db.rest]: http://wq.io/docs/about-rest
-[wq/app.js]: http://wq.io/docs/app-js
-[wq.app]: http://wq.io/wq.app
-[URL structure]: http://wq.io/docs/url-structure
-[wq configuration object]: http://wq.io/docs/config
+[wq.db.rest]: https://wq.io/docs/about-rest
+[wq/app.js]: https://wq.io/docs/app-js
+[wq.app]: https://wq.io/wq.app
+[URL structure]: https://wq.io/docs/url-structure
+[wq configuration object]: https://wq.io/docs/config
 [Django REST Framework]: http://django-rest-framework.org/
 [DefaultRouter]: http://django-rest-framework.org/api-guide/routers
 [admin site]: https://docs.djangoproject.com/en/dev/ref/contrib/admin/
 [example admin.py]: https://docs.djangoproject.com/en/dev/ref/contrib/admin/#django.contrib.admin.ModelAdmin
-[viewset]: http://wq.io/docs/views
-[serializer]: http://wq.io/docs/serializers
-[page configuration]: http://wq.io/docs/config
+[viewset]: https://wq.io/docs/views
+[serializer]: https://wq.io/docs/serializers
+[page configuration]: https://wq.io/docs/config
 [wq Django Template]: https://github.com/wq/django-wq-template

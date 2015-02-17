@@ -58,11 +58,11 @@ As an alternative to traditional username/password authentication, wq.db is desi
 ```
 
 [wq.db.rest.auth]: https://github.com/wq/wq.db/blob/master/rest/auth/
-[wq.db]: http://wq.io
-[REST API]: http://wq.io/docs/about-rest
+[wq.db]: https://wq.io
+[REST API]: https://wq.io/docs/about-rest
 [auth module]: https://docs.djangoproject.com/en/1.7/topics/auth/
-[app.py]: http://wq.io/docs/app.py
-[wq/app.js]: http://wq.io/docs/app-js
-[wq configuration object]: http://wq.io/docs/config
+[app.py]: https://wq.io/docs/app.py
+[wq/app.js]: https://wq.io/docs/app-js
+[wq configuration object]: https://wq.io/docs/config
 [Python Social Auth]: http://psa.matiasaguirre.net/
 [wq.db.rest.app.context_processors]: https://github.com/wq/wq.db/blob/master/rest/auth/context_processors.py

@@ -66,18 +66,18 @@ The full listing of page configuration options is described below.
 ```
 `choices` information is surfaced in the `[model_name]_edit` [template rendering context] as `[field_name]_choices`.
 
-[My Website is its own REST API]: http://wq.io/docs/website-rest-api
-[app.py]: http://wq.io/docs/app.py
-[wq/app.js]: http://wq.io/docs/app-js
-[wq/store.js]: http://wq.io/docs/store-js
-[corresponding URLs]: http://wq.io/docs/url-structure
-[URL structure]: http://wq.io/docs/url-structure
-[wq.db]: http://wq.io/wq.db
-[wq.app]: http://wq.io/wq.app
-[wq.db.rest]: http://wq.io/docs/about-rest
-[templates]: http://wq.io/docs/templates
-[PJAX-style]: http://wq.io/docs/web-app
-[wq.db design patterns]: http://wq.io/docs/about-patterns
-[locate design pattern]: http://wq.io/docs/locate
-[template rendering context]: http://wq.io/docs/templates
-[wq/map.js]: http://wq.io/docs/map-js
+[My Website is its own REST API]: https://wq.io/docs/website-rest-api
+[app.py]: https://wq.io/docs/app.py
+[wq/app.js]: https://wq.io/docs/app-js
+[wq/store.js]: https://wq.io/docs/store-js
+[corresponding URLs]: https://wq.io/docs/url-structure
+[URL structure]: https://wq.io/docs/url-structure
+[wq.db]: https://wq.io/wq.db
+[wq.app]: https://wq.io/wq.app
+[wq.db.rest]: https://wq.io/docs/about-rest
+[templates]: https://wq.io/docs/templates
+[PJAX-style]: https://wq.io/docs/web-app
+[wq.db design patterns]: https://wq.io/docs/about-patterns
+[locate design pattern]: https://wq.io/docs/locate
+[template rendering context]: https://wq.io/docs/templates
+[wq/map.js]: https://wq.io/docs/map-js

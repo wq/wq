@@ -105,9 +105,9 @@ Note that the generated theme CSS should be loaded *before* jQuery Mobile's stru
 ```
 
 [jquery-mobile.scss]: https://github.com/wq/wq.app/blob/master/scss/wq/jquery-mobile.scss
-[wq.app]: http://wq.io/wq.app
-[scss]: http://wq.io/docs/scss
+[wq.app]: https://wq.io/wq.app
+[scss]: https://wq.io/docs/scss
 [Compass]: http://compass-style.org/
 [theme roller]: http://jquerymobile.com/themeroller/
-[wq build]: http://wq.io/docs/build
+[wq build]: https://wq.io/docs/build
 [themes.scss]: https://github.com/wq/wq-site/blob/master/app/scss/themes.scss

@@ -5,9 +5,9 @@ order: 2
 Still a Website: Preserving the "HT" in HTML5
 =============================================
 
-*This is the second post in a two part series promoting the use of HTML5 for app development. This section focuses on the features unique to "websites" that are often neglected in the performance-focused [native-vs-web discussion (Part 1)](http://wq.io/docs/web-app).*
+*This is the second post in a two part series promoting the use of HTML5 for app development. This section focuses on the features unique to "websites" that are often neglected in the performance-focused [native-vs-web discussion (Part 1)](https://wq.io/docs/web-app).*
 
-Okay, so suppose you've been convinced that [HTML5 is not "just" a website](http://wq.io/docs/web-app), or simply have found JavaScript to be the most cost-effective programming language for your multi-platform app. Further, suppose that you've found a cutting-edge JavaScript library that promises to take away the pain of developing with HTML - perhaps by abstracting away the DOM entirely. More likely, suppose that you've found several such libraries and are trying to choose between them. How do you move forward in this fast-paced ecosystem?
+Okay, so suppose you've been convinced that [HTML5 is not "just" a website](https://wq.io/docs/web-app), or simply have found JavaScript to be the most cost-effective programming language for your multi-platform app. Further, suppose that you've found a cutting-edge JavaScript library that promises to take away the pain of developing with HTML - perhaps by abstracting away the DOM entirely. More likely, suppose that you've found several such libraries and are trying to choose between them. How do you move forward in this fast-paced ecosystem?
 
 In this post, we argue that an essential criteria in evaluating web-based technologies is the extent to which they utilize and promote **existing web standards**.  We would like to point out a number of features of the traditional web that are still important (even in mobile app contexts), but are often ignored or actively avoided by JavaScript library authors anxious to exploit the latest capabilities of HTML5.
 
@@ -26,7 +26,7 @@ With this robust history in web development, it is unfortunate that there has be
 
 Keeping URLs front-and-center should be a core aspect of HTML5 development, not a legacy feature that is only necessary for "websites".  Yet, a common argument is that "web apps" are somehow completely distinct from "websites" and should not be subject to the same constraints.  However, this distinction is almost always made for the convenience of the developer, rather than representing actual conceptual differences between the two use cases.  Often, "Web app" is really just shorthand for "a website that requires JavaScript to function at all".
 
-As discussed in [Part 1](http://wq.io/docs/web-app), there are certainly performance benefits that come when users can interact with an application without requiring a network request for every state change.  However, these benefits can be achieved without throwing away the power of URLs.  A simple way to do this is to use the `History.pushState` API to update the browser URL as the user navigates, and (importantly) to **make app URLs actually work** whenever they are hit directly.  This can be achieved by using the progressive enhancement principles discussed in the next section.
+As discussed in [Part 1](https://wq.io/docs/web-app), there are certainly performance benefits that come when users can interact with an application without requiring a network request for every state change.  However, these benefits can be achieved without throwing away the power of URLs.  A simple way to do this is to use the `History.pushState` API to update the browser URL as the user navigates, and (importantly) to **make app URLs actually work** whenever they are hit directly.  This can be achieved by using the progressive enhancement principles discussed in the next section.
 
 A consistent URL structure makes it straightforward to incorporate common user requirements that web browsers already support.  Bookmarking tools, "open in new tab" (Ctrl+click), and the back/forward buttons work as expected, without needing any special JavaScript handlers.  In addition, social sharing is trivial to support - users can just copy and paste the URL, or the developer can "integrate" with a social network simply by linking to the network's "Share Link" page with the URL prepopulated.  Other users can view the shared content without needing to download an app first.  Note that "other users" includes search engines, which are well-suited for indexing websites with meaningful URL structures.
 
@@ -57,7 +57,7 @@ The best library is the one that teaches you about the underlying technologies (
 [re-inventing the web]: https://twitter.com/jcoglan/statuses/461781379131666432
 [diverse perspectives]: http://adactio.com/journal/6730/
 [Progressive enhancement]: http://filamentgroup.com/dwpe/
-[template system]: http://wq.io/docs/templates
+[template system]: https://wq.io/docs/templates
 [d3.js]: http://d3js.org
 [data binding]: http://bost.ocks.org/mike/join/
 [SVG specification]: http://www.w3.org/TR/SVG11/

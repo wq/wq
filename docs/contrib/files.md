@@ -53,7 +53,7 @@ class PhotoFile(File):
 The `FileField` class defined in files' [models] module extends [ImageField] by removing the requirement that all uploaded files be images.  The `FileField` also checks for a function `get_directory()` on the model to determine which folder to place the uploaded file in.  The `get_directory()` function on the `BaseFile` model places images in `images/` and all other files in `files/`.
 
 [wq.db.contrib.files]: https://github.com/wq/wq.db/blob/master/contrib/files
-[wq.db]: http://wq.io/wq.db
+[wq.db]: https://wq.io/wq.db
 [FileField]: https://docs.djangoproject.com/en/1.7/ref/models/fields/#filefield
 [ImageField]: https://docs.djangoproject.com/en/1.7/ref/models/fields/#imagefield
 [swappable]: https://github.com/wq/django-swappable-models
@@ -61,4 +61,4 @@ The `FileField` class defined in files' [models] module extends [ImageField] by 
 [models]: https://github.com/wq/wq.db/blob/master/contrib/files/models.py
 [abstract model]: https://docs.djangoproject.com/en/1.7/topics/db/models/#abstract-base-classes
 [proxy classes]: https://docs.djangoproject.com/en/1.7/topics/db/models/#proxy-models
-[wq.io]: http://wq.io/wq.io
+[wq.io]: https://wq.io/wq.io

@@ -82,9 +82,9 @@ name | purpose
 `map_floats` | Whether to attempt to map string numbers into floats (default `True`)
 
 [wq.io.mappers]: https://github.com/wq/wq.io/blob/master/mappers.py
-[wq.io]: http://wq.io/wq.io
-[mixin classes]: http://wq.io/docs/custom-io
-[parser]: http://wq.io/docs/parsers
+[wq.io]: https://wq.io/wq.io
+[mixin classes]: https://wq.io/docs/custom-io
+[parser]: https://wq.io/docs/parsers
 [namedtuple]: https://docs.python.org/3/library/collections.html#collections.namedtuple
 [built-in mapper classes]: https://github.com/wq/wq.io/blob/master/mappers.py
 [datetime]: https://docs.python.org/3/library/datetime.html

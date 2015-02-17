@@ -123,17 +123,17 @@ To accomplish this, the Mustache template might look something like this:
 When rendering "new" screens (which use the same template as edit screens), [wq/app.js] will automatically generate a list of blank markdown texts for all available markdown types.
 
 [wq.db.patterns.mark]: https://github.com/wq/wq.db/blob/master/patterns/mark
-[wq.db]: http://wq.io/wq.db
-[design pattern]: http://wq.io/docs/about-patterns
+[wq.db]: https://wq.io/wq.db
+[design pattern]: https://wq.io/docs/about-patterns
 [Markdown]: http://daringfireball.net/projects/markdown/syntax
 [Entity-Attribute-Value (EAV)]: http://en.wikipedia.org/wiki/Entity%E2%80%93attribute%E2%80%93value_model
-[dbio]: http://wq.io/dbio
-[REST API]: http://wq.io/docs/about-rest
-[chart]: http://wq.io/docs/chart
-[search]: http://wq.io/docs/search
+[dbio]: https://wq.io/dbio
+[REST API]: https://wq.io/docs/about-rest
+[chart]: https://wq.io/docs/chart
+[search]: https://wq.io/docs/search
 [abstract base class]: https://docs.djangoproject.com/en/1.7/topics/db/models/#abstract-base-classes
 [GenericRelation]: https://docs.djangoproject.com/en/1.7/ref/contrib/contenttypes/#django.contrib.contenttypes.fields.GenericRelation
 [swappable]: https://github.com/wq/django-swappable-models
-[wq/app.js]: http://wq.io/docs/app-js
+[wq/app.js]: https://wq.io/docs/app-js
 [Markdown Python library]: https://pythonhosted.org/Markdown/
-[wq/markdown.js]: http://wq.io/docs/other-modules
+[wq/markdown.js]: https://wq.io/docs/other-modules
