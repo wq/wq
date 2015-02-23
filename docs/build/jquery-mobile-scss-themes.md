@@ -1,13 +1,14 @@
 jQuery Mobile SCSS Themes
 =========================
-[jquery-mobile.scss]
+[wq/jquery-mobile.scss]
 
-[wq.app] provides the ability to generate custom jQuery Mobile Themes via `jquery-mobile.scss`, which defines some useful SCSS mixins based on the [Compass] framework. 
-These mixins can be compiled into CSS via the [scss] option in the [wq build] process.
+[wq.app] provides the ability to generate custom jQuery Mobile Themes via [wq/jquery-mobile.scss] and [wq/swatches.scss], which define some useful SCSS mixins based on the [Compass] framework. 
+If you're using wq.app, these mixins can be compiled into CSS via the [scss] option in the [wq build] process.
+They can also be used independently by downloading the files and placing them with your other SCSS/SASS code.
 
-`jquery-mobile.scss` can be used to define additional theme swatches (e.g. 'c', 'd', and so on) for use together with the default swatches ('a' & 'b') provided in `jquery.mobile.css`.  It can also be used to define a fully custom theme, in which case the resulting CSS file should be used together with the included `jquery.mobile.structure.css` and `jquery.mobile.icons.css` to provide a complete custom alternative to the default `jquery.mobile.css`.
+[wq/jquery-mobile.scss] can be used to define additional theme swatches (e.g. 'c', 'd', and so on) for use together with the default swatches ('a' & 'b') provided in `jquery.mobile.css`.  It can also be used to define a fully custom theme, in which case the resulting CSS file should be used together with the included `jquery.mobile.structure.css` and `jquery.mobile.icons.css` to provide a complete custom alternative to the default `jquery.mobile.css`.  Note that the generated theme CSS should be loaded *before* jQuery Mobile's structure.css for correct rule ordering.
 
-The file `jquery-mobile.scss` provides two mixins:
+The file `wq/jquery-mobile.scss` provides two mixins:
 
   - `jquery-mobile-theme()` sets the colors and fonts for each theme swatch.
      It should be called once for each swatch.
@@ -21,9 +22,21 @@ Most of the arguments for the theme mixins are optional,
 with defaults that mostly correspond to the default 'a' swatch and the generic theme created by opening the jQuery Mobile [theme roller].
 In the example below, all of the options are shown with their default values.  In an actual project options with default values can be omitted.  (For an example of an actual project, you may be interested in viewing the [themes.scss] for this website.)
 
-**New in 0.7.0:** In keeping with current design trends an jQuery Mobile 1.4 styles, support for gradient backgrounds has been removed.  This simplifies both the implementation and usage of jquery-mobile.scss.
+**New in 0.7.0:** In keeping with current design trends an jQuery Mobile 1.4 styles, support for gradient backgrounds has been removed.  This simplifies both the implementation and usage of wq/jquery-mobile.scss.
 
-Note that the generated theme CSS should be loaded *before* jQuery Mobile's structure.css for correct rule ordering.
+**New in 0.7.2:** [wq/swatches.scss] provides a number of predefined jQuery Mobile swatches for common use cases, including a yellow/"alert" swatch and a backwards-compatible theme that mimics jQuery Mobile 1.3 (and earlier) styles.
+
+ - `jquery-mobile-gray-theme()`: a swatch that matches the default "a" swatch.
+ - `jquery-mobile-black-theme()`: a swatch matches the default "b" swatch.
+ - `jquery-mobile-classic-b-theme()`: a swatch that matches the default "b" swatch from older versions of jQuery Mobile (blue bars, grey content)
+ - `jquery-mobile-yellow-theme()`: A yellow / "alert" swatch
+ - `jquery-mobile-blue-theme()`: An experimental blue swatch
+ - `jquery-mobile-default-themes()`: generates a gray ("a") and black ("b") swatch to match the default themes.
+ - `jquery-mobile-classic-themes()`: generates five swatches ("a" through "e") that roughly correspond to the jQuery Mobile 1.3 (and earlier) default theme.
+
+<a href="https://wq.io/wq.app/tests/swatches.html" rel="external" target="_blank" data-role="button" data-inline="true">
+  Swatch Preview Tool
+</a>
 
 ### `myproject.css`
 ```css
@@ -36,7 +49,7 @@ Note that the generated theme CSS should be loaded *before* jQuery Mobile's stru
 ### `themes.scss`
 
 ```scss
-@import "lib/wq/jquery-mobile";
+@import "wq/jquery-mobile";
 
 @include jquery-mobile-theme(
   $theme:        a,
@@ -104,7 +117,8 @@ Note that the generated theme CSS should be loaded *before* jQuery Mobile's stru
 
 ```
 
-[jquery-mobile.scss]: https://github.com/wq/wq.app/blob/master/scss/wq/jquery-mobile.scss
+[wq/jquery-mobile.scss]: https://github.com/wq/wq.app/blob/master/scss/wq/jquery-mobile.scss
+[wq/swatches.scss]: https://github.com/wq/wq.app/blob/master/scss/wq/swatches.scss
 [wq.app]: https://wq.io/wq.app
 [scss]: https://wq.io/docs/scss
 [Compass]: http://compass-style.org/
