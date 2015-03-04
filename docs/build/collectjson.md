@@ -7,7 +7,7 @@ wq collectjson
 
 Most files will be inlined as strings, but JSON and YAML files can be embedded as nested objects (YAML support requires PyYAML).  The output can be either JSON or a JSONP file (using `define` as the callback will create an AMD module).
 
-The `collectjson` section in `app.build.json` can be a single configuration object or an array of configuration objects (to create multiple output files).  The available options are:
+The `collectjson` section in `wq.yml` can be a single configuration object or an array of configuration objects (to create multiple output files).  The available options are:
 
  name | purpose
 ------|---------

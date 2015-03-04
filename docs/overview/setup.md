@@ -74,10 +74,10 @@ project/
   images/
   templates/
   index.html
-  app.build.json
+  wq.yml
 ```
 
-Note that wq.app currently comes bundled with all of its [JavaScript dependencies] vendored in.  So, for many applications, you should be able to use wq.app's `js` folder directly as your `js/lib/` folder.  The typical workflow is to symbolically link to wq.app's `js` folder from your app's `js/lib` folder and similarly for css (and scss).  If you have other dependencies, or want to use different versions of the vendored apps, create your `js/lib/` folder first, and link to wq.app's [js/wq] folder from your `js/lib/wq`.  In either case, [wq init] can do the linking automatically.  An example app.build.json can be obtained from the [Django wq template].  The full list of options are documented in the [wq build] section.
+Note that wq.app currently comes bundled with all of its [JavaScript dependencies] vendored in.  So, for many applications, you should be able to use wq.app's `js` folder directly as your `js/lib/` folder.  The typical workflow is to symbolically link to wq.app's `js` folder from your app's `js/lib` folder and similarly for css (and scss).  If you have other dependencies, or want to use different versions of the vendored apps, create your `js/lib/` folder first, and link to wq.app's [js/wq] folder from your `js/lib/wq`.  In either case, [wq init] can do the linking automatically.  An example wq.yml can be obtained from the [Django wq template].  The full list of options are documented in the [wq build] section.
 
 ### On Ubuntu
 ```bash
@@ -86,7 +86,7 @@ mkdir /path/to/my/project
 cd /path/to/my/project
 mkdir js
 mkdir css
-(create app.build.json using your editor of choice)
+(create wq.yml using your editor of choice)
 
 # Link to wq.app assets
 wq init
@@ -101,7 +101,7 @@ Download and install [Python 3] and [Node] if you don't have them already.  When
 pip3 install wq.app
 ```
 
-Next, create a project folder with js & css subdirectories and an app.build.json.  Then run the following from a command prompt:
+Next, create a project folder with js & css subdirectories and a wq.yml configuration file.  Then run the following from a command prompt:
 
 ```bash
 cd C:\path\to\my\project
