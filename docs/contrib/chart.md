@@ -87,7 +87,7 @@ urlpatterns = patterns('',
 
 ## Configuring the Serializer
 
-The chart views are meant to be used with a special [ChartSerializer] class that extends [PandasSerializer] with details about the fields on the time series model.  The following attributes are defined:
+The chart views are meant to be used with a special [ChartModelSerializer] class with additional details about the fields on the time series model.  The following attributes are defined:
 
  name | default | purpose
 ------|--------- | ------
@@ -95,11 +95,13 @@ The chart views are meant to be used with a special [ChartSerializer] class that
 `parameter_fields` | `["parameter", "units"]` | The fields describing individual parameters/characteristics/attributes measured for each event (analogous to a columns in a spreadsheet).
 `value_field` | `"value"` | The numeric field containing the actual series data (e.g individual cells in a spreadsheet).
 `key_lookups` | `serializer.key_fields` | The sources of the key field data, if different than `key_fields`
-`key_model` | `serializer.opts.model` | The model containing the key fields, if different than the time series model (e.g if an [ERAV]-style data structure is being used)
+`key_model` | `serializer.Meta.model` | The model containing the key fields, if different than the time series model (e.g if an [ERAV]-style data structure is being used)
 `parameter_lookups` | `serializer.parameter_fields` | The sources of the parameter data, if different than `parameter_fields`
 `value_lookup` | `serializer.value_field` | The source of the value data, if different than `value_field`.
 
 See vera's [EventResultSerializer] for an example of how to customize `ChartSerializer`.  Be sure to set the `serializer_class` on your custom chart view as in [vera.views.ChartView].
+
+> **New in 0.7.2:** The former `ChartSerializer` has been split into separate `ChartModelSerializer` and `ChartPandasSerializer` classes, for compatibility with Django REST Pandas v0.3.
 
 [wq.db.contrib.chart]: https://github.com/wq/wq.db/blob/master/contrib/chart
 [wq.db]: https://wq.io/wq.db
@@ -111,7 +113,7 @@ See vera's [EventResultSerializer] for an example of how to customize `ChartSeri
 [matplotlib]: https://github.com/matplotlib/matplotlib
 [identify]: https://wq.io/docs/identify
 [vera.views.ChartView]: https://github.com/wq/vera/blob/master/vera/views.py
-[ChartSerializer]: https://github.com/wq/wq.db/blob/master/contrib/chart/serializers.py
+[ChartModelSerializer]: https://github.com/wq/wq.db/blob/master/contrib/chart/serializers.py
 [PandasSerializer]: https://github.com/wq/django-rest-pandas/#implementation-notes
 [ERAV]: https://wq.io/docs/erav
 [EventResultSerializer]: https://github.com/wq/vera/blob/v0.7.0/vera/serializers.py#L74-L107
