@@ -32,11 +32,11 @@ INSTALLED_APPS = (
 Then, create one or more models extending `AnnotatedModel`.
 ```python
 # myapp/models.py
-from wq.db.patterns import models
+from wq.db.patterns import models as patterns
 # or:
 # from wq.db.patterns.annotate.models import AnnotatedModel
 
-class MyModel(models.AnnotatedModel):
+class MyModel(patterns.AnnotatedModel):
    ...
 ```
 
@@ -79,9 +79,10 @@ value | The actual annotation text ("Value").
 ## Web Interface
 
 ### wq.db.rest configuration
-When used with the provided `AnnotatedModelSerializer` (recommended), AnnotatedModels are serialized with an `annotations` attribute that lists all of the Annotations assigned to the model.
+When [registered] with the provided `AnnotatedModelSerializer` (recommended), AnnotatedModels are serialized with an `annotations` attribute that lists all of the Annotations assigned to the model.
 
-```myapp/rest.py
+```python
+# myapp/rest.py
 from wq.db import rest
 from wq.db.patterns import rest as patterns
 from .models import MyModel
@@ -173,3 +174,4 @@ When rendering "new" screens (which use the same template as edit screens), [wq/
 [ModelManager]: https://docs.djangoproject.com/en/1.7/topics/db/managers/
 [GenericRelation]: https://docs.djangoproject.com/en/1.7/ref/contrib/contenttypes/#django.contrib.contenttypes.fields.GenericRelation
 [wq/app.js]: https://wq.io/docs/app-js
+[registered]: https://wq.io/docs/router
