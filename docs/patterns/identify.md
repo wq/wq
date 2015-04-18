@@ -38,11 +38,11 @@ INSTALLED_APPS = (
 Then, create one or more models extending `IdentifiedModel`.
 ```python
 # myapp/models.py
-from wq.db.patterns import models
+from wq.db.patterns import models as patterns
 # or:
 # from wq.db.patterns.identify.models import IdentifiedModel
 
-class MyModel(models.IdentifiedModel):
+class MyModel(patterns.IdentifiedModel):
    ...
 ```
 
@@ -124,11 +124,24 @@ method | purpose
 ## Web Interface
 
 ### wq.db.rest configuration
+
 By default, `IdentifiedModels` are serialized by wq.db using the slug of the primary identifier as the "id" field.  The same slug is also used to look up identifiers sent in a client request.  This makes it appear from the API that the Identifier slug is the primary key, even though a different key is actually used by Django internally.
 
-In addition to the custom id field, IdentifiedModels are serialized with an `identifiers` attribute that lists all of the identifiers assigned to the model.
- 
- ```javascript
+When [registered] with the provided `IdentifiedModelSerializer` (recommended), IdentifiedModels are serialized with an `identifiers` attribute that lists all of the identifiers assigned to the model.
+
+```python
+# myapp/rest.py
+from wq.db import rest
+from wq.db.patterns import rest as patterns
+from .models import MyModel
+
+rest.router.register_model(MyModel, serializer=patterns.IdentifiedModelSerializer)
+```
+
+Output:
+
+```javascript
+// /mymodels/my-instance.json
 {
   "id": "my-instance",
   "label": "My Instance",
@@ -157,24 +170,56 @@ In addition to the custom id field, IdentifiedModels are serialized with an `ide
 
 ### Template Conventions
 
-When rendering the list of identifiers in detail or edit views, the above representation can be used to retrieve the existing values.  When rendering a form, specially-named form fields should be used to ensure the proper identifiers are created or updated on the server when the form is submitted.  The basic naming convention is `identifier-[authority_id]-[field]`.  For example, the second identifier in the above example might be rendered into `<input>`s as follows:
+When rendering the list of identifiers in detail or edit views, the above representation can be used to retrieve the existing values.  When rendering a form, specially-named form fields should be used to ensure the proper identifiers are created or updated on the server when the form is submitted.
+
+### New Style
+In wq.db 0.8.0 and later, the basic naming convention is based on the [HTML JSON forms] specification.  For example, the second identifier in the above example might be rendered into `<input>`s as follows:
 
 ```xml
+<input type="hidden" name="identifiers[1][id]" value="124">
+<input type="hidden" name="identifiers[1][authority_id]" value="5">
+<input name="identifiers[1][name]" value="ABC123">
+<input name="identifiers[1][slug]" value="ABC123">
+<input name="identifiers[1][is_primary]" value="">
+```
+
+To accomplish this, the Mustache template might look something like this:
+
+```xml
+{{#identifiers}}
+<input type="hidden" name="identifiers[{{@index}}][id]" value="{{id}}">
+<input type="hidden" name="identifiers[{{@index}}][authority_id]" value="{{authority_id}}">
+<input name="identifiers[{{@index}}][name]" value="{{name}}">
+<input name="identifiers[{{@index}}][slug]" value="{{slug}}">
+<input name="identifiers[{{@index}}][is_primary]" value="{{#is_primary}}1{{/is_primary}}">
+{{/identifiers}}
+```
+
+#### Old Style
+
+In wq.db 0.7.2 and earlier, the basic naming convention is `identifier-[authority_id]-[field]`.  For example, the second identifier in the above example might be rendered into `<input>`s as follows:
+
+```xml
+<input type="hidden" name="identifier-5-id" value="124">
 <input name="identifier-5-name" value="ABC123">
 <input name="identifier-5-slug" value="ABC123">
 <input name="identifier-5-is_primary" value="">
 ```
 
 To accomplish this, the Mustache template might look something like this:
+
 ```xml
 {{#identifiers}}
+<input type="hidden" name="identifier-{{authority_id}}-id" value="{{id}}">
 <input name="identifier-{{authority_id}}-name" value="{{name}}">
 <input name="identifier-{{authority_id}}-slug" value="{{slug}}">
 <input name="identifier-{{authority_id}}-is_primary" value="{{#is_primary}}1{{/is_primary}}">
 {{/identifiers}}
 ```
 
-The field names for the authority-less identifier will be e.g. `identifier--name`.  Note that this naming convention means there can be only one identifier assigned by each authority (and only one authority-less identifier).
+The field names for the authority-less identifier will be e.g. `identifier--name`.  Note that this naming convention means there can be only one identifier assigned by each authority (and only one authority-less identifier), which is one reason it was replaced.  wq.db 0.8.0 still supports this style, but it will be dropped in 1.0.
+
+#### Default Identifier List
 
 When rendering "new" screens (which use the same template as edit screens), [wq/app.js] will automatically generate a list of blank identifiers for all authorities.  This makes it possible to generate form widgets for all potential identifiers.  Any identifier fields that are left blank will not be created.  To customize which Authorities are listed for new items, override the `getTypeFilter()` function in `attachmentTypes.identifier` (see [wq/app.js] for more information).
 
@@ -192,3 +237,5 @@ When rendering "new" screens (which use the same template as edit screens), [wq/
 [ModelManager]: https://docs.djangoproject.com/en/1.7/topics/db/managers/
 [GenericRelation]: https://docs.djangoproject.com/en/1.7/ref/contrib/contenttypes/#django.contrib.contenttypes.fields.GenericRelation
 [wq/app.js]: https://wq.io/docs/app-js
+[registered]: https://wq.io/docs/router
+[HTML JSON forms]: http://www.w3.org/TR/html-json-forms/
