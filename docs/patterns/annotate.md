@@ -79,9 +79,20 @@ value | The actual annotation text ("Value").
 ## Web Interface
 
 ### wq.db.rest configuration
-AnnotatedModels are serialized with an `annotations` attribute that lists all of the Annotations assigned to the model.
- 
+When used with the provided `AnnotatedModelSerializer` (recommended), AnnotatedModels are serialized with an `annotations` attribute that lists all of the Annotations assigned to the model.
+
+```myapp/rest.py
+from wq.db import rest
+from wq.db.patterns import rest as patterns
+from .models import MyModel
+
+rest.router.register_model(MyModel, serializer=patterns.AnnotatedModelSerializer)
+```
+
+Output:
+
  ```javascript
+// /mymodels/11.json
 {
   "id": 11,
   "label": "My Instance",
@@ -104,10 +115,34 @@ AnnotatedModels are serialized with an `annotations` attribute that lists all of
 
 ### Template Conventions
 
-When rendering the list of annotations in detail or edit views, the above representation can be used to retrieve the existing values.  When rendering a form, specially-named form fields should be used to ensure the proper annotations are created or updated on the server when the form is submitted.  The basic naming convention is `annotation-[type_id]-value`.  For example, the second annotation in the above example might be rendered into an `<input>` as follows:
+When rendering the list of annotations in detail or edit views, the above representation can be used to retrieve the existing values.  When rendering a form, specially-named form fields should be used to ensure the proper annotations are created or updated on the server when the form is submitted.
+
+#### New Style
+
+In wq.db 0.8.0 and later, the basic naming convention is based on the [HTML JSON forms] specification.  For example, the second annotation in the above example might be rendered into `<input>`s as follows:
 
 ```xml
-<input name="identifier-13-value" value="30">
+<input type="hidden" name="annotations[1][id]" value="124">
+<input type="hidden" name="annotations[1][type_id]" value="13">
+<input name="annotations[1][value]" value="30">
+```
+
+To accomplish this, the Mustache template might look something like this:
+```xml
+{{#annotations}}
+<input type="hidden" name="annotations[{{@index}}[id]" value="{{id}}">
+<input type="hidden" name="annotations[{{@index}}[type_id]" value="{{type_id}}">
+<input name="annotations[{{@index}}[value]" value="{{value}}">
+{{/annotations}}
+```
+
+#### Old Style
+
+In wq.db 0.7.2 and earlier, the basic naming convention is `annotation-[type_id]-value`.  For example, the second annotation in the above example might be rendered into `<input>`s as follows:
+
+```xml
+<input type="hidden" name="annotation-13-id" value="124">
+<input name="annotation-13-value" value="30">
 ```
 
 To accomplish this, the Mustache template might look something like this:
@@ -117,7 +152,9 @@ To accomplish this, the Mustache template might look something like this:
 {{/annotations}}
 ```
 
-Note that this naming convention means there is limited support for multi-valued annotations.
+Note that this naming convention means there is limited support for multi-valued annotations, which is one reason it was replaced.  wq.db 0.8.0 still supports this style, but it will be dropped in 1.0.
+
+#### Default Annotation List
 
 When rendering "new" screens (which use the same template as edit screens), [wq/app.js] will automatically generate a list of blank annotations for all annotation types that are marked as being related to the model.  This makes it possible to generate form widgets for all potential annotations.  Any annotations values that are left blank will not be created.  To customize which AnnotationTypes are listed for new items, override the `getTypeFilter()` function in `attachmentTypes.annotation` (see [wq/app.js] for more information).
 
