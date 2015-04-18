@@ -33,11 +33,11 @@ INSTALLED_APPS = (
 Then, create one or more models extending `RelatedModel`.
 ```python
 # myapp/models.py
-from wq.db.patterns import models
+from wq.db.patterns import models as patterns
 # or:
 # from wq.db.patterns.relate.models import RelatedModel
 
-class MyModel(models.RelatedModel):
+class MyModel(patterns.RelatedModel):
    ...
 ```
 
@@ -124,9 +124,21 @@ This function is used internally by the `create_relationship()` method on `Relat
 ## Web Interface
 
 ### wq.db.rest configuration
-By default, `RelatedModels` are serialized by wq.db with both `"relationship"` and `"inverserelationship"` properties, corresponding to the model and proxy model described above.
+When [registered] with the provided `RelatedModelSerializer` (recommended), `RelatedModels` are serialized by wq.db with both `"relationship"` and `"inverserelationship"` properties, corresponding to the model and proxy model described above.
+
+```python
+# myapp/rest.py
+from wq.db import rest
+from wq.db.patterns import rest as patterns
+from .models import MyModel
+
+rest.router.register_model(MyModel, serializer=patterns.RelatedModelSerializer)
+```
+
+Output:
 
 ```javascript
+// mymodels/1.json
 {
   "id": 1,
   "label": "My Instance",
@@ -161,7 +173,56 @@ By default, `RelatedModels` are serialized by wq.db with both `"relationship"` a
 
 ### Template Conventions
 
-When rendering detail views, the above representation makes it easy to describe the relationships as well as link to the detail views of the referenced entities.  When rendering a form, specially-named form fields should be used to ensure the proper relationships are created or updated on the server when the form is submitted.  The basic naming convention is `(inverse)relationship-[type_id]-[field]`.  For example, the inverse relationship in the above example might be rendered into `<input>`s as follows:
+When rendering detail views, the above representation makes it easy to describe the relationships as well as link to the detail views of the referenced entities.  When rendering a form, specially-named form fields should be used to ensure the proper relationships are created or updated on the server when the form is submitted.
+
+#### New Style 
+
+In wq.db 0.8.0 and later, the basic naming convention is based on the [HTML JSON forms] specification. For example, the inverse relationship in the above example might be rendered into `<input>`s as follows:
+
+```xml
+<input name="inverserelationships[0][id]" value="124">
+<input name="inverserelationships[0][type_id]" value="5">
+<input name="inverserelationships[0][item_id]" value="7">
+```
+
+Alternatively, [wq/app.js] can generate a template context appropriate for rendering a `<select>` menu with a list of all of the potential choices from the related model ("group" in the above example).
+
+```xml
+<input name="inverserelationships[0][id]" value="124" type="hidden">
+<input name="inverserelationships[0][type_id]" value="5" type="hidden">
+<select name="inverserelationships[0][item_id]">
+  <option value="5">Group #5</option>
+  <option value="6">Group #6</option>
+  <option value="7" selected>Group #7</option>
+</select>
+```
+
+To accomplish this, the Mustache template might look something like this:
+
+```xml
+{{#relationships}}
+<input name="relationships[{{@index}}][id]" value="{{id}}" type="hidden">
+<input name="relationships[{{@index}}][type_id]" value="{{type_id}}" type="hidden">
+<select name="relationships[{{@index}}][item_id]">
+{{#item_choices}}
+  <option value="{{id}}" {{#selected}}selected{{/selected}}>{{label}}</option>
+{{/item_choices}}
+</select>
+{{/relationships}}
+{{#inverserelationships}}
+<input name="inverserelationships[{{@index}}][id]" value="{{id}}" type="hidden">
+<input name="inverserelationships[{{@index}}][type_id]" value="{{type_id}}" type="hidden">
+<select name="inverserelationships[{{@index}}][item_id]">
+{{#item_choices}}
+  <option value="{{id}}" {{#selected}}selected{{/selected}}>{{label}}</option>
+{{/item_choices}}
+</select>
+{{/inverserelationships}}
+```
+
+#### Old Style
+
+For wq.db 0.7.2 and earlier, the basic naming convention is `(inverse)relationship-[type_id]-[field]`.  For example, the inverse relationship in the above example might be rendered into `<input>`s as follows:
 
 ```xml
 <input name="inverserelationship-5-id" value="124">
@@ -182,8 +243,16 @@ Alternatively, [wq/app.js] can generate a template context appropriate for rende
 To accomplish this, the Mustache template might look something like this:
 
 ```xml
+{{#relationships}}
+<input name="relationship-{{type_id}}-id" value="{{id}}" type="hidden">
+<select name="relationship-{{type_id}}-item_id">
+{{#item_choices}}
+  <option value="{{id}}" {{#selected}}selected{{/selected}}>{{label}}</option>
+{{/item_choices}}
+</select>
+{{/relationships}}
 {{#inverserelationships}}
-<input name="inverserelationship-{{type_id}}-id" value="{{id}}">
+<input name="inverserelationship-{{type_id}}-id" value="{{id}}" type="hidden">
 <select name="inverserelationship-{{type_id}}-item_id">
 {{#item_choices}}
   <option value="{{id}}" {{#selected}}selected{{/selected}}>{{label}}</option>
@@ -191,6 +260,8 @@ To accomplish this, the Mustache template might look something like this:
 </select>
 {{/inverserelationships}}
 ```
+
+#### Default Relationship List
 
 When rendering "new" screens (which use the same template as edit screens), [wq/app.js] will automatically generate a list of blank relationships for all potential relationship types.  To customize which relationship types are listed for new items, override the `getTypeFilter()` function in `attachmentTypes.relationship` and/or `attachmentTypes.inverserelationship` (see [wq/app.js] for more information).
 
@@ -204,3 +275,5 @@ When rendering "new" screens (which use the same template as edit screens), [wq/
 [wq/app.js]: https://wq.io/docs/app-js
 [proxy class]: https://docs.djangoproject.com/en/1.7/topics/db/models/#proxy-models
 [ContentType]: https://docs.djangoproject.com/en/1.7/ref/contrib/contenttypes/#the-contenttype-model
+[registered]: https://wq.io/docs/router
+[HTML JSON forms]: http://www.w3.org/TR/html-json-forms/
