@@ -81,9 +81,21 @@ field | purpose
 ## Web Interface
 
 ### wq.db.rest configuration
-For detail views rendered on the server, `MarkedModels` are serialized by wq.db with a `markdown` array containing only the active markdown instance.  The markdown instance will have an `html` property with the rendered text.  For detail views rendered on the client, the [wq/markdown.js] model can be used to render the HTML for markdown instances loaded via the cached `markdown.json`.
+When [registered] with the provided `MarkedModelSerializer` (recommended), `MarkedModels` are serialized by wq.db with a `markdown` array containing only the active markdown instance.  The markdown instance will have an `html` property with the rendered text.  For detail views rendered on the client, the [wq/markdown.js] model can be used to render the HTML for markdown instances loaded via the cached `markdown.json`.
 
- ```javascript
+```python
+# myapp/rest.py
+from wq.db import rest
+from wq.db.patterns import rest as patterns
+from .models import MyModel
+
+rest.router.register_model(MyModel, serializer=patterns.MarkedModelSerializer)
+```
+
+Output:
+
+```javascript
+// /mymodels/1.json
 {
   "id": 1,
   "label": "My Instance",
@@ -102,10 +114,37 @@ For detail views rendered on the server, `MarkedModels` are serialized by wq.db 
 
 ### Template Conventions
 
-When rendering markdown content in detail views, the above representation can be used to retrieve the HTML content.  When rendering a form, specially-named form fields should be used to ensure the proper markdown texts are created or updated on the server when the form is submitted.  The basic naming convention is `markdown-[type_id]-[field]`.  For example, the markdown in the above example might be rendered into `<input>`s as follows:
+When rendering markdown content in detail views, the above representation can be used to retrieve the HTML content.  When rendering a form, specially-named form fields should be used to ensure the proper markdown texts are created or updated on the server when the form is submitted.
+
+#### New Style
+
+In wq.db 0.8.0 and later, the basic naming convention is based on the [HTML JSON forms] specification. For example, the markdown in the above example might be rendered into <input>s as follows:
 
 ```xml
-<input name="markdown-1-id" value="3">
+<input type="hidden" name="markdown[0][id]" value="3">
+<input type="hidden" name="markdown[0][type_id]" value="1">
+<input name="markdown[0][summary]" value="Example">
+<textarea name="markdown[0][markdown]"># Test
+Test Content</textarea>
+```
+
+To accomplish this, the Mustache template might look something like this:
+
+```xml
+{{#markdown}}
+<input type="hidden" name="markdown[{{@index}}][id]" value="{{id}}">
+<input type="hidden" name="markdown[{{@index}}][type_id]" value="{{type_id}}">
+<input name="markdown[{{@index}}][summary]" value="{{summary}}">
+<textarea name="markdown[{{@index}}][markdown]">{{markdown}}</textarea>
+{{/markdown}}
+```
+
+#### Old Style
+
+In wq.db 0.7.2 and earlier, the basic naming convention is `markdown-[type_id]-[field]`.  For example, the markdown in the above example might be rendered into `<input>`s as follows:
+
+```xml
+<input type="hidden" name="markdown-1-id" value="3">
 <input name="markdown-1-summary" value="Example">
 <textarea name="markdown-1-markdown"># Test
 Test Content</textarea>
@@ -114,11 +153,13 @@ Test Content</textarea>
 To accomplish this, the Mustache template might look something like this:
 ```xml
 {{#markdown}}
-<input name="markdown-{{type_id}}-id" value="{{id}}">
+<input type="hidden" name="markdown-{{type_id}}-id" value="{{id}}">
 <input name="markdown-{{type_id}}-summary" value="{{summary}}">
 <textarea name="markdown-{{type_id}}-markdown">{{markdown}}</textarea>
 {{/markdown}}
 ```
+
+#### Default Markdown List
 
 When rendering "new" screens (which use the same template as edit screens), [wq/app.js] will automatically generate a list of blank markdown texts for all available markdown types.
 
@@ -137,3 +178,5 @@ When rendering "new" screens (which use the same template as edit screens), [wq/
 [wq/app.js]: https://wq.io/docs/app-js
 [Markdown Python library]: https://pythonhosted.org/Markdown/
 [wq/markdown.js]: https://wq.io/docs/other-modules
+[registered]: https://wq.io/docs/router
+[HTML JSON forms]: http://www.w3.org/TR/html-json-forms/

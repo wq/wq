@@ -35,11 +35,11 @@ INSTALLED_APPS = (
 Then, create one or more models extending `LocatedModel`.
 ```python
 # myapp/models.py
-from wq.db.patterns import models
+from wq.db.patterns import models as patterns
 # or:
 # from wq.db.patterns.locate.models import LocatedModel
 
-class MyModel(models.LocatedModel):
+class MyModel(patterns.LocatedModel):
    ...
 ```
 
@@ -73,9 +73,20 @@ Note that there is currently no `LocationType` model, making `locate` a bit diff
 ## Web Interface
 
 ### wq.db.rest configuration
-By default, `LocatedModels` are serialized by wq.db with a `locations` attribute, each member of which contains [GeoJSON]-formatted `geometry` attribute.  `LocatedModels` can also be accessed as full GeoJSON objects using the alternate `.geojson` representation provided by the REST [URL structure].  This GeoJSON version can be automatically rendered by [wq/map.js] in the list and detail views for the model.  The `map` attribute on the [wq configuration] entry for all registered `LocatedModels` is set to `true` by default.
- 
- ```javascript
+When [registered] with the provided `LocatedModelSerializer` (recommended), `LocatedModels` are serialized with a `locations` attribute, each member of which contains [GeoJSON]-formatted `geometry` attribute.  `LocatedModels` can also be accessed as full GeoJSON objects using the alternate `.geojson` representation provided by the REST [URL structure].  This GeoJSON version can be automatically rendered by [wq/map.js] in the list and detail views for the model.  The `map` attribute on the [wq configuration] entry for all registered `LocatedModels` is set to `true` by default.
+
+```python
+# myapp/rest.py
+from wq.db import rest
+from wq.db.patterns import rest as patterns
+from .models import MyModel
+
+rest.router.register_model(MyModel, serializer=patterns.LocatedModelSerializer)
+```
+
+Output:
+
+```javascript
 // mymodels/1.json
 {
   "id": "1",
@@ -160,3 +171,4 @@ map.on('draw:created', function(e){
 [support is planned]: https://github.com/wq/wq.app/issues/36
 [leaflet.draw]: https://github.com/Leaflet/Leaflet.draw
 [LocationSerializer]: https://github.com/wq/wq.db/blob/master/patterns/locate/serializers.py
+[registered]: https://wq.io/docs/router
