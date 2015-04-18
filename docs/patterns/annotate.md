@@ -92,7 +92,7 @@ rest.router.register_model(MyModel, serializer=patterns.AnnotatedModelSerializer
 
 Output:
 
- ```javascript
+```javascript
 // /mymodels/11.json
 {
   "id": 11,
@@ -131,9 +131,9 @@ In wq.db 0.8.0 and later, the basic naming convention is based on the [HTML JSON
 To accomplish this, the Mustache template might look something like this:
 ```xml
 {{#annotations}}
-<input type="hidden" name="annotations[{{@index}}[id]" value="{{id}}">
-<input type="hidden" name="annotations[{{@index}}[type_id]" value="{{type_id}}">
-<input name="annotations[{{@index}}[value]" value="{{value}}">
+<input type="hidden" name="annotations[{{@index}}][id]" value="{{id}}">
+<input type="hidden" name="annotations[{{@index}}][type_id]" value="{{type_id}}">
+<input name="annotations[{{@index}}][value]" value="{{value}}">
 {{/annotations}}
 ```
 
@@ -175,3 +175,4 @@ When rendering "new" screens (which use the same template as edit screens), [wq/
 [GenericRelation]: https://docs.djangoproject.com/en/1.7/ref/contrib/contenttypes/#django.contrib.contenttypes.fields.GenericRelation
 [wq/app.js]: https://wq.io/docs/app-js
 [registered]: https://wq.io/docs/router
+[HTML JSON forms]: http://www.w3.org/TR/html-json-forms/
