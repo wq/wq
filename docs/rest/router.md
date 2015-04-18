@@ -2,16 +2,16 @@
 order: 2
 ---
 
-REST controller (app.py)
+REST controller (router)
 ========================
 
-[wq.db.rest.app]
+[wq.db.rest.routers]
 
-**app.py** is the controller at the core of [wq.db.rest].  The name reflects the fact that this module serves server-side counterpart to [wq/app.js] in [wq.app].  app.py's singleton router instance generates a [URL structure] with REST endpoints for all models registered with it, and produces a [wq configuration object] for consumption by wq/app.js' client-side router.
+The `router` object (an instance of [ModelRouter]) is the controller at the core of [wq.db.rest].  The router serves as the server-side counterpart to [wq/app.js] in [wq.app].  The router generates a [URL structure] with REST endpoints for all models registered with it, and produces a [wq configuration object] for consumption by wq/app.js' client-side router.
 
 ## Usage
 
-app.py's router is a subclass of [Django REST Framework]'s [DefaultRouter], but its API is more closely modeled after Django's [admin site].  The similarity with the latter can be seen in the following examples.
+`ModelRouter` is a subclass of [Django REST Framework]'s [DefaultRouter], but its API is more closely modeled after Django's [admin site].  The similarity with the latter can be seen in the following examples.
 
 ```python
 # mysite/urls.py
@@ -21,23 +21,25 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 admin.autodiscover()
 
-from wq.db.rest import app
-app.autodiscover()
+from wq.db import rest
+rest.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^',       include(app.router.urls))
+    url(r'^',       include(rest.router.urls))
 )
 ```
 
-Whereas admin's autodiscover searches for and imports `admin.py` in each installed app's directory, app's autodiscover searches for and imports `rest.py`.  A typical rest.py has some similarity to the [example admin.py] in Django's docs:
+> *Note:* In wq.db 0.7.2 and earlier, the `router` instance and `autodiscover()` API were part of a module called `wq.db.rest.app`.  See the [wq.db 0.8.0 release notes](https://wq.io/wq.db/releases/v0.8.0) for more details.
+
+Whereas admin's autodiscover searches for and imports `admin.py` in each installed app's directory, wq.db.rest's autodiscover searches for and imports `rest.py`.  A typical rest.py has some similarity to the [example admin.py] in Django's docs:
 
 ```python
 # myapp/rest.py
 
-from wq.db.rest import app
+from wq.db import rest
 from .models import MyModel
-app.router.register_model(MyModel)
+rest.router.register_model(MyModel)
 ```
 
 Note that the function is `register_model()` and not `register()`, since the API is quite different from the DRF DefaultRouter's `register()`, which can still be called directly if needed.
@@ -54,15 +56,15 @@ class CustomViewSet(ModelViewSet):
 ```python
 # myapp/rest.py
 
-from wq.db.rest import app
+from wq.db import rest
 from .models import MyModel
 from .views import CustomViewSet
-app.router.register_model(MyModel, viewset=CustomViewSet)
+rest.router.register_model(MyModel, viewset=CustomViewSet)
 ```
 
 ## Router API
 
-The available keyword arguments to `app.router.register_model()` include:
+The available keyword arguments to `router.register_model()` include:
 
 | Option | Default | Notes |
 |--------|---------|-------|
@@ -99,7 +101,7 @@ The router can generate a JSON-formatted [wq configuration object] for use by [w
 curl http://$MYPROJECT/config.json
 ```
 
-You can load the AMD equivalent (/config.js) in your JavaScript code when the application starts up, though this will take longer to load.
+In wq.db 0.7.2 and earlier, you can load the AMD equivalent (/config.js) in your JavaScript code when the application starts up, though this will take longer to load.
 
 ```javascript
 requirejs.config({
@@ -114,7 +116,7 @@ function(config, ...) {
 });
 ```
 
-A better option is to wrap the output of `dump_config` as an AMD module as part of your build process.
+A better option (required in wq.db 0.8.0 and later) is to wrap the output of `dump_config` as an AMD module as part of your build process.
 
 ```bash
 # deploy.sh
@@ -137,7 +139,8 @@ function(config, ...) {
 
 As of wq 0.7.0, the default [wq Django Template] uses `dump_config` in the provided `deploy.sh`.
 
-[wq.db.rest.app]: https://github.com/wq/wq.db/blob/master/rest/app.py
+[wq.db.rest.routers]: https://github.com/wq/wq.db/blob/master/rest/router.py
+[ModelRouter]: https://github.com/wq/wq.db/blob/master/rest/router.py
 [wq.db.rest]: https://wq.io/docs/about-rest
 [wq/app.js]: https://wq.io/docs/app-js
 [wq.app]: https://wq.io/wq.app

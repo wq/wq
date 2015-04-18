@@ -7,7 +7,7 @@ Authentication
 
 [wq.db.rest.auth]
 
-[wq.db]'s [REST API] provides a simple authentication service powered by Django's [auth module].  When `wq.db.rest.auth` is included in your `INSTALLED_APPS`, the following URLs will be registered with [app.py].
+[wq.db]'s [REST API] provides a simple authentication service powered by Django's [auth module].  When `wq.db.rest.auth` is included in your `INSTALLED_APPS`, the following URLs will be registered with the [router].
 
 url | purpose
 ----|--------
@@ -37,7 +37,7 @@ As an alternative to traditional username/password authentication, wq.db is desi
 ```
 
 ### Template Context Variables
-[wq.db.rest.app.context_processors] provides an `{{#is_authenticated}}` context variable for use in rendering templates that require authenticated users.  For compatibility reasons, it is recommended to always place references to the `{{#user}}` template variable inside of the `{{#is_authenticated}}` block, e.g.:
+[wq.db.rest.auth.context_processors] provides an `{{#is_authenticated}}` context variable for use in rendering templates that require authenticated users.  It is recommended to always place references to the `{{#user}}` template variable inside of the `{{#is_authenticated}}` block, e.g.:
 
 ```xml
 {{#is_authenticated}}
@@ -61,8 +61,8 @@ As an alternative to traditional username/password authentication, wq.db is desi
 [wq.db]: https://wq.io
 [REST API]: https://wq.io/docs/about-rest
 [auth module]: https://docs.djangoproject.com/en/1.7/topics/auth/
-[app.py]: https://wq.io/docs/app.py
+[router]: https://wq.io/docs/router
 [wq/app.js]: https://wq.io/docs/app-js
 [wq configuration object]: https://wq.io/docs/config
 [Python Social Auth]: http://psa.matiasaguirre.net/
-[wq.db.rest.app.context_processors]: https://github.com/wq/wq.db/blob/master/rest/auth/context_processors.py
+[wq.db.rest.auth.context_processors]: https://github.com/wq/wq.db/blob/master/rest/auth/context_processors.py

@@ -23,7 +23,7 @@ The following documentation from these other libraries will serve as a useful ba
 ## Getting Started
 
 ### Configuration
-If you are starting from the [Django wq template], you should already have the necessary configuration to continue.  If not, the key components are some important [settings] that should be included in your `settings.py`, and an entry in your `urls.py` that references the included  [Router]'s urls.
+If you are starting from the [Django wq template], you should already have the necessary configuration to continue.  If not, the key components are some important [settings] that should be included in your `settings.py`, and an entry in your `urls.py` that references the included  [ModelRouter]'s urls.
 
 ### Model Registration
 Once everything is configured, it is just a matter of registering models with the included router.  See the [app] section for more information.
@@ -34,13 +34,13 @@ wq.db.rest includes a number of submodules, many of which are extensions of thei
 
 Submodule                | Description
 ------------------------ | -------------------------------------------
-[app]                    | Application controller/router (counterpart to [wq/app.js])
 [auth]                   | Authentication API
 context_processors       | Adds variables to template context for server-side rendering
 filters                  | Support for URL-based queryset filtering
 models                   | Custom [ContentType] model proxy to simplify common routing tasks
 permissions              | Permissions backend with support for Anonymous permissions
-renderers                | Supplemental response rendering formats, including GeoJSON and AMD
+renderers                | Supplemental response rendering formats, including GeoJSON
+[routers][wqrouter]      | Application controller/router (counterpart to [wq/app.js])
 [serializers][wqserial]  | Custom serializers with better support for server and client template rendering
 [settings]               | Recommended Django settings for projects using wq.db
 [template]               | Mustache-powered template loaders
@@ -51,20 +51,19 @@ renderers                | Supplemental response rendering formats, including Ge
 [My website is its own REST API]: https://wq.io/docs/website-rest-api
 [Django REST Framework]: http://django-rest-framework.org/
 [django.contrib.admin]: https://docs.djangoproject.com/en/dev/ref/contrib/admin/
-[Router]: https://wq.io/docs/app.py
+[ModelRouter]: https://wq.io/docs/router
 [Django REST Framework docs]: http://django-rest-framework.org/
 [routers]: http://django-rest-framework.org/api-guide/routers
 [viewsets]: http://django-rest-framework.org/api-guide/viewsets
 [serializers]: http://django-rest-framework.org/api-guide/serializers
-[autodiscover()]: https://wq.io/docs/app.py
+[autodiscover()]: https://wq.io/docs/router
 [Django wq template]: https://github.com/wq/django-wq-template
-[app]: https://wq.io/docs/app.py
-[wq/app.js]: https://wq.io/docs/app-js
 [auth]: https://wq.io/docs/auth
 [filters]: https://wq.io/docs/filters
 [ContentType]: https://docs.djangoproject.com/en/dev/ref/contrib/contenttypes/
 [permissions]: https://wq.io/docs/permissions
-[renderers]: https://wq.io/docs/renderers
+[wqrouter]: https://wq.io/docs/router
+[wq/app.js]: https://wq.io/docs/app-js
 [wqserial]: https://wq.io/docs/serializers
 [settings]: https://wq.io/docs/settings
 [template]: https://wq.io/docs/template.py
