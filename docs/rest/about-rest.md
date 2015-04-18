@@ -11,7 +11,7 @@ About wq.db.rest
 
 **wq.db.rest** facilitates the creation of REST-ful APIs that also function as complete websites.  When combined with a compatible client library (i.e. [wq.app]), this flexibility makes it possible to create progressively-enhanced websites that also function well offline (via client-side rendering).  While it is nominally a REST interface, wq.db.rest is intended to be used as the core controller in a web application, rather than to build a supplemental API (see "[My website is its own REST API]").  That said, like the rest of wq.db, individual parts of wq.db.rest you find useful can be integrated into your application without requiring the whole module.
 
-wq.db.rest is heavily influenced by (and directly dependent on) the [Django REST Framework] (DRF).  It is also inspired by the [django.contrib.admin] automatic admin interface.  wq.db.rest brings these ideas together with a [Router] that subclasses DRF's `DefaultRouter`, but takes a model-centric (rather than viewset-centric) approach to route registration and handling.
+wq.db.rest is heavily influenced by (and directly dependent on) the [Django REST Framework] (DRF).  It is also inspired by the [django.contrib.admin] automatic admin interface.  wq.db.rest brings these ideas together with a [ModelRouter] that subclasses DRF's `DefaultRouter`, but takes a model-centric (rather than viewset-centric) approach to route registration and handling.
 
 ## Background Reading
 

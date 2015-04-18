@@ -32,11 +32,11 @@ INSTALLED_APPS = (
 Then, create one or more models extending `MarkedModel`.
 ```python
 # myapp/models.py
-from wq.db.patterns import models
+from wq.db.patterns import models as patterns
 # or:
 # from wq.db.patterns.mark.models import MarkedModel
 
-class MyModel(models.MarkedModel):
+class MyModel(patterns.MarkedModel):
    ...
 ```
 
@@ -118,7 +118,7 @@ When rendering markdown content in detail views, the above representation can be
 
 #### New Style
 
-In wq.db 0.8.0 and later, the basic naming convention is based on the [HTML JSON forms] specification. For example, the markdown in the above example might be rendered into <input>s as follows:
+In wq.db 0.8.0 and later, the basic naming convention is based on the [HTML JSON forms] specification. For example, the markdown in the above example might be rendered into `<input>`s as follows:
 
 ```xml
 <input type="hidden" name="markdown[0][id]" value="3">
