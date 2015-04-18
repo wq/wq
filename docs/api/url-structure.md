@@ -1,7 +1,7 @@
 The wq URL Structure
 ====================
 
-The wq stack is designed to support building offline-capable [websites] / [web apps] with application screens that can be [rendered on the client or on the server] depending on what will provide the best user experience.  To facilitate this design, wq defines a consistent but flexible **URL structure** that is shared throughout the application [as well as its REST API].  This structure is defined here independently of the implementations in [wq.app](https://wq.io/docs/app-js) and [wq.db](https://wq.io/docs/app.py), with the idea that either library can be exchanged for another architecture as long as the URL structure is maintained.
+The wq stack is designed to support building offline-capable [websites] / [web apps] with application screens that can be [rendered on the client or on the server] depending on what will provide the best user experience.  To facilitate this design, wq defines a consistent but flexible **URL structure** that is shared throughout the application [as well as its REST API].  This structure is defined here independently of the implementations in [wq.app](https://wq.io/docs/app-js) and [wq.db](https://wq.io/docs/router), with the idea that either library can be exchanged for another architecture as long as the URL structure is maintained.
 
 ## Basic URL Structure
 
@@ -57,7 +57,6 @@ verb | path | template | purpose
 `GET` | `/config.json` | n/a | The auto-generated [wq configuration object].  This object is used to communicate the entire URL structure to the client application.  As of wq.db 0.7.0, this file can also be generated on the command line via `./manage.py dump_config` if `wq.db.rest` is in your application's `INSTALLED_APPS`.
  
 [wq.db]: https://wq.io/wq.db
-[app.py]: https://wq.io/docs/app.py
 [wq.app]: https://wq.io/wq.app
 [wq/app.js]: https://wq.io/docs/app-js
 [wq/map.js]: https://wq.io/docs/map-js

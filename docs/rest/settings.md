@@ -5,9 +5,9 @@ order: 7
 Recommended Settings
 ========
 
-[wq.db.rest.settings]
+[wq.db.default_settings]
 
-Below are the recommended settings for wq.db projects.  These can be utilized by importing them from `wq.db.rest.settings`.
+Below are the recommended settings for projects using wq.db 0.8.0 and later.  These can be utilized by importing them from `wq.db.default_settings`.
 ```python
 # Django settings
 TEMPLATE_LOADERS = (
@@ -15,37 +15,35 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.app_directories.Loader',
 )
 TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.core.context_processors.csrf',  # Django 1.7/1.8
     'django.contrib.auth.context_processors.auth',
     'wq.db.rest.auth.context_processors.is_authenticated',
     'wq.db.rest.auth.context_processors.social_auth',
-    'wq.db.rest.auth.context_processors.csrftoken',
     'wq.db.rest.context_processors.version',
+    'wq.db.rest.context_processors.pages_info',
+    'wq.db.rest.context_processors.wq_config',
 )
 SESSION_COOKIE_HTTPONLY = False
 
 # Django Rest Framework settings
 REST_FRAMEWORK = {
-    'PAGINATE_BY': 50,
-    'PAGINATE_BY_PARAM': 'limit',
 
     'DEFAULT_RENDERER_CLASSES': (
         'rest_framework.renderers.TemplateHTMLRenderer',
         'wq.db.rest.renderers.JSONRenderer',
-        'wq.db.rest.renderers.AMDRenderer',
         'wq.db.rest.renderers.GeoJSONRenderer',
     ),
 
-    'DEFAULT_MODEL_SERIALIZER_CLASS':
-    'wq.db.rest.serializers.ModelSerializer',
-
-    'DEFAULT_PAGINATION_SERIALIZER_CLASS':
-    'wq.db.rest.serializers.PaginationSerializer',
+    'PAGE_SIZE': 50,
+    'DEFAULT_PAGINATION_CLASS': 'wq.db.rest.pagination.Pagination',
 
     'DEFAULT_PERMISSION_CLASSES': (
         'wq.db.rest.permissions.ModelPermissions',
     ),
 
-    'FILTER_BACKEND': 'wq.db.rest.filters.FilterBackend'
+    'DEFAULT_FILTER_BACKENDS': (
+        'wq.db.rest.filters.FilterBackend',
+    )
 }
 
 # Django Social Auth settings
@@ -69,4 +67,4 @@ DEFAULT_AUTH_GROUP = "Users"
 DISAMBIGUATE = True
 ```
 
-[wq.db.rest.settings]: https://github.com/wq/wq.db/blob/master/rest/settings.py
+[wq.db.default_settings]: https://github.com/wq/wq.db/blob/master/default_settings.py

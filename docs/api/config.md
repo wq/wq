@@ -16,7 +16,7 @@ The basic format of the wq Configuration Object is:
 
 The object is typically made available as `config.json` at the top level of the REST [URL structure].  As of wq.db 0.7.0, this file can also be generated on the command line via `./manage.py dump_config` if `wq.db.rest` is in your application's `INSTALLED_APPS`.
 
-> **Implementation Note**: If you are using [wq.db], a usable configuration object can be generated automatically by [app.py] based on your registered Django models.  If you need to customize an entry in the wq.db-generated `pages` configuration, you should generally do so by supplying additional arguments to  `app.router.register_model` in [wq.db.rest] - otherwise the server and client configurations may be out of sync.  The information below is for those interested in fine-tuning the individual settings, and for those using [wq/app.js] without [wq.db].
+> **Implementation Note**: If you are using [wq.db], a usable configuration object can be generated automatically by the default [router] based on your registered Django models.  If you need to customize an entry in the wq.db-generated `pages` configuration, you should generally do so by supplying additional arguments to  `router.register_model` in [wq.db.rest] - otherwise the server and client configurations may be out of sync.  The information below is for those interested in fine-tuning the individual settings, and for those using [wq/app.js] without [wq.db].
 
 ## Configuration Options
 The primary (and currently only) configuration section in the wq configuration object is `pages`, which contains detailed information about the [URL structure] of the application.  For example, the `pages` configuration is used by [wq/app.js] to map URL requests to page templates to render, and also to provide hints to [wq/store.js] as to the structure of the REST API containing the actual data.
@@ -67,7 +67,7 @@ The full listing of page configuration options is described below.
 `choices` information is surfaced in the `[model_name]_edit` [template rendering context] as `[field_name]_choices`.
 
 [My Website is its own REST API]: https://wq.io/docs/website-rest-api
-[app.py]: https://wq.io/docs/app.py
+[router]: https://wq.io/docs/router
 [wq/app.js]: https://wq.io/docs/app-js
 [wq/store.js]: https://wq.io/docs/store-js
 [corresponding URLs]: https://wq.io/docs/url-structure

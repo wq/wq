@@ -15,7 +15,7 @@ The major modules are the following:
 
 | Module | Description |
 |--------|-------------|
-| [wq/app.js] | a high-level application controller that combines **wq/store.js** and **wq/pages.js** into a full configuration-driven CRUD client (intended for use with [wq.db]'s [app.py]) |
+| [wq/app.js] | a high-level application controller that combines **wq/store.js** and **wq/pages.js** into a full configuration-driven CRUD client (intended for use with [wq.db]'s [router]) |
 | [wq/chart.js] | configurable d3-based reusable charts, including time series and boxplots |
 | [wq/locate.js] | Utilities for requesting and displaying the user's location |
 | [wq/map.js] | Leaflet integration for **wq/app.js** pages that contain geometry (loaded via GeoJSON) |
@@ -57,5 +57,5 @@ See the notes in [Getting Started] for more information about setting up a proje
 [smaller modules]: https://wq.io/docs/other-modules
 [third-party libraries]: https://wq.io/docs/third-party
 [wq.db]: https://wq.io/wq.db
-[app.py]: https://wq.io/docs/app.py
+[router]: https://wq.io/docs/router
 [Getting Started]: https://wq.io/docs/setup

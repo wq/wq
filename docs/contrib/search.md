@@ -92,7 +92,7 @@ The template might look something like this:
 
 `DisambiguateView` can be used to provide short urls that automatically redirect to the desired model.  It is essentially a shortcut for `/search?auto=1&q=<keyword>`.  For example, if:
 
- * `MyModel` is registered with the [app.py REST API], and
+ * `MyModel` is registered with the default [router], and
  * there is a `MyModel` instance with a primary identifier of `"example"`, and
  * there are no other model instances with that identifier, then
 
@@ -100,7 +100,7 @@ The template might look something like this:
 
 If no matches are found, `DisambiguateView` will raise an `Http404` error.  If more than one match is found, the view will render `disambiguate.html`, with all of the `SearchView` context variables as well as a `message` variable explaining the error.
 
-Note that `DisambiguateView` is meant to run at the root of your URL structure.  To avoid conflicts with other modules and the app.py router, the reference to `search.urls` should usually be the last listed in your `urls.py`.  In some cases you may want to use only the `/search` view and disable the disambiguate functionality.  To do this, set `DISAMBIGUATE = False` in your `settings.py`.
+Note that `DisambiguateView` is meant to run at the root of your URL structure.  To avoid conflicts with other modules and the default router, the reference to `search.urls` should usually be the last listed in your `urls.py`.  In some cases you may want to use only the `/search` view and disable the disambiguate functionality.  To do this, set `DISAMBIGUATE = False` in your `settings.py`.
 
 ## Python API
 The search functionality is also available as a Python function to simplify testing.  The source is in [wq.db.contrib.search.util].  The function takes up to four arguments: the `query` string, an optional flag for `auto`-matically exiting if a unique primary identifier is matched, an optional `content_type` model name, and an optional `authority_id` to limit `Identifier` results.
@@ -126,5 +126,5 @@ results = search("test", authority_id=1)
 [identify]: https://wq.io/docs/identify
 [annotate]: https://wq.io/docs/annotate
 [wq/autocomplete.js]: https://wq.io/docs/other-modules
-[app.py REST API]: https://wq.io/docs/app.py
+[router]: https://wq.io/docs/router
 [wq.db.contrib.search.util]: https://github.com/wq/wq.db/blob/master/contrib/search/util.py

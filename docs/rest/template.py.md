@@ -20,9 +20,7 @@ TEMPLATE_LOADERS = (
 )
 ```
 
-There are two caveats:
- * First, the file extension used by wq.db's template Loader is the same as the one used by Django (`.html`).  This is usually not a problem, since most Django apps use the `app_directories` loader, while wq.db's Loader is a `filesystem` loader (that assumes all of your Mustache templates are in a shared `/templates` folder).
- * Second, the `user` template context variable provided by Django doesn't work well with the Mustache loader due to issues with lazy evaluation.  The simple workaround is to always wrap references to `user` with an `{{#is_authenticated}}` block in your Mustache templates (something you probably want to do anyway).  See the [auth] documentation for more information.
+Note that the file extension used by wq.db's template Loader is the same as the one used by Django (`.html`).  This is usually not a problem, since most Django apps use the `app_directories` loader, while wq.db's Loader is a `filesystem` loader (that assumes all of your Mustache templates are in a shared `/templates` folder).
  
 [wq.db.rest.template]: https://github.com/wq/wq.db/blob/master/rest/template.py
 [wq.db]: https://wq.io/wq.db
