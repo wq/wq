@@ -15,7 +15,7 @@ These EAV-style data models are particularly useful for building field data coll
 
 > For an in-depth discussion of EAV and the related [ERAV] data model, see [Capturing Quality: Retaining Provenance for Curated Volunteer Monitoring Data](https://wq.io/research/provenance). The [vera] project provides an implementation of ERAV, which has better support than EAV for time series and tracking multiple versions of data.
 
-`wq.db.patterns` directly extends the existing Django models API.  In particular, you can substitute `from django.db import models` for `from wq.db.patterns import models` and your existing code will still work.  `wq.db.patterns` supplements the existing API with a number of additional classes corresponding to the various design patterns.  For example, to leverage the `annotate` pattern, you would do something like the following:
+Each pattern is implemented as a separate Django app under `wq.db.patterns`.  For convenience, `wq.db.patterns.models` includes references to all of the models defined in each respective pattern.  For example, to use the [annotate] pattern:
 
 ```python
 # settings.py
@@ -25,8 +25,9 @@ INSTALLED_APPS = (
 )
 
 # myapp/models.py
-from wq.db.patterns import models
-class Report(models.AnnotatedModel):
+from django.db import models
+from wq.db.patterns import models as patterns
+class Report(patterns.AnnotatedModel):
    date = models.DateField()
    # ...
 ```

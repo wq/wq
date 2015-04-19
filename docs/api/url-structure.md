@@ -18,7 +18,6 @@ format | extension | content type | purpose
 HTML | `.html` | `text/html` | **(Default)** This is the format used for application screens shown to the user.  This format is used when no format is specified (i.e. the URL does not end in an file extension).  The client application (i.e. [wq.app]) should typically be able to render extension-free URLs locally using data requested via the JSON version.
 JSON | `.json` | `application/json` | This is the basic format used by clients to retrieve data collections from the server.
 GeoJSON | `.geojson` | `application/vnd.geo+json` | *(Optional)* This format can be used to load and display data collections that incorporate geographic coordinates, for example in [wq/map.js].
-AMD (JSONP) | `.js` | `text/javascript` | *(Optional)* This format exists to make it easy to load data from the REST API as a JavaScript module.
 
 ## List API Structure
 

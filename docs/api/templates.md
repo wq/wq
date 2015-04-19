@@ -38,6 +38,7 @@ Like most templating systems, Mustache and wq require a context object - or more
 wq.app and wq.db each provide a robust, automatically generated context object that includes (among other things):
 
  - The URL of the current page (`{{pages_info.path}}`)
+ - The [wq configuration] entry corresponding to the current page (`{{page_config}}`)
  - Whether or not the visitor is logged in (`{{#is_authenticated}}`) as well as information about the user (e.g. `{{user.username}}` and `{{csrf_token}}`)
  - Unique identifiers and user-friendly labels for primary and foreign keys on the current object (e.g. `{{id}}`, `{{label}}`, `{{parent_id}}`, `{{parent_label}}`).
  - In "list" views, the number of items in the list (`{{count}}`), the number of pages in the list (`{{pages}}`), and links to navigate between pages (`{{next}}` and `{{previous}}`).
@@ -70,4 +71,5 @@ Because templates are equally shared between the server and the client, they are
 [wq/markdown.js]: https://wq.io/docs/other-modules
 [wq/app.js]: https://wq.io/docs/app-js
 [wq Configuration Object]: https://wq.io/docs/config
+[wq configuration]: https://wq.io/docs/config
 [wq project template for Django]: https://github.com/wq/django-wq-template

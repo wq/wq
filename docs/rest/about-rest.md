@@ -26,7 +26,7 @@ The following documentation from these other libraries will serve as a useful ba
 If you are starting from the [Django wq template], you should already have the necessary configuration to continue.  If not, the key components are some important [settings] that should be included in your `settings.py`, and an entry in your `urls.py` that references the included  [ModelRouter]'s urls.
 
 ### Model Registration
-Once everything is configured, it is just a matter of registering models with the included router.  See the [app] section for more information.
+Once everything is configured, it is just a matter of registering models with the included router.  See the [routers] section for more information.
 
 ## API Documentation
 
@@ -42,7 +42,6 @@ permissions              | Permissions backend with support for Anonymous permis
 renderers                | Supplemental response rendering formats, including GeoJSON
 [routers][wqrouter]      | Application controller/router (counterpart to [wq/app.js])
 [serializers][wqserial]  | Custom serializers with better support for server and client template rendering
-[settings]               | Recommended Django settings for projects using wq.db
 [template]               | Mustache-powered template loaders
 [views]                  | Custom router-aware viewsets
 
