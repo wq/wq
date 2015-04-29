@@ -10,3 +10,6 @@
 [submodule "wq/start"]
 	path = wq/start
 	url = https://github.com/wq/wq-django-template.git
+[submodule "wq/core"]
+	path = wq/core
+	url = https://github.com/wq/wq.core.git
