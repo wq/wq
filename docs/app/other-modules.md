@@ -1,5 +1,5 @@
 ---
-order: 8
+order: 9
 ---
 
 Other Modules
@@ -162,7 +162,7 @@ The above might be used with a Mustache template like this:
 
 wq/progress.js is typically imported via AMD as `progress`, though any local variable name can be used.  `progress` provides a number of functions:
 
- * `progress.init()` takes up to four arguments: a URL route path (see [wq/pages.js]) for pages that are expected to have `<progress>` elements, and up to three callback functions (`onComplete`, `onFail`, and `onProgress`).  All three of the functions will be passed the `<progress>` element and the JSON data from the web services.
+ * `progress.init()` takes up to four arguments: a URL route path (see [wq/router.js]) for pages that are expected to have `<progress>` elements, and up to three callback functions (`onComplete`, `onFail`, and `onProgress`).  All three of the functions will be passed the `<progress>` element and the JSON data from the web services.
  * `progress.start($progress)` starts polling for a specified, jQuery-wrapped `<progress>` element
  * `progress.stop($progress)` cancels polling for a started progress process
 
@@ -192,9 +192,6 @@ wq/progress.js assumes a specific structure for the data from the web service.  
  * `status`: A text status indicating task state.  A status of `"SUCCESS"` or `"FAILURE"` will cause polling to cease and the `onComplete` or `onFailure` callbacks to be called.  The status names are taken from the [task state names in Celery].
 
 
-## wq/router.js
-[wq/router.js] is a simple API wrapper around the **jQuery Mobile Router** library.  [wq/pages.js] uses wq/router.js internally, and may eventually replace it entirely (see [wq/wq.app#26]).  In short, just use wq/pages.js.
-
 ## wq/spinner.js
 [wq/spinner.js] is a simple API wrapper around jQuery Mobile's built-in spinner.
 
@@ -217,41 +214,6 @@ spin.start("Loading...", 2, {'theme': 'b'});
 });
 ```
 
-## wq/template.js
-[wq/template.js] is a simple API wrapper around **Mustache.js** that adds a way to cache template definitions and define global "default" context variables.  wq/template.js templates are used in [wq/pages.js].
-
-### API
-
-wq/template.js is typically imported via AMD as `tmpl`, though any local variable name can be used.  `tmpl` provides an `init()` function which accepts a three arguments: a set of templates, a set of template partials, and a set of default context variables (all defined as key-value objects).  `tmpl.setDefault(name, value)` can be used to assign additional default context variables after initialization.  Like all Mustache variables, context defaults can be simple values or functions that will be called when the variable is encountered in a template.  `tmpl.render(template, context)` renders a template with the given context.  `template` can be either the name of an existing template or the content of a new template.
-
-```javascript
-define(['wq/template', ...], function(tmpl, ...) {
-
-var templates = {
-    'example': '{{name}} {{>example_partial}}'
-};
-var partials = {
-    'example_partial': "Example"
-};
-var defaults = {
-    'name': 'Default'
-}
-tmpl.init(templates, partials, defaults);
-
-// Result: First Example
-tmpl.render("example", {'name': 'first'});
-
-// Result: Default Example
-tmpl.render("example", {});
-
-// Result: Another Example
-tmpl.render("Another {{>example_partial}}", {'name': 'first'});
-
-});
-```
-
-Rather than writing out the template objects by hand, you may be interested in the [wq collectjson] command which can load HTML files from a folder and create a JSON object for you.
-
 [wq.app modules]: https://wq.io/docs/app
 [wq.app]: https://wq.io/wq.app
 [third-party dependencies]: https://wq.io/docs/third-party
@@ -264,10 +226,8 @@ Rather than writing out the template objects by hand, you may be interested in t
 [wq/online.js]: https://github.com/wq/wq.app/blob/master/js/wq/online.js
 [wq/photos.js]: https://github.com/wq/wq.app/blob/master/js/wq/photos.js
 [wq/progress.js]: https://github.com/wq/wq.app/blob/master/js/wq/progress.js
-[wq/router.js]: https://github.com/wq/wq.app/blob/master/js/wq/router.js
 [wq/spinner.js]: https://github.com/wq/wq.app/blob/master/js/wq/spinner.js
-[wq/template.js]: https://github.com/wq/wq.app/blob/master/js/wq/template.js
-[wq/pages.js]: https://wq.io/docs/pages-js
+[wq/router.js]: https://wq.io/docs/router-js
 
 [AMD]: https://wq.io/docs/amd
 [application cache]: https://developer.mozilla.org/en-US/docs/Web/HTML/Using_the_application_cache

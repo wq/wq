@@ -50,7 +50,7 @@ The map module provides the following methods and properties.
 
 ### `map.init()`
 
-`map.init()` is the primary function for wq/map.js.  `map.init()` registers callback events (via [pages.addRoute()]) that render maps on demand when map-capable pages are shown.  Such pages should be defined with `"map": true` in the [wq configuration object].  Since this configuration is necessary for proper function, wq/map.js should be initialized after wq/app.js as shown in the example above.
+`map.init()` is the primary function for wq/map.js.  `map.init()` registers callback events (via [router.addRoute()]) that render maps on demand when map-capable pages are shown.  Such pages should be defined with `"map": true` in the [wq configuration object].  Since this configuration is necessary for proper function, wq/map.js should be initialized after wq/app.js as shown in the example above.
 
 `map.init()` accepts an additional configuration object that defines default settings for rendered maps including initial location and zoom.
 
@@ -260,7 +260,7 @@ layer.addTo(customMap);
 [REST API]: https://wq.io/docs/about-rest
 [wq/app.js]: https://wq.io/docs/app-js
 [AMD]: https://wq.io/docs/amd
-[pages.addRoute()]: https://wq.io/docs/pages-js
+[router.addRoute()]: https://wq.io/docs/router-js
 [wq/app.js config object]: https://wq.io/docs/app-js
 [URL Structure]: https://wq.io/docs/url-structure
 [LatLngBounds]: http://leafletjs.com/reference.html#latlngbounds
