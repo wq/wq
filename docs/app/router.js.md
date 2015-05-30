@@ -1,5 +1,5 @@
 ---
-order: 5
+order: 6
 ---
 
 wq/router.js
@@ -15,16 +15,16 @@ If you are using both [wq.app] and [wq.db] together, you may be interested in [w
   * When you need to register additional URL routes that have no server equivalent, or aren't easily described by the wq configuration object
   * When you need custom handlers for page events other than initial rendering, e.g. `pageshow`, `pageinit`, etc.
 
-> **Note:* **wq/router.js** replaces the equivalent **wq/pages.js** which existed in wq.app 0.7.4 and earlier.   The API for wq/router.js is almost identical to wq/pages.js, other than the module name and the `init()` configuration.
+> *Note:* **wq/router.js** replaces the equivalent **wq/pages.js** which existed in wq.app 0.7.4 and earlier.   The API for wq/router.js is almost identical to wq/pages.js, other than the module name and the `init()` configuration.
 
 ## API
 
-`wq/router.js` is typically imported via [AMD] as `pages`, though any local variable name can be used.
+`wq/router.js` is typically imported via [AMD] as `router`, though any local variable name can be used.
 
 ```javascript
 // myapp.js
-define(['wq/router', ...], function(pages, ...) {
-    router.init(...);
+define(['wq/router', ...], function(router, ...) {
+    router.init(config);
     router.addRoute(...);
     router.jqmInit();
 });
@@ -32,24 +32,28 @@ define(['wq/router', ...], function(pages, ...) {
 
 The pages module provides the following methods and properties.
 
-### `router.init()`
+### `router.init(config)`
 
-`router.init(baseurl, opts)` initializes the pages router with a base url (`baseurl`) and other configuration options (`opts`).  If your application is not running at the top level of your website, you should call `router.init()` before registering any URLs, or the URL matching will not work.  If specified, `baseurl` should not have a trailing slash.
+`router.init(config)` initializes the pages router with a base url and other configuration options.  You should almost always call `router.init()` before registering any URLs, or the URL matching may not work as expected.
 
-There are three available options:
+There are four available configuration options:
 
 name | purpose
 -----|---------
+`base_url` | The root or "index" url of the website, minus any trailing slash.  This is often an empty string if the website is running at the root of the domain.  For apps running in PhoneGap/Cordova, this will be the path to the folder containing `index.html`.
 `tmpl404` | The name of the template to use in `router.notFound()`  The default is "404".
 `injectOnce` | Whether to render and inject templates once (`true`) or every time they are requested (`false`).  The default is `false`.
 `debug` | When debug is active, each call to `router.go()` will be logged with template and context information.
 
 ```javascript
 // Basic usage (assumes application is at /)
-router.init('');
+router.init();
 
 // Custom usage (application is at /app/; custom 404 page)
-router.init("/app", {'tmpl404': "notfound"});
+router.init({
+    'base_url': "/app",
+    'tmpl404': "notfound"
+});
 ```
 
 `router.init()` is automatically called from [app.init()].
