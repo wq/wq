@@ -12,6 +12,7 @@ wq/store.js
 Unlike other similar libraries, wq/store.js does not attempt to immediately and transparently mirror local data changes to the server via a REST API.  This is by design.  wq/store.js is meant to be used in offline-capable mobile data entry applications that require explicit control over when and how local changes are "synced" to the server.  Thus, wq/store.js is almost always used in conjunction with [wq/outbox.js] to sync changes back to the server.
 
 > *Note*: In wq.app 0.8.0, the wq/store.js API was completely overhauled.  Specifically,
+>
 >   1. The storage API is now entirely asynchronous and [Promise]-based
 >   2. The List API and the Outbox Methods are now in separate [wq/model.js] and [wq/outbox.js] modules, respectively.
 >   3. [localForage] is used instead of `localStorage`.  Depending on the browser, this means using either `IndexedDB` or `WebSQL` to store data, both of which provide significantly more storage space than `localForage`.
