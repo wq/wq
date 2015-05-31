@@ -44,5 +44,6 @@ tmpl.render("Another {{>example_partial}}", {'name': 'first'});
 Rather than writing out the template objects by hand, you may be interested in the [wq collectjson] command which can load HTML files from a folder and create a JSON object for you.
 
 [wq/template.js]: https://github.com/wq/wq.app/blob/master/js/wq/template.js
+[wq.app]: https://wq.io/wq.app
 [wq/router.js]: https://wq.io/docs/router-js
 
