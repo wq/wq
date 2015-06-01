@@ -15,7 +15,7 @@ Unlike other similar libraries, wq/store.js does not attempt to immediately and 
 >
 >   1. The storage API is now entirely asynchronous and [Promise]-based
 >   2. The List API and the Outbox Methods are now in separate [wq/model.js] and [wq/outbox.js] modules, respectively.
->   3. [localForage] is used instead of `localStorage`.  Depending on the browser, this means using either `IndexedDB` or `WebSQL` to store data, both of which provide significantly more storage space than `localForage`.
+>   3. [localForage] is used instead of `localStorage`.  Depending on the browser, this means using either `IndexedDB` or `WebSQL` to store data, both of which provide significantly more storage space than `localStorage`.
 >   4. Like all wq.app modules in 0.8.0, the `init()` function now takes a single configuration argument.
 >
 > See the [0.7 docs] for the old API.
