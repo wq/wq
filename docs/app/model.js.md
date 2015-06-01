@@ -9,7 +9,7 @@ wq/model.js
 
 **wq/model.js** is a [wq.app] module providing a simple API for working with lists or collections of similar objects.  It uses [wq/store.js] to retrieve the underlying JSON data from e.g. a REST API.
 
-> Note: wq/outbox.js is a new module in wq.app 0.8.0.  In wq.app 0.7.4 and earlier, the model functionality was embedded within wq/store.js as `getList()` and related APIs.  See the [0.7 docs] for the old API.
+> Note: wq/model.js is a new module in wq.app 0.8.0.  In wq.app 0.7.4 and earlier, the model functionality was embedded within wq/store.js as `getList()` and related APIs.  See the [0.7 docs] for the old API.
 
 ## API
 
