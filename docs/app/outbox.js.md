@@ -122,6 +122,6 @@ FIXME: The items below have not been updated to reflect the new Promise-based AP
 [wq/app.js]: https://wq.io/docs/app-js
 [wq/store.js]: https://wq.io/docs/store-js
 [wq/model.js]: https://wq.io/docs/model-js
-[0.7 docs]: https://wq.io/0.7/docs/store.js
+[0.7 docs]: https://wq.io/0.7/docs/store-js
 [AMD]: https://wq.io/docs/amd
 [wq.db]: https://wq.io/wq.db
