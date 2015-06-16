@@ -11,7 +11,7 @@ pip3 install wq
 
 ## Using wq.db and wq.app
 
-If you are using wq.app and wq.db together, you may find it useful to take advantage of the [Django wq template] available on GitHub and via the `wq-start` command.  You will need a WGSI-capable webserver like [Apache], and a database to host the application.  In theory any Django-supported database will work, but wq.db is optimized for use with [PostgreSQL] and [PostGIS].  You should be able to use something like the following to start a new wq-based Django project.
+If you are using wq.app and wq.db together, you may find it useful to take advantage of the [Django wq template] available on GitHub and via the `wq start` command.  You will need a WGSI-capable webserver like [Apache], and a database to host the application.  In theory any Django-supported database will work, but wq.db is optimized for use with [PostgreSQL] and [PostGIS].  You should be able to use something like the following to start a new wq-based Django project.
 
 ### On Ubuntu
 
@@ -29,9 +29,8 @@ export PROJECTNAME=myproject
 
 # Create project directory from wq template
 cd $PROJECTSDIR
-wq-start $PROJECTNAME
+wq start $PROJECTNAME
 cd $PROJECTNAME
-chmod +x deploy.sh db/manage.py
 ./deploy.sh 0.0.1 # generate htdocs folder via wq build
 sudo chown www-data media/ # give Apache user permission to save uploads
 
@@ -54,12 +53,9 @@ sudo service apache2 restart
 ```
 
 ### On Windows
-wq.db is used and tested primarily in a Linux environment, but should work fine on Windows.  Please leave a comment at [wq/wq#11] if you would like the setup process for Windows (or other operating systems) to be documented.
-
-By contrast, wq.app is well-tested on both Windows and Linux - see the Windows instructions below.
+wq is used and tested primarily in a Linux environment, but works fine on Windows as well.  Please leave a comment at [wq/wq#11] if you would like the setup process for Windows (or other operating systems) to be documented.
 
 ## Using only wq.app
-
 If you are only interested in using wq.app, you can run `pip3 install wq.app` or simply download the [latest release] directly from GitHub.  You will likely want to set up your project with the following layout (inspired by [volo]):
 ```bash
 project/
