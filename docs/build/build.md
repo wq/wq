@@ -2,18 +2,18 @@ wq build
 ========
 [wq.app.build]
 
-`wq` is a configuration-based command-line tool that can be used to compile application code into a compact offline-capable format.  It is included in wq.app and should be available from the command line after [installing] wq or wq.app.
+`wq` is a configuration-based command-line tool that can be used to compile application code into a compact offline-capable format.  It is included in wq.core and should be available from the command line after [installing] wq or wq.app.
 
-The main usage of `wq` is as follows:
+wq.app provides a number of `wq` commands for creating and optimizing offline-capable web apps, the most notable of which is the `wq build` command.  The main usage of `wq build` is as follows:
 ```bash
-wq build [version] [configfile]
+wq -c [configfile] build [version]
 ```
 Where:
 
   * `[version]` is the version of the application being built (if none given it will be read from version.txt)
-  * `[configfile]` is the name of a configuration file to use (default is to look for wq.yml in the current directory).  The [django-wq-template] project contains an example [wq.yml].
+  * `[configfile]` is the path to a configuration file to use (the default is to look for a file named `wq.yml` in the current directory).  The [django-wq-template] project contains an example [wq.yml].
 
-> **New in wq.app 0.7.3**: The default configuration format changed from JSON to YAML.  The old format (and default filename, `app.build.json`) are still supported for the time being.  You can use [json2yaml.py] or any number of online tools to convert JSON to YAML.  Valid JSON is also valid YAML so you could just also rename the file.
+> **New in wq.app 0.7.3**: The default configuration format changed from JSON to YAML.  As of wq.app 0.8.0, the old format and default filename (`app.build.json`) are no longer supported.  You can use [json2yaml.py] or any number of online tools to convert JSON to YAML.  Valid JSON is also valid YAML so you could just also rename the file.
 
 The actual build process is broken into several steps.  Most of these steps can be configured with the corresponding key in the configuration file.
 
