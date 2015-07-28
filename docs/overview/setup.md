@@ -18,6 +18,7 @@ If you are using wq.app and wq.db together, you may find it useful to take advan
 Tested on Ubuntu 14.04 LTS.
 
 ```bash
+sudo apt-get update
 sudo apt-get install apache2 libapache2-mod-wsgi-py3 postgresql-9.3-postgis-2.1 python3-pip python3-psycopg2
 sudo pip3 install wq
 
@@ -49,6 +50,7 @@ cd db/
 # (edit conf/$PROJECTNAME.conf with correct domain name)
 sudo ln -s $PROJECTSDIR/$PROJECTNAME/conf/$PROJECTNAME.conf /etc/apache2/sites-available/
 sudo a2ensite $PROJECTNAME
+sudo a2dissite 000-default # optional - will make $PROJECTNAME the default site
 sudo service apache2 restart
 
 # generate htdocs folder via wq build
