@@ -51,7 +51,24 @@ Note that it is not necessary to explicitly set the `model` or `queryset` attrib
   * "Edit" and "New" screens (`/[list_url]/[id]/edit` and `/[list_url]/[id]/new`)
   * REST-ful foreign key filters (`/[parent_list]/[id]/[child_list]`)
 
-`ModelViewSet` also includes code to automatically determine whether a POST was submitted via an AJAX JSON request or via a traditional form request.  In the former case, a JSON response is returned, while in the latter case, the client is redirected via HTTP to the detail view for the new item.  This allows for progressive enhancement to support a wide array of browsers. 
+### Responding to form submissions
+
+`ModelViewSet` can automatically determine whether a POST was submitted via an AJAX JSON request or via a traditional form request.  In the former case, a JSON response is returned, which can be handled on the client-side by [wq/app.js] or a compatible library.   In the latter case, the server generates an HTTP redirect per the rules specified by the `postsave` [configuration option].  This approach allows for progressive enhancement to support a wide array of browsers, and gives flexibility for a number of other [use cases].
+
+The server-generated redirects are designed to mimic the client `postsave` functionality as much as possible.  As in [wq/app.js], the default `postsave` response in `ModelViewSet` is to redirect to the `detail` view for the newly saved item.  However, if an error occurs, the response will be a bit different: while the client has the option to inject JSON error messages within the form that was submitted, the server does not.  Instead, `ModelViewSet` will look for a `[modelname]_error.html` template to process the error response through.  The context for the template will have the following structure:
+
+```javascript
+{
+    'errors': [
+        {'field': name, 'errors': [errors]},
+    ],
+    'post': form_content
+}
+```
+
+As of wq.db 0.8.1, `ModelViewSet` includes two methods, `postsave` and `saveerror`, that can be overridden like their counterparts in [wq/app.js] to fully customize server-rendered save behavior.
+
+> Note: Even when the client is fully AJAX+JSON capable, there are still [use cases] for processing forms and generating HTML responses and redirects entirely on the server.  This feature can be used together with jQuery Mobile's built-in HTML AJAX loader to make the difference between client- and server-generated form responses relatively seamless to the user.  However, note that jQuery Mobile (like any other AJAX client) cannot detect whether an HTML response involved a HTTP redirect.  If you choose to redirect to a server-rendered HTML page, be sure to set the `data-url` attribute on your `<div data-role=page>`, or the client will use the URL the form was submitted to as the page URL.  When [wq/app.js] does a "redirect" on the client side, this is not an issue - but it doesn't hurt to specify the `data-url` in that case as well.
 
 [wq.db.rest.views]: https://github.com/wq/wq.db/blob/master/rest/views.py
 [wq.db]: https://wq.io/wq.db
@@ -66,3 +83,6 @@ Note that it is not necessary to explicitly set the `model` or `queryset` attrib
 [config.json]: https://wq.io/docs/config
 [ModelViewSet]: http://www.django-rest-framework.org/api-guide/viewsets/#modelviewset
 [wq URL structure]: https://wq.io/docs/url-structure
+[configuration option]: https://wq.io/docs/config
+[wq/app.js]: https://wq.io/docs/app-js
+[use cases]: https://wq.io/docs/templates
