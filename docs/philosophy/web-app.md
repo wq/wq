@@ -15,7 +15,7 @@ Eventually, we became convinced that HTML5 is not only a practical choice, but i
 
 As we dived further into application development, it became clear that many features of HTML5 apps - even deployed as websites without using PhoneGap - were actually quite competitive with those of native apps.  For example,
 
- * Web apps can be made to work offline through the use of the [Application Cache] for code and [Web Storage] for data.
+ * Web apps can be made to work offline through the use of the [Application Cache] for code and [Web Storage] or [IndexedDB] for data.
  * Web apps can request GPS coordinates via the [navigator.geolocation] API, and photographs with just an `<input type=file>`
  * Complex charts can be rendered without the need for browser plugins, by using embedded [SVG] graphics (or Canvas, which can draw faster but is somewhat less interactive)
  * [CSS3 Transforms] can be used to add hardware-accelerated transition animations when navigating between screens.
@@ -28,7 +28,7 @@ Perhaps the most commonly leveraged complaint against pure web apps is that they
 
 A more important contributor to the perception of slowness is network latency, which naturally affects web apps much more than native apps.  What is usually forgotten is that native apps actually take *longer* to load initially - as they must first be discovered and installed from an app store!  It is only because websites are traditionally loaded on demand that the initial load seems slower.  Further, this can be mitigated by the use of an [Application Cache] so that once a web app is accessed for the first time, it is "installed" locally and available for instant loading on subsequent visits.
 
-There is one remaining issue related to latency, and that is the fact that websites traditionally require a subsequent network request for every navigation action.  With HTML5, this is no longer necessary - as long as the necessary information is preloaded and stored locally, there should be no need to wait for the network when navigating between pages.  This requires a more careful consideration of application design (and the careful use of [templates]), but it is feasible and essential to giving an app-like experience to the user.  We might even go so far as to say that if you *aren't* using an Application Cache and [Web Storage] in your website, please don't frame it as a "web app", as you are directly contributing to a negative perception of web apps as inherently slow.
+There is one remaining issue related to latency, and that is the fact that websites traditionally require a subsequent network request for every navigation action.  With HTML5, this is no longer necessary - as long as the necessary information is preloaded and stored locally, there should be no need to wait for the network when navigating between pages.  This requires a more careful consideration of application design (and the careful use of [templates]), but it is feasible and essential to giving an app-like experience to the user.  We might even go so far as to say that if you *aren't* utilizing offline storage capabilities in your website, please don't frame it as a "web app", as you are directly contributing to a negative perception of web apps as inherently slow.
 
 ## Bridging the Gap
 
@@ -44,6 +44,7 @@ With the above considerations, we argue that the new features in the latest vers
 [PhoneGap]: http://phonegap.com
 [Application Cache]: http://www.whatwg.org/specs/web-apps/current-work/multipage/offline.html
 [Web Storage]: http://www.w3.org/TR/webstorage/
+[IndexedDB]: http://www.w3.org/TR/IndexedDB/
 [navigator.geolocation]: http://www.w3.org/TR/geolocation-API/
 [SVG]: http://www.w3.org/Graphics/SVG/
 [CSS3 Transforms]: http://www.w3.org/TR/css-transforms-1/
