@@ -28,7 +28,7 @@ In the example below, all of the options are shown with their default values.  I
 
  - `jquery-mobile-gray-theme()`: a swatch that matches the default "a" swatch.
  - `jquery-mobile-black-theme()`: a swatch matches the default "b" swatch.
- - `jquery-mobile-classic-b-theme()`: a swatch that matches the default "b" swatch from older versions of jQuery Mobile (blue bars, grey content)
+ - `jquery-mobile-classic-b-theme()`: a swatch that matches the default "b" swatch from older versions of jQuery Mobile (blue bars, gray content)
  - `jquery-mobile-yellow-theme()`: A yellow / "alert" swatch
  - `jquery-mobile-blue-theme()`: An experimental blue swatch
  - `jquery-mobile-default-themes()`: generates a gray ("a") and black ("b") swatch to match the default themes.

@@ -30,7 +30,7 @@ The full list of options is described below:
 
 name | purpose
 -----|---------
-`query` | The [wq/store.js] query to use when retreiving data for the model.  This is often an object of the form `{'url': url}`.
+`query` | The [wq/store.js] query to use when retrieving data for the model.  This is often an object of the form `{'url': url}`.
 `functions` | A collection of computable attributes that can be applied to items in the model
 `store` | The [wq/store.js] instance to use for the model.  This defaults to the main instance (`ds`) if not set.
 `url` | A shortcut for setting `{'query': {'url': url}}`.
@@ -126,9 +126,9 @@ myModel.find(27).then(function(item) {
 
 #### `[model].filter(filter, [any])`
 
-`filter()` retrieves all objects that match the specified filter, whick should be key-value mapping of one or more fields to filter on.  Fields can be existing fields on the item in the list, or the names of attribute `functions` provided to the model constructor.  The `any` argument specifies whether to return items matching any of the filter values (`true`) or only those matching all of the filter values (`false`, default).
+`filter()` retrieves all objects that match the specified filter, which should be key-value mapping of one or more fields to filter on.  Fields can be existing fields on the item in the list, or the names of attribute `functions` provided to the model constructor.  The `any` argument specifies whether to return items matching any of the filter values (`true`) or only those matching all of the filter values (`false`, default).
 
-If not all of the data for the model is stored locally (i.e. `partial` is set), then `filter()` will automatically query the server regardless of if any items might found localy.  This behavior can be disabled by setting `localOnly` to true.
+If not all of the data for the model is stored locally (i.e. `partial` is set), then `filter()` will automatically query the server regardless of if any items might found locally.  This behavior can be disabled by setting `localOnly` to true.
 
 ```javascript
 // Filter on existing field

@@ -23,7 +23,7 @@ The actual build process is broken into several steps.  Most of these steps can 
 | `setversion` | loads the application version from a version.txt file (or from the command line) and creates a simple AMD module (typically called `version.js`)
 | [collectjson] | collects the contents of files a directory into a single JSON or JavaScript (JSONP/AMD) file.
 | [scss] | compiles SCSS into regular CSS, useful for creating [custom jQuery Mobile themes].
-| [mustache] | compile a Mustache tempate and context into a static HTML page.  **New in 0.7.3**
+| [mustache] | compile a Mustache template and context into a static HTML page.  **New in 0.7.3**
 | `optimize` | Resolves Javascript and CSS dependencies to build single "minified" files using a bundled version of the RequireJS optimizer ([r.js]).  Requires [node.js]
 | `appcache` | Creates HTML5 application cache manifests for both the source and compiled applications by examining the logs from build process.
 | `build` | runs all of the above in order.

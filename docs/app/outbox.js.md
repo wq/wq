@@ -21,7 +21,7 @@ That said, it is possible to configure [wq/app.js] to automatically `sync()` the
 ```javascript
 // myapp.js
 define(['wq/outbox', ...], function(outbox, ...) {
-   oubox.init(config);
+   outbox.init(config);
 });
 ```
 
@@ -35,7 +35,7 @@ name | purpose
 -----|---------
 `id` | The local unique identifier for the outbox item.
 `data` | The form key-value pairs as passed to `outbox.save()`
-`options` | Additional parameters that configure how the data should be sent to the server, and potentially how the response should be interpeted. (see outbox.save())
+`options` | Additional parameters that configure how the data should be sent to the server, and potentially how the response should be interpreted. (see outbox.save())
 `synced` | Whether the outbox item has been successfully saved to the server.  This property is defined in the `applyResult` function (see `outbox.init()`).
 `error` | If applicable, the error returned from the server or from the AJAX call when attempting to save the item.  Will be either a string or a JSON object.
 `newid` | The server-generated identifier for the newly synced item, if applicable.  (This property is technically defined by [wq/app.js], not wq/outbox.js.)
@@ -44,7 +44,7 @@ name | purpose
 
 #### `outbox.init(config)`
 
-`outbox.init()` configures the outbox with the necessary information to communicate with a web service.  The outbox will automatically re-use the `service`, `formatKeyword`, `defaults`, and `debug`, parameters provided to [wq/store.js].  The list of outbox-specifig options is described below:
+`outbox.init()` configures the outbox with the necessary information to communicate with a web service.  The outbox will automatically re-use the `service`, `formatKeyword`, `defaults`, and `debug`, parameters provided to [wq/store.js].  The list of outbox-specific options is described below:
 
 name | purpose
 -----|---------

@@ -7,7 +7,7 @@ wq/router.js
 
 [wq/router.js]
 
-**wq/router.js** is a [wq.app] module providing a convenient router API that overlays the [jQuery Mobile] page navigation system.  wq/router.js supports [PJAX-style] page navigation by capturing URL changes and "responding" with locally-rendered HTML papges.
+**wq/router.js** is a [wq.app] module providing a convenient router API that overlays the [jQuery Mobile] page navigation system.  wq/router.js supports [PJAX-style] page navigation by capturing URL changes and "responding" with locally-rendered HTML pages.
 
 If you are using both [wq.app] and [wq.db] together, you may be interested in [wq/app.js], a higher-level module that automatically registers the appropriate routes for applications via the [wq configuration object].  wq/router.js is primarily useful for the following cases:
 

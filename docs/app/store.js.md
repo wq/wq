@@ -103,7 +103,7 @@ ds.get({'url': 'items'}).then(function(items) {
 });
 ```
 
-> Note that as of wq.app 0.8.0, `ds.get()` is an **a**synchronous-only API, even if the data is already stored locally and no AJAX request is needed.  This is in part because the underlying storage APIs are asychronous, and partly because you won't always know beforehand whether an AJAX call is needed.  (Believe it or not, `ds.get()` in wq.app 0.7.4 and earlier would force a synchronous, blocking AJAX request if necessary in order to be able to return a value without requiring a callback.)
+> Note that as of wq.app 0.8.0, `ds.get()` is an **a**synchronous-only API, even if the data is already stored locally and no AJAX request is needed.  This is in part because the underlying storage APIs are asynchronous, and partly because you won't always know beforehand whether an AJAX call is needed.  (Believe it or not, `ds.get()` in wq.app 0.7.4 and earlier would force a synchronous, blocking AJAX request if necessary in order to be able to return a value without requiring a callback.)
 
 `ds.get()` can be passed an array of queries, which will be individually resolved and passed back through the promise in a corresponding array.
 
