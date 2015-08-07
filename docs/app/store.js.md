@@ -168,7 +168,7 @@ While `ds.get()` can automatically generate AJAX requests as needed, it is somet
 
 #### `ds.prefetch(query, callback)`
 
-`ds.prefetch()` provides a simple async API for ensuring data is loaded before continuing.
+`ds.prefetch()` provides a simple API for ensuring the latest data is present before continuing.
 
 ```javascript
 ds.prefetch('/items').then(function(items) {
@@ -181,18 +181,18 @@ The callback is optional, so `ds.prefetch()` can (and usually should) be used at
 ```javascript
 ds.prefetch('/items');
 ds.prefetch('/types');
-ds.prefetch('/moreitems'});
+ds.prefetch('/moreitems');
 ```
 
-Note that [wq/app.js] provides the function `prefetchAll()` which can automatically prefetch JSON data for all registered models.
+Note that [wq/app.js] provides the function `app.prefetchAll()` which can automatically prefetch JSON data for all registered models.
 
 `ds.prefetch(query)` is equivalent to `ds.fetch(query, true)`.
 
-When called with only a query argument, the three retrieval functions are effectively identical APIs with the following distinctions:
+When called with only a web query argument, the three retrieval functions are effectively identical APIs with the following distinctions:
 
 function | loads from | saves to storage
 ---------|------------|----------
-`ds.get(query).then(callback)` | storage, then web | n/a
+`ds.get(query).then(callback)` | storage, then web | if not already present
 `ds.fetch(query).then(callback)` | web | no
 `ds.prefetch(query).then(callback)` | web | yes
 
