@@ -67,7 +67,7 @@ console.log(...);
 ```
 
 ## wq/json.js
-[wq/json.js] is a generic AJAX/JSON module to allow the jQuery dependency to be factored out of `wq/map.js` (and eventually other modules).  The ultimate goal is to allow the non-UI modules in wq.app to be used without jQuery.  wq/json.js provides a single function, `json.get()`, that accepts three arguments: a URL, a success callback, and an error callback.
+[wq/json.js] is a generic AJAX/JSON module to allow the jQuery dependency to be factored out of `wq/map.js` (and eventually other modules).  The ultimate goal is to allow the non-UI modules in wq.app to be used without jQuery.  wq/json.js provides a single function, `json.get(url, [params], [jsonp])`, that accepts a URL, an optional parameter object, and an optional flag to trigger JSONP.   `json.get()` returns a [Promise] that is resolved or rejected depending on the result of the AJAX call.
 
 ## wq/markdown.js
 [wq/markdown.js] adds Markdown and syntax highlighting to wq/template.js by providing an `{{html}}` template default.
@@ -118,7 +118,7 @@ function _onUpdate(status, msg) {
 ### API
 wq/photos.js is typically imported via AMD as `photos`, though any local variable name can be used.  `photos` provides three methods:
 
-  * `photos.preview()` accepts the id of an `<img>` element, the local path to a file to load, and a fallback URL to use if file loading fails.  `photos.preview()` is meant to be used with `<input type=file>` in web and hybrid apps.
+  * `photos.preview()` accepts the id of an `<img>` element and a `File` object to display.  `photos.preview()` is meant to be used with `<input type=file>` in web and hybrid apps.
   * `photos.take()` and `photos.pick()` are wrappers for PhoneGap/Cordova's [camera.getPicture()] API, meant to be used in hybrid apps where `<input type=file>` doesn't work (e.g. on older devices or [broken Android implementations]).
 
 Both `photos.take()` and `photos.pick()` accept two arguments: the id of a form `<input>` (often `type=hidden`) and the id of an `<img>` tag to place the preview in.  `photos.take()` requests a new photo from the camera, while `photos.pick()` requests a previously captured photo from the user's albums.
@@ -127,7 +127,7 @@ Both `photos.take()` and `photos.pick()` accept two arguments: the id of a form 
 define(['jquery', 'wq/photos', ...], function($, photos, ...) {
 
 $('input[type=file]').change(function() {
-    photos.preview(this.value, 'preview-image');
+    photos.preview('preview-image', this.files[0])
 });
 $('button.take').click(function() {
     photos.take('filename', 'preview-image');
@@ -243,3 +243,4 @@ spin.start("Loading...", 2, {'theme': 'b'});
 [dbio]: https://wq.io/dbio
 [wq.db]: https://wq.io/wq.db
 [task state names in Celery]: http://docs.celeryproject.org/en/latest/userguide/tasks.html#states
+[Promise]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
