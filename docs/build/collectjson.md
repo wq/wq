@@ -3,11 +3,11 @@ wq collectjson
 
 [wq.app.build.collect.collectjson]
 
-**wq collectjson** is a component of the [wq build process] that collects the contents of files a directory into a single JSON or JavaScript (JSONP/AMD) file.  The keys in the output object will be the filenames (without suffix) and the values will contain the contents of each file.  wq collectjson is useful for inlining templates or for splitting a large JSON configuration object into separate files for development.
+**wq collectjson** is a component of the [wq build process] that collects the contents of files a directory into a single JSON or JavaScript (JSONP/AMD) file.  The keys in the output object will be the filenames (without suffix) and the values will contain the contents of each file.  wq collectjson useful for embedding [Mustache templates] into the build, or for splitting a large JSON configuration object into separate files for development.
 
-Most files will be inlined as strings, but JSON and YAML files can be embedded as nested objects (YAML support requires PyYAML).  The output can be either JSON or a JSONP file (using `define` as the callback will create an AMD module).
+Most files will be inlined as strings, but JSON and YAML files can be embedded as nested objects.  The output can be either JSON or a JSONP file.  Using `define` as the JSONP callback will effectively create an AMD module.
 
-The `collectjson` section in `wq.yml` can be a single configuration object or an array of configuration objects (to create multiple output files).  The available options are:
+The `collectjson` section in [wq.yml] can be a single configuration object or an array of configuration objects (to create multiple output files).  The available options are:
 
  name | purpose
 ------|---------
@@ -15,8 +15,12 @@ The `collectjson` section in `wq.yml` can be a single configuration object or an
 `output` | The filename of the output file (relative to current directory)
 `type` | Type of files to search for (e.g. `json`, `yaml`)
 `extension` | File extension to search for, if different than type (e.g. `yml`)
-`json` | Configuration options for `json.dumps` (default is `{"indent": 4}`)
+`indent` | Number of spaces to indent the JSON by (default is 4)
 `jsonp` | JSONP callback (use `"define"` to create an AMD module)
 
+As of wq.app 0.8.0, `wq collectjson` can also be configured entirely via command line options; for more information run `wq collectjson --help`.
+
 [wq build process]: https://wq.io/docs/build
-[wq.app.build.collect.collectjson]: https://github.com/wq/wq.app/blob/v0.7.1/build/collect.py#L56-L84
+[Mustache templates]: https://wq.io/docs/templates
+[wq.app.build.collect.collectjson]: https://github.com/wq/wq.app/blob/v0.8.0/build/collect.py#L54-L111
+[wq.yml]: https://github.com/wq/wq-django-template/blob/master/django_project/app/wq.yml
