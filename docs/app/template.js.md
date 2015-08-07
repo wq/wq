@@ -46,4 +46,4 @@ Rather than writing out the template objects by hand, you may be interested in t
 [wq/template.js]: https://github.com/wq/wq.app/blob/master/js/wq/template.js
 [wq.app]: https://wq.io/wq.app
 [wq/router.js]: https://wq.io/docs/router-js
-
+[wq collectjson]: https://wq.io/docs/collectjson
