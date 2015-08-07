@@ -44,22 +44,26 @@ name | purpose
 
 #### `outbox.init(config)`
 
-`outbox.init()` configures the outbox with the necessary information to communicate with a web service.  The outbox will automatically re-use the `service`, `formatKeyword`, `defaults`, and `debug`, parameters provided to [wq/store.js].  The list of outbox-specific options is described below:
+`outbox.init()` configures the outbox with the necessary information to communicate with a web service.  The outbox will automatically re-use the `service`, `formatKeyword`, `defaults`, and `debug` parameters provided to [wq/store.js].  The list of outbox-specific options is described below:
 
 name | purpose
 -----|---------
-`syncMethod` | Default method to use for sending data to the server.  The "default" default is `POST`.  This can be overridden on a per-form basis by setting the `method` option.
-`cleanOutbox` | Whether to clean up synced outbox items when the application starts (default `true`).
+`syncMethod` | Default HTTP method to use for sending data to the server.  The "default" default is `POST`.  This can be overridden on a per-form basis by setting the `method` option.
+`cleanOutbox` | Whether to clean up synced outbox items whenever the application starts (default `true`).
 `maxRetries` | The maximum number of times to send an outbox item causing server errors before giving up.  The default is 3.  Send failures due to being offline are not counted.  Used by `outbox.sendAll()` and [wq/app.js]' `app.sync()`
-`batchService` | An alternate webservice URL to use when submitting batch requests (see `sendBatch()` below)
-`csrftokenField` | The form field to use when submitting the [CSRF token].  This will be set when the form is actually uploaded (which may be later then when it was initially submitted to the outbox).  The default field name is `csrfmiddlewaretoken` since that's what Django calls it.
-`applyResult(item, result)` | Defines a callback that takes a outbox item and a web service result and determines whether the result from the web service indicates a successful save.  If the result was successful, the `applyResult` callback should mark `item.synced = true`.
-`updateModels(item, result)` | Defines a callback that takes a outbox item and a web service result and determines whether the result from the web service indicates a successful save.  If the result was successful, the `applyResult` callback should mark `item.synced = true`.
-`parseBatchResult(result)` | A callback to use when parsing the result of a batch submit.  If not specified, `parseData` will be used.
+`csrftokenField` | The form field name to use when submitting the [CSRF token].  Note that the token will be set when the form is actually uploaded to the server (and may override the csrf token that was initially submitted to the outbox).  The default field name is `csrfmiddlewaretoken` since that's what Django calls it.
+`applyResult(item, result)` | Defines a callback that takes a outbox item and a web service result and determines whether the result from the web service indicates a successful sync.  If the result was successful, the `applyResult` callback should mark `item.synced = true`.  The default implementation assumes any non-empty result means the sync was successful.
+`updateModels(item, result)` | Defines a callback that takes a synced outbox item and a web service result, and updates any local models with the new data.  The default implementation will automatically update the appropriate models as long as `modelConf` property is set during `outbox.save()` (see below).
+`batchService` | An alternate URL to use when submitting multiple requests as a batch (see `sendBatch()` below)
+`parseBatchResult(result)` | A callback to use when parsing the result of a batch submit.  If not specified, the store's `parseData` setting will be used.
 
 ### Outbox Methods
 
 As discussed above, all data being sent to the server (e.g. as a result of a form submission) is queued through an outbox.  This section describes the available functions for working with the outbox.
+
+#### `outbox.setCSRFToken(csrftoken)`
+
+Updates the CSRF token that will be applied to outbox items when they are synced to the server.  This should be updated whenever the user's authentication status changes.  [wq/app.js] calls this function automatically.
 
 #### `outbox.save(data, [options], [noSend])`
 
@@ -125,3 +129,4 @@ FIXME: The items below have not been updated to reflect the new Promise-based AP
 [0.7 docs]: https://wq.io/0.7/docs/store-js
 [AMD]: https://wq.io/docs/amd
 [wq.db]: https://wq.io/wq.db
+[CSRF Token]: https://docs.djangoproject.com/en/1.8/ref/csrf/
