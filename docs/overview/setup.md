@@ -3,7 +3,7 @@ Getting Started
 
 The easiest way to install wq is via the [Python Package Index].  Any of [wq.app], [wq.db], or [wq.io] can be installed separately, or all three can be installed by simply installing the **wq** metapackage.  Either easy_install or pip should work.
 
-> **Note:** As of version 0.7.0, wq is optimized for Python 3.  Python 2.7 is still supported for the time being but should be considered deprecated.
+> **Note:** wq is optimized for Python 3.  Python 2.7 is still supported for the time being, but should be considered deprecated.
 
 ```bash
 pip3 install wq
@@ -11,7 +11,7 @@ pip3 install wq
 
 ## Using wq.db and wq.app
 
-If you are using wq.app and wq.db together, you may find it useful to take advantage of the [Django wq template] available on GitHub and via the `wq start` command.  You will need a WGSI-capable webserver like [Apache], and a database to host the application.  In theory any Django-supported database will work, but wq.db is optimized for use with [PostgreSQL] and [PostGIS].  You should be able to use something like the following to start a new wq-based Django project.
+If you are using wq.app and wq.db together, you may find it useful to take advantage of the [Django wq template] via the `wq start` command.  You will need a WGSI-capable webserver like [Apache], and a database to host the application.  wq.db is generally used with [PostgreSQL] and [PostGIS], but any Django-supported database will work.  You can follow the following steps to get started with a new wq-based Django project.
 
 ### On Ubuntu
 
@@ -65,20 +65,27 @@ If you are only interested in using wq.app, you can run `pip3 install wq.app` or
 ```bash
 project/
   js/
-    lib -> /path/to/wq.app/js
+    lib/ -> /path/to/wq.app/js/
     myapp/
       main.js
     myapp.js
   css/
-    lib -> /path/to/wq.app/css
+    lib/ -> /path/to/wq.app/css/
     myapp.css
+  scss/
+    lib/
+      wq/ -> /path/to/wq.app/scss/wq
+      compass/ -> /path/to/compass_stylesheets/stylesheets/compass/
+    themes.scss
   images/
   templates/
   index.html
   wq.yml
 ```
 
-Note that wq.app currently comes bundled with all of its [JavaScript dependencies] vendored in.  So, for many applications, you should be able to use wq.app's `js` folder directly as your `js/lib/` folder.  The typical workflow is to symbolically link to wq.app's `js` folder from your app's `js/lib` folder and similarly for css (and scss).  If you have other dependencies, or want to use different versions of the vendored apps, create your `js/lib/` folder first, and link to wq.app's [js/wq] folder from your `js/lib/wq`.  In either case, [wq init] can do the linking automatically.  An example wq.yml can be obtained from the [Django wq template].  The full list of options are documented in the [wq build] section.
+Note that wq.app currently comes bundled with all of its [JavaScript dependencies] vendored in.  So, for many applications, you should be able to use wq.app's `js/` folder directly as your `js/lib/` folder.  The typical workflow is to symbolically link to wq.app's `js/` folder from your app's `js/lib/` folder and similarly for css and scss.  If you have other dependencies, or want to use different versions of the vendored apps, create your `js/lib/` folder first, and link to wq.app's [js/wq] folder from `js/lib/wq/`.
+
+In either case, [wq init] can do the linking automatically.  If you use the default `js/`, `css/`, and/or `scss/` folder names, `wq init` will work without any configuration required.  That said, you'll likely want to create a configuration file called `wq.yml` with an [optimize] section (which is required to run the build process).  An example `wq.yml` can be obtained from the [Django wq template](https://github.com/wq/wq-django-template/blob/master/django_project/app/wq.yml).  The full list of options are documented in the [wq build] section.
 
 ### On Ubuntu
 ```bash
@@ -87,12 +94,18 @@ mkdir /path/to/my/project
 cd /path/to/my/project
 mkdir js
 mkdir css
-(create wq.yml using your editor of choice)
+mkdir scss
+# (create wq.yml using your editor of choice)
 
 # Link to wq.app assets
 wq init
+
+# Equivalent:
 # ln -s /path/to/wq/app/js /path/to/my/project/js/lib
 # ln -s /path/to/wq/app/css /path/to/my/project/css/lib
+# mkdir scss/lib
+# ln -s /path/to/wq/app/scss/wq /path/to/my/project/scss/lib/wq
+# ln -s /path/to/compass_stylesheets/stylesheets/compass/ /path/to/my/project/scss/lib/compass/
 ```
 
 ### On Windows
@@ -139,6 +152,7 @@ See the [wq.app module list] for available modules, and the [build docs] for inf
 [Django wq template]: https://github.com/wq/django-wq-template
 [wq init]: https://wq.io/docs/build
 [wq build]: https://wq.io/docs/build
+[optimize]: https://wq.io/docs/build
 [near future]: https://github.com/wq/wq.db/issues/2
 [volo]: http://volojs.org
 [build docs]: https://wq.io/docs/build
