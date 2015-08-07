@@ -2,16 +2,16 @@
 order: 2
 ---
 
-REST controller (router)
+ModelRouter (wq.db.rest)
 ========================
 
 [wq.db.rest.routers]
 
-The `router` object (an instance of [ModelRouter]) is the controller at the core of [wq.db.rest].  The router serves as the server-side counterpart to [wq/app.js] in [wq.app].  The router generates a [URL structure] with REST endpoints for all models registered with it, and produces a [wq configuration object] for consumption by wq/app.js' client-side router.
+[ModelRouter] is the controller at the core of [wq.db.rest], and serves as the server-side counterpart to [wq/app.js] in [wq.app].  The router generates a [URL structure] with REST endpoints for all models registered with it, and produces a [wq configuration object] for consumption by wq/app.js' client-side router.
 
 ## Usage
 
-`ModelRouter` is a subclass of [Django REST Framework]'s [DefaultRouter], but its API is more closely modeled after Django's [admin site].  The similarity with the latter can be seen in the following examples.
+`ModelRouter` is a subclass of [Django REST Framework]'s [DefaultRouter], but its API is more closely modeled after Django's [admin site].  For example, a default instance of `ModelRouter` is created as `wq.db.rest.router` for convenience.  The similarity with the admin site can be seen in the following examples.
 
 ```python
 # mysite/urls.py
@@ -101,7 +101,7 @@ The router can generate a JSON-formatted [wq configuration object] for use by [w
 curl http://$MYPROJECT/config.json
 ```
 
-In wq.db 0.7.2 and earlier, you can load the AMD equivalent (/config.js) in your JavaScript code when the application starts up, though this will take longer to load.
+In wq.db 0.7.2 and earlier, you could load the AMD equivalent (/config.js) in your JavaScript code when the application started up, though this would take longer to load.
 
 ```javascript
 requirejs.config({
@@ -116,12 +116,11 @@ function(config, ...) {
 });
 ```
 
-A better option (required in wq.db 0.8.0 and later) is to wrap the output of `dump_config` as an AMD module as part of your build process.
+A better option (required in wq.db 0.8.0 and later) is to use `dump_config` to create an AMD module that can be incorporated into your build process.
 
 ```bash
 # deploy.sh
-CONFIG=`db/manage.py dump_config`
-echo "define($CONFIG);" > app/js/data/config.js
+db/manage.py dump_config --format amd > app/js/data/config.js
 ```
 
 ```javascript
@@ -137,7 +136,7 @@ function(config, ...) {
 });
 ```
 
-As of wq 0.7.0, the default [wq Django Template] uses `dump_config` in the provided `deploy.sh`.
+The default [wq Django Template] uses `dump_config` in the provided `deploy.sh`.
 
 [wq.db.rest.routers]: https://github.com/wq/wq.db/blob/master/rest/routers.py
 [ModelRouter]: https://github.com/wq/wq.db/blob/master/rest/routers.py
