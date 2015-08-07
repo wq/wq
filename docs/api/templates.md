@@ -5,7 +5,7 @@ HTML5 is a [compelling technology] for building modern cross-platform applicatio
 
 Specifically, there are three ways a page can be rendered by the wq stack in response to a navigation event.
 
- 1. On the client (e.g. wq.app), using a copy of the templates inlined with the JavaScript files (perhaps via [wq collectjson]) as well as JSON data from `localStorage` or from a wq.db REST request.
+ 1. On the client (e.g. wq.app), using a copy of the templates inlined with the JavaScript files (perhaps via [wq collectjson]) as well as JSON data stored locally or retrieved from a wq.db REST API (see [wq/store.js]).
  2. On the server (e.g. wq.db), as a pre-rendered HTML snippet delivered via an AJAX request
  3. On the server (e.g. wq.db), as a traditional HTML page accessed directly via a deep link or bookmark.
 
@@ -13,7 +13,7 @@ Importantly, any of these three options can be used to respond to the same URL, 
 
  * A visitor searching for specific information finds a deep link to a page within your application.  Upon visiting this link, the page is rendered *on the server* (option 3) and is immediately ready for viewing, while the rest of the application loads in the background.
  * Among the items loading in the background are the full set of templates and a cache of JSON objects for the most commonly accessed pages.  When the visitor clicks on a link to one of these pages, it is rendered instantly *on the client* (option 1) without any additional network traffic.
- * As the visitor continues to explore the application, they eventually navigate to less critical content that is not stored locally (perhaps due to `localStorage` limitations).  Rather than requesting JSON from the server and then rendering it, the application simply requests a complete HTML snippet from the server via AJAX and injects it into the DOM (option 2).
+ * As the visitor continues to explore the application, they eventually navigate to less critical content that is not stored locally (perhaps due to space limitations).  At this point, the application can either request JSON from the server and then render it (option 1), or simply request a complete HTML snippet from the server via AJAX and inject it into the DOM (option 2).  As of version 0.8.0, [wq/app.js] includes the flags `loadMissingAsHtml` and `loadMissingAsJson` to toggle between server and client rendering for this use case.
  
 This approach makes it possible to build very scalable [offline first] mobile applications, while maintaining backwards compatibility with older browsers and search engines.  This not only makes [progressive enhancement] a natural part of the development process, but makes the choice of whether to render server or client-side a run-time decision, rather than a design-time decision.  While wq.db and wq.app are designed to work together, the same approach can be taken with select parts of wq (or even without using wq at all) as long as the recommended REST [URL structure] is used.
 
@@ -37,11 +37,11 @@ Like most templating systems, Mustache and wq require a context object - or more
 
 wq.app and wq.db each provide a robust, automatically generated context object that includes (among other things):
 
- - The URL of the current page (`{{pages_info.path}}`)
+ - The URL of the current page (`{{router_info.path}}`)
  - The [wq configuration] entry corresponding to the current page (`{{page_config}}`)
  - Whether or not the visitor is logged in (`{{#is_authenticated}}`) as well as information about the user (e.g. `{{user.username}}` and `{{csrf_token}}`)
  - Unique identifiers and user-friendly labels for primary and foreign keys on the current object (e.g. `{{id}}`, `{{label}}`, `{{parent_id}}`, `{{parent_label}}`).
- - In "list" views, the number of items in the list (`{{count}}`), the number of pages in the list (`{{pages}}`), and links to navigate between pages (`{{next}}` and `{{previous}}`).
+ - In "list" views, the number of items in the list (`{{count}}`), the number of pages in the list (`{{pages}}`), and links to navigate between pages (`{{next}}` and `{{previous}}`).  The list itself can be iterated over with a `{{#list}}{{/list}}` block.
  - In "detail" views, nested objects for foreign keys with additional properties (e.g. `{{#parent}}{{description}}{{/parent}}`)
  - In "edit" views, arrays containing potential choices for foreign keys (useful for rendering `<select>`s or `<input type=radio>`), complete with a `{{#selected}}` property for the current value.
  - If [wq/markdown.js] is present, an `{{{html}}}` function that will look for and render `context.markdown`.
@@ -55,7 +55,11 @@ To reduce the amount of configuration needed when rendering application screens,
  - "Simple" pages have a single template, which shares a name with the page (`[pagename].html`)
  - "List", or model-driven pages, can have up to three templates, `[modelname]_list.html`, `[modelname]_detail.html`, and `[modelname]_edit.html`.  (The edit template is used for new screens as well - one can check for the existence of `{{#id}}` if there are any rendering differences between edit and new screens.)
 
-Because templates are equally shared between the server and the client, they are typically placed in `myproject/templates`, a sibling directory to `myproject/app` and `myproject/db` (see the [wq project template for Django]).  Partial templates (accessed via the `{{>partial}}` syntax) should be placed in `myproject/templates/partials`.
+Because templates are equally shared between the server and the client, they are typically placed in `myproject/templates`, a sibling directory to `myproject/app` and `myproject/db`.  Partial templates (accessed via the `{{>partial}}` syntax) should be placed in `myproject/templates/partials`.
+
+## Examples
+
+The [wq Django Template](https://github.com/wq/wq-django-template) includes a number of [pre-defined Mustache template examples ](https://github.com/wq/wq-django-template/tree/master/django_project/templates) to help getting started.
 
 [compelling technology]: https://wq.io/docs/web-app
 [work as websites]: https://wq.io/docs/website
@@ -70,6 +74,6 @@ Because templates are equally shared between the server and the client, they are
 [URL structure]: https://wq.io/docs/url-structure
 [wq/markdown.js]: https://wq.io/docs/other-modules
 [wq/app.js]: https://wq.io/docs/app-js
+[wq/store.js]: https://wq.io/docs/store-js
 [wq Configuration Object]: https://wq.io/docs/config
 [wq configuration]: https://wq.io/docs/config
-[wq project template for Django]: https://github.com/wq/django-wq-template
