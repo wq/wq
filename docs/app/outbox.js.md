@@ -7,9 +7,9 @@ wq/outbox.js
 
 [wq/outbox.js]
 
-**wq/outbox.js** is a [wq.app] module providing a locally cached "outbox" of synced form entries for submission to a web service.  Unlike other similar libraries, wq.app does not attempt to immediately and transparently transmit local changes to model data.  This is by design.  wq/outbox.js is meant to be used in offline-capable mobile applications that require explicit control over when and how local changes are "synced" to the server.
+**wq/outbox.js** is a [wq.app] module providing a locally cached "outbox" of unsynced form entries for submission to a web service.  wq/outbox.js integrates well with [wq/model.js], which provides a lightweight model layer for client-side rendering.  However, unlike other similar libraries, wq/model.js does not attempt to immediately and transparently transmit local changes to model data back to the server.  This is by design: wq/outbox.js is meant to be used in offline-capable mobile applications that require explicit control over when and how local changes are "synced" to the server.
 
-That said, it is possible to configure [wq/app.js] to automatically `sync()` the outbox periodically, thus providing a relatively seamless online/offline experience.  Nevertheless, changes to data will not be reflected in the stored models until the outbox is successfully synced.
+That said, it is possible to configure [wq/app.js] to automatically `sync()` the outbox periodically, thus providing a relatively seamless online/offline experience.  Since changes to data will not be reflected in the stored models until the outbox is successfully synced, it is common to display the contents of the outbox at the top of model list views and/or in a separate screen.
 
 > Note: wq/outbox.js is a new module in wq.app 0.8.0.  In wq.app 0.7.4 and earlier, the outbox functionality was embedded within wq/store.js.  See the [0.7 docs] for the old API.
 
@@ -35,7 +35,7 @@ name | purpose
 -----|---------
 `id` | The local unique identifier for the outbox item.
 `data` | The form key-value pairs as passed to `outbox.save()`
-`options` | Additional parameters that configure how the data should be sent to the server, and potentially how the response should be interpreted. (see outbox.save())
+`options` | Additional parameters that configure how the data should be sent to the server, and potentially how the response should be interpreted. (see `outbox.save()`)
 `synced` | Whether the outbox item has been successfully saved to the server.  This property is defined in the `applyResult` function (see `outbox.init()`).
 `error` | If applicable, the error returned from the server or from the AJAX call when attempting to save the item.  Will be either a string or a JSON object.
 `newid` | The server-generated identifier for the newly synced item, if applicable.  (This property is technically defined by [wq/app.js], not wq/outbox.js.)
@@ -67,18 +67,19 @@ Updates the CSRF token that will be applied to outbox items when they are synced
 
 #### `outbox.save(data, [options], [noSend])`
 
-`outbox.save()` takes the form data as a simple JavaScript object (see above) and an optional object array, and creates an outbox item.  Unless `noSend` is set to true, an attempt will be made immediately to sync the outbox item to the server.
+`outbox.save()` takes the form data as a simple JavaScript object (see above) and an optional `options` object, and creates an outbox item.  Unless `noSend` is set to true, an attempt will be made immediately to sync the outbox item to the server.
 
-The options object can have one or more of the following set:
+The `options` object can have one or more of the following set:
 
 name | purpose
 -----|---------
-`url`| URL to post to (relative to the base `service` URL)
-`modelConf` | The configuration for a corresponding model that should be updated when this item is synced.  Set automatically by [wq/app.js].
-`method` | HTTP method to use when posting the data (`PUT`, `POST`, etc.)
-`csrftoken` | Converted to the HTTP header `X-CSRFToken`.  Set automatically by [wq/app.js].
-`id` | The id of an existing outbox item to modify, if any
-`preserve` | A list of fields to preserve in the existing item
+`url`| URL to post to (relative to the base `service` URL).  If unset, it is assumed that the base `service` URL can handle form submissions itself.  [wq/app.js] will set this from the `action` of the submitted form.
+`modelConf` | The configuration for a corresponding model that should be updated when this item is synced.  This is set automatically by [wq/app.js] by resolving the `url` to a configured model.
+`method` | HTTP method to use when posting the data (`PUT`, `POST`, etc.).  The default is `POST`, but [wq/app.js] will automatically use `PUT` when updating an existing model model instance.
+`id` | The outbox id of a previous form submission that hasn't yet been synced.  This option makes it possible to allow the user to review and edit outbox items before they are synced to the server.  It can be set automatically by [wq/app.js] if `data-wq-outbox-id` is set on the `<form>`.
+`preserve` | A list of fields to preserve in the existing outbox item.  This option can be used with `id` to avoid overwriting hard-to-set fields like file uploads and GPS coordinates.  It can be automatically set by [wq/app.js] if `data-wq-preserve` is set on the `<form>`.  See the [Species Tracker code](https://github.com/powered-by-wq/species.wq.io/blob/master/templates/report_edit.html) for an example.
+
+`outbox.save()` returns a `Promise` that will resolve to the outbox item, after a sync attempt (or immediately, if `noSend` is set).
 
 ```javascript
 $form.submit(function() {
@@ -96,30 +97,29 @@ $form.submit(function() {
 });
 ```
 
-FIXME: The items below have not been updated to reflect the new Promise-based API.
+#### `outbox.sendItem(item, [once])`
 
-#### `outbox.sendItem(id, callback)`
+`outbox.sendItem()` submits a saved outbox item to the web service and returns a `Promise` that resolve to the updated `item` after it is processed by the web service.  The outbox `item` will have a property `synced` that indicates whether the item successfully made it to the server, as well as a `result` property with the actual JSON data returned by the server.  (These properties are assigned by the `applyResult` function, see `ds.init()` above).  Any errors will be made available on `item.error`.
 
-`outbox.sendItem()` retrieves the outbox item specified by `id` and submits it to the web service.  The callback will be passed two arguments: the outbox `item`, and the `result` returned by the web service (if any).  The outbox `item` will have a property `synced` that indicates whether the item successfully made it to the server.  (Success is determined in part by the `applyResult` setting, see `ds.init()` above).  Any errors will be made available on `item.error`.
+The optional `once` argument can be used to ensure that an outbox entry is only sent once.  The default is to send it up to `maxRetries` times or until it succeeds.
 
-#### `outbox.sendAll(callback, [retryAll])`
-`outbox.sendAll()` sends all unsynced items in the outbox to the server, except for those items that have previously been sent up to `maxRetries` times without success.  `retryAll` can be specified to retry sending everything, including repeatedly failing items.  `ds.sendBatch()` will be used if a batch service is available, otherwise each item will be sent separately with `ds.sendItem()`.  The callback will be called with a `result` variable with one of three values: `true`, indicating all items were sent successfully; `false`, indicating one or more requests failed, or `null`, indicating an unexpected error sending the data (e.g. a request to send data that was already successfully saved).
+#### `outbox.sendAll([retryAll])`
+`outbox.sendAll()` sends all pending items in the outbox to the server, except for those items that have previously been sent up to `maxRetries` times without success.  `retryAll` can be specified to retry sending everything, including any repeatedly failing items.  `ds.sendBatch()` will be used if a batch service is available, otherwise each item will be sent separately with `ds.sendItem()`.  `outbox.sendAll()` returns a `Promise` that will resolve to an array of all of the `items` that were sent to the server.  Each item can then be inspected individually to see the status (see `sendItem()` above).
 
 #### `outbox.sendBatch(callback, [retryAll])`
-`outbox.sendBatch()` sends all unsent items in the outbox to the server in a single request.  The server needs to have an API capable of handling multiple requests, and the URL for that service should have been provided to `ds.init()` as the `batchService` option.
+`outbox.sendBatch()` sends all unsent items in the outbox to the server in a single request.  The server needs to have an API capable of handling multiple requests in a single `POST`, and the URL for that API should have been provided to `outbox.init()` as the `batchService` option.
 
-#### `outbox.unsynced([listQuery])`
+#### `outbox.unsynced([modelConf])`
 
-`outbox.unsynced()` returns the number of unsaved items in the outbox.  The optional `listQuery` returns only the items that were saved with the specified `listQuery`.
+`outbox.unsynced()` returns a `Promise` that will resolve to the number of unsynced items in the outbox.  The optional `modelConf` returns only the number of items that were saved with the specified model configuration set (see `outbox.save()`).
 
 #### `outbox.unsyncedItems([listQuery])`
 
-`outbox.unsyncedItems()` returns the actual items in the outbox that haven't been saved yet.
+`outbox.unsyncedItems()` returns a `Promise` that resolves to an array containing any items in the outbox that haven't been synced yet.
 
 #### `outbox.pendingItems([listQuery])`
 
-`outbox.pendingItems()` returns the `unsyncedItems` that haven't been sent at all (or at least haven't failed more than `maxRetries` times).
-
+`outbox.pendingItems()` returns a `Promise` that resolves to an array containing any `unsyncedItems` that haven't been sent at all (or at least haven't failed more than `maxRetries` times).
 
 [wq/outbox.js]: https://github.com/wq/wq.app/blob/master/js/wq/outbox.js
 [wq.app]: https://wq.io/wq.app
