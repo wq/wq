@@ -53,7 +53,7 @@ verb | path | template | purpose
 `GET` | `/[name]` | `[name].html` | Any non-list page will follow the basic convention that the URL is the same as the template name.  The most common example is the `login` page provided by wq.db.
 `POST` | `/[name]` | `[name].html` | Some non-list pages (e.g. `login`) will allow submitting data via POST.  The same URL and template are used.
 `GET` | `/` | `[name].html` | If the root URL is not a list URL, and it's not a static page controlled by the webserver, then it should be specified as a simple non-list page.  (A common name for this page would be `index`).
-`GET` | `/config.json` | n/a | The auto-generated [wq configuration object].  This object is used to communicate the entire URL structure to the client application.  As of wq.db 0.7.0, this file can also be generated on the command line via `./manage.py dump_config` if `wq.db.rest` is in your application's `INSTALLED_APPS`.
+`GET` | `/config.json` | n/a | The auto-generated [wq configuration object].  This object is used to communicate the entire URL structure to the client application.  This file can also be generated on the command line via `./manage.py dump_config` if `wq.db.rest` is in your application's `INSTALLED_APPS`.
  
 [wq.db]: https://wq.io/wq.db
 [wq.app]: https://wq.io/wq.app

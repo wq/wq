@@ -28,7 +28,7 @@ There are two main ways in which parser classes are customized.  One way is to d
 ### Non-Tabular Parsers
 Two of the built-in parsers are used for file formats that are *not* inherently tabular and can describe arbitrary data structures.  While these file data formats are not inherently tabular, they often are used represent table-like data.  These parsers directly extend `BaseParser` and have the `tabular` property set to `False`.
 
-> Non-tabular file formats allow for some records to have more fields than others.  By default, wq.io only searches the first record when automatically determining field names.  This can cause issues with [TupleMapper] in particular which expects consistent field names throughout the dataset.  If this happens to you, set `scan_fields = True` on your class to tell wq.io scan the entire dataset when determining field names.  This option is new in wq.io 0.7.0.
+> Non-tabular file formats allow for some records to have more fields than others.  By default, wq.io only searches the first record when automatically determining field names.  This can cause issues with [TupleMapper] in particular which expects consistent field names throughout the dataset.  If this happens to you, set `scan_fields = True` on your class to tell wq.io scan the entire dataset when determining field names.
 
 #### [JsonParser]
 

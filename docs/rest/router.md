@@ -95,7 +95,7 @@ Any other options given will be assigned to the model's [page configuration].
 The router can generate a JSON-formatted [wq configuration object] for use by [wq/app.js].  There are two ways to obtain this object:
 
 ```bash
-./manage.py dump_config  # New in wq.db 0.7.0; requires Django 1.7
+./manage.py dump_config
 
 # Alternative
 curl http://$MYPROJECT/config.json

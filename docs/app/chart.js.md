@@ -56,9 +56,9 @@ These options control basic chart formatting and layout.
 |--------|---------|---------|
 | `plot.width(val)` | `700` | Sets the drawing width in pixels (including margins).  The `<svg>` object should generally have the same dimensions and/or viewport.
 | `plot.height(val)` | `300`| Sets the drawing height in pixels (including margins).
-| `plot.outerFill(val)` | `#f3f3f3` | Background color for the entire chart (including axes). **New in 0.7.1**
-| `plot.innerFill(val)` | `#eee` | Background color for the actual plot area. **New in 0.7.1**
-| `plot.viewBox(val)` | auto | SVG [viewBox] attribute.  Computed based on plot width and height by default.  Set to `false` to disable entirely.  Useful for helping ensure chart scales appropriately on different screen sizes. **New in 0.7.1**
+| `plot.outerFill(val)` | `#f3f3f3` | Background color for the entire chart (including axes).
+| `plot.innerFill(val)` | `#eee` | Background color for the actual plot area.
+| `plot.viewBox(val)` | auto | SVG [viewBox] attribute.  Computed based on plot width and height by default.  Set to `false` to disable entirely.  Useful for helping ensure chart scales appropriately on different screen sizes.
 | `plot.legend(obj)` | auto | Legend size and position (`'right'` or `'bottom'`).  If position is `'right'`, `size` refers to the width of the legend, while if position is `'bottom'`, `size` refers to the height.  The default is to place the legend on the bottom if there are 5 or fewer datasets, and on the right if there are more.
 | `plot.xscale(obj)` | auto | Domain of x values in the dataset.  If unset, will be automatically determined from the data and optionally "niced" to a round range.  If set, should be an object of the form `{'xmin': val, 'xmax': val}`.
 | `plot.xscalefn(fn)` | `d3.scale.linear` | Actual d3 function to use to generate the scale.

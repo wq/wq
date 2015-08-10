@@ -5,7 +5,7 @@ wq.db: chart
 
 The **chart** module in [wq.db] provides a REST-ful web API that facilitates analysis of timeseries data.  Chart is an extension of [Django REST Pandas] with additional support for URL-based queryset filtering and box plot charting.  The name `chart` reflects the fact that the module is a natural backend component for [wq/chart.js].  However, chart can also be used as a spreadsheet export tool using the [format features] provided by Django REST Pandas.
 
-The chart module was originally created for use with the [vera] `EventResult` model.  As of wq.db 0.7.0, it can be used with any time series model with minimal configuration.
+The chart module was originally created for use with the [vera] `EventResult` model, but it can be used with any time series model with minimal configuration.
 
 ## Views
 
@@ -100,8 +100,6 @@ The chart views are meant to be used with a special [ChartModelSerializer] class
 `value_lookup` | `serializer.value_field` | The source of the value data, if different than `value_field`.
 
 See vera's [EventResultSerializer] for an example of how to customize `ChartSerializer`.  Be sure to set the `serializer_class` on your custom chart view as in [vera.views.ChartView].
-
-> **New in 0.7.2:** The former `ChartSerializer` has been split into separate `ChartModelSerializer` and `ChartPandasSerializer` classes, for compatibility with Django REST Pandas v0.3.
 
 [wq.db.contrib.chart]: https://github.com/wq/wq.db/blob/master/contrib/chart
 [wq.db]: https://wq.io/wq.db

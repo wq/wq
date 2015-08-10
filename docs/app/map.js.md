@@ -105,7 +105,7 @@ name | default | purpose
 -----|---------|---------
 `autoLayers` | `true` | If `true`, the maps created for the page will automatically include a default layer as discussed above, as well as any explicitly defined layers.  Set to `false` to only include layers explicitly added via `addLayerConf()`.
 `autoZoom` | global setting | Set to `false` to disable auto-zooming on a per-map basis.
-`minBounds` | none | Minimum bounds to set when auto-zooming.  Should be a Leaflet [LatLngBounds] or compatible array.  **New in 0.7.0**
+`minBounds` | none | Minimum bounds to set when auto-zooming.  Should be a Leaflet [LatLngBounds] or compatible array.
 `onshow` | none | Function to call after map is created with `map.createMap()`.  The function will be passed the newly created `L.Map` object.
 `div` | `[page]-map` | The id of the `<div>` tag to place the Leaflet map into.  The div should be present in the template in order for the automatic map creation to work.  When using the defaults, the id of each div should be `[page]-map` for list views, and `[page]-[itemid]-map` for detail views.
 

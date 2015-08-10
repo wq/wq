@@ -46,7 +46,7 @@ To configure the `<datalist>` for an autocompleted form input, a number of `data
 
 The [search] module in [wq.db] can be used as a convenient AJAX API for wq/autocomplete.js.
 
-**New in 0.7.0**: When using a custom template, the following attributes will be available on the context object:
+When using a custom template, the following attributes will be available on the context object:
 
 name | purpose
 -----|---------

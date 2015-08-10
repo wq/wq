@@ -5,8 +5,6 @@ wq.db: files
 
 The **files** module in [wq.db]'s `contrib` package provides some useful extensions to Django's built-in [FileField] and [ImageField].  Specifically, files provides a custom `FileField` that can handle both images and non-image files and automatically place them in separate respective folders under your project's `MEDIA_ROOT`.  When included in `INSTALLED_APPS`, files also registers a `File` model for use in your projects.
 
-The files module previously included code to generate on-demand thumbnails at different resolutions for any images in `MEDIA_ROOT`.  As of wq.db 0.7.0 this functionality has been moved to a separate package, [Django Media Thumbnailer].
-
 ## File Models
 files includes a pair of [models] that can be leveraged to build a quick file manager in your project.  These models can be leveraged by adding `"wq.db.contrib.files"` to your project's `INSTALLED_APPS`.
 
@@ -57,7 +55,6 @@ The `FileField` class defined in files' [models] module extends [ImageField] by 
 [FileField]: https://docs.djangoproject.com/en/1.7/ref/models/fields/#filefield
 [ImageField]: https://docs.djangoproject.com/en/1.7/ref/models/fields/#imagefield
 [swappable]: https://github.com/wq/django-swappable-models
-[Django Media Thumbnailer]: https://github.com/wq/django-media-thumbnailer
 [models]: https://github.com/wq/wq.db/blob/master/contrib/files/models.py
 [abstract model]: https://docs.djangoproject.com/en/1.7/topics/db/models/#abstract-base-classes
 [proxy classes]: https://docs.djangoproject.com/en/1.7/topics/db/models/#proxy-models

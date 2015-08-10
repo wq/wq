@@ -13,7 +13,7 @@ Where:
   * `[version]` is the version of the application being built
   * `[configfile]` is the path to a configuration file to use (the default is to look for a file named `wq.yml` in the current directory).  The [django-wq-template] project contains an example [wq.yml].
 
-> **New in wq.app 0.7.3**: The default configuration format changed from JSON to YAML.  As of wq.app 0.8.0, the old format and default filename (`app.build.json`) are no longer supported.  You can use [json2yaml.py] or any number of online tools to convert JSON to YAML.  Valid JSON is also valid YAML so you could just also rename the file.
+> As of wq.app 0.8.0, the old JSON format and default filename (`app.build.json`) are no longer supported.  You can use [json2yaml.py] or any number of online tools to convert JSON to YAML.  Valid JSON is also valid YAML so you could just also rename the file.
 
 The actual build process is broken into several steps.  Each step is typically configured via a corresponding key in the [wq.yml] configuration file, though most accept the same options as command-line arguments.  You can get more information about the options for each command via `wq --help`, for example:
 
@@ -27,7 +27,7 @@ wq init --help
 | `setversion` | loads the application version from a version.txt file (or from the command line) and creates a simple AMD module (typically called `version.js`)
 | [collectjson] | collects the contents of files a directory into a single JSON or JavaScript (JSONP/AMD) file.
 | [scss] | compiles SCSS into regular CSS, useful for creating [custom jQuery Mobile themes].
-| [mustache] | compile a Mustache template and context into a static HTML page.  **New in 0.7.3**
+| [mustache] | compile a Mustache template and context into a static HTML page. 
 | `optimize` | Resolves Javascript and CSS dependencies to build single "minified" files using a bundled version of the RequireJS optimizer ([r.js]).  Requires [node.js]
 | `appcache` | Creates HTML5 application cache manifests for both the source and compiled applications by examining the logs from build process.
 | `build` | runs all of the above in order.

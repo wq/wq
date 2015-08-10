@@ -108,7 +108,7 @@ field | purpose
 
 `Identifier` model instances have a `url` property that is automatically generated from `authority.object_url` and `slug`.
 
-**New in 0.7.2:** Identifiers now have an explicit default ordering.  Primary identifiers will be listed first, then the rest will be sorted by authority and name.  This ordering can be overridden by setting the `WQ_IDENTIFIER_ORDER` setting.
+Identifiers have an explicit default ordering.  Primary identifiers will be listed first, then the rest will be sorted by authority and name.  This ordering can be overridden by setting the `WQ_IDENTIFIER_ORDER` setting.
 
 #### `IdentifierManager`
 

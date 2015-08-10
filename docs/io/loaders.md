@@ -43,10 +43,10 @@ name | purpose
 -----|---------
 `FileLoader` | Loads text data from a local file (e.g a CSV or XML file).  Expects a `filename` property to be set on the class instance.
 `BinaryFileLoader` | Loads binary data from the local filesystem (e.g. an Excel spreadsheet).  Expects a `filename` property.
-`ZipFileLoader` | Opens a local zip file and extracts a single inner file.  If there is more than one inner file, the `inner_filename` property should be set.  If the inner file is binary, `inner_binary` should be set to `True`.  **New in 0.7.0**
+`ZipFileLoader` | Opens a local zip file and extracts a single inner file.  If there is more than one inner file, the `inner_filename` property should be set.  If the inner file is binary, `inner_binary` should be set to `True`.
 `StringLoader` | Loads data to and from a `string` property that should be set on the class instance.
 `NetLoader` | Loads data over HTTP(S) and expects a `url` property to be set or computed by the class or instance.
-`ZipNetLoader` | Loads a zip file over HTTP(S) and extracts a single inner file.  If there is more than one inner file, the `inner_filename` property should be set.  If the inner file is binary, `inner_binary` should be set to true.  **New in 0.7.0**
+`ZipNetLoader` | Loads a zip file over HTTP(S) and extracts a single inner file.  If there is more than one inner file, the `inner_filename` property should be set.  If the inner file is binary, `inner_binary` should be set to true.
 
 `NetLoader` and `ZipNetLoader` support optional HTTP `username`, `password`, and URL `params` properties.  Note that `save()` is not implemented for these loaders.
 
