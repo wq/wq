@@ -187,6 +187,8 @@ myModel.update(items);
 
 As with `ds.set()` (which is called internally), it is not strictly necessary to wait for the promise returned by `update()` to resolve, but it's still a good idea.
 
+> Note: `[model].update()` is not designed to automatically publish local changes to a remote database.  Instead, [wq/outbox.js] can be used to sync changes back to the server.  The typical workflow (configured automatically by [wq/app.js]) is to have each `<form>` submission be processed by [wq/outbox.js], which will sync the form data to the server and then update any local models with the newly saved data.
+
 #### `[model].fetchUpdate(params, [key])`
 `fetchUpdate()` retrieves and applies an update to a locally cached model.  The web query used to retrieve the original list will be combined with the `params` object to request a partial update from the server.  The `key` argument is passed on to `update()`.
 
@@ -213,3 +215,4 @@ myModel.overwrite([]);
 [wq.db]: https://wq.io/wq.db
 [wq configuration object]: https://wq.io/docs/config
 [Promise]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
+[wq/outbox.js]: https://wq.io/docs/outbox-js
