@@ -43,7 +43,31 @@ tmpl.render("Another {{>example_partial}}", {'name': 'first'});
 
 Rather than writing out the template objects by hand, you may be interested in the [wq collectjson] command which can load HTML files from a folder and create a JSON object for you.
 
+### Using Template Defaults
+
+The `defaults` configuration section is used to set default values that will be available in every template rendering context.  The keys are the name of the context variables to use, and the values can be simple strings or functions.  For example, to define variable `{{year}}` that is available in every template, you could do the following:
+
+```javascript
+config.defaults = {
+    'year': function() {
+        return new Date().getFullYear();
+    }
+};
+```
+
+Note that setting a context variable in JavaScript will have no effect for templates rendered by the server.  To achieve consistent template rendering with wq.db, you can use Django's [template context processors].  An equivalent context processor for the above would be:
+
+```python
+# myapp/context_processors.py
+from datetime import date
+def year(request):
+    return {
+        'year': date.today().year
+    }
+```
+
 [wq/template.js]: https://github.com/wq/wq.app/blob/master/js/wq/template.js
 [wq.app]: https://wq.io/wq.app
 [wq/router.js]: https://wq.io/docs/router-js
 [wq collectjson]: https://wq.io/docs/collectjson
+[template context processors]: https://docs.djangoproject.com/en/1.8/ref/templates/api/#subclassing-context-requestcontext
