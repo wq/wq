@@ -329,7 +329,7 @@ app.init(config);
 
 If background sync is disabled, `saveerror()` is called when [outbox.save()] fails, with the `item` from outbox.save(), the reason for the failure, and the jQuery-wrapped `<form>` that initiated the save.  The `reason` will be one of the constants `app.OFFLINE`, `app.FAILURE`, or `app.ERROR`.  `app.FAILURE` usually indicates a server 500 failure, while `app.ERROR` usually indicates a 400 validation error.
 
-If background sync is enabled (the default), then `saverror` will not be used.
+If background sync is enabled (the default), then `saveerror` will not be used.
 
 ```javascript
 config.saveerror = function(item, reason, $form) {
@@ -344,7 +344,7 @@ app.init(config);
 
 #### `showOutboxErrors(item, $form)`
 
-`showOutboxErrors()` is used to populate the screen with information about why a form was not successfully submited.  It is called by `saveerror()` by default, or when navigating to a previously saved outbox item.
+`showOutboxErrors()` is used to populate the screen with information about why a form was not successfully submitted.  It is called by `saveerror()` by default, or when navigating to a previously saved outbox item.
 
 The default implementation of `showOutboxErrors()` can automatically display any error messages returned from the REST API - both per-field errors and general validation errors.  This functionality can be leveraged by placing `<span>` or `<p>` tags next to the fields and near the submit button.  The tags should have two classes: `error` and `[page]-[field]-errors`, where `page` is the name of the of the wq page config and `field` is the name of the form field.
 
