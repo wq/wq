@@ -9,7 +9,7 @@ wq/router.js
 
 **wq/router.js** is a [wq.app] module providing a convenient router API that overlays the [jQuery Mobile] page navigation system.  wq/router.js supports [PJAX-style] page navigation by capturing URL changes and "responding" with locally-rendered HTML pages.
 
-If you are using both [wq.app] and [wq.db] together, you may be interested in [wq/app.js], a higher-level module that automatically registers the appropriate routes for applications via the [wq configuration object].  wq/router.js is primarily useful for the following cases:
+If you are using both [wq.app] and [wq.db] together, you may be interested in [wq/app.js], a higher-level module that automatically registers the appropriate routes for applications via the [wq configuration object].  You should only need to use wq/router.js directly in the following cases:
 
   * When wq/app.js cannot be used due to an incompatible server structure
   * When you need to register additional URL routes that have no server equivalent, or aren't easily described by the wq configuration object
@@ -58,9 +58,9 @@ router.init({
 
 `router.init()` is automatically called from [app.init()].
 
-### `router.jqmInit()` (new in 0.7.0)
+### `router.jqmInit()`
 
-The version of jQuery Mobile included with wq.app 0.7.0 is customized to disable automatic initialization on startup.  The purpose of this change is to make it easier to register custom routes before jQuery Mobile starts up, to ensure they are executed when it does.  To start up jQuery mobile, call `router.jqmInit()` after calling `router.init()` and registering your custom routes.
+The version of jQuery Mobile included with wq.app is customized to disable automatic initialization on startup.  The purpose of this change is to make it easier to register custom routes before jQuery Mobile starts up, to ensure they are executed when it does.  To start up jQuery mobile, call `router.jqmInit()` after calling `router.init()` and registering your custom routes.
 
 `router.jqmInit()` is automatically called from [app.jqmInit()].
 
@@ -137,18 +137,20 @@ name | purpose
 
 ### `router.info`
 
-`router.info` is automatically updated during each call to `router.go()`.  `router.info` is also available as a default template variable, `{{pages_info}}`.  `router.info` has a number of properties that are useful in template rendering and navigation:
+`router.info` is automatically updated during each call to `router.go()`.  `router.info` is also available as a default template variable, `{{router_info}}`.  `router.info` has a number of properties that are useful in template rendering and navigation:
 
 name | purpose
 -----|---------
 `path` | The path of the current page being rendered (relative to the `base_url`).
-`path_enc` | URL-encoded version of the path for use in e.g. other URLs.  **New in 0.7.1**
-`params` | Any URL query parameters will be available as properties (e.g. "/path?filter=1" will be available as `router.info.params.filter`).  **New in 0.7.1**
+`path_enc` | URL-encoded version of the path for use in e.g. other URLs.
+`params` | Any URL query parameters will be available as properties (e.g. "/path?filter=1" will be available as `router.info.params.filter`).
 `base_url` | The root url of the application, as passed to `router.init()`.
 `full_path` | The root url and the path (concatenated for convenience).
-`full_path_enc` | URL-encoded version of the full path for use in e.g. other URLs.  **New in 0.7.1**
+`full_path_enc` | URL-encoded version of the full path for use in e.g. other URLs.
 `prev_path` | The path of the previous page.
 `context` | The last context object passed to `router.go()`.  Only available if `debug` is active.
+
+For server rendering, wq.db includes a `router_info` context processor that mimics the client side template variable.
 
 ### `router.notFound(url)`
 
