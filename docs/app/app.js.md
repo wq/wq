@@ -407,7 +407,7 @@ config.parentFilters.parent_id = function(parent_page, page, context) {
         return {'active': true};
     }
 }
-app.init(config, templates);
+app.init(config);
 ```
 
 #### `attachmentTypes`
@@ -438,7 +438,7 @@ config.attachmentTypes.annotation.getTypeFilter = function(page, context) {
         
     return filter;
 );
-app.init(config, templates)
+app.init(config)
 ```
 
 [wq/app.js]: https://github.com/wq/wq.app/blob/master/js/wq/app.js
