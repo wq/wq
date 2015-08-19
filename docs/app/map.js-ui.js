@@ -2,7 +2,7 @@ define(['wq/map'],
 function(map) {
 
 function main($elems) {
-    map.createMap('doc', 'map-js');
+    map.run('doc', 'detail', 'map-js');
 }
 
 return main;
