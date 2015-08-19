@@ -196,6 +196,10 @@ function | loads from | saves to storage
 `ds.fetch(query).then(callback)` | web | no
 `ds.prefetch(query).then(callback)` | web | yes
 
+## Browser Compatibility Notes
+
+wq/store.js effectively requires some kind of offline storage to function as designed.  Nearly all browsers in use  today (including Internet Explorer 8) have at at least one of `localStorage`, `WebSQL`, and `IndexedDB` available.  [localForage] handles most the heavy lifting on automatically determining browser capabilities.  However, note that a significant fraction of web users prefer to disable offline storage.  Most notably, the "Block Cookies" setting for iOS Safari will also disable other offline storage options.  As of wq.app 0.8.1, if wq/store.js is unable to leverage localForage, it will fall back to using an in-memory cache.  This will work fine for most users, though any unsynced items in the outbox (see [wq/outbox.js]) will be lost if the browser window is closed.
+
 [wq/store.js]: https://github.com/wq/wq.app/blob/master/js/wq/store.js
 [0.7 docs]: https://wq.io/0.7/docs/store-js
 [Promise]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
