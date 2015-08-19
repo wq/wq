@@ -49,12 +49,28 @@ While not required, it is often useful to call `app.prefetchAll()` after initial
 config.jqmInit = true;
 app.init(config);
 
-// Custom routes, e.g. router.addRoute() is called in myModel.setup()
+// Custom routes, e.g. router.addRoute() is called in myModule.init()
 app.init(config).then(function() {
-    myModule.setup();
+    myModule.init();
     app.jqmInit(); 
     app.prefetchAll();
 });
+```
+#### Plugins
+
+As of version 0.8.1, wq/app.js also provides a simple plugin API that can be used instead of registering custom `pageshow` events via `router.addRoute()`.  The [wq/map.js] and [wq/photos.js] plugins both use this API.  A wq/app.js plugin is essentially just an object with three properties:
+
+ * `name`: An identifier for the plugin.
+ * `init(pluginConfig)`: A function to call during `app.init()`.  The function will be provided the corresponding `config` section in the app configuration (e.g. wq/map.js is initialized with `config.map`).
+ * `run(page, mode, itemid, url, parentInfo)`: A function to call on the `pageshow` event.  The function will be executed with name of the current `page`, the `mode` (list, detail, or edit), the `itemid` (for list or detail views), the full `url` path, and any information about parents (only used for `/[parent_list]/[id]/[child_list]` style URLs).
+
+Plugins should always be registered via `app.use(plugin)` before calling `app.init()`.
+
+```javascript
+// myModule is a wq/app.js plugin
+config.jqmInit = true;
+app.use(myModule);
+app.init(config);
 ```
 
 ### `<form>` Handler
@@ -479,3 +495,5 @@ app.init(config)
 [Promise]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
 [server-created wq config]: https://wq.io/docs/router
 [login.html]: https://github.com/wq/wq-django-template/blob/master/django_project/templates/login.html
+[wq/map.js]: https://wq.io/docs/map-js
+[wq/photos.js]: https://wq.io/docs/photos-js
