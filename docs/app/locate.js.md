@@ -1,5 +1,6 @@
 ---
 order: 12
+indent: true
 ---
 
 wq/locate.js
