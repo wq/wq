@@ -24,8 +24,9 @@ function simple($elems) {
 
 function locator($elems) {
     var m = L.map($elems.find('#loc-map')[0]).setView([45, -93.25], 8);
-    var basemaps = map.createBaseMaps();
-    basemaps['Street'].addTo(m);
+    var basemaps = map.createBasemaps();
+    var basemap = basemaps[Object.keys(basemaps)[0]];
+    basemap.addTo(m);
     var fields = {
        'latitude': $elems.find('#loc-lat'),
        'longitude': $elems.find('#loc-long'),
