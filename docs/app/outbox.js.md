@@ -51,7 +51,7 @@ name | purpose
 -----|---------
 `syncMethod` | Default HTTP method to use for sending data to the server.  The "default" default is `POST`.  This can be overridden on a per-form basis by setting the `method` option.
 `cleanOutbox` | Whether to clean up synced outbox items whenever the application starts (default `true`).
-`maxRetries` | The maximum number of times to send an outbox item causing server errors before giving up.  The default is 3.  Send failures due to being offline are not counted.  Used by `outbox.sendAll()` and [wq/app.js]' `app.sync()`
+`maxRetries` | The maximum number of times to attempt sending an outbox item before giving up.  The default is 3.  Used by `outbox.sendAll()` and [wq/app.js]' `app.sync()`. 
 `csrftokenField` | The form field name to use when submitting the [CSRF token].  Note that the token will be set when the form is actually uploaded to the server (and may override the csrf token that was initially submitted to the outbox).  The default field name is `csrfmiddlewaretoken` since that's what Django calls it.
 `applyResult(item, result)` | Defines a callback that takes a outbox item and a web service result and determines whether the result from the web service indicates a successful sync.  If the result was successful, the `applyResult` callback should mark `item.synced = true`.  The default implementation assumes any non-empty result means the sync was successful.
 `updateModels(item, result)` | Defines a callback that takes a synced outbox item and a web service result, and updates any local models with the new data.  The default implementation will automatically update the appropriate models as long as `modelConf` property is set during `outbox.save()` (see below).
