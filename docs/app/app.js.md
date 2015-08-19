@@ -466,7 +466,7 @@ app.init(config)
 [wq.db]: https://wq.io/wq.db
 [wq/store.js]: https://wq.io/docs/store-js
 [wq/model.js]: https://wq.io/docs/model-js
-[wq/outbox.js]: https://wq.io/docs/model-js
+[wq/outbox.js]: https://wq.io/docs/outbox-js
 [wq/router.js]: https://wq.io/docs/router-js
 [wq/template.js]: https://wq.io/docs/template-js
 [URL structure]: https://wq.io/docs/url-structure
