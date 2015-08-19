@@ -14,6 +14,7 @@ That said, it is possible to configure [wq/app.js] to automatically `sync()` the
 
 > Note: wq/outbox.js is a new module in wq.app 0.8.0.  In wq.app 0.7.4 and earlier, the outbox functionality was embedded within wq/store.js.  See the [0.7 docs] for the old API.
 
+wq/outbox.js can be used to store photos and other files submitted with a form.  The files will be stored as `Blob`s in offline storage until the outbox is synced.  See the [wq/photos.js] documentation for more information about this feature.
 
 ## API
 
@@ -127,6 +128,7 @@ The optional `once` argument can be used to ensure that an outbox entry is only 
 [wq/app.js]: https://wq.io/docs/app-js
 [wq/store.js]: https://wq.io/docs/store-js
 [wq/model.js]: https://wq.io/docs/model-js
+[wq/photos.js]: https://wq.io/docs/photos-js
 [0.7 docs]: https://wq.io/0.7/docs/store-js
 [AMD]: https://wq.io/docs/amd
 [wq.db]: https://wq.io/wq.db
