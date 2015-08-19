@@ -1,5 +1,5 @@
 ---
-order: 9
+order: 11
 ---
 
 Other Modules
@@ -112,49 +112,6 @@ function _onUpdate(status, msg) {
 });
 ```
 
-## wq/photos.js
-[wq/photos.js] provides some utilities for requesting and previewing user photos on a mobile device, whether running as a web app or as a hybrid app in PhoneGap.
-
-### API
-wq/photos.js is typically imported via AMD as `photos`, though any local variable name can be used.  `photos` provides three methods:
-
-  * `photos.preview()` accepts the id of an `<img>` element and a `File` object to display.  `photos.preview()` is meant to be used with `<input type=file>` in web and hybrid apps.
-  * `photos.take()` and `photos.pick()` are wrappers for PhoneGap/Cordova's [camera.getPicture()] API, meant to be used in hybrid apps where `<input type=file>` doesn't work (e.g. on older devices or [broken Android implementations]).
-
-Both `photos.take()` and `photos.pick()` accept two arguments: the id of a form `<input>` (often `type=hidden`) and the id of an `<img>` tag to place the preview in.  `photos.take()` requests a new photo from the camera, while `photos.pick()` requests a previously captured photo from the user's albums.
-
-```javascript
-define(['jquery', 'wq/photos', ...], function($, photos, ...) {
-
-$('input[type=file]').change(function() {
-    photos.preview('preview-image', this.files[0])
-});
-$('button.take').click(function() {
-    photos.take('filename', 'preview-image');
-});
-$('button.pick').click(function() {
-    photos.pick('filename', 'preview-image');
-});
-
-});
-```
-
-The above might be used with a Mustache template like this:
-
-```xml
-<img id=preview-image>
-
-{{^native}}
-<input type=file name=file>
-{{/native}}
-
-{{#native}}
-<button class=take>Take Picture</button>
-<button class=pick>Choose Picture</button>
-<input id=filename type=hidden name=file>
-{{/native}}
-```
-
 ## wq/progress.js
 [wq/progress.js] provides a simple way to create AJAX-powered auto-updating HTML5 [progress] elements.  wq/progress.js is meant to be used with a JSON web service that provides updates as to the current status of a long-running task.  wq/progress.js was originally created for use with the data import tasks in the [dbio] module.
 
@@ -224,7 +181,6 @@ spin.start("Loading...", 2, {'theme': 'b'});
 [wq/json.js]: https://github.com/wq/wq.app/blob/master/js/wq/json.js
 [wq/markdown.js]: https://github.com/wq/wq.app/blob/master/js/wq/markdown.js
 [wq/online.js]: https://github.com/wq/wq.app/blob/master/js/wq/online.js
-[wq/photos.js]: https://github.com/wq/wq.app/blob/master/js/wq/photos.js
 [wq/progress.js]: https://github.com/wq/wq.app/blob/master/js/wq/progress.js
 [wq/spinner.js]: https://github.com/wq/wq.app/blob/master/js/wq/spinner.js
 [wq/router.js]: https://wq.io/docs/router-js
@@ -238,8 +194,6 @@ spin.start("Loading...", 2, {'theme': 'b'});
 [wq/wq#10]: https://github.com/wq/wq/issues/10
 [wq collectjson]: https://wq.io/docs/collectjson
 [jQuery Mobile loader]: http://api.jquerymobile.com/1.3/loader/
-[camera.getPicture()]: http://plugins.cordova.io/#/package/org.apache.cordova.camera
-[broken Android implementations]: http://code.google.com/p/android/issues/detail?id=62220
 [dbio]: https://wq.io/dbio
 [wq.db]: https://wq.io/wq.db
 [task state names in Celery]: http://docs.celeryproject.org/en/latest/userguide/tasks.html#states
