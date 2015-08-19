@@ -75,7 +75,11 @@ app.init(config);
 
 ### `<form>` Handler
 
-`app.init()` registers a custom submit handler that takes normal form POSTs and converts them to REST API calls.  To avoid conflicts with jQuery Mobile's own AJAX form handler, it is recommended to set `data-ajax="false"` on all forms using this functionality.  For model-backed list pages, these forms would normally be placed in `[page]_edit.html` templates and accessed via `/[page_url]/new` and/or `/[page_url]/[id]/edit` .
+`app.init()` registers a custom submit handler that takes normal form POSTs and converts them to [wq/outbox.js] entries.  For model-backed list pages, these forms would normally be placed in `[page]_edit.html` templates and accessed via `/[page_url]/new` and/or `/[page_url]/[id]/edit` .
+
+In addition to the other standard form input types, the `<form>` handler supports saving photos and other files, which are stored in [wq/outbox.js] as `Blob` instances.  See the [wq/photos.js] documentation for more information about this feature.
+
+To avoid conflicts with jQuery Mobile's own AJAX form handler, it is recommended to set `data-ajax="false"` on all forms using the wq/outbox.js functionality.
 
 ```xml
 <form method="post" action="/items" data-ajax="false">
