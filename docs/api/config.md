@@ -44,7 +44,7 @@ The full listing of page configuration options is described below.
 ------|-------
 `parents` | A list of models that can be considered "parents" to this model.  Typically this means that this model contains a foreign key pointing to the parent model(s).  If the model contains more than one foreign key to the same parent model, `parents` should be a mapping of field names to parent models, e.g. `{"createdby": "user", "assignedto": "user"}`.
 `children` | A list of models that can be considered "children" to this model.  Typically this means that the child model(s) contain foreign keys pointing to this model.
-`map` | Whether or not this page includes a map (as implemented in the [wq/map.js] plugin).  wq.db will set this automatically on models that follow the [locate design pattern] or have a field named `latitude`, `longitude`, or `geometry`.  
+`map` | Map configuration for the [wq/map.js] plugin.  Can be set to `true` to use the default map configuration.  See the [wq/map.js] documentation for more details.
 `annotated`<br>`identified`<br>`located`<br>`related` | Boolean options, indicating that the model follows one or more of the [wq.db design patterns].
 `can_add`<br>`can_edit`<br>`can_delete` | Flags indicating which permissions the current user has on the model.  This information can be computed and enforced by wq.db.  It is useful as a [template rendering context] variable for showing and hiding available options to the user.  It is not strictly enforced by wq/app.js since wq.db (or a compatible REST service) should be handling permissions on the server side.
 `per_page` | Number of results to return per page in paginated lists by default.  Enforced by wq.db, but can be overridden by the `limit` url argument.
