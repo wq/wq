@@ -65,7 +65,7 @@ name | default | purpose
 `icon` | Object | Default icon settings for use with `map.createIcon()`.  The "default" default icon settings correspond to the default icon created by Leaflet (`L.Icon.Default`).
 `basemaps` | Array | (New in 0.8.1) Basemaps to use on every generated map.  By default, the [MapQuest-OSM and MapQuest Open Aerial] basemaps will be used:
 
-```
+```javascript
 basemaps = [
     {
         'name': "Street",
@@ -270,7 +270,7 @@ map.addBasemapType('tile', function(layerConf) {
 
 `map.addBasemapType` can be used to add custom overlay types in addition to the built in `"tile"` type.  The provided `function` should accept a basemap configuration and return a Leaflet layer instance.  For example, to create a WMS overlay with [leaflet.wms] you could do the following:
 
-```
+```javascript
 map.addOverlayType('wms', function(layerConf) {
     var wmsSource = wms.source("/url/to/wms", {
         'format': 'image/png',
