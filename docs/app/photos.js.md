@@ -22,7 +22,7 @@ wq/photos.js
 
 > Note: The wq/photos.js API was changed substantially in wq.app 0.8.1.  See [0.7 docs](https://wq.io/0.7/docs/other-modules) for information on the old usage.
 
-The [Species Tracker](https://species.wq.io) application provides a complete demonstration of the offline capabilities of wq/photos.js.
+The [Species Tracker](http://species.wq.io) application provides a complete demonstration of the offline capabilities of wq/photos.js.
 
 ### API
 wq/photos.js is typically imported via AMD as `photos`, though any local variable name can be used.  `photos` provides three methods:
