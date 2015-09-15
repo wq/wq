@@ -34,10 +34,11 @@ createuser -Upostgres $PROJECTNAME
 createdb -Upostgres -O$PROJECTNAME $PROJECTNAME
 psql -Upostgres $PROJECTNAME -c "CREATE EXTENSION postgis;"
 
-# Install database tables
+# Install database tables & create admin account
 # (edit db/$PROJECTNAME/local_settings.py with database info, if different than above)
 cd db/
 ./manage.py migrate
+./manage.py createsuperuser
 
 # Configure and restart Apache
 # (edit conf/$PROJECTNAME.conf with correct domain name)
@@ -49,6 +50,8 @@ sudo service apache2 restart
 # generate htdocs folder via wq build
 ./deploy.sh 0.0.1
 ```
+
+Visit the site in a web browser to verify the new installation.  You'll probably need to type in the server's IP address instead of the project name until your DNS is configured.  When the application loads, you should see "Hello world! Version 0.0.1", and a couple of button-styled links to a login screen and a list view.  
 
 ## Using only wq.app
 
