@@ -1,5 +1,5 @@
 ---
-order: 5
+order: 6
 ---
 
 AMD Only: Why we require RequireJS

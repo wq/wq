@@ -1,3 +1,7 @@
+---
+order: 4
+---
+
 To EAV, or not to EAV? Choosing your data model
 ===============================================
 
@@ -22,7 +26,7 @@ In an EAV model, the HTML `<form>` fields represent a one-to-many relationship b
 
 In wq, the EAV approach typically means defining your [Django model] classes as subclasses of the base `Entity` type you want to use.   For example, to define a model that uses the EAV-style [annotate] structure, you would create it as a subclass of `AnnotatedModel`.  Any relational fields can then be defined on your model as usual.  Our general rule of thumb is that if a field is critical to the interpretation of a record, is a foreign key, or is going to referenced by name anywhere in the code, it should be defined as a traditional relational field.  All other fields can be defined as rows in the `Attribute` table, and new attributes can be added on the fly via a web interface if needed.  When registering an EAV-style model with the [wq.db REST API], you will typically want to use a special [serializer] class (e.g. `AnnotatedModelSerializer` in this case).
 
-The key weakness of the EAV approach is not performance - this can be optimized with appropriate database indicies.   Instead, the key weakness of EAV is the level of abstraction that obfuscates the application code.  For example, the `<form>` in your [edit template][Mustache templates] will need to contain a "loop" over an indeterminate number of `Attribute` definitions.  If you want to support different field types (e.g. number, text) in a relational model, you can do so by changing the HTML `<input type>` for just that field.  With an EAV model, you will instead need to create branching logic that can adapt to each field type on the fly (e.g. in [this example]).  There will not be a single reference to a specific `Attribute` name anywhere in your code - which makes reasoning about changes more difficult.  That said, if you are comfortable with this abstraction, it can be a very powerful tool for building adaptable applications that don't need any further developer intervention when project definitions change.
+The key weakness of the EAV approach is not performance - this can be optimized with appropriate database indices.   Instead, the key weakness of EAV is the level of abstraction that obfuscates the application code.  For example, the `<form>` in your [edit template][Mustache templates] will need to contain a "loop" over an indeterminate number of `Attribute` definitions.  If you want to support different field types (e.g. number, text) in a relational model, you can do so by changing the HTML `<input type>` for just that field.  With an EAV model, you will instead need to create branching logic that can adapt to each field type on the fly (e.g. in [this example]).  There will not be a single reference to a specific `Attribute` name anywhere in your code - which makes reasoning about changes more difficult.  That said, if you are comfortable with this abstraction, it can be a very powerful tool for building adaptable applications that don't need any further developer intervention when project definitions change.
 
 ## Summary and Examples
 
