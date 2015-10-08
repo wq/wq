@@ -1,5 +1,6 @@
 ---
 order: 4
+description: This article exists to describe one key decision you will need to make - whether to use a traditional relational model, or to use an [Entity-Attribute-Value] (EAV) model (also commonly referred to as an open schema).
 ---
 
 To EAV, or not to EAV? Choosing your data model
