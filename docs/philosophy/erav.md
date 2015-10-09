@@ -5,7 +5,7 @@ order: 5
 The ERAV Data Model
 ===================
 
-The Entity-Record-Attribute-Value (ERAV) data model is an extension to Entity-Attribute-Value (EAV) that adds support for maintaining multiple versions of a model with different provenance.  As the name implies, ERAV is made up of four distinct components (i.e. ORM models/database tables).
+The Entity-Record-Attribute-Value (ERAV) data model is an extension to [Entity-Attribute-Value (EAV)] that adds support for maintaining multiple versions of a model with different provenance.  As the name implies, ERAV is made up of four distinct components (i.e. ORM models/database tables).
 
  Name | Description
 ------|-------------
@@ -39,3 +39,5 @@ However, it is certainly possible that two reports will contain an overlapping a
 
 ## Implementation Notes
 The reference implementation of ERAV is [vera](https://wq.io/vera), a [wq.db](https://wq.io/wq.db) module that is particularly suited for the time series use case.
+
+[Entity-Attribute-Value (EAV)]: https://wq.io/docs/eav-vs-relational
