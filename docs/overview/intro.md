@@ -7,13 +7,13 @@ Introduction
 
 <img align=right alt=wq src="https://wq.io/images/128/wq.png">
 
-**wq** is a collection of Python and JavaScript modules that facilitate the development of robust, offline-capable mobile / web apps.  wq is also a distillation of a number of recommended best practices for ensuring long-term software sustainability.  The primary use case for wq is mobile data collection, whether by professional field staff or by volunteers in e.g. [citizen science] and mobile crowdsourcing projects.  However, it is also useful as a platform for building a wide variety of mobile-first websites and applications.
+**wq** is a collection of Python and JavaScript modules that facilitate the development of robust, offline-capable [mobile / web apps][web app].  wq is also a distillation of a number of recommended best practices for ensuring long-term software sustainability.  The primary use case for wq is mobile data collection, whether by professional field staff or by volunteers in e.g. [citizen science] and mobile crowdsourcing projects.  However, it is also useful as a platform for building a wide variety of mobile-first websites and applications.
 
-**[The goal of wq]** is to streamline common development tasks while leaving full flexibility for project-specific workflows to the developer.  In this respect, wq is not as easy to use as a no-programming-required form-builder solution.  Some assembly is required to take advantage of the platform.  On the other hand, much of the nitty-gritty implementation details are abstracted away in order to allow the programmer to focus on domain-specific issues and (mostly) avoid dealing with common tasks like cross-browser compatibility, user-authentication, and database schema manipulation.
+**[The goal of wq]** is to streamline common development tasks while leaving full flexibility for project-specific workflows to the developer.  In this respect, wq is not as easy to use as a no-programming-required "form-builder" solution (though wq can be used to [*create* a form builder app][data model]).  Some assembly is required to take advantage of the wq platform.  On the other hand, much of the nitty-gritty implementation details are abstracted away in order to allow the programmer to focus on defining the [data model] and [interface layout], and (mostly) avoid dealing with common tasks like cross-browser JavaScript compatibility, user authentication, and database schema manipulation.
 
 **wq is comprised of** three major submodules, all of which can be [installed] together or separately.  **[wq.app]** is the frontend component, a collection of [JavaScript modules] and a [build process].  **[wq.db]** contains a collection of [design patterns] for common database layouts, and a [REST API generator] that routes requests from the client application.  **[wq.io]** is a standalone Python library for dealing specifically with data import and export.
 
-wq is as much a **set of principles** as it is a software platform.  The documentation includes a [Philosophy] chapter with a number of implementation-independent principles for mobile/web app development, and an [API Conventions] chapter proposing interoperable solutions for addressing these concerns.  This approach gives individual projects the flexibility to replace parts (or all!) of the wq stack with alternatives built with other platforms and programming languages.  The Python + JavaScript implementation of wq is essentially the reference implementation of these ideals.
+wq is as much a **set of principles** as it is a software platform.  The documentation includes a [Philosophy] chapter with a number of implementation-independent [principles for mobile/web app development][web app], and an [API Conventions] chapter proposing interoperable solutions for addressing these concerns.  This approach gives individual projects the flexibility to replace parts (or all!) of the wq stack with alternatives built with other platforms and programming languages.  The Python + JavaScript implementation of wq is essentially the reference implementation of these ideals.
 
 ## Documentation Outline
 The documentation is structured to lay the foundation and conventions before getting into the implementation details.  The chapters are as follows:
@@ -47,3 +47,6 @@ The documentation is structured to lay the foundation and conventions before get
 [Overview]: https://wq.io/chapters/overview/docs
 [wq.db: Contrib apps]: https://wq.io/chapters/contrib/docs
 [Dataset IO]: https://wq.io/chapters/io/docs
+[data model]: https://wq.io/docs/eav-vs-relational
+[interface layout]: https://wq.io/docs/templates
+[web app]: https://wq.io/docs/web-app
