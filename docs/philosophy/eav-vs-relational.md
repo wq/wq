@@ -1,6 +1,6 @@
 ---
 order: 4
-description: This article exists to describe one key decision you will need to make - whether to use a traditional relational model, or to use an [Entity-Attribute-Value] (EAV) model (also commonly referred to as an open schema).
+description: This article exists to describe one key decision you will need to make - whether to use a traditional relational model, or to use an Entity-Attribute-Value (EAV) model (also commonly referred to as an open schema).
 ---
 
 To EAV, or not to EAV? Choosing your data model
@@ -22,6 +22,8 @@ In a relational model, there is typically a one-to-one correspondence between th
 In wq, the relational approach requires defining one or more [Django model] classes which can then be used to generate [migration scripts] that create the actual database tables.  Once these models are created, they can be registered with the [wq.db REST API] which will make it possible to list, retrieve, create, and update the records in the database through the [HTML screens][Mustache templates] in the application.  Whenever you add or change a model field, Django can generate a new migration script to make the appropriate modifications to the database.  You will also need to update your Mustache templates to reflect the new field definitions.  These steps are not automatic, but can easily be mastered with a little training.
 
 ## Entity-Attribute-Value Model
+
+![EAV](https://wq.io/media/images/eav.png)
 
 In an EAV model, the HTML `<form>` fields represent a one-to-many relationship between a primary `Entity` table and a `Value` table.  Each row in the `Value` table corresponds to a "field", which is defined as a row in a third `Attribute` table.  In effect, the `Value` table creates a many-to-many link between the `Entity` table and the `Attribute` table.  (I told you this would be more complicated).  Django does not provide much support for EAV out of the box, though there are a number of plugins that do so.  [wq.db.patterns][design patterns] and [vera] provide some of those plugins.  Note that the fact that all of wq.db's provided models are EAV-based does not necessarily mean that you should use an EAV approach.  Instead, the focus on EAV in wq.db is largely designed as a complement to Django's strong built-in support for traditional relational models.
 
