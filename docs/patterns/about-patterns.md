@@ -46,7 +46,7 @@ model | entity base class | attribute model | value model | description
 [wq.db]: https://wq.io/wq.db
 [Django apps]: https://docs.djangoproject.com/en/1.7/ref/applications/#projects-and-applications
 [Django models]: https://docs.djangoproject.com/en/1.7/topics/db/models/
-[Entity-Attribute-Value (EAV)]: http://en.wikipedia.org/wiki/Entity%E2%80%93attribute%E2%80%93value_model
+[Entity-Attribute-Value (EAV)]: https://wq.io/docs/eav-vs-relational
 [vera]: https://wq.io/vera
 [ERAV]: https://wq.io/docs/erav
 [annotate]: https://wq.io/docs/annotate

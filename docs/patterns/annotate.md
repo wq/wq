@@ -162,7 +162,7 @@ When rendering "new" screens (which use the same template as edit screens), [wq/
 [wq.db.patterns.annotate]: https://github.com/wq/wq.db/blob/master/patterns/annotate
 [wq.db]: https://wq.io/wq.db
 [design pattern]: https://wq.io/docs/about-patterns
-[Entity-Attribute-Value (EAV)]: http://en.wikipedia.org/wiki/Entity%E2%80%93attribute%E2%80%93value_model
+[Entity-Attribute-Value (EAV)]: https://wq.io/docs/eav-vs-relational
 [vera library]: https://wq.io/vera
 [ERAV]: https://wq.io/docs/erav
 [REST API]: https://wq.io/docs/about-rest

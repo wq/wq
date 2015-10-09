@@ -268,7 +268,7 @@ When rendering "new" screens (which use the same template as edit screens), [wq/
 [wq.db.patterns.relate]: https://github.com/wq/wq.db/blob/master/patterns/relate
 [wq.db]: https://wq.io/wq.db
 [design pattern]: https://wq.io/docs/about-patterns
-[Entity-Attribute-Value (EAV)]: http://en.wikipedia.org/wiki/Entity%E2%80%93attribute%E2%80%93value_model
+[Entity-Attribute-Value (EAV)]: https://wq.io/docs/eav-vs-relational
 [abstract base class]: https://docs.djangoproject.com/en/1.7/topics/db/models/#abstract-base-classes
 [ModelManager]: https://docs.djangoproject.com/en/1.7/topics/db/managers/
 [GenericRelation]: https://docs.djangoproject.com/en/1.7/ref/contrib/contenttypes/#django.contrib.contenttypes.fields.GenericRelation

@@ -167,7 +167,7 @@ When rendering "new" screens (which use the same template as edit screens), [wq/
 [wq.db]: https://wq.io/wq.db
 [design pattern]: https://wq.io/docs/about-patterns
 [Markdown]: http://daringfireball.net/projects/markdown/syntax
-[Entity-Attribute-Value (EAV)]: http://en.wikipedia.org/wiki/Entity%E2%80%93attribute%E2%80%93value_model
+[Entity-Attribute-Value (EAV)]: https://wq.io/docs/eav-vs-relational
 [dbio]: https://wq.io/dbio
 [REST API]: https://wq.io/docs/about-rest
 [chart]: https://wq.io/docs/chart
