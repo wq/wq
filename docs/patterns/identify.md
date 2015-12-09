@@ -18,7 +18,7 @@ The identify module facilitates replacing these multiple columns with a separate
 The identify module enables a number of related tasks:
  * Managing third-party identifiers, including (where applicable) generating URLs to the authoritative third party web pages for those identifiers.
  * Matching columns in a spreadsheet to field names in the database (in the [dbio] project).
- * Generating "permalinks" or user-friendly URLs for project web pages that correspond to database records (e.g. in the general [REST API] and in the [chart] contrib module)
+ * Generating "permalinks" or user-friendly URLs for project web pages that correspond to database records (e.g. in the general [REST API])
  * Searching the entire database for entities in any table with a given identifier (in the [search] contrib module)
 
 > The identify module is among the original wq.db modules discussed in the paper [wq: A modular framework for collecting, storing, and utilizing experiential VGI](https://wq.io/research/framework).  Since that paper, this module has been renamed from `wq.db.identify` to `wq.db.patterns.identify`.
@@ -223,6 +223,55 @@ The field names for the authority-less identifier will be e.g. `identifier--name
 
 When rendering "new" screens (which use the same template as edit screens), [wq/app.js] will automatically generate a list of blank identifiers for all authorities.  This makes it possible to generate form widgets for all potential identifiers.  Any identifier fields that are left blank will not be created.  To customize which Authorities are listed for new items, override the `getTypeFilter()` function in `attachmentTypes.identifier` (see [wq/app.js] for more information).
 
+## Custom URL-based Filtering
+
+As of wq.db 0.8.3, the identify pattern includes a very flexible URL-based filtering mechanism for use with custom views.  This functionality was originally provided as a part of [wq.db.contrib.chart][chart] but has been extracted for general use.  For example, a URL of the form:
+
+`http://website/data/site1/param1/param2/chart.csv`
+
+might return two timeseries datasets, corresponding to each of two parameters measured at site1.  Similarly, a URL of the form:
+
+`http://website/data/site1/site2/param1/chart.csv`
+
+might return data for the same parameter at two different sites.
+
+This functionality is available through a [filter backend] that can be added to your views:
+
+```python
+from rest_pandas import PandasView
+from wq.db.patterns.identify.filters import IdentifierFilterBackend
+class ChartView(PandasView):
+    filter_backends = [IdentifierFilterBackend]
+```
+
+Any relevant `IdentifiedModel` can be used to filter the queryset.  These models would generally be referenced via direct or indirect `ForeignKey` relationships from the time series model.  To perform the filtering, the URL will be split into slugs, which will be matched against the `Identifier` database to resolve them into model names and primary keys.
+
+Once the model names and primary keys are identified, the chart views will search for functions of the form `filter_by_[model]()` defined on the view, or on a subclass of `IdentifierFilterBackend`.  The filter functions should accept a queryset and a list of primary keys.  For example, filters for [vera]'s `Site` and `Parameter` models are defined in vera's [ChartFilterBackend] like this:
+
+```python
+from wq.db.patterns.identify.filters import IdentifierFilterBackend
+
+class ChartFilterBackend(IdentifierFilterBackend):
+    def filter_by_site(self, qs, ids):
+        return qs.filter(event_site__in=ids)
+
+    def filter_by_parameter(self, qs, ids):
+        return qs.filter(result_type__in=ids)
+```
+
+Any unrecognized identifiers in the URL will be passed as-is to the function `filter_by_extra(qs, slugs)`.  The default implementation of this function will simply ignore the unknown identifiers unless `ignore_extra = False` is set on the filter backend.
+
+To leverage the URL-based filters, you will want to configure your `urls.py` with something like the following.
+
+```python
+from django.conf.urls import patterns, include, url
+from myapp.views import ChartView
+
+urlpatterns = patterns('',
+    url(r'^data/(?P<ids>[^\.]+)/chart')
+)
+```
+
 [wq.db.patterns.identify]: https://github.com/wq/wq.db/blob/master/patterns/identify
 [wq.db]: https://wq.io/wq.db
 [design pattern]: https://wq.io/docs/about-patterns
@@ -239,3 +288,7 @@ When rendering "new" screens (which use the same template as edit screens), [wq/
 [wq/app.js]: https://wq.io/docs/app-js
 [registered]: https://wq.io/docs/router
 [HTML JSON forms]: http://www.w3.org/TR/html-json-forms/
+[wq.db.contrib.chart]: https://wq.io/docs/chart
+[filter backend]: www.django-rest-framework.org/api-guide/filtering
+[vera]: https://wq.io/vera
+[ChartFilterBackend]: https://github.com/wq/vera/blob/master/vera/filters.py
