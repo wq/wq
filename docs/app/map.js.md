@@ -194,7 +194,7 @@ name | purpose
 `geometryField` | The name of a hidden field to save edited geometry to.  See Map Editing below. 
 `style` | A function to define styles based on the properties of each feature in the GeoJSON.  The function should take a feature and return a style object.  Available style options are listed in the documentation for [L.Path].  Equivalent to `L.GeoJSON`'s [style] option.
 `oneach` | A function to call for each feature in the GeoJSON.  The function should take a Leaflet layer object and a GeoJSON feature.  `map.renderPopup()` can automatically create a compatible function that will attach a templated popup to each layer using the properties in the GeoJSON feature.  Equivalent to `L.GeoJSON`'s [onEachFeature] option.
-`clusterIcon` | Custom function to use to create cluster icons.  Equivalent to `L.MarkerClusterGroup`'s [iconCreateFunction].
+`clusterIcon` | CSS class to use when creating the cluster icon `<div>` (New usage in 0.8.2).  Can be a plain string, a template definition, or a function.  If a template or a function, a context of the form `{'count': count, [size]: true}` will be provided, where `[size]` is one of `large` (> 100), `medium` (> 10), or `small`.
 
 #### Example
 
