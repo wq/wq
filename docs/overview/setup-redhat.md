@@ -19,10 +19,6 @@ sudo yum install http://yum.postgresql.org/9.4/redhat/rhel-7-x86_64/pgdg-centos9
 
 sudo yum install epel_release
 sudo yum install httpd mod_wsgi postgresql94-server postgis2_94 python-pip python-psycopg2
-
-# See https://github.com/wq/wq/issues/23
-sudo pip install "click==5.1"
-
 sudo pip install wq
 
 # For wq.app build process (see https://github.com/wq/wq.app/issues/14)

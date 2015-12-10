@@ -13,10 +13,6 @@ The following steps should help you [install wq] and get a wq-powered web applic
 ```bash
 sudo apt-get update
 sudo apt-get install apache2 libapache2-mod-wsgi-py3 postgresql-9.3-postgis-2.1 python3-pip python3-psycopg2
-
-# See https://github.com/wq/wq/issues/23
-sudo pip3 install "click==5.1"
-
 sudo pip3 install wq
 
 # For wq.app build process (see https://github.com/wq/wq.app/issues/14)
