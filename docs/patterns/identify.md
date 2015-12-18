@@ -289,6 +289,6 @@ urlpatterns = patterns('',
 [registered]: https://wq.io/docs/router
 [HTML JSON forms]: http://www.w3.org/TR/html-json-forms/
 [wq.db.contrib.chart]: https://wq.io/docs/chart
-[filter backend]: www.django-rest-framework.org/api-guide/filtering
+[filter backend]: http://www.django-rest-framework.org/api-guide/filtering
 [vera]: https://wq.io/vera
 [ChartFilterBackend]: https://github.com/wq/vera/blob/master/vera/filters.py
