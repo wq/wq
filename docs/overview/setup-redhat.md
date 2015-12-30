@@ -55,6 +55,7 @@ cd db/
 sudo chckconfig httpd on
 sudo ln -s $PROJECTSDIR/$PROJECTNAME/conf/$PROJECTNAME.conf /etc/httpd/conf.d/
 (edit conf/$PROJECTNAME.conf, replace "${APACHE_LOG_DIR}/" with "logs/")
+sudo setsebool -P httpd_tmp_exec on
 sudo service httpd restart
 
 # generate htdocs folder via wq build
