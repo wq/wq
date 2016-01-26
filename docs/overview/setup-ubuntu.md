@@ -45,6 +45,7 @@ cd db/
 sudo ln -s $PROJECTSDIR/$PROJECTNAME/conf/$PROJECTNAME.conf /etc/apache2/sites-available/
 sudo a2ensite $PROJECTNAME
 sudo a2dissite 000-default # optional - will make $PROJECTNAME the default site
+sudo a2enmod expires  
 sudo service apache2 restart
 
 # generate htdocs folder via wq build
