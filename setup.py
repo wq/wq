@@ -2,7 +2,7 @@ import os
 from setuptools import setup
 
 LONG_DESCRIPTION = """
-A modular framework for building custom offline-capable desktop and mobile web apps.
+A modular framework for citizen science field data collection via offline-capable mobile web apps.
 """
 
 

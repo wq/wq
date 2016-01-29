@@ -3,8 +3,8 @@
    :target: http://wq.io
    :alt: wq
 
-`wq <http://wq.io>`_ is a modular framework for mobile & desktop
-geographic data collection applications.
+`wq <http://wq.io>`_ is a modular framework for citizen science field data
+collection via offline-capable mobile web apps.
 
 Getting Started
 ---------------
