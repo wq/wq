@@ -49,7 +49,6 @@ In the example below, all of the options are set with their default values, whic
 
 @include jquery-mobile-theme(
   $theme:        a,
-  $font:         Helvetica, Arial, sans-serif,  
 
   /* Page colors */
   $page-text:    #333,    /* Font color */
