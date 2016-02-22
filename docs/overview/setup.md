@@ -5,7 +5,9 @@ order: 2
 Getting Started
 ===============
 
-You can follow the process below to get a wq-powered application up and running.
+Since the [wq framework] is designed to create fully custom applications, the first step for most wq-powered projects is to start up a web server and install a number of software packages.  If you are planning to self-host, or would just like to experiment with the framework, you can follow the process below to get an application up and running.  (Be sure to use the referral link above to get a discount on hosting fees!)
+
+If you would rather not run a wq-powered server yourself, you may want to reach out to any of the [existing subscription-based projects and "campaign builder" apps][projects] to explore potential collaboration.  Our partners also provide [flexible support plans][contact] ranging from a couple of hours of installation support to full-service bespoke design, software development, and application hosting.
 
 ## I. Install wq
 
@@ -42,6 +44,9 @@ Once your data model is defined and your REST API is running, you can start impl
 
 The [Species Tracker source code] is useful as an example of the changes needed to turn the output of `wq start` into a fully functional application.
 
+[wq framework]: https://wq.io/docs/intro
+[projects]: https://wq.io/projects/
+[contact]: https://wq.io/community
 [Python Package Index]: https://pypi.python.org/pypi/wq
 [wq.app]: https://wq.io/wq.app
 [wq.db]: https://wq.io/wq.db
