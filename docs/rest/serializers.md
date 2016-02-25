@@ -20,8 +20,6 @@ class MySerializer(ModelSerializer):
 ```python
 # myapp/rest.py
 from wq.db import rest
-# wq.db 0.7.2 and earlier:
-# from wq.db.rest import app as rest
 from .models import MyModel
 from .serializers import MySerializer
 

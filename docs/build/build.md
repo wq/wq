@@ -13,8 +13,6 @@ Where:
   * `[version]` is the version of the application being built
   * `[configfile]` is the path to a configuration file to use (the default is to look for a file named `wq.yml` in the current directory).  The [django-wq-template] project contains an example [wq.yml].
 
-> As of wq.app 0.8.0, the old JSON format and default filename (`app.build.json`) are no longer supported.  You can use [json2yaml.py] or any number of online tools to convert JSON to YAML.  Valid JSON is also valid YAML so you could just also rename the file.
-
 The actual build process is broken into several steps.  Each step is typically configured via a corresponding key in the [wq.yml] configuration file, though most accept the same options as command-line arguments.  You can get more information about the options for each command via `wq --help`, for example:
 
 ```bash

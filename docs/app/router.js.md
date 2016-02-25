@@ -16,8 +16,6 @@ If you are using both [wq.app] and [wq.db] together, you may be interested in [w
   * When you need to register additional URL routes that have no server equivalent, or aren't easily described by the wq configuration object
   * When you need custom handlers for page events other than initial rendering, e.g. `pageshow`, `pageinit`, etc.
 
-> *Note:* **wq/router.js** replaces the equivalent **wq/pages.js** which existed in wq.app 0.7.4 and earlier.   The API for wq/router.js is almost identical to wq/pages.js, other than the module name and the `init()` configuration.
-
 ## API
 
 `wq/router.js` is typically imported via [AMD] as `router`, though any local variable name can be used.

@@ -7,7 +7,7 @@ Recommended Settings
 
 [wq.db.default_settings]
 
-Below are the recommended settings for projects using wq.db 0.8.0 and later.  These can be utilized by importing them from `wq.db.default_settings`.
+Below are the recommended settings for projects using wq.db.  These can be utilized by importing them from `wq.db.default_settings`.
 ```python
 # Django settings
 TEMPLATE_LOADERS = (

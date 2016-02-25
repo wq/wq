@@ -7,18 +7,10 @@ wq/store.js
 
 [wq/store.js]
 
-**wq/store.js** is a [wq.app] module providing a [localForage]-backed storage API for retrieving and querying JSON data from a web service via AJAX.  wq/store.js is used internally by [wq/app.js] to store application configuration values as well as model data (via [wq/model.js]).
+**wq/store.js** is a [wq.app] module providing a persistent storage API for retrieving and querying JSON data from a web service via AJAX.  wq/store.js is used internally by [wq/app.js] to store application configuration values as well as model data (via [wq/model.js]).  wq/store.js relies on [localForage] to handle the work of storing data offline in IndexedDB, localStorage, or WebSQL.  The wq/store.js API uses [Promises][Promise] extensively to facilitate asynchronous usage.
 
 Unlike other similar libraries, wq/store.js does not attempt to immediately and transparently mirror local data changes to the server via a REST API.  This is by design.  wq/store.js is meant to be used in offline-capable mobile data entry applications that require explicit control over when and how local changes are "synced" to the server.  Thus, wq/store.js is almost always used in conjunction with [wq/outbox.js] to sync changes back to the server.
 
-> *Note*: In wq.app 0.8.0, the wq/store.js API was completely overhauled.  Specifically,
->
->   1. The storage API is now entirely asynchronous and [Promise]-based
->   2. The List API and the Outbox Methods are now in separate [wq/model.js] and [wq/outbox.js] modules, respectively.
->   3. [localForage] is used instead of `localStorage`.  Depending on the browser, this means using either `IndexedDB` or `WebSQL` to store data, both of which provide significantly more storage space than `localStorage`.
->   4. Like all wq.app modules in 0.8.0, the `init()` function now takes a single configuration argument.
->
-> See the [0.7 docs] for the old API.
 
 ## API
 
@@ -103,7 +95,7 @@ ds.get({'url': 'items'}).then(function(items) {
 });
 ```
 
-> Note that as of wq.app 0.8.0, `ds.get()` is an **a**synchronous-only API, even if the data is already stored locally and no AJAX request is needed.  This is in part because the underlying storage APIs are asynchronous, and partly because you won't always know beforehand whether an AJAX call is needed.  (Believe it or not, `ds.get()` in wq.app 0.7.4 and earlier would force a synchronous, blocking AJAX request if necessary in order to be able to return a value without requiring a callback.)
+> Note that `ds.get()` is an **a**synchronous-only API, even if the data is already stored locally and no AJAX request is needed.  This is in part because the underlying storage APIs are asynchronous, and partly because you won't always know beforehand whether an AJAX call is needed.
 
 `ds.get()` can be passed an array of queries, which will be individually resolved and passed back through the promise in a corresponding array.
 
@@ -198,10 +190,9 @@ function | loads from | saves to storage
 
 ## Browser Compatibility Notes
 
-wq/store.js effectively requires some kind of offline storage to function as designed.  Nearly all browsers in use  today (including Internet Explorer 8) have at at least one of `localStorage`, `WebSQL`, and `IndexedDB` available.  [localForage] handles most the heavy lifting on automatically determining browser capabilities.  However, note that a significant fraction of web users prefer to disable offline storage.  Most notably, the "Block Cookies" setting for iOS Safari will also disable other offline storage options.  As of wq.app 0.8.1, if wq/store.js is unable to leverage localForage, it will fall back to using an in-memory cache.  This will work fine for most users, though any unsynced items in the outbox (see [wq/outbox.js]) will be lost if the browser window is closed.
+wq/store.js effectively requires some kind of offline storage to function as designed.  Nearly all browsers in use  today (including Internet Explorer 8) have at at least one of `localStorage`, `WebSQL`, and `IndexedDB` available.  [localForage] handles most the heavy lifting on automatically determining browser capabilities.  However, note that a significant fraction of web users prefer to disable offline storage.  Most notably, the "Block Cookies" setting for iOS Safari will also disable other offline storage options.  If wq/store.js is unable to leverage localForage, it will fall back to using an in-memory cache.  This will work fine for most users, though any unsynced items in the outbox (see [wq/outbox.js]) will be lost if the browser window is closed.
 
 [wq/store.js]: https://github.com/wq/wq.app/blob/master/js/wq/store.js
-[0.7 docs]: https://wq.io/0.7/docs/store-js
 [Promise]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
 [localForage]: https://mozilla.github.io/localForage/
 [wq.app]: https://wq.io/wq.app

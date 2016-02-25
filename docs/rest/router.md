@@ -30,8 +30,6 @@ urlpatterns = patterns('',
 )
 ```
 
-> *Note:* In wq.db 0.7.2 and earlier, the `router` instance and `autodiscover()` API were part of a module called `wq.db.rest.app`.  See the [wq.db 0.8.0 release notes](https://wq.io/wq.db/releases/v0.8.0) for more details.
-
 Whereas admin's autodiscover searches for and imports `admin.py` in each installed app's directory, wq.db.rest's autodiscover searches for and imports `rest.py`.  A typical rest.py has some similarity to the [example admin.py] in Django's docs:
 
 ```python
@@ -92,31 +90,7 @@ Any other options given will be assigned to the model's [page configuration].
 
 ## Config Object (`dump_config`)
 
-The router can generate a JSON-formatted [wq configuration object] for use by [wq/app.js].  There are two ways to obtain this object:
-
-```bash
-./manage.py dump_config
-
-# Alternative
-curl http://$MYPROJECT/config.json
-```
-
-In wq.db 0.7.2 and earlier, you could load the AMD equivalent (/config.js) in your JavaScript code when the application started up, though this would take longer to load.
-
-```javascript
-requirejs.config({
-    'paths': {
-        'db': '/'
-    }
-});
-
-define(["db/config", ...],
-function(config, ...) {
-    // Do stuff with config
-});
-```
-
-A better option (required in wq.db 0.8.0 and later) is to use `dump_config` to create an AMD module that can be incorporated into your build process.
+The router can generate a JSON-formatted [wq configuration object] for use by [wq/app.js].  The `dump_config` management command can be used to create an AMD configuration module as part of your build process.
 
 ```bash
 # deploy.sh

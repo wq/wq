@@ -18,7 +18,7 @@ The `collectjson` section in [wq.yml] can be a single configuration object or an
 `indent` | Number of spaces to indent the JSON by (default is 4)
 `jsonp` | JSONP callback (use `"define"` to create an AMD module)
 
-As of wq.app 0.8.0, `wq collectjson` can also be configured entirely via command line options; for more information run `wq collectjson --help`.
+`wq collectjson` can also be configured entirely via command line options; for more information run `wq collectjson --help`.
 
 [wq build process]: https://wq.io/docs/build
 [Mustache templates]: https://wq.io/docs/templates

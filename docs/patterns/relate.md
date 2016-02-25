@@ -175,9 +175,7 @@ Output:
 
 When rendering detail views, the above representation makes it easy to describe the relationships as well as link to the detail views of the referenced entities.  When rendering a form, specially-named form fields should be used to ensure the proper relationships are created or updated on the server when the form is submitted.
 
-#### New Style 
-
-In wq.db 0.8.0 and later, the basic naming convention is based on the [HTML JSON forms] specification. For example, the inverse relationship in the above example might be rendered into `<input>`s as follows:
+The basic naming convention is based on the [HTML JSON forms] specification. For example, the inverse relationship in the above example might be rendered into `<input>`s as follows:
 
 ```xml
 <input name="inverserelationships[0][id]" value="124">
@@ -213,47 +211,6 @@ To accomplish this, the Mustache template might look something like this:
 <input name="inverserelationships[{{@index}}][id]" value="{{id}}" type="hidden">
 <input name="inverserelationships[{{@index}}][type_id]" value="{{type_id}}" type="hidden">
 <select name="inverserelationships[{{@index}}][item_id]">
-{{#item_choices}}
-  <option value="{{id}}" {{#selected}}selected{{/selected}}>{{label}}</option>
-{{/item_choices}}
-</select>
-{{/inverserelationships}}
-```
-
-#### Old Style
-
-For wq.db 0.7.2 and earlier, the basic naming convention is `(inverse)relationship-[type_id]-[field]`.  For example, the inverse relationship in the above example might be rendered into `<input>`s as follows:
-
-```xml
-<input name="inverserelationship-5-id" value="124">
-<input name="inverserelationship-5-item_id" value="7">
-```
-
-Alternatively, [wq/app.js] can generate a template context appropriate for rendering a `<select>` menu with a list of all of the potential choices from the related model ("group" in the above example).
-
-```xml
-<input name="inverserelationship-5-id" value="124" type="hidden">
-<select name="inverserelationship-5-item_id">
-  <option value="5">Group #5</option>
-  <option value="6">Group #6</option>
-  <option value="7" selected>Group #7</option>
-</select>
-```
-
-To accomplish this, the Mustache template might look something like this:
-
-```xml
-{{#relationships}}
-<input name="relationship-{{type_id}}-id" value="{{id}}" type="hidden">
-<select name="relationship-{{type_id}}-item_id">
-{{#item_choices}}
-  <option value="{{id}}" {{#selected}}selected{{/selected}}>{{label}}</option>
-{{/item_choices}}
-</select>
-{{/relationships}}
-{{#inverserelationships}}
-<input name="inverserelationship-{{type_id}}-id" value="{{id}}" type="hidden">
-<select name="inverserelationship-{{type_id}}-item_id">
 {{#item_choices}}
   <option value="{{id}}" {{#selected}}selected{{/selected}}>{{label}}</option>
 {{/item_choices}}

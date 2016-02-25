@@ -12,8 +12,6 @@ wq/outbox.js
 
 That said, it is possible to configure [wq/app.js] to automatically `sync()` the outbox periodically, thus providing a relatively seamless online/offline experience.  Since changes to data will not be reflected in the stored models until the outbox is successfully synced, it is common to display the contents of the outbox at the top of model list views and/or in a separate screen.
 
-> Note: wq/outbox.js is a new module in wq.app 0.8.0.  In wq.app 0.7.4 and earlier, the outbox functionality was embedded within wq/store.js.  See the [0.7 docs] for the old API.
-
 wq/outbox.js can be used to store photos and other files submitted with a form.  The files will be stored as `Blob`s in offline storage until the outbox is synced.  See the [wq/photos.js] documentation for more information about this feature.
 
 ## API
@@ -54,7 +52,7 @@ name | purpose
 `cleanOutbox` | Whether to clean up synced outbox items whenever the application starts (default `true`).
 `maxRetries` | The maximum number of times to attempt sending an outbox item before giving up.  The default is 3.  Used by `outbox.sendAll()` and [wq/app.js]' `app.sync()`. 
 `csrftokenField` | The form field name to use when submitting the [CSRF token].  Note that the token will be set when the form is actually uploaded to the server (and may override the csrf token that was initially submitted to the outbox).  The default field name is `csrfmiddlewaretoken` since that's what Django calls it.
-`validate(data, item)` | Defines a callback that ensures data is valid before saving it to the outbox.  The default implementation always returns `true` (new in 0.8.2).
+`validate(data, item)` | Defines a callback that ensures data is valid before saving it to the outbox.  The default implementation always returns `true`
 `applyResult(item, result)` | Defines a callback that takes a outbox item and a web service result and determines whether the result from the web service indicates a successful sync.  If the result was successful, the `applyResult` callback should mark `item.synced = true`.  The default implementation assumes any non-empty result means the sync was successful.
 `updateModels(item, result)` | Defines a callback that takes a synced outbox item and a web service result, and updates any local models with the new data.  The default implementation will automatically update the appropriate models as long as `modelConf` property is set during `outbox.save()` (see below).
 `batchService` | An alternate URL to use when submitting multiple requests as a batch (see `sendBatch()` below)
@@ -130,7 +128,6 @@ The optional `once` argument can be used to ensure that an outbox entry is only 
 [wq/store.js]: https://wq.io/docs/store-js
 [wq/model.js]: https://wq.io/docs/model-js
 [wq/photos.js]: https://wq.io/docs/photos-js
-[0.7 docs]: https://wq.io/0.7/docs/store-js
 [AMD]: https://wq.io/docs/amd
 [wq.db]: https://wq.io/wq.db
 [CSRF Token]: https://docs.djangoproject.com/en/1.8/ref/csrf/

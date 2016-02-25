@@ -118,9 +118,7 @@ Output:
 
 When rendering the list of annotations in detail or edit views, the above representation can be used to retrieve the existing values.  When rendering a form, specially-named form fields should be used to ensure the proper annotations are created or updated on the server when the form is submitted.
 
-#### New Style
-
-In wq.db 0.8.0 and later, the basic naming convention is based on the [HTML JSON forms] specification.  For example, the second annotation in the above example might be rendered into `<input>`s as follows:
+The basic naming convention is based on the [HTML JSON forms] specification.  For example, the second annotation in the above example might be rendered into `<input>`s as follows:
 
 ```xml
 <input type="hidden" name="annotations[1][id]" value="124">
@@ -136,24 +134,6 @@ To accomplish this, the Mustache template might look something like this:
 <input name="annotations[{{@index}}][value]" value="{{value}}">
 {{/annotations}}
 ```
-
-#### Old Style
-
-In wq.db 0.7.2 and earlier, the basic naming convention is `annotation-[type_id]-value`.  For example, the second annotation in the above example might be rendered into `<input>`s as follows:
-
-```xml
-<input type="hidden" name="annotation-13-id" value="124">
-<input name="annotation-13-value" value="30">
-```
-
-To accomplish this, the Mustache template might look something like this:
-```xml
-{{#annotations}}
-<input name="annotation-{{type_id}}-value" value="{{value}}">
-{{/annotations}}
-```
-
-Note that this naming convention means there is limited support for multi-valued annotations, which is one reason it was replaced.  wq.db 0.8.0 still supports this style, but it will be dropped in 1.0.
 
 #### Default Annotation List
 

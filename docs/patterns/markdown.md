@@ -116,9 +116,7 @@ Output:
 
 When rendering markdown content in detail views, the above representation can be used to retrieve the HTML content.  When rendering a form, specially-named form fields should be used to ensure the proper markdown texts are created or updated on the server when the form is submitted.
 
-#### New Style
-
-In wq.db 0.8.0 and later, the basic naming convention is based on the [HTML JSON forms] specification. For example, the markdown in the above example might be rendered into `<input>`s as follows:
+The basic naming convention is based on the [HTML JSON forms] specification. For example, the markdown in the above example might be rendered into `<input>`s as follows:
 
 ```xml
 <input type="hidden" name="markdown[0][id]" value="3">
@@ -139,26 +137,6 @@ To accomplish this, the Mustache template might look something like this:
 {{/markdown}}
 ```
 
-#### Old Style
-
-In wq.db 0.7.2 and earlier, the basic naming convention is `markdown-[type_id]-[field]`.  For example, the markdown in the above example might be rendered into `<input>`s as follows:
-
-```xml
-<input type="hidden" name="markdown-1-id" value="3">
-<input name="markdown-1-summary" value="Example">
-<textarea name="markdown-1-markdown"># Test
-Test Content</textarea>
-```
-
-To accomplish this, the Mustache template might look something like this:
-```xml
-{{#markdown}}
-<input type="hidden" name="markdown-{{type_id}}-id" value="{{id}}">
-<input name="markdown-{{type_id}}-summary" value="{{summary}}">
-<textarea name="markdown-{{type_id}}-markdown">{{markdown}}</textarea>
-{{/markdown}}
-```
-
 #### Default Markdown List
 
 When rendering "new" screens (which use the same template as edit screens), [wq/app.js] will automatically generate a list of blank markdown texts for all available markdown types.
@@ -168,7 +146,6 @@ When rendering "new" screens (which use the same template as edit screens), [wq/
 [design pattern]: https://wq.io/docs/about-patterns
 [Markdown]: http://daringfireball.net/projects/markdown/syntax
 [Entity-Attribute-Value (EAV)]: https://wq.io/docs/eav-vs-relational
-[dbio]: https://wq.io/dbio
 [REST API]: https://wq.io/docs/about-rest
 [chart]: https://wq.io/docs/chart
 [search]: https://wq.io/docs/search

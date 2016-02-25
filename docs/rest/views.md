@@ -37,8 +37,6 @@ class MyViewSet(ModelViewSet):
 ```python
 # myapp/rest.py
 from wq.db import rest
-# wq.db 0.7.2 and earlier:
-# from wq.db.rest import app as rest
 from .models import MyModel
 from .views import MyViewSet
 
@@ -66,7 +64,7 @@ The server-generated redirects are designed to mimic the client `postsave` funct
 }
 ```
 
-As of wq.db 0.8.1, `ModelViewSet` includes two methods, `postsave` and `saveerror`, that can be overridden like their counterparts in [wq/app.js] to fully customize server-rendered save behavior.
+`ModelViewSet` includes two methods, `postsave` and `saveerror`, that can be overridden like their counterparts in [wq/app.js] to fully customize server-rendered save behavior.
 
 > Note: Even when the client is fully AJAX+JSON capable, there are still [use cases] for processing forms and generating HTML responses and redirects entirely on the server.  This feature can be used together with jQuery Mobile's built-in HTML AJAX loader to make the difference between client- and server-generated form responses relatively seamless to the user.  However, note that jQuery Mobile (like any other AJAX client) cannot detect whether an HTML response involved a HTTP redirect.  If you choose to redirect to a server-rendered HTML page, be sure to set the `data-url` attribute on your `<div data-role=page>`, or the client will use the URL the form was submitted to as the page URL.  When [wq/app.js] does a "redirect" on the client side, this is not an issue - but it doesn't hurt to specify the `data-url` in that case as well.
 

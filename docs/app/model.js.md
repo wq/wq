@@ -10,8 +10,6 @@ wq/model.js
 
 **wq/model.js** is a [wq.app] module providing a simple API for working with lists or collections of similar objects.  It uses [wq/store.js] to retrieve the underlying JSON data from e.g. a REST API.
 
-> Note: wq/model.js is a new module in wq.app 0.8.0.  In wq.app 0.7.4 and earlier, the model functionality was embedded within wq/store.js as `getList()` and related APIs.  See the [0.7 docs] for the old API.
-
 ## API
 
 `wq/model.js` is typically imported via [AMD] as `model`, though any local variable name can be used.
@@ -211,7 +209,6 @@ myModel.overwrite([]);
 [wq.app]: https://wq.io/wq.app
 [wq/app.js]: https://wq.io/docs/app-js
 [wq/store.js]: https://wq.io/docs/store-js
-[0.7 docs]: https://wq.io/0.7/docs/store-js
 [AMD]: https://wq.io/docs/amd
 [wq.db]: https://wq.io/wq.db
 [wq configuration object]: https://wq.io/docs/config

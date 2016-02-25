@@ -216,7 +216,7 @@ The x value (`year` in the above example) is used to define an ordinal scale whe
 ```javascript
 var plot = chart.boxplot().xvalue(function(d) { return d.year });
 ```
-As of version 0.8.2, `chart.boxplot()` can be customized by overriding the following accessor methods:
+`chart.boxplot()` can be customized by overriding the following accessor methods:
 
 #### Accessors for Individual Values
 
