@@ -16,7 +16,8 @@ The easiest way to install wq is via the [Python Package Index].  Any of [wq.app
 If you are using wq.app and wq.db together, you can use the `wq start` command provided by the [wq Django template].  For production, you will need a WGSI-capable webserver like [Apache], and a database to host the application.  wq.db is generally used with [PostgreSQL] and [PostGIS], but any Django-supported database will work.  You can also use Django's built-in `./manage.py runserver` for development, or even use wq.app by itself and replace wq.db with your own backend solution.
 
 ```bash
-# Use --pre to get 1.0.0a1
+# Install wq 1.0.0a1
+sudo pip3 install https://github.com/sheppard/pyxform/archive/xml.zip
 sudo pip3 install wq --pre
 wq start [PROJECTNAME]
 ```
