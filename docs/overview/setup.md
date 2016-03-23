@@ -34,28 +34,60 @@ Detailed installation instructions are available for each of the following opera
 
 wq does not come with a canned data model by default.  This makes it extremely flexible to adapt to a variety of project workflows, but means you need to think a bit about [how to structure your database][data model] before continuing.  After installing wq and starting a project via `wq start`, you'll need to define a [Django application] with a `models.py` and a `rest.py`.  You can do this in at least three ways:
 
- 1. Define all of your field definitions in an ODK-style [XLSForm] spreadsheet, and have wq generate the Django application and templates for you.  To create an XLSForm, you can use an online form builder like the one provided by [KoboToolbox], or you can just download an example spreadsheet and add the definitions manually.  Note that only the most common field types are supported at this time.  Once you have an XLSForm ready you can use the built-in `wq addform` command provided by `wq.start`. For best results, use a relatively short name for the file and run the command in your `db/` folder.
+### Option 1: XLSForm syntax
+With this option, you can configure all of your field/question definitions in a spreadsheet following the [XLSForm] standard used by Open Data Kit and related projects.  You can then have wq generate the Django application and templates from the spreadsheet.  To create an XLSForm, you can use an online form builder like the one provided by [KoboToolbox], or you can just download an example spreadsheet and add the definitions manually.  Note that only the most common field types are supported at this time.  Once you have an XLSForm ready you can use the built-in `wq addform` command provided by `wq.start`. For best results, use a relatively short name for the file and run the command in your `db/` folder.
 
-    ```bash
-    cd [PROJECTNAME]/db
-    wq addform ~/survey.xlsx
-    ```
+```bash
+cd [PROJECTNAME]/db
+wq addform ~/survey.xlsx
+```
 
  You should see a new folder, `survey/`, with the files `models.py` and `rest.py`.  Going up one level, you should see `survey_list.html`, `survey_detail.html`, and `survey_edit.html` in your `../templates` folder.
- 2. Alternately, you can create a Django application folder manually and define `models.py` via [Django model] classes.  You will then want to create a `rest.py` file that registers each model class with the [wq.db router].
 
-    ```python
-    # survey/rest.py
-    from wq.db import rest
-    from .models import Survey
+### Option 2: Django Model syntax
+Alternatively, you can create a Django application folder manually and define `models.py` via [Django model] classes.  You will then want to create a `rest.py` file that registers each model class with the [wq.db router].
+
+```python
+# survey/models.py
+from django.db import models
+
+class Survey(models.Model):
+    date = models.DateField()
+    # ...
+```
+
+```python
+# survey/rest.py
+from wq.db import rest
+from .models import Survey
+
+rest.router.register_model(Survey)
+```
+
+### Option 3: SQL Syntax
+
+Finally, if you are handy with SQL (or have an existing database) you can define the tables there and generate an initial `models.py` by running [./manage.py inspectdb][inspectdb].
+
+### Settings & Migrations
+
+Once your models are defined via any of the three methods above, edit your project's `settings.py` to ensure the new application folder is listed under `INSTALLED_APPS`.
+
+```python
+# myproject/settings.py
+
+INSTALLED_APPS = [
+    # ...
     
-    rest.router.register_model(Survey)
-    ```
+    'wq.db.rest',
+    'wq.db.rest.auth',
 
- 3. Finally, if you are handy with SQL (or have an existing database) you can generate an initial `models.py` by running [./manage.py inspectdb][inspectdb].
+    # Project apps
+    'survey'
+]
+```
 
-Once your models are defined, edit your project's `settings.py` to ensure the new application folder is listed under `INSTALLED_APPS`.  Then, run Django's built in [migration commands] to create database tables in PostgreSQL corresponding to your model classes.  After running `./manage.py makemigrations` and `./manage.py migrate`, you can use `./manage.py dbshell`, psql, or pgAdmin to confirm that the tables are present.  If all goes well, you should be able to open a browser and visit your website's [/config.json] and [/modelnames.json] to confirm that the model(s) are registered.
-
+Then, run Django's built in [migration commands] to create database tables in PostgreSQL corresponding to your model classes.  After running `./manage.py makemigrations` and `./manage.py migrate`, you can use `./manage.py dbshell`, psql, or pgAdmin to confirm that the tables are present.  If all goes well, you should be able to open a browser and visit your website's [/config.json] and [/modelnames.json] to confirm that the model(s) are registered.
+  
 ## III. Create your User Interface
 
 Once your data model is defined and your REST API is running, you can start customizing the a user interface to list, view, create, and edit records in your database.  As of version 1.0, wq includes a default set of fully functional [HTML/Mustache templates][Mustache templates] for "list", "detail", and "edit"/"new" views.  You can use the `wq maketemplates` command to get automatically generated templates for each registered model.  This command is called by the default `./deploy.sh`.
