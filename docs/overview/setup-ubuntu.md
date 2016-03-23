@@ -11,12 +11,14 @@ The following steps should help you [install wq] and get a wq-powered web applic
 ## Using both wq.db and wq.app
 
 ```bash
+# Install system libraries
 sudo apt-get update
 sudo apt-get install apache2 libapache2-mod-wsgi-py3 postgresql-9.3-postgis-2.1 python3-pip python3-psycopg2
-sudo pip3 install wq
-
-# For wq.app build process (see https://github.com/wq/wq.app/issues/14)
 sudo apt-get install nodejs-legacy
+
+# Install wq 1.0.0a1
+sudo pip3 install https://github.com/sheppard/pyxform/archive/xml.zip
+sudo pip3 install wq --pre
 
 export PROJECTSDIR=/path/to/projects #e.g. /var/www
 export PROJECTNAME=myproject
