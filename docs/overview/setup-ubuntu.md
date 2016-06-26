@@ -3,17 +3,17 @@ order: 3
 indent: true
 ---
 
-Installing wq on Ubuntu 14.04 LTS
+Installing wq on Ubuntu 16.04 LTS
 =================================
 
-The following steps should help you [install wq] and get a wq-powered web application running on [Ubuntu], [Debian], or other similar Linux distributions.   These steps are tested on Ubuntu 14.04 LTS.
+The following steps should help you [install wq] and get a wq-powered web application running on [Ubuntu], [Debian], or other similar Linux distributions.   These steps are tested on Ubuntu 16.04 LTS.
 
 ## Using both wq.db and wq.app
 
 ```bash
 # Install system libraries
 sudo apt-get update
-sudo apt-get install apache2 libapache2-mod-wsgi-py3 postgresql-9.3-postgis-2.1 python3-pip python3-psycopg2
+sudo apt-get install apache2 libapache2-mod-wsgi-py3 postgresql-9.5-postgis-2.2 python3-pip python3-psycopg2
 sudo apt-get install nodejs-legacy
 
 # Install wq 1.0.0a1
@@ -30,7 +30,7 @@ cd $PROJECTNAME
 sudo chown www-data media/ # give Apache user permission to save uploads
 
 # Create database
-# (edit /etc/postgresql/9.3/main/pg_hba.conf and/or pg_ident.conf to set permissions)
+# (edit /etc/postgresql/9.5/main/pg_hba.conf and/or pg_ident.conf to set permissions)
 sudo service postgresql restart
 createuser -Upostgres $PROJECTNAME
 createdb -Upostgres -O$PROJECTNAME $PROJECTNAME
@@ -52,6 +52,14 @@ sudo service apache2 restart
 
 # generate htdocs folder via wq build
 ./deploy.sh 0.0.1
+
+# To Enable HTTPS:
+# (edit conf/$PROJECTNAME.conf, comment out WSGIDaemonProcess line)
+# (see https://github.com/certbot/certbot/issues/1820)
+sudo apt-get install python-letsencrypt-apache
+sudo a2enmod ssl
+sudo letsencrypt
+# (edit /etc/apache2/sites-enabled/$PROECTNAME-le-ssl.conf, uncomment WSGIDaemonProcess line)
 ```
 
 Visit the site in a web browser to verify the new installation.  You'll probably need to type in the server's IP address instead of the project name until your DNS is configured.  When the application loads, you should see "Hello world! Version 0.0.1", and a couple of button-styled links to a login screen and a list view.  
