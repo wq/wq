@@ -9,7 +9,7 @@
 	url = https://github.com/wq/wq.io.git
 [submodule "wq/start"]
 	path = wq/start
-	url = https://github.com/wq/wq-django-template.git
+	url = https://github.com/wq/wq.start.git
 [submodule "wq/core"]
 	path = wq/core
 	url = https://github.com/wq/wq.core.git
