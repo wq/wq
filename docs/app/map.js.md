@@ -321,9 +321,11 @@ map.addBasemapType('tile', function(layerConf) {
 });
 ```
 
+The [wq/mapserv.js] module provides additional examples of custom basemap types.
+
 ### `map.addOverlayType(name, function)`
 
-`map.addBasemapType` can be used to add custom overlay types in addition to the built in `"tile"` type.  The provided `function` should accept a basemap configuration and return a Leaflet layer instance.  For example, to create a WMS overlay with [leaflet.wms] you could do the following:
+`map.addOverlayType` can be used to add custom overlay types in addition to the built in `"geojson"` type.  The provided `function` should accept an overlay configuration and return a Leaflet layer instance.  For example, to create a WMS overlay with [leaflet.wms] you could do the following:
 
 ```javascript
 map.addOverlayType('wms', function(layerConf) {
@@ -333,6 +335,8 @@ map.addOverlayType('wms', function(layerConf) {
     return wmsSource.getLayer(layerconf.layer);
 });
 ```
+
+The [wq/mapserv.js] module provides additional examples of custom overlay types.
 
 ### `map.createIcon(name, options)`
 
@@ -411,3 +415,4 @@ map.createIcon("green", {'iconUrl': "/images/green.png"});
 [MapBox]: https://mapbox.com/
 [code for this website]: https://github.com/powered-by-wq/wq.io/blob/ad35bffe1514644e0bd978b5e79275ac2c312ea1/db/content/rest.py#L63
 [Esri Leaflet]: https://esri.github.io/esri-leaflet/
+[wq/mapserv.js]: https://github.com/wq/wq.app/blob/master/js/wq/mapserv.js
