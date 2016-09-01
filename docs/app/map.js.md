@@ -63,32 +63,79 @@ name | default | purpose
 `autoZoom.sticky` | `true` | Whether to save the last zoom and center (from auto-zooming and/or regular panning) for use in the next map (`true`) or to always start out new maps from the default zoom and center (`false`).  Particularly useful in maintaining visual consistency for the user when they are quickly navigating between a series of list or detail pages in succession.
 `autoZoom.maxZoom` | `13` | The maximum zoom level to use when auto-zooming.  (Useful to avoid zooming in too far when the only feature is a single point)
 `icon` | Object | Default icon settings for use with `map.createIcon()`.  The "default" default icon settings correspond to the default icon created by Leaflet (`L.Icon.Default`).
-`basemaps` | Array | Basemaps to use on every generated map.  By default, the [MapQuest-OSM and MapQuest Open Aerial] basemaps will be used:
+`basemaps` | Array | Basemap configuration to use on every generated map.  The `name` attribute will be used as the basemap name in the layers control, while the `type` specifies the name of a layer creation function to use when creating the basemap.  All other options will be passed to the layer creation function.  One basemap type is preregistered: `tile` (which corresponds to `L.tileLayer()`).
+
+#### Customizing the Basemap
+The default basemap configuration uses the free [Stamen Terrain] layer:
 
 ```javascript
-basemaps = [
+config.map.basemaps = [
     {
-        'name': "Street",
+        'name': "Stamen Terrain",
         'type': 'tile',
-        'url': mqcdn,
-        'subdomains': '1234',
-        'layer': 'map',
-        'attribution': osmAttr + ', ' + mqTilesAttr
-    },
-    {
-        'name': "Aerial",
-        'type': 'tile',
-        'url': mqcdn,
-        'subdomains': '1234',
-        'layer': 'sat',
-        'attribution': aerialAttr + ', ' + mqTilesAttr
+        'url': '//stamen-tiles-{s}.a.ssl.fastly.net/{layer}/{z}/{x}/{y}.jpg',
+        'layer': 'terrain',
+        'attribution': 'Map tiles by Stamen Design ...'
     }
 ];
 ```
 
-The only built-in basemap type is `tile`, but other types can be added via `map.addBasemapType()` (see Advanced Usage).
+If you would like to change the basemap (for example, to incorporate aerial imagery), you will need to customize this configuration to incorporate map tiles from another source.  There are a number of services available (some free for small projects), but nearly all now require an API key.  For example, after obtaining an API key from [MapBox], you might do something like this:
 
-#### Example
+```javascript
+var attrib = 'Map data ...',
+    token = '(insert API key)',
+    cdn = 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}';
+
+config.map = {
+    'basemaps': [{
+        'name': 'MapBox Streets',
+        'type': 'tile',
+        'url': cdn,
+        'id': 'mapbox.streets',
+        'accessToken': token,
+        'attribution': attrib
+    }, {
+        'name': 'MapBox Satellite',
+        'type': 'tile',
+        'url': cdn,
+        'id': 'mapbox.satellite',
+        'accessToken': token,
+        'attribution': attrib
+    }]
+};
+```
+
+If you want to keep your API token out of your version control, you can put it in a separate unversioned AMD module and/or include it in your `local_settings.py` and register it with your router (as in the [code for this website]).
+
+If you have an ArcGIS license, you can integrate ESRI basemaps by loading `wq/mapserv.js` rather than `wq/map.js`.  `wq/mapserv.js` is a variant of `wq/map.js` with additional basemap types corresponding to [Esri Leaflet] layer creation functions.  For example, to register the ESRI Topograpic, Streets, and Imagery layers, you could do something like the following:
+
+```javascript
+config.map = {
+    "basemaps": [
+        {   
+            "name": "ESRI Topographic",
+            "type": "esri-basemap",
+            "layer": "Topographic",
+        },
+        {   
+            "name": "ESRI Streets",
+            "type": "esri-basemap",
+            "layer": "Streets",
+        },
+        {   
+            "name": "ESRI Imagery",
+            "type": "esri-basemap",
+            "layer": "Imagery",
+            "labels": true,
+        }
+    ]
+}
+```
+
+Additional basemap types (e.g. from other Leaflet plugins) can be incorporated with `map.addBasemapType()` (see below).
+
+#### Full Example
 
 ```javascript
 // config.js
@@ -102,6 +149,9 @@ config.map = {
     'bounds': [
         [44.78, -93.1],
         [45.18, -93.5]
+    ],
+    'basemaps': [
+        // custom basemap definition
     ]
 });
 
@@ -111,13 +161,18 @@ return config;
 
 ```javascript
 // myapp.js
-define(['wq/app', 'wq/map', './config'], function(app, map, config) {
+
+define(['wq/app', 'wq/map', './config'],
+// to enable ESRI layers:
+// define(['wq/app', 'wq/mapserv', './config'],
+
+function(app, map, config) {
     app.use(map);
     app.init(config);
 });
 ```
 
-### Map Configuration
+### Individual Map Configuration
 
 After initialization, `map.config.maps` will be populated with map configurations for each page in the [wq configuration object] with a `"map"` property defined.  If the property is defined an object, it will be used as the map configuration.  Otherwise, a default map configuration object will be created.
 
@@ -299,26 +354,11 @@ map.createIcon("green", {'iconUrl': "/images/green.png"});
 
 ### `map.createBasemaps()`
 
-`map.createBasemaps()` gemerates basemap instances for use in every map generated by wq/map.js.  The function returns an object where the keys are layer names and the values are layer objects (usually `L.TileLayer`).  The basemaps will show up in the layer control generated for each map.
-
-`map.createBaseMaps()` can be used independently, for example if you have a custom Leaflet map not otherwise leveraging wq/map.js but want to reuse the built-in `Street` and/or `Aerial` basemaps.
-
-#### Example
-```javascript
-define(['leaflet', 'wq/map'], function(L, map) {
-
-// Use a basemap in a custom map
-var layer = map.createBasemaps().Street
-
-var customMap = L.map(...);
-layer.addTo(customMap);
-
-});
-```
+`map.createBasemaps()` gemerates the actual basemap instances for use in every map generated by wq/map.js.  The function returns an object where the keys are layer names and the values are layer objects (usually `L.TileLayer`).  The basemaps will show up in the layer control generated for each map.  Generally, you shouldn't need to call or override this function directly - instead, customize the global `basemaps` configuration and/or register custom basemap types with `addBasemapType()`.
 
 ### `map.createLayerControl(basemaps, layers)`
 
-`map.createLayerControl()` is a simple hook to allow customization of the default layer control added to every map generated by wq/map.js.  The function takes two arguments; the basemaps from `map.createBaseMaps()`, and the GeoJSON layers created by `map.createMap()` (using information from `map.getLayerConfs()`).  The default implementation simply passes the arguments on to, and returns, a [L.Control.Layers] instance.
+`map.createLayerControl()` is a simple hook to allow customization of the default layer control added to every map generated by wq/map.js.  The function takes two arguments; the basemaps from `map.createBasemaps()`, and the GeoJSON layers created by `map.createMap()` (using information from `map.getLayerConfs()`).  The default implementation simply passes the arguments on to, and returns, a [L.Control.Layers] instance.
 
 ### `map.renderPopup(page)`
 
@@ -367,3 +407,7 @@ layer.addTo(customMap);
 [leaflet.wms]: https://github.com/heigeo/leaflet.wms
 [Leaflet.draw]: https://github.com/leaflet/leaflet.draw
 [LocatedModel]: https://wq.io/docs/locate
+[Stamen Terrain]: http://maps.stamen.com/terrain/
+[MapBox]: https://mapbox.com/
+[code for this website]: https://github.com/powered-by-wq/wq.io/blob/ad35bffe1514644e0bd978b5e79275ac2c312ea1/db/content/rest.py#L63
+[Esri Leaflet]: https://esri.github.io/esri-leaflet/
