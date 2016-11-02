@@ -69,7 +69,7 @@ The available keyword arguments to `router.register_model()` include:
 | `viewset` | `wq.db.rest.views.ModelViewSet` | |
 | `serializer` | `wq.db.rest.serializers.ModelSerializer` | |
 | `queryset` | `[Model].objects.all()` | |
-| `filter` | No-op. | The argument should be a function that accepts a request object and a queryset and filters the latter. |
+| `filter` | No-op. | The argument should be a function that accepts a queryset and a request object and filters the former. |
 | `url` | `[Model]._meta.verbose_name_plural` | (with spaces removed) |
 
 Any other options given will be assigned to the model's [page configuration].
