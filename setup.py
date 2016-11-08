@@ -19,7 +19,7 @@ def long_description():
 
 setup(
     name='wq',
-    version='1.0.0b1',
+    version='1.0.0b2',
     author='S. Andrew Sheppard',
     author_email='andrew@wq.io',
     url='https://wq.io/',
@@ -27,11 +27,11 @@ setup(
     description=LONG_DESCRIPTION.strip(),
     long_description=long_description(),
     install_requires=[
-        'wq.app==1.0.0b1',
+        'wq.app==1.0.0b2',
         'wq.core==1.0.0b1',
-        'wq.db==1.0.0b2',
+        'wq.db==1.0.0b3',
         'wq.io==1.0.0b1',
-        'wq.start==1.0.0b2',
+        'wq.start==1.0.0b3',
     ],
     packages=['wq'],
     namespace_packages=['wq'],
