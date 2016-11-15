@@ -232,7 +232,7 @@ class MyModel(models.Model):
     <input id='input_types-datetime_field' type='datetime-local' data-xform-type='dateTime' name='datetime_field' value="">
     <p class="hint">Enter a date and a time.</p>
     <p class='error input_types-datetime_field-errors'></p>
-  </li>  
+  </li>
 </ul>
 
 *XLSForm Definition:*
@@ -298,7 +298,7 @@ class MyModel(models.Model):
   <li>
     <label for='input_types-point_field'>Point field</label>
     <input type='hidden' data-xform-type='geopoint' name='point_field' required>
-    <div class="map edit-map" id='point-map' data-interactive></div>
+    <div class="map edit-map" id='point-map' data-interactive style='height:300px;background:#ccc;border:1px solid black'></div>
     <p class="hint">Enter a point.</p>
     <p class='error input_types-point_field-errors'></p>
   </li>
@@ -331,7 +331,7 @@ class MyModel(models.Model):
   <li>
     <label for='input_types-linestring_field'>Line string field</label>
     <input type='hidden' data-xform-type='geotrace' name='linestring_field'>
-    <div class="map edit-map" id='linestring-map' data-interactive></div>
+    <div class="map edit-map" id='linestring-map' data-interactive style='height:300px;background:#ccc;border:1px solid black'></div>
     <p class="hint">Enter a line.</p>
     <p class='error input_types-linestring_field-errors'></p>
   </li>
@@ -366,7 +366,7 @@ class MyModel(models.Model):
   <li>
     <label for='input_types-polygon_field'>Polygon field</label>
     <input type='hidden' data-xform-type='geoshape' name='polygon_field'>
-    <div class="map edit-map" id='polygon-map' data-interactive></div>
+    <div class="map edit-map" id='polygon-map' data-interactive style='height:300px;background:#ccc;border:1px solid black'></div>
     <p class="hint">Enter a polygon.</p>
     <p class='error input_types-polygon_field-errors'></p>
   </li>
@@ -397,7 +397,7 @@ class MyModel(models.Model):
 
 [defining a data model]: https://wq.io/docs/data-model
 [XLSForm question types]: http://xlsform.org/#question-types
-[Django field types]: https://docs.djangoproject.com/en/1.10/ref/models/fields/
+[Django field types]: https://docs.djangoproject.com/en/1.10/ref/models/fields/#field-types
 [Advanced Patterns]: https://wq.io/docs/nested-forms
 [wq/photos.js]: https://wq.io/docs/photos-js
 [wq/map.js]: https://wq.io/docs/map-js
