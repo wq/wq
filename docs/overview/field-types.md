@@ -294,7 +294,7 @@ class MyModel(models.Model):
   <li>
     <label for='input_types-point_field'>Point field</label>
     <input type='hidden' data-xform-type='geopoint' name='point_field' required>
-    <div class="map edit-map" id='input_types-edit-map'></div>
+    <div class="map edit-map" id='point-map' data-interactive></div>
     <p class="hint">Enter a point.</p>
     <p class='error input_types-point_field-errors'></p>
   </li>
@@ -304,7 +304,7 @@ class MyModel(models.Model):
   <li>
     <label for='input_types-linestring_field'>Line string field</label>
     <input type='hidden' data-xform-type='geotrace' name='linestring_field'>
-    <div class="map edit-map" id='input_types-edit-map'></div>
+    <div class="map edit-map" id='linestring-map' data-interactive></div>
     <p class="hint">Enter a line.</p>
     <p class='error input_types-linestring_field-errors'></p>
   </li>
@@ -314,7 +314,7 @@ class MyModel(models.Model):
   <li>
     <label for='input_types-polygon_field'>Polygon field</label>
     <input type='hidden' data-xform-type='geoshape' name='polygon_field'>
-    <div class="map edit-map" id='input_types-edit-map'></div>
+    <div class="map edit-map" id='polygon-map' data-interactive></div>
     <p class="hint">Enter a polygon.</p>
     <p class='error input_types-polygon_field-errors'></p>
   </li>
