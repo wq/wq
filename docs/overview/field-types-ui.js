@@ -27,7 +27,7 @@ function makeMap(elem, type) {
     opts[type] = {};
     new L.Control.Draw({
         'draw': opts,
-        'edit': {'featureGroup': layer}
+        'edit': {'featureGroup': new L.FeatureGroup()}
     }).addTo(m);
 }
 
