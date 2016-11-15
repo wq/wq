@@ -14,10 +14,43 @@
    height="110"
    id="svg2"
    version="1.1"
-   inkscape:version="0.48.3.1 r9886"
+   inkscape:version="0.91 r13725"
    sodipodi:docname="wq.svg">
   <defs
      id="defs4">
+    <linearGradient
+       id="linearGradient4177">
+      <stop
+         style="stop-color:#009780;stop-opacity:1;"
+         offset="0"
+         id="stop4179" />
+      <stop
+         style="stop-color:#2affdf;stop-opacity:1"
+         offset="1"
+         id="stop4181" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient4171">
+      <stop
+         style="stop-color:#009780;stop-opacity:1;"
+         offset="0"
+         id="stop4173" />
+      <stop
+         style="stop-color:#00dbba;stop-opacity:1"
+         offset="1"
+         id="stop4175" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient4157">
+      <stop
+         id="stop4159"
+         offset="0"
+         style="stop-color:#009780;stop-opacity:1;" />
+      <stop
+         id="stop4161"
+         offset="1"
+         style="stop-color:#009881;stop-opacity:1" />
+    </linearGradient>
     <linearGradient
        id="linearGradient3895">
       <stop
@@ -40,7 +73,7 @@
          offset="0.21917808"
          style="stop-color:#540095;stop-opacity:1;" />
       <stop
-         style="stop-color:#ff9de9;stop-opacity:1;"
+         style="stop-color:#9677be;stop-opacity:1"
          offset="1"
          id="stop3881" />
     </linearGradient>
@@ -56,7 +89,7 @@
        gradientTransform="matrix(0.94736842,0,0,0.94736842,-613.94114,-600.39575)" />
     <linearGradient
        inkscape:collect="always"
-       xlink:href="#linearGradient3895"
+       xlink:href="#linearGradient4177"
        id="linearGradient3901"
        x1="180"
        y1="442.36218"
@@ -66,7 +99,7 @@
        gradientTransform="matrix(0.89616051,0,0,0.89616051,18.69111,43.338675)" />
     <linearGradient
        inkscape:collect="always"
-       xlink:href="#linearGradient3895"
+       xlink:href="#linearGradient4177"
        id="linearGradient3909"
        x1="205"
        y1="417.36218"
@@ -75,13 +108,22 @@
        gradientUnits="userSpaceOnUse" />
     <linearGradient
        inkscape:collect="always"
-       xlink:href="#linearGradient3895"
+       xlink:href="#linearGradient4177"
        id="linearGradient3911"
        gradientUnits="userSpaceOnUse"
        x1="205"
        y1="417.36218"
        x2="255"
        y2="417.36218" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4177"
+       id="linearGradient4169"
+       x1="-442.86218"
+       y1="-180.00002"
+       x2="-391.86218"
+       y2="-180.00002"
+       gradientUnits="userSpaceOnUse" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -90,9 +132,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="3.959798"
-     inkscape:cx="74.1768"
-     inkscape:cy="28.970315"
+     inkscape:zoom="1.979899"
+     inkscape:cx="-30.450946"
+     inkscape:cy="-66.512518"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -102,9 +144,9 @@
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:window-width="1920"
-     inkscape:window-height="1056"
-     inkscape:window-x="1280"
+     inkscape:window-width="1680"
+     inkscape:window-height="1026"
+     inkscape:window-x="0"
      inkscape:window-y="24"
      inkscape:window-maximized="1">
     <inkscape:grid
@@ -127,7 +169,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -137,7 +179,7 @@
      id="layer1"
      transform="translate(-150,-362.36218)">
     <rect
-       style="opacity:0.7;fill:url(#linearGradient3891);fill-opacity:1;stroke:#1a1a1a;stroke-opacity:1"
+       style="opacity:1;fill:url(#linearGradient3891);fill-opacity:1.0;stroke:#1a1a1a;stroke-opacity:1"
        id="rect3013"
        width="90"
        height="90"
@@ -146,7 +188,7 @@
        transform="matrix(0,-1,-1,0,0,0)"
        ry="14.210526" />
     <rect
-       style="fill:#1a1a1a;fill-opacity:1;stroke:#7fcbbf;stroke-opacity:1"
+       style="fill:#1a1a1a;fill-opacity:1;stroke:url(#linearGradient4169);stroke-opacity:1"
        id="rect3001"
        width="50"
        height="50"
@@ -156,16 +198,16 @@
     <g
        id="g3015"
        transform="matrix(0,-1,1,0,-187.36218,647.43765)"
-       style="fill:url(#linearGradient3909);fill-opacity:1;stroke:#1a1a1a;stroke-opacity:1">
-      <path
-         d="m 255,417.36218 c 0,13.80712 -11.19288,25 -25,25 -13.80712,0 -25,-11.19288 -25,-25 0,-13.80712 11.19288,-25 25,-25 13.80712,0 25,11.19288 25,25 z"
+       style="fill:url(#linearGradient3909);fill-opacity:1.0;stroke:#1a1a1a;stroke-opacity:1">
+      <circle
+         id="path3003"
+         style="fill:url(#linearGradient3911);fill-opacity:1.0;stroke:#1a1a1a;stroke-opacity:1"
+         sodipodi:type="arc"
          sodipodi:ry="25"
          sodipodi:rx="25"
          sodipodi:cy="417.36218"
          sodipodi:cx="230"
-         id="path3003"
-         style="fill:url(#linearGradient3911);fill-opacity:1;stroke:#1a1a1a;stroke-opacity:1"
-         sodipodi:type="arc" />
+         d="m 255,417.36218 a 25,25 0 0 1 -25,25 25,25 0 0 1 -25,-25 25,25 0 0 1 25,-25 25,25 0 0 1 25,25 z" />
     </g>
     <text
        xml:space="preserve"
@@ -177,11 +219,11 @@
          sodipodi:role="line"
          id="tspan3045"
          x="118.18785"
-         y="327.57773"></tspan></text>
+         y="327.57773" /></text>
     <path
        inkscape:connector-curvature="0"
        id="path3069"
-       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:url(#linearGradient3901);fill-opacity:1;stroke:none;font-family:URW Gothic L;-inkscape-font-specification:URW Gothic L Book"
+       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:url(#linearGradient3901);fill-opacity:1.0;stroke:none;font-family:URW Gothic L;-inkscape-font-specification:URW Gothic L Book"
        d="m 169.05853,432.36218 4.38756,0 6.47166,-19.90859 6.52652,19.90859 4.33272,0 11.62704,-30 -3.9488,0 -9.76234,25.11883 -7.07495,-21.44424 -3.34552,0 -7.07495,21.44424 -9.54296,-25.11883 -4.0585,0 11.46252,30" />
   </g>
   <g
