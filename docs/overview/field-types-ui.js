@@ -7,9 +7,9 @@ return main;
 
 function main($elems) {
     photos.run('doc', 'detail', 'field-types');
-    makeMap($elems.find('#point-map')[0], 'marker');
-    makeMap($elems.find('#linestring-map')[0], 'polyline');
-    makeMap($elems.find('#polygon-map')[0], 'polygon');
+    makeMap($elems.filter('#point-map')[0], 'marker');
+    makeMap($elems.filter('#linestring-map')[0], 'polyline');
+    makeMap($elems.filter('#polygon-map')[0], 'polygon');
 }
 
 function makeMap(elem, type) {
