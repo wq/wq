@@ -12,6 +12,7 @@ Introduction
 The **goal of wq** is to make it easy to rapidly assemble a complete data collection and management platform, while ensuring enough flexibility to adapt to project-specific data models and workflows.  While wq is not quite a point-and-click "form-builder" solution, it does provide a number of default templates and utilities to make it easy to [get started] quickly and customize later.  Moreover, wq has already been used to *create* point-and-click form builder solutions for [specific domains].
 
 From an implementation standpoint, **wq is comprised of** five modules:
+
  * **[wq.start]** provides project scaffolding tools and templates that help with the initial generation of a new wq-powered project.
  * **[wq.app]** provides the basis of the client application, through a collection of [JavaScript modules] and a provided build process.
  * **[wq.db]** provides a [REST API] and [server-side rendering] of application screens for fast initial loading.
