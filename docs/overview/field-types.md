@@ -5,7 +5,9 @@ order: 8
 Common Field Types
 ==================
 
-Below are the most common field types used when [defining a data model] for use with wq.
+Below are the most common field types used when [defining a data model] for use with wq.  You may also be interested in the full lists of [XLSForm question types] and [Django field types].
+
+If you want to define nested / repeat forms or allow user-defined fields, see [Advanced Patterns]. 
 
 ## Text Fields
 
@@ -162,7 +164,7 @@ WIP
 
 ## Date & Time Fields
 
-### Date Field
+### Date
 
 <ul data-role="listview" data-inset="true">
   <li class="ui-field-contain">
@@ -192,7 +194,7 @@ class MyModel(models.Model):
     )
 ```
 
-### Time Field
+### Time
 
 <ul data-role="listview" data-inset="true">
   <li class="ui-field-contain">
@@ -222,7 +224,7 @@ class MyModel(models.Model):
     )
 ```
 
-### DateTime Field
+### Date + Time
 
 <ul data-role="listview" data-inset="true">
   <li class="ui-field-contain">
@@ -254,7 +256,7 @@ class MyModel(models.Model):
 
 ## Files & Photos
 
-### Photo Field
+### Photo
 
 <ul data-role="listview" data-inset="true">
   <li class="ui-field-contain">
@@ -290,6 +292,8 @@ class MyModel(models.Model):
 
 ## Geospatial Fields
 
+### Point
+
 <ul data-role="listview" data-inset="true">
   <li>
     <label for='input_types-point_field'>Point field</label>
@@ -299,6 +303,29 @@ class MyModel(models.Model):
     <p class='error input_types-point_field-errors'></p>
   </li>
 </ul>
+
+*XLSForm Definition:*
+
+type | name | label | hint | required | constraint
+-----|------|-------|------|----------|------------
+geopoint | [name] | Point field | Enter a point. | yes | 
+
+*Django definition:*
+
+```python
+from django.contrib.gis.db import models
+
+class MyModel(models.Model):
+    [name] = models.PointField(
+        srid=4326,
+        verbose_name="Point field",
+        help_text="Enter a point.",
+    )
+```
+
+> This field uses a wq/app.js plugin to display the map editor.  For more information, see the documentation for [wq/map.js].  If you are collecting point locations via GPS, you may also be interested in the [wq/locate.js] plugin.
+
+### LineString
 
 <ul data-role="listview" data-inset="true">
   <li>
@@ -310,6 +337,31 @@ class MyModel(models.Model):
   </li>
 </ul>
 
+*XLSForm Definition:*
+
+type | name | label | hint | required | constraint
+-----|------|-------|------|----------|------------
+geotrace | [name] | Line string field | Enter a line. | | 
+
+*Django definition:*
+
+```python
+from django.contrib.gis.db import models
+
+class MyModel(models.Model):
+    [name] = models.LineStringField(
+        srid=4326,
+        null=True,
+        blank=True,
+        verbose_name="Line string field",
+        help_text="Enter a line.",
+    )
+```
+
+> This field uses a wq/app.js plugin to display the map editor.  For more information, see the documentation for [wq/map.js].
+
+### Polygon
+
 <ul data-role="listview" data-inset="true">
   <li>
     <label for='input_types-polygon_field'>Polygon field</label>
@@ -320,5 +372,33 @@ class MyModel(models.Model):
   </li>
 </ul>
 
+*XLSForm Definition:*
+
+type | name | label | hint | required | constraint
+-----|------|-------|------|----------|------------
+geoshape | [name] | Polygon field | Enter a polygon. | | 
+
+*Django definition:*
+
+```python
+from django.contrib.gis.db import models
+
+class MyModel(models.Model):
+    [name] = models.PolygonField(
+        srid=4326,
+        null=True,
+        blank=True,
+        verbose_name="Polygon field",
+        help_text="Enter a polygon.",
+    )
+```
+
+> This field uses a wq/app.js plugin to display the map editor.  For more information, see the documentation for [wq/map.js].
+
 [defining a data model]: https://wq.io/docs/data-model
+[XLSForm question types]: http://xlsform.org/#question-types
+[Django field types]: https://docs.djangoproject.com/en/1.10/ref/models/fields/
+[Advanced Patterns]: https://wq.io/docs/nested-forms
 [wq/photos.js]: https://wq.io/docs/photos-js
+[wq/map.js]: https://wq.io/docs/map-js
+[wq/locate.js]: https://wq.io/docs/locate-js
