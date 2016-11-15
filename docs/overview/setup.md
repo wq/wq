@@ -33,62 +33,19 @@ Detailed installation instructions are available for each of the following opera
 
 ## II. Define your Data Model
 
-wq does not come with a canned data model by default.  This makes it extremely flexible to adapt to a variety of project workflows, but means you need to think a bit about [how to structure your database][data model] before continuing.  After installing wq and starting a project via `wq start`, you'll need to define a [Django application] with a `models.py` and a `rest.py`.  You can do this in at least three ways:
+wq does not come with a canned data model by default.  This makes it extremely flexible to adapt to a variety of project workflows, but means you need to think a bit about how you want to structure your data before continuing.  The data schema you define will be used to create one or more database tables as well as the HTML forms for entering data.
 
-### Option 1: XLSForm syntax
-With this option, you can configure all of your field/question definitions in a spreadsheet following the [XLSForm] standard used by Open Data Kit and related projects.  You can then have wq generate the Django application and templates from the spreadsheet.  To create an XLSForm, you can use an online form builder like the one provided by [KoboToolbox], or you can just download an example spreadsheet and add the definitions manually.  Note that only the most common field types are supported at this time.  Once you have an XLSForm ready you can use the built-in `wq addform` command provided by `wq.start`. For best results, use a relatively short name for the file and run the command in your `db/` folder.
+See the following for more information on defining a data schema:
 
-```bash
-cd [PROJECTNAME]/db
-wq addform ~/survey.xlsx
-```
+### [Data Model]
+Introduction to Django models and tips for creating them from an XLSForm definition.
 
- You should see a new folder, `survey/`, with the files `models.py` and `rest.py`.  Going up one level, you should see `survey_list.html`, `survey_detail.html`, and `survey_edit.html` in your `../templates` folder.
+### [Common Field Types]
+A comprehensive list of the common field / question types and conventions for using them in wq.
 
-### Option 2: Django Model syntax
-Alternatively, you can create a Django application folder manually and define `models.py` via [Django model] classes.  You will then want to create a `rest.py` file that registers each model class with the [wq.db router].
+### [Advanced Patterns]
+Instructions for defining nested forms ("repeat groups" in XLSForm syntax) as well as user-definable attributes (e.g. EAV).
 
-```python
-# survey/models.py
-from django.db import models
-
-class Survey(models.Model):
-    date = models.DateField()
-    # ...
-```
-
-```python
-# survey/rest.py
-from wq.db import rest
-from .models import Survey
-
-rest.router.register_model(Survey)
-```
-
-### Option 3: SQL Syntax
-
-Finally, if you are handy with SQL (or have an existing database) you can define the tables there and generate an initial `models.py` by running [./manage.py inspectdb][inspectdb].
-
-### Settings & Migrations
-
-Once your models are defined via any of the three methods above, edit your project's `settings.py` to ensure the new application folder is listed under `INSTALLED_APPS`.
-
-```python
-# myproject/settings.py
-
-INSTALLED_APPS = [
-    # ...
-    
-    'wq.db.rest',
-    'wq.db.rest.auth',
-
-    # Project apps
-    'survey'
-]
-```
-
-Then, run Django's built in [migration commands] to create database tables in PostgreSQL corresponding to your model classes.  After running `./manage.py makemigrations` and `./manage.py migrate`, you can use `./manage.py dbshell`, psql, or pgAdmin to confirm that the tables are present.  If all goes well, you should be able to open a browser and visit your website's [/config.json] and [/modelnames.json] to confirm that the model(s) are registered.
-  
 ## III. Create your User Interface
 
 Once your data model is defined and your REST API is running, you can start customizing the a user interface to list, view, create, and edit records in your database.  As of version 1.0, wq includes a default set of fully functional [HTML/Mustache templates][Mustache templates] for "list", "detail", and "edit"/"new" views.  You can use the `wq maketemplates` command to get automatically generated templates for each registered model.  This command is called by the default `./deploy.sh`.
@@ -110,17 +67,9 @@ The generated templates are stored in `templates/` so that they can be individua
 [Windows]: https://wq.io/docs/setup-windows
 [OS X]: https://wq.io/docs/setup-osx
 [Red Hat Enterprise Linux / CentOS]: https://wq.io/docs/setup-redhat
-[Django Application]: https://docs.djangoproject.com/en/1.8/ref/applications/
-[XLSForm]: http://xlsform.org
-[KoboToolbox]: https://kobotoolbox.org
-[data model]: https://wq.io/docs/eav-vs-relational
-[Django Model]: https://docs.djangoproject.com/en/1.8/topics/db/models/
-[Model patterns]: https://wq.io/docs/about-patterns
-[migration commands]: https://docs.djangoproject.com/en/1.8/ref/django-admin/#django-admin-migrate
-[wq.db router]: https://wq.io/docs/router
-[inspectdb]: https://docs.djangoproject.com/en/1.9/howto/legacy-databases/
-[/config.json]: https://wq.io/docs/config
-[/modelnames.json]: https://wq.io/docs/url-structure
+[Data Model]: https://wq.io/docs/data-model
+[Common Field Types]: https://wq.io/docs/field-types
+[Advanced Patterns]: https://wq.io/docs/nested-forms
 [Mustache templates]: https://wq.io/docs/templates
 [example templates]: https://github.com/wq/wq-django-template/tree/master/django_project/templates
 [Species Tracker source code]: https://github.com/powered-by-wq/species.wq.io/
