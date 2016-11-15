@@ -5,16 +5,11 @@ order: 8
 Common Field Types
 ==================
 
+Below are the most common field types used when [defining a data model] for use with wq.
+
 ## Text Fields
 
-<ul data-role="listview" data-inset="true">
-  <li class="ui-field-contain">
-    <label for='input_types-text_field'>Text field</label>
-    <textarea id='input_types-text_field' name='text_field' data-xform-type="text"></textarea>
-    <p class="hint">Enter some text.</p>
-    <p class='error input_types-text_field-errors'></p>
-  </li>
-</ul>
+### Short Text Input (Char)
 
 <ul data-role="listview" data-inset="true">
   <li class="ui-field-contain">
@@ -22,6 +17,37 @@ Common Field Types
     <input id='input_types-char_field' type='text' data-xform-type='string' name='char_field' value="">
     <p class="hint">Enter some text.</p>
     <p class='error input_types-char_field-errors'></p>
+  </li>
+</ul>
+
+XLSForm Definition:
+
+type | name | label | hint | required | constraint
+-----|------|-------|------|----------|------------
+string | [name] | Char field | Enter some text | | wq:length(5)
+
+Django definition:
+```python
+from django.db import models
+
+class MyModel(models.Model):
+    [name] = models.CharField(
+        max_length=255,
+        null=True,
+        blank=True,
+        verbose_name="Char field",
+        help_text="Enter some text.",
+    )
+```
+
+### Long Text Input (Text)
+
+<ul data-role="listview" data-inset="true">
+  <li class="ui-field-contain">
+    <label for='input_types-text_field'>Text field</label>
+    <textarea id='input_types-text_field' name='text_field' data-xform-type="text"></textarea>
+    <p class="hint">Enter some text.</p>
+    <p class='error input_types-text_field-errors'></p>
   </li>
 </ul>
 
@@ -128,3 +154,5 @@ WIP
     <p class='error input_types-polygon_field-errors'></p>
   </li>
 </ul>
+
+[defining a data model]: https://wq.io/docs/data-model
