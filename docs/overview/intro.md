@@ -25,19 +25,19 @@ Like any software framework, the design of wq incorporates a number of **core pr
 The documentation is structured to lay the foundation and conventions before getting into the implementation details.  The chapters are as follows:
 
 1. [Getting Started][Overview]
-  1. [Installation]
-  2. [Data Model]
+    1. [Installation]
+    2. [Data Model]
 2. [Philosophy]
 3. [API Conventions]
 4. Module Documentation
-  1. **wq.app**
-    1. [JavaScript Modules][JavaScript modules]
-    2. [Build Process]
-  2. **wq.db**
-    1. [REST API generator][REST API]
-    2. [Design Patterns]
-  3. **wq.io**
-    1. [Dataset IO]
+    1. **wq.app**
+        1. [JavaScript Modules][JavaScript modules]
+        2. [Build Process]
+    2. **wq.db**
+        1. [REST API generator][REST API]
+        2. [Design Patterns]
+    3. **wq.io**
+        1. [Dataset IO]
 
 [get started]: https://wq.io/docs/setup
 [specific domains]: https://wq.io/projects/
