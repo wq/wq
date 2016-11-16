@@ -73,8 +73,8 @@ Like the common field types, wq allows nested forms to be specified using either
 
 type | name | label | constraint | required
 -----|------|-------|------------|----------
-text | name | Name | yes |
-begin repeat | items | Items | wq:initial(3) | | yes
+text | name | Name | | yes
+begin repeat | items | Items | wq:initial(3) | yes
 text | name | Item Name | | yes
 integer | count | Item Count | | yes
 end repeat | | | | 
