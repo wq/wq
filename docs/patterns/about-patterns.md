@@ -42,6 +42,8 @@ model | entity base class | attribute model | value model | description
 [mark] | `MarkedModel` | `MarkdownType` | `Markdown` | Maintain multiple markdown snippets for a model (e.g. in different languages)
 [relate] | `RelatedModel` | `RelationshipType`,<br>`InverseRelationshipType` | `Relationship`,<br>`InverseRelationship` | Generic typed many-to-many relationships
 
+If none of the above provide quite what you need, you can also define your own EAV pattern by extending the base implementation.  See [Advanced Patterns] for more information.
+
 [wq.db.patterns]: https://github.com/wq/wq.db/blob/master/patterns
 [wq.db]: https://wq.io/wq.db
 [Django apps]: https://docs.djangoproject.com/en/1.7/ref/applications/#projects-and-applications
@@ -55,3 +57,4 @@ model | entity base class | attribute model | value model | description
 [mark]: https://wq.io/docs/markdown
 [relate]: https://wq.io/docs/relate
 [files]: https://wq.io/docs/files
+[Advanced Patterns]: https://wq.io/docs/nested-forms
