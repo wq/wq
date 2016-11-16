@@ -6,11 +6,11 @@ description: This article exists to describe one key decision you will need to m
 To EAV, or not to EAV? Choosing your data model
 ===============================================
 
-Once you've determined to use a [web-based approach](https://wq.io/docs/web-app) for your offline-capable citizen science app, and have [installed wq], you are now ready for the most important step when building an app for citizen science: **defining your data model**.  This step is so important, in fact, that [wq does not do it for you][about].  Your project needs and topic domain will determine what data model is best for your application.  wq does provide a number of common [design patterns] we've found useful, but these are not required, and in some cases should be avoided.
+Once you've determined to use a [web-based approach](https://wq.io/docs/web-app) for your offline-capable citizen science app, and have [installed wq], you are now ready for the most important step when building an app for citizen science: **defining your data model**.  This step is so important, in fact, that [wq does not do it for you][data model].  Your project needs and topic domain will determine what data model is best for your application.  wq does provide a number of common [design patterns] we've found useful, but these are not required, and in some cases should be avoided.
 
 This article exists to describe one key decision you will need to make - whether to use a traditional [relational model], or to use an [Entity-Attribute-Value] (EAV) model (also commonly referred to as an open schema).  The key difference in the two approaches is the level of flexibility your model has in adapting to changing project requirements, especially when new attribute definitions are needed.  At a high level, attributes are added as *columns* to a relational schema, but as *rows* in an EAV schema.  This means that an EAV schema can be administered via a web-based interface, while a relational schema typically needs to be modified by a database administrator.
 
-Perhaps unsurprisingly, wq supports both approaches out of the box, though the framework has traditionally had better support for the EAV-style approach (which is important for [water quality monitoring]).  One particular strength of an EAV approach is the ability to create "form-builder" or "campaign" driven applications.  Essentially, you can design applications that allow project participants to define their own data collection requirements via an intuitive web-based interface.  [wq is not a form-builder][about], but that shouldn't prevent you from using it to make one!
+Perhaps unsurprisingly, wq supports both approaches out of the box, though the framework has traditionally had better support for the EAV-style approach (which is important for [water quality monitoring]).  One particular strength of an EAV approach is the ability to create "form-builder" or "campaign" driven applications.  Essentially, you can design applications that allow project participants to define their own data collection requirements via an intuitive web-based interface.  [wq is not a form-builder per se][about], but that shouldn't prevent you from using it to make one!
 
 > Note: In [wq.db] (and many other platforms), EAV-style schemas are supported under the hood via the use of relational tables that define a meta-schema.  In addition, these approaches are often mixed within the same project.  So, using an EAV model doesn't exactly mean forgoing a relational schema.  The main goal of this article is to help your determine a high-level strategy for the structure of your data - and especially the time series observations submitted by your project participants.
 
@@ -57,12 +57,13 @@ You might want to use an **EAV model** if you:
  * are starting a new project and have full control over the schema
  * already know that this the direction you want to go
 
-If you know you want an EAV structure and are working with time series data, you may be interested in [vera], which is an implementation of [ERAV], an extension to EAV with enhanced support for provenance tracking and bulk data import (i.e. from Excel).
+If you know you want an EAV structure and are working with time series data, you may be interested in [vera], which is an implementation of [ERAV], an extension to EAV with enhanced support for provenance tracking and bulk data import (i.e. from Excel).  Otherwise, you can always create your own EAV structure using the methods discussed in [Advanced Patterns].
 
 The [Try WQ] demo is an example of an app that uses a primarily EAV model for the time series table (see the [Try WQ model definitions] as well as the [vera model definitions]).  This is what makes it possible for participants to define [custom campaigns] on the fly.
 
 [web-based approach]: https://wq.io/docs/web-app
 [installed wq]: https://wq.io/docs/setup
+[data model]: https://wq.io/docs/data-model
 [about]: https://wq.io/docs/intro
 [design patterns]: https://wq.io/docs/about-patterns
 [relational model]: https://en.wikipedia.org/wiki/Relational_model
@@ -81,6 +82,7 @@ The [Try WQ] demo is an example of an app that uses a primarily EAV model for th
 [serializer]: https://wq.io/docs/serializers
 [vera]: https://wq.io/vera
 [ERAV]: https://wq.io/docs/erav
+[Advanced Patterns]: https://wq.io/docs/nested-forms
 [this example]: https://github.com/powered-by-wq/try.wq.io/blob/master/templates/partials/result_inline.html
 [Try WQ]: https://github.com/powered-by-wq/try.wq.io
 [Try WQ model definitions]: https://github.com/powered-by-wq/try.wq.io/blob/master/db/campaigns/models.py
