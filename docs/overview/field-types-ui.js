@@ -25,9 +25,13 @@ function makeMap(elem, type) {
         'rectangle': false
     };
     opts[type] = {};
+    var layer = new L.FeatureGroup();
+    m.on('draw:created', function(e) {
+        layer.addLayer(e.layer);
+    });
     new L.Control.Draw({
         'draw': opts,
-        'edit': {'featureGroup': new L.FeatureGroup()}
+        'edit': {'featureGroup': layer},
     }).addTo(m);
 }
 
