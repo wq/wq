@@ -160,7 +160,102 @@ class MyModel(models.Model):
 
 ## Choice (Domain) Fields
 
-WIP
+### Static Choices
+
+Static choice fields are useful for quick survey questions with a small set of rarely changing options.  "Yes/No" fields can also be implemented this way (though Django also includes a separate `BooleanField`).
+
+<ul data-role="listview" data-inset="true">
+  <li class="ui-field-contain">
+    <fieldset data-xform-type='select one' data-role='controlgroup' data-type='horizontal'>
+      <legend>Pick a color</legend>
+      <input type='radio' id='select-color-red' name='color' value='red'>
+      <label for='select-color-red'>Red</label>
+      <input type='radio' id='select-color-green' name='color' value='green'>
+      <label for='select-color-green'>Green</label>
+      <input type='radio' id='select-color-blue' name='color' value='blue'>
+      <label for='select-color-blue'>Blue</label>
+    </fieldset>
+    <p class='error select-color-errors'></p>
+  </li>
+</ul>
+
+*XLSForm Definition:*
+
+**survey tab**
+
+type | name | label | hint | required | constraint
+-----|------|-------|------|----------|------------
+select_one colors | [name] | Color | Pick a color | | 
+
+**choices tab**
+
+list name | name | label
+----------|------|-------
+colors | red  | Red
+colors | green | Green
+colors | blue | Blue
+
+*Django definition:*
+
+```python
+from django.db import models
+
+class MyModel(models.Model):
+    [name] = models.CharField(
+        choices=(
+            ("red", "Red"),
+            ("green", "Green"),
+            ("blue", "Blue"),
+        ),
+        max_length=5,
+        null=True,
+        blank=True,
+        verbose_name="Pick a color",
+    )
+```
+
+### Dynamic Choices (ForeignKey)
+
+Dynamic choices make it possible for any user of your application to dynamically update the available domain values without you needing to recompile the application.  Under the hood, dynamic choices are implemented as foreign keys to other existing relational tables.  In fact, wq does not distinguish in any meaningful way between tables used as domain values versus tables used to manage the actual observation data.  This means all tables can be registered with the REST API and managed from the client app (assuming that the appropriate permissions are given to each respective user.)  For example, one of the most common schema designs has been to split the observation timeseries into separate "Site" and "Observation" tables, with a ForeignKey pointing from Observation to Site.  Users then can manage their list of sites separately from their observational data.
+
+As of wq version 1.0, it is possible to use foreign keys to link parent-child records while working offline, even when the parent record has not yet been synced to the server.  The example below assumes that "Site A3" was created on a separate form that has not yet been synced to the server.  If that site was selected when this form was saved, [wq/outbox.js] would ensure that Site A3 is properly synced before attempting to sync this form.
+
+Depending on your use case, it is also possible to define a single form with nested children that populates multiple tables at once - see [Advanced Patterns] for more information.
+
+<ul data-role="listview" data-inset="true">
+  <li class="ui-field-contain">
+    <label for='select-site_id'>Pick a Site ID</label>
+    <select id='select-site_id' data-xform-type='integer' name='site_id' required>
+      <option value="">Select one...</option>
+      <option value="site-A3">* Site A3</option>
+      <option value="landfill">Landfill Site</option>
+      <option value="cd2">CD2</option>
+      <option value="cd3">CD48</option>
+      <option value="creek">Pine Creek Bridge</option>
+    </select>
+    <p class='error select-site_id-errors'></p>
+  </li>
+</ul>
+
+*XLSForm Definition:*
+
+type | name | label | hint | required | constraint
+-----|------|-------|------|----------|------------
+integer | [name] | Pick a Site ID | wq:ForeignKey("other_app.Site") | yes |
+
+> This is a wq-specific extension to the XLSForm syntax.  It assumes that `other_app.Site` has already been defined in another Django app.  If you would like to define multiple tables in the same XLSForm, see [Advanced Patterns].
+
+*Django definition:*
+
+```python
+from django.db import models
+
+class MyModel(models.Model):
+    [name] = models.ForeignKey(
+        "other_app.Site",
+        verbose_name="Pick a Site ID",
+    )
+```
 
 ## Date & Time Fields
 
@@ -402,3 +497,4 @@ class MyModel(models.Model):
 [wq/photos.js]: https://wq.io/docs/photos-js
 [wq/map.js]: https://wq.io/docs/map-js
 [wq/locate.js]: https://wq.io/docs/locate-js
+[wq/outbox.js]: https://wq.io/docs/outbox-js
