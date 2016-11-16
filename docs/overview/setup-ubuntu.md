@@ -8,25 +8,29 @@ Installing wq on Ubuntu 16.04 LTS
 
 The following steps should help you [install wq] and get a wq-powered web application running on [Ubuntu], [Debian], or other similar Linux distributions.   These steps are tested on Ubuntu 16.04 LTS.
 
+As of wq 1.0, we recommend installing wq in a [venv] virtual environment.  This makes it easier to run multiple wq-powered applications on the same server.  The old way of using system-wide packages should still work.
+
 ## Using both wq.db and wq.app
 
 ```bash
 # Install system libraries
 sudo apt-get update
-sudo apt-get install apache2 libapache2-mod-wsgi-py3 postgresql-9.5-postgis-2.2 python3-pip python3-psycopg2
+sudo apt-get install apache2 libapache2-mod-wsgi-py3 postgresql-9.5-postgis-2.2 python3-venv
 sudo apt-get install nodejs-legacy
 
-# Install wq 1.0.0a1
-sudo pip3 install https://github.com/sheppard/pyxform/archive/xml.zip
-sudo pip3 install wq --pre
-
+# Start a new project
 export PROJECTSDIR=/path/to/projects #e.g. /var/www
 export PROJECTNAME=myproject
 
-# Create project directory from wq template
 cd $PROJECTSDIR
-wq start $PROJECTNAME
+mkdir $PROJECTNAME
 cd $PROJECTNAME
+python3 -m venv venv
+. venv/bin/activate
+
+# Install wq 1.0.0b2 within venv
+pip install wq --pre
+wq start $PROJECTNAME .
 sudo chown www-data media/ # give Apache user permission to save uploads
 
 # Create database
@@ -35,6 +39,7 @@ sudo service postgresql restart
 createuser -Upostgres $PROJECTNAME
 createdb -Upostgres -O$PROJECTNAME $PROJECTNAME
 psql -Upostgres $PROJECTNAME -c "CREATE EXTENSION postgis;"
+pip install psycopg2
 
 # Install database tables & create admin account
 # (edit db/$PROJECTNAME/local_settings.py with database info, if different than above)
@@ -44,6 +49,9 @@ cd db/
 
 # Configure and restart Apache
 # (edit conf/$PROJECTNAME.conf with correct domain name)
+# (edit conf/$PROJECTNAME.conf to ensure the venv is included in the WSGIDaemonProcess line)
+# WSGIDaemonProcess $PROJECTNAME display-name=%{GROUP} python-home=$PROJECTSDIR/$PROJECTNAME/venv python-path=$PROJECTSDIR/$PROJECTNAME/db
+
 sudo ln -s $PROJECTSDIR/$PROJECTNAME/conf/$PROJECTNAME.conf /etc/apache2/sites-available/
 sudo a2ensite $PROJECTNAME
 sudo a2dissite 000-default # optional - will make $PROJECTNAME the default site
@@ -125,6 +133,7 @@ See the [wq.app module list] for available modules, and the [build docs] for inf
 [install wq]: https://wq.io/docs/setup
 [Ubuntu]: http://www.ubuntu.com/
 [Debian]: https://www.debian.org/
+[venv]: https://docs.python.org/3/library/venv.html
 [latest release]: https://github.com/wq/wq.app/releases
 [js/wq]: https://wq.io/docs/app
 [JavaScript dependencies]: https://wq.io/docs/third-party
