@@ -25,7 +25,7 @@ function makeMap(elem, type) {
         'rectangle': false
     };
     opts[type] = {};
-    var layer = new L.FeatureGroup();
+    var layer = L.featureGroup().addTo(m);
     m.on('draw:created', function(e) {
         layer.addLayer(e.layer);
     });
