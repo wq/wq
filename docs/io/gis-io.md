@@ -10,8 +10,8 @@ Geospatial support in wq.io
 
 To leverage all of these features:
 ```bash
-pip3 install wq.io
-pip3 install geopandas
+pip install wq.io
+pip install geopandas
 ```
 
 ### GisIO
