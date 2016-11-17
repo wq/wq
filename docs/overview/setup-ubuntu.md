@@ -23,7 +23,8 @@ export PROJECTSDIR=/path/to/projects #e.g. /var/www
 export PROJECTNAME=myproject
 
 cd $PROJECTSDIR
-mkdir $PROJECTNAME
+sudo mkdir $PROJECTNAME
+sudo chown $PROJECTNAME `whoami`
 cd $PROJECTNAME
 python3 -m venv venv
 . venv/bin/activate
