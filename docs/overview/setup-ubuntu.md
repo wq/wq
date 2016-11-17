@@ -18,13 +18,13 @@ sudo apt-get update
 sudo apt-get install apache2 libapache2-mod-wsgi-py3 postgresql-9.5-postgis-2.2 python3-venv
 sudo apt-get install nodejs-legacy
 
-# Start a new project
+# Create project directory and venv
 export PROJECTSDIR=/path/to/projects #e.g. /var/www
 export PROJECTNAME=myproject
 
 cd $PROJECTSDIR
 sudo mkdir $PROJECTNAME
-sudo chown $PROJECTNAME `whoami`
+sudo chown `whoami` $PROJECTNAME
 cd $PROJECTNAME
 python3 -m venv venv
 . venv/bin/activate
