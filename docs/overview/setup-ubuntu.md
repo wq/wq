@@ -70,7 +70,7 @@ sudo letsencrypt
 # (edit /etc/apache2/sites-enabled/$PROECTNAME-le-ssl.conf, uncomment WSGIDaemonProcess line)
 ```
 
-Visit the site in a web browser to verify the new installation.  You'll probably need to type in the server's IP address instead of the project name until your DNS is configured.  When the application loads, you should see "Hello world! Version 0.0.1", and a couple of button-styled links to a login screen and a list view.  
+Visit the site in a web browser to verify the new installation.  You'll probably need to type in the server's IP address instead of the project name until your DNS is configured.  When the application loads, you should see "Hello world! Version 0.0.1", and links to log in and out.  You are now ready to start defining and registering [Django models] which will appear on the home screen after you rebuild the application with deploy.sh.  (Note that due to the application cache, you may need to refresh multiple times to see the new models appear.)
 
 ## Using only wq.app
 
@@ -144,3 +144,4 @@ See the [wq.app module list] for available modules, and the [build docs] for inf
 [optimize]: https://wq.io/docs/build
 [volo]: http://volojs.org
 [build docs]: https://wq.io/docs/build
+[Django models]: https://wq.io/docs/data-model
