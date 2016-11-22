@@ -189,7 +189,7 @@ name | default | purpose
 
 #### Configuration Options
 
-In addition to the mode and map attributes, each map configuration can have one of the following:
+In addition to the mode and map attributes, each map configuration can have the following options:
 
 name | default | purpose
 -----|---------|---------
