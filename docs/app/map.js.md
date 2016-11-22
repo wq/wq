@@ -174,18 +174,22 @@ function(app, map, config) {
 
 ### Individual Map Configuration
 
-After initialization, `map.config.maps` will be populated with map configurations for each page in the [wq configuration object] with a `"map"` property defined.  If the property is defined an object, it will be used as the map configuration.  Otherwise, a default map configuration object will be created.
+After initialization, `map.config.maps` will be populated with map configurations for each page in the [wq configuration object] with a `"map"` property defined.  If a page's `map` property is defined an object, that object will be used as the map configuration.  If it is an array of objects, multiple map configurations will be defined (see below).  If the property is simply `true`, a default set of map configurations will be created with URL-based GeoJSON overlays (as described above).
 
-The map configuration is split into four sections:
+#### Multiple Configurations
 
-name | details
------|--------
-`defaults` | settings to apply to all rendering modes
-`list` | settings to apply to maps rendered in list views
-`detail` | settings to apply to maps rendered in detail views
-`edit` | settings to apply to maps rendered in edit views
+wq/map.js supports defining separate map configurations for the "list", "detail", and "edit" modes of list pages.  As of version 1.0, wq/map.js also supports custom page modes, as well as placing multiple maps in different locations on the same screen.
 
-Each section can have one of the following:
+To make it easier to manage all of these possible variations, the `map` configuration is now defined as an array rather than as a deeply nested object.  Each object in the array can have the following attributes:
+
+name | default | purpose
+-----|---------|---------
+`mode` | `defaults` | Template rendering mode for which this configuration applies to.  Typically one of `list`, `detail`, or `edit`.  If set to `all` or `defaults`, the defined configuration will be mixed together with any other applicable configuration when rendering mode-specific maps.  You can also use `all` or `defaults` to define maps for simple (non-list) pages, which do not use rendering modes.
+`map` | `main` | Whether this configuration applies to the default (main) map or to a secondary map on the same screen.
+
+#### Configuration Options
+
+In addition to the mode and map attributes, each map configuration can have one of the following:
 
 name | default | purpose
 -----|---------|---------
@@ -223,11 +227,19 @@ Each map configuration should have one or more layer configurations added to it.
 ```python
 # myapp/rest.py
 from .models import MyModel
-app.router.register(MyModel, map={
-    'defaults': {...}
-    'list': {'layers': [...]}
-    'detail': {'layers': [...]}
-})
+app.router.register_model(
+    MyModel,
+    map=[{
+        'mode': 'all',
+        ...
+    }, {
+        'mode': 'list',
+        'layers': [...],
+    }, {
+        'mode': 'detail',
+        'layers': [...]
+    }]
+)
 ```
 
 A layer configuration consists of the following options:
@@ -254,12 +266,10 @@ name | purpose
 #### Example
 
 ```javascript
-config.pages[pagename].map = {
-    "name": pagename,
-    "url": pagename + s,
-    "defaults": {},
-    "list": {
-        "autoLayers": true,
+config.pages[pagename].map = [
+    {
+        "mode": "list",
+        // "autoLayers": true,
         "layers": [{
             'name': pagename,
             'type': 'geojson',
@@ -267,22 +277,22 @@ config.pages[pagename].map = {
             'popup': pagename,
             'cluster': true
         }]
-    },
-    "detail": {
-        "autoLayers": true,
+    }, {
+        "mode": "detail":,
+        // "autoLayers": true,
         "layers": [{
-            'name': detailConf.name,
+            'name': pagename,
             'type': 'geojson',
-            'url': detailConf.url + '/{{{id}}}.geojson',
+            'url': pageurl + '/{{{id}}}.geojson',
             'popup': page
         }]
-    },
-    "edit": {
-        "autoLayers": true,
+    }, {
+        "mode": "edit",
+        // "autoLayers": true,
         "layers": [{
-            'name': editConf.name,
+            'name': pagename,
             'type': 'geojson',
-            'url': editConf.url + '/{{{id}}}/edit.geojson',
+            'url': pageurl + '/{{{id}}}/edit.geojson',
             'draw': {
                 'polygon': {},
                 'polyline': {},
@@ -292,7 +302,7 @@ config.pages[pagename].map = {
             }
         }]
     }
-};
+];
 ```
 
 ## Map Editing
