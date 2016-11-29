@@ -142,7 +142,7 @@ Note that when using nested forms, the child model should not be registered with
 
 ## User-Defined Attributes (EAV)
 
-Many wq-powered applications include the ability for users to define custom attributes that are submitted with each observation.  This is typically accomplished through an [Entity-Attribute-Value (EAV) structure][EAV structure].  An EAV structure can be considered a special case of the nested form or parent-child relationship.  In this case, the Entity model is the parent, the Value model is the child, and the Attribute model is a third auxilary table.  The Value table contains a foreign key to the Entity and also to the Attribute table.  (By informal convention, the foreign key field pointing to Attribute is often named "type").
+Many wq-powered applications include the ability for users to define custom attributes that are submitted with each observation.  This is typically accomplished through an [Entity-Attribute-Value (EAV) structure][EAV structure].  An EAV structure can be considered a special case of the nested form or parent-child relationship.  In this case, the Entity model is the parent, the Value model is the child, and the Attribute model is a third auxilary table.  The Value table contains a foreign key to the Entity and also to the Attribute table.  (By informal convention, the foreign key field pointing to Attribute is often named "type" in wq's implementations of EAV).
 
 It is technically possible to define an EAV structure using the same methods as shown above for nested forms.  (If using XLSForm you could put a `wq:ForeignKey` somewhere within a repeat group).  However, by default you may end up with a form that looks something like this:
 
@@ -230,21 +230,25 @@ wq.db's [patterns module] includes some out-of-the box implementations of EAV, i
 
 If neither of these options quite work for you, you can roll your own EAV pattern by defining the models yourself:
 
+*Models*:
 
-*Django definition*:
+To define an EAV structure, you will need at least three models (corresponding to the Entity, Attribute, and Value).
 
 ```python
 # myapp/models.py
 from django.db import models
 
+# Entity
 class Observation(models.Model):
     date = models.DateField()
 
+# Attribute
 class Parameter(models.Model):
     name = models.CharField(
         max_length=255,
     )
 
+# Value
 class Result(models.Model):
     observation = models.ForeignKey(
         Observation,
@@ -255,7 +259,13 @@ class Result(models.Model):
         related_name="results",
     )
     value = models.FloatField()
+```
 
+*Serializers*:
+
+You will then need a custom serializer for your Entity model that includes a nested serializer for the Value model.  The serializer should be aware of the presence of the Attribute/type field.  The nested serializer will ensure that the custom Values are included whenever an Entity is serialized.  It also will handle parsing and saving Values submitted together with a parent Entity.  `wq.db.patterns` defines a `TypedAttachmentSerializer` base class specifically for this purpose.
+
+```python
 # myapp/serializers.py
 from wq.db.patterns import serializers as patterns
 from .models import Result, Observation
@@ -270,20 +280,34 @@ class ResultSerializer(patterns.TypedAttachmentSerializer):
         
 class ObservationSerializer(base.AttachedModelSerializer):
     results = ResultSerializer(many=True)
+```
 
+Note the two EAV-specific serializer options: `type_field`, which indicates the name of the foreign key pointing from the Value table to the Attribute table, and `type_filter`, which is optional.  `type_field` is used on the server when processing incoming records.  `type_filter` is copied to the configuration and then parsed at runtime to filter the list of defined attributes based on the current URL parameters (see the [configuration syntax]).  This makes it possible to define "campaign builder" type apps where the set of parameters that show up on the observation form is dependent on which campaign you select initially.  See [Try WQ]'s [ResultSerializer] for an example.  By default, all attribute definitions will be made available when creating a new Entity record.
+
+*Registration*:
+
+Once the models and serializers are defined, register the Entity and Attribute models with wq.db.  (The Value model does not need to be registered as it is already nested in the Entity registration.)  The Attribute model can be registered as a regular editable model with the default templates.  This makes it possible for users to create new attribute definitions on the fly.  Even if you don't need this capability, the Attribute model should be registered separately so it can be picked up by wq/app.js when rendering the Entity screens.
+
+```python
 # myapp/rest.py
 from wq.db import rest
-from .models import Observation
+from .models import Observation, Parameter
 from .serializers import ObservationSerializer
 
+# Entity+Value
 rest.router.register_model(
     Observation,
     serializer=ObservationSerializer,
     fields="__all__",
 )
+
+# Attribute
+rest.router.register_model(
+    Parameter,
+    fields="__all__",
+)
 ```
 
-Note the two EAV-specific serializer options: `type_field`, which indicates the name of the foreign key to the Attribute table, and `type_filter`, which is parsed at runtime to filter the list of defined attributes (see the [configuration syntax]).  The filter makes it possible to define "campaign builder" type apps where the set of parameters that show up on the observation form is dependent on which campaign you select initially.  See [Try WQ] for an example.
 
 [EAV structure]: https://wq.io/docs/eav-vs-relational
 [common field types]: https://wq.io/docs/field-types
@@ -294,3 +318,4 @@ Note the two EAV-specific serializer options: `type_field`, which indicates the 
 [annotate]: https://wq.io/docs/annotate
 [vera]: https://wq.io/vera
 [configuration syntax]: https://wq.io/docs/config
+[ResultSerializer]: https://github.com/powered-by-wq/try.wq.io/blob/master/db/campaigns/serializers.py
