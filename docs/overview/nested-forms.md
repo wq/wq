@@ -67,7 +67,7 @@ wq supports two ways of handling parent-child relationships - either through nes
   </li>
 </ul>
 
-Like the common field types, wq allows nested forms to be specified using either the XLSForm syntax or directly with Python code.  The later is quite a bit more involved due to the need to make wq.db properly serialize the nested relationship.  If possible, you may want to start from the XLSForm version and then tweak the output of `wq addform`.
+Like the common field types, wq allows nested forms to be specified using either the XLSForm syntax or directly with Python code.  The later is quite a bit more involved due to the need to make wq.db properly serialize the nested relationship.  If possible, you may want to start from the XLSForm version and then tweak the output of `wq addform`.  Otherwise, you can start from the example below.  Note that the child model should be serialized with a subclass of `AttachmentSerializer` while the parent model should be serialized with a subclass of `AttachedModelSerializer` (both provided by `wq.db.patterns`).
 
 *XLSForm Definition*:
 
@@ -263,7 +263,7 @@ class Result(models.Model):
 
 *Serializers*:
 
-You will then need a custom serializer for your Entity model that includes a nested serializer for the Value model.  The serializer should be aware of the presence of the Attribute/type field.  The nested serializer will ensure that the custom Values are included whenever an Entity is serialized.  It also will handle parsing and saving Values submitted together with a parent Entity.  `wq.db.patterns` defines a `TypedAttachmentSerializer` base class specifically for this purpose.
+You will then need a custom serializer for your Entity model that includes a nested serializer for the Value model.  The serializer should be aware of the presence of the Attribute/type field.  The nested serializer will ensure that the custom Values are included whenever an Entity is serialized.  It also will handle parsing and saving Values submitted together with a parent Entity.  `wq.db.patterns` defines a `TypedAttachmentSerializer` base class that extends `AttachmentSerializer` for this purpose.  Like the nested form case, a subclass of `AttachedModelSerializer` should be used for the Entity model.
 
 ```python
 # myapp/serializers.py
@@ -278,7 +278,7 @@ class ResultSerializer(patterns.TypedAttachmentSerializer):
         type_field = 'type_id'
         type_filter = {}
         
-class ObservationSerializer(base.AttachedModelSerializer):
+class ObservationSerializer(patterns.AttachedModelSerializer):
     results = ResultSerializer(many=True)
 ```
 
