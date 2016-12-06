@@ -1,5 +1,6 @@
 ---
-order: 6
+order: 17
+indent: true
 ---
 
 wq/store.js
