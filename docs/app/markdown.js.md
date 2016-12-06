@@ -36,3 +36,4 @@ wq/markdown.js uses the [third-party dependencies] **marked.js** for Markdown pr
 
 [wq/markdown.js]: https://github.com/wq/wq.app/blob/master/js/wq/markdown.js
 [wq/app.js plugin]: https://wq.io/docs/app-plugins
+[third-party dependencies]: https://wq.io/docs/third-party
