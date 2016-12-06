@@ -12,7 +12,7 @@ wq/chart.js
 
 ## API
 
-`wq/chart.js` is typically imported via [AMD] as `chart`, though any local variable name can be used.
+`wq/chart.js` is typically imported via [AMD] as `chart`, though any local variable name can be used.  wq/chart.js is *not* a wq/app.js plugin by itself, but can easily be integrated with wq/app.js via [wq/chartapp.js].
 
 ```javascript
 // myapp.js
@@ -272,6 +272,7 @@ svg.datum([dataset]).call(plot);
 [d3.js]: http://d3js.org
 [reusable charts]: http://bost.ocks.org/mike/chart/
 [AMD]: https://wq.io/docs/amd
+[wq/chartapp.js]: https://wq.io/docs/chartapp-js
 [configurable function]: http://bost.ocks.org/mike/chart/#configuration
 [d3 selection]: https://github.com/mbostock/d3/wiki/Selections
 [wq/pandas.js]: https://wq.io/docs/pandas-js
