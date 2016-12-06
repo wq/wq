@@ -8,7 +8,7 @@ wq/photos.js
 
 [wq/photos.js]
 
-**wq/photos.js** is a plugin for [wq/app.js] that integrates with the [PhoneGap Camera API] and shows previews for user-selected photos.  Together with the file processing functions in [wq/app.js] and [wq/outbox.js], wq/photos.js provides a complete solution for allowing volunteers to capture and upload photos via your offline-capable web or mobile app.  Captured photos are saved in an outbox ([wq/outbox.js]) until they can be synchronized to the server.
+**wq/photos.js** is a [wq/app.js plugin] that integrates with the [PhoneGap Camera API] and shows previews for user-selected photos.  Together with the file processing functions in [wq/app.js] and [wq/outbox.js], wq/photos.js provides a complete solution for allowing volunteers to capture and upload photos via your offline-capable web or mobile app.  Captured photos are saved in an outbox ([wq/outbox.js]) until they can be synchronized to the server.
 
 <div data-interactive id='photo-example'>
   <ul data-role="listview">
@@ -23,15 +23,24 @@ wq/photos.js
 The [Species Tracker](http://species.wq.io) application provides a complete demonstration of the offline capabilities of wq/photos.js.
 
 ### API
-wq/photos.js is typically imported via AMD as `photos`, though any local variable name can be used.  `photos` provides three methods:
+wq/photos.js does not require a global configuration, as it is configured via data-wq- attributes on the related form elements.
 
-  * `photos.preview()` accepts the id of an `<img>` element and a `File` object to display.  `photos.preview()` is meant to be used with `<input type=file>` in web apps, and with `photos.take()` or `photos.pick()` in PhoneGap/Cordova apps.
-  * `photos.take()` and `photos.pick()` are wrappers for PhoneGap/Cordova's [camera.getPicture()] API, meant to be used in hybrid apps where `<input type=file>` doesn't work (e.g. on older devices or [broken Android implementations]).
+```javascript
+// myapp/main.js
+define(['wq/app', 'wq/photos', './config'],
+function(app, photos, config) {
 
-Both `photos.take()` and `photos.pick()` accept two arguments: the id of a form `<input>` (often `type=hidden`) and the id of an `<img>` tag to place the preview in.  `photos.take()` requests a new photo from the camera, while `photos.pick()` requests a previously captured photo from the user's albums.  The captured photo will be stored in offline storage as a `Blob` via [wq/store.js].
+app.use(photos);
 
+app.init(config).then(function() {
+    app.jqmInit();
+    app.prefetchAll();
+});
 
-If you are using [wq/app.js], you don't need to call these functions directly.  Instead, create your form elements with data-wq- attributes:
+});
+```
+
+To leverage wq/photos.js in your template, create your form elements with data-wq- attributes.  If you are using [wq.start] and the default project layout, these will be set automatically in the generated edit templates for models with image fields.
 
 element | attribute | purpose
 --------|-----------|---------
@@ -40,14 +49,9 @@ element | attribute | purpose
 `<button>` | `data-wq-input` | The name of a hidden input to populate with the name of the captured photo.  (The photo itself will be saved in offline storage).
 `<input type=hidden>` | `data-wq-type` | Notifies wq/app.js that the hidden element is intended to be interpreted as the name of a photo captured via wq/photos.js.  The element should typically have the `data-wq-preview` attribute set as well.
 
-Below is an example template with the appropriate attributes set:
+The `take` and `pick` actions are wrappers for PhoneGap/Cordova's camera.getPicture() API, meant to be used in hybrid apps where <input type=file> doesn't work (e.g. on older devices or broken Android implementations).
 
-```javascript
-define(['wq/app', 'wq/photos'], function(app, photos) {
-    app.use(photos);
-    app.init();
-});
-```
+Below is an example template with the appropriate attributes set:
 
 ```xml
 <img id=preview-image>
@@ -70,24 +74,6 @@ define(['wq/app', 'wq/photos'], function(app, photos) {
 
 Note the use of the `{{#native}}` context flag which is set automatically by [wq/app.js].  See the [Species Tracker template](https://github.com/powered-by-wq/species.wq.io/blob/master/templates/partials/new_photo.html) for a working example.
 
-The wq/photos.js API can be accessed directly, as shown below.
-
-```javascript
-define(['jquery', 'wq/photos', ...], function($, photos, ...) {
-
-$('input[type=file]').change(function() {
-    photos.preview('preview-image', this.files[0])
-});
-$('button.take').click(function() {
-    photos.take('filename', 'preview-image');
-});
-$('button.pick').click(function() {
-    photos.pick('filename', 'preview-image');
-});
-
-});
-```
-
 ## Browser Compatibility Notes
 wq/photos.js, and the related file processing functions in [wq/app.js] and [wq/outbox.js], rely heavily on two browser features:
  - Offline storage (see Browser Compatibility Notes for [wq/store.js])
@@ -104,6 +90,7 @@ This is a known limitation, and there is a [wq.app issue](https://github.com/wq/
 
 [Blob]: https://developer.mozilla.org/en-US/docs/Web/API/Blob
 [wq/photos.js]: https://github.com/wq/wq.app/blob/master/js/wq/photos.js
+[wq/app.js plugin]: https://wq.io/docs/app-plugins
 [wq/app.js]: https://wq.io/docs/app-js
 [PhoneGap Camera API]: https://www.npmjs.com/package/cordova-plugin-camera
 [camera.getPicture()]: https://www.npmjs.com/package/cordova-plugin-camera
@@ -111,3 +98,4 @@ This is a known limitation, and there is a [wq.app issue](https://github.com/wq/
 [wq/outbox.js]: https://wq.io/docs/outbox-js
 [wq/store.js]: https://wq.io/docs/store-js
 [ModelViewSet]: https://wq.io/docs/views
+[wq.start]: https://wq.io/wq.start

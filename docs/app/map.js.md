@@ -8,7 +8,7 @@ wq/map.js
 
 [wq/map.js]
 
-**wq/map.js** is a plugin for [wq/app.js] that adds mapping capabilities.  wq/map.js can leverage the [wq configuration object] to generate [Leaflet] maps for pages rendered via wq/app.js.  The generated maps can automatically download and display GeoJSON data rendered by [wq.db]'s [REST API].
+**wq/map.js** is a [wq/app.js plugin] that adds mapping capabilities.  wq/map.js can leverage the [wq configuration object] to generate [Leaflet] maps for pages rendered via wq/app.js.  The generated maps can automatically download and display GeoJSON data rendered by [wq.db]'s [REST API].
 
 <div data-interactive id='map-example'>
   <div id='doc-map-js-map' style='height:300px;background:#ccc;border:1px solid black'></div>
@@ -38,13 +38,24 @@ The default GeoJSON layers should work as long as your webserver is running [wq.
 
 ## Configuration
 
-`wq/map.js` is typically imported via [AMD] as `map`, though any local variable name can be used.  wq/map.js is a plugin for [wq/app.js] and can be enabled like this:
+The map plugin requires both a global configuration and a per-page configuration for pages that need maps.
 
 ```javascript
-// myapp.js
-define(['wq/app', 'wq/map', './config'], function(app, map, config) {
-    app.use(map);
-    app.init(config);
+// myapp/main.js
+define(['wq/app', 'wq/map', './config'],
+function(app, map, config) {
+
+// In myapp/config.js or in wq.db.rest registration:
+// config.map = { ... }
+// config.pages[page].map = { ... }
+
+app.use(map);
+
+app.init(config).then(function() {
+    app.jqmInit();
+    app.prefetchAll();
+});
+
 });
 ```
 
@@ -399,6 +410,7 @@ map.createIcon("green", {'iconUrl': "/images/green.png"});
 `map.loadLayer()` is used retrieve the actual GeoJSON data for "geojson" overlay types.  The default implementation caches each GeoJSON object, so you can call `map.loadLayer()` to prefetch layers that you expect to appear in later maps.  The `url` argument is assumed to be relative to the webservice root used by [wq/store.js].
 
 [wq/map.js]: https://github.com/wq/wq.app/blob/master/js/wq/map.js
+[wq/app.js plugin]: https://wq.io/docs/app-plugins
 [wq configuration object]: https://wq.io/docs/config
 [Leaflet]: http://leafletjs.com
 [wq.db]: https://wq.io/wq.db

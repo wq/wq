@@ -6,22 +6,37 @@ indent: true
 wq/autocomplete.js
 ==================
 
-[wq/autocomplete.js] provides a simple implementation of an AJAX autocomplete via the HTML5 [datalist] element.
+[wq/autocomplete.js]
+
+**wq/autocomplete.js** is a [wq/app.js plugin] providing a simple implementation of an AJAX autocomplete via the HTML5 [datalist] element.
 
 ### API
 
-wq/autocomplete.js is typically imported via AMD as `auto`, though any local variable name can be used.  `auto` provides an `init()` function that optionally accepts a Mustache template to use when rendering `<option>`s for the datalist.  `init()` automatically registers an event to ensure the autocomplete mechanism is triggered whenever new pages are shown.
+wq/autocomplete.js can be configured with a Mustache template to use when rendering `<option>`s for the datalist.  It will then search each page for any `<datalist>` elements to configure.
 
 ```javascript
-define(['wq/autocomplete', ...], function(auto, ...) {
-auto.init()
+// myapp/main.js
+define(['wq/app', 'wq/autocomplete', './config'],
+function(app, auto, config) {
+
+// In myapp/config.js:
+// config.autocomplete = '{{#list}}custom template{{/list}}';
+
+app.use(auto);
+
+app.init(config).then(function() {
+    app.jqmInit();
+    app.prefetchAll();
+});
+
 });
 ```
-To configure the `<datalist>` for an autocompleted form input, a number of `data-*` attributes can be used.  `data-url` configures the URL to use for the AJAX request. `data-query` defines the name of the URL parameter to use (default is "q").  `data-min` defines the minimum number of characters the user needs to enter before the autocomplete kicks in (default 3).
+
+To configure the `<datalist>` for an autocompleted form input, a number of `data-wq-*` attributes can be used.  `data-wq-url` configures the URL to use for the AJAX request. `data-wq-query` defines the name of the URL parameter to use (default is "q").  `data-wq-min` defines the minimum number of characters the user needs to enter before the autocomplete kicks in (default 3).
 
 ```xml
 <input list="example-list">
-<datalist id="example-list" data-url="/autocomplete.json" data-query="q" data-min="4">
+<datalist id="example-list" data-wq-url="/autocomplete.json" data-wq-query="q" data-wq-min="4">
 </datalist>
 ```
 
@@ -36,5 +51,7 @@ name | purpose
 `multi` | Whether there is more than one item in the list.
 
 [wq/autocomplete.js]: https://github.com/wq/wq.app/blob/master/js/wq/autocomplete.js
+[wq/app.js plugin]: https://wq.io/docs/app-plugins
 [datalist]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist
 [search]: https://wq.io/docs/search
+[wq.db]: https://wq.io/wq.db

@@ -8,25 +8,34 @@ wq/locate.js
 
 [wq/locate.js]
 
-**wq/locate.js** provides utilities for requesting the user's latitude and longitude, a common use case in many VGI, citizen science, and crowdsourcing applications.
+**wq/locate.js** is a [wq/app.js plugin] providing utilities for requesting the user's latitude and longitude, a common use case in many VGI, citizen science, and crowdsourcing applications.  wq/locate.js is designed to be used together with [wq/map.js].
 
 ## API
 
-`wq/locate.js` is typically imported via [AMD] as `locate`, though any local variable name can be used.
+Once registered, the locate plugin populates form `<input>`s from a Leaflet map to facilitate multiple ways of providing location information (e.g. GPS or a map click).
 
 ```javascript
-// myapp.js
-define(['wq/locate', ...], function(locate, ...) {
-    locate.locate(...);
+// myapp/main.js
+define(['wq/app', 'wq/map', 'wq/locate', './config'],
+function(app, map, locate, config) {
+
+// In myapp/config.js or in wq.db.rest registration:
+// config.locate = { ... };
+// config.pages[page].map = { ... };
+// config.pages[page].locate = true;
+
+app.use(map);
+app.use(locate); // Should be registered after map
+
+app.init(config).then(function() {
+    app.jqmInit();
+    app.prefetchAll();
+});
+
 });
 ```
 
-The locate module provides the following methods and properties:
-
-  * The `locate.Locator` widget utilizes Leaflet and form `<input>`s to facilitate multiple ways of providing location information (e.g. GPS or a map click).
-  * The `locate.locate()` function is a lower-level function for directly obtaining GPS coordinates.
-
-## Locator widget
+## Usage
 
 The Locator widget provides three modes for entering location information:
 
@@ -36,20 +45,33 @@ The Locator widget provides three modes for entering location information:
 
 The entered coordinates are automatically displayed on a Leaflet map.  "Accuracy" is represented as a circle with the radius of the accuracy.
 
-> **Pro-Tip: Save Accuracy In Your Database!**
+> **Tip: Save Accuracy In Your Database!**
 >
 > The accuracy number is a critical part of the location information - so don't discard it and only save the latitude and longitude.  Remember that accuracy is fundamentally different than precision: just because a GPS device returns latitude and longitude specified out to 9 decimal places, does not mean the user is actually at that exact location.  In fact, the initial measurement returned by many consumer GPS devices will often be "precise" but inaccurate, perhaps by several kilometers.  The accuracy measurement is thus an imperfect, but useful metric for evaluating the location information.  Keeping the GPS on for as long as possible is one way to get more accurate measurements, but it is still important to save the information in the database for future reference.
 >
 > Similarly, having a user tap the map to specify their location is practically guaranteed to provide inaccurate results unless they zoom in first.  For this reason, the `interactive` mode approximates an accuracy measurement based on zoom level (accuracy = 2 pixels of screen space converted to meters based on the zoom level).  Accuracy can serve as a reminder to the user to zoom in, or even to enforce a minimum level of accuracy in your form processing logic.
 
-The Locator widget accepts up to three arguments: a Leaflet map object, a mapping of jQuery-wrapped `fields` to use for setting and storing location information, and an optional `config` object.  The expected `fields` are:
+The Locator widget expects the following fields to be defined in the form:
 
  * `toggle`: A set of radio buttons (or a select menu) that will change the widget mode.  The values for each option should be one or more the modes listed above.
  * `latitude`: A text input that will receive (or provide) the latitude
  * `longitude`: A text input that will receive (or provide) the longitude
  * `accuracy`: A text input that will receive the computed accuracy
 
-If specified, the locator `config` option should have up to three callback functions that will be executed at various points in the process:
+If any of these fields are named differently in your application, define `config.locate.fieldNames` as follows:
+
+```javascript
+config.locate = {
+    "fieldNames": {
+        "toggle": "mode",
+        "latitude": "lat",
+        "longitude": "lng",
+        "accuraccy": "accuracy"
+    }
+};
+```
+
+`config.locate` can also be used to register up to three callback functions that will be executed at various points in the process:
 
  * `onSetMode(mode)`: Called whenever the locator mode changes, e.g. in response to the user clicking the `toggle` button.
  * `onUpdate(location, accuracy)`: Called when ever a new location is determined.
@@ -87,23 +109,14 @@ If specified, the locator `config` option should have up to three callback funct
 #### JS
 
 ```javascript
-define(['jquery', 'leaflet', 'wq/locate'], function($, L, locate) {
+// myapp/main.js
+define(['wq/app', 'wq/map', 'wq/locate', './config'],
+function(app, map, locate, config) {
 
-// Create Leaflet map
-var map = L.map('map-div-id');
+app.use(map);
+app.use(locate);
 
-// Initialize basemaps & location ...
-
-// Configure Locator
-
-var fields = {
-    'toggle': $('input[name=mode]'),
-    'latitude': $('input[name=latitude]'),
-    'longitude': $('input[name=longitude]'),
-    'accuracy': $('input[name=accuracy]')
-};
-
-var config = {
+config.locate = {
     // Custom handler for location updates
     'onUpdate': function(loc, accuracy) {
         if (accuracy > 1000) {
@@ -116,10 +129,10 @@ var config = {
     }
 }
 
-var locator = locate.locator(map, fields, config);
-// Equivalent:
-// var locator = new locate.Locator(map, fields, options);
-
+app.init(config).then(function() {
+    app.jqmInit();
+    app.prefetchAll();
+});
 
 });
 ```
@@ -128,11 +141,11 @@ var locator = locate.locator(map, fields, config);
 
 ```xml
 <fieldset data-role="controlgroup" data-type="horizontal">
-  <input type='radio' value='gps' id='loc-gps' name='mode'>
+  <input type='radio' value='gps' id='loc-gps' name='toggle'>
   <label for='loc-gps'>GPS</label>
-  <input type='radio' value='interactive' id='loc-interactive' name='mode'>
+  <input type='radio' value='interactive' id='loc-interactive' name='toggle'>
   <label for='loc-interactive'>Interactive</label>
-  <input type='radio' value='manual' id='loc-manual' name='mode'>
+  <input type='radio' value='manual' id='loc-manual' name='toggle'>
   <label for='loc-manual'>Manual</label>
 </fieldset>
 <div id='map-div-id'></div>
@@ -152,74 +165,12 @@ var locator = locate.locator(map, fields, config);
 </div>
 ```
 
-## locate()
-
-You can also request a location programmatically with the lower level locate() function.  This function which provides a simple wrapper around Leaflet's `L.Map.locate()` API (but without requiring an existing map).
-
-### Example
-
-<div data-interactive id='simple-example'>
-  <div class='ui-grid-b'>
-    <div class='ui-block-a ui-content'>
-      <button>Get Location</button>
-    </div>
-    <div class='ui-block-b ui-content'>
-    </div>
-    <div class='ui-block-c ui-content'>
-      <p></p>
-    </div>
-  </div>
-</div>
-
-```javascript
-define(['jquery', 'wq/locate'], function($, locate) {
-
-// Request location once & show result
-locate.locate(success, error);
-
-function success(evt) {
-   var lat = evt.latlng.lat, lng = evt.latlng.lng;
-   $('.output').html("Location: " + lat + ", " + lng);
-}
-
-function error(evt) {
-   $('.output').html("Error retrieving location.");
-}
-});
-```
-
-`locate.locate()` takes up to 5 arguments:
-
- - a `success` callback
- - an `error` callback
- - `highAccuracy` boolean, equivalent to `opts.enableHighAccuracy` with a 1 min `timeout`.  Default is `false`.
- - `watch` boolean, triggers `watchPosition`, and also returns an object with a `stop()` method (see below).  Default is `false`.
- - `opts` object, which will be updated per the preceding arguments and then passed on to [L.Map.locate()]
-
-> **Pro-Tip: Use `watchPosition` for better results!**
+> **Tip: Keep GPS running for better results!**
 >
-> When requesting the user's location in a web app, it's generally better to use `watchPosition` by setting `watch = true`, even when you only need a single point and not a GPS trace.  The reason for this is that the first result returned by the GPS may be inaccurate, and the longer the GPS is on, the more time it has to lock on to the satellites.  If you take this approach, be sure to set up your success callback to handle being called more than once.
-
-To use `locate.locate()` with an existing map (e.g. in conjunction with `opts.setView`), call `locate.init()` before calling `locate.locate()`.
-
-```javascript
-define(['jquery', 'leaflet', 'wq/locate'], function($, L, locate) {
-
-// Bind locate to existing map
-var m = L.map(...);
-locate.init(m);
-
-// Enable watchPosition & other options; save reference to result
-var gps = locate.locate(success, error, true, true, {'setView': true});
-
-function success(evt) {
-    if (evt.accuracy < 1000) {
-        gps.stop(); // Stop watchPosition
-    }
-    // ...
-});
-```
+> When requesting the user's location in a web app, it's generally better to use `Geolocation.watchPosition()` than `Geolocation.getCurrentPosition()`, even when you only need a single point and not a GPS trace.  The reason for this is that the first result returned by the GPS may be inaccurate, and the longer the GPS is on, the more time it has to lock on to the satellites.  For this reason, wq/locate.js continues requesting the GPS location until the user saves the form and/or navigates to another page.  This is accomplished by setting `watch: true` in the underlying call to [L.Map.locate()].
 
 [wq/locate.js]: https://github.com/wq/wq.app/blob/master/js/wq/locate.js
+[wq/app.js plugin]: https://wq.io/docs/app-plugins
+[wq/map.js]: https://wq.io/docs/map-js
 [AMD]: https://wq.io/docs/amd
 [L.Map.locate()]: http://leafletjs.com/reference.html#map-locate-options
