@@ -28,6 +28,7 @@ sudo chown `whoami` $PROJECTNAME
 cd $PROJECTNAME
 python3 -m venv venv
 . venv/bin/activate
+pip install --upgrade pip # optional
 
 # Install wq 1.0.0b2 within venv
 pip install wq --pre
