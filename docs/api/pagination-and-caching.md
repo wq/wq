@@ -1,3 +1,7 @@
+---
+order: 4
+---
+
 Pagination and Caching
 ======================
 

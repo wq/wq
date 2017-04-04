@@ -1,3 +1,7 @@
+---
+order: 2
+---
+
 Mustache Templates in wq
 ========================
 
