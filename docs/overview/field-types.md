@@ -220,6 +220,8 @@ Dynamic choices make it possible for any user of your application to dynamically
 
 As of wq version 1.0, it is possible to use foreign keys to link parent-child records while working offline, even when the parent record has not yet been synced to the server.  The example below assumes that "Site A3" was created on a separate form that has not yet been synced to the server.  If that site was selected when this form was saved, [wq/outbox.js] would ensure that Site A3 is properly synced before attempting to sync this form.
 
+> Note: If you need your dynamic choice list to work offline, be sure to set `cache="all"` when registering the domain model with the router.  See the [configuration documentation][config] and the example below.
+
 Depending on your use case, it is also possible to define a single form with nested children that populates multiple tables at once - see [Advanced Patterns] for more information.
 
 <ul data-role="listview" data-inset="true">
@@ -255,6 +257,20 @@ class MyModel(models.Model):
         "other_app.Site",
         verbose_name="Pick a Site ID",
     )
+```
+
+Note: in order to ensure the full site list is available offline, `other_app.Site` should be [configured][config] with `cache="all"`:
+
+```python
+# other_app/rest.py
+from wq.db import rest
+from .models import Site
+
+rest.router.register_model(
+    Site,
+    fields="__all__",
+    cache="all",
+)
 ```
 
 ## Date & Time Fields
@@ -498,3 +514,4 @@ class MyModel(models.Model):
 [wq/map.js]: https://wq.io/docs/map-js
 [wq/locate.js]: https://wq.io/docs/locate-js
 [wq/outbox.js]: https://wq.io/docs/outbox-js
+[config]: https://wq.io/docs/config
