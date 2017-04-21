@@ -67,6 +67,7 @@ As noted above, "list" pages are typically backed by ORM models which in turn co
 `lookup` | Name of identifier column to use when looking up objects for detail views, and to use as the `id` attribute in serialized JSON data.  Defaults to the model primary key.
 `cache` | Controls whether some or all of the model data is stored for offline use (see below) 
 `postsave` | Controls which page is displayed after a record is submitted (see below).
+`postdelete` | Controls which page is displayed after a record is deleted (see below).
 
 ### `cache` Configuration
 
@@ -101,7 +102,7 @@ rest.router.register_model(
 )
 ```
 
-### `postsave` Configuration
+### `postsave` and `postdelete`
 
 By default, the next step after saving a record is to return to the list view / outbox (for background synced records) or to return to the detail view (for foreground synced records).  This behavior can be customized with the `postsave` configuration option.  `postsave` can take two forms: a template name, or a URL with Mustache-style placeholders.
 
@@ -109,11 +110,13 @@ Suppose there are two models, `Site` and `Observation`.  The `postsave` for `Obs
 
 `postsave=` | Description
 ------------|-------------
-`"observation_list"` | Return to the full list of observations.
-`"observation_detail"` | Return to the detail page for the current observation.
+`"observation_list"` | Return to the list of observations and outbox (default for background synced records).
+`"observation_detail"` | Return to the detail page for the current observation (default for foreground synced records).
 `"site_detail"` | Return to the detail page for the site referenced by the current observation's foreign key.
 `"sites/{{site_id}}/observations"` | Return to the list of observations filtered by the referenced site.
 `"observations/new?site_id={{site_id}}"` | Start a new observation for the same site.
+
+`postdelete` has similar semantics as `postsave`, but does not support variable placeholders or returning to detail views, since the object has already been deleted by the time the `postdelete` action is executed.  The default for `postdelete` is always to return to the list view.
 
 ### Form Fields
 
