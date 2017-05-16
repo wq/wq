@@ -30,7 +30,10 @@ sudo mkdir $PROJECTNAME
 sudo chown `whoami` $PROJECTNAME
 cd $PROJECTNAME
 wq start $PROJECTNAME . -d $DOMAINNAME
-sudo chown apache media/ # give Apache user permission to save uploads
+
+# give Apache user permission to save uploads
+sudo chown apache media/
+sudo chcon -R --type httpd_sys_rw_content_t media/
 
 # Create database
 # See https://wiki.postgresql.org/wiki/YUM_Installation
