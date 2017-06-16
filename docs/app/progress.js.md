@@ -33,10 +33,13 @@ app.init(config).then(function() {
 });
 ```
 
-To configure an individual `<progress>` instance, a couple of `data-wq-*` attributes can be used.  `data-wq-url` configures the URL to use for the AJAX request to update the progress status. `data-wq-interval` defines the polling frequency in seconds (default 0.5).
+To configure an individual `<progress>` instance, a couple of `data-wq-*` attributes can be used.  `data-wq-url` configures the URL to use for the AJAX request to update the progress status. `data-wq-interval` defines the polling frequency in seconds (default 0.5).  As of wq.app 1.0.0rc2, `data-wq-status` can be used to specify an element which will be used to display `error` or `message` attributes from the JSON response.
 
 ```xml
-<progress data-wq-url="/getstatus.json" data-wq-interval=0.25></progress>
+<progress data-wq-url="/getstatus.json"
+          data-wq-interval=0.25
+          data-wq-status="status-info"></progress>
+<div id="status-info"></div>
 ```
 
 For older browsers, the `<progress>` bar will automatically fall back to text showing the current status.
@@ -45,6 +48,7 @@ wq/progress.js assumes a specific structure for the data from the web service.  
  * `total`: the total number of items being processed
  * `current`: the rank of the currently processing item.  (`current / total` will be used to determine the % complete)
  * `status`: A text status indicating task state.  A status of `"SUCCESS"` or `"FAILURE"` will cause polling to cease and the `onComplete` or `onFailure` callbacks to be called.  The status names are taken from the [task state names in Celery].
+ * `error` or `message`: Will be displayed with the `data-wq-status` option.
 
 
 [wq/progress.js]: https://github.com/wq/wq.app/blob/master/js/wq/progress.js
