@@ -78,7 +78,7 @@ The `cache` option (new in wq 1.0) configures which records from the model are c
 `"first_page"` | (Default) The first 50 (or `per_page`) items will be stored offline; subsequent records can be accessed through pagination.
 `"all"` |  The entire dataset will be stored for offline use.  (Useful for [domain values / foreign keys][field types])
 `"none"` | None of the dataset will be stored offline; every list and detail view will require a network request.
-`"filter"` | Specify a custom filter for the offline cache.  The full dataset can be accessed via pagination.  Note that this option assumes that a `cache_filter` will be specified with a Python function to do the actual filtering:
+`"filter"` | Specify a custom filter for the offline cache.  The full dataset can be accessed via pagination.  Note that this option assumes that a `cache_filter` Python function will be [registered with wq.db's router][router] to do the actual filtering:
 
 ```python
 # myapp/rest.py
@@ -101,6 +101,8 @@ rest.router.register_model(
     # cache="filter"
 )
 ```
+
+See the [router registration documentation][router] for more information about the `cache_filter` option and how it is interpreted by wq.db.
 
 ### `postsave` and `postdelete`
 
