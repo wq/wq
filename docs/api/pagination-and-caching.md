@@ -164,6 +164,44 @@ Note that when using `cache="filter"` in the new API, there is essentially a pag
 
 The [paginator widget] in the [wq django template] has been updated to reflect this capability.
 
+### Uses for `filter` and `cache_filter`
+
+Finally, note that it is still possible to use the original `filter` function, even with `cache="filter"` and `cache="all"`.  An example would be to filter out inactive records from all views (JSON cache and HTML) except when the user is an administrator.  It is only the use of `filter` to manage caching specifically that is deprecated by this change.  The general rule of thumb is that `filter` should rarely (if ever) need to check whether the response format is `"json"`; that is what `cache_filter` is for.  If both `filter` and `cache_filter` are set, the cached JSON will be processed by both functions.
+
+#### Still Valid
+```python
+def admin_filter(qs, request):
+    if request.user.is_authenticated() and request.user.is_superuser:
+        return qs
+    else:
+        return qs.filter(is_active=True)
+    
+rest.router.register_model(
+    DomainModel,
+    fields="__all__",
+    filter=admin_filter,
+    cache="all", # or "filter", etc.
+)
+```
+
+#### Deprecated
+
+```python
+def user_filter(qs, request):
+    if request.accepted_renderer.format == 'json' and request.path.count('/') < 2:
+        if request.user.is_authenticated():
+            return qs.filter(user=request.user)
+        else:
+            return qs.none()
+    return qs
+
+rest.router.register_model(
+    Observation,
+    fields="__all__",
+    filter=user_filter, # Should use cache_filter for this instead
+)
+```
+
 [wq.app]: https://wq.io/wq.app
 [wq.db]: https://wq.io/wq.db
 [URL structure]: https://wq.io/docs/url-structure
