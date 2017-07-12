@@ -51,22 +51,27 @@ The entered coordinates are automatically displayed on a Leaflet map.  "Accuracy
 >
 > Similarly, having a user tap the map to specify their location is practically guaranteed to provide inaccurate results unless they zoom in first.  For this reason, the `interactive` mode approximates an accuracy measurement based on zoom level (accuracy = 2 pixels of screen space converted to meters based on the zoom level).  Accuracy can serve as a reminder to the user to zoom in, or even to enforce a minimum level of accuracy in your form processing logic.
 
-The Locator widget expects the following fields to be defined in the form:
+The Locator widget searches for the following fields in the form.  All fields are technically optional, though you will probably want at least `latitude` and `longitude` and/or `geometry` be present.
 
- * `toggle`: A set of radio buttons (or a select menu) that will change the widget mode.  The values for each option should be one or more the modes listed above.
- * `latitude`: A text input that will receive (or provide) the latitude
- * `longitude`: A text input that will receive (or provide) the longitude
- * `accuracy`: A text input that will receive the computed accuracy
+field name | purpose
+-----------|------------------------
+`latitude` | A text input that will receive (or provide) the latitude
+`longitude` | A text input that will receive (or provide) the longitude
+`geometry` |  A hidden input that will receive booth coordinates as a simple GeoJSON point
+`accuracy` | A text input that will receive the computed accuracy
+`toggle` | A set of radio buttons (or a select menu) that will change the widget mode.  The values for each option should be one or more of the modes listed above.
+`mode` | A hidden input that will receive the selected mode (in the case where toggle field is not used or is not saved)
+ `source` | A text input that will recieve information about the source of the GPS coordinate, if known.  (For use with `"gps"` mode in PhoneGap/Cordova applications with [cordova-plugin-bluetooth-geolocation] installed).
 
 If any of these fields are named differently in your application, define `config.locate.fieldNames` as follows:
 
 ```javascript
 config.locate = {
     "fieldNames": {
-        "toggle": "mode",
+        "toggle": "toggle-btn",
         "latitude": "lat",
         "longitude": "lng",
-        "accuraccy": "accuracy"
+        "accuracy": "accuracy"
     }
 };
 ```
@@ -174,3 +179,4 @@ app.init(config).then(function() {
 [wq/map.js]: https://wq.io/docs/map-js
 [AMD]: https://wq.io/docs/amd
 [L.Map.locate()]: http://leafletjs.com/reference.html#map-locate-options
+[cordova-plugin-bluetooth-geolocation]: https://github.com/heigeo/cordova-plugin-bluetooth-geolocation
