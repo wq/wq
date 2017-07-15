@@ -40,7 +40,7 @@ separate packages.
   :target: https://wq.io/wq.app
 .. |wq_core| image:: https://raw.githubusercontent.com/wq/wq/master/images/80/wq.core.png     
   :target: https://wq.io/wq.core
-.. |wq_db| image:: https://raw.githubusercontent.com//wq/wq/master/images/80/wq.db.png     
+.. |wq_db| image:: https://raw.githubusercontent.com/wq/wq/master/images/80/wq.db.png     
   :target: https://wq.io/wq.db
 .. |wq_io| image:: https://raw.githubusercontent.com/wq/wq/master/images/80/wq.io.png     
   :target: https://wq.io/wq.io
