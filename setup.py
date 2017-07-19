@@ -30,7 +30,7 @@ setup(
         'wq.app==1.0.0rc1',
         'wq.core==1.0.0b1',
         'wq.db>=1.0.0,<1.1.0',
-        'wq.io==1.0.0b1',
+        'wq.io>=1.0.0,<1.1.0',
         'wq.start==1.0.0rc1',
     ],
     packages=['wq'],
