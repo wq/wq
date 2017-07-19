@@ -26,20 +26,20 @@ Options:
 
 ## Commands
 
-Command | Description
---------|-------------
-[addform](https://wq.io/docs/wq-addform) | Convert an XLSForm into a Django app for wq.
-[appcache](https://wq.io/docs/wq-appcache) | Generate an HTML5 appcache manifest.
-[build](https://wq.io/docs/wq-build) | Compile and optimize an application.
-[cat](https://wq.io/docs/wq-cat) | Display contents of a file or wq.io class.
-[collectjson](https://wq.io/docs/wq-collectjson) | Load directory files into a JSON object.
-[icons](https://wq.io/docs/wq-icons) | Generate resized icons from source image.
-[init](https://wq.io/docs/wq-init) | Link js, css, and scss to wq.app libs.
-[maketemplates](https://wq.io/docs/wq-maketemplates) | Generate mustache templates for wq.db.rest.
-[mustache](https://wq.io/docs/wq-mustache) | Render a mustache template into static HTML.
-[optimize](https://wq.io/docs/wq-optimize) | Use r.js to optimize JS and CSS assets.
-[phonegap](https://wq.io/docs/wq-phonegap) | Upload application to PhoneGap Build.
-[scss](https://wq.io/docs/wq-scss) | Render all SCSS/SASS files into CSS.
-[setversion](https://wq.io/docs/wq-setversion) | Update version.txt (and version.js).
-[start](https://wq.io/docs/wq-start) | Start a new project with wq.app and wq.db.
-[versions](https://wq.io/docs/wq-versions) | List installed modules and dependencies.
+Command | Module | Description
+--------|--------|-------------
+[addform](https://wq.io/docs/wq-addform) | [wq.start](https://wq.io/wq.start) | Convert an XLSForm into a Django app for wq.
+[appcache](https://wq.io/docs/wq-appcache) | [wq.app](https://wq.io/wq.app) | Generate an HTML5 appcache manifest.
+[build](https://wq.io/docs/wq-build) | [wq.app](https://wq.io/wq.app) | Compile and optimize an application.
+[cat](https://wq.io/docs/wq-cat) | [wq.io](https://wq.io/wq.io) | Display contents of a file or wq.io class.
+[collectjson](https://wq.io/docs/wq-collectjson) | [wq.app](https://wq.io/wq.app) | Load directory files into a JSON object.
+[icons](https://wq.io/docs/wq-icons) | [wq.app](https://wq.io/wq.app) | Generate resized icons from source image.
+[init](https://wq.io/docs/wq-init) | [wq.app](https://wq.io/wq.app) | Link js, css, and scss to wq.app libs.
+[maketemplates](https://wq.io/docs/wq-maketemplates) | [wq.start](https://wq.io/wq.start) | Generate mustache templates for wq.db.rest.
+[mustache](https://wq.io/docs/wq-mustache) | [wq.app](https://wq.io/wq.app) | Render a mustache template into static HTML.
+[optimize](https://wq.io/docs/wq-optimize) | [wq.app](https://wq.io/wq.app) | Use r.js to optimize JS and CSS assets.
+[phonegap](https://wq.io/docs/wq-phonegap) | [wq.app](https://wq.io/wq.app) | Upload application to PhoneGap Build.
+[scss](https://wq.io/docs/wq-scss) | [wq.app](https://wq.io/wq.app) | Render all SCSS/SASS files into CSS.
+[setversion](https://wq.io/docs/wq-setversion) | [wq.app](https://wq.io/wq.app) | Update version.txt (and version.js).
+[start](https://wq.io/docs/wq-start) | [wq.start](https://wq.io/wq.start) | Start a new project with wq.app and wq.db.
+[versions](https://wq.io/docs/wq-versions) | [wq.core](https://wq.io/wq.core) | List installed modules and dependencies.
