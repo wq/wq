@@ -28,6 +28,7 @@ Usage: wq phonegap [OPTIONS] VERSION
 Options:
   --source PATH         Directory containing app assets
   --icon PATH           Source image for icons
+  --splash PATH         Source image for splash screen (defaults to icon)
   --config-xml PATH     config.xml template
   --index-html PATH     index.html template
   --pgb-directory PATH  Temporary working directory (default .wq-pgb)

@@ -5,7 +5,8 @@ order: 0
 wq
 ==
 
-The wq command line interface provides a number of utilities for creating and deploying applications with the wq framework.
+The wq command line interface provides a number of utilities for creating and
+deploying applications with the wq framework.
 
 ```shell
 $ wq --help
