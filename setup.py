@@ -27,7 +27,7 @@ setup(
     description=LONG_DESCRIPTION.strip(),
     long_description=long_description(),
     install_requires=[
-        'wq.app==1.0.0rc1',
+        'wq.app>=1.0.0,<1.1.0',
         'wq.core>=1.0.0,<1.1.0',
         'wq.db>=1.0.0,<1.1.0',
         'wq.io>=1.0.0,<1.1.0',
