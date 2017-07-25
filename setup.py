@@ -19,7 +19,7 @@ def long_description():
 
 setup(
     name='wq',
-    version='1.0.0rc1',
+    version='1.0.0',
     author='S. Andrew Sheppard',
     author_email='andrew@wq.io',
     url='https://wq.io/',
