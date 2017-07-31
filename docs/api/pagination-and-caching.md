@@ -207,5 +207,5 @@ rest.router.register_model(
 [URL structure]: https://wq.io/docs/url-structure
 [configuration]: https://wq.io/docs/config
 [wq/app.js]: https://wq.io/docs/app-js
-[paginator widget]: https://github.com/powered-by-wq/species.wq.io/blob/master/templates/partials/paginator.html
+[paginator widget]: https://github.com/wq/wq-django-template/blob/master/templates/partials/paginator.html
 [wq django template]: https://github.com/wq/wq-django-template

@@ -56,6 +56,7 @@ While wq.db does not use the Django template syntax, it can usually be used seam
 
 ## Template Naming Convention
 To reduce the amount of configuration needed when rendering application screens, wq follows a relatively strict convention for template names.  As discussed in [wq Configuration Object], there are two main classes of pages, which correspond to two categories of templates.
+
  - "Simple" pages have a single template, which shares a name with the page (`[pagename].html`)
  - "List", or model-driven pages, can have up to three templates, `[modelname]_list.html`, `[modelname]_detail.html`, and `[modelname]_edit.html`.  (The edit template is used for new screens as well - one can check for the existence of `{{#id}}` if there are any rendering differences between edit and new screens.)
 
@@ -63,7 +64,7 @@ Because templates are equally shared between the server and the client, they are
 
 ## Examples
 
-The [wq Django Template](https://github.com/wq/wq-django-template) includes a number of [pre-defined Mustache template examples ](https://github.com/wq/wq-django-template/tree/master/django_project/templates) to help getting started.
+When using the default project configuration provided by [wq start], templates will be automatically generated based on your registered model configuration.  The [Species Tracker templates] are also useful as a reference, as is the `templates/` folder from any of the other [open source wq-based projects][projects].
 
 [compelling technology]: https://wq.io/docs/web-app
 [work as websites]: https://wq.io/docs/website
@@ -81,3 +82,6 @@ The [wq Django Template](https://github.com/wq/wq-django-template) includes a nu
 [wq/store.js]: https://wq.io/docs/store-js
 [wq Configuration Object]: https://wq.io/docs/config
 [wq configuration]: https://wq.io/docs/config
+[wq start]: https://wq.io/docs/setup
+[Species Tracker templates]: https://github.com/powered-by-wq/species.wq.io/tree/master/templates
+[projects]: https://wq.io/projects/
