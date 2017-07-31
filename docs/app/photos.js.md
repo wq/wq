@@ -79,14 +79,7 @@ wq/photos.js, and the related file processing functions in [wq/app.js] and [wq/o
  - Offline storage (see Browser Compatibility Notes for [wq/store.js])
  - Binary [Blob] support, including the ability to upload `Blob`s via AJAX.
 
-All modern browsers, including Internet Explorer 10 and later, have at least [minimal blob support](https://github.com/nolanlawson/state-of-binary-data-in-the-browser).  For IE 9 and older browsers, the preview functionality in wq/photos.js will not work, but users should still be able to upload files.  wq/app.js will detect the lack of `Blob` support on these browsers and fall back to a normal form post when a `<form>` containing an `<input type=file>` is encountered.  (wq.db's [ModelViewSet] includes built-in support for responding to forms posted in this way).
-
-This leaves one category of browsers to watch out for: those that mostly support `Blob`s but are unable to upload them via AJAX.  This includes the default browser and Webview on Android version 4.0 through 4.3.  Due to a [WebKit bug](https://code.google.com/p/android/issues/detail?id=39882) in these versions, wq/outbox.js is unable to properly upload stored Blobs.  Android 4.4 and newer versions are unaffected.
-
-This is a known limitation, and there is a [wq.app issue](https://github.com/wq/wq.app/issues/51) to address it.  In the meantime, there are two workarounds.
-
- * For web apps, try to ensure the user is using the latest Chrome instead of the stock browser when contributing data with photos.
- * For native apps, build the app with the [Crosswalk Webview](https://crosswalk-project.org/).  The Crosswalk webview is available in the [latest version of Phonegap Build](http://phonegap.com/blog/2015/06/16/phonegap-updated-on-build/) as a plugin - see [Species Tracker's config.xml](https://github.com/powered-by-wq/species.wq.io/blob/master/native/config.xml) for an example.  Google's [multiple APK](http://developer.android.com/google/play/publishing/multiple-apks.html) support could be leveraged so that the Crosswalk-enabled APK would only need to be available for Android 4.3 and earlier.
+All modern browsers, including Internet Explorer 10, Android 4.4, and later versions, have at least [minimal blob support](https://github.com/nolanlawson/state-of-binary-data-in-the-browser).  For IE 9 and older desktop browsers, the preview functionality in wq/photos.js will not work, but users should still be able to upload files.  wq/app.js will detect the lack of `Blob` support on these browsers and fall back to a normal form post when a `<form>` containing an `<input type=file>` is encountered.  (wq.db's [ModelViewSet] includes built-in support for responding to forms posted in this way).
 
 [Blob]: https://developer.mozilla.org/en-US/docs/Web/API/Blob
 [wq/photos.js]: https://github.com/wq/wq.app/blob/master/js/wq/photos.js
@@ -94,7 +87,6 @@ This is a known limitation, and there is a [wq.app issue](https://github.com/wq/
 [wq/app.js]: https://wq.io/docs/app-js
 [PhoneGap Camera API]: https://www.npmjs.com/package/cordova-plugin-camera
 [camera.getPicture()]: https://www.npmjs.com/package/cordova-plugin-camera
-[broken Android implementations]: http://code.google.com/p/android/issues/detail?id=62220
 [wq/outbox.js]: https://wq.io/docs/outbox-js
 [wq/store.js]: https://wq.io/docs/store-js
 [ModelViewSet]: https://wq.io/docs/views
