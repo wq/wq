@@ -29,8 +29,8 @@ python3 -m venv venv
 . venv/bin/activate
 pip install --upgrade pip # optional
 
-# Install wq 1.0.0rc1 within venv
-pip install wq --pre
+# Install wq within venv
+pip install wq
 wq start $PROJECTNAME . -d $DOMAINNAME
 sudo chown www-data media/ # give Apache user permission to save uploads
 

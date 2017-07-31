@@ -18,7 +18,7 @@ sudo yum install http://yum.postgresql.org/9.4/redhat/rhel-7-x86_64/pgdg-centos9
 sudo yum install epel_release
 sudo yum install httpd mod_wsgi postgresql94-server postgis2_94 python-pip
 sudo yum install nodejs
-sudo pip install wq --pre
+sudo pip install wq
 
 # Create project directory from wq template
 export PROJECTSDIR=/path/to/projects #e.g. /var/www
