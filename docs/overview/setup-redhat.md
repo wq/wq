@@ -44,7 +44,6 @@ sudo service postgresql-9.4 restart
 createuser -Upostgres $PROJECTNAME
 createdb -Upostgres -O$PROJECTNAME $PROJECTNAME
 psql -Upostgres $PROJECTNAME -c "CREATE EXTENSION postgis;"
-sudo pip install psycopg2
 
 # Install database tables & create admin account
 # (edit db/$PROJECTNAME/local_settings.py with database info, if different than above)
