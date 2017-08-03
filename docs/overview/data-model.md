@@ -23,7 +23,7 @@ wq addform ~/survey.xlsx
  You should see a new folder, `survey/`, with the files `models.py` and `rest.py`.  Going up one level, you should see `survey_list.html`, `survey_detail.html`, and `survey_edit.html` in your `../templates` folder.
 
 ### Option 2: Django Model syntax
-Alternatively, you can create a Django application folder manually and define `models.py` via [Django model] classes.  You will then want to create a `rest.py` file that registers each model class with the [wq.db router].
+Alternatively, you can create a Django application folder manually (or with `./manage.py startapp`) and define `models.py` via [Django model] classes.  You will then want to create a `rest.py` file that registers each model class with the [wq.db router].
 
 ```python
 # survey/models.py
@@ -51,7 +51,7 @@ Finally, if you are handy with SQL (or have an existing database) you can define
 
 ## Creating the Database Tables
 
-Once your models are defined via any of the three methods above, edit your project's `settings.py` to ensure the new application folder is listed under `INSTALLED_APPS`.
+If you use option 2 or 3 above, edit your project's `settings.py` to ensure the new application folder is listed under `INSTALLED_APPS`.  This should happen automatically if you use `wq addform`.
 
 ```python
 # myproject/settings.py
@@ -67,7 +67,14 @@ INSTALLED_APPS = [
 ]
 ```
 
-Then, run Django's built in [migration commands] to create database tables in PostgreSQL corresponding to your model classes.  After running `./manage.py makemigrations` and `./manage.py migrate`, you can use `./manage.py dbshell`, psql, or pgAdmin to confirm that the tables are present.  If all goes well, you should also be able to open a browser and visit your website's [/config.json] and [/modelnames.json] to confirm that the model(s) are registered.
+Then, run Django's built in [migration commands] to create database tables in PostgreSQL corresponding to your model classes.  For above example, the following should work:
+
+```bash
+./manage.py makemigrations survey
+./manage.py migrate
+```
+
+After the commands complete, you can use `./manage.py dbshell`, psql, or pgAdmin to confirm that the tables are present.  If all goes well, you should also be able to open a browser and visit your website's [/config.json] and [/modelnames.json] to confirm that the model(s) are registered.
 
 [wq]: https://wq.io/docs/intro
 [Django Model]: https://docs.djangoproject.com/en/1.10/topics/db/models/
