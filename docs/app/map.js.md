@@ -240,6 +240,7 @@ Each map configuration should have one or more layer configurations added to it.
 from .models import MyModel
 app.router.register_model(
     MyModel,
+    fields="__all__",
     map=[{
         'mode': 'all',
         ...

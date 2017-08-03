@@ -40,7 +40,11 @@ from wq.db import rest
 from .models import MyModel
 from .views import MyViewSet
 
-rest.router.register_model(MyModel, viewset=MyViewSet)
+rest.router.register_model(
+    MyModel,
+    fields="__all__",
+    viewset=MyViewSet,
+)
 ```
 Note that it is not necessary to explicitly set the `model` or `queryset` attributes on the viewset class if you are only using it with wq.db's router.
 

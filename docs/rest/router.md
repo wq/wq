@@ -37,7 +37,10 @@ Whereas admin's autodiscover searches for and imports `admin.py` in each install
 
 from wq.db import rest
 from .models import MyModel
-rest.router.register_model(MyModel)
+rest.router.register_model(
+    MyModel,
+    fields="__all__",
+)
 ```
 
 Note that the function is `register_model()` and not `register()`, since the API is quite different from the DRF DefaultRouter's `register()`, which can still be called directly if needed.
@@ -57,7 +60,11 @@ class CustomViewSet(ModelViewSet):
 from wq.db import rest
 from .models import MyModel
 from .views import CustomViewSet
-rest.router.register_model(MyModel, viewset=CustomViewSet)
+rest.router.register_model(
+    MyModel,
+    viewset=CustomViewSet,
+    fields="__all__",
+)
 ```
 
 ## Router API
@@ -66,13 +73,14 @@ The available keyword arguments to `router.register_model()` include:
 
 | Option | Default | Notes |
 |--------|---------|-------|
-| `viewset` | `wq.db.rest.views.ModelViewSet` | |
-| `serializer` | `wq.db.rest.serializers.ModelSerializer` | |
-| `queryset` | `[Model].objects.all()` | |
+| `fields` | None | List of fields to include on the auto-generated serializer.  Use `"__all__"` to include all fields (the old default behavior). |
+| `serializer` | `wq.db.rest.serializers.ModelSerializer` | One of `fields` or `serializer` must be set or the API will throw a configuration error.
 | `filter` | No-op. | The argument should be a function that accepts a queryset and a request object and filters the former. |
-| `url` | `[Model]._meta.verbose_name_plural` | (with spaces removed) |
 | `cache` | `"first_page"` | Controls which data is set to the client model storage for offline use.  Can also be set to `"all"`, `"none"`, or `"filter"` (see [configuration][config])
 | `cache_filter` | None | For use with `cache="filter"`.
+| `url` | `[Model]._meta.verbose_name_plural` | (with spaces removed) |
+| `queryset` | `[Model].objects.all()` | |
+| `viewset` | `wq.db.rest.views.ModelViewSet` | |
 
 Note that `filter` applies to every API request (including all HTML and JSON views), while `cache_filter` only applies to the JSON data prefetched for offline use.  If both `filter` and `cache_filter` are set, the queryset for offline data will be filtered by both functions.  Similarly, setting `cache="all"` means "cache the entire queryset returned by `filter`", which is not necessarily `Model.objects.all()`.
 

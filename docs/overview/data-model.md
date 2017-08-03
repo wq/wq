@@ -39,7 +39,10 @@ class Survey(models.Model):
 from wq.db import rest
 from .models import Survey
 
-rest.router.register_model(Survey)
+rest.router.register_model(
+    Survey,
+    fields="__all__",
+)
 ```
 
 ### Option 3: SQL Syntax

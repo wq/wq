@@ -132,7 +132,11 @@ from wq.db import rest
 from wq.db.patterns import rest as patterns
 from .models import MyModel
 
-rest.router.register_model(MyModel, serializer=patterns.RelatedModelSerializer)
+rest.router.register_model(
+    MyModel,
+    serializer=patterns.RelatedModelSerializer,
+    fields="__all__",
+)
 ```
 
 Output:
