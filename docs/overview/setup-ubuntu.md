@@ -32,6 +32,11 @@ pip install --upgrade pip # optional
 # Install wq within venv
 pip install wq
 wq start $PROJECTNAME . -d $DOMAINNAME
+
+# Note: If you get a `pkg_resources.ContextualVersionConflict`, try
+# reinstalling pyxform and then running wq start again:
+pip install pyxform
+
 sudo chown www-data media/ # give Apache user permission to save uploads
 
 # Create database
