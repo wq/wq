@@ -15,7 +15,7 @@ Getting Started
     . venv/bin/activate
     pip install wq
     wq start -d myproject.example.com myproject
-|
+
 
     Note: If you get a ``pkg_resources.ContextualVersionConflict``, try
     reinstalling pyxform with ``pip install pyxform``. See
