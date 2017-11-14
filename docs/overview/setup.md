@@ -21,8 +21,6 @@ pip install wq
 wq start [PROJECTNAME] -d [DOMAINNAME]
 ```
 
-> Note: If you get a `pkg_resources.ContextualVersionConflict`, try reinstalling pyxform with `pip install pyxform`.  See [#27](https://github.com/wq/wq/issues/27).
-
 Detailed installation instructions are available for each of the following operating systems:
 
 ### [Ubuntu Linux (recommended)]

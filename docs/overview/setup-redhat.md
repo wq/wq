@@ -31,10 +31,6 @@ sudo chown `whoami` $PROJECTNAME
 cd $PROJECTNAME
 wq start $PROJECTNAME . -d $DOMAINNAME
 
-# Note: If you get a `pkg_resources.ContextualVersionConflict`, try
-# reinstalling pyxform and then running wq start again:
-pip install pyxform
-
 # give Apache user permission to save uploads
 sudo chown apache media/
 sudo chcon -R --type httpd_sys_rw_content_t media/
