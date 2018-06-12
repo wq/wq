@@ -1,7 +1,6 @@
 ---
-order: 5
-indent: true
-redirect: setup-local
+order: 8
+deprecated: true
 ---
 
 Installing wq on Windows

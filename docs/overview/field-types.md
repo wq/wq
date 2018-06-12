@@ -1,5 +1,5 @@
 ---
-order: 8
+order: 6
 ---
 
 Common Field Types

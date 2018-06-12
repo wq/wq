@@ -1,5 +1,6 @@
 ---
 order: 4
+deprecated: true
 ---
 
 locate pattern

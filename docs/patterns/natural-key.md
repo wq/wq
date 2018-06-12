@@ -1,5 +1,6 @@
 ---
 order: 7
+deprecated: true
 ---
 
 Natural Keys

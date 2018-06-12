@@ -1,5 +1,6 @@
 ---
 order: 6
+deprecated: true
 ---
 
 relate pattern

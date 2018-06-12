@@ -1,7 +1,6 @@
 ---
-order: 7
-indent: true
-redirect: setup-local
+order: 10
+deprecated: true
 ---
 
 Installing wq on OS X

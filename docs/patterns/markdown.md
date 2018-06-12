@@ -1,5 +1,6 @@
 ---
 order: 5
+deprecated: true
 ---
 
 mark(down) pattern

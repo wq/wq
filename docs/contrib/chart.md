@@ -1,3 +1,7 @@
+---
+deprecated: true
+---
+
 wq.db: chart
 ============
 

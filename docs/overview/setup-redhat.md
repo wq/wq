@@ -1,7 +1,6 @@
 ---
-order: 6
-indent: true
-redirect: setup-local
+order: 9
+deprecated: true
 ---
 
 Installing wq on CentOS 7

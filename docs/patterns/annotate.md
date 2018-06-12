@@ -1,5 +1,6 @@
 ---
 order: 2
+deprecated: true
 ---
 
 annotate pattern

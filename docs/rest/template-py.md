@@ -1,5 +1,6 @@
 ---
-order: 5
+order: 7
+deprecated: true
 ---
 
 wq.db template Loader
