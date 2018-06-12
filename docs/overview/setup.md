@@ -45,23 +45,10 @@ Once your data model is defined and your REST API is running, you can start cust
 
 The generated templates are stored in `templates/` so that they can be individually customized.  Once you start customizing them, be sure not to overwrite them by autogenerating them again.  `wq maketemplates` will prompt you before overwriting any existing templates.  If you would like a uniform layout for all forms and are comfortable editing template-generating templates, you can also edit the files `master_templates/` directly and run `wq maketemplates` again.
 
-[wq framework]: https://wq.io/docs/intro
-[projects]: https://wq.io/projects/
-[contact]: https://wq.io/community
 [Python Package Index]: https://pypi.python.org/pypi/wq
-[wq.app]: https://wq.io/wq.app
-[wq.db]: https://wq.io/wq.db
-[wq.io]: https://wq.io/wq.io
-[Apache]: http://httpd.apache.org/
-[PostgreSQL]: http://www.postgresql.org/
-[PostGIS]: http://postgis.net/
-[wq Django template]: https://github.com/wq/wq-django-template
 [setup-local]: https://wq.io/docs/setup-local
 [setup-ubuntu]: https://wq.io/docs/setup-ubuntu
 [Data Model]: https://wq.io/docs/data-model
 [Common Field Types]: https://wq.io/docs/field-types
 [Advanced Patterns]: https://wq.io/docs/nested-forms
 [Mustache templates]: https://wq.io/docs/templates
-[example templates]: https://github.com/wq/wq-django-template/tree/master/django_project/templates
-[Species Tracker source code]: https://github.com/powered-by-wq/species.wq.io/
-[learn a little HTML]: https://wq.io/docs/website

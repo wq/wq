@@ -82,3 +82,10 @@ Visit the site in a web browser to verify the new installation.  You'll probably
 [Debian]: https://www.debian.org/
 [venv]: https://docs.python.org/3/library/venv.html
 [Django models]: https://wq.io/docs/data-model
+
+[wq framework]: https://wq.io/docs/intro
+[Apache]: http://httpd.apache.org/
+[PostgreSQL]: http://www.postgresql.org/
+[PostGIS]: http://postgis.net/
+[projects]: https://wq.io/projects/
+[contact]: https://wq.io/community
