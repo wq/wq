@@ -31,6 +31,7 @@ Command | Module | Description
 --------|--------|-------------
 [addform](https://wq.io/docs/wq-addform) | [wq.start](https://wq.io/wq.start) | Convert an XLSForm into a Django app for wq.
 [appcache](https://wq.io/docs/wq-appcache) | [wq.app](https://wq.io/wq.app) | Generate an HTML5 appcache manifest.
+[babel](https://wq.io/docs/wq-babel) | [wq.app](https://wq.io/wq.app) | Use babel.js to compile ES6/2015+.
 [build](https://wq.io/docs/wq-build) | [wq.app](https://wq.io/wq.app) | Compile and optimize an application.
 [cat](https://wq.io/docs/wq-cat) | [wq.io](https://wq.io/wq.io) | Display contents of a file or wq.io class.
 [collectjson](https://wq.io/docs/wq-collectjson) | [wq.app](https://wq.io/wq.app) | Load directory files into a JSON object.

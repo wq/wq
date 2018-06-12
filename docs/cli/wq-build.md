@@ -1,5 +1,5 @@
 ---
-order: 4
+order: 5
 ---
 
 wq build
@@ -22,6 +22,7 @@ Usage: wq build [OPTIONS] VERSION
       wq scss        (if configured)
       wq mustache    (if configured)
       wq optimize
+      wq babel       (if configured)
       wq appcache    (if configured)
 
 Options:
