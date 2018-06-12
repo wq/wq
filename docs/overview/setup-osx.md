@@ -1,20 +1,12 @@
 ---
-order: 6
+order: 7
 indent: true
+redirect: setup-local
 ---
 
-Installing wq on OS X Yosemite
-==============================
+Installing wq on OS X
+======================
 
-The following steps should help you [install wq] and get a wq-powered web application running on [OS X].
+See [install wq locally][setup-local] for more information.
 
-## Using both wq.db and wq.app
-
-FIXME: This section is a WIP.
-
-## Using only wq.app
-
-FIXME: This section is a WIP.
-
-[install wq]: https://wq.io/docs/setup
-[OS X]: http://www.apple.com/osx/
+[setup-local]: https://wq.io/docs/setup-local

@@ -1,14 +1,20 @@
 ---
-order: 3
+order: 4
 indent: true
 ---
 
-Installing wq on Ubuntu 16.04 LTS
-=================================
+Installing wq and Apache on Ubuntu 16.04 LTS
+============================================
 
-The following steps should help you [install wq] and get a wq-powered web application running on [Ubuntu], [Debian], or other similar Linux distributions.   These steps are tested on Ubuntu 16.04 LTS.
+The [wq framework] is designed to create fully custom applications, so most wq-powered projects eventually require running a public web server and installing a number of software packages.  If you are planning to self-host, you can follow the process below to get an application up and running.  (Be sure to use the referral link above to get a discount on hosting fees!)
 
-As of wq 1.0, we recommend installing wq in a [venv] virtual environment.  This makes it easier to run multiple wq-powered applications on the same server.  The old way of using system-wide packages should still work.
+> Note: If you are only experimenting with wq on your local machine, you may want to try [Installing wq locally][setup-local] instead of the more complex process documented here.
+
+> Another Note: If you would rather not run a wq-powered server yourself, you may want to reach out to any of the [existing subscription-based projects and "campaign builder" apps][projects] to explore potential collaboration.  Our partners also provide [flexible support plans][contact] ranging from a couple of hours of installation support to full-service bespoke design, software development, and application hosting.
+
+To run wq on a pulbic domain, you will need a WGSI-capable webserver like [Apache], and a database to host the application.  wq.db is generally used with [PostgreSQL] and [PostGIS], but any Django-supported database will work.  These instructions assume you will be using Apache and PostGIS.  These steps are tested on [Ubuntu 16.04 LTS][Ubuntu].
+
+We recommend installing wq in a [venv] virtual environment.  This makes it easier to run multiple wq-powered applications on the same server.
 
 ```bash
 # Install system libraries
@@ -71,6 +77,7 @@ sudo letsencrypt
 Visit the site in a web browser to verify the new installation.  You'll probably need to type in the server's IP address instead of the project name until your DNS is configured.  When the application loads, you should see "Hello world! Version 0.0.1", and links to log in and out.  You are now ready to start defining and registering [Django models] which will appear on the home screen after you rebuild the application with deploy.sh.
 
 [install wq]: https://wq.io/docs/setup
+[setup-local]: https://wq.io/docs/setup-local
 [Ubuntu]: http://www.ubuntu.com/
 [Debian]: https://www.debian.org/
 [venv]: https://docs.python.org/3/library/venv.html

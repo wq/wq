@@ -5,15 +5,11 @@ order: 2
 Getting Started
 ===============
 
-Since the [wq framework] is designed to create fully custom applications, the first step for most wq-powered projects is to start up a web server and install a number of software packages.  If you are planning to self-host, or would just like to experiment with the framework, you can follow the process below to get an application up and running.  (Be sure to use the referral link above to get a discount on hosting fees!)
-
-If you would rather not run a wq-powered server yourself, you may want to reach out to any of the [existing subscription-based projects and "campaign builder" apps][projects] to explore potential collaboration.  Our partners also provide [flexible support plans][contact] ranging from a couple of hours of installation support to full-service bespoke design, software development, and application hosting.
+The following steps will help you get wq-powered application up and running quickly.
 
 ## I. Install wq
 
-The easiest way to install wq is via the [Python Package Index].  Any of [wq.app], [wq.db], or [wq.io] can be installed separately, or all three can be installed by simply installing the **wq** metapackage.
-
-If you are using wq.app and wq.db together, you can use the `wq start` command provided by the [wq Django template].  For production, you will need a WGSI-capable webserver like [Apache], and a database to host the application.  wq.db is generally used with [PostgreSQL] and [PostGIS], but any Django-supported database will work.  You can also use Django's built-in `./manage.py runserver` for development, or even use wq.app by itself and replace wq.db with your own backend solution.
+The easiest way to install wq is via the [Python Package Index].  Assuming you already have Python installed, you can usually just run the following command:
 
 ```bash
 # Install wq
@@ -21,12 +17,12 @@ pip install wq
 wq start [PROJECTNAME] -d [DOMAINNAME]
 ```
 
-Detailed installation instructions are available for each of the following operating systems:
+Depending on your use case, you may want to follow either of the following more detailed installation guides.
 
-### [Ubuntu Linux (recommended)]
-### [Windows]
-### [Red Hat Enterprise Linux / CentOS]
-### [OS X]
+### [Local Development (SQLite on Ubuntu or Windows)][setup-local]
+### [Public Webserver (Apache & PostgreSQL on Ubuntu)][setup-ubuntu]
+
+If you are unsure, start with the Local Development process.  You will be able to deploy the same code to a public webserver later.
 
 ## II. Define your Data Model
 
@@ -45,7 +41,7 @@ Instructions for defining nested forms ("repeat groups" in XLSForm syntax) as we
 
 ## III. Create your User Interface
 
-Once your data model is defined and your REST API is running, you can start customizing the a user interface to list, view, create, and edit records in your database.  As of version 1.0, wq includes a default set of fully functional [HTML/Mustache templates][Mustache templates] for "list", "detail", and "edit"/"new" views.  You can use the `wq maketemplates` command to get automatically generated templates for each registered model.  This command is called by the default `./deploy.sh`.
+Once your data model is defined and your REST API is running, you can start customizing the a user interface to list, view, create, and edit records in your database.  wq includes a default set of fully functional [HTML/Mustache templates][Mustache templates] for "list", "detail", and "edit"/"new" views.  You can use the `wq maketemplates` command to get automatically generated templates for each registered model.  This command is called by the default `./deploy.sh`.
 
 The generated templates are stored in `templates/` so that they can be individually customized.  Once you start customizing them, be sure not to overwrite them by autogenerating them again.  `wq maketemplates` will prompt you before overwriting any existing templates.  If you would like a uniform layout for all forms and are comfortable editing template-generating templates, you can also edit the files `master_templates/` directly and run `wq maketemplates` again.
 
@@ -60,10 +56,8 @@ The generated templates are stored in `templates/` so that they can be individua
 [PostgreSQL]: http://www.postgresql.org/
 [PostGIS]: http://postgis.net/
 [wq Django template]: https://github.com/wq/wq-django-template
-[Ubuntu Linux (recommended)]: https://wq.io/docs/setup-ubuntu
-[Windows]: https://wq.io/docs/setup-windows
-[OS X]: https://wq.io/docs/setup-osx
-[Red Hat Enterprise Linux / CentOS]: https://wq.io/docs/setup-redhat
+[setup-local]: https://wq.io/docs/setup-local
+[setup-ubuntu]: https://wq.io/docs/setup-ubuntu
 [Data Model]: https://wq.io/docs/data-model
 [Common Field Types]: https://wq.io/docs/field-types
 [Advanced Patterns]: https://wq.io/docs/nested-forms
