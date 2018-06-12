@@ -59,6 +59,7 @@ Visit http://localhost:8000/ in a web browser to verify the new installation.  W
 
 [install wq]: https://wq.io/docs/setup
 [setup-ubuntu]: https://wq.io/docs/setup-ubuntu
+[Python]: https://python.org
 [Ubuntu]: http://www.ubuntu.com/
 [Debian]: https://www.debian.org/
 [venv]: https://docs.python.org/3/library/venv.html
