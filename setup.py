@@ -31,7 +31,7 @@ setup(
         'wq.core>=1.1.0,<1.2.0',
         'wq.db>=1.1.0,<1.2.0',
         'wq.io>=1.1.0,<1.2.0',
-        'wq.start>=1.0.0,<1.1.0',
+        'wq.start>=1.1.0,<1.2.0',
     ],
     packages=['wq'],
     namespace_packages=['wq'],
