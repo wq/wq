@@ -11,7 +11,7 @@ To promote long term sustainability in data management projects, [wq.db] include
 
 The design patterns generally follow a schema similar to the [Entity-Attribute-Value (EAV)] data model.  EAV-style data models are part/icularly useful for building field data collection apps where the parameters being collected may change over time.  To add new parameter definitions, a project administrator can use a web interface (add rows), instead of needing to have a developer change the database schema (add columns).
 
-> For an in-depth discussion of EAV and the related [ERAV] data model, see [Capturing Quality: Retaining Provenance for Curated Volunteer Monitoring Data](https://wq.io/research/provenance). The [vera] project provides an implementation of ERAV, which has better support than EAV for time series and tracking multiple versions of data.
+> For an in-depth discussion of EAV and the related [ERAV] data model, see [Capturing Quality: Retaining Provenance for Curated Volunteer Monitoring Data](https://andrewsheppard.net/research/provenance-volunteer-monitoring/). The [vera] project provides an implementation of ERAV, which has better support than EAV for time series and tracking multiple versions of data.
 
 The design patterns framework is provided via [wq.db.patterns].  See [Advanced Patterns] for more information.
 

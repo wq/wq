@@ -21,7 +21,7 @@ Suppose you are maintaining a dataset of time series data, and that the list of 
 
 Without ERAV, tracking changes to individual entities (events) will be quite difficult.  A wiki or similar versioning scheme would help, but only to the extent that changes to data happened within the system.  In this example (and in many real-world use cases), the changes may happen in Excel, or in third party systems with different goals or revision tracking requirements.
 
-The ERAV model solves this versioning challenge by making it possible to import data for the same entity more than once.  Each subsequent import is treated as a separate record, but linked back to the entity so that the data can be merged for operational use.  (ERAV can be interpreted in this case to mean Event-Report-Attribute-Value - which is the definition used in the [paper introducing the model](https://wq.io/research/provenance).)
+The ERAV model solves this versioning challenge by making it possible to import data for the same entity more than once.  Each subsequent import is treated as a separate record, but linked back to the entity so that the data can be merged for operational use.  (ERAV can be interpreted in this case to mean Event-Report-Attribute-Value - which is the definition used in the [paper introducing the model](https://andrewsheppard.net/research/provenance-volunteer-monitoring/).)
 
 ![ERAV](https://wq.io/media/images/erav.png)
 

@@ -69,7 +69,7 @@ The [Try WQ] demo is an example of an app that uses a primarily EAV model for th
 [relational model]: https://en.wikipedia.org/wiki/Relational_model
 [Entity-Attribute-Value]: https://en.wikipedia.org/wiki/Entity-attribute-value_model
 [wq.db]: https://wq.io/wq.db
-[water quality monitoring]: https://wq.io/research/provenance
+[water quality monitoring]: https://andrewsheppard.net/research/provenance-volunteer-monitoring/
 [HTML form]: https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms
 [Django model]: https://docs.djangoproject.com/en/1.8/topics/db/models/
 [ForeignKey]: https://docs.djangoproject.com/en/1.8/ref/models/fields/#django.db.models.ForeignKey

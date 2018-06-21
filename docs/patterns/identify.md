@@ -21,7 +21,7 @@ The identify module enables a number of related tasks:
  * Generating "permalinks" or user-friendly URLs for project web pages that correspond to database records (e.g. in the general [REST API])
  * Searching the entire database for entities in any table with a given identifier (in the [search] contrib module)
 
-> The identify module is among the original wq.db modules discussed in the paper [wq: A modular framework for collecting, storing, and utilizing experiential VGI](https://wq.io/research/framework).  Since that paper, this module has been renamed from `wq.db.identify` to `wq.db.patterns.identify`.
+> The identify module is among the original wq.db modules discussed in the paper [wq: A modular framework for collecting, storing, and utilizing experiential VGI](https://andrewsheppard.net/research/wq-framework).  Since that paper, this module has been renamed from `wq.db.identify` to `wq.db.patterns.identify`.
 
 ## Usage
 
