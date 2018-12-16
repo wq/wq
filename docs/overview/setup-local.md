@@ -46,11 +46,13 @@ wq start myproject . -d myproject.example.com
 cd db/
 ./manage.py migrate
 ./manage.py createsuperuser
+cd ..
 
 # generate htdocs folder via wq build
 ./deploy.sh 0.0.1
 
 # Start local Django server
+cd db/
 ./manage.py runserver
 
 ```
