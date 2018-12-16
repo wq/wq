@@ -14,11 +14,11 @@ The following steps should help you [install wq] and get a wq-powered web applic
 The first step in installing wq is to install [Python].  We recommend installing wq in a Python 3 [venv] virtual environment.
 
 #### Ubuntu
-On Ubuntu (including WSL), you may need to install the python3-venv package:
+On Ubuntu (including WSL), you may need to install the python3-venv and spatialite packages:
 
 ```bash
 sudo apt-get update
-sudo apt-get python3-venv
+sudo apt-get python3-venv libsqlite3-mod-spatialite
 ```
 
 #### Windows
