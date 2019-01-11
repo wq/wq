@@ -18,7 +18,7 @@ On Ubuntu (including WSL), you may need to install the python3-venv and spatiali
 
 ```bash
 sudo apt-get update
-sudo apt-get python3-venv libsqlite3-mod-spatialite
+sudo apt-get python3-venv
 ```
 
 #### Windows
@@ -40,7 +40,7 @@ pip install --upgrade pip # optional
 pip install wq
 
 # Initialize project from wq template
-wq start myproject . -d myproject.example.com
+wq start myproject . -d myproject.example.com --without-gis
 
 # Install database tables & create admin account
 cd db/
@@ -59,6 +59,28 @@ cd db/
 
 Visit http://localhost:8000/ in a web browser to verify the new installation.  When the application loads, you should see "Hello world! Version 0.0.1", and links to log in and out.  You are now ready to start defining and registering [Django models] which will appear on the home screen after you rebuild the application with deploy.sh.
 
+### Enable GIS Support (Optional)
+
+The instructions above make use of the `--without-gis` flag (which was added to wq.start in 1.1.1).  If you would like to support geospatial input (e.g. map-drawn Polygons and Lines), you will need to enable GIS support via GeoDjango.  To do this, you can either specify `--with-gis` when creating the project, or enable GIS for an existing project by uncommenting the lines referencing `django.contrib.gis` in each of the files under db/myprojects/settings/.
+
+If you only need to support GPS coordinates, you can probably get by with numeric latitude and longitude fields and forgo the GeoDjango requirement.
+
+Note that you will probably need to install additional system libraries to get GeoDjango to work.
+
+#### Ubuntu
+
+On Ubuntu, (including WSL), install the following libraries:
+
+```bash
+sudo apt-get install libsqlite3-mod-spatialite gdal-bin
+```
+
+In addition, ensure that the `SPATIALITE_LIBRARY_PATH` line in db/myproject/settings/dev.py is uncommented.
+
+### Windows
+
+Installing GDAL and other GeoDjango requirements on Windows somewhat more involved.  See the [GeoDjango documentation] for more information.
+
 [install wq]: https://wq.io/docs/setup
 [setup-ubuntu]: https://wq.io/docs/setup-ubuntu
 [Python]: https://python.org
@@ -67,3 +89,4 @@ Visit http://localhost:8000/ in a web browser to verify the new installation.  W
 [venv]: https://docs.python.org/3/library/venv.html
 [Django models]: https://wq.io/docs/data-model
 [WSL]: https://docs.microsoft.com/en-us/windows/wsl/install-win10
+[GeoDjango documentation]: https://docs.djangoproject.com/en/2.1/ref/contrib/gis/install/#windows
