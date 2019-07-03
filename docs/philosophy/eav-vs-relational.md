@@ -6,7 +6,7 @@ description: This article exists to describe one key decision you will need to m
 To EAV, or not to EAV? Choosing your data model
 ===============================================
 
-Once you've determined to use a [web-based approach](https://wq.io/docs/web-app) for your offline-capable citizen science app, and have [installed wq], you are now ready for the most important step when building an app for citizen science: **defining your data model**.  This step is so important, in fact, that [wq does not do it for you][data model].  Your project needs and topic domain will determine what data model is best for your application.  wq does provide a number of common [design patterns] we've found useful, but these are not required, and in some cases should be avoided.
+Once you've [installed wq], you are now ready for the most important step when building an app for citizen science: **defining your data model**.  This step is so important, in fact, that [wq does not do it for you][data model].  Your project needs and topic domain will determine what data model is best for your application.  wq does provide a number of common [design patterns] we've found useful, but these are not required, and in some cases should be avoided.
 
 This article exists to describe one key decision you will need to make - whether to use a traditional [relational model], or to use an [Entity-Attribute-Value] (EAV) model (also commonly referred to as an open schema).  The key difference in the two approaches is the level of flexibility your model has in adapting to changing project requirements, especially when new attribute definitions are needed.  At a high level, attributes are added as *columns* to a relational schema, but as *rows* in an EAV schema.  This means that an EAV schema can be administered via a web-based interface, while a relational schema typically needs to be modified by a database administrator.
 
@@ -61,7 +61,6 @@ If you know you want an EAV structure and are working with time series data, you
 
 The [Try WQ] demo is an example of an app that uses a primarily EAV model for the time series table (see the [Try WQ model definitions] as well as the [vera model definitions]).  This is what makes it possible for participants to define [custom campaigns] on the fly.
 
-[web-based approach]: https://wq.io/docs/web-app
 [installed wq]: https://wq.io/docs/setup
 [data model]: https://wq.io/docs/data-model
 [about]: https://wq.io/docs/intro

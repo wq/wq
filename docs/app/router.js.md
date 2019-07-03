@@ -8,7 +8,7 @@ wq/router.js
 
 [wq/router.js]
 
-**wq/router.js** is a [wq.app] module providing a convenient router API that overlays the [jQuery Mobile] page navigation system.  wq/router.js supports [PJAX-style] page navigation by capturing URL changes and "responding" with locally-rendered HTML pages.
+**wq/router.js** is a [wq.app] module providing a convenient router API that overlays the [jQuery Mobile] page navigation system.  wq/router.js supports offline page navigation by capturing URL changes and "responding" with locally-rendered HTML pages.
 
 If you are using both [wq.app] and [wq.db] together, you may be interested in [wq/app.js], a higher-level module that automatically registers the appropriate routes for applications via the [wq configuration object].  You should only need to use wq/router.js directly in the following cases:
 
@@ -127,7 +127,7 @@ name | purpose
 
 name | purpose
 -----|---------
-`path` | The URL path of the inserted page (relative to the base url).  This will be displayed in the location bar if the browser supports the `History.pushState` API.  For the best user experience, we [recommend] providing a server-rendered equivalent at the same URL.
+`path` | The URL path of the inserted page (relative to the base url).  This will be displayed in the location bar if the browser supports the `History.pushState` API.  For the best user experience, we recommend providing a server-rendered equivalent at the same URL.
 `template` | The name of a [Mustache template] to use.  This should have previously been registered with [wq/template.js], either directly or via [wq/app.js].
 `context` | A context object to use with the template.
 `ui` | The jQuery Mobile [ui object] from the original navigation event, if applicable.
@@ -158,7 +158,6 @@ For server rendering, wq.db includes a `router_info` context processor that mimi
 [wq/router.js]: https://github.com/wq/wq.app/blob/master/js/wq/router.js
 [wq.app]: https://wq.io/wq.app
 [jQuery Mobile]: http://jquerymobile.com
-[PJAX-style]: https://wq.io/docs/web-app
 [wq.db]: https://wq.io/wq.app
 [wq/app.js]: https://wq.io/docs/app-js
 [wq configuration object]: https://wq.io/docs/config
@@ -167,6 +166,5 @@ For server rendering, wq.db includes a `router_info` context processor that mimi
 [app.jqmInit()]: https://wq.io/docs/app-js
 [ui object]: http://api.jquerymobile.com/pagecontainer/
 [jQueryMobile-router documentation]: https://github.com/azicchetti/jquerymobile-router
-[recommend]: https://wq.io/docs/website
 [Mustache template]: https://wq.io/docs/templates
 [wq/template.js]: https://wq.io/docs/other-modules

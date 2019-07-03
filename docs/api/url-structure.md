@@ -5,7 +5,7 @@ order: 3
 The wq URL Structure
 ====================
 
-The wq stack is designed to support building offline-capable [websites] / [web apps] with application screens that can be [rendered on the client or on the server] depending on what will provide the best user experience.  To facilitate this design, wq defines a consistent but flexible **URL structure** that is shared throughout the application [as well as its REST API].  This structure is defined here independently of the implementations in [wq.app](https://wq.io/docs/app-js) and [wq.db](https://wq.io/docs/router), with the idea that either library can be exchanged for another architecture as long as the URL structure is maintained.
+The wq stack is designed to support building offline-capable websites / web apps with application screens that can be [rendered on the client or on the server] depending on what will provide the best user experience.  To facilitate this design, wq defines a consistent but flexible **URL structure** that is shared throughout the application as well as its REST API.  This structure is defined here independently of the implementations in [wq.app](https://wq.io/docs/app-js) and [wq.db](https://wq.io/docs/router), with the idea that either library can be exchanged for another architecture as long as the URL structure is maintained.
 
 ## Basic URL Structure
 
@@ -63,10 +63,7 @@ verb | path | template | purpose
 [wq.app]: https://wq.io/wq.app
 [wq/app.js]: https://wq.io/docs/app-js
 [wq/map.js]: https://wq.io/docs/map-js
-[websites]: https://wq.io/docs/website
-[web apps]: https://wq.io/docs/web-app
 [rendered on the client or on the server]: https://wq.io/docs/templates
-[as well as its REST API]: https://wq.io/docs/website-rest-api
 [template]: https://wq.io/docs/templates
 [wq website]: https://wq.io/
 [wq configuration object]: https://wq.io/docs/config

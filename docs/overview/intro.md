@@ -19,7 +19,7 @@ From an implementation standpoint, **wq is comprised of** five modules:
  * **[wq.io]** is a standalone Python library for dealing specifically with data import and export.
  * **[wq.core]** provides the `wq` command-line interface used by the other modules.
 
-Like any software framework, the design of wq incorporates a number of **core principles and assumptions**.  The documentation includes a [Philosophy] chapter with wq's position on the oft-discussed [web app/native app tradeoff][web app], and an [API Conventions] chapter proposing interoperable solutions for addressing common infrastructure concerns.  We hope that this generalized approach will give individual projects the flexibility to replace parts (or all!) of the wq stack with alternatives built with other platforms and programming languages.  The Python + JavaScript implementation of wq is essentially the reference implementation of these ideals.
+Like any software framework, the design of wq incorporates a number of **core principles and assumptions**.  The documentation includes an [API Conventions] chapter proposing interoperable solutions for addressing common infrastructure concerns.  We hope that this generalized approach will give individual projects the flexibility to replace parts of the wq stack with alternatives built with other platforms and programming languages.
 
 ## Documentation Outline
 The documentation is structured to lay the foundation and conventions before getting into the implementation details.  The chapters are as follows:
@@ -65,4 +65,3 @@ The documentation is structured to lay the foundation and conventions before get
 [Dataset IO]: https://wq.io/chapters/io/docs
 [Installation]: https://wq.io/docs/setup
 [Data Model]: https://wq.io/docs/data-model
-[web app]: https://wq.io/docs/web-app
