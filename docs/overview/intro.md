@@ -11,12 +11,11 @@ Introduction
 
 The **goal of wq** is to make it easy to rapidly assemble a complete data collection and management platform, while ensuring enough flexibility to adapt to project-specific data models and workflows.  While wq is not quite a point-and-click "form-builder" solution, it does provide a number of default templates and utilities to make it easy to [get started] quickly and customize later.  Moreover, wq has already been used to *create* point-and-click form builder solutions for [specific domains].
 
-From an implementation standpoint, **wq is comprised of** five modules:
+From an implementation standpoint, **wq is comprised of** four modules:
 
  * **[wq.start]** provides project scaffolding tools and templates that help with the initial generation of a new wq-powered project.
  * **[wq.app]** provides the basis of the client application, through a collection of [JavaScript modules] and a provided build process.
  * **[wq.db]** provides a [REST API] and [server-side rendering] of application screens for fast initial loading.
- * **[wq.io]** is a standalone Python library for dealing specifically with data import and export.
  * **[wq.core]** provides the `wq` command-line interface used by the other modules.
 
 Like any software framework, the design of wq incorporates a number of **core principles and assumptions**.  The documentation includes an [API Conventions] chapter proposing interoperable solutions for addressing common infrastructure concerns.  We hope that this generalized approach will give individual projects the flexibility to replace parts of the wq stack with alternatives built with other platforms and programming languages.
@@ -36,8 +35,6 @@ The documentation is structured to lay the foundation and conventions before get
     2. **wq.db**
         1. [REST API generator][REST API]
         2. [Design Patterns]
-    3. **wq.io**
-        1. [Dataset IO]
 
 [get started]: https://wq.io/docs/setup
 [specific domains]: https://wq.io/projects/
@@ -53,8 +50,6 @@ The documentation is structured to lay the foundation and conventions before get
 [server-side rendering]: https://wq.io/docs/templates
 [Design Patterns]: https://wq.io/docs/about-patterns
 
-[wq.io]: https://wq.io/wq.io
-
 [wq.core]: https://wq.io/wq.core
 
 [Philosophy]: https://wq.io/chapters/philosophy/docs
@@ -62,6 +57,5 @@ The documentation is structured to lay the foundation and conventions before get
 
 [Overview]: https://wq.io/chapters/overview/docs
 [wq.db: Contrib apps]: https://wq.io/chapters/contrib/docs
-[Dataset IO]: https://wq.io/chapters/io/docs
 [Installation]: https://wq.io/docs/setup
 [Data Model]: https://wq.io/docs/data-model
