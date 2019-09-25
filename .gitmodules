@@ -4,9 +4,6 @@
 [submodule "wq/db"]
 	path = wq/db
 	url = https://github.com/wq/wq.db.git
-[submodule "wq/io"]
-	path = wq/io
-	url = https://github.com/wq/wq.io.git
 [submodule "wq/start"]
 	path = wq/start
 	url = https://github.com/wq/wq.start.git
