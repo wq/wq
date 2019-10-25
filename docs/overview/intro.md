@@ -14,7 +14,7 @@ The **goal of wq** is to make it easy to rapidly assemble a complete data collec
 From an implementation standpoint, **wq is comprised of** four modules:
 
  * **[wq.start]** provides project scaffolding tools and templates that help with the initial generation of a new wq-powered project.
- * **[wq.app]** provides the basis of the client application, through a collection of [JavaScript modules] and a provided build process.
+ * **[wq.app]** provides the basis of the client application, through the [@wq/app] JavaScript module and the [wq build][Build Process] command.
  * **[wq.db]** provides a [REST API] and [server-side rendering] of application screens for fast initial loading.
  * **[wq.core]** provides the `wq` command-line interface used by the other modules.
 
@@ -42,7 +42,8 @@ The documentation is structured to lay the foundation and conventions before get
 [wq.start]: https://wq.io/wq.start
 
 [wq.app]: https://wq.io/wq.app
-[JavaScript modules]: https://wq.io/docs/app
+[@wq/app]: https://wq.io/docs/app-js
+[JavaScript modules]: https://wq.io/chapters/app/docs
 [Build Process]: https://wq.io/docs/build
 
 [wq.db]: https://wq.io/wq.db

@@ -12,7 +12,7 @@ The [wq framework] is designed to create fully custom applications, so most wq-p
 
 > Another Note: If you would rather not run a wq-powered server yourself, you may want to reach out to any of the [existing subscription-based projects and "campaign builder" apps][projects] to explore potential collaboration.  Our partners also provide [flexible support plans][contact] ranging from a couple of hours of installation support to full-service bespoke design, software development, and application hosting.
 
-To run wq on a pulbic domain, you will need a WGSI-capable webserver like [Apache], and a database to host the application.  wq.db is generally used with [PostgreSQL] and [PostGIS], but any Django-supported database will work.  These instructions assume you will be using Apache and PostGIS.  These steps are tested on [Ubuntu 16.04 LTS][Ubuntu].
+To run wq on a public website, you will need a WGSI-capable webserver like [Apache], and a database to host the application.  You will also need to obtain or configure a DNS record pointing a domain or subdomain to your server.  wq.db is generally used with [PostgreSQL] and [PostGIS], but any Django-supported database will work.  These instructions assume you will be using Apache and PostGIS.  These steps are tested on [Ubuntu 16.04 LTS][Ubuntu].
 
 We recommend installing wq in a [venv] virtual environment.  This makes it easier to run multiple wq-powered applications on the same server.
 
@@ -20,12 +20,13 @@ We recommend installing wq in a [venv] virtual environment.  This makes it easie
 # Install system libraries
 sudo apt-get update
 sudo apt-get install apache2 libapache2-mod-wsgi-py3 postgresql-9.5-postgis-2.2 python3-venv
-sudo apt-get install nodejs-legacy
+
+# To use wq's Node.js/npm integration:
+sudo apt-get install nodejs
 
 # Create project directory and venv
 export PROJECTSDIR=/path/to/projects #e.g. /var/www
 export PROJECTNAME=myproject
-export DOMAINNAME=myproject.example.com
 
 cd $PROJECTSDIR
 sudo mkdir $PROJECTNAME
@@ -33,11 +34,17 @@ sudo chown `whoami` $PROJECTNAME
 cd $PROJECTNAME
 python3 -m venv venv
 . venv/bin/activate
-pip install --upgrade pip # optional
+python3 -m pip install --upgrade pip # optional
 
 # Install wq within venv
-pip install wq
-wq start $PROJECTNAME . -d $DOMAINNAME
+python3 -m pip install wq==1.2.0b1
+wq start $PROJECTNAME .
+# Answer prompts for:
+#  - Web domain:    (Change to match DNS)
+#  - App Bundle ID: (Default is usually fine for new projects)
+#  - Enable GIS?    (Default is N, change to Y)
+#  - Enable npm?    (Leave default as N unless you plan to use npm)
+
 sudo chown www-data media/ # give Apache user permission to save uploads
 
 # Create database

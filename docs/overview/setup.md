@@ -9,20 +9,26 @@ The following steps will help you get wq-powered application up and running quic
 
 ## I. Install wq
 
-The easiest way to install wq is via the [Python Package Index].  Assuming you already have Python installed, you can usually just run the following command:
+The easiest way to install wq is via the [Python Package Index].  Assuming you already have Python 3 installed, you can usually just run the following commands:
 
 ```bash
+# Create virtual environment
+python3 -m venv ./venv
+. ./venv/bin/activate
+
 # Install wq
-pip install wq
-wq start [PROJECTNAME] -d [DOMAINNAME]
+python3 -m pip install wq==1.2.0b1
+wq start
 ```
+
+When called without any arguments, the `wq start` command will prompt for several project attributes including the project name and web domain.  `wq start` also asks whether to enable GIS support and/or Node.js/npm support.  (Since both options require the installation of additional software, they are are disabled by default.)  All of the prompts can also be specified as command-line arguments - see [wq start --help] for the full list.
 
 Depending on your use case, you may want to follow either of the following more detailed installation guides.
 
 ### [Local Development (SQLite on Ubuntu or Windows)][setup-local]
 ### [Public Webserver (Apache & PostgreSQL on Ubuntu)][setup-ubuntu]
 
-If you are unsure, start with the Local Development process.  You will be able to deploy the same code to a public webserver later.
+If you are unsure, start with the Local Development process.  You will be able to deploy the same project to a public webserver later.
 
 ## II. Define your Data Model
 
@@ -52,3 +58,4 @@ The generated templates are stored in `templates/` so that they can be individua
 [Common Field Types]: https://wq.io/docs/field-types
 [Advanced Patterns]: https://wq.io/docs/nested-forms
 [Mustache templates]: https://wq.io/docs/templates
+[wq start --help]: https://wq.io/docs/wq-start
