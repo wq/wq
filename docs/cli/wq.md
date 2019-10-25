@@ -18,7 +18,7 @@ Usage: wq [OPTIONS] COMMAND [ARGS]...
   the current directory.  Many of the commands can also be configured via
   command line options.
 
-  Installed modules: wq.app, wq.core, wq.db, wq.io, wq.start
+  Installed modules: wq.app, wq.core, wq.db, wq.start
 
 Options:
   -c, --config PATH  Path to configuration file (default is wq.yml).
@@ -33,7 +33,6 @@ Command | Module | Description
 [appcache](https://wq.io/docs/wq-appcache) | [wq.app](https://wq.io/wq.app) | Generate an HTML5 appcache manifest.
 [babel](https://wq.io/docs/wq-babel) | [wq.app](https://wq.io/wq.app) | Use babel.js to compile ES6/2015+.
 [build](https://wq.io/docs/wq-build) | [wq.app](https://wq.io/wq.app) | Compile and optimize an application.
-[cat](https://wq.io/docs/wq-cat) | [wq.io](https://wq.io/wq.io) | Display contents of a file or wq.io class.
 [collectjson](https://wq.io/docs/wq-collectjson) | [wq.app](https://wq.io/wq.app) | Load directory files into a JSON object.
 [icons](https://wq.io/docs/wq-icons) | [wq.app](https://wq.io/wq.app) | Generate resized icons from source image.
 [init](https://wq.io/docs/wq-init) | [wq.app](https://wq.io/wq.app) | Link js, css, and scss to wq.app libs.
