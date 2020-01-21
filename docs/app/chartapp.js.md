@@ -6,6 +6,6 @@ indent: true
 wq/chartapp.js
 ==============
 
-This content has been merged into [@wq/chart].
+This plugin was removed in wq.app 1.2, and moved to the [Django REST Pandas] package.
 
-[@wq/chart]: https://wq.io/docs/chart-js
+[Django REST Pandas]: https://github.com/wq/django-rest-pandas
