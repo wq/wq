@@ -45,15 +45,16 @@ cd myproject
 python3 -m venv venv
 . venv/bin/activate
 python3 -m pip install --upgrade pip # optional
-python3 -m pip install wq==1.2.0b1
+python3 -m pip install wq
 
 # Initialize project from wq template
 wq start myproject .
 # Answer prompts for:
 #  - Web domain:    (Default is fine during development)
-#  - App Bundle ID: (Default is fine during development)
 #  - Enable GIS?    (Leave default (N), or see below)
 #  - Enable npm?    (Leave default unless you plan to use npm)
+#  - Enable PGB?    (Leave default unless you plan to use PhoneGap Build)
+#  - App Bundle ID: (Only required for PGB)
 
 # Install database tables & create admin account
 cd db/

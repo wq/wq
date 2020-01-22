@@ -37,13 +37,14 @@ python3 -m venv venv
 python3 -m pip install --upgrade pip # optional
 
 # Install wq within venv
-python3 -m pip install wq==1.2.0b1
+python3 -m pip install wq
 wq start $PROJECTNAME .
 # Answer prompts for:
 #  - Web domain:    (Change to match DNS)
-#  - App Bundle ID: (Default is usually fine for new projects)
 #  - Enable GIS?    (Default is N, change to Y)
 #  - Enable npm?    (Leave default as N unless you plan to use npm)
+#  - Enable PGB?    (Leave default unless you plan to use PhoneGap Build)
+#  - App Bundle ID: (Only required for PGB)
 
 sudo chown www-data media/ # give Apache user permission to save uploads
 

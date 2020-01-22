@@ -26,10 +26,11 @@ Usage: wq start [OPTIONS] [PROJECT_NAME] [DESTINATION]
 
 Options:
   -d, --domain TEXT               Web domain (e.g. example.wq.io)
-  -i, --app-id TEXT               Application ID (e.g. io.wq.example)
   --with-gis / --without-gis      Enable GeoDjango
   --with-npm / --without-npm      Enable NPM (& Create React App)
   --npm-install / --skip-npm-install
                                   Run NPM install after creating project
+  --with-pgb / --without-pgb      Enable PhoneGap Build
+  -i, --app-id TEXT               Application ID (e.g. io.wq.example)
   --help                          Show this message and exit.
 ```

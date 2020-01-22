@@ -17,7 +17,7 @@ python3 -m venv ./venv
 . ./venv/bin/activate
 
 # Install wq
-python3 -m pip install wq==1.2.0b1
+python3 -m pip install wq
 wq start
 ```
 
