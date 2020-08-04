@@ -1,8 +1,12 @@
 [![wq](https://raw.github.com/wq/wq/master/images/128/wq.png)](https://wq.io/)
 
-[wq](https://wq.io) is a modular framework for citizen science field data collection via offline-capable mobile web apps.
+[wq](https://wq.io) is a modular framework for field data collection and surveys via offline-capable mobile web apps.
 
 ## Getting Started
+
+wq is available via both PyPI and NPM.  See [the documentation](https://wq.io/docs) for more information on getting started.
+
+### Python
 
 ```bash
 python3 -m venv venv
@@ -10,8 +14,16 @@ python3 -m venv venv
 python3 -m pip install wq
 wq start -d myproject.example.com myproject
 ```
-See [the documentation](https://wq.io/docs) for more information.
-See <https://github.com/wq/wq/issues> to report any issues.
+
+### Node
+
+```bash
+npx create-react-app myproject
+cd myproject
+yarn add wq
+```
+
+Replace the contents of src/index.js with [this example](https://github.com/wq/wq-django-template/blob/master/app/src/index.js).
 
 ## Features
 
