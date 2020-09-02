@@ -8,7 +8,7 @@ import analyze from 'rollup-plugin-analyzer';
 const banner = `/*!
  * ${pkg.name} ${pkg.version}
  * ${pkg.description}
- * (c) 2020, S. Andrew Sheppard
+ * (c) 2012-2020, S. Andrew Sheppard
  * https://wq.io/license
  */`;
 
