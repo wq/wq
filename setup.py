@@ -52,6 +52,7 @@ setup(
         'Framework :: Django :: 2.0',
         'Framework :: Django :: 2.1',
         'Framework :: Django :: 2.2',
+        'Framework :: Django :: 3.1',
         'Framework :: Django :: 3.0',
         'Topic :: Software Development :: Libraries :: Application Frameworks',
         'Topic :: Text Processing :: Markup :: HTML',
@@ -64,4 +65,11 @@ setup(
     setup_requires=[
         'setuptools_scm',
     ],
+    project_urls={
+        'Homepage': 'https://wq.io/',
+        'Documentation': 'https://wq.io/docs/',
+        'Source': 'https://github.com/wq/wq',
+        'Release Notes': 'https://github.com/wq/wq/releases',
+        'Issues': 'https://github.com/wq/wq/issues',
+    },
 )
