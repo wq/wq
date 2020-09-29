@@ -29,7 +29,7 @@ setup(
         'wq.app>=1.3.0a1,<1.4.0',
         'wq.core>=1.3.0a1,<1.4.0',
         'wq.db>=1.3.0a1,<1.4.0',
-        'wq.start>=1.2.1,<1.3.0',
+        'wq.start>=1.3.0a1,<1.4.0',
     ],
     python_requires='>=3',
     packages=['wq'],
