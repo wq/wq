@@ -1,6 +1,12 @@
 import app from '@wq/app';
-import map from '@wq/map/src/map.js';
+import material from '@wq/material';
+import mapbox from '@wq/mapbox';
 
-app.use(map);
+import React from 'react';
+import mapboxgl from 'mapbox-gl';
+
+app.use([material, mapbox]);
 
 export default app;
+
+export { React, mapboxgl };

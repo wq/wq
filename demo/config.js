@@ -1,5 +1,3 @@
-import templates from './templates.js';
-
 export default {
     pages: {
         site: {
@@ -35,9 +33,5 @@ export default {
                 { name: 'comments', type: 'text' },
             ],
         },
-    },
-    jqmInit: true,
-    template: {
-        templates,
-    },
+    }
 };

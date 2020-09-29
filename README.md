@@ -4,7 +4,7 @@
 
 ## Getting Started
 
-wq is available via both PyPI and NPM.  See [the documentation](https://wq.io/docs) for more information on getting started.
+wq can be installed via PyPI, NPM, or plain `<script>` tag via CDN.  See [the documentation](https://wq.io/docs) for more information on getting started.
 
 ### Python
 
@@ -18,12 +18,16 @@ wq start -d myproject.example.com myproject
 ### Node
 
 ```bash
-npx create-react-app myproject
-cd myproject
-yarn add wq
+npx create-react-app myproject --template @wq
 ```
 
-Replace the contents of src/index.js with [this example](https://github.com/wq/wq-django-template/blob/master/app/src/index.js).
+### CDN
+```html
+<script type="module">
+    import wq from 'https://unpkg.com/wq';
+    wq.init({});
+</script>
+```
 
 ## Features
 
