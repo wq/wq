@@ -1,11 +1,12 @@
 export default {
+    router: {
+        base_url: window.location.pathname
+    },
     pages: {
         site: {
             url: 'sites',
             map: true,
             list: true,
-            can_add: true,
-            can_change: true,
             form: [
                 {
                     name: 'name',
@@ -17,8 +18,6 @@ export default {
         observation: {
             url: 'observations',
             list: true,
-            can_add: true,
-            can_change: true,
             form: [
                 {
                     name: 'site',
