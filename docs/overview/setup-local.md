@@ -20,6 +20,10 @@ On Ubuntu (including WSL), you may need to install the python3-venv package:
 sudo apt-get update
 sudo apt-get python3-venv
 ```
+If you don't already have it install SQLite as well
+```bash
+sudo apt-get install sqlite3
+```
 
 If you plan to use wq's Node.js & npm integration, install the relevant package:
 
