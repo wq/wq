@@ -1,0 +1,8 @@
+exclude:
+ - api
+ - app
+ - build
+ - cli
+ - patterns
+ - philosophy
+ - rest
