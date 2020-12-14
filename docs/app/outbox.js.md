@@ -1,1 +1,0 @@
-../../wq/app/packages/outbox/README.md

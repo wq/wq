@@ -1,1 +1,0 @@
-../../wq/app/packages/app/README.md

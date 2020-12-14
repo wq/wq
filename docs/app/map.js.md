@@ -1,1 +1,0 @@
-../../wq/app/packages/map/README.md
