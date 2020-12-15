@@ -11,7 +11,7 @@ const config = {
     pages: { index: { url: '' } },
 };
 
-const DIRS = ['overview'],
+const DIRS = ['overview', 'guides'],
     ROOT_PAGES = [],
     IGNORE = {
         '/pages.json': true,
