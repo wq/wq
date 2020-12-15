@@ -26,7 +26,7 @@ export default [
                 extensions: ['.js', '.ts', '.tsx'],
                 babelHelpers: 'bundled'
             }),
-            terser(),
+            terser({ keep_fnames: /^([A-Z]|use[A-Z])/ }), // Preserve component & hook names
             resolve({
                 preferBuiltins: false,
                 extensions: ['.js', '.ts', '.tsx'],
@@ -43,8 +43,9 @@ export default [
                 "const isEqual = require('deep-equal')":
                     "import isEqual from 'deep-equal'",
                 "require('mapbox-gl/dist/mapbox-gl.css')": '',
-                "'react-mapbox-gl'": "'react-mapbox-gl/src/index'",
-                '"react-mapbox-gl"': "'react-mapbox-gl/src/index'",
+                "from 'react-mapbox-gl'": "from 'react-mapbox-gl/src/index'",
+                'require("react-mapbox-gl")':
+                    "require('react-mapbox-gl/src/index')",
                 delimiters: ['', '']
             }),
             commonjs(),
@@ -53,8 +54,8 @@ export default [
         output: {
             file: 'wq.js',
             banner,
-            sourcemap: true,
-            format: 'esm'
+            format: 'esm',
+            sourcemap: true
         }
     }
 ];
