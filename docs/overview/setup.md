@@ -52,10 +52,10 @@ Once your data model is defined and your REST API is running, you can start cust
 The generated templates are stored in `templates/` so that they can be individually customized.  Once you start customizing them, be sure not to overwrite them by autogenerating them again.  `wq maketemplates` will prompt you before overwriting any existing templates.  If you would like a uniform layout for all forms and are comfortable editing template-generating templates, you can also edit the files `master_templates/` directly and run `wq maketemplates` again.
 
 [Python Package Index]: https://pypi.org/project/wq
-[setup-local]: https://wq.io/docs/setup-local
-[setup-ubuntu]: https://wq.io/docs/setup-ubuntu
-[Data Model]: https://wq.io/docs/data-model
-[Common Field Types]: https://wq.io/docs/field-types
-[Advanced Patterns]: https://wq.io/docs/nested-forms
+[setup-local]: ./setup-local.md
+[setup-ubuntu]: ./setup-ubuntu.md
+[Data Model]: ./data-model.md
+[Common Field Types]: ./field-types.md
+[Advanced Patterns]: ./nested-forms.md
 [Mustache templates]: https://wq.io/docs/templates
 [wq start --help]: https://wq.io/docs/wq-start

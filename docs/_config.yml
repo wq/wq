@@ -1,6 +1,6 @@
+permalink: "/:title:"
 exclude:
  - api
- - app
  - build
  - cli
  - patterns

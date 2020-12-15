@@ -310,7 +310,7 @@ rest.router.register_model(
 
 
 [EAV structure]: https://wq.io/docs/eav-vs-relational
-[common field types]: https://wq.io/docs/field-types
+[common field types]: ./field-types.md
 [repeat group]: http://xlsform.org/#repeats
 [InlineModelAdmin]: https://docs.djangoproject.com/en/1.10/ref/contrib/admin/#inlinemodeladmin-objects
 [Try WQ]: https://github.com/powered-by-wq/try.wq.io

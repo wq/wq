@@ -5,8 +5,6 @@ order: 1
 Introduction
 ============
 
-<img align=right alt=wq src="https://wq.io/images/128/wq.png">
-
 **wq** is a software framework designed to facilitate the development of robust, offline-capable mobile / web apps.  The original use case for wq is mobile data collection, whether by professional environmental monitoring staff or by volunteers in e.g. citizen science and mobile crowdsourcing projects.  However, wq is also useful as a platform for building a variety of mobile-first websites and CRUD applications.
 
 The **goal of wq** is to make it easy to rapidly assemble a complete data collection and management platform, while ensuring enough flexibility to adapt to project-specific data models and workflows.  While wq is not quite a point-and-click "form-builder" solution, it does provide a number of default templates and utilities to make it easy to [get started] quickly and customize later.  Moreover, wq has already been used to *create* point-and-click form builder solutions for [specific domains].
@@ -36,7 +34,7 @@ The documentation is structured to lay the foundation and conventions before get
         1. [REST API generator][REST API]
         2. [Design Patterns]
 
-[get started]: https://wq.io/docs/setup
+[get started]: ./setup.md
 [specific domains]: https://wq.io/projects/
 
 [wq.start]: https://wq.io/wq.start
@@ -56,7 +54,7 @@ The documentation is structured to lay the foundation and conventions before get
 [Philosophy]: https://wq.io/chapters/philosophy/docs
 [API Conventions]: https://wq.io/chapters/api/docs
 
-[Overview]: https://wq.io/chapters/overview/docs
+[Overview]: ./index.md
 [wq.db: Contrib apps]: https://wq.io/chapters/contrib/docs
-[Installation]: https://wq.io/docs/setup
-[Data Model]: https://wq.io/docs/data-model
+[Installation]: ./setup.md
+[Data Model]: ./data-model.md

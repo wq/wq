@@ -84,13 +84,13 @@ sudo certbot --apache
 
 Visit the site in a web browser to verify the new installation.  You'll probably need to type in the server's IP address instead of the project name until your DNS is configured.  When the application loads, you should see "Hello world! Version 0.0.1", and links to log in and out.  You are now ready to start defining and registering [Django models] which will appear on the home screen after you rebuild the application with deploy.sh.
 
-[install wq]: https://wq.io/docs/setup
-[setup-local]: https://wq.io/docs/setup-local
+[install wq]: ./setup.md
+[setup-local]: ./setup-local.md
 [Ubuntu]: http://www.ubuntu.com/
 [venv]: https://docs.python.org/3/library/venv.html
-[Django models]: https://wq.io/docs/data-model
+[Django models]: ./data-model.md
 
-[wq framework]: https://wq.io/docs/intro
+[wq framework]: ./intro.md
 [Apache]: http://httpd.apache.org/
 [PostgreSQL]: http://www.postgresql.org/
 [PostGIS]: http://postgis.net/

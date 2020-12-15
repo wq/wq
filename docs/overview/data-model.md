@@ -76,12 +76,12 @@ Then, run Django's built in [migration commands] to create database tables in Po
 
 After the commands complete, you can use `./manage.py dbshell`, psql, or pgAdmin to confirm that the tables are present.  If all goes well, you should also be able to open a browser and visit your website's [/config.json] and [/modelnames.json] to confirm that the model(s) are registered.
 
-[wq]: https://wq.io/docs/intro
+[wq]: ./intro.md
 [Django Model]: https://docs.djangoproject.com/en/1.10/topics/db/models/
 [Django application]: https://docs.djangoproject.com/en/1.10/ref/applications/
 [XLSForm]: http://xlsform.org
 [KoboToolbox]: http://kobotoolbox.org
-[field types]: https://wq.io/docs/field-types
+[field types]: ./field-types.md
 [migration commands]: https://docs.djangoproject.com/en/1.10/ref/django-admin/#django-admin-migrate
 [wq.db router]: https://wq.io/docs/router
 [inspectdb]: https://docs.djangoproject.com/en/1.10/howto/legacy-databases/

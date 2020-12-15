@@ -99,13 +99,13 @@ In addition, ensure that the `SPATIALITE_LIBRARY_PATH` line in db/myproject/sett
 
 Installing GDAL and other GeoDjango requirements on Windows somewhat more involved.  See the [GeoDjango documentation] for more information.
 
-[install wq]: https://wq.io/docs/setup
-[setup-ubuntu]: https://wq.io/docs/setup-ubuntu
+[install wq]: ./setup.md
+[setup-ubuntu]: ./setup-ubuntu.md
 [Python]: https://python.org
 [Node.js]: https://nodejs.org
 [Ubuntu]: http://www.ubuntu.com/
 [Debian]: https://www.debian.org/
 [venv]: https://docs.python.org/3/library/venv.html
-[Django models]: https://wq.io/docs/data-model
+[Django models]: ./data-model.md
 [WSL]: https://docs.microsoft.com/en-us/windows/wsl/install-win10
 [GeoDjango documentation]: https://docs.djangoproject.com/en/2.1/ref/contrib/gis/install/#windows

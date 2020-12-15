@@ -506,10 +506,10 @@ class MyModel(models.Model):
 
 > This field uses a wq/app.js plugin to display the map editor.  For more information, see the documentation for [wq/map.js].
 
-[defining a data model]: https://wq.io/docs/data-model
+[defining a data model]: ./data-model.md
 [XLSForm question types]: http://xlsform.org/#question-types
 [Django field types]: https://docs.djangoproject.com/en/1.10/ref/models/fields/#field-types
-[Advanced Patterns]: https://wq.io/docs/nested-forms
+[Advanced Patterns]: ./nested-forms.md
 [wq/photos.js]: https://wq.io/docs/photos-js
 [wq/map.js]: https://wq.io/docs/map-js
 [wq/locate.js]: https://wq.io/docs/locate-js
