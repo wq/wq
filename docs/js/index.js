@@ -1,6 +1,13 @@
-import wq from 'https://unpkg.com/wq';
+import wq, { modules } from 'https://unpkg.com/wq';
+import markdown, { renderers } from 'https://unpkg.com/@wq/markdown@next';
+import CodePen from './codepen.js';
+
+renderers.code = CodePen;
+
+wq.use(markdown);
 
 const config = {
+    markdown: { input: 'content' },
     pages: { index: { url: '' } },
 };
 
@@ -36,7 +43,7 @@ async function init() {
     DIRS.forEach((dir) => (data[dir] = []));
 
     pages
-        .filter((page) => !IGNORE[page.url])
+        .filter((page) => !IGNORE[page.url] && page.url !== page.dir)
         .forEach((page) => {
             const dir = page.dir.replace(/\//g, ''),
                 id = page.name.replace('.md', ''),
