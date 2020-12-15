@@ -1,4 +1,10 @@
 permalink: "/:title:"
+defaults:
+  - 
+    scope:
+       path: ""
+    values:
+       layout: "default"
 exclude:
  - api
  - build
