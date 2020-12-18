@@ -1,6 +1,6 @@
 # How To: Define a Custom Input Type
 
-wq provides a useful assortment of [default input types][input types], but project needs often require reconfiguring and extending the defaults with custom versions.  For example, you may want to override the widget used for a field, or hide a group of inputs unless an earlier input has a specific value.  (This is commonly referred to as skip logic or the "relevant" setting in XLSForm).  wq does not currently support the "relevant" setting out of the box, but it is easy to define a custom input that does the same thing.
+The [wq framework](https://wq.io) provides a useful assortment of [default input types][input components], but individual project needs often require reconfiguring and extending the defaults with custom versions.  For example, you may want to override the widget used for a field, or hide a group of inputs unless an earlier input has a specific value.  (This is commonly referred to as skip logic or the "relevant" setting in XLSForm).  wq does not currently support the "relevant" setting out of the box, but it is easy to define a custom input that does the same thing.
 
 * [Initial Setup](#initial-setup)
 * [Step 1: Update Model Definition](#step-1-update-model-definition)
@@ -135,7 +135,7 @@ As can be seen from the example above, each input's `choices`, `label`, and `hin
 
 So far in this guide, we have relied on [wq.db]'s default [`ModelSerializer`][ModelSerializer] class, which automatically generates a form configuration from the Django model fields.  It is possible to override the serializer for a model to further customize the generated configuration.  (Though the underlying mechanism is different, this is directly analagous to how Django's [`ModelForm`][ModelForm] generates a default form field for each model field, but can be customized with `field_classes`.)
 
-To configure the serializer, create `db/survey/serializers.py` and define a class that extends `ModelSerializer`.  You can then customize the field appearance by setting the `style` attribute on the [Serializer field].  (wq.db will search for a `wq_config` key and ignore the rest of the style.)  For example, you might want to always render a multiple choice field as [`<Select/>`][input component], regardless of how many choices it has.
+To configure the serializer, create `db/survey/serializers.py` and define a class that extends `ModelSerializer`.  You can then customize the field appearance by setting the `style` attribute on the [Serializer field].  (wq.db will search for a `wq_config` key and ignore the rest of the style.)  For example, you might want to always render a multiple choice field as [`<Select/>`][input components], regardless of how many choices it has.
 
 #### db/survey/serializers.py
 
@@ -187,7 +187,7 @@ rest.router.register_model(
 )
 ```
 
-The custom keys will be merged with the default field configuration to generate `data/config.js`.  Each field's configuration is passed as props to [`<AutoInput />`][AutoInput], which selects and renders the actual [input component].
+The custom keys will be merged with the default field configuration to generate `data/config.js`.  Each field's configuration is passed as props to [`<AutoInput />`][AutoInput], which selects and renders the actual [input component][input components].
 
 ### Demo 2
 
@@ -208,7 +208,8 @@ const config = {
                     "hint": "Choose one of the listed colors or select Other to pick your own.",
                     "type": "select one",
                     "control": {
-                        "appearance": "select"  // try "toggle" or "radio"
+                        // try "toggle" or "radio"
+                        "appearance": "select"
                     },
                     "choices": [
                         {
@@ -254,7 +255,116 @@ wq.init(config).then(...);
 
 ## Step 3: Implement React Component
 
-[input types]: ../overview/field-types.md
+The "appearance" attribute can be any value, and is not restricted to the default [input components].  For example, you can set the appearance of the `other_color` field to `'other-input'` to implement the hiding logic below.
+
+#### db/survey/serializers.py (with custom input)
+
+```python
+from wq.db.rest.serializers import ModelSerializer
+from rest_framework import serializers
+from .models import Survey
+
+
+class SurveySerializer(ModelSerializer): 
+    class Meta:
+        model = Survey
+        fields = '__all__'
+        wq_field_config = {
+            'color': {'control': {'appearance': 'select'}},
+            'other_color': {'control': {'appearance': 'other-input'}},
+        }
+```
+
+Custom input types should be implemented as React components, and registered with `wq` via its [plugin API].  In many cases, you can implement a custom input by importing the default equivalent from [`@wq/material`][@wq/material] and adding some wrapper logic.  In more advanced cases, you may need to import directly from [`@material-ui/core`][@material-ui/core] or another third party library.  In either case, you will typically need some helper functions from the [`formik`][formik] library.  `@wq/material`, `formik`, and (parts of) `@material-ui/core` are all exported by the default [wq.js] build provided by wq.app.  This means you can generally use them whether you are using wq's create-react-app template or the Django template without npm.
+
+> Note: When using [`wq start --without-npm`][setup], you will need a way to compile JSX to `React.createElement()` calls.  You could use the [online Babel converter][babel-repl], or use npm to install Rollup and Babel (but not necessarily all of create-react-app and wq's npm dependencies).  If you use Rollup, you may find [@wq/rollup-plugin] useful, as it will allow you to write plain npm imports and have them automatically translated to leverage exports from `./wq.js`.  The `app/js/custom.js` example in the demo below simulates the output of a rollup build.
+
+In this case, the goal is to have the "Other Color" input remain hidden until the `"other"` value is selected in the "Color" input.  To do this, we can define `OtherInput` as a wrapper component that renders `null` unless the condition is met.  Note that all of the customization happens in the `OtherInput`, which has direct access to the full form state via `useFormikContext()`.  It is not necessary (or recommended) to attach an `onChange` handler directly to the "Color" input to control the display of `OtherInput`.
+
+
+### Demo 3
+
+```js
+// app/js/custom.js
+import { modules } from './wq.js';
+const { useFormikContext } = modules['formik']; // import ... from 'formik'
+const { Input } = modules['@wq/material'];      // import ... from '@wq/material'
+
+function OtherInput(props) {
+    const { values } = useFormikContext(),
+        { color } = values;
+    if (color !== "other") {
+        return null;
+    }
+    return <Input {...props} />;
+}
+
+const custom = {
+    "inputs": { OtherInput }
+}
+
+// app/js/data/config.js
+const config = {
+    "pages": {
+        "survey": {
+            "name": "survey",
+            "url": "surveys",
+            "list": true,
+            "form": [
+                {
+                    "name": "color",
+                    "label": "Pick a Color",
+                    "hint": "Choose one of the listed colors or select Other to pick your own.",
+                    "type": "select one",
+                    "control": {
+                         "appearance": "select"
+                    },
+                    "choices": [
+                        {
+                            "name": "red",
+                            "label": "Red"
+                        },
+                        {
+                            "name": "green",
+                            "label": "Green"
+                        },
+                        {
+                            "name": "blue",
+                            "label": "Blue"
+                        },
+                        {
+                            "name": "other",
+                            "label": "Other"
+                        }
+                    ]
+                },
+                {
+                    "name": "other_color",
+                    "label": "Other Color",
+                    "hint": "Enter the name of your custom color.",
+                    "type": "text",
+                    "control": {
+                         "appearance": "other-input"
+                    },
+                }
+            ],
+            "verbose_name": "survey",
+            "verbose_name_plural": "surveys"
+        }
+    }
+};
+
+// app/js/myproject.js
+import wq from './wq.js';
+wq.use(custom);
+wq.init(config).then(...);
+
+// navigate to /surveys/new
+```
+
+> If a field refrerences an unregistered input type, an error message will be displayed instead of the input.  You can see this in action by removing `wq.use(custom);` from the example above.
+
+[input components]: https://github.com/wq/wq.app/tree/master/packages/material#input-components
 [setup]: ../overview/setup.md
 [survey.csv]: ./define-a-custom-input-type/survey.csv
 [Django model]: https://docs.djangoproject.com/en/3.1/topics/db/models/
@@ -263,4 +373,12 @@ wq.init(config).then(...);
 [ModelForm]: https://docs.djangoproject.com/en/3.1/topics/forms/modelforms/
 [Serializer field]: https://www.django-rest-framework.org/api-guide/fields/#style
 [AutoInput]: https://github.com/wq/wq.app/tree/master/packages/react#general-components
-[input component]: https://github.com/wq/wq.app/tree/master/packages/material#input-components
+[plugin API]: https://github.com/wq/wq.app/tree/master/packages/react#components
+[@wq/material]: https://github.com/wq/wq.app/tree/master/packages/material
+[@material-ui/core]: https://material-ui.com/
+[formik]: https://formik.org/
+[wq.js]: https://npmjs.com/package/wq
+[babel-repl]: https://babeljs.io/repl
+[Rollup]: https://rollupjs.org/
+[Babel]: https://babeljs.io/
+[@wq/rollup-plugin]: https://github.com/wq/wq.start/tree/master/packages/rollup-plugin
