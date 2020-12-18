@@ -38,7 +38,7 @@ wq.init({
 
 function wrapCode(code) {
     const match = code.match(/\/\/ navigate to (.*)/),
-        startPage = match ? match[1] : '',
+        startPage = match ? match[1].replace(/^\//, '') : '',
         config = code.indexOf('config =') === -1 ? 'const config = {};\n' : '',
         init = `${COMMENT}\const startPage = '${startPage}';\n${config}${INIT}`;
 
