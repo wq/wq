@@ -5,7 +5,9 @@ import { renderers } from 'https://unpkg.com/@wq/markdown@next';
 const React = modules.react;
 const Code = renderers.code;
 
-const COMMENT = `
+const COMMENT = `// wq.init(config).then(...);
+
+
 
 /*
 Note: when using wq locally, replace 'https://unpkg.com/wq' with:
@@ -20,8 +22,12 @@ The following code is only needed to initialize the demo environment.
 const INIT = `
 wq.use({
     components: { Header() {return null}},
-    ajax() {
-       throw new Error("Sync not supported in demo")
+    ajax(url, data, method) {
+        if (method === "GET") {
+            return [];
+        } else {
+            throw new Error("Sync not supported in demo")
+        }
     }
 });
 wq.init({
@@ -68,6 +74,7 @@ function CodePen({ code }) {
             'data-editable': true,
             'data-prefill': true,
             'data-default-tab': 'js,result',
+            'data-height': 360,
         },
         React.createElement('pre', { 'data-lang': 'babel' }, wrapCode(code))
     );
