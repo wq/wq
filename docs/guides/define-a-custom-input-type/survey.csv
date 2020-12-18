@@ -1,0 +1,10 @@
+survey,,,,
+,type,name,label,hint
+,select one colors,color,Pick a Color,"Choose one of the listed colors, or select Other to pick your own."
+,string,other_color,Other Color,Enter the name of your custom color.
+choices,,,,
+,list_name,name,label,
+,colors,red,Red,
+,colors,green,Green,
+,colors,blue,Blue,
+,colors,other,Other,
