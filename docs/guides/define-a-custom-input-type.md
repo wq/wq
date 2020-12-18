@@ -277,7 +277,7 @@ class SurveySerializer(ModelSerializer):
 
 Custom input types should be implemented as React components, and registered with `wq` via its [plugin API].  In many cases, you can implement a custom input by importing the default equivalent from [`@wq/material`][@wq/material] and adding some wrapper logic.  In more advanced cases, you may need to import directly from [`@material-ui/core`][@material-ui/core] or another third party library.  In either case, you will typically need some helper functions from the [`formik`][formik] library.  `@wq/material`, `formik`, and (parts of) `@material-ui/core` are all exported by the default [wq.js] build provided by wq.app.  This means you can generally use them whether you are using wq's create-react-app template or the Django template without npm.
 
-> Note: When using [`wq start --without-npm`][setup], you will need a way to compile JSX to `React.createElement()` calls.  You could use the [online Babel converter][babel-repl], or use npm to install Rollup and Babel (but not necessarily all of create-react-app and wq's npm dependencies).  If you use Rollup, you may find [@wq/rollup-plugin] useful, as it will allow you to write plain npm imports and have them automatically translated to leverage exports from `./wq.js`.  The `app/js/custom.js` example in the demo below simulates the output of a rollup build.
+> Note: When using [`wq start --without-npm`][setup], you will need a way to compile JSX to `React.createElement()` calls.  You could use the [online Babel converter][babel-repl], or use npm to install Rollup and Babel (but not necessarily all of create-react-app and wq's npm dependencies).  If you use Rollup, you may find [@wq/rollup-plugin] useful, as it will allow you to write plain npm imports and have them automatically translated to leverage exports from `./wq.js`.  The `app/js/custom.js` example in the demo below simulates the output of a Rollup build.
 
 In this case, the goal is to have the "Other Color" input remain hidden until the `"other"` value is selected in the "Color" input.  To do this, we can define `OtherInput` as a wrapper component that renders `null` unless the condition is met.  Note that all of the customization happens in the `OtherInput`, which has direct access to the full form state via `useFormikContext()`.  It is not necessary (or recommended) to attach an `onChange` handler directly to the "Color" input to control the display of `OtherInput`.
 
@@ -287,8 +287,9 @@ In this case, the goal is to have the "Other Color" input remain hidden until th
 ```js
 // app/js/custom.js
 import { modules } from './wq.js';
-const { useFormikContext } = modules['formik']; // import ... from 'formik'
-const { Input } = modules['@wq/material'];      // import ... from '@wq/material'
+const React = modules['react'];
+const { useFormikContext } = modules['formik'];
+const { Input } = modules['@wq/material'];
 
 function OtherInput(props) {
     const { values } = useFormikContext(),
@@ -362,7 +363,7 @@ wq.init(config).then(...);
 // navigate to /surveys/new
 ```
 
-> If a field refrerences an unregistered input type, an error message will be displayed instead of the input.  You can see this in action by removing `wq.use(custom);` from the example above.
+> If a field is configured to use an unregistered input type, an error message will be displayed instead of the input.  You can see this in action by removing `wq.use(custom);` from the example above.
 
 [input components]: https://github.com/wq/wq.app/tree/master/packages/material#input-components
 [setup]: ../overview/setup.md
