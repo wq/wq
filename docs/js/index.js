@@ -9,6 +9,7 @@ wq.use(markdown);
 const config = {
     markdown: { input: 'content' },
     pages: { index: { url: '' } },
+    autoStart: false,
 };
 
 const DIRS = ['overview', 'guides'],
@@ -35,7 +36,21 @@ ROOT_PAGES.forEach((page) => {
 init();
 
 async function init() {
+    const ready = loadPages();
     await wq.init(config);
+    DIRS.forEach(dir => {
+        wq.models[dir].ensureLoaded = () => {
+            if (wq.models[dir].objects.count() > 0) {
+                return;
+            } else {
+                return ready;
+            }
+        };
+    });
+    await wq.start();
+}
+
+async function loadPages() {
     const response = await fetch('/pages.json'),
         pages = await response.json(),
         data = {};
@@ -74,7 +89,7 @@ async function init() {
             }
         });
 
-    DIRS.forEach((dir) => wq.models[dir].overwrite(data[dir]));
-
-    window.wq = wq;
+    await Promise.all(
+        DIRS.map((dir) => wq.models[dir].overwrite(data[dir]))
+    );
 }
