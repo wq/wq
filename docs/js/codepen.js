@@ -24,7 +24,7 @@ wq.use({
     components: { Header() {return null}},
     ajax(url, data, method) {
         if (method === "GET") {
-            return [];
+            return Promise.resolve([]);
         } else {
             throw new Error("Sync not supported in demo")
         }
