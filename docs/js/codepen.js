@@ -15,6 +15,11 @@ Note: when using wq locally, replace 'https://unpkg.com/wq' with:
  - './wq.js' for wq.app without npm, or
  - '@wq/app' for @wq/cra-template or @wq/rollup-plugin
 
+When using @wq/app, third party imports should also be changed, e.g. from
+    const React = modules['react'];
+to
+    import React from 'react';
+
 The following code is only needed to initialize the demo environment.
 */
 `;
@@ -46,6 +51,10 @@ function wrapCode(code) {
         .replace(
             "import wq from './wq.js';",
             "import wq from 'https://unpkg.com/wq'; // See note below"
+        )
+        .replace(
+            "import { modules } from './wq.js';",
+            "import { modules } from 'https://unpkg.com/wq'; // See note below"
         )
         .replace('wq.init(config).then(...);', init);
 }
