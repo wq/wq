@@ -83,7 +83,7 @@ const config = {
                 {
                     "name": "color",
                     "label": "Pick a Color",
-                    "hint": "Choose one of the listed colors or select Other to pick your own.",,
+                    "hint": "Choose one of the listed colors or select Other to pick your own.",
                     "type": "select one",
                     "choices": [
                         {
@@ -135,7 +135,7 @@ As can be seen from the example above, each input's `choices`, `label`, and `hin
 
 So far in this guide, we have relied on [wq.db]'s default [`ModelSerializer`][ModelSerializer] class, which automatically generates a form configuration from the Django model fields.  It is possible to override the serializer for a model to further customize the generated configuration.  (Though the underlying mechanism is different, this is directly analagous to how Django's [`ModelForm`][ModelForm] generates a default form field for each model field, but can be customized with `field_classes`.)
 
-To configure the serializer, create `db/survey/serializers.py` and define a class that extends `ModelSerializer`.  You can then customize the field appearance by setting the `style` attribute on the [Serializer field].  (wq.db will search for a `wq_config` key and ignore the rest of the style.)
+To configure the serializer, create `db/survey/serializers.py` and define a class that extends `ModelSerializer`.  You can then customize the field appearance by setting the `style` attribute on the [Serializer field].  (wq.db will search for a `wq_config` key and ignore the rest of the style.)  For example, you might want to always render a multiple choice field as [`<Select/>`][input component], regardless of how many choices it has.
 
 #### db/survey/serializers.py
 
@@ -147,7 +147,7 @@ from .models import Survey
 
 class SurveySerializer(ModelSerializer):
     color = serializers.ChoiceField(
-        style={"wq_config": {...}}
+        style={"wq_config": {'control': {'appearance': 'select'}}}
     )
     class Meta:
         model = Survey
@@ -169,7 +169,7 @@ class SurveySerializer(ModelSerializer):
         model = Survey
         fields = '__all__'
         wq_field_config = {
-            'color': { ... }
+            'color': {'control': {'appearance': 'select'}}
         }
 ```
 
@@ -187,17 +187,7 @@ rest.router.register_model(
 )
 ```
 
-The custom keys will be merged with the default field configuration to generate `data/config.js`.  Each field's configuration is passed as props to [`<AutoInput />`][AutoInput], which selects and renders the actual [input component].  This means you can override the default selection by defining `{"control": {"appearance": ... }}` in the field config.  For example, you might want to always render a multiple choice field as [`<Select/>`][input component], regardless of how many choices it has.
-
-```python
-class SurveySerializer(ModelSerializer): 
-    class Meta:
-        model = Survey
-        fields = '__all__'
-        wq_field_config = {
-            'color': { 'control': {'appearance': 'select'} }
-        }
-```
+The custom keys will be merged with the default field configuration to generate `data/config.js`.  Each field's configuration is passed as props to [`<AutoInput />`][AutoInput], which selects and renders the actual [input component].
 
 ### Demo 2
 
