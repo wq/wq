@@ -1,10 +1,12 @@
 # How To: Define a Custom Input Type
 
-wq provides a useful assortment of [default input types][input types], but project needs often require reconfiguring and extending the defaults with custom versions.  For example, you may want to override the widget used for a field, or hide a group of inputs unless an earlier input has a specific value.  (This is commonly referred to as skip logic or the "relevant" setting in XLSForm).  wq does not support the "relevant" setting out of the box, but it is easy to define a custom input that does the same thing.
+wq provides a useful assortment of [default input types][input types], but project needs often require reconfiguring and extending the defaults with custom versions.  For example, you may want to override the widget used for a field, or hide a group of inputs unless an earlier input has a specific value.  (This is commonly referred to as skip logic or the "relevant" setting in XLSForm).  wq does not currently support the "relevant" setting out of the box, but it is easy to define a custom input that does the same thing.
 
 ### Initial Setup
 
-For this how-to guide, we'll assume a simple project with a single "survey" app.  You can download the example XLSForm from [this link][survey.csv].
+For this how-to guide, we'll assume a simple project with a single "survey" app.  You can download the example XLSForm here:
+
+ [**Download survey.csv**][survey.csv]
 
 > See the [getting started][setup] guide for more details about initial project setup.
 
@@ -111,6 +113,8 @@ const config = {
 import wq from './wq.js';
 
 wq.init(config).then(...);
+
+// navigate to /surveys/new
 ```
 
 [input types]: ../overview/field-types.md
