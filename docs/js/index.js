@@ -12,7 +12,7 @@ const config = {
     autoStart: false,
 };
 
-const DIRS = ['overview', 'guides'],
+const DIRS = ['overview', 'guides', 'hooks'],
     ROOT_PAGES = [],
     IGNORE = {
         '/pages.json': true,
@@ -38,7 +38,7 @@ init();
 async function init() {
     const ready = loadPages();
     await wq.init(config);
-    DIRS.forEach(dir => {
+    DIRS.forEach((dir) => {
         wq.models[dir].ensureLoaded = () => {
             if (wq.models[dir].objects.count() > 0) {
                 return;
@@ -89,7 +89,5 @@ async function loadPages() {
             }
         });
 
-    await Promise.all(
-        DIRS.map((dir) => wq.models[dir].overwrite(data[dir]))
-    );
+    await Promise.all(DIRS.map((dir) => wq.models[dir].overwrite(data[dir])));
 }
