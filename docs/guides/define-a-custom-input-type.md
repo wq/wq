@@ -281,19 +281,18 @@ Custom input types should be implemented as React components, and registered wit
 
 In this case, the goal is to have the "Other Color" input remain hidden until the `"other"` value is selected in the "Color" input.  To do this, we can define `OtherInput` as a wrapper component that renders `null` unless the condition is met.  Note that all of the customization happens in the `OtherInput`, which has direct access to the full form state via `useFormikContext()`.  It is not necessary (or recommended) to attach an `onChange` handler directly to the "Color" input to control the display of `OtherInput`.
 
-
 ### Demo 3
 
 ```js
 // app/js/custom.js
 import { modules } from './wq.js';
 const React = modules['react'];
-const { useFormikContext } = modules['formik'];
+const { useFormikContext, getIn } = modules['formik'];
 const { Input } = modules['@wq/material'];
 
 function OtherInput(props) {
     const { values } = useFormikContext(),
-        { color } = values;
+        color = getIn(values, props.name.replace('other_color', 'color'));
     if (color !== "other") {
         return null;
     }
@@ -365,6 +364,8 @@ wq.init(config).then(...);
 
 > If a field is configured to use an unregistered input type, an error message will be displayed instead of the input.  You can see this in action by removing `wq.use(custom);` from the example above.
 
+Note the use of `getIn()` in the example above.  In this case, we know that the field name is `color` so it would be fine to directly access `values.color`.  However, if the custom field is ever used in a [nested form], then the name of the field might be something more complicated like `coloritems[0].color`.  Using `getIn()` with `props.name.replace()` helps ensure the field can be used across a variety of use cases.
+
 [input components]: https://github.com/wq/wq.app/tree/master/packages/material#input-components
 [setup]: ../overview/setup.md
 [survey.csv]: ./define-a-custom-input-type/survey.csv
@@ -383,3 +384,4 @@ wq.init(config).then(...);
 [Rollup]: https://rollupjs.org/
 [Babel]: https://babeljs.io/
 [@wq/rollup-plugin]: https://github.com/wq/wq.start/tree/master/packages/rollup-plugin
+[nested form]: https://wq.io/docs/nested-forms
