@@ -2,9 +2,9 @@
 module: @wq/react
 ---
 
-# usePluginState(name)
+# usePluginReducer(name)
 
-Combines [usePlugin] and [usePluginState].
+Combines [usePlugin()][usePlugin] and [usePluginState()][usePluginState].
 
 
 ```js
