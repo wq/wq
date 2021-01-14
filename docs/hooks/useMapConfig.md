@@ -1,5 +1,5 @@
 ---
-module: @wq/map
+module: "@wq/map"
 ---
 
 # useMapConfig()

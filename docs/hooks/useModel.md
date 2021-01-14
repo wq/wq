@@ -1,5 +1,5 @@
 ---
-module: @wq/react
+module: "@wq/react"
 ---
 
 # useModel(name[, filter])
