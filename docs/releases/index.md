@@ -1,5 +1,8 @@
 ---
 permalink: /releases/
+wq_config:
+  name: release
+  url: releases
 ---
 
 # Release Notes

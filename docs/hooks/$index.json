@@ -1,0 +1,7 @@
+---
+layout: null
+---
+{{ site.pages
+   | where_exp:"p","p.dir == page.dir"
+   | where_exp:"p","p.name != page.name"
+   | jsonify }}
