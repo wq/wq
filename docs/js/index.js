@@ -6,6 +6,8 @@ import wq, { modules } from 'https://unpkg.com/wq';
 import markdown, { renderers } from 'https://unpkg.com/@wq/markdown@next';
 import CodePen from './codepen.js';
 
+const React = modules['react'];
+
 renderers.code = CodePen;
 
 wq.use(markdown);
@@ -13,10 +15,10 @@ wq.use(markdown);
 const config = {
     site_title: 'wq Framework',
     store: {
-        "service": "",
-        "defaults": {
-            "format": "json"
-        }
+        service: '',
+        defaults: {
+            format: 'json',
+        },
     },
     pages: {
         {% for page in site.pages %}{% if page.wq_config %}
@@ -28,21 +30,46 @@ function pageConf(page) {
     if (page.dir === '/') {
         return {
             verbose_name: page.title,
+            icon: page.wq_config.icon_data ? page.wq_config.name : null,
             markdown: page.content,
-            ...page.wq_config
-        }
+            ...page.wq_config,
+        };
     } else {
         return {
             verbose_name_plural: page.title,
+            icon: page.wq_config.icon_data ? page.wq_config.name : null,
             markdown: page.content,
             list: true,
             cache: 'all',
             can_change: false,
             can_add: false,
             ordering: ['order', 'title'],
-            ...page.wq_config
+            ...page.wq_config,
+        };
+    }
+}
+
+wq.use({ icons: makeIcons() });
+
+function Icon({ data }) {
+    return React.createElement(
+        'svg',
+        { viewBox: '0 0 24 24', style: { width: 24, height: 24 } },
+        React.createElement('path', { fill: 'currentColor', d: data })
+    );
+}
+
+function makeIcons() {
+    const icons = {};
+    Object.entries(config.pages).forEach(([name, conf]) => {
+        if (conf.icon_data) {
+            icons[name] = () =>
+                React.createElement(Icon, { data: conf.icon_data });
+            icons[name].displayName =
+                name[0].toUpperCase() + name.slice(1) + 'Icon';
         }
-    };
+    });
+    return icons;
 }
 
 wq.use({
@@ -50,16 +77,15 @@ wq.use({
         if (method === 'POST') {
             return;
         }
-        url = url.replace(".json", "/$index.json");
+        url = url.replace('.json', '/$index.json');
         const response = await fetch(url),
             data = await response.json();
         if (Array.isArray(data)) {
             return data.map(processPage);
         }
         return data;
-    }
+    },
 });
-
 
 function processPage(page) {
     page.id = page.name.replace('.md', '');
@@ -70,15 +96,19 @@ function processPage(page) {
     delete page.content;
 
     if (page.module) {
-        page.tags = [{
-            label: page.module,
-            color: page.module.startsWith('@wq/') ? 'primary' : 'secondary'
-        }];
+        page.tags = [
+            {
+                label: page.module,
+                color: page.module.startsWith('@wq/') ? 'primary' : 'secondary',
+            },
+        ];
     } else if (page.tag) {
-        page.tags = [{
-            label: page.tag,
-            color: page.tag_color || 'primary'
-        }];
+        page.tags = [
+            {
+                label: page.tag,
+                color: page.tag_color || 'primary',
+            },
+        ];
     } else {
         page.tags = null;
     }
