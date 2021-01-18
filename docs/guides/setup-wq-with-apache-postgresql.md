@@ -1,3 +1,8 @@
+---
+order: -1
+icon: pin
+---
+
 # How To: Set up wq with Apache & PostgreSQL
 
 The [wq framework] is designed to create fully custom applications, so most wq-powered projects eventually require running a public web server and installing a number of software packages.  If you are planning to self-host, you can follow the process below to get an application up and running.

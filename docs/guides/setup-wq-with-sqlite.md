@@ -1,3 +1,7 @@
+---
+order: -1
+icon: pin
+---
 
 How To: Set up wq with SQLite
 =============================

@@ -49,6 +49,10 @@ function pageConf(page) {
     }
 }
 
+const ICONS = {
+    pin: 'M16,12V4H17V2H7V4H8V12L6,14V16H11.2V22H12.8V16H18V14L16,12Z',
+};
+
 wq.use({ icons: makeIcons() });
 
 function Icon({ data }) {
@@ -61,14 +65,20 @@ function Icon({ data }) {
 
 function makeIcons() {
     const icons = {};
+
+    Object.entries(ICONS).forEach(makeIcon);
     Object.entries(config.pages).forEach(([name, conf]) => {
         if (conf.icon_data) {
-            icons[name] = () =>
-                React.createElement(Icon, { data: conf.icon_data });
-            icons[name].displayName =
-                name[0].toUpperCase() + name.slice(1) + 'Icon';
+            makeIcon([name, conf.icon_data]);
         }
     });
+
+    function makeIcon([name, data]) {
+        icons[name] = () => React.createElement(Icon, { data });
+        icons[name].displayName =
+            name[0].toUpperCase() + name.slice(1) + 'Icon';
+    }
+
     return icons;
 }
 
