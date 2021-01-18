@@ -12,7 +12,6 @@ wq.use(markdown);
 
 const config = {
     site_title: 'wq Framework',
-    markdown: { input: 'content' },
     store: {
         "service": "",
         "defaults": {
@@ -20,20 +19,29 @@ const config = {
         }
     },
     pages: {
-        index: { url: '', show_in_index: false },
         {% for page in site.pages %}{% if page.wq_config %}
-        {{ page.wq_config.name }}: modelPage({{ page.wq_config || jsonify }}),{% endif %}{% endfor %}
+        {{ page.wq_config.name }}: pageConf({{ page || jsonify }}),{% endif %}{% endfor %}
     }
 };
 
-function modelPage(conf) {
-    return {
-        list: true,
-        cache: 'all',
-        can_change: false,
-        can_add: false,
-        ordering: ['order', '-date'],
-        ...conf
+function pageConf(page) {
+    if (page.dir === '/') {
+        return {
+            verbose_name: page.title,
+            markdown: page.content,
+            ...page.wq_config
+        }
+    } else {
+        return {
+            verbose_name_plural: page.title,
+            markdown: page.content,
+            list: true,
+            cache: 'all',
+            can_change: false,
+            can_add: false,
+            ordering: ['order', 'title'],
+            ...page.wq_config
+        }
     };
 }
 
@@ -58,6 +66,8 @@ function processPage(page) {
     page.label = page.title = page.title.replace('&amp;', '&');
     page.icon = page.icon || null;
     page.order = page.order || 0;
+    page.markdown = page.content;
+    delete page.content;
 
     if (page.module) {
         page.tags = [{

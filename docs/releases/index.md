@@ -3,6 +3,7 @@ permalink: /releases/
 wq_config:
   name: release
   url: releases
+  ordering: ['-date']
 ---
 
 # Release Notes
