@@ -17,7 +17,7 @@ python3 -m venv ./venv
 . ./venv/bin/activate
 
 # Install wq
-python3 -m pip install wq
+python3 -m pip install wq==1.3.0a1
 wq start
 ```
 
@@ -54,6 +54,6 @@ Once your data model is defined and your REST API is running, wq will automatica
 [setup-ubuntu]: ../guides/setup-wq-with-apache-postgresql.md
 [Data Model]: ../guides/describe-your-data-model.md
 [Common Field Types]: ../inputs/index.md
-[Advanced Patterns]: ../guides/implement-repeating-nested-forms.md
+[Nested Forms]: ../guides/implement-repeating-nested-forms.md
 [wq start --help]: https://wq.io/docs/wq-start
 [input types]: ../guides/define-a-custom-input-type.md
