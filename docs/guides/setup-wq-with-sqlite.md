@@ -1,5 +1,5 @@
 ---
-order: -1
+order: -3
 icon: pin
 ---
 
@@ -100,7 +100,7 @@ cd db/
 ./manage.py runserver
 ```
 
-Visit http://localhost:8000/ in a web browser to verify the new installation.  When the application loads, you should see the default wq-themed app template with links to log in and out.  You are now ready to start defining and registering [Django models] which will appear on the home screen after you rebuild the application with deploy.sh.
+Visit http://localhost:8000/ in a web browser to verify the new installation.  When the application loads, you should see the default wq-themed app template with links to log in and out.  You are now ready to start [describing your data model][data-model] to create surveys which will appear on the home screen after you rebuild the application with deploy.sh.
 
 ## Optional: Enable GIS Support
 
@@ -131,6 +131,6 @@ Installing GDAL and other GeoDjango requirements on Windows somewhat more involv
 [Ubuntu]: http://www.ubuntu.com/
 [Debian]: https://www.debian.org/
 [venv]: https://docs.python.org/3/library/venv.html
-[Django models]: ../overview/data-model.md
+[data-model]: ./describe-your-data-model.md
 [WSL]: https://docs.microsoft.com/en-us/windows/wsl/install-win10
 [GeoDjango documentation]: https://docs.djangoproject.com/en/3.1/ref/contrib/gis/install/#windows

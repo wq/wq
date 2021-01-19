@@ -1,29 +1,30 @@
 ---
-order: 5
+icon: pin
+order: -1
 ---
 
-Defining a Data Model
+How To: Describe your Data Model
 =====================
 
-[wq] does not come with a canned data model by default.  This makes the framework extremely flexible to adapt to a variety of project workflows, but means you will need to think a bit about how to structure your data before continuing.  In the simplest case, you will have a single web form that populates a single database table.  More advanced cases will have multiple inter-related tables, some filled in at the same time and others filled out separately.  wq makes it easy to start simple and add more complexity later.
+The [wq framework] does not come with a canned data model by default.  This makes the framework extremely flexible to adapt to a variety of project workflows, but means you will need to think a bit about how to structure your data before continuing.  In the simplest case, you will have a single web form that populates a single database table.  More advanced cases will have multiple inter-related tables, some filled in at the same time and others filled out separately.  wq makes it easy to start simple and add more complexity later.
 
 wq uses the [Django model syntax][Django model] as the primary way to define a data schema.  After installing wq and starting a project via `wq start`, you'll need to create a [Django application] folder containing two files: `models.py` and a `rest.py`.  The `models.py` is used to tell Django how to create the database table(s) corresponding to your schema.  Then, `rest.py` registers the same model definition with the wq.db REST API so that records can be retrieved and updated from the client application.
 
 ## Model Definition
-There are three ways to create a new model definition.  The full set of available field/question types is listed [here][field types].
+There are three ways to create a new model definition.  The list of available field/question types is listed [here][inputs].
 
 ### Option 1: XLSForm syntax
-With this option, you can configure all of your field/question definitions in a spreadsheet following the [XLSForm] standard used by Open Data Kit, Survey123, and related projects.  You can then have wq generate the Django application and templates from the spreadsheet.  To create an XLSForm, you can use an online form builder like the one provided by [KoboToolbox], or you can just download an example spreadsheet and add the definitions manually.  Note that only the most common [field types] are supported at this time.  Once you have an XLSForm ready you can use the built-in `wq addform` command provided by `wq.start`. For best results, use a relatively short name for the file and run the command in your `db/` folder.
+With this option, you can configure all of your field/question definitions in a spreadsheet following the [XLSForm] standard used by Open Data Kit, Survey123, and related projects.  You can then have wq generate the Django application and templates from the spreadsheet.  To create an XLSForm, you can use an online form builder like the one provided by [KoboToolbox], or you can just download an example spreadsheet and add the definitions manually.  Note that not every feature of XLSForm is supported - but it is easy to implement [custom input types] with similar functionality.  Once you have an XLSForm ready you can use the built-in `wq addform` command provided by `wq.start`. For best results, use a relatively short name for the file and run the command in your `db/` folder.
 
 ```bash
 cd [PROJECTNAME]/db
 wq addform ~/survey.xlsx
 ```
 
- You should see a new folder, `survey/`, with the files `models.py` and `rest.py`.  Going up one level, you should see `survey_list.html`, `survey_detail.html`, and `survey_edit.html` in your `../templates` folder.
+ You should see a new folder, `survey/`, with the files `models.py`, `rest.py`, and (depending on your data model `serializers.py`).
 
 ### Option 2: Django Model syntax
-Alternatively, you can create a Django application folder manually (or with `./manage.py startapp`) and define `models.py` via [Django model] classes.  You will then want to create a `rest.py` file that registers each model class with the [wq.db router].
+You can create a Django application folder manually (or with `./manage.py startapp`) and define `models.py` via [Django model] classes.  You will then want to create a `rest.py` file that registers each model class with the [wq.db router].   You may also need to define a custom serializer in `serializers.py`, for example to support [nested forms] or [custom input types].
 
 ```python
 # survey/models.py
@@ -76,12 +77,13 @@ Then, run Django's built in [migration commands] to create database tables in Po
 
 After the commands complete, you can use `./manage.py dbshell`, psql, or pgAdmin to confirm that the tables are present.  If all goes well, you should also be able to open a browser and visit your website's [/config.json] and [/modelnames.json] to confirm that the model(s) are registered.
 
-[wq]: ./intro.md
+[wq framework]: ../index.md
 [Django Model]: https://docs.djangoproject.com/en/1.10/topics/db/models/
 [Django application]: https://docs.djangoproject.com/en/1.10/ref/applications/
 [XLSForm]: http://xlsform.org
 [KoboToolbox]: http://kobotoolbox.org
-[field types]: ./field-types.md
+[custom input types]: ./define-a-custom-input-type.md
+[nested forms]: ./implement-repeating-nested-forms.md
 [migration commands]: https://docs.djangoproject.com/en/1.10/ref/django-admin/#django-admin-migrate
 [wq.db router]: https://wq.io/docs/router
 [inspectdb]: https://docs.djangoproject.com/en/1.10/howto/legacy-databases/

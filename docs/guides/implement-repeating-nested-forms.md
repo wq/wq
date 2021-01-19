@@ -1,21 +1,13 @@
----
-order: 7
----
-
-Advanced Design Patterns for Nested Forms
+How To: Implement Repeating Nested Forms
 =========================================
 
-In an ideal world, there would be a perfect one-to-one correspondence between the fields on a web form and the underlying database table.  In practice, there are often reasons why this assumption doesn't hold:
+A fairly frequent use case for the [wq framework] is to allow the submission of multiple "sub-observations" with a single parent record.  In the XLSForm standard, this concept is refered to as a [repeat group].  In the Django admin interface, this would be supported with an [InlineModelAdmin] class.  On the database end, this is implemented by having a parent table and a "child" table with a foreign key to the parent.
 
- - Certain parts of the form may repeat more than once, which typically requires an auxilary table in most relational databases.
- - Certain fields may be customizable or user-defined, which typically requires an [EAV structure] in most relational databases.
- 
-This document extends the list of [common field types] to explain how to implement these more complex schemas in wq.
- 
-## Nested Forms (Repeat Groups)
-A fairly frequent use case for wq is to allow the submission of multiple "sub-observations" with a single parent record.  In the XLSForm standard, this concept is refered to as a [repeat group].  In the Django admin interface, this would be supported with an [InlineModelAdmin] class.  On the database end, this is implemented by having a parent table and a "child" table with a foreign key to the parent.
+This guide explains how to implement nested forms in wq.
 
-wq supports two ways of handling parent-child relationships - either through nested forms (the current topic), or through separate forms with a foreign key lookup (as discussed in [common field types]).  The choice of which approach to take should largely depend on what will make most sense to your users.  In some cases, the parent record is defined once and then appended to periodically (e.g. a Site/Observation split), so separate forms make more sense.  In others, everything is usually defined at once (e.g. an Observation/Result split), so nested forms make more sense.  The main thing to keep in mind is that wq does not currently support using both methods for the same child model.
+> Note that nested forms make the most sense when all of the related data is submitted at one time (e.g. an `Observation` with several `MonitoringResult` rows).  wq also supports defining fully separate forms - for example a `Site` that is established once with several subsequent `Observation` records.  The database relationship is the same, but the registration in that case uses the [ForeignKey] component rather than the nested approach described here.
+
+FIXME
 
 <ul data-role="listview" data-inset="true">
   <li class="ui-field-contain">
@@ -310,7 +302,8 @@ rest.router.register_model(
 
 
 [EAV structure]: https://wq.io/docs/eav-vs-relational
-[common field types]: ./field-types.md
+[common field types]: ../fields/index.md
+[ForeignKey]: ../inputs/ForeignKey.md
 [repeat group]: http://xlsform.org/#repeats
 [InlineModelAdmin]: https://docs.djangoproject.com/en/1.10/ref/contrib/admin/#inlinemodeladmin-objects
 [Try WQ]: https://github.com/powered-by-wq/try.wq.io

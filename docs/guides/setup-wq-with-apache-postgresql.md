@@ -1,5 +1,5 @@
 ---
-order: -1
+order: -2
 icon: pin
 ---
 
@@ -112,13 +112,13 @@ sudo certbot --apache
 # (edit /etc/apache2/sites-enabled/$PROJECTNAME-le-ssl.conf, uncomment WSGIDaemonProcess line)
 ```
 
-Visit the site in a web browser to verify the new installation.  You'll probably need to type in the server's IP address instead of the project name until your DNS is configured.  When the application loads, you should see the default wq-themed app template with links to log in and out.  You are now ready to start defining and registering [Django models] which will appear on the home screen after you rebuild the application with deploy.sh.
+Visit the site in a web browser to verify the new installation.  You'll probably need to type in the server's IP address instead of the project name until your DNS is configured.  When the application loads, you should see the default wq-themed app template with links to log in and out.  You are now ready to start [describing your data model][data-model] to create surveys that appear on the home screen after you rebuild the application with deploy.sh.
 
 [install wq]: ../overview/setup.md
 [setup-local]: ./setup-wq-with-sqlite.md
 [Ubuntu]: http://www.ubuntu.com/
 [venv]: https://docs.python.org/3/library/venv.html
-[Django models]: ../overview/data-model.md
+[data-model]: ./describe-your-data-model.md
 
 [wq framework]: ../overview/intro.md
 [Apache]: http://httpd.apache.org/

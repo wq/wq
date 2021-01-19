@@ -53,7 +53,14 @@ const ICONS = {
     pin: 'M16,12V4H17V2H7V4H8V12L6,14V16H11.2V22H12.8V16H18V14L16,12Z',
 };
 
-wq.use({ icons: makeIcons() });
+wq.use({
+   icons: makeIcons(),
+   context(ctx, routeInfo) {
+       if (routeInfo.page_config.autoindex === false) {
+           return { autoindex: false };
+       }
+   }
+});
 
 function Icon({ data }) {
     return React.createElement(
