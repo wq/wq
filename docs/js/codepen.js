@@ -26,7 +26,7 @@ The following code is only needed to initialize the demo environment.
 
 const INIT = `
 wq.use({
-    components: { Header() {return null}},
+    components: startPage ? { Header() {return null}} : {},
     ajax(url, data, method) {
         if (method === "GET") {
             return Promise.resolve([]);
