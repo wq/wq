@@ -81,7 +81,13 @@ function CodePen({ code }) {
         {
             className: 'codepen',
             'data-editable': true,
-            'data-prefill': true,
+            'data-prefill': JSON.stringify({
+                'title': 'wq Framework demo',
+                'stylesheets': code.match(/map/) ? [
+                    'https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css',
+                    'https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.2.0/mapbox-gl-draw.css'
+                ] : []
+            }),
             'data-default-tab': 'js,result',
             'data-height': 360,
         },
