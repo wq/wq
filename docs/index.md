@@ -7,7 +7,7 @@ wq_config:
 
 # wq Framework
 
-wq is a modular framework for bespoke **survey and geospatial data collection** apps, with built-in support for **offline installation and sync**.  wq automatically generates a fully functional **Django + React** application that can sync directly to your existing database - with nothing more than a few CLI commands and an **XLSForm** definition.  You can then directly modify the resulting code to integrate third party (or your own) Django apps and React components.
+wq is a modular framework for bespoke **survey and geospatial data collection** apps, with built-in support for **offline installation and sync**.  With just a few CLI commands and an **XLSForm** definition, wq can automatically generate a fully functional **Django + React** application that syncs directly to your existing database.  You can then directly modify the resulting code to integrate third party (or your own) Django apps and React components.
 
 ## Live Demo
 
@@ -15,11 +15,19 @@ wq is a modular framework for bespoke **survey and geospatial data collection** 
 import wq from './wq.js';
 
 const config = {
+    material: {
+        theme: {
+            primary: '#330077',
+            secondary: '#0dccb1',
+        }
+    },
     pages: {
+        about: { url: "about" },
         site: {
             url: 'sites',
             verbose_name: 'monitoring site',
             verbose_name_plural: 'monitoring sites',
+            label_template: '{{name}}',
             map: true,
             list: true,
             form: [
@@ -46,6 +54,7 @@ const config = {
             url: 'observations',
             verbose_name: 'observation',
             verbose_name_plural: 'observations',
+            label_template: '{{date}}',
             list: true,
             form: [
                 {
@@ -79,6 +88,41 @@ const config = {
         },
     }
 }
+
+import { modules } from './wq.js';
+const React = modules['react'];
+const {
+    ScrollView,
+    HorizontalView,
+    Typography,
+    ButtonLink
+} = modules['@wq/material'];
+const { useReverse } = modules['@wq/react'];
+
+function About() {
+    const reverse = useReverse();
+    return <ScrollView>
+        <Typography variant="h6">About</Typography>
+        <Typography variant="body1">
+            Personalize your app with custom views, like this one!
+        </Typography>
+        <HorizontalView>
+            <ButtonLink to={reverse("index")}>
+                Back to Home
+            </ButtonLink>
+            <ButtonLink to={reverse("site_edit:new")}
+                        icon="gps-start" variant="contained" color="secondary">
+                Add Site
+            </ButtonLink>
+            <ButtonLink to={reverse("observation_edit:new")}
+                        icon="add" variant="contained" color="primary">
+                Add Observation
+            </ButtonLink>
+         </HorizontalView>
+    </ScrollView>;
+}
+
+wq.use({views: { About }});
 
 wq.init(config).then(...);
 ```
