@@ -90,7 +90,7 @@ function makeIcons() {
 }
 
 wq.use({
-    async ajax(url, method) {
+    async ajax(url, formdata, method) {
         if (method === 'POST') {
             return;
         }
