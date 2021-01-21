@@ -54,12 +54,32 @@ const ICONS = {
 };
 
 wq.use({
-   icons: makeIcons(),
-   context(ctx, routeInfo) {
-       if (routeInfo.page_config.autoindex === false) {
-           return { autoindex: false };
-       }
-   }
+    icons: makeIcons(),
+    context(ctx, routeInfo) {
+        if (routeInfo.page_config.autoindex === false) {
+            return { autoindex: false };
+        }
+    },
+    thunks: {
+        RENDER(dispatch, getState, { action }) {
+            const {
+                router_info: { mode, page_config },
+                label,
+            } = action.payload;
+            let title;
+            if (label) {
+                title = label;
+            } else if (mode === 'list') {
+                title = page_config.verbose_name_plural;
+            } else {
+                title = page_config.verbose_name;
+            }
+            if (title !== config.site_title) {
+                title = `${title} - ${config.site_title}`;
+            }
+            document.title = title;
+        },
+    },
 });
 
 function Icon({ data }) {
