@@ -1,5 +1,6 @@
 ---
-order: 2
+order: -1
+icon: pin
 ---
 
 Getting Started
