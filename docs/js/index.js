@@ -78,6 +78,12 @@ wq.use({
                 title = `${title} - ${config.site_title}`;
             }
             document.title = title;
+            if (location.hash) {
+                const el = document.getElementById(location.hash.slice(1));
+                if (el) {
+                    el.scrollIntoView();
+                }
+            }
         },
     },
 });
