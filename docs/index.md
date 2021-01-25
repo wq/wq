@@ -7,7 +7,7 @@ wq_config:
 
 # wq Framework
 
-wq is a modular framework for bespoke **survey and geospatial data collection** apps, with built-in support for **offline installation and sync**.  With just a few CLI commands and an **XLSForm** definition, wq can automatically generate a fully functional **Django + React** application that syncs directly to your existing database.  You can then directly modify the resulting code to integrate third party (or your own) Django apps and React components.
+wq is a modular framework for bespoke **survey and geospatial data collection** apps, with built-in support for **offline installation and sync**.  With just a few CLI commands and an **XLSForm** definition, wq can automatically generate a fully functional **Django + React** application that syncs directly to your existing database.  You can then directly modify the resulting code to integrate third party (or your own) Django apps and React components.  [Learn More...](./overview/intro.md)
 
 ## Live Demo
 
