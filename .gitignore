@@ -1,6 +1,6 @@
 *.pyc
 *.egg-info
-build
+/build
 dist
 wq.js
 wq.js.map

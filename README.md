@@ -12,7 +12,7 @@ wq can be installed via PyPI, NPM, or plain `<script>` tag via CDN.  See [the do
 python3 -m venv venv
 . venv/bin/activate
 python3 -m pip install wq
-wq start -d myproject.example.com myproject
+wq create -d myproject.example.com myproject
 ```
 
 ### Node
@@ -37,33 +37,33 @@ wq is made up of the following submodules, which are maintained as separate pack
 ---------------------------|---------------------|------------------|-----------|---------
 [![wq][wq.png]][wq/wq]     | [wq/wq][gh/wq]      | [wq][py/wq]      | [wq]      | Top level package (specifies submodules as dependencies)
 [![wq.app][a.png]][wq/a]   | [wq/wq.app][gh/a]   | [wq.app][py/a]   | [@wq/app] | A JavaScript+Python library for building robust offline-capable HTML5 data entry apps.
-[![wq.core][c.png]][wq/c]  | [wq/wq.core][gh/c]  | [wq.core][py/c]  |           | wq command line interface.
+[![wq.build][b.png]][wq/b]  | [wq/wq.build][gh/b]  | [wq.build][py/b]  |           | wq command line interface.
+[![wq.create][c.png]][wq/c] | [wq/wq.create][gh/c] | [wq.create][py/c] |           | Project template and scaffolding tools.
 [![wq.db][d.png]][wq/d]    | [wq/wq.db][gh/d]    | [wq.db][py/d]    |           | Django REST framework extension with design patterns for CRUD APIs.
-[![wq.start][s.png]][wq/s] | [wq/wq.start][gh/s] | [wq.start][py/s] |           | Project template and scaffolding tools.
 
 [wq.png]: https://raw.githubusercontent.com/wq/wq/master/images/80/wq.png
 [a.png]: https://raw.githubusercontent.com/wq/wq/master/images/80/wq.app.png
-[c.png]: https://raw.githubusercontent.com/wq/wq/master/images/80/wq.core.png
+[b.png]: https://raw.githubusercontent.com/wq/wq/master/images/80/wq.build.png
+[c.png]: https://raw.githubusercontent.com/wq/wq/master/images/80/wq.create.png
 [d.png]: https://raw.githubusercontent.com/wq/wq/master/images/80/wq.db.png
-[s.png]: https://raw.githubusercontent.com/wq/wq/master/images/80/wq.start.png
 
 [wq/wq]: https://wq.io/
 [wq/a]: https://wq.io/wq.app
-[wq/c]: https://wq.io/wq.core
+[wq/b]: https://wq.io/wq.build
+[wq/c]: https://wq.io/wq.create
 [wq/d]: https://wq.io/wq.db
-[wq/s]: https://wq.io/wq.start
 
 [py/wq]: https://pypi.org/project/wq
 [py/a]: https://pypi.org/project/wq.app
-[py/c]: https://pypi.org/project/wq.core
+[py/b]: https://pypi.org/project/wq.build
+[py/c]: https://pypi.org/project/wq.create
 [py/d]: https://pypi.org/project/wq.db
-[py/s]: https://pypi.org/project/wq.start
 
 [gh/wq]: https://github.com/wq/wq
 [gh/a]: https://github.com/wq/wq.app
-[gh/c]: https://github.com/wq/wq.core
+[gh/b]: https://github.com/wq/wq.build
+[gh/c]: https://github.com/wq/wq.create
 [gh/d]: https://github.com/wq/wq.db
-[gh/s]: https://github.com/wq/wq.start
 
 [wq]: https://npmjs.com/package/wq
 [@wq/app]: https://npmjs.com/package/@wq/app

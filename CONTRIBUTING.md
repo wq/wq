@@ -13,7 +13,7 @@ wq is a highly modular framework and the code is split across several repositori
  * [wq](https://github.com/wq/wq/issues): General API design & documentation
  * [wq.app](https://github.com/wq/wq.app/issues): JavaScript client & build tool
  * [wq.db](https://github.com/wq/wq.db/issues): Web server & REST API (Django REST Framework)
- * [wq.start](https://github.com/wq/wq.start/issues): `wq start` command & questions about getting started
+ * [wq.create](https://github.com/wq/wq.create/issues): `wq create` command & questions about getting started
  * [xlsconv](https://github.com/wq/xlsform-converter/issues): XLSForm converter and default HTML templates
 
 Don't worry about getting the repository exactly right - many issues span multiple repositories and we can always reference the fix back to the original ticket.
@@ -48,7 +48,7 @@ python3 -m venv venv
 . venv/bin/activate
 pip install --upgrade pip
 pip install wq
-wq start -d test.wq.io testproject .
+wq create -d test.wq.io testproject .
 
 # Clone wq.db from fork
 git clone git@github.com:[my-username]/wq.db.git
