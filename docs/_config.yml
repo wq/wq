@@ -5,10 +5,3 @@ defaults:
        path: ""
     values:
        layout: "default"
-exclude:
- - api
- - build
- - cli
- - patterns
- - philosophy
- - rest
