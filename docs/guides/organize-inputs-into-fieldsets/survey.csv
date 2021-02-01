@@ -1,0 +1,12 @@
+survey,,,,
+,type,name,label,hint
+,string,name,Name,Project Name
+,string,code,Code,URL Slug
+,select one statuses,status,Status,Administrative designation
+,string,status_note,Admin Notes,Reason for designation
+choices,,,,
+,list_name,name,label,
+,statuses,active,Active,
+,statuses,pending,Pending Approval,
+,statuses,complete,Complete,
+,statuses,inactive,Inactive,
