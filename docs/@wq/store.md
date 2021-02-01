@@ -97,187 +97,17 @@ name | purpose
 `defaults` | A set of default `query` arguments to apply to every web query.
 `debug` | Sets the debug level for `console.log()` information.  Level 0 (or false) disables debugging.  Level 1 logs network requests, 2 logs all data lookups, and 3 logs actual data values.
 `formatKeyword` | If `true`, disables special handling of the "format" `query` argument (see above).
-`ajax(url, data, method, headers)` | Override how requests are sent to the server and how the response is interpreted.  (See plugin hook below)
 `storageFail(value, error)` | Defines a callback to use when `localForage.setItem()` fails for any reason (e.g. when offline storage is full or disabled).  The callback will be provided with the value being saved as well as the error object.
 `fetchFail(query, error)` | Defines a callback to use when a network request fails or the result is unparseable.  The callback will be passed the original `query` and a description of the error.
 
 > As of **wq.app 1.2**, the `jsonp` and `parseData` configuration options no longer exist.  To customize how data is retrieved and parsed, use the `ajax()` plugin hook instead.
 
-### Plugin Hooks
+### Plugin Types
 
-@wq/store provides support for the following [@wq/app plugin hooks][@wq/app].
+@wq/store provides support for the following [@wq/app plugin types][plugins].
 
-#### `ajax(url, data, method, headers)`
-
-**New in wq.app 1.1.1.**
-The `ajax()` hook allows customization of how requests are sent and processed.  The [default implementation][default-ajax] is a `fetch()` wrapper designed to work with [wq.db] and should be sufficient for most cases.
-
-When using with @wq/app, it is recommended to use the plugin syntax.  It is also possible to set `config.store.ajax` (as noted above), but this may be removed in a later version.
-
-##### wq.app for PyPI
-
-```javascript
-// myapp/ajax.js
-define({
-    "ajax": function(url, data, method, headers) {
-        if (method == "POST") {
-            return somePostMethod(url, data, headers)
-        } else {
-            return someGetMethod(url, data, headers);
-        }
-    }
-});
-
-// myapp/main.js
-define(["wq/app", "./ajax", "./config"], function(app, customAjax, config) {
-
-app.use(customAjax);
-app.init(config).then(...);
-
-});
-```
-
-##### @wq/app for npm
-
-```javascript
-// src/ajax.js
-export default {
-    ajax(url, data, method, headers) {
-        if (method == "POST") {
-            return somePostMethod(url, data, headers)
-        } else {
-            return someGetMethod(url, data, headers);
-        }
-    }
-};
-
-// src/index.js
-import app from '@wq/app';
-import customAjax from './ajax';
-import config from './config';
-
-app.use(customAjax);
-app.init(config).then(...);
-```
-
-Here are a few things to keep in mind:
-
- * There can only be one ajax plugin defined per app.
- * The `ajax()` method should return a `Promise` that will resolve to a JSON object.
- * You are free to rewrite or completely ignore the passed URL, for example to integrate with an arbitrary (non wq.db) REST API. 
- * If the REST service is not compatible with wq.db, be sure to process the response into a compatible format.  For example, collections should either be returned as simple arrays or as objects of the form `{"list": [], "count": 0, "per_page": 50}`
- * For POST requests, the url is a `URL` object, and data is a `FormData` object.
- * For GET requests, the url a string, and data is an object containing URL parameters.
- * If the request fails with a server error, the plugin should throw an `Error` with a `json` attribute if the error is an object or a `text` attribute otherwise.  Note that unlike `$.ajax()`, `fetch()` does not automatically throw in the case of 400 and 500 errors.
-
-#### `reducer(state, action)` & `actions`
-
-**New in wq.app 1.2.**
-The `reducer()` plugin hook makes it possible to define a [reducer] that subscribes to Redux actions and updates a plugin-specific state.  Reducer plugins and are generally defined with a `name` and an `action` object containing [action creator functions][action-creators].  The action creators are bound to the dispatch method and re-attached to the plugin, as shown in the example below.
-
-##### wq.app for PyPI
-
-```javascript
-// myapp/timer.js
-define({
-    "name": "timer",
-    "actions": {
-        "startTimer": function() {
-            return {
-                "type": "START_TIMER"
-            };
-        },
-        "stopTimer": function() {
-            return {
-                "type": "STOP_TIMER"
-            };
-        }
-    },
-    "reducer": function(timerState, action) {
-        if (!timerState) {
-            timerState = {};
-        }
-        switch (action.type) {
-            case "START_TIMER":
-                return {"active": true};
-            case "STOP_TIMER":
-                return {"active": false};
-            default:
-                return timerState;
-        }
-    },
-    "render": function(state) {
-        if (state.timer.active) {
-            someShowMethod();
-        } else {
-            someHideMethod();
-        }
-    }
-});
-
-// myapp/main.js
-define(["wq/app", "./timer", "./config"], function(app, timer, config) {
-
-app.use(timer);
-app.init(config).then(...);
-
-// Auto-bound methods
-timer.start(); // Equivalent to app.store.dispatch(timer.actions.start())
-timer.stop();
-
-});
-```
-
-##### @wq/app for npm
-
-```javascript
-// src/timer.js
-export default {
-    name: "timer",
-    actions: {
-        startTimer() {
-            return {
-                "type": "START_TIMER"
-            };
-        },
-        stopTimer() {
-            return {
-                "type": "STOP_TIMER"
-            };
-        }
-    },
-    reducer(timerState={}, action) {
-        switch (action.type) {
-            case "START_TIMER":
-                return {"active": true};
-            case "STOP_TIMER":
-                return {"active": false};
-            default:
-                return timerState;
-        }
-    }
-    render(state) {
-        if (state.timer.active) {
-            someShowMethod();
-        } else {
-            someHideMethod();
-        }
-    }
-};
-
-// src/index.js
-import app from '@wq/app';
-import timer from './timer';
-import config from './config';
-
-app.use(timer);
-app.init(config).then(...);
-
-timer.start(); // Equivalent to app.store.dispatch(timer.actions.start())
-timer.stop();
-```
-
-> Note: The `render()` plugin hook is technically managed by [@wq/router], but is included here for completeness.
+ * [ajax(url, data, method, headers)][ajax]
+ * [reducer() & actions{}][reducer]
 
 ### Storage Methods
 
@@ -427,7 +257,7 @@ To persist storage across user sessions, @wq/store requires some kind of offline
 [wq config object]: https://wq.io/docs/config
 [Redux]: https://redux.js.org/
 [Redux Persist]: https://github.com/rt2zz/redux-persist
-[default-ajax]: https://github.com/wq/wq.app/blob/master/packages/store/src/store.js#L353-L390
-[reducer]: https://redux.js.org/basics/reducers
-[action-creators]: https://redux.js.org/basics/actions#action-creators
+[plugins]: ../plugins/plugins.md
+[ajax]: ../plugins/ajax.md
+[reducer]: ../plugins/reducer.md
 [@wq/router]: https://wq.io/docs/router-js
