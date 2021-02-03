@@ -211,6 +211,8 @@ wq.init(config).then(...);
 // navigate to /surveys/new
 ```
 
+> As the configuration above shows, defining a fieldset causes the corresponding fields to be nested under a "group" field.  Similarly, the actual JSON data sent from/to the wq.db API will include a nested object containing those attributes.  In general this will all be handled transparently by wq, but if you are using a custom [context plugin] to set defaults, be sure to return a nested object like `{"admin": {"status": "active" }}` (even though the actual database table is not nested).
+
 ## Step 2: Customize Fieldset Appearance
 
 The default [`<Fieldset/>`][Fieldset] component may be sufficient for many cases where just a simple vertical grouping is required.  However, it is common to override the layout with a different component.  In this example, you might want to make the first group horizontal and the second one collapsible.  To do this, we will need to set the `control.appearance` on the entries in `wq_fieldset`.
@@ -488,6 +490,7 @@ It is also possible to explicitly render each [`<Input/>`][input components] wit
 [model definition]: ./describe-your-data-model.md
 [custom-input]: ./define-a-custom-input-type.md
 [nested-forms]: ./implement-repeating-nested-forms.md
+[context plugin]: ../plugins/context.md
 [Fieldset]: ../components/Fieldset.md
 [ExpansionPanel]: ../components/ExpansionPanel.md
 [HorizontalView]: ../components/HorizontalView.md
