@@ -211,7 +211,7 @@ wq.init(config).then(...);
 // navigate to /surveys/new
 ```
 
-> As the configuration above shows, defining a fieldset causes the corresponding fields to be nested under a "group" field.  Similarly, the actual JSON data sent from/to the wq.db API will include a nested object containing those attributes.  In general this will all be handled transparently by wq, but if you are using a custom [context plugin] to set defaults, be sure to return a nested object like `{"admin": {"status": "active" }}` (even though the actual database table is not nested).
+> As the configuration above shows, defining a fieldset causes the corresponding fields to be nested under a "group" field.  Similarly, the actual JSON data sent from/to the wq.db API will include a nested object containing those attributes.  In general this will all be handled transparently by wq, but if you are using a custom [context plugin] to set defaults, be sure to return a nested object like `{"admin": {"status": "active" }}` (even though the actual database table is not nested).  The [third demo](#demo-3) below includes a context plugin.
 
 ## Step 2: Customize Fieldset Appearance
 
@@ -392,7 +392,20 @@ function CollapsibleFieldset({label, children}) {
 }
 
 const custom = {
-    "components": { HorizontalFieldset, CollapsibleFieldset }
+    components: {
+        HorizontalFieldset,
+        CollapsibleFieldset
+    },
+    context(ctx, routeInfo) {
+        // Set default status for new surveys
+        if (routeInfo.name === "survey_edit:new") {
+            return {
+                "admin": {
+                    "status": "active"
+                }
+            }
+        }
+    }
 }
 
 // app/js/data/config.js
