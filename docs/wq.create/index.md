@@ -43,7 +43,7 @@ See the [Getting Started] docs for more information.
 
 
 [wq framework]: ../index.md
-[wq.app]: ../wq.app.md
+[wq.app]: ../wq.app/index.md
 [wq.db]: ../wq.db/index.md
 [wq Django template]: https://github.com/wq/wq-django-template
 [@wq/cra-template]: ../@wq/cra-template.md

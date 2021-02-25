@@ -195,7 +195,7 @@ app.models.item.filter({'type_id': 2}).then(function(type2items) {
 [@wq/app]: https://github.com/wq/wq.app/blob/main/packages/app
 
 [wq]: ../wq.md
-[wq.app]: ../wq.app.md
+[wq.app]: ../wq.app/index.md
 [wq.db]: ../wq.db/index.md
 [wq.create]: ../wq.create/index.md
 

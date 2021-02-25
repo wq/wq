@@ -1,4 +1,5 @@
 ---
+permalink: /wq.app/
 wq_config:
   name: wqapp
   url: wq.app

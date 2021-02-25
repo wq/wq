@@ -174,7 +174,7 @@ Regenerates the context for the current route and renders it.
 Navigates to the specified URL (assuming it matches a registered route).
 
 [@wq/router]: https://github.com/wq/wq.app/blob/master/packages/router
-[wq.app]: ../wq.app.md
+[wq.app]: ../wq.app/index.md
 [wq.db]: ../wq.db/index.md
 [@wq/app]: ./app.md
 [wq configuration object]: ../wq-configuration-object.md
