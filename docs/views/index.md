@@ -11,7 +11,9 @@ wq_config:
 
 # View Components
 
-View components represent individual screens in the app, and define the layout of the content within the [<Main/>][Main] component.  The view component used to render a route is selected by the high level [`<App/>`][App] component by attempting a number of matches with increasing generality.  The configured [route name and mode][@wq/router] are most essential for matching.   These views are exported by [@wq/react] and rely on [useComponents()][useComponents] instead of referencing [@wq/material] directly.
+View components represent individual screens in the app, and define the layout of the content within the [<Main/>][Main] component.  The view component used to render a route is selected by the high level [`<App/>`][App] component by attempting a number of matches with increasing generality.  The configured [route name and mode][@wq/router] are most essential for matching.   These views are exported by [@wq/react], and rely on [useComponents()][useComponents] instead of importing components from [@wq/material] directly.
+
+To specify a custom view (or override the defaults), register a [view components plugin][components-plugin].
 
 
 name | description
@@ -28,25 +30,8 @@ name | description
 [OutboxList] | Lists all unsynced items in the outbox.
 [Server] | Content loaded from the server (WIP)
 
-## Customization
- 
-To override a view for a specific route, register a corresponding component with the route name converted to PascalCase.
-
-```javascript
-// Define custom "about" view and override default "observation_edit" view
-import About from './views/About';
-import ObservationEdit from './views/ObservationEdit';
-wq.use({views: { About, ObservationEdit }));
-```
-
-The default views can be overridden the same way, but try one of these other options first:
-
- * Customising the [@wq/material] theme
- * Overriding one or more configured [messages][Message]
- * Overriding the relevant [child components][components]
- * Creating a wrapper component that renders the corresponding default view as well as additional children.
-
-If none of the above are sufficient to customize a default view, you can always copy the entire source from the corresponding view in the above table.  (Be sure to replace references to '../../hooks' with '@wq/react')
+[Message]: ../components/Message.md
+[components]: ../components/index.md
 
 [Main]: ../components/Main.md
 [App]: ../components/App.md
@@ -54,8 +39,8 @@ If none of the above are sufficient to customize a default view, you can always 
 [@wq/app]: ../@wq/router.md
 [@wq/react]: ../@wq/react.md
 [@wq/material]: ../@wq/material.md
-[Message]: ../components/Message.md
-[components]: ../components/index.md
+[components-plugin]: ../plugins/components.md
+
 [useComponents]: ../hooks/useComponents.md
 
 [Default]: ./Default.md

@@ -12,7 +12,9 @@ wq_config:
 # Input Components
 
 The following components are used when rendering form inputs corresponding to [model field definitions][data-model]. 
-These components implement a common subset of the [XLSForm question types] and [Django field types].  You can override the default component for any field by [defining a custom custom input type][custom-input], or [define a repeating group of inputs][nested-forms].
+These components implement a common subset of the [XLSForm question types][xlsform] and [Django field types][django].
+
+To implement a custom input type, or override the defaults, register an [input components plugin][components-plugin].
 
 Name | HTML Equivalent | Django Type | XLSForm Type
 --|--|--|--
@@ -34,6 +36,11 @@ Name | HTML Equivalent | Django Type | XLSForm Type
 [Geopoint] | n/a | `PointField` | geopoint
 [Geotrace] | n/a | `LineStringField` | geotrace
 [Geoshape] | n/a | `PolygonField` | geoshape
+
+[data-model]: ../describe-your-data-model.md
+[xlsform]: https://xlsform.org/en/#question-types
+[django]: https://docs.djangoproject.com/en/3.1/ref/models/fields/#field-types
+[components-plugin]: ../plugins/components.md
 
 [Input]: ./Input.md
 [Date]: ./DateTime.md

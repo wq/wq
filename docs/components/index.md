@@ -9,3 +9,21 @@ wq_config:
 ---
 
 # General Components
+
+The [wq framework] comes with a built in component library implementing wq's [data model][config] and [URL structure][url-structure].  The components are grouped into four categories:
+
+ * General components (listed below)
+ * [Icon components][icons]
+ * [Input components][inputs]
+ * [View components][views]
+
+To add custom components or override the defaults in any of these categories, register a [components plugin] with [@wq/app].
+
+[wq framework]: ../index.md
+[config]: ../wq-configuration-object.md
+[url-structure]: ../wq.db/url-structure.md
+[icons]: ./icons.md
+[inputs]: ../inputs/index.md
+[views]: ../views/index.md
+[components plugin]: ../plugins/components.md
+[@wq/app]: ../@wq/app.md
