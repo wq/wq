@@ -1,3 +1,7 @@
+---
+module: "@wq/material"
+---
+
 # Icon Components
 
 [@wq/react] and [@wq/material] define a vocabulary of icons to use throughout the app, particularly as the `icon` prop for [`<Button/>`][Button], [`<IconButton/>`][IconButton], [`<Fab/>`][Fab], and [`<ListItem/>`][ListItem].  The `icon` prop is specified as a string which is mapped to a component (in web), or to the name of a font icon (in native).  

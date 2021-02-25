@@ -33,7 +33,7 @@ category | plugin key
 
 ## Icon Components
 
-@wq/react and @wq/material define a limited set of [icons] for use in supported components.  While the defaults can be overridden, the more common use of a custom `{ icons }` plugin is to to specify the rest of a "vocabulary" of icons to use throughout the application.  Icon components are registered as PascalCase (e.g. `CustomTool`), but should be referenced via param-case in general components like `<IconButton icon="custom-tool"/>.
+@wq/react and @wq/material define a limited set of [icons] for use in supported components.  While the defaults can be overridden, the more common use of a custom `{ icons }` plugin is to to specify the rest of a "vocabulary" of icons to use throughout the application.  Icon components are registered as PascalCase (e.g. `CustomTool`), but should be referenced via param-case in general components like `<IconButton icon="custom-tool"/>`.
 
 ```
 // src/icons.js

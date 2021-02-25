@@ -7,5 +7,6 @@ Note that this view should rarely be overridden except to add additional wrappin
 [Source]
 
 [view]: ./index.md
+[AutoForm]: ../components/AutoForm.md
 [input components]: ../inputs/index.md
 [Source]: https://github.com/wq/wq.app/blob/main/packages/react/src/views/DefaultEdit.js

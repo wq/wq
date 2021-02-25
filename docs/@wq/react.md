@@ -89,17 +89,6 @@ export default {
 
 Name | Details
 --|--
-[App]* | Top level component that renders the [`<Header/>`][material-layout], [`<Footer/>`][material-layout], and the [view component](#view-components) corresponding to the current route.
-[AutoForm] | Reads the [form configuration][field-types] corresponding to the current route and renders a <Form> with the appropriate inputs and controls
-[AutoInput] | Selects the appropriate input component for the given [form field][field-types]
-[AutoSubform] | Automatically configures a [Fieldset][material-forms] for a [nested form][nested-forms]
-[AutoSubformArray] | Automatically configures a [FieldsetArray][material-forms] for a [repeating nested form][nested-forms]
-[PropertyTable] | Generates a read-only table showing the current value for each field in the form configuration
-[DebugContext] | Shows the JSON contents of the current route rendering context
-[Form] | Connects [Formik] to [@wq/outbox]'s form handler
-[FormError]* | Renders form-level error messages.  (Field-level errors are handled in each [input component](#input-components)).
-[Link]* | General purpose link component that integrates with [@wq/router]
-[Message] | Displays one of the configured [default message strings][messages].  To override the defaults, register a plugin with a `messages` attribute, e.g. `app.use({messages: {SUBMIT: 'Save Changes'}});`
 
 Components marked with * are overridden and extended by @wq/material.
 

@@ -27,7 +27,7 @@ wq is made up of the following submodules, which are distributed as separate PyP
 
 [@wq]: ./@wq/index.md
 [wq/wq]: ./wq.md
-[wq/a]: ./wq.app.md
+[wq/a]: ./wq.app/index.md
 [wq/b]: ./wq.build/index.md
 [wq/c]: ./wq.create/index.md
 [wq/d]: ./wq.db/index.md
@@ -45,4 +45,4 @@ wq is made up of the following submodules, which are distributed as separate PyP
 [py/d]: https://pypi.org/project/wq.db
 
 [npm/wq]: https://npmjs.com/package/wq
-[npm/app]: https://npmjs.com/package/@wq/app
+[npm/a]: https://npmjs.com/package/@wq/app

@@ -34,6 +34,7 @@ type | processed by | properties
 [onsync] | @wq/outbox | `onsync()`
 [postsaveurl] | @wq/app | `postsaveurl(item, alreadySynced)`
 [Render Context][context] | @wq/router | `context(ctx, routeInfo)`
+[Messages][messages] | @wq/react | `messages{}`
 [React Components][components] | @wq/react | `components{}`, `icons{}`, `inputs{}`, `views{}`
 [Redux Reducer][reducer] | @wq/store | `name`, `actions{}`, `reducer()`
 [Redux Thunks][thunks] | @wq/router | `thunks{}`
@@ -53,7 +54,8 @@ wq.app ships with a selection of predefined plugins for common use cases.  These
 [onsync]: ./onsync.md
 [postsaveurl]: ./postsaveurl.md
 [context]: ./context.md
-[components]: ../@wq/react.md
+[messages]: ../components/Message.md
+[components]: ./components.md
 [reducer]: ./reducer.md
 [thunks]: ./thunks.md
 

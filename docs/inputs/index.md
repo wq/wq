@@ -37,7 +37,7 @@ Name | HTML Equivalent | Django Type | XLSForm Type
 [Geotrace] | n/a | `LineStringField` | geotrace
 [Geoshape] | n/a | `PolygonField` | geoshape
 
-[data-model]: ../describe-your-data-model.md
+[data-model]: ../guides/describe-your-data-model.md
 [xlsform]: https://xlsform.org/en/#question-types
 [django]: https://docs.djangoproject.com/en/3.1/ref/models/fields/#field-types
 [components-plugin]: ../plugins/components.md
