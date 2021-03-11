@@ -1,23 +1,45 @@
 # Input
 
-### Short Text Input (Char)
+The `<Input/>` [input component][inputs] provides a simple text input corresponding to a HTML `<input>`.  As the default fallback component, `<Input/>` supports several different data types.
 
-<ul data-role="listview" data-inset="true">
-  <li class="ui-field-contain">
-    <label for='input_types-char_field'>Char field</label>
-    <input id='input_types-char_field' type='text' data-xform-type='string' name='char_field' value="">
-    <p class="hint">Enter some text.</p>
-    <p class='error input_types-char_field-errors'></p>
-  </li>
-</ul>
+## Text Fields
 
-*XLSForm Definition*:
+### Short Text Input
+
+```javascript
+const config = {
+    "pages": {
+        "survey": {
+            "form": [
+                {
+                    "name": "name",
+                    "label": "Char field",
+                    "hint": "Enter some text",
+                    "wq:length": 5,
+                    "type": "string"
+                },
+            ],
+            "name": "survey",
+            "url": "surveys",
+            "list": true,
+            "verbose_name": "survey",
+            "verbose_name_plural": "surveys"
+        }
+    }
+};
+
+import wq from './wq.js';
+wq.init(config).then(...);
+// navigate to /surveys/new
+```
+
+#### XLSForm Definition (string)
 
 type | name | label | hint | required | constraint
 -----|------|-------|------|----------|------------
 string | [name] | Char field | Enter some text. | | wq:length(5)
 
-*Django definition:*
+#### Django Definition (Char)
 
 ```python
 from django.db import models
@@ -32,24 +54,42 @@ class MyModel(models.Model):
     )
 ```
 
-### Long Text Input (Text)
+### Long Text Input
 
-<ul data-role="listview" data-inset="true">
-  <li class="ui-field-contain">
-    <label for='input_types-text_field'>Text field</label>
-    <textarea id='input_types-text_field' name='text_field' data-xform-type="text"></textarea>
-    <p class="hint">Enter some text.</p>
-    <p class='error input_types-text_field-errors'></p>
-  </li>
-</ul>
+```javascript
+const config = {
+    "pages": {
+        "survey": {
+            "form": [
+                {
+                    "name": "name",
+                    "label": "Text field",
+                    "hint": "Enter some text.",
+                    "type": "text",
+                    "multiline": true,
+                },
+            ],
+            "name": "survey",
+            "url": "surveys",
+            "list": true,
+            "verbose_name": "survey",
+            "verbose_name_plural": "surveys"
+        }
+    }
+};
 
-*XLSForm Definition:*
+import wq from './wq.js';
+wq.init(config).then(...);
+// navigate to /surveys/new
+```
+
+#### XLSForm Definition (text)
 
 type | name | label | hint | required | constraint
 -----|------|-------|------|----------|------------
 text | [name] | Text field | Enter some text. | | 
 
-*Django definition:*
+#### Django Definition (Text)
 
 ```python
 from django.db import models
@@ -67,22 +107,39 @@ class MyModel(models.Model):
 
 ### Integer
 
-<ul data-role="listview" data-inset="true">
-  <li class="ui-field-contain">
-    <label for='input_types-int_field'>Integer field</label>
-    <input id='input_types-int_field' type='number' data-xform-type='integer' name='int_field' value="">
-    <p class="hint">Enter an integer number.</p>
-    <p class='error input_types-int_field-errors'></p>
-  </li>
-</ul>
+```javascript
+const config = {
+    "pages": {
+        "survey": {
+            "form": [
+                {
+                    "name": "name",
+                    "label": "Integer field",
+                    "hint": "Enter an integer number.",
+                    "type": "int"
+                },
+            ],
+            "name": "survey",
+            "url": "surveys",
+            "list": true,
+            "verbose_name": "survey",
+            "verbose_name_plural": "surveys"
+        }
+    }
+};
 
-*XLSForm Definition:*
+import wq from './wq.js';
+wq.init(config).then(...);
+// navigate to /surveys/new
+```
+
+#### XLSForm Definition (integer)
 
 type | name | label | hint | required | constraint
 -----|------|-------|------|----------|------------
 integer | [name] | Integer field | Enter an integer number. | | 
 
-*Django definition:*
+#### Django Definition (Integer)
 
 ```python
 from django.db import models
@@ -98,22 +155,39 @@ class MyModel(models.Model):
 
 ### Decimal / Float
 
-<ul data-role="listview" data-inset="true">
-  <li class="ui-field-contain">
-    <label for='input_types-dec_field'>Decimal field</label>
-    <input id='input_types-dec_field' type='number' data-xform-type='decimal' name='dec_field' step='0.001' value="">
-    <p class="hint">Enter a decimal number.</p>
-    <p class='error input_types-dec_field-errors'></p>
-  </li>
-</ul>
+```javascript
+const config = {
+    "pages": {
+        "survey": {
+            "form": [
+                {
+                    "name": "name",
+                    "label": "Decimal field",
+                    "hint": "Enter a decimal number.",
+                    "type": "decimal"
+                },
+            ],
+            "name": "survey",
+            "url": "surveys",
+            "list": true,
+            "verbose_name": "survey",
+            "verbose_name_plural": "surveys"
+        }
+    }
+};
 
-*XLSForm Definition:*
+import wq from './wq.js';
+wq.init(config).then(...);
+// navigate to /surveys/new
+```
+
+#### XLSForm Definition (decimal)
 
 type | name | label | hint | required | constraint
 -----|------|-------|------|----------|------------
 decimal | [name] | Decimal field | Enter a decimal number. | | 
 
-*Django definition:*
+#### Django Definition (Float)
 
 ```python
 from django.db import models
@@ -126,3 +200,17 @@ class MyModel(models.Model):
         help_text="Enter a decimal number.",
     )
 ```
+
+## Source
+
+While [@wq/react] defines a [placeholder implementation][react-src], [@wq/material]'s versions are more useful as reference:
+
+ * [Input.js (@wq/material)][material-src]
+ * [Input.native.js (@wq/material)][material-native-src]
+
+[inputs]: ./index.md
+[@wq/react]: ../@wq/react.md
+[@wq/material]: ../@wq/material.md
+[react-src]: https://github.com/wq/wq.app/blob/main/packages/react/src/inputs/Input.js
+[material-src]: https://github.com/wq/wq.app/blob/main/packages/material/src/inputs/Input.js
+[material-native-src]: https://github.com/wq/wq.app/blob/main/packages/material/src/inputs/Input.native.js
