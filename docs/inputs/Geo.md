@@ -1,24 +1,46 @@
-## Geospatial Fields
+# Geo
 
-### Point
+The `<Geo/>` [input component][inputs] provides geospatial support for point, line, and polygon types.
 
-<ul data-role="listview" data-inset="true">
-  <li>
-    <label for='input_types-point_field'>Point field</label>
-    <input type='hidden' data-xform-type='geopoint' name='point_field' required>
-    <div class="map edit-map" id='point-map' data-interactive style='height:300px;background:#ccc;border:1px solid black'></div>
-    <p class="hint">Enter a point.</p>
-    <p class='error input_types-point_field-errors'></p>
-  </li>
-</ul>
+> `Geo` is provided via [@wq/map], which is included in the default [wq.js][wq] build.  If you use a custom React template it is up to you to install and register the @wq/map plugin.
 
-*XLSForm Definition:*
+## Point
+
+```javascript
+const config = {
+    "pages": {
+        "survey": {
+            "form": [
+                {
+                    "name": "name",
+                    "label": "Point field",
+                    "hint": "Enter a point.",
+                    "type": "geopoint",
+                    "bind": {"required": true}
+                },
+            ],
+            "name": "survey",
+            "url": "surveys",
+            "list": true,
+            "map": true,
+            "verbose_name": "survey",
+            "verbose_name_plural": "surveys"
+        }
+    }
+};
+
+import wq from './wq.js';
+wq.init(config).then(...);
+// navigate to /surveys/new
+```
+
+#### XLSForm Definition (geopoint)
 
 type | name | label | hint | required | constraint
 -----|------|-------|------|----------|------------
 geopoint | [name] | Point field | Enter a point. | yes | 
 
-*Django definition:*
+#### Django Definition (Point)
 
 ```python
 from django.contrib.gis.db import models
@@ -31,27 +53,43 @@ class MyModel(models.Model):
     )
 ```
 
-> This field uses a wq/app.js plugin to display the map editor.  For more information, see the documentation for [wq/map.js].  If you are collecting point locations via GPS, you may also be interested in the [wq/locate.js] plugin.
+## LineString
 
-### LineString
+```javascript
+const config = {
+    "pages": {
+        "survey": {
+            "form": [
+                {
+                    "name": "name",
+                    "label": "Line string field",
+                    "hint": "Enter a line.",
+                    "type": "geotrace",
+                    "bind": {"required": true}
+                },
+            ],
+            "name": "survey",
+            "url": "surveys",
+            "list": true,
+            "map": true,
+            "verbose_name": "survey",
+            "verbose_name_plural": "surveys"
+        }
+    }
+};
 
-<ul data-role="listview" data-inset="true">
-  <li>
-    <label for='input_types-linestring_field'>Line string field</label>
-    <input type='hidden' data-xform-type='geotrace' name='linestring_field'>
-    <div class="map edit-map" id='linestring-map' data-interactive style='height:300px;background:#ccc;border:1px solid black'></div>
-    <p class="hint">Enter a line.</p>
-    <p class='error input_types-linestring_field-errors'></p>
-  </li>
-</ul>
+import wq from './wq.js';
+wq.init(config).then(...);
+// navigate to /surveys/new
+```
 
-*XLSForm Definition:*
+#### XLSForm Definition (geotrace)
 
 type | name | label | hint | required | constraint
 -----|------|-------|------|----------|------------
 geotrace | [name] | Line string field | Enter a line. | | 
 
-*Django definition:*
+#### Django Definition (LineString)
 
 ```python
 from django.contrib.gis.db import models
@@ -66,27 +104,43 @@ class MyModel(models.Model):
     )
 ```
 
-> This field uses a wq/app.js plugin to display the map editor.  For more information, see the documentation for [wq/map.js].
+## Polygon
 
-### Polygon
+```javascript
+const config = {
+    "pages": {
+        "survey": {
+            "form": [
+                {
+                    "name": "name",
+                    "label": "Polygon field",
+                    "hint": "Enter a polygon.",
+                    "type": "geoshape",
+                    "bind": {"required": true}
+                },
+            ],
+            "name": "survey",
+            "url": "surveys",
+            "list": true,
+            "map": true,
+            "verbose_name": "survey",
+            "verbose_name_plural": "surveys"
+        }
+    }
+};
 
-<ul data-role="listview" data-inset="true">
-  <li>
-    <label for='input_types-polygon_field'>Polygon field</label>
-    <input type='hidden' data-xform-type='geoshape' name='polygon_field'>
-    <div class="map edit-map" id='polygon-map' data-interactive style='height:300px;background:#ccc;border:1px solid black'></div>
-    <p class="hint">Enter a polygon.</p>
-    <p class='error input_types-polygon_field-errors'></p>
-  </li>
-</ul>
+import wq from './wq.js';
+wq.init(config).then(...);
+// navigate to /surveys/new
+```
 
-*XLSForm Definition:*
+#### XLSForm Definition (geoshape)
 
 type | name | label | hint | required | constraint
 -----|------|-------|------|----------|------------
 geoshape | [name] | Polygon field | Enter a polygon. | | 
 
-*Django definition:*
+#### Django definition (Polygon)
 
 ```python
 from django.contrib.gis.db import models
@@ -101,6 +155,74 @@ class MyModel(models.Model):
     )
 ```
 
-> This field uses a wq/app.js plugin to display the map editor.  For more information, see the documentation for [wq/map.js].
+## Geolocation & Geocoding
 
-[wq/map.js]: https://wq.io/docs/map-js
+In addition to the drawing tools (provided via the [Draw] component), the Geo input includes a toolbar for navigating to specific coordinates.  The default tools include the browser's geolocation API and raw coordinate fields.  You can also enable a address-based geocoder by registering a `geocoder` [@wq/app plugin][plugins], as in the example below.
+
+Note that when used with a point type, the toolbar overwrites the point location with the geolocation or geocoder result.  When used with a polygon or line type, the toolbar zooms to the location but preserves any existing geometry.
+
+```javascript
+const GEOCODER = 'https://api.maptiler.com/geocoding/',
+      KEY = '95ZPyiJrDMkmRUoEfSjt';  // Get your own key
+
+async function geocoder(address) {
+    const response = await fetch(`${GEOCODER}/${address}.json?key=${KEY}`),
+        data = await response.json(),
+        matches = data && data.features;
+
+    if (!matches || !matches.length > 0) {
+        throw new Error("Unrecognized address");
+    }
+
+    return {
+        label: matches[0].place_name,
+        geometry: {
+            type: 'Point',
+            coordinates: matches[0].center
+        }
+    };
+}
+
+const config = {
+    "pages": {
+        "survey": {
+            "form": [
+                {
+                    "name": "name",
+                    "label": "Point field",
+                    "hint": "Enter a point.",
+                    "type": "geopoint",
+                    "bind": {"required": true}
+                },
+            ],
+            "name": "survey",
+            "url": "surveys",
+            "list": true,
+            "map": true,
+            "verbose_name": "survey",
+            "verbose_name_plural": "surveys"
+        }
+    }
+};
+
+import wq from './wq.js';
+wq.use({ geocoder });
+wq.init(config).then(...);
+// navigate to /surveys/new
+```
+
+> It is possible to pre-populate the geocoder address field with data entered earlier in the form.  To do this, define a plugin method `geocoderAddress` that accepts the form values and returns an address.
+
+## Source
+
+The source code for `<Geo/>` is available here:
+
+ * [Geo.js (@wq/map)][map-src]
+
+The [@wq/map] implementation is a wrapper around other components (including [Draw]), so there is no alternate `Geo.native.js`.
+
+[inputs]: ./index.md
+[@wq/map]: ../@wq/map.md
+[wq]: ../wq.md
+[plugins]: ../plugins/index.md
+[map-src]: https://github.com/wq/wq.app/blob/main/packages/react/src/inputs/Map.js
