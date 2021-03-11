@@ -37,15 +37,31 @@ wq.use({
 });
 wq.init({
     ...config,
-    router: {base_url: window.location.pathname}
+    router: {base_url: window.location.pathname},
+    map: mapConfig,
 }).then(() => wq.nav(startPage));
+`;
+
+const MAP_CONF = `
+const mapConfig = {
+    bounds: [[-90, -90], [90, 90]],
+    maps: {
+        basemaps: [{
+           "name": "MapTiler Topo",
+           "type": "vector-tile",
+           // NOTE: You must supply your own key
+           "url": "https://api.maptiler.com/maps/topo/style.json?key=95ZPyiJrDMkmRUoEfSjt"
+       }]
+    }
+};
 `;
 
 function wrapCode(code) {
     const match = code.match(/\/\/ navigate to (.*)/),
         startPage = match ? match[1].replace(/^\//, '') : '',
         config = code.indexOf('config =') === -1 ? 'const config = {};\n' : '',
-        init = `${COMMENT}\const startPage = '${startPage}';\n${config}${INIT}`;
+        mapConfig = code.indexOf('map') === -1 ? 'const mapConfig = {};\n' : MAP_CONF,
+        init = `${COMMENT}\const startPage = '${startPage}';\n${config}${mapConfig}${INIT}`;
 
     return code
         .replace(
@@ -89,7 +105,7 @@ function CodePen({ code }) {
                 ] : []
             }),
             'data-default-tab': 'js,result',
-            'data-height': 360,
+            'data-height': code.match(/map/) ? 480 : 360,
         },
         React.createElement('pre', { 'data-lang': 'babel' }, wrapCode(code))
     );
