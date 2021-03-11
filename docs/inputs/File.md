@@ -1,33 +1,75 @@
-# Photo
+# File
 
-<ul data-role="listview" data-inset="true">
-  <li class="ui-field-contain">
-    <img src="https://wq.io/images/empty.png"
-         id="input_types-image_field-preview">
-    <label for="input_types-image_field">Photo</label>
-    <input type="file" name="image_field" id="input_types-image_field" accept='image/*'
-           data-wq-preview="input_types-image_field-preview">
-    <p class="error input_types-image_field-errors"></p>
-  </li>
-</ul>
+The `<File/>` [input component][inputs] provides an interface for selecting and uploading single files.
 
-*XLSForm Definition:*
+> Depending on your use case, you may be interested in the following components:
+>  * [Image] is based on File, but only accepts `image/*` file types.
+>  * [FileArray] supports uploading multiple files or images with a compact UI.
+
+## Demo
+
+```javascript
+const config = {
+    "pages": {
+        "survey": {
+            "form": [
+                {
+                    "name": "name",
+                    "label": "File field",
+                    "hint": "Select a file.",
+                    "type": "file",
+                    "bind": {
+                        "required": true
+                    }
+                },
+            ],
+            "name": "survey",
+            "url": "surveys",
+            "list": true,
+            "verbose_name": "survey",
+            "verbose_name_plural": "surveys"
+        }
+    }
+};
+
+import wq from './wq.js';
+wq.init(config).then(...);
+// navigate to /surveys/new
+```
+
+#### XLSForm Definition
 
 type | name | label | hint | required | constraint
 -----|------|-------|------|----------|------------
-image | [name] | Image field | Add an image. | yes | 
+file | [name] | File field | Select a file. | yes | 
 
-*Django definition:*
+#### Django Definition
 
 ```python
-from django.db import models
-
 class MyModel(models.Model):
-    [name] = models.ImageField(
+    [name] = models.FileField(
         upload_to="[folder name]",
-        verbose_name="Image field",
-        help_text="Add an image.",
+        verbose_name="File field",
+        help_text="Select a file.",
     )
 ```
 
-> This field uses a wq/app.js plugin to display the image preview.  For more information, see the documentation for [wq/photos.js].
+## Customization
+
+By specifying the `accept` prop, you can restrict which types of files the user is allowed to submit.  See [Image] for an example.
+
+## Source
+
+While [@wq/react] defines a [placeholder implementation][react-src], [@wq/material]'s versions are more useful as reference:
+
+ * [File.js (@wq/material)][material-src]
+ * [File.native.js (@wq/material)][material-native-src]
+
+[inputs]: ./index.md
+[Image]: ./Image.md
+[FileArray]: ../components/FileArray.md
+[@wq/react]: ../@wq/react.md
+[@wq/material]: ../@wq/material.md
+[react-src]: https://github.com/wq/wq.app/blob/main/packages/react/src/inputs/File.js
+[material-src]: https://github.com/wq/wq.app/blob/main/packages/material/src/inputs/File.js
+[material-native-src]: https://github.com/wq/wq.app/blob/main/packages/material/src/inputs/File.native.js
