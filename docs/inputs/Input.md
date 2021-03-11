@@ -1,6 +1,14 @@
 # Input
 
-The `<Input/>` [input component][inputs] provides a simple text input corresponding to a HTML `<input>`.  As the default fallback component, `<Input/>` supports several different data types.
+The `<Input/>` [input component][inputs] provides a simple text input corresponding to a HTML `<input>`.  As the default fallback component, `Input` supports several HTML input types, including `text`, `number`, `password`, `email`, `tel`, and `color`.
+
+> The following HTML input types are supported in wq via separate dedicated components:
+>  * [Checkbox]
+>  * [DateTime]
+>  * [File]
+>  * [Hidden]
+>  * [Radio]
+>  * [SubmitButton]
 
 ## Text Fields
 
@@ -209,6 +217,12 @@ While [@wq/react] defines a [placeholder implementation][react-src], [@wq/materi
  * [Input.native.js (@wq/material)][material-native-src]
 
 [inputs]: ./index.md
+[Checkbox]: ./Checkbox.md
+[DateTime]: ./DateTime.md
+[File]: ./File.md
+[Hidden]: ./Hidden.md
+[Radio]: ./Radio.md
+[SubmitButton]: ../components/SubmitButton.md
 [@wq/react]: ../@wq/react.md
 [@wq/material]: ../@wq/material.md
 [react-src]: https://github.com/wq/wq.app/blob/main/packages/react/src/inputs/Input.js
