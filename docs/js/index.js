@@ -55,6 +55,9 @@ const ICONS = {
 
 wq.use({
     icons: makeIcons(),
+    start() {
+        document.getElementById('content').remove();
+    },
     context(ctx, routeInfo) {
         if (routeInfo.page_config.autoindex === false) {
             return { autoindex: false };
