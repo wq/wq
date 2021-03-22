@@ -25,7 +25,7 @@ The main PRs for this release are #115 and #122.
 
 When wq.app was created, there was no standard JavaScript module format.  wq.app instead leveraged RequireJS and AMD, which combined (some of) the customization capabilities of the npm ecosystem, together with (some of) the simplicity of using a plain `<script>` tag.  Since then, [ECMAScript modules](https://nodejs.org/api/esm.html) (import/export syntax) have become the standard solution for both web and npm.  wq.app 1.3 leverages ESM to provide users a choice between *all of* the customizability of npm, or *all of* the simplicity of a script tag.   The old RequireJS build system has been deprecated and replaced with ... no build system at all!
 
-Instead, wq.app 1.3 provides a pre-compiled ESM build, [**wq.js**](https://npmjs.com/package/wq), which contains wq's core modules, the new [UI renderer](#user-content-react-material-ui), the new [map engine](#user-content-mapbox-gl), and the third party dependencies for all of the above.  This script can be leveraged via a single `<script type=module>` tag, or with the small number of configuration modules provided by the new [wq start](https://wq.io/wq.start) template.
+Instead, wq.app 1.3 provides a pre-compiled ESM build, [**wq.js**](https://npmjs.com/package/wq), which contains wq's core modules, the new [UI renderer](#user-content-react-material-ui), the new [map engine](#user-content-mapbox-gl), and the third party dependencies for all of the above.  This script can be leveraged via a single `<script type=module>` tag, or with the small number of configuration modules provided by the new [wq start](../wq.create/index.md) template.
 
 ### Upgrade Notes
 wq.app 1.3 still provides the old RequireJS/AMD build scripts and related commands (`wq init`, `wq optimize`, `wq babel`, etc.) for compatibility with older projects.  However, this support will be dropped in wq 2.0.  Thus, it may be good to start migrating to an ESM format sooner rather than later.
@@ -64,7 +64,7 @@ module | description
 [@wq/material]: https://github.com/wq/wq.app/tree/master/packages/material
 [@wq/jquery-mobile]: https://github.com/wq/wq.app/tree/master/packages/jquery-mobile
 [react-components]: https://github.com/wq/wq.app/tree/master/packages/react#components
-[config]: https://wq.io/docs/config
+[config]: ../wq-configuration-object.md
 
 ### Upgrade Notes
 
@@ -112,7 +112,7 @@ If you are upgrading from an older version of wq with npm, install and import `@
 
 [@wq/map]'s layer configuration syntax is designed to be engine-agnostic, so switching from @wq/leaflet to @wq/mapbox will generally just work.  However, you will likely want to take advantage of Mapbox GL's vector tile support.  To do so, you will need to find a vector tile provider online or host the tiles yourself.  Providers known to work with @wq/mapbox include [Mapbox](https://www.mapbox.com/) (obviously), [ESRI](https://www.arcgis.com/home/group.html?id=30de8da907d240a0bccd5ad3ff25ef4a), and [MapTiler Cloud](https://cloud.maptiler.com/).
 
-[Leaflet]: http://leafletjs.com
+[Leaflet]: https://leafletjs.com
 [Mapbox GL JS]: https://docs.mapbox.com/mapbox-gl-js/
 [@wq/map]: https://github.com/wq/wq.app/tree/master/packages/map
 [@wq/leaflet]: https://github.com/wq/wq.app/tree/master/packages/leaflet

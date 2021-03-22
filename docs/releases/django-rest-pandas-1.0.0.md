@@ -20,4 +20,4 @@ Django REST Pandas 1.0.0 brings a number of API improvements that make it easier
   * Supported URL parameters for JSON output (#26)
   * `DateTimeField` serialization tips (#27)
   * `django-pandas` integration (#11)
-  *  HTML output and integration with [wq/chartapp.js](https://wq.io/docs/chartapp-js) (#2)
+  *  HTML output and integration with [wq/chartapp.js](https://github.com/wq/django-rest-pandas) (#2)

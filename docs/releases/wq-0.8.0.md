@@ -5,7 +5,7 @@ date: 2015-06-16
 
 # wq 0.8.0
 
-wq 0.8.0 is perhaps the most ambitious release of wq to date.  A number of APIs in [wq.app](https://wq.io/wq.app) and [wq.db](https://wq.io/wq.db) have been significantly improved - though at the cost of backwards compatibility.  See the submodule release notes for more information.
+wq 0.8.0 is perhaps the most ambitious release of wq to date.  A number of APIs in [wq.app](../wq.app/index.md) and [wq.db](../wq.db/index.md) have been significantly improved - though at the cost of backwards compatibility.  See the submodule release notes for more information.
 - [wq.app 0.8.0](./wq.app-0.8.0.md)
 - [wq.core 0.8.0](./wq.core-0.8.0.md) (new in wq 0.8.0)
 - [wq.db 0.8.1](./wq.db-0.8.1.md) (see also the release notes for [wq.db 0.8.0](./wq.db-0.8.0.md))

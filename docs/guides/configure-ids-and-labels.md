@@ -163,14 +163,14 @@ One common use for custom id fields is to facilitate offline usage, since it is 
 
 Thus, it is not necessary to define a template or function to generate offline record identifiers.
 
-[router]: https://wq.io/docs/router
+[router]: ../wq.db/router.md
 [configure-route-names-and-urls]: ./configure-route-names-and-urls.md
 [django:__str__]: https://docs.djangoproject.com/en/3.1/ref/models/instances/#django.db.models.Model.__str__
-[config]: https://wq.io/docs/config
-[@wq/model]: https://wq.io/docs/model-js
-[ModelSerializer]: https://wq.io/docs/serializers
-[ModelViewSet]: https://wq.io/docs/views
+[config]: ../wq-configuration-object.md
+[@wq/model]: ../@wq/model.md
+[ModelSerializer]: ../wq.db/serializers.md
+[ModelViewSet]: ../wq.db/views.md
 [Django Natural Keys]: https://github.com/wq/django-natural-keys
 [natural_key_slug]: https://github.com/wq/django-natural-keys#natural-key-slugs
-[@wq/outbox]: https://wq.io/docs/outbox-js
+[@wq/outbox]: ../@wq/outbox.md
 [define-a-custom-input-type]: ./define-a-custom-input-type.md

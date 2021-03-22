@@ -5,7 +5,7 @@ date: 2014-11-24
 
 # wq 0.7.0
 
-[wq](http://wq.io) 0.7.0 brings full Python 3 support and a number of other improvements.  See the submodule release notes for details:
+[wq](../index.md) 0.7.0 brings full Python 3 support and a number of other improvements.  See the submodule release notes for details:
 - [wq.app 0.7.0](./wq.app-0.7.0.md)
 - [wq.db 0.7.0](./wq.db-0.7.0.md)
 - [wq.io 0.7.0](./itertable-0.7.0.md)

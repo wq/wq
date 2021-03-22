@@ -8,10 +8,10 @@ date: 2014-02-08
 As part of the [wq 0.5.0 "Charted Waters"](./wq-0.5.0.md) release, this release of brings a number of enhancements to the data exploration capabilities of wq.app.
 
 ### New Modules
-- **[wq/pandas.js](http://wq.io/docs/pandas-js)**:  A tool for loading Pandas DataFrames via `d3.csv` and [Django REST Pandas](https://github.com/wq/django-rest-pandas).
+- **[wq/pandas.js](https://github.com/wq/django-rest-pandas)**:  A tool for loading Pandas DataFrames via `d3.csv` and [Django REST Pandas](https://github.com/wq/django-rest-pandas).
 
 ### API improvements
-- **[wq/chart.js](http://wq.io/docs/chart-js)**:
+- **[wq/chart.js](https://github.com/wq/django-rest-pandas)**:
   - Full data-join support, making it possible to re-use existing SVG charts<br>
     (transition support will be added in a future release)
   - `timeSeries` and `scatter` charts can render as both lines and/or points.<br>Points now include a tooltip with information about the series and current value.
@@ -19,15 +19,15 @@ As part of the [wq 0.5.0 "Charted Waters"](./wq-0.5.0.md) release, this release 
   - Legend now available on all chart types
   - More robust margin computation
   - Nicer default styles and better hooks for overriding them
-- **[wq/map.js](http://wq.io/docs/map-js)**:
+- **[wq/map.js](../@wq/map.md)**:
   - Automatically zoom to extent of features in each list and detail view map
   - Preserve current pan/zoom for continuity between pages
   - Add support for automatically loading server-filtered GeoJSON in list views
-- **[wq/app.js](http://wq.io/docs/app-js)** & **[wq/pages.js](http://wq.io/docs/app-js)**:
+- **[wq/app.js](../@wq/app.md)** & **[wq/pages.js](../@wq/app.md)**:
   - Better support for optional server-side rendering of list and edit views
   - Better handling of attachmentType lookups in locally rendered edit views
   - Fix issues with preventDefault handling in URL routes
-- **[wq build](http://wq.io/docs/build)**: Fix handling of Leaflet CSS `url(#default#VML)` in r.js (jrburke/r.js#588)
+- **[wq build](../wq.build/cli.md)**: Fix handling of Leaflet CSS `url(#default#VML)` in r.js (jrburke/r.js#588)
 
 ### Other
 

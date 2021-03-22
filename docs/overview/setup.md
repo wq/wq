@@ -19,10 +19,10 @@ python3 -m venv ./venv
 
 # Install wq
 python3 -m pip install wq==1.3.0a1
-wq start
+wq create
 ```
 
-When called without any arguments, the `wq start` command will prompt for several project attributes including the project name and web domain.  `wq start` also asks whether to enable GIS support and/or Node.js/npm support.  (Since both options require the installation of additional software, they are are disabled by default.)  All of the prompts can also be specified as command-line arguments - see [wq start --help] for the full list.
+When called without any arguments, the `wq create` command will prompt for several project attributes including the project name and web domain.  `wq create` also asks whether to enable GIS support and/or Node.js/npm support.  (Since both options require the installation of additional software, they are are disabled by default.)  All of the prompts can also be specified as command-line arguments - see [wq create --help] for the full list.
 
 Depending on your use case, you may want to follow either of the following more detailed installation guides.
 
@@ -56,5 +56,5 @@ Once your data model is defined and your REST API is running, wq will automatica
 [Data Model]: ../guides/describe-your-data-model.md
 [Common Field Types]: ../inputs/index.md
 [Nested Forms]: ../guides/implement-repeating-nested-forms.md
-[wq start --help]: https://wq.io/docs/wq-start
+[wq create --help]: ../wq.create/create.md
 [input types]: ../guides/define-a-custom-input-type.md

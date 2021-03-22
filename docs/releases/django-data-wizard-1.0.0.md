@@ -15,7 +15,7 @@ date: 2017-07-31
 
 ##  Other changes since vera 0.6.2
 * Pre-Beta Changes
-  * Extract from `wq.db.contrib.dbio` into standalone package with dependencies on [wq.db](https://wq.io/docs/vera) and [vera](https://wq.io/vera) (wq/wq.db#29)
+  * Extract from `wq.db.contrib.dbio` into standalone package with dependencies on [wq.db](../wq.db/index.md) and [vera](https://github.com/powered-by-wq/vera) (wq/wq.db#29)
   * See the release notes for [wq.db 0.7](./wq.db-0.7.0.md) and [vera 0.7](https://github.com/wq/vera/releases/tag/v0.7.0)
 * [Changes in Beta 1](./django-data-wizard-1.0.0b1.md)
   * Rename package module from `dbio` to `data_wizard`; publish as `data-wizard` on PyPI

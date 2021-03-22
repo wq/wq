@@ -5,7 +5,7 @@ date: 2015-02-02
 
 # wq 0.7.1
 
-[wq](http://wq.io) 0.7.1 brings [complete documentation](http://wq.io/docs/) (!!!) and a number of minor bug fixes.  See the submodule release notes for more details:
+[wq](../index.md) 0.7.1 brings [complete documentation](../index.md) (!!!) and a number of minor bug fixes.  See the submodule release notes for more details:
 - [wq.app 0.7.1](./wq.app-0.7.1.md)
 - [wq.db 0.7.1](./wq.db-0.7.1.md)
 - [wq.io 0.7.1](./itertable-0.7.1.md)

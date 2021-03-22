@@ -1,5 +1,5 @@
 ---
-order: 0
+order: -1
 ---
 
 wq
@@ -35,6 +35,8 @@ Command | Module | Description
 [icons] | [wq.build] | Generate resized icons from source image.
 [setversion] | [wq.build] | Update version.txt (and version.js).
 
+[wq.create]: ../wq.create/index.md
+[wq.build]: ./index.md
 [addform]: ../wq.create/addform.md
 [collectjson]: ./collectjson.md
 [icons]: ./icons.md

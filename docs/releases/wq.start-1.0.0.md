@@ -19,4 +19,4 @@ date: 2017-07-24
 * [Changes in Beta 2](./wq.start-1.0.0b2.md)
   * Django 1.10 support
 * [Changes in Beta 3](./wq.start-1.0.0b3.md)
-  * Improvements to [xlsconv](https://github.com/wq/xlsform-converter) and [wq maketemplates](https://wq.io/docs/wq-maketemplates)
+  * Improvements to [xlsconv](https://github.com/wq/xlsform-converter) and [wq maketemplates](https://github.com/sheppard/django-mustache)

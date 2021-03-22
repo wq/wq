@@ -1,12 +1,8 @@
----
-order: 7
----
-
 wq icons
 ========
 
 wq icons: Generate resized icons from source image.
-Provided by [wq.app](https://wq.io/wq.app).
+Provided by [wq.build].
 
 ```shell
 $ wq icons --help
@@ -23,3 +19,5 @@ Options:
   -d, --outdir PATH    Output Directory
   --help               Show this message and exit.
 ```
+
+[wq.build]: ./index.md

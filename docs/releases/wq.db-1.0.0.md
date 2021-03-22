@@ -8,9 +8,9 @@ date: 2017-07-19
 **wq.db 1.0.0** is finally here!  This is the first stable release of wq.db 1.0, which is now ready for production use. 
 
 ## Changes since wq.db 1.0.0 RC1
- * Standardize and fix the results of various `type_filter` settings with [EAV serializers](https://wq.io/docs/eav-vs-relational).  Thanks to @davidoj for help with this update (#64, #65, #66, #67)
+ * Standardize and fix the results of various `type_filter` settings with [EAV serializers](../guides/eav-vs-relational.md).  Thanks to @davidoj for help with this update (#64, #65, #66, #67)
  * Fix typo in `ModelViewSet` (#68 via @tomaszn)
- * Various improvements to [identify pattern](https://wq.io/docs/identify) (2863130)
+ * Various improvements to [identify pattern](../wq.db/patterns.md) (2863130)
  * Support for `HEAD` on more views (d51c504)
  * Don't override declared label fields (#42)
  * Incorporate [Code of Conduct](https://github.com/wq/wq.db/blob/master/CODE_OF_CONDUCT.md) and [Contributing Guidelines](https://github.com/wq/wq.db/blob/master/CONTRIBUTING.md)
@@ -32,5 +32,5 @@ date: 2017-07-19
    * Updates for DRF 3.5
    * Additional wq configuration options: `wq_label_template` and `wq_field_config`
  * [Changes in RC1](./wq.db-1.0.0rc1.md)
-   * New `cache` option for better integration wtih wq.app (wq/wq.app#47).  See [Pagination and Caching](https://wq.io/docs/pagination-and-caching).
+   * New `cache` option for better integration wtih wq.app (wq/wq.app#47).  See [Pagination and Caching](../wq-configuration-object.md).
    * Server support for attachments/EAV patterns in "new" screens (#61).

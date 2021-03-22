@@ -5,7 +5,7 @@ date: 2019-09-25
 
 # IterTable 2.0 beta
 
-**wq.io** is now **IterTable**!  This name better reflects the project purpose, and avoids confusion with the wq framework website (https://wq.io).  Similarly, IterTable's `*IO` classes have been renamed to `*Iter`, as the API is not intended to match that of Python's `StringIO` or other `io` classes.
+**wq.io** is now **IterTable**!  This name better reflects the project purpose, and avoids confusion with the wq framework website (https://wq.io/).  Similarly, IterTable's `*IO` classes have been renamed to `*Iter`, as the API is not intended to match that of Python's `StringIO` or other `io` classes.
 
 The functionality is otherwise the same as wq.io 1.1.0.  Here is a mapping of top-level exports:
 

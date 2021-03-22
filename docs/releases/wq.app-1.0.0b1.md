@@ -7,7 +7,7 @@ date: 2016-09-01
 
 **wq.app 1.0 beta** brings a number of new features and bug fixes to **wq.app 1.0 alpha 2**.
 
-## [wq/app.js](https://wq.io/docs/app-js)
+## [wq/app.js](../@wq/app.md)
 
 ### Plugin API
 - Added two additional asynchronous plugin hooks.  Returning a `Promise` from either hook will cause further processing to wait until the `Promise` is resolved.
@@ -40,12 +40,12 @@ date: 2016-09-01
 - Added `app.nav(url, changePageOptions)` and `app.refresh()` to facilitate common page navigation tasks (ee0b6a2).
 - Option to render `postsave` URLs as templates (a2b31d4)
 
-## [wq/map.js](https://wq.io/docs/map-js)
+## [wq/map.js](../@wq/map.md)
 - Support multiple maps on the same page (34664cd).
 - Switch default basemaps from MapQuest to Stamen, one of the few remaining free providers that doesn't require an API key (#68).
 - Simplify integration of Esri basemaps via `wq/mapserv.js` (a2e4249).
 
-## [wq/model.js](https://wq.io/docs/model-js)
+## [wq/model.js](../@wq/model.md)
 - Allow specifying the store backing the model as a string name (16a7b42).  This makes it possible to configure custom model stores via JSON, and initialize them in JavaScript elsewhere.
 - Deep-copy items retrieved from indexes to ensure modification doesn't have unexpected side effects (c4b7c34).
 

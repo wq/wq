@@ -16,7 +16,7 @@ The updated [wq django template](https://github.com/wq/wq-django-template) autom
 
 ## New Configuration for Pagination/Offline Caching
 
-The configuration options affecting pagination and offline caching (`per_page`, `partial`, `max_local_pages`, `filter`, and `reversed`) have been unified and replaced with a new `cache` setting.  See [Pagination and Caching](https://wq.io/1.0/docs/pagination-and-caching) for details (#47, 452b0d2).
+The configuration options affecting pagination and offline caching (`per_page`, `partial`, `max_local_pages`, `filter`, and `reversed`) have been unified and replaced with a new `cache` setting.  See [Pagination and Caching](../wq-configuration-object.md) for details (#47, 452b0d2).
 
 ## Other Improvements & Fixes
 Thanks to @tomaszn for reporting several of these issues.
@@ -41,10 +41,10 @@ Thanks to @tomaszn for reporting several of these issues.
 ### Other
  * [wq/markdown.js] syntax highlighting for server-rendered markdown (014b75d)
 
-[wq/app.js]: https://wq.io/docs/app-js
-[wq/pandas.js]: https://wq.io/docs/pandas-js
-[wq/chartapp.js]: https://wq.io/docs/chartapp-js
-[wq/map.js]: https://wq.io/docs/map-js
-[wq/mapserv.js]: https://wq.io/docs/mapserv-js
-[wq/locate.js]: https://wq.io/docs/locate-js
-[wq/markdown.js]: https://wq.io/docs/markdown-js
+[wq/app.js]: ../@wq/app.md
+[wq/pandas.js]: https://github.com/wq/django-rest-pandas
+[wq/chartapp.js]: https://github.com/wq/django-rest-pandas
+[wq/map.js]: ../@wq/map.md
+[wq/mapserv.js]: ../@wq/map.md
+[wq/locate.js]: ../inputs/Geo.md
+[wq/markdown.js]: https://github.com/wq/markdown

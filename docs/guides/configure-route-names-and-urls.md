@@ -103,17 +103,17 @@ rest.router.register_model(
 
 > Note that the full URLs for detail and edit routes also incorporate the record identifier, which is [configured separately][configure-ids-and-labels].
 
-[router]: https://wq.io/docs/router
+[router]: ../@wq/router.md
 [configure-ids-and-labels]: ./configure-ids-and-labels.md
-[config]: https://wq.io/docs/config
-[@wq/router]: https://wq.io/docs/router-js
-[view component]: https://github.com/wq/wq.app/tree/master/packages/react#view-components
-[@wq/model]: https://wq.io/docs/model-js
+[config]: ../wq-configuration-object.md
+[@wq/router]: ../@wq/router.md
+[view component]: ../views/index.md
+[@wq/model]: ../@wq/model.md
 [useRouteTitle]: ../hooks/useRouteTitle.md
-[Header]: https://github.com/wq/wq.app/tree/master/packages/material#layout
-[Breadcrumbs]: https://github.com/wq/wq.app/tree/master/packages/material#navigation
+[Header]: ../components/Header.md
+[Breadcrumbs]: ../components/Breadcrumbs.md
 [useContextTitle]: ../hooks/useContextTitle.md
 [django:verbose_name]: https://docs.djangoproject.com/en/3.1/ref/models/options/#verbose-name
 [django:verbose_name_plural]: https://docs.djangoproject.com/en/3.1/ref/models/options/#verbose-name-plural
 [useSitemap]: ../hooks/useSitemap.md
-[Index]: https://github.com/wq/wq.app/tree/master/packages/react#view-components
+[Index]: ../views/Index.md

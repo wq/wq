@@ -1,6 +1,6 @@
 # How To: Define a Custom Input Type
 
-The [wq framework](https://wq.io) provides a useful assortment of [default input types][input components], but individual project needs often require reconfiguring and extending the defaults with custom versions.  For example, you may want to override the widget used for a field, or hide a group of inputs unless an earlier input has a specific value.  (This is commonly referred to as skip logic or the "relevant" setting in XLSForm).  wq does not currently support the "relevant" setting out of the box, but it is easy to define a custom input that does the same thing.
+The [wq framework] provides a useful assortment of [default input types][input components], but individual project needs often require reconfiguring and extending the defaults with custom versions.  For example, you may want to override the widget used for a field, or hide a group of inputs unless an earlier input has a specific value.  (This is commonly referred to as skip logic or the "relevant" setting in XLSForm).  wq does not currently support the "relevant" setting out of the box, but it is easy to define a custom input that does the same thing.
 
 * [Initial Setup](#initial-setup)
 * [Step 1: Update Model Definition](#step-1-update-model-definition)
@@ -519,6 +519,7 @@ wq.init(config).then(...);
 
 It also makes sense to change `<OtherInput/>` to be a fully custom color picker.  In this case we can use the browser's built-in `<input type=color>` via `inputProps` as shown in the example above.
 
+[wq framework]: ../index.md
 [input components]: ../inputs/index.md
 [setup]: ../overview/setup.md
 [survey.csv]: ./define-a-custom-input-type/survey.csv

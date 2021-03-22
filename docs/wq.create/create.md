@@ -1,12 +1,8 @@
----
-order: 15
----
-
-wq start
+wq create
 ========
 
-wq start: Start a new project with wq.app and wq.db.
-Provided by [wq.start](https://wq.io/wq.start).
+wq create: Start a new project with wq.app and wq.db.
+Provided by [wq.create].
 
 ```shell
 $ wq start --help
@@ -22,7 +18,7 @@ Usage: wq start [OPTIONS] [PROJECT_NAME] [DESTINATION]
       sudo chown www-data media/
       ./deploy.sh 0.0.0
 
-  See https://wq.io/docs/setup for more tips on getting started with wq.
+  See https://wq.io/overview/setup for more tips on getting started with wq.
 
 Options:
   -d, --domain TEXT               Web domain (e.g. example.wq.io)
@@ -34,3 +30,5 @@ Options:
   -i, --app-id TEXT               Application ID (e.g. io.wq.example)
   --help                          Show this message and exit.
 ```
+
+[wq.create]: ./index.md

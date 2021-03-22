@@ -211,6 +211,6 @@ app.models.item.filter({'type_id': 2}).then(function(type2items) {
 [URL structure]: ../wq.db/url-structure.md
 [auth]: ../wq.db/auth.md
 [router]: ../wq.db/router.md
-[wq.db.rest]: ../wq.db/about-rest.md
+[wq.db.rest]: ../wq.db/rest.md
 [config]: ../wq-configuration-object.md
 [Promise]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise

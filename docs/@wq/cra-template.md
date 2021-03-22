@@ -28,12 +28,12 @@ wq start --with-npm
 
 See the [Create React App documentation][create-react-app] for more information on the available NPM scripts.
 
-[wq framework]: http://wq.io/
-[@wq/app]: https://wq.io/docs/app-js
-[@wq/material]: https://github.com/wq/wq.app/tree/master/packages/material
-[wq.start]: https://wq.io/wq.start
-[@wq/react]: https://github.com/wq/wq.app/tree/master/packages/react
-[react-components]: https://github.com/wq/wq.app/tree/master/packages/react#components
-[@wq/store]: https://github.com/wq/wq.app/tree/master/packages/store
-[Getting Started]: https://wq.io/docs/setup
+[wq framework]: ../index.md
+[@wq/app]: ./app.md
+[@wq/material]: ./material.md
+[wq.start]: ../wq.start/index.md
+[@wq/react]: ./react.md
+[react-components]: ../components/index.md
+[@wq/store]: ./store.md
+[Getting Started]: ../overview/setup.md
 [create-react-app]: https://facebook.github.io/create-react-app/docs/getting-started

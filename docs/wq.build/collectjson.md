@@ -1,12 +1,8 @@
----
-order: 6
----
-
 wq collectjson
 ==============
 
 wq collectjson: Load directory files into a JSON object.
-Provided by [wq.app](https://wq.io/wq.app).
+Provided by [wq.build].
 
 ```shell
 $ wq collectjson --help
@@ -34,3 +30,5 @@ Options:
   --jsonp TEXT      Wrap as JSONP
   --help            Show this message and exit.
 ```
+
+[wq.build]: ./index.md

@@ -1,12 +1,8 @@
----
-order: 14
----
-
 wq setversion
 =============
 
 wq setversion: Update version.txt (and version.js).
-Provided by [wq.app](https://wq.io/wq.app).
+Provided by [wq.build].
 
 ```shell
 $ wq setversion --help
@@ -22,3 +18,5 @@ Options:
   --jsout TEXT         Name of an AMD module (e.g. myapp/version.js)
   --help               Show this message and exit.
 ```
+
+[wq.build]: ./index.md

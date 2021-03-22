@@ -124,5 +124,3 @@ Visit the site in a web browser to verify the new installation.  You'll probably
 [Apache]: http://httpd.apache.org/
 [PostgreSQL]: http://www.postgresql.org/
 [PostGIS]: http://postgis.net/
-[projects]: https://wq.io/projects/
-[contact]: https://wq.io/community

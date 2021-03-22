@@ -1,12 +1,8 @@
----
-order: 2
----
-
 wq addform
 ==========
 
 wq addform: Convert an XLSForm into a Django app for wq.
-Provided by [wq.start](https://wq.io/wq.start).
+Provided by [wq.create].
 
 ```shell
 $ wq addform --help
@@ -31,3 +27,5 @@ Options:
   -f, --force                Answer yes to all prompts
   --help                     Show this message and exit.
 ```
+
+[wq.create]: ./index.md

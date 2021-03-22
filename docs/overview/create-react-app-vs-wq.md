@@ -50,12 +50,12 @@ In either case, @wq/app's init() function handles all of the top-level boilerpla
 [Material UI]: https://material-ui.com
 [Redux]: https://redux.js.org/
 [create-react-app]: https://create-react-app.dev/
-[@wq/cra-template]: https://npmjs.com/package/@wq/cra-template
-[@wq/app]: https://npmjs.com/package/@wq/app
-[@wq/material]: https://npmjs.com/package/@wq/material
+[@wq/cra-template]: ../@wq/cra-template.md
+[@wq/app]: ../@wq/app.md
+[@wq/material]: ../@wq/material.md
 [wq-django-template]: https://github.com/wq/wq-django-template
-[wq.app]: https://wq.io/wq.app
-[@wq/rollup-plugin]: https://npmjs.com/package/@wq/rollup-plugin
+[wq.app]: ../wq.app/index.md
+[@wq/rollup-plugin]: ../@wq/rollup-plugin.md
 [plugins]: ../plugins/index.md
 [redux-state-plugin]: ../plugins/redux-state.md
 [views]: ../views/index.md

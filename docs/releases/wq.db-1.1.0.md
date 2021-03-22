@@ -9,15 +9,15 @@ date: 2018-06-12
 
 This release also removes a bunch of rarely used functionality to improve maintainability:
 
- * [wq.db.patterns.annotate](https://wq.io/docs/annotate)
- * [wq.db.patterns.file](https://wq.io/docs/files)
- * [wq.db.patterns.locate](https://wq.io/docs/locate)
- * [wq.db.patterns.mark](https://wq.io/docs/markdown)
- * [wq.db.patterns.relate](https://wq.io/docs/relate)
- * [wq.db.contrib.search](https://wq.io/docs/search)
- * social auth integration in [wq.db.rest.auth](https://wq.io/docs/auth)
+ * [wq.db.patterns.annotate](../wq.db/patterns.md)
+ * [wq.db.patterns.file](../wq.db/patterns.md)
+ * [wq.db.patterns.locate](../wq.db/patterns.md)
+ * [wq.db.patterns.mark](https://github.com/wq/markdown)
+ * [wq.db.patterns.relate](../wq.db/patterns.md)
+ * [wq.db.contrib.search](../wq.db/patterns.md)
+ * social auth integration in [wq.db.rest.auth](../wq.db/auth.md)
 
-Most of these use cases can be better served with domain-specific models using the newer [design patterns API](https://wq.io/docs/nested-forms).  However, some may be recreated as standalone packages if needed.
+Most of these use cases can be better served with domain-specific models using the newer [design patterns API](../guides/implement-repeating-nested-forms.md).  However, some may be recreated as standalone packages if needed.
 
 In addition, Python 2.7 support is no longer tested.  It may still work for existing projects using Django 1.11.
 

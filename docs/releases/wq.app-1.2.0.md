@@ -24,13 +24,13 @@ module | status
 [wq/pandas.js] | moved to [Django REST Pandas]
 [wq/progress.js] | moved to [Django Data Wizard]
 
-[wq/autocomplete.js]: https://wq.io/1.1/docs/autocomplete-js
-[wq/chart.js]: https://wq.io/1.1/docs/chart-js
-[wq/chartapp.js]: https://wq.io/1.1/docs/chartapp-js
-[other]: https://wq.io/1.1/docs/other-modules
-[wq/markdown.js]: https://wq.io/1.1/docs/markdown-js
-[wq/pandas.js]: https://wq.io/1.1/docs/pandas-js
-[wq/progress.js]: https://wq.io/1.1/docs/progress-js
+[wq/autocomplete.js]: FIXME
+[wq/chart.js]: https://github.com/wq/django-rest-pandas
+[wq/chartapp.js]: https://github.com/wq/django-rest-pandas
+[other]: ../wq.app/index.md
+[wq/markdown.js]: https://github.com/wq/markdown
+[wq/pandas.js]: https://github.com/wq/django-rest-pandas
+[wq/progress.js]: https://github.com/wq/django-data-wizard/tree/main/packages/progress
 
 [Django REST Pandas]: https://github.com/wq/django-rest-pandas/pull/40
 [Django Data Wizard]: https://github.com/wq/django-data-wizard 
@@ -91,12 +91,12 @@ module | status
         * Sourcemaps for wq/* AMD modules (43222ff)
         * Remove compatibility versions of wq/autocomplete.js, wq/console.js, wq/json.js, and wq/progress.js, which were deprecated in [wq.app 1.1.2](./wq.app-1.1.2.md).
 
-[@wq/app]: https://wq.io/docs/app-js
-[@wq/map]: https://wq.io/docs/map-js
-[@wq/store]: https://wq.io/docs/store-js
-[@wq/router]: https://wq.io/docs/router-js
-[@wq/model]: https://wq.io/docs/model-js
-[@wq/outbox]: https://wq.io/docs/outbox-js
+[@wq/app]: ../@wq/app.md
+[@wq/map]: ../@wq/map.md
+[@wq/store]: ../@wq/store.md
+[@wq/router]: ../@wq/router.md
+[@wq/model]: ../@wq/model.md
+[@wq/outbox]: ../@wq/outbox.md
 
 [Redux]: https://redux.js.org
 [Redux Persist]: https://github.com/rt2zz/redux-persist

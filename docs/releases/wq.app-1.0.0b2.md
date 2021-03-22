@@ -8,7 +8,7 @@ date: 2016-11-08
 **wq.app 1.0 beta 2** brings a lot of cleanup and a few new features.  Note that this release is no longer compatible with Internet Explorer 8.
 
 ## API Improvements
-- Flatten the per-page configuration for [wq/map.js](https://wq.io/docs/map-js) to make it more managable.  Instead of:
+- Flatten the per-page configuration for [wq/map.js](../@wq/map.md) to make it more managable.  Instead of:
 
 ``` javascript
 config.pages[page].map[mode].maps.main.layers = [...];
@@ -25,7 +25,7 @@ config.pages[page].map = {
 ```
 
 Also added the option to pre-register an oneach function (not unlike the pre-registered layer types) so it can be referenced from a JSON configuration object.
-- Make it so [wq/outbox.js](https://wq.io/docs/outbox-js) items are accessible via foreign key references even before they are synced.  The sync process now automatically determines the proper order to send records to the server and updates the references on the fly.  To assign labels to items in the outbox (since the Python `__str__` function is not available), a new `label_template` property is now supported on the configuration object.  See the release notes for [wq.db 1.0.0b3](./wq.db-1.0.0b3.md) for more information.
+- Make it so [wq/outbox.js](../@wq/outbox.md) items are accessible via foreign key references even before they are synced.  The sync process now automatically determines the proper order to send records to the server and updates the references on the fly.  To assign labels to items in the outbox (since the Python `__str__` function is not available), a new `label_template` property is now supported on the configuration object.  See the release notes for [wq.db 1.0.0b3](./wq.db-1.0.0b3.md) for more information.
 - Use a recursive in-place serializer for files saved in `localForage` (see localForage/localForage#603).  Note that the new store uses a different naming convention and the contents of the old offline cache will not be automatically transferred to the new one.
 - Support lookups for foreign keys within [natural keys](https://github.com/wq/django-natural-keys), and plugins on server-rendered non-list pages.
 
@@ -40,6 +40,6 @@ Also added the option to pre-register an oneach function (not unlike the pre-reg
 For the full set of changes, compare the list in [wq.app 1.0.0b1](https://github.com/wq/wq.app/blob/v1.0.0b1/js/README.md#library-versions) vs. [wq.app 1.0.0b2](https://github.com/wq/wq.app/blob/v1.0.0b2/js/README.md#library-versions).
 
 ## Other modules
-- Update `wq/markdown.js` and `wq/progress.js` to work as [wq/app.js plugins](https://wq.io/docs/app-js)
-- Add `wq/chartapp.js`, a wq/app.js plugin combining [wq/chart.js](https://wq.io/docs/chart-js) and [wq/pandas.js](https://wq.io/docs/pandas-js)
+- Update `wq/markdown.js` and `wq/progress.js` to work as [wq/app.js plugins](../@wq/app.md)
+- Add `wq/chartapp.js`, a wq/app.js plugin combining [wq/chart.js](https://github.com/wq/django-rest-pandas) and [wq/pandas.js](https://github.com/wq/django-rest-pandas)
 - Drop `wq/appcache.js`, `wq/online.js`, and `wq/owl.js`

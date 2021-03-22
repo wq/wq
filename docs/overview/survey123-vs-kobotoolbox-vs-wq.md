@@ -47,7 +47,7 @@ The [wq framework] leverages the [XLSForm standard][xlsform] for survey definiti
 
 Fortunately, all three use the same XLSForm standard, so once you have a survey definition you can easily use it to switch between platforms.
 
-[Contact the developer]: https://wq.io/contact
+[Contact the developer]: ../support.md
 [wq framework]: ../index.md
 [xlsform]: https://xlsform.org/
 [Survey123]: https://survey123.arcgis.com/

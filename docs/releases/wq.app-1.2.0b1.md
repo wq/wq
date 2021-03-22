@@ -12,14 +12,14 @@ date: 2019-10-07
 Thanks to @tomaszn for feedback on the design of many of these features.
 
  * If the current URL contains the temporary ID of an unsynced record (e.g. `"outbox-123"`), automatically navigate to the new URL once synced (#98, #99)
- * New `filter_fields` and `filter_ignore` configuration options for [@wq/model](https://wq.io/1.2/docs/model-js).  If a URL parameter is not found in`form`, `functions`, or `filter_fields`, it will be ignored when filtering list views (#88).
+ * New `filter_fields` and `filter_ignore` configuration options for [@wq/model](../@wq/model.md).  If a URL parameter is not found in`form`, `functions`, or `filter_fields`, it will be ignored when filtering list views (#88).
  * Simplified `onsync(item)` plugin hook, called after each outbox item is synced to the server (#96)
  * Better management of URL params during pagination (778631c, c2b5ab0)
 
 
 ## Removed Features
 
-To clean up the API and prepare for a future migration away from jQuery Mobile (#111), this release removes several older hooks and events, as noted in the updated [@wq/app documentation](https://wq.io/1.2/docs/app-js) and below.
+To clean up the API and prepare for a future migration away from jQuery Mobile (#111), this release removes several older hooks and events, as noted in the updated [@wq/app documentation](../@wq/app.md) and below.
 
 name | type | suggested migration path
 -----|------|-------------------------

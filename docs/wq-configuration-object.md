@@ -24,7 +24,7 @@ The basic format of the wq Configuration Object is:
 }
 ```
 
-The object is typically stored in the JavaScript module `app/js/data/config.js`.  This module is imported by `app/js/[myapp]/config.js`, which can be used to add additional configuration sections, e.g. for [wq/app.js plugins].   Generally, you should not customize the `pages` configuration section directly, since doing so may cause wq.app and wq.db to become out of sync.  Instead, you can provide arbitrary configuration parameters by supplying additional arguments to [wq.db.rest].
+The object is typically stored in the JavaScript module `app/js/data/config.js`.  This module is imported by `app/js/[myapp]/config.js`, which can be used to add additional configuration sections, e.g. for [@wq/app plugins][plugins].   Generally, you should not customize the `pages` configuration section directly, since doing so may cause wq.app and wq.db to become out of sync.  Instead, you can provide arbitrary configuration parameters by supplying additional arguments to [wq.db.rest].
 
 ```python
 # myapp/rest.py
@@ -41,11 +41,11 @@ rest.router.register_model(
 ```
 
 ## Configuration Options
-The primary configuration section in the wq configuration object is `pages`, which contains detailed information about the [URL structure] of the application.  For example, the `pages` configuration is used by [wq/app.js] to map URL requests to page templates to render, and also to provide hints to [wq/store.js] and [wq/model.js] as to the structure of the REST API containing the actual data.
+The primary configuration section in the wq configuration object is `pages`, which contains detailed information about the [URL structure][url-structure] of the application.  For example, the `pages` configuration is used by [@wq/app] to map URL requests to page templates to render, and also to provide hints to [@wq/store] and [@wq/model] as to the structure of the REST API containing the actual data.
 
 As its name implies, the `pages` section summarizes all of the available "pages" in the application.  The section is a mapping of page "names" to simple configuration objects describing each respective page.  Pages fall into two categories depending on whether or not they are backed by a database table (i.e. ORM model in a Django application).
 
- * Pages backed by a database table are indicated with `"list": true`.  The name of these pages is the name of the underlying database model.  Marking a page as `"list": true` implies the presence of list, detail, and edit views for a database entity - all with [corresponding URLs] defined relative to the `url` property defined for the page.  List pages are configured in wq.db with `rest.router.register_model()`.
+ * Pages backed by a database table are indicated with `"list": true`.  The name of these pages is the name of the underlying database model.  Marking a page as `"list": true` implies the presence of list, detail, and edit views for a database entity - all with [corresponding URLs][url-structure] defined relative to the `url` property defined for the page.  List pages are configured in wq.db with `rest.router.register_model()`.
 
  * Pages without a corresponding model do not have the `list` property set, and have only a single URL which is specified by the `url` property.  By convention, the name of these pages is usually the same as the URL.  These pages are configured in wq.db with `rest.router.add_page()`.
 
@@ -55,7 +55,7 @@ The full listing of page configuration options is described below.
 
  Name | Usage
 ------|-------
-`list` | Boolean; set automatically by `register_model`.  Sets whether or this is a *list* page or a *simple* page.  If true, it is assumed that there will be a set of [templates] named `[model_name]_list`, `[model_name]_detail`, and optionally `[model_name]_edit`.  If false or unset, it is assumed that there will be a single template with the same name as the page.
+`list` | Boolean; set automatically by `register_model`.  Sets whether or this is a *list* page or a *simple* page.  If true, a minimum of three routes will be generated: `[model_name]_list`, `[model_name]_detail`, and `[model_name]_edit`.  If false or unset, it there will be a single route with the same name as the page.
 `url` | The URL of the page.  For simple pages, this is conventionally the same as the name of the page.  For list views, it is typically the verbose plural name of the model (without spaces).  The list view will be rendered at `[url]/`, while detail and edit views will be constructed from this value as `[url]/[item_id]` and `[url]/[item_id]/edit`, respectively.
 `once` | Whether to only render this page once or every time it is opened during a browsing session.  The default is false (render every time), which is usually acceptable and is the recommended setting for list pages.  The primary use for this value is with simple pages such as overview maps. Setting `once` to true in this case means that the user can browse around the application then come back to the overview map and find it in the same position as when they left.
 `name` | The name of the page, usually based on the model class name.  Must be unique in the configuration; if two models have identical class names this property can be overridden to avoid conflicts.
@@ -67,8 +67,8 @@ As noted above, "list" pages are typically backed by ORM models which in turn co
  Name | Usage
 ------|-------
 `form` | A representation of the model schema, in the form of an array of field definitions (see below)
-`map` | Map configuration for the [wq/map.js] plugin.  See the [wq/map.js] documentation for more details.
-`can_add`<br>`can_edit`<br>`can_delete` | Server-defined flags indicating which permissions the current user has on the model.  These flags are used as [template rendering context] variables for showing and hiding available options to the user.  They are automatically computed and enforced by wq.db based on information from [django.contrib.auth] and `ANONYMOUS_PERMISSIONS`.
+`map` | Map configuration for the [@wq/map] plugin.  See the [@wq/map] documentation for more details.
+`can_add` / `can_edit` / `can_delete` | Server-defined flags indicating which permissions the current user has on the model.  These flags are used as [rendering context][@wq/router] variables for showing and hiding available options to the user.  They are automatically computed and enforced by wq.db based on information from [django.contrib.auth] and `ANONYMOUS_PERMISSIONS`.
 `per_page` | Default number of results that will be returned per page in paginated lists.  This can be overridden by the `limit` url argument.  (Note: if you are setting `per_page` to a high number like 1000, `cache="all"` might be what you really need.)
 `lookup` | Name of identifier column to use when looking up objects for detail views, and to use as the `id` attribute in serialized JSON data.  Defaults to the model primary key.
 `cache` | Controls whether some or all of the model data is stored for offline use (see below) 
@@ -77,7 +77,7 @@ As noted above, "list" pages are typically backed by ORM models which in turn co
 
 ### `cache` Configuration
 
-The `cache` option (new in wq 1.0) configures which records from the model are cached for offline use.  It fully replaces the `partial`, `max_local_pages`, and `reversed` options in older versions of wq (see [Pagination and Caching]).  Four caching modes are available:
+The `cache` option configures which records from the model are cached for offline use.  Four caching modes are available:
 
  `cache=` | Description
  ---------|-------------
@@ -128,7 +128,7 @@ Suppose there are two models, `Site` and `Observation`.  The `postsave` for `Obs
 
 ### Form Fields
 
-As of wq 1.0, the configuration object for each list page includes an [XLSForm]-inspired representation of the schema for the model.  This information can be used by the [wq maketemplates][wq.start] command to automatically generate a Mustache HTML `<form>` template for editing a page.  Certain properties are also used by wq/app.js to handle choice lookups and relationships between models (which are harder to bake into an HTML template).  The `form` configuration thus replaces the `parents`, `children`, and `choices` page configuration options available in [wq 0.8] and earlier.
+The configuration object for each list page includes an [XLSForm]-inspired representation of the schema for the model.  This information is used by the [`<AutoForm/>`][AutoForm] component to automatically generate the appropriate form inputs for editing a page.  Certain properties are also used by @wq/app to handle choice lookups and relationships between models.
 
 The `form` attribute is an array of wq field definitions, which are JSON objects with any of the following attributes.  Where applicable, the corresponding concepts in the [XLSForm Question][XLSForm] and [Django Field][django-field] definitions are listed.
 
@@ -141,33 +141,27 @@ The `form` attribute is an array of wq field definitions, which are JSON objects
 `bind.required` | `bind.required` | (opposite of `null`) | Whether the field is required or optional.  The format `bind: {required: true}` is for compatibility with the XLSForm syntax.
 `wq:length` | n/a | `max_length` | Maximum allowed length for `string` fields
 `choices` | `choices` | (derived from `choices`) | An array of valid choices for enum-style fields on the model in the format `{'name': '(user-friendly name)', 'value': '(internal value)'}`.  This information is surfaced in the `[model_name]_edit` [template rendering context] as `[field_name]_choices`, with a `selected` flag set on the currently selected option when editing an existing record.
-`wq:ForeignKey` | n/a | (derived from model name) | This is used by wq/app.js to automatically retreive a list of choices from the referenced model when rendering a form.  The list of potential parent records is surfaced in the `[model_name]_edit` [template rendering context] as `[field_name]_list`, with `id` and `label` attributes for each record in the parent model, and a `selected` flag set on the currently selected parent when editing an existing record.  Note that the referenced model should also be registered in the configuration object for all of this this to work.
-`filter` | n/a | n/a | An optional filter to apply to the list of potential parent records referenced by a ForeignKey.  This is passed to [model.filter()][wq/model.js] on the parent model.
+`wq:ForeignKey` | n/a | (derived from model name) | This is used by @wq/app to automatically retreive a list of choices from the referenced model when rendering a form.  The list of potential parent records is surfaced in the `[model_name]_edit` [template rendering context] as `[field_name]_list`, with `id` and `label` attributes for each record in the parent model, and a `selected` flag set on the currently selected parent when editing an existing record.  Note that the referenced model should also be registered in the configuration object for all of this this to work.
+`filter` | n/a | n/a | An optional filter to apply to the list of potential parent records referenced by a ForeignKey.  This is passed to [model.filter()][@wq/model] on the parent model.
 `children` | `children` | (c.f. `related_name` and inline formsets) | This defines a nested list of fields that represent sub-observations or a ["tall schema"][EAV] structure.  The structure is an array of fields in the same format as the top-level `form` array.  If the field type is `group`, the nested fields will be repeated once in the form.  If the field type is `repeat`, the fields can be repeated multiple times, with a button to add additional sub-observations.  The nested observations would normally be stored in an auxilary table with a `ForeignKey` pointing to this one.  The auxilary table does *not* need be registered with the configuration separately.
-`initial` | n/a | n/a | Configuration for determining how to generate nested `repeat` observations when creating a "new" record. By default, no nested records will be displayed at first, but a button will be provided to add one or more nested records.  To simulate Django's default of 3 nested inline forms, set `initial` to "3".  To leverage an [EAV] structure (where each nested record corresponds to a row in a separate "Attribute" or "type" table), set `initial` to an object specifying the name of the type model and a filter (if any) to use with [model.filter()][wq/model.js] when generating the list, e.g. `{"type_model": "attribute", "filter": {"active": true}`.
+`initial` | n/a | n/a | Configuration for determining how to generate nested `repeat` observations when creating a "new" record. By default, no nested records will be displayed at first, but a button will be provided to add one or more nested records.  To simulate Django's default of 3 nested inline forms, set `initial` to "3".  To leverage an [EAV] structure (where each nested record corresponds to a row in a separate "Attribute" or "type" table), set `initial` to an object specifying the name of the type model and a filter (if any) to use with [model.filter()][@wq/model] when generating the list, e.g. `{"type_model": "attribute", "filter": {"active": true}`.
 
 > FIXME: The nested/repeat stuff is pretty advanced (it requires custom DRF serializers on the wq.db side) - it should probably be moved to the patterns docs.
 
-[router]: https://wq.io/docs/router
-[wq/app.js]: https://wq.io/docs/app-js
-[wq/store.js]: https://wq.io/docs/store-js
-[wq/model.js]: https://wq.io/docs/model-js
-[corresponding URLs]: https://wq.io/docs/url-structure
-[URL structure]: https://wq.io/docs/url-structure
-[wq.db]: https://wq.io/wq.db
-[wq.app]: https://wq.io/wq.app
-[wq/app.js plugins]: https://wq.io/docs/app-plugins
-[wq.db.rest]: https://wq.io/docs/about-rest
-[templates]: https://wq.io/docs/templates
-[wq.db design patterns]: https://wq.io/docs/about-patterns
-[locate design pattern]: https://wq.io/docs/locate
-[template rendering context]: https://wq.io/docs/templates
-[wq/map.js]: https://wq.io/docs/map-js
+[router]: ./wq.db/router.md
+[@wq/app]: ./@wq/app.md
+[@wq/store]: ./@wq/store.md
+[@wq/model]: ./@wq/model.md
+[url-structure]: ./wq.db/url-structure.md
+[wq.db]: ./wq.db/index.md
+[wq.app]: ./wq.app/index.md
+[plugins]: ./plugins/index.md
+[wq.db.rest]: ./wq.db/rest.md
+[@wq/router]: ./@wq/router.md
+[@wq/map]: ./@wq/map.md
 [XLSForm]: http://xlsform.org
 [django.contrib.auth]: https://docs.djangoproject.com/en/1.10/ref/contrib/auth/
-[wq 0.8]: https://wq.io/docs/config
 [django-field]: https://docs.djangoproject.com/en/1.10/ref/models/fields/
-[EAV]: https://wq.io/docs/eav-vs-relational
-[wq.start]: https://github.com/wq/wq.start
-[Pagination and Caching]: https://wq.io/docs/pagination-and-caching
-[field types]: https://wq.io/docs/field-types
+[EAV]: ./guides/eav-vs-relational.md
+[AutoForm]: ../components/AutoForm.md
+[field types]: ./inputs/index.md

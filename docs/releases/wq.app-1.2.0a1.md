@@ -82,11 +82,11 @@ This release necessarily changes a lot of the underlying data model, while keepi
  * `batchService` should be specified as a URL path relative to the `service` root (rather than relative to the domain)
  * `parseBatchResult()`, `applyResult()` and `updateModels()` are no longer available as configuration options.  The first two can be replaced with a custom `ajax()` plugin hook, while `updateModels()` is now implemented via Redux actions.
 
-[@wq/app]: https://wq.io/1.2/docs/app-js
-[@wq/store]: https://wq.io/1.2/docs/store-js
-[@wq/router]: https://wq.io/1.2/docs/router-js
-[@wq/model]: https://wq.io/1.2/docs/model-js
-[@wq/outbox]: https://wq.io/1.2/docs/outbox-js
+[@wq/app]: ../@wq/app.md
+[@wq/store]: ../@wq/store.md
+[@wq/router]: ../@wq/router.md
+[@wq/model]: ../@wq/model.md
+[@wq/outbox]: ../@wq/outbox.md
 
 [Redux]: https://redux.js.org
 [Redux Persist]: https://github.com/rt2zz/redux-persist

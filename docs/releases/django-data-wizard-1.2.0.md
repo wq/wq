@@ -23,7 +23,7 @@ date: 2019-09-02
  * Explicitly list `djangorestframework` in dependencies (#16)
  * Code cleanup (#17, #18, #23 via @bomba1990)
  * Avoid re-parsing the same data source more than necessary (edd6ccb)
- * Fix pagination when integrating with [wq.db](https://wq.io/wq.db) (c30e180)
+ * Fix pagination when integrating with [wq.db](../wq.db/index.md) (c30e180)
 
 ## Upgrade Notes
 

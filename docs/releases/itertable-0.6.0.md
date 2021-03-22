@@ -7,8 +7,8 @@ date: 2014-07-22
 
 ### API Improvements
 - Python 3 support (#2)
-- Use [requests](http://python-requests.org) for `NetLoader` (#3)
+- Use [requests](https://python-requests.org) for `NetLoader` (#3)
 - Read and write support in all *FileIO classes (`CsvFileIO`, `JsonFileIO`, `XmlFileIO`, and `ExcelFileIO`)
 - Comprehensive test suite
 - More robust `pickle` support
-- Complete docs on [extending wq.io](http://wq.io/docs/custom-io)
+- Complete docs on [extending wq.io](https://github.com/wq/itertable/tree/main/docs/about.md)

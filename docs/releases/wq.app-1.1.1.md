@@ -17,7 +17,7 @@ date: 2019-04-18
 
 ### `ajax()` plugin hook
 
-You can now completely override the behavior of GET and POST requests made by wq/model.js and wq/outbox.js.  To do this, define a [wq.app plugin](https://wq.io/docs/app-plugins) with an `ajax()` method that takes four arguments: url, data, method, and headers.
+You can now completely override the behavior of GET and POST requests made by wq/model.js and wq/outbox.js.  To do this, define a [wq.app plugin](../plugins/index.md) with an `ajax()` method that takes four arguments: url, data, method, and headers.
 
 ```javascript
 define({
@@ -39,7 +39,7 @@ Here are a few things to keep in mind:
 
 ### wq/chartapp.js
 
-A number of changes [wq/chart.js](https://wq.io/docs/chart-js) and the [wq/chartapp.js plugin](https://wq.io/docs/chartapp-js) make it possible to configure the main chart options via custom `data-wq-*` attributes.  For example:
+A number of changes [wq/chart.js](https://github.com/wq/django-rest-pandas) and the [wq/chartapp.js plugin](https://github.com/wq/django-rest-pandas) make it possible to configure the main chart options via custom `data-wq-*` attributes.  For example:
 
 ```svg
 <svg data-wq-url="/api/data/timeseries.csv"

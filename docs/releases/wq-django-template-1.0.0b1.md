@@ -13,4 +13,4 @@ date: 2016-09-02
 
 ### Source Code Reorganization
 - Moved the master Django and mustache templates to the [xlsform-converter](https://github.com/wq/xlsform-converter) repository (see the [xlsconv 0.2.0 release notes](./xlsform-converter-0.2.0.md)).
-- Moved the `wq start` Python tools to a separate repository, [wq.start](https://wq.io/wq.start).  Subsequent releases of `wq.start` will appear in that repository's [releases page](https://github.com/wq/wq.start/releases).  This repository now only contains the wq Django template, as indicated by its name.
+- Moved the `wq start` Python tools to a separate repository, [wq.start](../wq.create/index.md).  Subsequent releases of `wq.start` will appear in that repository's [releases page](https://github.com/wq/wq.start/releases).  This repository now only contains the wq Django template, as indicated by its name.

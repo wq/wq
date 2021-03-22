@@ -55,7 +55,7 @@ python3 -m pip install wq
 python3 -m pip install wq.db
 ```
 
-See [the documentation] for more information.
+See [the documentation][setup] for more information.
 
 ## Features
 
@@ -65,14 +65,14 @@ Extends [Django REST Framework] with model-based views and serializers that faci
 ### [wq.db.patterns][patterns]
 A collection of abstract models and serializers for use in constructing advanced [design patterns][patterns] including [nested forms], [EAV structures][EAV], and [natural keys].  Includes [wq.db.patterns.identify][identify], an installable Django app module to help manage third-party entity identifers.
 
-[wq]: https://wq.io
-[wq.app]: https://wq.io/wq.app
+[wq]: ../index.md
+[wq.app]: ../wq.app/index.md
 [Django]: https://www.djangoproject.com/
-[the documentation]: https://wq.io/docs/
+[setup]: ../overview/setup.md
 
-[rest]: ./about-rest.md
+[rest]: ./rest.md
 [Django REST Framework]: http://django-rest-framework.org
-[url-structure]: https://wq.io/docs/url-structure
+[url-structure]: ./url-structure.md
 [ModelRouter]: ./router.md
 [configuration object]: ../config.md
 [@wq/app]: ../@wq/app.md

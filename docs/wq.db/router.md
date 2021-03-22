@@ -7,7 +7,7 @@ ModelRouter (wq.db.rest)
 
 [wq.db.rest.routers]
 
-[ModelRouter] is the controller at the core of [wq.db.rest], and serves as the server-side counterpart to [wq/app.js] in [wq.app].  The router generates a [URL structure] with REST endpoints for all models registered with it, and produces a [wq configuration object][config] for consumption by wq/app.js' client-side router.
+[ModelRouter] is the controller at the core of [wq.db.rest], and serves as the server-side counterpart to [@wq/app] in [wq.app].  The router generates a [URL structure] with REST endpoints for all models registered with it, and produces a [wq configuration object][config] for consumption by @wq/app's client-side router.
 
 ## Usage
 
@@ -102,7 +102,7 @@ Any other options given will be assigned to the model's [page configuration][con
 
 ## Config Object (`dump_config`)
 
-The router can generate a JSON-formatted [wq configuration object] for use by [wq/app.js].  The `dump_config` management command can be used to create an AMD configuration module as part of your build process.
+The router can generate a JSON-formatted [wq configuration object] for use by [@wq/app].  The `dump_config` management command can be used to create an AMD configuration module as part of your build process.
 
 ```bash
 # deploy.sh
@@ -126,15 +126,15 @@ The default [wq Django Template] uses `dump_config` in the provided `deploy.sh`.
 
 [wq.db.rest.routers]: https://github.com/wq/wq.db/blob/master/rest/routers.py
 [ModelRouter]: https://github.com/wq/wq.db/blob/master/rest/routers.py
-[wq.db.rest]: https://wq.io/docs/about-rest
-[wq/app.js]: https://wq.io/docs/app-js
-[wq.app]: https://wq.io/wq.app
-[URL structure]: https://wq.io/docs/url-structure
-[config]: https://wq.io/docs/config
+[wq.db.rest]: ./rest.md
+[@wq/app]: ../@wq/app.md
+[wq.app]: ../wq.app/index.md
+[URL structure]: ./url-structure.md
+[config]: ../wq-configuration-object.md
 [Django REST Framework]: http://django-rest-framework.org/
 [DefaultRouter]: http://django-rest-framework.org/api-guide/routers
 [admin site]: https://docs.djangoproject.com/en/dev/ref/contrib/admin/
 [example admin.py]: https://docs.djangoproject.com/en/dev/ref/contrib/admin/#django.contrib.admin.ModelAdmin
-[viewset]: https://wq.io/docs/views
-[serializer]: https://wq.io/docs/serializers
+[viewset]: ./views.md
+[serializer]: ./serializers.md
 [wq Django Template]: https://github.com/wq/django-wq-template

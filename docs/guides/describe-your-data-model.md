@@ -85,7 +85,7 @@ After the commands complete, you can use `./manage.py dbshell`, psql, or pgAdmin
 [custom input types]: ./define-a-custom-input-type.md
 [nested forms]: ./implement-repeating-nested-forms.md
 [migration commands]: https://docs.djangoproject.com/en/1.10/ref/django-admin/#django-admin-migrate
-[wq.db router]: https://wq.io/docs/router
+[wq.db router]: ../wq.db/router.md
 [inspectdb]: https://docs.djangoproject.com/en/1.10/howto/legacy-databases/
-[/config.json]: https://wq.io/docs/config
-[/modelnames.json]: https://wq.io/docs/url-structure
+[/config.json]: ../wq-configuration-object.md
+[/modelnames.json]: ../wq.db/url-structure

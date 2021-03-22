@@ -23,6 +23,6 @@ date: 2019-04-17
   - Use 'select one' XLSForm type when rendering Boolean fields (#69)
 
 ### Other
-  - Various fixes to the [patterns](https://wq.io/docs/about-patterns) module (5129695, f585c78, b5d2689)
+  - Various fixes to the [patterns](../wq.db/patterns.md) module (5129695, f585c78, b5d2689)
   - Verify Django 2.1 and Python 3.7 support
   - Ensure most test cases work with/without PostgreSQL and with/without GIS support

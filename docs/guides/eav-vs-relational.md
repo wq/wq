@@ -1,7 +1,7 @@
 To EAV, or not to EAV? Choosing your data model
 ===============================================
 
-Once you've [installed wq], you are now ready for the most important step when building an app for citizen science: **defining your data model**.  This step is so important, in fact, that [wq does not do it for you][data model].  Your project needs and topic domain will determine what data model is best for your application.  wq does provide a number of common [design patterns] we've found useful, but these are not required, and in some cases should be avoided.
+Once you've [installed wq], you are now ready for the most important step when building an app for citizen science: **defining your data model**.  This step is so important, in fact, that [wq does not do it for you][data model].  Your project needs and topic domain will determine what data model is best for your application.
 
 This article exists to describe one key decision you will need to make - whether to use a traditional [relational model], or to use an [Entity-Attribute-Value] (EAV) model (also commonly referred to as an open schema).  The key difference in the two approaches is the level of flexibility your model has in adapting to changing project requirements, especially when new attribute definitions are needed.  At a high level, attributes are added as *columns* to a relational schema, but as *rows* in an EAV schema.  This means that an EAV schema can be administered via a web-based interface, while a relational schema typically needs to be modified by a database administrator.
 
@@ -14,17 +14,17 @@ In this article, we discuss the key features of the relational and EAV models an
 ## Relational Model
 In a relational model, there is typically a one-to-one correspondence between the `<input>` elements in your [HTML form] and the *columns* on the database table you want to populate.  This is much more straightforward than an EAV approach, and (among other things) makes the code and templates easier to read.  Each table can be defined as a [Django model] with specific constraints and requirements that are enforced by Django as well as at the database level.  Relationships between tables can be defined via [ForeignKey] fields, which can be presented as HTML `<select>` menus using the built-in template rendering features of wq.
 
-In wq, the relational approach requires defining one or more [Django model] classes which can then be used to generate [migration scripts] that create the actual database tables.  Once these models are created, they can be registered with the [wq.db REST API] which will make it possible to list, retrieve, create, and update the records in the database through the [HTML screens][Mustache templates] in the application.  Whenever you add or change a model field, Django can generate a new migration script to make the appropriate modifications to the database.  You will also need to update your Mustache templates to reflect the new field definitions.  These steps are not automatic, but can easily be mastered with a little training.
+In wq, the relational approach requires defining one or more [Django model] classes which can then be used to generate [migration scripts] that create the actual database tables.  Once these models are created, they can be registered with the [wq.db REST API] which will make it possible to list, retrieve, create, and update the records in the database through the [default views][views] in the application.  Whenever you add or change a model field, Django can generate a new migration script to make the appropriate modifications to the database.  The [default views][views] will automatically update to the form definition passed through the [wq configuration object][config].
 
 ## Entity-Attribute-Value Model
 
-![EAV](https://wq.io/media/images/eav.png)
+![EAV][eav-image]
 
-In an EAV model, the HTML `<form>` fields represent a one-to-many relationship between a primary `Entity` table and a `Value` table.  Each row in the `Value` table corresponds to a "field", which is defined as a row in a third `Attribute` table.  In effect, the `Value` table creates a many-to-many link between the `Entity` table and the `Attribute` table.  (I told you this would be more complicated).  Django does not provide much support for EAV out of the box, though there are a number of plugins that do so.  [wq.db.patterns][design patterns] and [vera] provide some of those plugins.  Note that the fact that all of wq.db's provided models are EAV-based does not necessarily mean that you should use an EAV approach.  Instead, the focus on EAV in wq.db is largely designed as a complement to Django's strong built-in support for traditional relational models.
+In an EAV model, the HTML `<form>` fields represent a one-to-many relationship between a primary `Entity` table and a `Value` table.  Each row in the `Value` table corresponds to a "field", which is defined as a row in a third `Attribute` table.  In effect, the `Value` table creates a many-to-many link between the `Entity` table and the `Attribute` table.  (I told you this would be more complicated).  Django does not provide much support for EAV out of the box, though there are a number of plugins that do so.  
 
-In wq, the EAV approach typically means defining your [Django model] classes as subclasses of the base `Entity` type you want to use.   For example, to define a model that uses the EAV-style [annotate] structure, you would create it as a subclass of `AnnotatedModel`.  Any relational fields can then be defined on your model as usual.  Our general rule of thumb is that if a field is critical to the interpretation of a record, is a foreign key, or is going to referenced by name anywhere in the code, it should be defined as a traditional relational field.  All other fields can be defined as rows in the `Attribute` table, and new attributes can be added on the fly via a web interface if needed.  When registering an EAV-style model with the [wq.db REST API], you will typically want to use a special [serializer] class (e.g. `AnnotatedModelSerializer` in this case).
+Since the `Entity` table is just a regular Django model, regular relational fields can be defined as usual.  A general rule of thumb is that if a field is critical to the interpretation of a record, is a foreign key, or is going to referenced by name anywhere in the code, it should be defined as a traditional relational field.  All other fields can be defined as rows in the `Attribute` table, and new attributes can be added on the fly via a web interface if needed.  When registering an EAV-style model with the [wq.db REST API], you will typically want to use a special [serializer] class from [wq.db.patterns] to handle the nested records.
 
-The key weakness of the EAV approach is not performance - this can be optimized with appropriate database indices.   Instead, the key weakness of EAV is the level of abstraction that obfuscates the application code.  For example, the `<form>` in your [edit template][Mustache templates] will need to contain a "loop" over an indeterminate number of `Attribute` definitions.  If you want to support different field types (e.g. number, text) in a relational model, you can do so by changing the HTML `<input type>` for just that field.  With an EAV model, you will instead need to create branching logic that can adapt to each field type on the fly (e.g. in [this example]).  There will not be a single reference to a specific `Attribute` name anywhere in your code - which makes reasoning about changes more difficult.  That said, if you are comfortable with this abstraction, it can be a very powerful tool for building adaptable applications that don't need any further developer intervention when project definitions change.
+The key weakness of the EAV approach is not performance - this can be optimized with appropriate database indices.   Instead, the key weakness of EAV is the level of abstraction that obfuscates the application code.  There will not be a single reference to a specific `Attribute` name anywhere in your code - which makes reasoning about changes more difficult.  That said, if you are comfortable with this abstraction, it can be a very powerful tool for building adaptable applications that don't need any further developer intervention when project definitions change.
 
 ## Summary and Examples
 
@@ -52,33 +52,36 @@ You might want to use an **EAV model** if you:
  * are starting a new project and have full control over the schema
  * already know that this the direction you want to go
 
-If you know you want an EAV structure and are working with time series data, you may be interested in [vera], which is an implementation of [ERAV], an extension to EAV with enhanced support for provenance tracking and bulk data import (i.e. from Excel).  Otherwise, you can always create your own EAV structure using the methods discussed in [Advanced Patterns].
+If you know you want an EAV structure and are working with time series data, you may be interested in [vera], which is an implementation of ERAV, an extension to EAV with enhanced support for provenance tracking and bulk data import (i.e. from Excel).  Otherwise, you can always create your own EAV structure using the methods discussed in this guide:
+
+[How To: Implement Repeating Nested Forms][nested-forms]
 
 The [Try WQ] demo is an example of an app that uses a primarily EAV model for the time series table (see the [Try WQ model definitions] as well as the [vera model definitions]).  This is what makes it possible for participants to define [custom campaigns] on the fly.
 
-[installed wq]: https://wq.io/docs/setup
-[data model]: https://wq.io/docs/data-model
-[about]: https://wq.io/docs/intro
-[design patterns]: https://wq.io/docs/about-patterns
+[installed wq]: ../overview/setup.md
+[data model]: ./describe-your-data-model.md
+[about]: ../overview/intro.md
+[patterns]: ../wq.db/patterns.md
 [relational model]: https://en.wikipedia.org/wiki/Relational_model
 [Entity-Attribute-Value]: https://en.wikipedia.org/wiki/Entity-attribute-value_model
-[wq.db]: https://wq.io/wq.db
+[wq.db]: ../wq.db/index.md
 [water quality monitoring]: https://andrewsheppard.net/research/provenance-volunteer-monitoring/
 [HTML form]: https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms
 [Django model]: https://docs.djangoproject.com/en/1.8/topics/db/models/
 [ForeignKey]: https://docs.djangoproject.com/en/1.8/ref/models/fields/#django.db.models.ForeignKey
 [migration scripts]: https://docs.djangoproject.com/en/1.8/ref/django-admin/#django-admin-migrate
-[wq.db REST API]: https://wq.io/docs/about-rest
-[Mustache templates]: https://wq.io/docs/templates
+[wq.db REST API]: ../wq.db/rest.md
+[views]: ../views/index.md
+[config]: ../wq-configuration-object.md
+[eav-image]: ./eav-vs-relational/eav.png
+[serializer]: ../wq.db/serializers.md
+[patterns]: ../wq.db/patterns.md
+
 [Species Tracker]: https://github.com/powered-by-wq/species.wq.io
 [Species Tracker model definitions]: https://github.com/powered-by-wq/species.wq.io/blob/master/db/reports/models.py
-[annotate]: https://wq.io/docs/annotate
-[serializer]: https://wq.io/docs/serializers
-[vera]: https://wq.io/vera
-[ERAV]: https://wq.io/docs/erav
-[Advanced Patterns]: https://wq.io/docs/nested-forms
-[this example]: https://github.com/powered-by-wq/try.wq.io/blob/master/templates/partials/result_inline.html
+[vera]: https://github.com/powered-by-wq/vera
+[nested-forms]: ./implement-repeating-nested-forms.md
 [Try WQ]: https://github.com/powered-by-wq/try.wq.io
 [Try WQ model definitions]: https://github.com/powered-by-wq/try.wq.io/blob/master/db/campaigns/models.py
-[vera model definitions]: https://github.com/wq/vera/blob/master/vera/models.py
+[vera model definitions]: https://github.com/powered-by-wq/vera/blob/master/vera/models.py
 [custom campaigns]: https://try.wq.io/campaigns/new

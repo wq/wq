@@ -31,10 +31,10 @@ In most wq-based projects, wq is used for the primary public facing UI, while al
 That said, the Django admin should still be used for any tables that do not appear in the public UI at all, such as the Django auth permissions tables.  While the admin UX will be different for those tables, they are generally only modified during software deployment and maintenance anyway.
 
 [wq framework]: ../index.md
-[router]: https://wq.io/docs/router
+[router]: ../wq.db/router.md
 [Django admin]: https://docs.djangoproject.com/en/3.1/ref/contrib/admin/
 [ModelForm]: https://docs.djangoproject.com/en/3.1/ref/contrib/admin/#django.contrib.admin.ModelAdmin.form
-[ModelSerializer]: https://wq.io/docs/serializers
+[ModelSerializer]: ../wq.db/serializers.md
 [custom-input]: ../guides/define-a-custom-input-type.md
 [admin actions]: https://docs.djangoproject.com/en/3.1/ref/contrib/admin/actions/
 [@action]: https://www.django-rest-framework.org/api-guide/viewsets/#marking-extra-actions-for-routing

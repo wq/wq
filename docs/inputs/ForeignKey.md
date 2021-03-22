@@ -1,37 +1,86 @@
 # Dynamic Choices (ForeignKey)
 
-Dynamic choices make it possible for any user of your application to dynamically update the available domain values without you needing to recompile the application.  Under the hood, dynamic choices are implemented as foreign keys to other existing relational tables.  In fact, wq does not distinguish in any meaningful way between tables used as domain values versus tables used to manage the actual observation data.  This means all tables can be registered with the REST API and managed from the client app (assuming that the appropriate permissions are given to each respective user.)  For example, one of the most common schema designs has been to split the observation timeseries into separate "Site" and "Observation" tables, with a ForeignKey pointing from Observation to Site.  Users then can manage their list of sites separately from their observational data.
+In addition to static choice inputs like [`<Select/>`][Select], wq supports implementing dynamic choices that make it possible for any user of your application to dynamically update the available domain values, without you needing to recompile the application.
 
-As of wq version 1.0, it is possible to use foreign keys to link parent-child records while working offline, even when the parent record has not yet been synced to the server.  The example below assumes that "Site A3" was created on a separate form that has not yet been synced to the server.  If that site was selected when this form was saved, [wq/outbox.js] would ensure that Site A3 is properly synced before attempting to sync this form.
+Under the hood, dynamic choices are implemented as foreign keys to other existing relational tables.  In fact, wq does not distinguish in any meaningful way between tables used as domain values versus tables used to manage the actual observation data.  This means all tables can be registered with the REST API and managed from the client app (assuming that the appropriate permissions are given to each respective user.)  For example, one of the most common schema designs has been to split the observation timeseries into separate "Site" and "Observation" tables, with a ForeignKey pointing from Observation to Site.  Users then can manage their list of sites separately from their observational data.
 
-> Note: If you need your dynamic choice list to work offline, be sure to set `cache="all"` when registering the domain model with the router.  See the [configuration documentation][config] and the example below.
+> Depending on your use case, you may instead want to register a single form that populates multiple tables at once.  To do so, see [How To: Implement Repeating Nested Forms][nested-forms].  The documentation below focuses on foreign keys that are registered with wq.db as separate models.
 
-Depending on your use case, it is also possible to define a single form with nested children that populates multiple tables at once - see [Advanced Patterns] for more information.
+As of wq version 1.0, it is possible to use foreign keys to link parent-child records while working offline, even when the parent record has not yet been synced to the server.  The example below assumes that "Site A3" was created on a separate form that has not yet been synced to the server.  If that site was selected when this form was saved, [@wq/outbox] would ensure that Site A3 is properly synced before attempting to sync this form.
 
-<ul data-role="listview" data-inset="true">
-  <li class="ui-field-contain">
-    <label for='select-site_id'>Pick a Site ID</label>
-    <select id='select-site_id' data-xform-type='integer' name='site_id' required>
-      <option value="">Select one...</option>
-      <option value="site-A3">* Site A3</option>
-      <option value="landfill">Landfill Site</option>
-      <option value="cd2">CD2</option>
-      <option value="cd3">CD48</option>
-      <option value="creek">Pine Creek Bridge</option>
-    </select>
-    <p class='error select-site_id-errors'></p>
-  </li>
-</ul>
+### Demo
 
-*XLSForm Definition:*
+```javascript
+const config = {
+    pages: {
+        site: {
+            url: 'sites',
+            verbose_name: 'monitoring site',
+            verbose_name_plural: 'monitoring sites',
+            label_template: '{{name}}',
+            list: true,
+            form: [
+                {
+                    name: 'name',
+                    type: 'string',
+                    label: 'Site Name',
+                    hint: 'e.g. City or water body',
+                    bind: {
+                        required: true,
+                    }
+                },
+            ],
+        },
+        observation: {
+            url: 'observations',
+            verbose_name: 'observation',
+            verbose_name_plural: 'observations',
+            label_template: '{{date}}',
+            list: true,
+            form: [
+                {
+                    name: 'site',
+                    type: 'select1',
+                    label: 'Pick a Site ID',
+                    'wq:ForeignKey': 'site',
+                    bind: { 
+                        required: true,
+                        constraint: 'wq:ForeignKey(site)'
+                    },
+                }
+            ],
+        },
+    }
+}
+
+import wq from './wq.js';
+wq.use({
+    start() {
+        // Note: Once a domain model is registered with wq.db, its data is
+        // loaded automatically by @wq/app.  The code below is only needed for
+        // this static demo.  Do NOT copy this, even to hardcode new values.
+        this.app.models.site.update([
+            {"id": "site-a3", "name": "Site A3", "label": "Site A3"},
+            {"id": "landfill", "name": "Landfill Site", "label": "Landfill Site"},
+            {"id": "cd2", "name": "CD2", "label": "CD2"},
+            {"id": "cd48", "name": "CD48", "label": "CD48"},
+            {"id": "creek", "name": "Pine Creek Bridge", "label": "Pine Greek Bridge"},
+        ]);
+    },
+});
+wq.init(config).then(...);
+// navigate to /observations/new
+```
+
+#### XLSForm Definition
 
 type | name | label | hint | required | constraint
 -----|------|-------|------|----------|------------
 integer | [name] | Pick a Site ID | wq:ForeignKey("other_app.Site") | yes |
 
-> This is a wq-specific extension to the XLSForm syntax.  It assumes that `other_app.Site` has already been defined in another Django app.  If you would like to define multiple tables in the same XLSForm, see [Advanced Patterns].
+> This is a wq-specific extension to the XLSForm syntax.  It assumes that `other_app.Site` has already been defined in another Django app.
 
-*Django definition:*
+#### Django definition
 
 ```python
 from django.db import models
@@ -43,19 +92,27 @@ class MyModel(models.Model):
     )
 ```
 
-Note: in order to ensure the full site list is available offline, `other_app.Site` should be [configured][config] with `cache="all"`:
+> Note: **Always** set `cache="all"` when registering any domain model with the router.  This ensures that the full list of choices is always available when editing related records.  See the [configuration documentation][config].
+>
+> ```python
+> # other_app/rest.py
+> from wq.db import rest
+> from .models import Site
+> 
+> rest.router.register_model(
+>     Site,
+>     fields="__all__",
+>     cache="all",
+> )
+> ```
 
-```python
-# other_app/rest.py
-from wq.db import rest
-from .models import Site
+## Source
 
-rest.router.register_model(
-    Site,
-    fields="__all__",
-    cache="all",
-)
-```
+The code for handling foreign keys is spread throughout wq.app, and there is no specific `ForeignKey` component.  Foreign keys are typically rendered as [`<Select/>`][Select] by [<AutoInput/>], which loads the list of choices from the context proved by [@wq/app].  [@wq/model] and [@wq/outbox] handle managing and syncing related records from the client.
 
-[wq/outbox.js]: https://wq.io/docs/outbox-js
-[config]: https://wq.io/docs/config
+[Select]: ./Select.md
+[AutoInput]: ../components/AutoInput.md
+[config]: ../wq-configuration-object.md
+[@wq/app]: ../@wq/app.md
+[@wq/outbox]: ../@wq/outbox.md
+[@wq/model]: ../@wq/model.md

@@ -273,32 +273,32 @@ app.use({ components: { Main }});
 [@wq/map]: https://github.com/wq/wq.app/tree/master/packages/map
 [@wq/map plugin]: https://github.com/wq/wq.app/tree/master/packages/map/src/map.js
 
-[@wq/app]: https://wq.io/docs/app-js
-[@wq/router]: https://wq.io/docs/router-js
-[@wq/react]: https://github.com/wq/wq.app/tree/master/packages/react
-[@wq/material]: https://github.com/wq/wq.app/tree/master/packages/material
-[@wq/mapbox]: https://github.com/wq/wq.app/tree/master/packages/mapbox
+[@wq/app]: ./app.md
+[@wq/router]: ./router.md
+[@wq/react]: ./react.md
+[@wq/material]: ./material.md
+[@wq/mapbox]: ./mapbox.md
 [@wq/leaflet]: https://github.com/wq/wq.app/tree/master/packages/leaflet
 [@wq/jquery-mobile]: https://github.com/wq/wq.app/tree/master/packages/jquery-mobile
 
 [Mapbox]: https://docs.mapbox.com/mapbox-gl-js/
 [Leaflet]: https://leafletjs.com/
-[wq.db]: https://wq.io/wq.db
-[config]: https://wq.io/docs/config
-[react-components]: https://github.com/wq/wq.app/tree/master/packages/react#components
-[material-layout]: https://github.com/wq/wq.app/tree/master/packages/material#layout
-[field-types]: https://wq.io/docs/field-types
-[url-structure]: https://wq.io/docs/url-structure
+[wq.db]: ../wq.db/index.md
+[config]: ../wq-configuration-object.md
+[react-components]: ../components/index.md
+[material-layout]: ../components/index.md
+[field-types]: ../inputs/index.md
+[url-structure]: ../wq.db/url-structure.md
 
 [React]: https://reactjs.org
 [React hooks]: https://reactjs.org/docs/hooks-overview.html
 [Formik]: https://formik.org
 
-[Map]: https://github.com/wq/wq.app/blob/master/packages/map/src/components/Map.js
-[AutoMap]: https://github.com/wq/wq.app/blob/master/packages/map/src/components/AutoMap.js
-[AutoBasemap]: https://github.com/wq/wq.app/blob/master/packages/map/src/components/AutoBasemap.js
-[AutoOverlay]: https://github.com/wq/wq.app/blob/master/packages/map/src/components/AutoOverlay.js
-[StickyMap]: https://github.com/wq/wq.app/blob/master/packages/map/src/components/StickyMap.js
-[Legend]: https://github.com/wq/wq.app/blob/master/packages/map/src/components/Legend.js
-[Geo]: https://github.com/wq/wq.app/blob/master/packages/map/src/components/inputs/Geo.js
+[Map]: ../components/Map.md
+[AutoMap]: ../components/AutoMap.md
+[AutoBasemap]: ../components/AutoBasemap.md
+[AutoOverlay]: ../components/AutoOverlay.md
+[StickyMap]: ../components/StickyMap.md
+[Legend]: ../components/Legend.md
+[Geo]: ../inputs/Geo.md
 [EmbeddedGeo]: https://github.com/wq/wq.app/blob/master/packages/map/src/components/inputs/EmbeddedGeo.js
