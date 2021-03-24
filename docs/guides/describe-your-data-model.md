@@ -8,13 +8,13 @@ How To: Describe your Data Model
 
 The [wq framework] does not come with a canned data model by default.  This makes the framework extremely flexible to adapt to a variety of project workflows, but means you will need to think a bit about how to structure your data before continuing.  In the simplest case, you will have a single web form that populates a single database table.  More advanced cases will have multiple inter-related tables, some filled in at the same time and others filled out separately.  wq makes it easy to start simple and add more complexity later.
 
-wq uses the [Django model syntax][Django model] as the primary way to define a data schema.  After installing wq and starting a project via `wq start`, you'll need to create a [Django application] folder containing two files: `models.py` and a `rest.py`.  The `models.py` is used to tell Django how to create the database table(s) corresponding to your schema.  Then, `rest.py` registers the same model definition with the wq.db REST API so that records can be retrieved and updated from the client application.
+wq uses the [Django model syntax][Django model] as the primary way to define a data schema.  After installing wq and starting a project via `wq create`, you'll need to create a [Django application] folder containing two files: `models.py` and a `rest.py`.  The `models.py` is used to tell Django how to create the database table(s) corresponding to your schema.  Then, `rest.py` registers the same model definition with the wq.db REST API so that records can be retrieved and updated from the client application.
 
 ## Model Definition
 There are three ways to create a new model definition.  The list of available field/question types is listed [here][inputs].
 
 ### Option 1: XLSForm syntax
-With this option, you can configure all of your field/question definitions in a spreadsheet following the [XLSForm] standard used by Open Data Kit, Survey123, and related projects.  You can then have wq generate the Django application and templates from the spreadsheet.  To create an XLSForm, you can use an online form builder like the one provided by [KoboToolbox], or you can just download an example spreadsheet and add the definitions manually.  Note that not every feature of XLSForm is supported - but it is easy to implement [custom input types] with similar functionality.  Once you have an XLSForm ready you can use the built-in `wq addform` command provided by `wq.start`. For best results, use a relatively short name for the file and run the command in your `db/` folder.
+With this option, you can configure all of your field/question definitions in a spreadsheet following the [XLSForm] standard used by Open Data Kit, Survey123, and related projects.  You can then have wq generate the Django application and templates from the spreadsheet.  To create an XLSForm, you can use an online form builder like the one provided by [KoboToolbox], or you can just download an example spreadsheet and add the definitions manually.  Note that not every feature of XLSForm is supported - but it is easy to implement [custom input types] with similar functionality.  Once you have an XLSForm ready you can use the built-in `wq addform` command provided by `wq.create`. For best results, use a relatively short name for the file and run the command in your `db/` folder.
 
 ```bash
 cd [PROJECTNAME]/db
@@ -79,6 +79,7 @@ After the commands complete, you can use `./manage.py dbshell`, psql, or pgAdmin
 
 [wq framework]: ../index.md
 [Django Model]: https://docs.djangoproject.com/en/1.10/topics/db/models/
+[inputs]: ../inputs/index.md
 [Django application]: https://docs.djangoproject.com/en/1.10/ref/applications/
 [XLSForm]: http://xlsform.org
 [KoboToolbox]: http://kobotoolbox.org

@@ -18,7 +18,7 @@ For this how-to guide, we'll assume a simple project with a single "survey" app.
 > See the [getting started][setup] guide for more details about initial project setup.
 
 ```bash
-wq start myproject --without-npm
+wq create myproject --without-npm
 cd myproject/db/
 wq addform path/to/survey.csv
 ```
@@ -367,7 +367,7 @@ class SurveySerializer(ModelSerializer):
 
 Finally, implement and register custom components as shown in the example JavaScript below.
 
-> Note: When using [`wq start --without-npm`][setup], you will need a way to compile JSX to `React.createElement()` calls.  You could use the [online Babel converter][babel-repl], or use npm to install Rollup and Babel (but not necessarily all of create-react-app and wq's npm dependencies).  If you use Rollup, you may find [@wq/rollup-plugin] useful, as it will allow you to write plain npm imports and have them automatically translated to leverage exports from [`./wq.js`][wq.js].  The `app/js/custom.js` example in the demo below simulates the output of a Rollup build.
+> Note: When using [`wq create --without-npm`][setup], you will need a way to compile JSX to `React.createElement()` calls.  You could use the [online Babel converter][babel-repl], or use npm to install Rollup and Babel (but not necessarily all of create-react-app and wq's npm dependencies).  If you use Rollup, you may find [@wq/rollup-plugin] useful, as it will allow you to write plain npm imports and have them automatically translated to leverage exports from [`./wq.js`][wq.js].  The `app/js/custom.js` example in the demo below simulates the output of a Rollup build.
 
 ### Demo 3
 

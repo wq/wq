@@ -15,7 +15,7 @@ In addition to the Redux integration, a number of nonessential and deprecated AM
 
 module | status
 ---|---
-[wq/autocomplete.js] | removed
+wq/autocomplete.js | removed
 [wq/chart.js] | moved to [Django REST Pandas]
 [wq/chartapp.js] | moved to [Django REST Pandas]
 [wq/console.js][other] | removed
@@ -24,7 +24,6 @@ module | status
 [wq/pandas.js] | moved to [Django REST Pandas]
 [wq/progress.js] | moved to [Django Data Wizard]
 
-[wq/autocomplete.js]: FIXME
 [wq/chart.js]: https://github.com/wq/django-rest-pandas
 [wq/chartapp.js]: https://github.com/wq/django-rest-pandas
 [other]: ../wq.app/index.md

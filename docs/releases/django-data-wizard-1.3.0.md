@@ -39,6 +39,6 @@ If you are using Django Data Wizard's built-in admin integration and loaders, th
 
  * If you created a custom UI that accesses the Wizard's REST API with something other than `SessionAuthentication`, update your `DATA_WIZARD["AUTHENTICATION"]` setting.  Django Data Wizard no longer uses the `REST_FRAMEWORK["DEFAULT_AUTHENTICATION_CLASSES"]` setting.
  * If you were using a [custom loader](https://github.com/wq/django-data-wizard#custom-loader) based on wq.io, rename the `load_io()` method to `load_iter()` and update your import paths as described in the [IterTable release notes].
- * If you are using the wq framework integration, you will need to install [@wq/progress](https://github.com/wq/django-data-wizard/tree/master/packages/progress) from NPM as it is no longer provided in the wq.app PyPI package.
+ * If you are using the wq framework integration, you will need to install [@wq/progress](https://github.com/wq/django-data-wizard/tree/main/packages/progress) from NPM as it is no longer provided in the wq.app PyPI package.
 
 [IterTable release notes]: ./itertable-2.0.0b1.md

@@ -100,15 +100,15 @@ module | description
 [mapbox-android]: https://docs.mapbox.com/android/maps/overview/
 [mapbox-ios]: https://docs.mapbox.com/ios-sdk/maps/overview/
  
-[@wq/app]: ./@wq/app.md
-[@wq/model]: ./@wq/model.md
-[@wq/outbox]: ./@wq/outbox.md
-[@wq/store]: ./@wq/store.md
-[@wq/router]: ./@wq/router.md
-[@wq/map]: ./@wq/map.md
-[@wq/react]: ./@wq/react.md
-[@wq/material]: ./@wq/material.md
-[@wq/mapbox]: ./@wq/mapbox.md
+[@wq/app]: ../@wq/app.md
+[@wq/model]: ../@wq/model.md
+[@wq/outbox]: ../@wq/outbox.md
+[@wq/store]: ../@wq/store.md
+[@wq/router]: ../@wq/router.md
+[@wq/map]: ../@wq/map.md
+[@wq/react]: ../@wq/react.md
+[@wq/material]: ../@wq/material.md
+[@wq/mapbox]: ../@wq/mapbox.md
 
-[@wq/jquery-mobile]: https://github.com/wq/wq.app/tree/master/packages/jquery-mobile
-[@wq/leaflet]: https://github.com/wq/wq.app/tree/master/packages/leaflet
+[@wq/jquery-mobile]: https://github.com/wq/wq.app/tree/main/packages/jquery-mobile
+[@wq/leaflet]: https://github.com/wq/wq.app/tree/main/packages/leaflet

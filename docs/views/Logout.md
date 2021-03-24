@@ -6,4 +6,5 @@
 
 [view]: ./index.md
 
+[@wq/app]: ../@wq/app.md
 [Source]: https://github.com/wq/wq.app/blob/main/packages/react/src/views/Logout.js

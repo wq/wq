@@ -6,7 +6,7 @@ Under the hood, dynamic choices are implemented as foreign keys to other existin
 
 > Depending on your use case, you may instead want to register a single form that populates multiple tables at once.  To do so, see [How To: Implement Repeating Nested Forms][nested-forms].  The documentation below focuses on foreign keys that are registered with wq.db as separate models.
 
-As of wq version 1.0, it is possible to use foreign keys to link parent-child records while working offline, even when the parent record has not yet been synced to the server.  The example below assumes that "Site A3" was created on a separate form that has not yet been synced to the server.  If that site was selected when this form was saved, [@wq/outbox] would ensure that Site A3 is properly synced before attempting to sync this form.
+wq makes it is possible to link parent-child records while working offline, even when the parent record has not yet been synced to the server.  In the example below, any sites added using the [home page demo][wq framework] will appear as additional options with asterisks in the choice list.  If one of the unsynced sites is selected, [@wq/outbox] will ensure that the site is synced before attempting to sync this form.
 
 ### Demo
 
@@ -108,11 +108,13 @@ class MyModel(models.Model):
 
 ## Source
 
-The code for handling foreign keys is spread throughout wq.app, and there is no specific `ForeignKey` component.  Foreign keys are typically rendered as [`<Select/>`][Select] by [<AutoInput/>], which loads the list of choices from the context proved by [@wq/app].  [@wq/model] and [@wq/outbox] handle managing and syncing related records from the client.
+The code for handling foreign keys is spread throughout wq.app, and there is no specific `ForeignKey` component.  Foreign keys are typically rendered as [`<Select/>`][Select] by [<AutoInput/>][AutoInput], which loads the list of choices from the context proved by [@wq/app].  [@wq/model] and [@wq/outbox] handle managing and syncing related records from the client.
 
 [Select]: ./Select.md
 [AutoInput]: ../components/AutoInput.md
 [config]: ../wq-configuration-object.md
+[nested-forms]: ../guides/implement-repeating-nested-forms.md
+[wq framework]: ../index.md
 [@wq/app]: ../@wq/app.md
 [@wq/outbox]: ../@wq/outbox.md
 [@wq/model]: ../@wq/model.md

@@ -5,7 +5,7 @@ purpose: forms
 
 # FormError
 
-wq's `<FormError/>` [component] displays any top-level form errors.  (Field-level errors are displayed within each [input component][input]).  It is generally not necessary to override `<FormError/>`.
+wq's `<FormError/>` [component] displays any top-level form errors.  (Field-level errors are displayed within each [input component][inputs]).  It is generally not necessary to override `<FormError/>`.
 
 ## Source
 

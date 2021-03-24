@@ -11,7 +11,7 @@ The [wq framework] is built on Django, and wq.db's [model registration API][rout
 *Autodiscover Filename* | `myapp/admin.py` | `myapp/rest.py`
 *Import Path* | `from django.contrib import admin` | `from wq.db import rest`
 *Registration syntax* | `admin.site.register(MyModel)` | `rest.router.register_model(MyModel)`
-*Default form class* | [`ModelForm`](ModelForm) | [`ModelSerializer`][ModelSerializer]
+*Default form class* | [`ModelForm`][ModelForm] | [`ModelSerializer`][ModelSerializer]
 *Permissions* | `django.contrib.auth` | `django.contrib.auth`
 *UI customization* | Widgets and HTML templates | [Input components][custom-input]
 *Custom actions* | Django [admin actions] | DRF [@action] and custom client logic

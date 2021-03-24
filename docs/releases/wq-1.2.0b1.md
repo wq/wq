@@ -5,7 +5,7 @@ date: 2019-10-07
 
 # wq 1.2 beta
 
-**wq 1.2 beta** brings full support for using NPM to manage JavaScript dependencies (#44).  This builds on an overall [restructuring of wq.app](./wq.app-.md) that also includes leveraging the [Redux ](https://redux.js.org/) ecosystem for the data layer.
+**wq 1.2 beta** brings full support for using NPM to manage JavaScript dependencies (#44).  This builds on an overall [restructuring of wq.app](./wq.app-1.2.0a1.md) that also includes leveraging the [Redux ](https://redux.js.org/) ecosystem for the data layer.
 
 See the submodule release notes for details:
 - [wq.app 1.2 beta](./wq.app-1.2.0b1.md)

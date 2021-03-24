@@ -18,6 +18,6 @@ date: 2013-08-12
 - **wq [collectjson](../wq.build/collectjson.md)**: Support for YAML (as nested objects)
 
 ### Other
-- Add [highlight.js](FIXME) to libs for code syntax highlighting
-- [Third-party library](FIXME) updates: jQuery Mobile 1.3.1, Leaflet 0.6-dev (master), d3 2.1.6
+- Add highlight.js to libs for code syntax highlighting
+- Third-party library updates: jQuery Mobile 1.3.1, Leaflet 0.6-dev (master), d3 2.1.6
 - Various minor bugfixes & improvements

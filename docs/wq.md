@@ -18,10 +18,10 @@ The [wq.app] PyPI package also contains a copy of wq.js.  The two versions are f
 
 [wq PyPI package]: https://pypi.org/project/wq
 [wq npm package]: https://npmjs.com/package/wq
-[wq.app]: ./wq.app.md
-[wq.build]: ./wq.build.md
-[wq.create]: ./wq.create.md
-[wq.db]: ./wq.db.md
+[wq.app]: ./wq.app/index.md
+[wq.build]: ./wq.build/index.md
+[wq.create]: ./wq.create/index.md
+[wq.db]: ./wq.db/index.md
 [@wq/app]: ./@wq/app.md
 [@wq/material]: ./@wq/material.md
 [@wq/mapbox]: ./@wq/mapbox.md

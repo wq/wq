@@ -11,21 +11,21 @@ This release achieves the third goal in the [roadmap for wq.app 2.0](https://git
 
 Deprecated | Replacement
 --|--
-AMD / RequireJS | [ES Modules](#user-content-es-modules)
-jQuery Mobile + Mustache | [React + Material UI](#user-content-react-material-ui)
-Leaflet | [Mapbox GL](#user-content-mapbox-gl)
-Application Cache | [Service Worker](#user-content-service-worker)
-PhoneGap Build | [Installable PWA](#user-content-installable-pwa) and/or [React Native + Expo](#user-content-react-native-expo)
+AMD / RequireJS | [ES Modules](#es-modules)
+jQuery Mobile + Mustache | [React + Material UI](#react-material-ui)
+Leaflet | [Mapbox GL](#mapbox-gl)
+Application Cache | [Service Worker](#service-worker)
+PhoneGap Build | [Installable PWA](#installable-pwa) and/or [React Native + Expo](#react-native-expo)
 
 The main PRs for this release are #115 and #122.
 
-## <a name="es-modules">ES Modules</a>
+## ES Modules
 
 > **Projects created with wq 1.3 now use ESM syntax, even when not using npm.**
 
 When wq.app was created, there was no standard JavaScript module format.  wq.app instead leveraged RequireJS and AMD, which combined (some of) the customization capabilities of the npm ecosystem, together with (some of) the simplicity of using a plain `<script>` tag.  Since then, [ECMAScript modules](https://nodejs.org/api/esm.html) (import/export syntax) have become the standard solution for both web and npm.  wq.app 1.3 leverages ESM to provide users a choice between *all of* the customizability of npm, or *all of* the simplicity of a script tag.   The old RequireJS build system has been deprecated and replaced with ... no build system at all!
 
-Instead, wq.app 1.3 provides a pre-compiled ESM build, [**wq.js**](https://npmjs.com/package/wq), which contains wq's core modules, the new [UI renderer](#user-content-react-material-ui), the new [map engine](#user-content-mapbox-gl), and the third party dependencies for all of the above.  This script can be leveraged via a single `<script type=module>` tag, or with the small number of configuration modules provided by the new [wq start](../wq.create/index.md) template.
+Instead, wq.app 1.3 provides a pre-compiled ESM build, [**wq.js**](../wq.md), which contains wq's core modules, the new [UI renderer](#react-material-ui), the new [map engine](#mapbox-gl), and the third party dependencies for all of the above.  This script can be leveraged via a single `<script type=module>` tag, or with the small number of configuration modules provided by the new [wq start](../wq.create/index.md) template.
 
 ### Upgrade Notes
 wq.app 1.3 still provides the old RequireJS/AMD build scripts and related commands (`wq init`, `wq optimize`, `wq babel`, etc.) for compatibility with older projects.  However, this support will be dropped in wq 2.0.  Thus, it may be good to start migrating to an ESM format sooner rather than later.
@@ -42,7 +42,7 @@ On the other hand, if your project contains minimal customization, you may find 
 
 As of wq.app 1.3, the `wq build` command can automatically detect the project type by examining `wq.yml` for an `optimize` section, and by checking for the existence of `package.json` (see #119).  Projects without either of these are assumed to be using the pre-built ESM.
 
-## <a name="react-material-ui">React + Material UI</a>
+## React + Material UI
 
 > **@wq/react + @wq/material is the new default UI renderer.**
 
@@ -60,10 +60,10 @@ module | description
 [React]: https://reactjs.org
 [Material UI]: https://material-ui.com/
 [React Native Paper]: https://callstack.github.io/react-native-paper/
-[@wq/react]: https://github.com/wq/wq.app/tree/master/packages/react
-[@wq/material]: https://github.com/wq/wq.app/tree/master/packages/material
-[@wq/jquery-mobile]: https://github.com/wq/wq.app/tree/master/packages/jquery-mobile
-[react-components]: https://github.com/wq/wq.app/tree/master/packages/react#components
+[@wq/react]: ../@wq/react.md
+[@wq/material]: ../@wq/material.md
+[@wq/jquery-mobile]: https://github.com/wq/wq.app/tree/main/packages/jquery-mobile
+[react-components]: ../components/index.md
 [config]: ../wq-configuration-object.md
 
 ### Upgrade Notes
@@ -91,7 +91,7 @@ Note that wq/template.js, wq/patterns.js, and wq/photos.js are now contained wit
 
 In both cases, the new way to provide custom functionality is by registering one or more [custom components][react-components] with @wq/app.  Custom components can override individual inputs or entire views.
 
-## <a name="mapbox-gl">Mapbox GL</a>
+## Mapbox GL
 
 > **@wq/mapbox is the new default map engine.**
 
@@ -114,19 +114,19 @@ If you are upgrading from an older version of wq with npm, install and import `@
 
 [Leaflet]: https://leafletjs.com
 [Mapbox GL JS]: https://docs.mapbox.com/mapbox-gl-js/
-[@wq/map]: https://github.com/wq/wq.app/tree/master/packages/map
-[@wq/leaflet]: https://github.com/wq/wq.app/tree/master/packages/leaflet
-[@wq/mapbox]: https://github.com/wq/wq.app/tree/master/packages/mapbox
+[@wq/map]: ../@wq/map.md
+[@wq/leaflet]: https://github.com/wq/wq.app/tree/main/packages/leaflet
+[@wq/mapbox]: ../@wq/mapbox.md
 [mapbox-android]: https://docs.mapbox.com/android/maps/overview/
 [mapbox-ios]: https://docs.mapbox.com/ios-sdk/maps/overview/
 
-## <a name="service-worker">Service Worker</a>
+## Service Worker
 
 > **Browsers are removing support for Application Cache, which has been superseded by Service Worker.**
 
 The Application Cache standard is being deprecated by browser vendors, and for good reason - it was inflexible and hard to use.  wq now includes built-in support for [Service Workers] instead.  The new `wq serviceworker` command replaces the `wq appcache` command for projects not using npm.  For projects using npm, the provided [@wq Create React App template][@wq/cra-template] already includes code to generate a service worker.
  
-[@wq/cra-template]: https://github.com/wq/wq.start/tree/master/packages/cra-template
+[@wq/cra-template]: ../@wq/cra-template.md
 
 ### Upgrade Notes
 
@@ -138,7 +138,7 @@ navigator.serviceWorker.register('/service-worker.js');
 [Service Workers]: https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API
 [wq.yml]: https://github.com/wq/wq-django-template/blob/master/wq.yml
 
-## <a name="installable-pwa">Installable PWA</a>
+## Installable PWA
 
 > **PhoneGap Build is no more... but wq.app generates installable PWAs instead!**
 
@@ -146,14 +146,14 @@ navigator.serviceWorker.register('/service-worker.js');
 
 ### Upgrade Notes
 
-To create a progressive web app, be sure to enable wq.app's [service worker](#user-content-service-worker) support.  Then, customize your app icon by editing `app/public/images/icon.svg`, and saving it to `app/public/images/icon-1024.png`.   Customize the title and colors in `app/public/manifest.json`, run `./deploy.sh` again, and ensure HTTPS is enabled.  Your web app should be ready for installation.
+To create a progressive web app, be sure to enable wq.app's [service worker](#service-worker) support.  Then, customize your app icon by editing `app/public/images/icon.svg`, and saving it to `app/public/images/icon-1024.png`.   Customize the title and colors in `app/public/manifest.json`, run `./deploy.sh` again, and ensure HTTPS is enabled.  Your web app should be ready for installation.
 
 The `wq phonegap` command remains, but will likely fail when sending the payload to the build servers.   It will be removed in wq 2.0 (see #121).
 
 [PhoneGap Build]: https://build.phonegap.com
 [pwa]: https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Installable_PWAs
 
-## <a name="react-native-expo">React Native + Expo</a>
+## React Native + Expo
 
 > **wq.app now supports React Native and Expo if you need a truly native app.**
 
@@ -165,4 +165,4 @@ Sometimes even a progressive web app is not enough, particularly if your app is 
 
 ### Upgrade Notes
 
-To use React Native or Expo, it may be easiest to start by creating a project using the recommended tools for each platform.  Then, replace the contents of `src/` with the contents of [@wq/cra-template's src/ directory](https://github.com/wq/wq.start/tree/master/packages/cra-template/template/src).  It is possible (and recommended) to use the same `src/` directory for both the web and native deployments of a wq.app-based project.  Finally, you will need to install all additional dependencies as described in the documentation for [@wq/material] and [@wq/mapbox].  
+To use React Native or Expo, it may be easiest to start by creating a project using the recommended tools for each platform.  Then, replace the contents of `src/` with the contents of [@wq/cra-template's src/ directory](https://github.com/wq/wq.create/tree/main/packages/cra-template/template/src).  It is possible (and recommended) to use the same `src/` directory for both the web and native deployments of a wq.app-based project.  Finally, you will need to install all additional dependencies as described in the documentation for [@wq/material] and [@wq/mapbox].  

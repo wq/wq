@@ -59,7 +59,7 @@ python3 -m pip install wheel
 python3 -m pip install wq==1.3.0a1
 
 # Note the trailing dot since we are already in the project folder
-wq start $PROJECTNAME .
+wq create $PROJECTNAME .
 
 # Answer prompts for:
 #  - Web domain:    (Change to match DNS)

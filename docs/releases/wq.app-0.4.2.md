@@ -6,7 +6,7 @@ date: 2013-10-28
 # wq.app 0.4.2
 
 ### New Modules
-- **[wq/markdown.js](../@wq/index.md)**: Simplifies Markdown ([marked](FIXME)) integration for [wq/template.js](../@wq/index.md) by providing an `{{html}}` template default that will render `context.markdown` if it is present.
+- **[wq/markdown.js](../@wq/index.md)**: Simplifies Markdown (marked) integration for [wq/template.js](../@wq/index.md) by providing an `{{html}}` template default that will render `context.markdown` if it is present.
 
 ### API improvements
 - **[wq/app.js](../@wq/app.md)**:
@@ -18,7 +18,7 @@ date: 2013-10-28
   - Fix issues with `find()` indexes (#10)
 
 ### Other
-- Added `bash` highlighting support to bundled [highlight.js](FIXME)
+- Added `bash` highlighting support to bundled highlight.js
 - Various minor bug fixes
 - JSHint and other syntax improvements
 

@@ -94,7 +94,7 @@ Any other options given will be assigned to the model's [page configuration][con
 | `paginate(model, page_num, request=None)` | Return page #[page_num] of the model's registered queryset, serialized with the registered serializer.
 | `add_page(name, config, viewset=None)` | Add a page to the router that is not backed by a model.  If no viewset is given, one will be generated with the config as the response.
 | `get_page(name)` | Retrieve a non-model page from the router.
-| `get_config(self, user=None)` | Get a [wq configuration object] with permissions information applicable to the provided user
+| `get_config(self, user=None)` | Get a [wq configuration object][config] with permissions information applicable to the provided user
 | `get_page_config(name, user=None)` | Get the configuration for a single registered page (either model-backed or not)
 | `get_config_view()` | Get a view that returns the config for the current user
 | `urls` | (DRF) Returns a url `patterns` for inclusion in urls.py
@@ -102,7 +102,7 @@ Any other options given will be assigned to the model's [page configuration][con
 
 ## Config Object (`dump_config`)
 
-The router can generate a JSON-formatted [wq configuration object] for use by [@wq/app].  The `dump_config` management command can be used to create an AMD configuration module as part of your build process.
+The router can generate a JSON-formatted [wq configuration object][config] for use by [@wq/app].  The `dump_config` management command can be used to create an AMD configuration module as part of your build process.
 
 ```bash
 # deploy.sh

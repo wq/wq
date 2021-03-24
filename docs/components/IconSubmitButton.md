@@ -5,7 +5,7 @@ purpose: forms
 
 # IconSubmitButton
 
-[@wq/material]'s `<IconSubmitButton/>` [component] [`<IconButton/>`][IconButton] with [`<SubmitButton/>`][SubmitButton] functionality
+[@wq/material]'s `<IconSubmitButton/>` [component] enhances [`<IconButton/>`][IconButton] with [`<SubmitButton/>`][SubmitButton] functionality
 
 ## Source
 

@@ -2,9 +2,9 @@
 
 The [wq framework] is built on [React], and uses popular React conventions (like [hooks]) and libraries (like [Material UI] and [Redux]).  While it is conceptually similar, wq provides quite a bit more out of the box than the default template provided by [create-react-app].  This makes it easy to get started quickly with wq, but the layout is a bit different than experienced React developers may used to.
 
-In addition, there are two different project templates for wq, with differing levels of control.  The `wq start --with-npm` command uses [@wq/cra-template] to install [@wq/app], [@wq/material], and related dependencies from NPM.  By contrast, the `wq start --without-npm` command leverages the [wq-django-template] and the [wq.app PyPI package][wq.app].  wq.app includes a precompiled static file, wq.js, which already includes @wq/app, @wq/material, @wq/mapbox and all dependencies including React and Redux.
+In addition, there are two different project templates for wq, with differing levels of control.  The `wq create --with-npm` command uses [@wq/cra-template] to install [@wq/app], [@wq/material], and related dependencies from NPM.  By contrast, the `wq create --without-npm` command leverages the [wq-django-template] and the [wq.app PyPI package][wq.app].  wq.app includes a precompiled static file, wq.js, which already includes @wq/app, @wq/material, @wq/mapbox and all dependencies including React and Redux.
 
-If you are new to wq and React, we highly recommend using the `wq start --without-npm` option and the wq-django-template to get started.  Otherwise, read on for more details on the differences between the options.
+If you are new to wq and React, we highly recommend using the `wq create --without-npm` option and the wq-django-template to get started.  Otherwise, read on for more details on the differences between the options.
 
 ## Feature Comparison
 
@@ -57,6 +57,6 @@ In either case, @wq/app's init() function handles all of the top-level boilerpla
 [wq.app]: ../wq.app/index.md
 [@wq/rollup-plugin]: ../@wq/rollup-plugin.md
 [plugins]: ../plugins/index.md
-[redux-state-plugin]: ../plugins/redux-state.md
+[redux-state-plugin]: ../plugins/reducer.md
 [views]: ../views/index.md
 [App]: ../components/App.md

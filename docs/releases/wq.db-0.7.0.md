@@ -20,5 +20,5 @@ date: 2014-11-24
 - `set_extra_config()` method to define arbitrary wq config properties (570b9ad1d5bef4b9f28c9be1d954b5a0734823d7)
 
 ## Removed Features
-- A number of contrib modules have been extracted into separate PyPI packages (#29).  This includes [vera](https://github.com/powered-by-wq/vera), [dbio](../dbio/index.md), and the [media thumbnailer](https://github.com/wq/django-media-thumbnailer) that was previously part of [files](../wq.db/patterns.md).  If your code depends on any of these modules, you will need to install them separately and update your import statements (e.g. `from wq.db.contrib.vera import models` -> `from vera import models`.
+- A number of contrib modules have been extracted into separate PyPI packages (#29).  This includes [vera](https://github.com/powered-by-wq/vera), [dbio](https://github.com/wq/django-data-wizard), and the [media thumbnailer](https://github.com/wq/django-media-thumbnailer) that was previously part of [files](../wq.db/patterns.md).  If your code depends on any of these modules, you will need to install them separately and update your import statements (e.g. `from wq.db.contrib.vera import models` -> `from vera import models`.
 - Removed support for auto-discovering `views.py` and `serializers.py`.  All of your auto-discoverable router configurations should be defined in `rest.py` (#12)

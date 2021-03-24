@@ -34,6 +34,6 @@ Here are a few things to keep in mind:
  * If the request fails with a server error, the plugin should throw an `Error` with a `json` attribute if the error is an object or a `text` attribute otherwise.  Note that unlike `$.ajax()`, `fetch()` does not automatically throw in the case of 400 and 500 errors.
 
 [plugin type]: ./index.md
-[default-ajax]: https://github.com/wq/wq.app/blob/master/packages/store/src/store.js#L353-L390
+[default-ajax]: https://github.com/wq/wq.app/blob/v1.3.0a2/packages/store/src/store.js#L380-L418
 [@wq/store]: ../@wq/store.md
 [wq.db]: ../wq.db/index.md

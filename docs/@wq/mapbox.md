@@ -8,7 +8,7 @@ module: wq.app
 
 [@wq/mapbox]
 
-**@wq/mapbox** is a plugin for [@wq/app] that provides integration with [Mapbox GL JS] (for web) and the Mapbox Map SDK for [Android](mapbox-android) and [iOS](mapbox-ios).   When used together with [@wq/map], @wq/mapbox can leverage the [wq configuration object][config] to generate interactive maps for pages rendered via @wq/app.  The generated maps can automatically download and display GeoJSON data rendered by [wq.db's REST API][wq.db] or any third party service.
+**@wq/mapbox** is a plugin for [@wq/app] that provides integration with [Mapbox GL JS] (for web) and the Mapbox Map SDK for [Android][mapbox-android] and [iOS][mapbox-ios].   When used together with [@wq/map], @wq/mapbox can leverage the [wq configuration object][config] to generate interactive maps for pages rendered via @wq/app.  The generated maps can automatically download and display GeoJSON data rendered by [wq.db's REST API][wq.db] or any third party service.
 
 # Installation
 
@@ -67,7 +67,7 @@ See [@wq/map's general components][map-general] for more info.
 
 name | details
 --|--
-[Map]&nbsp;([.native][Map.native]/[.expo][Map.expo]) | Top level component that renders [`ReactMapboxGl()`][react-mapbox-gl] (web), [`MapboxGl.MapView`][@react-native-mapbox-gl/maps] (react native), or [`MapView`](react-native-maps) (Expo).
+[Map]&nbsp;([.native][Map.native]/[.expo][Map.expo]) | Top level component that renders [`ReactMapboxGl()`][react-mapbox-gl] (web), [`MapboxGl.MapView`][@react-native-mapbox-gl/maps] (react native), or [`MapView`][react-native-maps] (Expo).
 [Legend] | Currently an empty wrapper
 [BasemapToggle] | Currently an empty wrapper
 [OverlayToggle] | Currently an empty wrapper

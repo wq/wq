@@ -5,7 +5,7 @@ date: 2019-10-07
 
 # wq.app 1.2 beta
 
-**wq.app 1.2.0b1** is the beta version of the upcoming wq.app 1.2 release.  In addition to the [major changes introduced in **wq.app 1.2 alpha**](./wq.app-1.2.0b1.md), wq.app 1.2 beta includes the following updates:
+**wq.app 1.2.0b1** is the beta version of the upcoming wq.app 1.2 release.  In addition to the [major changes introduced in **wq.app 1.2 alpha**](./wq.app-1.2.0a1.md), wq.app 1.2 beta includes the following updates:
 
 ## New Features
 

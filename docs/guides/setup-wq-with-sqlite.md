@@ -67,7 +67,7 @@ python3 -m pip install wheel
 python3 -m pip install wq==1.3.0a1
 
 # Note the trailing dot since we are already in the project folder
-wq start myproject .
+wq create myproject .
 
 # Answer prompts for:
 #  - Web domain:    (Default is fine during development)
@@ -104,7 +104,7 @@ Visit http://localhost:8000/ in a web browser to verify the new installation.  W
 
 ## Optional: Enable GIS Support
 
-The instructions above make use of the `--without-gis` flag.  If you would like to support geospatial input (e.g. map-drawn Polygons and Lines), you will need to enable GIS support via GeoDjango.  To do this, you can specify `wq start --with-gis` or answer Y at the "Enable GIS?" prompt.  You can also enable GIS for an existing project by uncommenting the lines referencing `django.contrib.gis` in each of the files under db/myprojects/settings/.
+The instructions above make use of the `--without-gis` flag.  If you would like to support geospatial input (e.g. map-drawn Polygons and Lines), you will need to enable GIS support via GeoDjango.  To do this, you can specify `wq create --with-gis` or answer Y at the "Enable GIS?" prompt.  You can also enable GIS for an existing project by uncommenting the lines referencing `django.contrib.gis` in each of the files under db/myprojects/settings/.
 
 If you only need to support GPS coordinates, you can probably get by with numeric latitude and longitude fields and forgo the GeoDjango requirement.
 

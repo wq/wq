@@ -232,7 +232,7 @@ usePluginState(pluginName) | Return the [@wq/store state][@wq/store] for the spe
 usePluginReducer(pluginName) | Returns the two element array `[usePluginState(), usePlugin()]`. | `[{ status }, { triggerAction }]`
 usePluginContent() | Returns a <PluginContent/> component for the current route (see below). |
 
-To specify content to be rendered in <PluginContent/>, define a `runComponent` method on a plugin.  The method should accept a [routeInfo object](@wq/router) and return a string specifying the name of a component to render.  (The actual component should be registered seperately in `plugin.components`.)  Note that the default [`<App/>`] compononent calls `usePluginContent()` automatically and places the component on the right side of the layout.
+To specify content to be rendered in <PluginContent/>, define a `runComponent` method on a plugin.  The method should accept a [routeInfo object][@wq/router] and return a string specifying the name of a component to render.  (The actual component should be registered seperately in `plugin.components`.)  Note that the default [`<App/>`] compononent calls `usePluginContent()` automatically and places the component on the right side of the layout.
 
 ## @wq/model integration
 

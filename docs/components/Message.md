@@ -58,7 +58,7 @@ The [@wq/react] implementation just renders the message in a fragment as a strin
 [DefaultList]: ../views/DefaultList.md
 [DefaultEdit]: ../views/DefaultEdit.md
 [DeleteForm]: ./DeleteForm.md
-[OutboxList]: ./views/OutboxList.md
+[OutboxList]: ../views/OutboxList.md
 [Logout]: ../views/Logout.md
 [Loading]: ../views/Loading.md
 

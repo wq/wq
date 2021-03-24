@@ -19,7 +19,7 @@ date: 2017-07-24
   * Detect and utilize [cordova-plugin-bluetooth-geolocation](https://github.com/heigeo/cordova-plugin-bluetooth-geolocation) in [wq/locate.js](../inputs/Geo.md) (1ad8d0d)
   * Other fixes (bf00503, 31ed208)
 * [Build tool](../wq.build/cli.md)
-  * Add separate `splash` option to [wq phonegap](FIXME) (b5d5788)
+  * Add separate `splash` option to wq phonegap (b5d5788)
   * Incorporate default CSS from wq.start template (061afec)
 
  * Incorporate [Code of Conduct](https://github.com/wq/wq.app/blob/master/CODE_OF_CONDUCT.md) and [Contributing Guidelines](https://github.com/wq/wq.app/blob/master/CONTRIBUTING.md)
@@ -45,7 +45,7 @@ date: 2017-07-24
   * Various plugin updates
 * [Changes in RC 1](./wq.app-1.0.0rc1.md)
   * New [Pagination and Caching API](../wq-configuration-object.md) (#47)
-  * New [wq icons](../wq.build/icons.md) and [wq phonegap](FIXME) commands (wq/wq-django-template#4)
+  * New [wq icons](../wq.build/icons.md) and wq phonegap commands (wq/wq-django-template#4)
   * Improve support for deletion & offline editing (#70, #72, #77, #78, #80)
   * Various bug fixes & improvements
 * [Changes in RC 2](./wq.app-1.0.0rc2.md)
