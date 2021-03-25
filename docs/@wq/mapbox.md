@@ -6,7 +6,7 @@ module: wq.app
 @wq/mapbox
 ======
 
-[@wq/mapbox]
+[@wq/mapbox][source]
 
 **@wq/mapbox** is a plugin for [@wq/app] that provides integration with [Mapbox GL JS] (for web) and the Mapbox Map SDK for [Android][mapbox-android] and [iOS][mapbox-ios].   When used together with [@wq/map], @wq/mapbox can leverage the [wq configuration object][config] to generate interactive maps for pages rendered via @wq/app.  The generated maps can automatically download and display GeoJSON data rendered by [wq.db's REST API][wq.db] or any third party service.
 
@@ -94,12 +94,12 @@ vector-tile | [VectorTile][overlay-VectorTile]&nbsp;([.native][overlay-VectorTil
 n/a | [Highlight]&nbsp;([.native][Highlight.native]/[.expo][Highlight.expo]) | GeoJSON overlay with preset highlight styles, which renders the contents (if any) of `useMapState().highlight`
 n/a | [Draw] | Drawing tools based on [react-mapbox-gl-draw] (web only)
 
-[@wq/mapbox]: https://github.com/wq/wq.app/tree/master/packages/mapbox
+[source]: https://github.com/wq/wq.app/tree/main/packages/mapbox
 
-[@wq/app]: https://wq.io/docs/app-js
-[@wq/map]: https://github.com/wq/wq.app/tree/master/packages/map
-[@wq/react]: https://github.com/wq/wq.app/tree/master/packages/react
-[@wq/material]: https://github.com/wq/wq.app/tree/master/packages/material
+[@wq/app]: ./app.md
+[@wq/map]: ./map.md
+[@wq/react]: ./react.md
+[@wq/material]: ./material.md
 
 [Mapbox GL JS]: https://docs.mapbox.com/mapbox-gl-js/
 [mapbox-android]: https://docs.mapbox.com/android/maps/overview/
@@ -110,8 +110,8 @@ n/a | [Draw] | Drawing tools based on [react-mapbox-gl-draw] (web only)
 [expo-mapbox]: https://expo.canny.io/feature-requests/p/add-mapbox-gl-support
 [react-mapbox-gl-draw]: https://github.com/amaurymartiny/react-mapbox-gl-draw
 
-[wq.db]: https://wq.io/wq.db
-[config]: https://wq.io/docs/config
+[wq.db]: ../wq.db/index.md
+[config]: ../wq-configuration-object.md
 [map-configuration]: https://github.com/wq/wq.app/tree/master/packages/map#configuration
 [map-components]: https://github.com/wq/wq.app/tree/master/packages/map#components
 [map-general]: https://github.com/wq/wq.app/tree/master/packages/map#general-components

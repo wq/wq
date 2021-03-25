@@ -5,6 +5,8 @@ module: wq.create
 @wq/cra-template
 ================
 
+[@wq/cra-template][source]
+
 This is the [Create React App][create-react-app] template for projects utilizing the [wq framework].  It uses [@wq/app] and [@wq/material] to generate a configuration-driven interface for collecting and managing geospatial field data.   This template is meant to be used together with [wq.start].  See wq's [Getting Started] docs for more information.
 
 Note that the root `ReactDOM.render()` call and all Redux initialization are handled automatically by [@wq/react] and [@wq/store], respectively.  It is not necessary to explicitly define any React components, except to override the default UI.  See the [@wq/react component documentation][react-components] for more details.
@@ -28,6 +30,7 @@ wq start --with-npm
 
 See the [Create React App documentation][create-react-app] for more information on the available NPM scripts.
 
+[source]: https://github.com/wq/wq.create/tree/main/packages/cra-template
 [wq framework]: ../index.md
 [@wq/app]: ./app.md
 [@wq/material]: ./material.md

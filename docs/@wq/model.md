@@ -6,7 +6,7 @@ module: wq.app
 @wq/model
 ========
 
-[@wq/model]
+[@wq/model][source]
 
 **@wq/model** is a [wq.app] module providing a simple API for working with lists, or collections of similar objects.  It uses [@wq/store] to retrieve the underlying JSON data from e.g. a REST API.
 
@@ -32,28 +32,11 @@ npm install @wq/app       # install all @wq/app deps including @wq/model
 
 ## API
 
-When using [@wq/app], @wq/model instances are automatically defined for all `"list"` pages in the [wq configuration object].  When used directly, `@wq/model` is typically imported as `model`, though any local variable name can be used.
-
-#### wq.app for PyPI
+When using [@wq/app] or [wq.app], @wq/model instances are automatically defined for all `"list"` pages in the [wq configuration object].  When used directly, `@wq/model` is typically imported as `model`, though any local variable name can be used.
 
 ```javascript
 // @wq/app usage
-define(['wq/app', './config', ...], function(app, config, ...) {
-   app.init(config).then(...);
-   var items = app.models.item;
-});
-
-// Direct usage
-define(['wq/model', ...], function(model, ...) {
-   var items = model({'url': 'items', 'name': 'item'});
-});
-```
-
-#### @wq/app for npm
-
-```javascript
-// @wq/app usage
-import app from '@wq/app';
+import app from '@wq/app';  // or './wq.js'
 import config from './config';
 app.init(config).then(...);
 const items = app.models.item;
@@ -147,19 +130,7 @@ Asynchronously loads the (local) contents of the model into memory.  If the loca
 
 Note that the values for `pages`, `count`, and `per_page` will be set by the REST API if the server is [wq.db] or a compatible web service.
 
-This function (and the related query functions below) all return a [Promise] that will resolve to the requested data.  If you are using @wq/app for npm (or are only targeting modern browsers), the `async`/`await` keywords will help streamline your code.
-
-##### wq.app for PyPI
-
-```javascript
-myModel.load().then(function(data) {
-    data.list.forEach(function(item) {
-        console.log(item.id, item.label);
-    });
-});
-```
-
-##### @wq/app for npm
+This function (and the related query functions below) all return a [Promise] that will resolve to the requested data.  The `async`/`await` keywords are supported in all modern browsers and will help streamline your code.  Note that `await` can only be used within an `async` containing function, which is omited below for brevity.
 
 ```javascript
 const data = await myModel.load();
@@ -172,16 +143,6 @@ data.list.forEach(item => {
 
 `info()` returns a Promise that resolves to a value with the same structure as `load()` but without the actual list of data.
 
-##### wq.app for PyPI
-
-```javascript
-myModel.info().then(function(info) {
-    console.log("Total Items:", info.count);
-});
-```
-
-##### @wq/app for npm
-
 ```javascript
 const info = await myModel.info();
 console.log("Total Items:", info.count);
@@ -190,18 +151,6 @@ console.log("Total Items:", info.count);
 #### `[model].page(page_num)`
 
 Like `load()`, but retrieves the items in the list at the specified page number (starting with page 1).  If the `cache` setting is `"first_page"` or `"all"`, `page(1)` is effectively equivalent to `load()`.  In most other cases, `page()` will generate a network request to retrieve the data from the server, and the result will not be stored locally.
-
-##### wq.app for PyPI
-
-```javascript
-myModel.page(4).then(function(data) {
-    data.list.forEach(function(item) {
-        console.log(item.id, item.label);
-    });
-});
-```
-
-##### @wq/app for npm
 
 ```javascript
 const data = await myModel.page(4);
@@ -213,16 +162,6 @@ data.list.forEach(item => {
 #### `[model].find(value, [localOnly])`
 
 `find()` can be used to asynchronously retrieve a single item from the model based on the primary key (usually `"id"`).  If not all of the data for the model is stored locally (i.e. `cache` is not `"all"`), then `find()` will automatically query the server for any items not found locally.  This behavior can be disabled by setting `localOnly` to true.
-
-##### wq.app for PyPI
-
-```javascript
-myModel.find(27).then(function(item) {
-    console.log(item.id, item.label);
-});
-```
-
-##### @wq/app for npm
 
 ```javascript
 const item = await myModel.find(27);
@@ -236,48 +175,6 @@ console.log(item.id, item.label);
 `filter()` asynchronously retrieves all objects that match the specified filter, which should be key-value mapping of one or more fields to filter on.  Fields can be existing fields on the item in the list, or the names of attribute `functions` provided to the model constructor.  The `any` argument specifies whether to return items matching any of the filter values (`true`) or only those matching all of the filter values (`false`, default).
 
 If not all of the data for the model is stored locally (i.e. `cache` is not `"all"`), then `filter()` will always query the server even if some items might be found locally.  This behavior can be disabled by setting `localOnly` to true.
-
-##### wq.app for PyPI
-
-```javascript
-// Filter on existing field
-myModel.filter({'type_id': 3}).then(function(type3items) {
-    type3items.forEach(function(item) {
-        console.log(item.id, item.label);
-    });
-});
-
-// Filter on existing field, match multiple values
-myModel.filter({'type_id': [1, 2]}).then(function(type1and2items) {
-    type1and2items.forEach(function(item) {
-        console.log(item.id, item.label);
-    });
-});
-
-// Filter on predicate function (new in wq.app 1.2)
-myModel.filter(function(item) {
-    return item.size > 100;
-}).then(function(bigItems) {
-    bigItems.forEach(function(item) {
-        console.log(item.id, item.label);
-    });
-});
-
-// Filter on a predefined computed field
-var functions = {
-    'big': function(item) {
-        return item.size > 100;
-    }
-};
-var myModel = model({'name': 'item', 'url': 'items', 'functions': functions});
-myModel.filter({'big': true}).then(function(bigItems) {
-    bigItems.forEach(function(item) {
-        console.log(item.id, item.label);
-    });
-});
-```
-
-##### @wq/app for npm
 
 ```javascript
 // Filter on existing field
@@ -315,33 +212,6 @@ bigItems.forEach(item => {
 #### `[model].forEach(callback, thisarg)`
 
 `[model].forEach()` mimics `Array.prototype.forEach` to provide a simple way to iterate over all values in the local (first page) of the list.  Note that this function is asynchronous, unlike a "real" `forEach` loop.
-
-##### wq.app for PyPI
-
-```javascript
-// Using load()
-myModel.load().then(function(data) {
-    data.list.forEach(function(item) {
-        console.log(item.id, item.label);
-    });
-    nextThing(); // This will execute after loop is done
-});
-
-// Using forEach() with then()
-myModel.forEach(function(item) {
-    console.log(item.id, item.label);
-}).then(function() {
-    nextThing();
-});
-
-// Using forEach() without then()
-myModel.forEach(function(item) {
-    console.log(item.id, item.label);
-});
-nextThing();  // This will happen before forEach is done!
-```
-
-##### @wq/app for npm
 
 ```javascript
 // Using load()
@@ -438,12 +308,13 @@ myModel.dispatch('DELETE', 12);
 myModel.dispatch('OVERWRITE', []);
 ```
 
-[@wq/model]: https://github.com/wq/wq.app/blob/master/packages/model
-[wq.app]: https://wq.io/wq.app
+[source]: https://github.com/wq/wq.app/blob/main/packages/model
+
+[@wq/app]: ./app.md
+[@wq/store]: ./store.md
+[wq.app]: ../wq.app/index.md
 [Redux-ORM]: https://github.com/redux-orm/redux-orm
-[@wq/app]: https://wq.io/docs/app-js
-[@wq/store]: https://wq.io/docs/store-js
-[wq.db]: https://wq.io/wq.db
-[wq configuration object]: https://wq.io/docs/config
+[wq.db]: ../wq.db/index.md
+[wq configuration object]: ../wq-configuration-object.md
 [Promise]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
-[@wq/outbox]: https://wq.io/docs/outbox-js
+[@wq/outbox]: ../@wq/outbox.md

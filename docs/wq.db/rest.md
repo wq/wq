@@ -42,7 +42,7 @@ renderers                | Supplemental response rendering formats, including Ge
 [serializers][wqserial]  | Custom serializers with better support for server and client template rendering
 [views]                  | Custom router-aware viewsets
 
-[wq.db.rest]: https://github.com/wq/wq.db/blob/master/rest/
+[wq.db.rest]: https://github.com/wq/wq.db/blob/main/rest/
 [wq.app]: ../wq.app/index.md
 [Django REST Framework]: http://django-rest-framework.org/
 [django.contrib.admin]: https://docs.djangoproject.com/en/dev/ref/contrib/admin/

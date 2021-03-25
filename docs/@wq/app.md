@@ -6,7 +6,7 @@ module: wq.app
 @wq/app
 ======
 
-[@wq/app]
+[@wq/app][source]
 
 **@wq/app** provides a configuration-driven JavaScript application controller to facilitate the creation of complete mobile web apps for viewing and submitting field data.   @wq/app is primarily intended for use as a client for [wq.db.rest], but can be customized for use with any REST service.
 
@@ -124,7 +124,7 @@ The `debug` option enables console logging in @wq/app and the other core modules
 
 The `autoStart` option tells `app.init()` to immediately trigger `app.start()` on startup.  The default is true, but you can set to false if you need to register additional custom routes before initializing React and Redux.
 
-The boolean `backgroundSync` flag controls the default behavior for @wq/outbox form submissions.  When `true` (the default), form submissions are synced in the background while the user is navigated to the next screen.  When `false`, forms remain on screen until the server responds.  `backgroundSync` can also be enabled or disabled on a per-form basis by setting the `backgroundSync` prop.  For example, the [Login view] sets `backgroundSync` to false since it makes more sense to wait for a successful login before continuing.
+The boolean `backgroundSync` flag controls the default behavior for @wq/outbox form submissions.  When `true` (the default), form submissions are synced in the background while the user is navigated to the next screen.  When `false`, forms remain on screen until the server responds.  `backgroundSync` can also be enabled or disabled on a per-form basis by setting the `backgroundSync` prop.  For example, the [Login view][Login] sets `backgroundSync` to false since it makes more sense to wait for a successful login before continuing.
 
 The `loadMissingAsHtml` and  `loadMissingAsJson` options tell @wq/app what to do if the user navigates to a model instance that is not stored locally.  There are three possible outcomes in this case:
   * If the associated model page is configured with `partial: false`, @wq/app will assume the entire model collection is stored locally, assume the page does not exist, and call the `router.notFound()` 404 page.
@@ -175,7 +175,7 @@ app.nav('items/1');
 
 #### `app.user`
 
-If the application supports authentication and the user is logged in, `app.user` will be set with information about the current user provided by the server.  This information will also be available in the [template context][templates], e.g. `{{#is_authenticated}}{{user.username}}{{/is_authenticated}}`.
+If the application supports authentication and the user is logged in, `app.user` will be set with information about the current user provided by the server.  This information will also be available in the [render context][useRenderContext] and [auth plugin state][usePluginState].
 
 #### `app.config`, `app.wq_config`
 A copy of the @wq/app configuration object (see above) and the [wq configuration object][config], respectively.  Initially `app.config.pages` and `app.wq_config.pages` are the same, but after logging in, `app.wq_config` is overwritten with an updated wq configuration object with permissions information specific to the logged-in user.  `app.config` is made available in the [template contexts][templates] as `{{app_config}}`, while `app.wq_config` is provided as `{{wq_config}}`.
@@ -192,7 +192,7 @@ app.models.item.filter({'type_id': 2}).then(function(type2items) {
 });
 ```
 
-[@wq/app]: https://github.com/wq/wq.app/blob/main/packages/app
+[source]: https://github.com/wq/wq.app/blob/main/packages/app
 
 [wq]: ../wq.md
 [wq.app]: ../wq.app/index.md
@@ -213,4 +213,7 @@ app.models.item.filter({'type_id': 2}).then(function(type2items) {
 [router]: ../wq.db/router.md
 [wq.db.rest]: ../wq.db/rest.md
 [config]: ../wq-configuration-object.md
+[Login]: ../views/Login.md
+[useRenderContext]: ../hooks/useRenderContext.md
+[usePluginState]: ../hooks/usePluginState.md
 [Promise]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise

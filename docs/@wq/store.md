@@ -6,7 +6,7 @@ module: wq.app
 @wq/store
 ========
 
-[@wq/store]
+[@wq/store][source]
 
 **@wq/store** is a [wq.app] module providing a persistent storage API for retrieving and querying JSON data from a web service via AJAX.  @wq/store is used internally by [@wq/app] to store model data (via [@wq/model]) and application configuration.  As of wq.app 1.2, @wq/store relies extensively on [Redux] to manage state, with [Redux Persist] and [localForage] to handle the work of storing data offline in IndexedDB.
 
@@ -34,20 +34,7 @@ npm install @wq/app       # install all @wq/app deps including @wq/store
 
 `@wq/store` is typically imported as `ds` (i.e. "datastore"), though any local variable name can be used.  `ds` is a singleton instance of a `Store` class, and can also be used to retrieve and/or create other stores.
 
-> Note: When working with [@wq/app], the store is initialized automatically and exported as `app.store`.
-
-### wq.app for PyPI
-
-```javascript
-// myapp.js
-define(['wq/store', ...], function(ds, ...) {
-   ds.init(config);  // Main store
-   var secondStore = ds.getStore('store2');
-   secondStore.init(config2);
-});
-```
-
-### @wq/app for npm
+> Note: When working with [@wq/app], the store is initialized automatically and exported as `app.store`.  Further, the [@wq/model] and [@wq/outbox] state are automatically loaded by wq's [components] via wq's [hooks].  To add custom state to the store, it is best to use a [reducer plugin][reducer] instead of accessing the store API directly.  The documentation below is primarily for advanced use cases, and to provide details on how @wq/store works internally.
 
 ```javascript
 // myapp.js
@@ -76,7 +63,7 @@ name | purpose
 
 ```javascript
 // query:
-ds.get({'url': 'items', 'format': 'json'});
+await ds.get({'url': 'items', 'format': 'json'});
 // resulting URL (assuming web service at root URL):
 fetch("/items.json");
 ```
@@ -100,7 +87,7 @@ name | purpose
 `storageFail(value, error)` | Defines a callback to use when `localForage.setItem()` fails for any reason (e.g. when offline storage is full or disabled).  The callback will be provided with the value being saved as well as the error object.
 `fetchFail(query, error)` | Defines a callback to use when a network request fails or the result is unparseable.  The callback will be passed the original `query` and a description of the error.
 
-> As of **wq.app 1.2**, the `jsonp` and `parseData` configuration options no longer exist.  To customize how data is retrieved and parsed, use the `ajax()` plugin hook instead.
+> As of **wq.app 1.2**, the `jsonp` and `parseData` configuration options no longer exist.  To customize how data is retrieved and parsed, use an `ajax()` plugin instead.
 
 ### Plugin Types
 
@@ -152,12 +139,7 @@ ds.subscribe(onUpdate);
 `ds.get()` retrieves values from the datastore.  It accepts a `query` value (see above) and returns a [Promise] that is resolved when the value is loaded.  If the value is not already stored locally, `ds.get()` can automatically generate an AJAX request to load the data from the web service.
 
 ```javascript
-ds.get("name").then(function(name) {
-    // ...
-});
-ds.get({'url': 'items'}).then(function(items) {
-    // ...
-});
+const name = await ds.get("name");
 ```
 
 > Note that `ds.get()` is an **a**synchronous-only API, even if the data is already stored locally and no AJAX request is needed.  This is to ensure the usage remains the same whether or not an AJAX call is needed.  See `getState()` above for a synchronous API.
@@ -173,17 +155,12 @@ ds.get(['/items', '/types']).then(function(result) {
 
 #### `ds.set(query, value)`
 
-> Note: `ds.set()` is a legacy API and may be removed in a future major release of wq.app.  If you are working extensively with arrays or collections of similarly-structured objects, it is generally best to use the [@wq/model] API rather than `ds.set()`.  For other cases, use a reducer plugin and/or `ds.dispatch()`.
+> Note: `ds.set()` is a legacy API and may be removed in a future major release of wq.app.  If you are working extensively with arrays or collections of similarly-structured objects, it is generally best to use the [@wq/model] API rather than `ds.set()`.  For other cases, use a [reducer plugin][reducer].
 
 `ds.set()` is used to assign a value for the specified query to the local datastore.
 
 ```javascript
 ds.set('name', "Example");
-ds.set('name', "Example").then(function() {
-    ds.get('name').then(function(name) {
-        // name == "Example";
-    });
-});
 ```
 
 > **Changed in wq.app 1.2:** The promise returned by `ds.set()` no longer waits until the data has been fully persisted to offline storage before resolving.
@@ -246,18 +223,20 @@ function | loads from | saves to storage
 
 To persist storage across user sessions, @wq/store requires some kind of offline storage to function as designed.  Nearly all browsers in use today (including IE 11) have `IndexedDB` available.  [localForage] handles most the heavy lifting on automatically determining browser capabilities.  However, note that a significant fraction of web users prefer to disable offline storage.  Most notably, the "Block Cookies" setting for iOS Safari will also disable other offline storage options.  If @wq/store is unable to leverage localForage, it will still work but values will not be persisted.  This will work fine for most users, though any unsynced items in the outbox (see [@wq/outbox]) will be lost if the browser window is closed.
 
-[@wq/store]: https://github.com/wq/wq.app/blob/master/packages/store
+[source]: https://github.com/wq/wq.app/blob/main/packages/store
 [Promise]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
 [localForage]: https://mozilla.github.io/localForage/
-[wq.app]: https://wq.io/wq.app
-[@wq/app]: https://wq.io/docs/app-js
-[@wq/model]: https://wq.io/docs/model-js
-[@wq/outbox]: https://wq.io/docs/outbox-js
-[wq.db]: https://wq.io/wq.db
-[wq config object]: https://wq.io/docs/config
+[wq.app]: ../wq.app/index.md
+[@wq/app]: ./app.md
+[@wq/model]: ./model.md
+[@wq/outbox]: ./outbox.md
+[components]: ../components/index.md
+[hooks]: ../hooks/index.md
+[wq.db]: ../wq.db/index.md
+[wq config object]: ../wq-configuration-object.md
 [Redux]: https://redux.js.org/
 [Redux Persist]: https://github.com/rt2zz/redux-persist
 [plugins]: ../plugins/index.md
 [ajax]: ../plugins/ajax.md
 [reducer]: ../plugins/reducer.md
-[@wq/router]: https://wq.io/docs/router-js
+[@wq/router]: ./router.md

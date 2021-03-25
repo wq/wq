@@ -6,7 +6,7 @@ module: wq.app
 @wq/map
 ======
 
-[@wq/map]
+[@wq/map][source]
 
 **@wq/map** is a plugin for [@wq/app] that adds mapping capabilities.  @wq/map can leverage the [wq configuration object][config] to generate interactive maps for pages rendered via @wq/app.  The generated maps can automatically download and display GeoJSON data rendered by [wq.db's REST API][wq.db] or any third party service.
 
@@ -270,16 +270,16 @@ app.use({ components: { Main }});
 
 > Note that persisting many maps offscreen may negatively impact performance.  In particular, browsers typically do not allow more than 16 active WebGL contexts per site.
 
-[@wq/map]: https://github.com/wq/wq.app/tree/master/packages/map
-[@wq/map plugin]: https://github.com/wq/wq.app/tree/master/packages/map/src/map.js
+[source]: https://github.com/wq/wq.app/tree/main/packages/map
+[@wq/map plugin]: https://github.com/wq/wq.app/tree/main/packages/map/src/map.js
 
 [@wq/app]: ./app.md
 [@wq/router]: ./router.md
 [@wq/react]: ./react.md
 [@wq/material]: ./material.md
 [@wq/mapbox]: ./mapbox.md
-[@wq/leaflet]: https://github.com/wq/wq.app/tree/master/packages/leaflet
-[@wq/jquery-mobile]: https://github.com/wq/wq.app/tree/master/packages/jquery-mobile
+[@wq/leaflet]: https://github.com/wq/wq.app/tree/main/packages/leaflet
+[@wq/jquery-mobile]: https://github.com/wq/wq.app/tree/main/packages/jquery-mobile
 
 [Mapbox]: https://docs.mapbox.com/mapbox-gl-js/
 [Leaflet]: https://leafletjs.com/

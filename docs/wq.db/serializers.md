@@ -41,7 +41,7 @@ Other enhancements provided by wq.db's ModelSerializer include:
  * User-friendly datetime rendering (`[date]_label`)
  * Automatic "nested" serializers for foreign keys when rendering detail views.
 
-[wq.db.rest.serializers]: https://github.com/wq/wq.db/blob/master/rest/serializers.py
+[wq.db.rest.serializers]: https://github.com/wq/wq.db/blob/main/rest/serializers.py
 [wq.db]: ./index.md
 [REST API]: ./rest.md
 [ModelSerializer]: http://www.django-rest-framework.org/api-guide/serializers/#modelserializer

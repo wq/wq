@@ -4,9 +4,11 @@ module: wq.create
 
 # @wq/rollup-plugin
 
-@wq/rollup-plugin makes it possible to create custom plugins that integrate with [wq.app](https://wq.io/wq.app)'s pre-built **wq.js** bundle. @wq/rollup-plugin remaps certain module imports to leverage exports from the bundle.
+[@wq/rollup-plugin][source]
 
-> Note: While @wq/rollup-plugin can used in a project build, it is primarily intended for use by authors of plugins distributed as reusable Django apps. Django projects created with `wq start --with-npm` (& Create React App) use CRA's Webpack configuration by default instead of Rollup. (See [@wq/cra-template](https://github.com/wq/wq.start/tree/master/packages/cra-template))
+@wq/rollup-plugin makes it possible to create custom plugins that integrate with [wq.app]'s pre-built [**wq.js**][wq] bundle. @wq/rollup-plugin remaps certain module imports to leverage exports from the bundle.
+
+> Note: While @wq/rollup-plugin can used in a project build, it is primarily intended for use by authors of plugins distributed as reusable Django apps. Django projects created with `wq start --with-npm` (& Create React App) use CRA's Webpack configuration by default instead of Rollup. (See [@wq/cra-template])
 
 ### Usage
 
@@ -50,7 +52,7 @@ export default [
 ];
 ```
 
-With the above configuration, the output bundle will include the source of any third-party `node_modules/`, _except_ those known to already be included in **wq.js**. Those imports will be changed to a relative import to `./wq.js` (which is typically deployed to the `static/js/app` folder in a Django project).
+With the above configuration, the output bundle will include the source of any third-party `node_modules/`, _except_ those known to already be included in [**wq.js**][wq]. Those imports will be changed to a relative import to `./wq.js` (which is typically deployed to the `static/js/app` folder in a Django project).
 
 In addition to keeping bundle sizes small, @wq/rollup-plugin helps ensure that there is only one copy of key libraries like React. Below is the full list of modules currently exported by **wq.js** for consumption via this plugin:
 
@@ -71,3 +73,8 @@ In addition to keeping bundle sizes small, @wq/rollup-plugin helps ensure that t
 -   `@wq/material`
 -   `@wq/map`
 -   `@wq/mapbox`
+
+[source]: https://github.com/wq/wq.create/tree/main/packages/cra-template
+[wq.app]: ../wq.app/index.md
+[wq]: ../wq.md
+[@wq/cra-template]: ./cra-template.md

@@ -16,7 +16,7 @@ url | purpose
 `/logout` | Logs out the user and displays a success message.  Note that it is up to you to provide the required template, `logout.html`.
 `/logout.json` | Used by [@wq/app] to log out the user via AJAX.
 
-[wq.db.rest.auth]: https://github.com/wq/wq.db/blob/master/rest/auth/
+[wq.db.rest.auth]: https://github.com/wq/wq.db/blob/main/rest/auth/
 [wq.db]: ./index.md
 [REST API]: ./rest.md
 [auth module]: https://docs.djangoproject.com/en/1.7/topics/auth/

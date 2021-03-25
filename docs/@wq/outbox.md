@@ -6,7 +6,7 @@ module: wq.app
 @wq/outbox
 ========
 
-[@wq/outbox]
+[@wq/outbox][source]
 
 **@wq/outbox** is a [wq.app] module providing an offline-cabable "outbox" of unsynced form entries for submission to a web service.  @wq/outbox integrates with [@wq/store] to handle offline storage, and with [@wq/model] for managing collections of editable objects.
 
@@ -14,7 +14,7 @@ By default, @wq/outbox does not apply changes to the local @wq/model state until
 
 As of wq.app 1.2, @wq/outbox is based on [Redux Offline], and leverages its strategies for detecting network state and retrying failed submissions.  Most notably, Redux Offline schedules sync attempts automatically, whereas @wq/outbox in wq.app 1.1 and earlier relied on @wq/app to manage the sync interval.
 
-@wq/outbox can be used to store photos and other files submitted with a form.  The files will be stored as `Blob`s in offline storage until the outbox is synced.  See the [@wq/app:photos] documentation for more information about this feature.
+@wq/outbox can be used to store photos and other files submitted with a form.  The files will be stored as `Blob`s in offline storage until the outbox is synced.
 
 ## Installation
 
@@ -36,33 +36,13 @@ npm install @wq/app       # install all @wq/app deps including @wq/outbox
 
 ## API
 
-When used with [@wq/app], @wq/outbox is available as `app.outbox`.  When using directly, `@wq/outbox` is typically imported as `outbox`, though any local variable name can be used.  Each outbox instance should be bound to the corresponding [@wq/store] instance it will use for managing data.  The main outbox is pre-bound to the main store instance and should be suitable as-is for most use cases.
+When used with [@wq/app] or [wq.app], @wq/outbox is available as `app.outbox`.  When using directly, `@wq/outbox` is typically imported as `outbox`, though any local variable name can be used.  Each outbox instance should be bound to the corresponding [@wq/store] instance it will use for managing data.  The main outbox is pre-bound to the main store instance and should be suitable as-is for most use cases.
 
-
-#### wq.app for PyPI
-
-```javascript
-// @wq/app usage
-define(['wq/app', './config', ...], function(app, config, ...) {
-   config.outbox = ...;
-   app.init(config).then(...);
-   var outbox = app.outbox;
-});
-
-// Direct usage
-define(['wq/store', 'wq/outbox', ...], function(ds, outbox, ...) {
-    outbox.init(config1);
-    var secondStore = ds.getStore('store2');
-    var secondOutbox = outbox.getOutbox(secondStore);
-    secondOutbox.init(config2);
-});
-```
-
-#### @wq/app for npm
+> Note that in most wq-based applications, it is not necessary to access the outbox API directly.  The default [`<Form/>`][Form] component saves submissions to the outbox automatically, and the [`useUnsynced()`][useUnsynced] & [`useOutbox()`][useOutbox] hooks can load the state in custom views.  The API documented below is for advanced use cases, and to provide an understanding of how @wq/outbox works internally.
 
 ```javascript
 // @wq/app usage
-import app from '@wq/app';
+import app from '@wq/app';  // or './wq.js'
 import config from './config';
 config.outbox = ...;
 app.init(config).then(...);
@@ -113,21 +93,15 @@ name | purpose
 `batchService` | Specifies that the server supports submitting multiple requests as a batch.  **Changed in wq.app 1.2**: This should be specified as an API path relative to the main `service` URL.  By default, the server's batch API is assumed to be compatible with [Django Batch Requests].
 `batchMinSize` | **New in wq.app 1.2**.  Specifies the threshold at which batch mode should be activated.  The default is 2, meaning the `batchService` will only be used when there are at least 2 records in the outbox that are ready to sync.  Set this to 1 (or 0) to ensure that batch mode is always used.
 `batchMaxSize` | **New in wq.app 1.2**.  Specifies the maximum number of requests to include in a single batch.  Defaults to 50.
-`parseBatchResult(result)` | **Removed in wq.app 1.2**.  This option was used to parse the result of a batch upload.  In wq.app 1.2 the result is assumed to match the output structure of [Django Batch Requests].  If not, you can use an [ajax() plugin hook][@wq/store] to specify a custom parsing function.
-`applyResult()` | **Removed in wq.app 1.2**.  This option was used to customize whether a form submission is successful.  In wq.app 1.2 this can be done with an [ajax() plugin hook][@wq/store] that throws an error on failure.
+`parseBatchResult(result)` | **Removed in wq.app 1.2**.  This option was used to parse the result of a batch upload.  In wq.app 1.2 the result is assumed to match the output structure of [Django Batch Requests].  If not, you can use an [ajax() plugin][ajax] to specify a custom parsing function.
+`applyResult()` | **Removed in wq.app 1.2**.  This option was used to customize whether a form submission is successful.  In wq.app 1.2 this can be done with an [ajax() plugin][ajax] that throws an error on failure.
 `updateModels()` | **Removed in wq.app 1.2**. This was used to configure how local models are updated based on the server response.  In wq.app 1.2, this is done by dispatching the appropriate Redux actions to update the local state.
 
 ### Plugin Hooks
 
-@wq/outbox provides support for the following [@wq/app plugin hooks][@wq/app].
+@wq/outbox provides support for the following [@wq/app plugin type][plugins].
 
-#### `onsync(item)`
-
-**New in wq.app 1.2.**
-
-Called after an outbox item is succesfully synced (or has an error).  See Outbox Item above for the description of the available attributes.
-
-Note that this function will be called each time an item is synced, regardless of how the item was created.  If you have custom code that calls `outbox.save()` directly, you can use `outbox.waitForItem(id)` instead of this hook.
+ * [onsync(item)][onsync]
 
 ### Outbox Methods
 
@@ -139,6 +113,8 @@ Updates the CSRF token that will be applied to outbox items when they are synced
 
 #### `outbox.save(data, [options])`
 
+> `outbox.save()` is called automatically by [`<Form/>`][Form] on submit, and does not usually need to be called directly except in advanced use cases.
+
 `outbox.save()` takes the form data as a simple JavaScript object (see above) and an optional `options` object, and creates an outbox item.  The `options` object can have one or more of the following set:
 
 name | purpose
@@ -147,50 +123,24 @@ name | purpose
 `modelConf` | The configuration for a corresponding model that should be updated when this item is synced.  This is set automatically by [@wq/app] by resolving the `url` to a configured model.
 `method` | HTTP method to use when posting the data (`PUT`, `POST`, etc.).  The default is `config.syncMethod` (usually `POST`), but [@wq/app] will automatically use `PUT` when updating an existing model instance.
 `applyState` | **New in wq.app 1.2.** For model-backed forms, `applyState` determines when to apply form submissions to the local state.  The default is `config.applyState` (usually `"ON_SUCCESS"`).  See Redux Actions below for more info.
-`id` | The outbox id of a previous form submission that hasn't yet been synced.  This option makes it possible to allow the user to review and edit outbox items before they are synced to the server.  It can be set automatically by [@wq/app] if `data-wq-outbox-id` is set on the `<form>`.
+`id` | The outbox id of a previous form submission that hasn't yet been synced.  This option makes it possible to allow the user to review and edit outbox items before they are synced to the server.
 `storage` | Where to store the form data associated with the outbox record.  By default, the data is stored directly in the Redux state that is persisted to offline storage.  If the form contains sensitive data (such as username/password), `"temporary"` should be used instead to ensure the form data is not persisted.  For form submissions containing binary data (e.g. `Blob`), storage should be set to `"storage"`, which preserves the data in a separate form key to avoid performance issues when persisting the Redux state.
-`preserve` | A list of fields to preserve in the existing outbox item.  This option can be used with `id` to avoid overwriting hard-to-set fields like file uploads and GPS coordinates.  It can be automatically set by [@wq/app] if `data-wq-preserve` is set on the `<form>`.  See the [Species Tracker code](https://github.com/powered-by-wq/species.wq.io/blob/master/templates/report_edit.html) for an example.
+`preserve` | A list of fields to preserve in the existing outbox item.  This option can be used with `id` to avoid overwriting hard-to-set fields like file uploads and GPS coordinates.
 
 `outbox.save()` returns a `Promise` that resolves to the stored outbox item.
 
 > **Changed in wq.app 1.2**: @wq/outbox now uses [Redux Offline] to handle syncing in the background.  Because of this, the returned `Promise` is always resolved *before* the record is synced.  If you need to wait for the sync result, call `outbox.waitForItem()` after calling `outbox.save()`).  Relatedly, `outbox.save()` no longer accepts a third `noSend` argument.  If you would like to save an item to the outbox without triggering an immediate sync attempt, call `outbox.pause()` before `outbox.save()`.
 
-##### wq.app for PyPI
-
 ```javascript
-$form.submit(function() {
-     var data = {};
-     $form.serializeArray().forEach(function(field) {
-         data[field.name] = field.value;
-     });
-     outbox.save(data).then(function(item) {
-         return outbox.waitForItem(item.id);
-     }).then(function(item) {
-         if (item.synced) {
-             console.log("Item successfully synced!");
-         } else {
-             console.log(item.error);
-         }
-     });
-});
-```
-
-##### @wq/app for npm
-
-```javascript
-$form.submit(async () => {
-     var data = {};
-     $form.serializeArray().forEach(function(field) {
-         data[field.name] = field.value;
-     });
-     const { id } = await outbox.save(data);
-     const item = await outbox.waitForItem(id);
-     if (item.synced) {
-         console.log("Item successfully synced!");
-     } else {
-         console.log(item.error);
-     }
-});
+async function customSubmitHandler(data) {
+    const { id } = await outbox.save(data);
+    const item = await outbox.waitForItem(id);
+    if (item.synced) {
+        console.log("Item successfully synced!");
+    } else {
+        console.log(item.error);
+    }
+}
 ```
 
 ##### Redux Actions
@@ -280,13 +230,18 @@ Like `unsyncedItems()`, but limited to items that haven't been sent at all (or a
 
 **New in wq.app 1.2.** Wipe out all outbox records, including those that have not been synced.  Internally, this is accomplished by resetting Redux Offline to its initial state.
 
-[@wq/outbox]: https://github.com/wq/wq.app/blob/master/packages/outbox
-[wq.app]: https://wq.io/wq.app
-[@wq/app]: https://wq.io/docs/app-js
-[@wq/store]: https://wq.io/docs/store-js
-[@wq/model]: https://wq.io/docs/model-js
-[@wq/app:photos]: https://wq.io/docs/app-js
-[wq.db]: https://wq.io/wq.db
+[source]: https://github.com/wq/wq.app/blob/main/packages/outbox
+[wq.app]: ../wq.app/index.md
+[@wq/app]: ./app.md
+[@wq/store]: ./store.md
+[@wq/model]: ./model.md
+[wq.db]: ../wq.db/index.md
+[Form]: ../components/Form.md
+[useUnsynced]: ../hooks/useUnsynced.md
+[useOutbox]: ../hooks/useOutbox.md
+[plugins]: ../plugins/index.md
+[ajax]: ../plugins/ajax.md
+[onsync]: ../plugins/onsync.md
 [CSRF Token]: https://docs.djangoproject.com/en/1.8/ref/csrf/
 [Redux Offline]: https://github.com/redux-offline/redux-offline
 [Django Batch Requests]: https://github.com/tomaszn/django-batch-requests

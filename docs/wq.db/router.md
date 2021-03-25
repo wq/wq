@@ -124,8 +124,8 @@ function(config, ...) {
 
 The default [wq Django Template] uses `dump_config` in the provided `deploy.sh`.
 
-[wq.db.rest.routers]: https://github.com/wq/wq.db/blob/master/rest/routers.py
-[ModelRouter]: https://github.com/wq/wq.db/blob/master/rest/routers.py
+[wq.db.rest.routers]: https://github.com/wq/wq.db/blob/main/rest/routers.py
+[ModelRouter]: https://github.com/wq/wq.db/blob/main/rest/routers.py
 [wq.db.rest]: ./rest.md
 [@wq/app]: ../@wq/app.md
 [wq.app]: ../wq.app/index.md

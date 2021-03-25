@@ -70,7 +70,7 @@ The server-generated redirects are designed to mimic the client `postsave` funct
 
 `ModelViewSet` includes two methods, `postsave` and `saveerror`, that can be overridden like their counterparts in [@wq/app] to fully customize server-rendered save behavior.
 
-[wq.db.rest.views]: https://github.com/wq/wq.db/blob/master/rest/views.py
+[wq.db.rest.views]: https://github.com/wq/wq.db/blob/main/rest/views.py
 [wq.db]: ./index.md
 [REST API]: ./rest.md
 [views]: http://www.django-rest-framework.org/api-guide/views/
