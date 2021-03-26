@@ -1,5 +1,11 @@
 ---
-module: "@wq/material"
+wq_config:
+  name: icons
+  url: icons
+  order: 27
+  section: API Reference
+  subsection: "React Components"
+  icon_data: "M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z"
 ---
 
 # Icon Components
@@ -22,19 +28,20 @@ Icon | Component |`icon` Prop Value | Description
 
 > The default icons are defined in @wq/material's [src/icons.js] and [src/icons.native.js].
 
-[@wq/react]: ../@wq/react.md
-[@wq/material]: ../@wq/material.md
-[Button]: ./Button.md
-[IconButton]: ./IconButton.md
-[Fab]: ./Fab.md
-[ListItem]: ./ListItem.md
-[components-plugin]: ../plugins/components.md
-[DefaultList]: ../views/DefaultList.md
-[DefaultDetail]: ../views/DefaultDetail.md
-[DefaultEdit]: ../views/DefaultEdit.md
-[OutboxList]: ../views/OutboxList.md
-[DeleteForm]: ./DeleteForm.md
-[Geo]: ../inputs/Geo.md
+[@wq/react]: ./@wq/react.md
+[@wq/material]: ./@wq/material.md
+[Button]: ./components/Button.md
+[IconButton]: ./components/IconButton.md
+[Fab]: ./components/Fab.md
+[ListItem]: ./components/ListItem.md
+[components-plugin]: ./plugins/components.md
+[DefaultList]: ./views/DefaultList.md
+[DefaultDetail]: ./views/DefaultDetail.md
+[DefaultEdit]: ./views/DefaultEdit.md
+[OutboxList]: ./views/OutboxList.md
+[DeleteForm]: ./components/DeleteForm.md
+[Geo]: ./inputs/Geo.md
+
 [src/icons.js]: http://github.com/wq/wq.app/tree/main/packages/material/src/icons.js
 [src/icons.native.js]: http://github.com/wq/wq.app/tree/main/packages/material/src/icons.native.js
 

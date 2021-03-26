@@ -17,7 +17,7 @@ While [@wq/react] defines a [placeholder implementation][react-src], [@wq/materi
 [component]: ./index.md
 [@wq/react]: ../@wq/react.md
 [@wq/material]: ../@wq/material.md
-[icons]: ./icons.md
+[icons]: ../icons.md
 [react-native-paper]: https://callstack.github.io/react-native-paper/
 
 [react-src]: https://github.com/wq/wq.app/blob/main/packages/react/src/components/Button.js

@@ -2,7 +2,6 @@
 module: wq.app
 ---
 
-
 @wq/material
 ========
 
@@ -100,7 +99,7 @@ See [the components plugin documentation][components-plugin] for information on 
 [@wq/router]: ./router.md
 [wq]: ../wq.md
 [components]: ../components/index.md
-[icons]: ../components/icons.md
+[icons]: ../icons.md
 [inputs]: ../inputs/index.md
 [components-plugin]: ../plugins/components.md
 

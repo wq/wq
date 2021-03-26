@@ -1,5 +1,4 @@
 ---
-permalink: /config
 wq_config:
    name: config
    url: config

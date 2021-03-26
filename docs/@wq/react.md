@@ -76,7 +76,7 @@ Many of @wq/react's general components, and all of its icon and input components
 [config]: ../config.md
 [url-structure]: ../wq.db/url-structure.md
 [components]: ../components/index.md
-[icons]: ../components/icons.md
+[icons]: ../icons.md
 [inputs]: ../inputs/index.md
 [views]: ../views/index.md
 [hooks]: ../hooks/index.md

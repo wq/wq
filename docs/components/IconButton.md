@@ -17,7 +17,7 @@ While [@wq/react] defines a [placeholder implementation][react-src], [@wq/materi
 [component]: ./index.md
 [@wq/react]: ../@wq/react.md
 [@wq/material]: ../@wq/material.md
-[icons]: ./icons.md
+[icons]: ../icons.md
 
 [react-src]: https://github.com/wq/wq.app/blob/main/packages/react/src/components/IconButton.js
 [material-src]: https://github.com/wq/wq.app/blob/main/packages/material/src/components/IconButton.js

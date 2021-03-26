@@ -4,19 +4,23 @@ module: "@wq/map"
 
 # useMapInstance()
 
-Shortcut for `useMapState().instance`, i.e. `usePluginState('map').instance`.
+Shortcut for `useMapState().instance`, i.e. `usePluginState('map').instance`.   Note that the available attributes depend on the underlying engine.
 
-```js
-const map = useMapInstance();
+```javascript
+import { useEffect } from 'react';
+import { useMapInstance } from '@wq/map';
 
-useEffect(() => {
-    if (!map) {
-        return;
-    }
-    map.on('click', onClick);
-    function onClick() {
-        // ...
-    }
-    return () => map.off('click', onClick);
-}, [map]);
+export default function CustomMapInteraction() {
+    const mapInstance = useMapInstance();
+    useEffect(() => {
+        if (!mapInstance) {
+            return;
+        }
+        mapInstance.on('click', onClick);
+        function onClick() {
+            // ...
+        }
+        return () => mapInstance.off('click', onClick);
+    }, [mapInstance]);
+}
 ```
