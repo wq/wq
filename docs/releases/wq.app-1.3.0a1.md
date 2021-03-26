@@ -64,7 +64,7 @@ module | description
 [@wq/material]: ../@wq/material.md
 [@wq/jquery-mobile]: https://github.com/wq/wq.app/tree/main/packages/jquery-mobile
 [react-components]: ../components/index.md
-[config]: ../wq-configuration-object.md
+[config]: ../config.md
 
 ### Upgrade Notes
 

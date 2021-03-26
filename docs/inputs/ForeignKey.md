@@ -112,7 +112,7 @@ The code for handling foreign keys is spread throughout wq.app, and there is no 
 
 [Select]: ./Select.md
 [AutoInput]: ../components/AutoInput.md
-[config]: ../wq-configuration-object.md
+[config]: ../config.md
 [nested-forms]: ../guides/implement-repeating-nested-forms.md
 [wq framework]: ../index.md
 [@wq/app]: ../@wq/app.md

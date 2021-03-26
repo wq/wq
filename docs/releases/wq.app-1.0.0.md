@@ -44,7 +44,7 @@ date: 2017-07-24
   * Drop wq/appcache.js, wq/online.js, and wq/owl.js
   * Various plugin updates
 * [Changes in RC 1](./wq.app-1.0.0rc1.md)
-  * New [Pagination and Caching API](../wq-configuration-object.md) (#47)
+  * New [Pagination and Caching API](../config.md) (#47)
   * New [wq icons](../wq.build/icons.md) and wq phonegap commands (wq/wq-django-template#4)
   * Improve support for deletion & offline editing (#70, #72, #77, #78, #80)
   * Various bug fixes & improvements

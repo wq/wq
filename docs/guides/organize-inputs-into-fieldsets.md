@@ -512,7 +512,7 @@ It is also possible to explicitly render each [`<Input/>`][input components] wit
 [setup]: ../overview/setup.md
 [survey.csv]: ./organize-inputs-into-fieldsets/survey.csv
 [Django model]: https://docs.djangoproject.com/en/3.1/topics/db/models/
-[config]: ../wq-configuration-object.md
+[config]: ../config.md
 [wq.db]: ../wq.db/index.md
 [ModelSerializer]: ../wq.db/serializers.md
 [modeladmin-fieldsets]: https://docs.djangoproject.com/en/3.1/ref/contrib/admin/#django.contrib.admin.ModelAdmin.fieldsets

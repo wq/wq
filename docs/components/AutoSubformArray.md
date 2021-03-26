@@ -20,7 +20,7 @@ The [@wq/react] implementation automatically determines which actual components 
 [AutoSubform]: ./AutoSubform.md
 [AutoForm]: ./AutoForm.md
 [FileArray]: ./FileArray.md
-[config]: ../wq-configuration-object.md
+[config]: ../config.md
 [@wq/react]: ../@wq/react.md
 [@wq/material]: ../@wq/material.md
 

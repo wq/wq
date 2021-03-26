@@ -19,7 +19,7 @@ The [@wq/react] implementation automatically determines which actual input to re
 [inputs]: ../inputs/index.md
 [Form]: ./Form.md
 [AutoForm]: ./AutoForm.md
-[config]: ../wq-configuration-object.md
+[config]: ../config.md
 [@wq/react]: ../@wq/react.md
 [@wq/material]: ../@wq/material.md
 

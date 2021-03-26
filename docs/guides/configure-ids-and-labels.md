@@ -166,7 +166,7 @@ Thus, it is not necessary to define a template or function to generate offline r
 [router]: ../wq.db/router.md
 [configure-route-names-and-urls]: ./configure-route-names-and-urls.md
 [django:__str__]: https://docs.djangoproject.com/en/3.1/ref/models/instances/#django.db.models.Model.__str__
-[config]: ../wq-configuration-object.md
+[config]: ../config.md
 [@wq/model]: ../@wq/model.md
 [ModelSerializer]: ../wq.db/serializers.md
 [ModelViewSet]: ../wq.db/views.md

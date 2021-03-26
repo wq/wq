@@ -37,7 +37,7 @@ See the documentation for [wq/app.js](../@wq/app.md) for more information on the
 
 ### Map Configuration & Layer Editing (#41, #36)
 
-[wq/map.js](../@wq/map.md) is now more easily configured via pure JSON.  The JSON configuration can be specified within the [wq configuration object](../wq-configuration-object.md) for a page by creating the `map` property as an object instead of a boolean.  The old JavaScript-based configuration still works, but is mostly deprecated and parts will be removed in 1.0.
+[wq/map.js](../@wq/map.md) is now more easily configured via pure JSON.  The JSON configuration can be specified within the [wq configuration object](../config.md) for a page by creating the `map` property as an object instead of a boolean.  The old JavaScript-based configuration still works, but is mostly deprecated and parts will be removed in 1.0.
 
 As part of this change, basemaps and overlays can now have custom types in addition to the default `TileLayer` and `GeoJSON` formats.  The types need to be registered via JavaScript but the actual layers can be registered via JSON configuration.
 

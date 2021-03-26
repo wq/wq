@@ -91,7 +91,7 @@ While [@wq/react] defines a [placeholder implementation][react-src], [@wq/materi
 
 [inputs]: ./index.md
 [Toggle]: ./Toggle.md
-[config]: ../wq-configuration-object.md
+[config]: ../config.md
 [@wq/react]: ../@wq/react.md
 [@wq/material]: ../@wq/material.md
 [react-src]: https://github.com/wq/wq.app/blob/main/packages/react/src/inputs/Checkbox.js

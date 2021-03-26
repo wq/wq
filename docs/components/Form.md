@@ -24,7 +24,7 @@ The [@wq/react] implementation leverages [`useComponents()`][useComponents] to f
 [FormRoot]: ./FormRoot.md
 [inputs]: ../inputs/index.md
 [AutoForm]: ./AutoForm.md
-[config]: ../wq-configuration-object.md
+[config]: ../config.md
 [@wq/react]: ../@wq/react.md
 [@wq/material]: ../@wq/material.md
 [useComponents]: ../hooks/useComponents.md

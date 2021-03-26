@@ -74,7 +74,7 @@ A collection of abstract models and serializers for use in constructing advanced
 [Django REST Framework]: http://django-rest-framework.org
 [url-structure]: ./url-structure.md
 [ModelRouter]: ./router.md
-[configuration object]: ../wq-configuration-object.md
+[configuration object]: ../config.md
 [@wq/app]: ../@wq/app.md
 
 [patterns]: https://wq.io/docs/about-patterns

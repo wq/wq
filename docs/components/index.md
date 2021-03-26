@@ -20,7 +20,7 @@ The [wq framework] comes with a built in component library implementing wq's [da
 To add custom components or override the defaults in any of these categories, register a [components plugin] with [@wq/app].
 
 [wq framework]: ../index.md
-[config]: ../wq-configuration-object.md
+[config]: ../config.md
 [url-structure]: ../wq.db/url-structure.md
 [icons]: ./icons.md
 [inputs]: ../inputs/index.md

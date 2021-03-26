@@ -65,4 +65,4 @@ verb | path | view | purpose
 [@wq/map]: ../@wq/map.md
 [router]: ./router.md
 [views]: ../views/index.md 
-[wq configuration object]: ../wq-configuration-object.md
+[wq configuration object]: ../config.md

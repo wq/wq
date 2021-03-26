@@ -315,6 +315,6 @@ myModel.dispatch('OVERWRITE', []);
 [wq.app]: ../wq.app/index.md
 [Redux-ORM]: https://github.com/redux-orm/redux-orm
 [wq.db]: ../wq.db/index.md
-[wq configuration object]: ../wq-configuration-object.md
+[wq configuration object]: ../config.md
 [Promise]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
 [@wq/outbox]: ../@wq/outbox.md

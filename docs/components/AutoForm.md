@@ -18,7 +18,7 @@ The [@wq/react] implementation leverages [`useComponents()`][useComponents] and 
 [component]: ./index.md
 [Form]: ./Form.md
 [AutoInput]: ./AutoInput.md
-[config]: ../wq-configuration-object.md
+[config]: ../config.md
 [@wq/router]: ../@wq/router.md
 [DefaultEdit]: ../views/DefaultEdit.md
 [@wq/react]: ../@wq/react.md

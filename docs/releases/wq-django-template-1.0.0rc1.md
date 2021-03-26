@@ -15,4 +15,4 @@ date: 2017-04-05
 ### Other Improvements
  * Disable application cache by default (87606a6)
  * Support python3 venv by default (aed5473, 60eb459)
- * Rework pagination for common use cases (e089494, see wq/wq.app#47 and [Pagination and Caching](../wq-configuration-object.md))
+ * Rework pagination for common use cases (e089494, see wq/wq.app#47 and [Pagination and Caching](../config.md))

@@ -32,5 +32,5 @@ date: 2017-07-19
    * Updates for DRF 3.5
    * Additional wq configuration options: `wq_label_template` and `wq_field_config`
  * [Changes in RC1](./wq.db-1.0.0rc1.md)
-   * New `cache` option for better integration wtih wq.app (wq/wq.app#47).  See [Pagination and Caching](../wq-configuration-object.md).
+   * New `cache` option for better integration wtih wq.app (wq/wq.app#47).  See [Pagination and Caching](../config.md).
    * Server support for attachments/EAV patterns in "new" screens (#61).

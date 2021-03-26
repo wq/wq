@@ -177,7 +177,7 @@ Navigates to the specified URL (assuming it matches a registered route).
 [wq.app]: ../wq.app/index.md
 [wq.db]: ../wq.db/index.md
 [@wq/app]: ./app.md
-[wq configuration object]: ../wq-configuration-object.md
+[wq configuration object]: ../config.md
 [@wq/store]: ./store.md
 [Redux-First Router]: https://github.com/faceyspacey/redux-first-router
 [path-to-regexp]: https://github.com/pillarjs/path-to-regexp

@@ -17,7 +17,7 @@ The [@wq/react] implementation leverages [`useComponents()`][useComponents] to f
 
 [component]: ./index.md
 [Table]: ./Table.md
-[config]: ../wq-configuration-object.md
+[config]: ../config.md
 [@wq/router]: ../@wq/router.md
 [DefaultDetail]: ../views/DefaultDetail.md
 [@wq/react]: ../@wq/react.md

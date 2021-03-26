@@ -284,7 +284,7 @@ app.use({ components: { Main }});
 [Mapbox]: https://docs.mapbox.com/mapbox-gl-js/
 [Leaflet]: https://leafletjs.com/
 [wq.db]: ../wq.db/index.md
-[config]: ../wq-configuration-object.md
+[config]: ../config.md
 [react-components]: ../components/index.md
 [material-layout]: ../components/index.md
 [field-types]: ../inputs/index.md

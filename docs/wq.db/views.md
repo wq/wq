@@ -79,7 +79,7 @@ The server-generated redirects are designed to mimic the client `postsave` funct
 [router]: ./router.md
 [class-based views]: https://docs.djangoproject.com/en/1.7/topics/class-based-views/
 [GenericAPIView]: http://www.django-rest-framework.org/api-guide/generic-views/#genericapiview
-[config]: ../wq-configuration-object.md
+[config]: ../config.md
 [ModelViewSet]: http://www.django-rest-framework.org/api-guide/viewsets/#modelviewset
 [wq URL structure]: ./url-structure.md
 [@wq/app]: ../@wq/app.md

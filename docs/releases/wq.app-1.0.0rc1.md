@@ -16,7 +16,7 @@ The updated [wq django template](https://github.com/wq/wq-django-template) autom
 
 ## New Configuration for Pagination/Offline Caching
 
-The configuration options affecting pagination and offline caching (`per_page`, `partial`, `max_local_pages`, `filter`, and `reversed`) have been unified and replaced with a new `cache` setting.  See [Pagination and Caching](../wq-configuration-object.md) for details (#47, 452b0d2).
+The configuration options affecting pagination and offline caching (`per_page`, `partial`, `max_local_pages`, `filter`, and `reversed`) have been unified and replaced with a new `cache` setting.  See [Pagination and Caching](../config.md) for details (#47, 452b0d2).
 
 ## Other Improvements & Fixes
 Thanks to @tomaszn for reporting several of these issues.

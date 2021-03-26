@@ -130,7 +130,7 @@ The default [wq Django Template] uses `dump_config` in the provided `deploy.sh`.
 [@wq/app]: ../@wq/app.md
 [wq.app]: ../wq.app/index.md
 [URL structure]: ./url-structure.md
-[config]: ../wq-configuration-object.md
+[config]: ../config.md
 [Django REST Framework]: http://django-rest-framework.org/
 [DefaultRouter]: http://django-rest-framework.org/api-guide/routers
 [admin site]: https://docs.djangoproject.com/en/dev/ref/contrib/admin/

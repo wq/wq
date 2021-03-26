@@ -73,7 +73,7 @@ Many of @wq/react's general components, and all of its icon and input components
 [@wq/material]: ./material.md
 [wq]: ../wq.md
 
-[config]: ../wq-configuration-object.md
+[config]: ../config.md
 [url-structure]: ../wq.db/url-structure.md
 [components]: ../components/index.md
 [icons]: ../components/icons.md

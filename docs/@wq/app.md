@@ -212,7 +212,7 @@ app.models.item.filter({'type_id': 2}).then(function(type2items) {
 [auth]: ../wq.db/auth.md
 [router]: ../wq.db/router.md
 [wq.db.rest]: ../wq.db/rest.md
-[config]: ../wq-configuration-object.md
+[config]: ../config.md
 [Login]: ../views/Login.md
 [useRenderContext]: ../hooks/useRenderContext.md
 [usePluginState]: ../hooks/usePluginState.md

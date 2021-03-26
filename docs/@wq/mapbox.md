@@ -111,7 +111,7 @@ n/a | [Draw] | Drawing tools based on [react-mapbox-gl-draw] (web only)
 [react-mapbox-gl-draw]: https://github.com/amaurymartiny/react-mapbox-gl-draw
 
 [wq.db]: ../wq.db/index.md
-[config]: ../wq-configuration-object.md
+[config]: ../config.md
 [map-configuration]: https://github.com/wq/wq.app/tree/master/packages/map#configuration
 [map-components]: https://github.com/wq/wq.app/tree/master/packages/map#components
 [map-general]: https://github.com/wq/wq.app/tree/master/packages/map#general-components

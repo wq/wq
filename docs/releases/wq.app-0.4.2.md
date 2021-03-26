@@ -13,7 +13,7 @@ date: 2013-10-28
   - Allow [wq/store.js](../@wq/store.md) to be configured directly via app's `config` object
   - Make it possible to return to a different page after saving an item (#9)
   - Fix issue with dropdown menus not showing selected item (#7)
-  - [wq configuration object](../wq-configuration-object.md): add a `defaults` option to simplify specifying field defaults in `new` views for pages
+  - [wq configuration object](../config.md): add a `defaults` option to simplify specifying field defaults in `new` views for pages
 - **[wq/store.js](../@wq/store.md)**:
   - Fix issues with `find()` indexes (#10)
 

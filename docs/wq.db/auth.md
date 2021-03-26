@@ -22,4 +22,4 @@ url | purpose
 [auth module]: https://docs.djangoproject.com/en/1.7/topics/auth/
 [router]: ./router.md
 [@wq/app]: ../@wq/app.md
-[wq configuration object]: ../wq-configuration-object.md
+[wq configuration object]: ../config.md

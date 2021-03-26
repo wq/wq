@@ -713,5 +713,5 @@ wq.init(config).then(...);
 [@wq/rollup-plugin]: ../@wq/rollup-plugin.md
 [context]: ../plugins/context.md
 [Try WQ]: https://github.com/powered-by-wq/try.wq.io
-[config]: ../wq-configuration-object.md
+[config]: ../config.md
 [ResultSerializer]: https://github.com/powered-by-wq/try.wq.io/blob/master/db/campaigns/serializers.py

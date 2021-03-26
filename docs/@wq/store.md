@@ -233,7 +233,7 @@ To persist storage across user sessions, @wq/store requires some kind of offline
 [components]: ../components/index.md
 [hooks]: ../hooks/index.md
 [wq.db]: ../wq.db/index.md
-[wq config object]: ../wq-configuration-object.md
+[wq config object]: ../config.md
 [Redux]: https://redux.js.org/
 [Redux Persist]: https://github.com/rt2zz/redux-persist
 [plugins]: ../plugins/index.md

@@ -19,7 +19,7 @@ The [@wq/react] implementation automatically determines which actual components 
 [Fieldset]: ./Fieldset.md
 [AutoInput]: ./AutoInput.md
 [AutoForm]: ./AutoForm.md
-[config]: ../wq-configuration-object.md
+[config]: ../config.md
 [@wq/react]: ../@wq/react.md
 [@wq/material]: ../@wq/material.md
 

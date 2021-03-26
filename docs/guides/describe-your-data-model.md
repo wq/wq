@@ -88,5 +88,5 @@ After the commands complete, you can use `./manage.py dbshell`, psql, or pgAdmin
 [migration commands]: https://docs.djangoproject.com/en/1.10/ref/django-admin/#django-admin-migrate
 [wq.db router]: ../wq.db/router.md
 [inspectdb]: https://docs.djangoproject.com/en/1.10/howto/legacy-databases/
-[/config.json]: ../wq-configuration-object.md
+[/config.json]: ../config.md
 [/modelnames.json]: ../wq.db/url-structure

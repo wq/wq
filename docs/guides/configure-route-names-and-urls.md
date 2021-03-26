@@ -105,7 +105,7 @@ rest.router.register_model(
 
 [router]: ../@wq/router.md
 [configure-ids-and-labels]: ./configure-ids-and-labels.md
-[config]: ../wq-configuration-object.md
+[config]: ../config.md
 [@wq/router]: ../@wq/router.md
 [view component]: ../views/index.md
 [@wq/model]: ../@wq/model.md

@@ -72,7 +72,7 @@ The [Try WQ] demo is an example of an app that uses a primarily EAV model for th
 [migration scripts]: https://docs.djangoproject.com/en/1.8/ref/django-admin/#django-admin-migrate
 [wq.db REST API]: ../wq.db/rest.md
 [views]: ../views/index.md
-[config]: ../wq-configuration-object.md
+[config]: ../config.md
 [eav-image]: ./eav-vs-relational/eav.png
 [serializer]: ../wq.db/serializers.md
 [patterns]: ../wq.db/patterns.md

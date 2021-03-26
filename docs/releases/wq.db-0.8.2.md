@@ -13,7 +13,7 @@ This release of **wq.db** brings some enhancements to the "attachment" modules a
 - `create_attachment()` and `update_attachment()` hooks to facilitate customized [patterns](../wq.db/patterns.md) model workflows (0edf702)
 
 ## Bug Fixes
-- Fix [wq configuration object](../wq-configuration-object.md) not listing parent models correctly (due to `get_all_related_objects()` change in Django 1.8 (20cd687))
+- Fix [wq configuration object](../config.md) not listing parent models correctly (due to `get_all_related_objects()` change in Django 1.8 (20cd687))
 - Ensure server-side [postsave](../wq.db/views.md) is triggered on `update()` (450ee3a)
 - Fix for template vars in Python 2 + Django 1.8 (30e11d9)
 - update `router_info` template variable name (b4b5daa) and include parent page identifier in list-by-parent-item context (ac92abd)
