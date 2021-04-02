@@ -11,4 +11,4 @@ tag_color: primary
 
 See the submodule release notes for details:
 - [wq.db 1.2.1](./wq.db-1.2.1.md)
-- [wq.start 1.2.1](./wq.start-1.2.1.md)
+- [wq.start 1.2.1](./wq.create-1.2.1.md)

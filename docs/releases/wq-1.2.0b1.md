@@ -9,9 +9,9 @@ date: 2019-10-07
 
 See the submodule release notes for details:
 - [wq.app 1.2 beta](./wq.app-1.2.0b1.md)
-- [wq.core 1.2 beta](./wq.core-1.2.0b1.md)
+- [wq.core 1.2 beta](./wq.build-1.2.0b1.md)
 - [wq.db 1.2 beta](./wq.db-1.2.0b1.md)
-- [wq.start 1.2 beta](./wq.start-1.2.0b1.md)
+- [wq.start 1.2 beta](./wq.create-1.2.0b1.md)
 
 The **wq.io** submodule has been renamed to [IterTable](https://github.com/wq/itertable), a standalone data manipulation library.  The [IterTable 2.0 beta release notes](./itertable-2.0.0b1.md) have more information on this name change.
 

@@ -8,7 +8,7 @@ module: wq.create
 
 @wq/rollup-plugin makes it possible to create custom plugins that integrate with [wq.app]'s pre-built [**wq.js**][wq] bundle. @wq/rollup-plugin remaps certain module imports to leverage exports from the bundle.
 
-> Note: While @wq/rollup-plugin can used in a project build, it is primarily intended for use by authors of plugins distributed as reusable Django apps. Django projects created with `wq start --with-npm` (& Create React App) use CRA's Webpack configuration by default instead of Rollup. (See [@wq/cra-template])
+> Note: While @wq/rollup-plugin can used in a project build, it is primarily intended for use by authors of plugins distributed as reusable Django apps. Django projects created with `wq create --with-npm` (& Create React App) use CRA's Webpack configuration by default instead of Rollup. (See [@wq/cra-template])
 
 ### Usage
 

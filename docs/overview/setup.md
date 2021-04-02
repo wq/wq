@@ -18,9 +18,11 @@ python3 -m venv ./venv
 . ./venv/bin/activate
 
 # Install wq
-python3 -m pip install wq==1.3.0a1
+python3 -m pip install wq==1.3.0b1
 wq create
 ```
+
+> Note that the command name changed from `wq start` to `wq create` in wq 1.3.0b1.
 
 When called without any arguments, the `wq create` command will prompt for several project attributes including the project name and web domain.  `wq create` also asks whether to enable GIS support and/or Node.js/npm support.  (Since both options require the installation of additional software, they are are disabled by default.)  All of the prompts can also be specified as command-line arguments - see [wq create --help] for the full list.
 

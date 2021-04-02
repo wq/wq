@@ -15,7 +15,7 @@ date: 2014-11-24
 - Various minor bug fixes
 
 ## New Features
-- New [mark](https://github.com/wq/markdown) pattern to support attaching one or more markdown snippets to models (#30)
+- New `mark` pattern to support attaching one or more markdown snippets to models (#30)
 - `dump_config` command for generating a static [wq config](../config.md) object to speed up application load (ed14f600694016ab66f7d4b81d50327b17ef3da9).  Requires Django 1.7.
 - `set_extra_config()` method to define arbitrary wq config properties (570b9ad1d5bef4b9f28c9be1d954b5a0734823d7)
 

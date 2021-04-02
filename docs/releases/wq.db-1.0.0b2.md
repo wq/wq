@@ -5,4 +5,4 @@ date: 2016-09-07
 
 # wq.db 1.0 beta 2
 
-Minor update to the [**wq.db 1.0 beta**](./wq.db-1.0.0b1.md) to ensure [wq.core](../wq.core/index.md) knows **wq.db** is installed (a66a929; see wq/wq.core#1).
+Minor update to the [**wq.db 1.0 beta**](./wq.db-1.0.0b1.md) to ensure [wq.core](../wq.build/index.md) knows **wq.db** is installed (a66a929; see wq/wq.core#1).

@@ -27,7 +27,7 @@ wq/autocomplete.js | removed
 [wq/chart.js]: https://github.com/wq/django-rest-pandas
 [wq/chartapp.js]: https://github.com/wq/django-rest-pandas
 [other]: ../wq.app/index.md
-[wq/markdown.js]: https://github.com/wq/markdown
+[wq/markdown.js]: https://github.com/wq/wq.markdown
 [wq/pandas.js]: https://github.com/wq/django-rest-pandas
 [wq/progress.js]: https://github.com/wq/django-data-wizard/tree/main/packages/progress
 

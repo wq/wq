@@ -10,6 +10,7 @@ wq_config:
 
 # npm Packages
 
-The following packages are available on npm, in addition to the top level [wq package].
+The following packages are available [on npm][npm], in addition to the top level [wq package].
 
 [wq package]: ../wq.md
+[npm]: https://www.npmjs.com/org/wq

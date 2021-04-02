@@ -7,7 +7,7 @@ tag_color: secondary
 
 # wq-django-template 1.3 alpha
 
-**wq-django-template 1.3 alpha** is a preview of the next version of wq-django-template, as part of the [wq.start 1.3 alpha](./wq.start-1.3.0a1.md) release.    The `app/` folder in particular has been completely reorganized (c68524f):
+**wq-django-template 1.3 alpha** is a preview of the next version of wq-django-template, as part of the [wq.start 1.3 alpha](./wq.create-1.3.0a1.md) release.    The `app/` folder in particular has been completely reorganized (c68524f):
 
  - For `wq start --without-npm`, the RequireJS build has been replaced with ES modules that can be deployed with `./manage.py collectstatic` (#6, #21, and wq/wq.app#111)
  - For `wq start --with-npm`, the Create React App template has moved to [@wq/cra-template](../@wq/cra-template.md) in the wq.start repository.

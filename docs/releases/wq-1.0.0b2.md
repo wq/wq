@@ -10,6 +10,6 @@ date: 2016-11-08
 See the submodule release notes for details:
 - [wq.app 1.0.0b2](./wq.app-1.0.0b2.md)
 - [wq.db 1.0.0b3](./wq.db-1.0.0b3.md)
-- [wq.start 1.0.0b3](./wq.start-1.0.0b3.md)
+- [wq.start 1.0.0b3](./wq.create-1.0.0b3.md)
 
 `wq.core` and `wq.io` are unchanged since the first beta release.

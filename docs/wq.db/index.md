@@ -1,5 +1,6 @@
 ---
 permalink: /wq.db/
+title: wq.db (REST API)
 wq_config:
   name: wqdb
   url: wq.db
@@ -10,20 +11,19 @@ wq_config:
 
 # wq.db (REST API)
 
-[![wq.db](https://raw.github.com/wq/wq/master/images/256/wq.db.png)](https://wq.io/wq.db)
+![wq.db](https://raw.github.com/wq/wq/master/images/256/wq.db.png)
 
-[wq.db](https://wq.io/wq.db) is a collection of Python modules for building robust, flexible schemas and REST APIs for use in creating field data collection apps and (more generally) mobile-first websites with progressive enhancement.  wq.db is the backend component of [wq] and is geared primarily for use with [wq.app], though it can be used separately.  wq.db is built on the [Django] platform.
+**wq.db** is a collection of Python modules for building robust, flexible schemas and REST APIs for use in creating field data collection apps and (more generally) mobile-first websites with progressive enhancement.  wq.db is the backend component of [wq] and is geared primarily for use with [wq.app], though it can be used separately.  wq.db is built on the [Django] platform.
 
 
 [![Latest PyPI Release](https://img.shields.io/pypi/v/wq.db.svg)](https://pypi.org/project/wq.db)
 [![Release Notes](https://img.shields.io/github/release/wq/wq.db.svg)](https://github.com/wq/wq.db/releases)
-[![Documentation](https://img.shields.io/badge/Docs-1.2-blue.svg)](https://wq.io/wq.db)
-[![License](https://img.shields.io/pypi/l/wq.db.svg)](https://wq.io/license)
+[![License](https://img.shields.io/pypi/l/wq.db.svg)][license]
 [![GitHub Stars](https://img.shields.io/github/stars/wq/wq.db.svg)](https://github.com/wq/wq.db/stargazers)
 [![GitHub Forks](https://img.shields.io/github/forks/wq/wq.db.svg)](https://github.com/wq/wq.db/network)
 [![GitHub Issues](https://img.shields.io/github/issues/wq/wq.db.svg)](https://github.com/wq/wq.db/issues)
 
-[![Travis Build Status](https://img.shields.io/travis/wq/wq.db/master.svg)](https://travis-ci.org/wq/wq.db)
+[![Tests](https://github.com/wq/wq.db/actions/workflows/test.yml/badge.svg)](https://github.com/wq/wq.db/actions/workflows/test.yml)
 [![Python Support](https://img.shields.io/pypi/pyversions/wq.db.svg)](https://pypi.org/project/wq.db)
 [![Django Support](https://img.shields.io/pypi/djversions/wq.db.svg)](https://pypi.org/project/wq.db)
 
@@ -63,12 +63,13 @@ See [the documentation][setup] for more information.
 Extends [Django REST Framework] with model-based views and serializers that facilitate creating an integrated [website, REST API, and mobile app][url-structure].  The core of the library is an admin-like [ModelRouter] that connects REST urls to registered models, and provides a descriptive [configuration object] for consumption by [@wq/app].  wq.db.rest also includes a GeoJSON serializer/renderer.
 
 ### [wq.db.patterns][patterns]
-A collection of abstract models and serializers for use in constructing advanced [design patterns][patterns] including [nested forms], [EAV structures][EAV], and [natural keys].  Includes [wq.db.patterns.identify][identify], an installable Django app module to help manage third-party entity identifers.
+A collection of abstract models and serializers for use in constructing advanced [design patterns][patterns] including [nested forms], [EAV structures][EAV], and [natural keys].
 
 [wq]: ../index.md
 [wq.app]: ../wq.app/index.md
 [Django]: https://www.djangoproject.com/
 [setup]: ../overview/setup.md
+[license]: ../license.md
 
 [rest]: ./rest.md
 [Django REST Framework]: http://django-rest-framework.org
@@ -77,8 +78,7 @@ A collection of abstract models and serializers for use in constructing advanced
 [configuration object]: ../config.md
 [@wq/app]: ../@wq/app.md
 
-[patterns]: https://wq.io/docs/about-patterns
-[nested forms]: https://wq.io/docs/nested-forms
-[EAV]: https://wq.io/docs/eav-vs-relational
+[patterns]: ./patterns.md
+[nested forms]: ../guides/implement-repeating-nested-forms.md
+[EAV]: ../guides/eav-vs-relational.md
 [natural keys]: https://github.com/wq/django-natural-keys
-[identify]: https://wq.io/docs/identify

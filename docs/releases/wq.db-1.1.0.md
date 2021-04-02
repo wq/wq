@@ -9,12 +9,12 @@ date: 2018-06-12
 
 This release also removes a bunch of rarely used functionality to improve maintainability:
 
- * [wq.db.patterns.annotate](../wq.db/patterns.md)
- * [wq.db.patterns.file](../wq.db/patterns.md)
- * [wq.db.patterns.locate](../wq.db/patterns.md)
- * [wq.db.patterns.mark](https://github.com/wq/markdown)
- * [wq.db.patterns.relate](../wq.db/patterns.md)
- * [wq.db.contrib.search](../wq.db/patterns.md)
+ * wq.db.patterns.annotate
+ * wq.db.patterns.file
+ * wq.db.patterns.locate
+ * wq.db.patterns.mark
+ * wq.db.patterns.relate
+ * wq.db.contrib.search
  * social auth integration in [wq.db.rest.auth](../wq.db/auth.md)
 
 Most of these use cases can be better served with domain-specific models using the newer [design patterns API](../guides/implement-repeating-nested-forms.md).  However, some may be recreated as standalone packages if needed.

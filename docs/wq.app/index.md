@@ -1,27 +1,26 @@
 ---
 permalink: /wq.app/
+title: wq.app
 wq_config:
   name: wqapp
   url: wq.app
   show_in_index: false
 ---
 
-[![wq.app](https://raw.github.com/wq/wq/master/images/256/wq.app.png)](https://wq.io/wq.app)
+![wq.app](https://raw.github.com/wq/wq/master/images/256/wq.app.png)
 
-[wq.app](https://wq.io/wq.app) (@wq/app) is a suite of JavaScript modules created to facilitate the rapid deployment of offline-cabable HTML5 mobile and desktop data collection apps.  Potential use cases include **surveys**, **geographic data capture & management**, and **crowdsourcing**/**citizen science**.  wq.app is the client component of the [wq framework], and can be used with a [wq.db] server or adapted for use with any API.
+**wq.app** (@wq/app) is a suite of JavaScript modules created to facilitate the rapid deployment of offline-cabable HTML5 mobile and desktop data collection apps.  Potential use cases include **surveys**, **geographic data capture & management**, and **crowdsourcing**/**citizen science**.  wq.app is the client component of the [wq framework], and can be used with a [wq.db] server or adapted for use with any API.
 
 [![Latest PyPI Release](https://img.shields.io/pypi/v/wq.app.svg)](https://pypi.org/project/wq.app)
 [![Release Notes](https://img.shields.io/github/release/wq/wq.app.svg)](https://github.com/wq/wq.app/releases)
-[![Documentation](https://img.shields.io/badge/Docs-1.2-blue.svg)](https://wq.io/wq.app)
-[![License](https://img.shields.io/pypi/l/wq.app.svg)](https://wq.io/license)
+[![License](https://img.shields.io/pypi/l/wq.app.svg)](../license.md)
 [![GitHub Stars](https://img.shields.io/github/stars/wq/wq.app.svg)](https://github.com/wq/wq.app/stargazers)
 [![GitHub Forks](https://img.shields.io/github/forks/wq/wq.app.svg)](https://github.com/wq/wq.app/network)
 [![GitHub Issues](https://img.shields.io/github/issues/wq/wq.app.svg)](https://github.com/wq/wq.app/issues)
 
 #### Latest Build
 
-[![Travis Build Status](https://img.shields.io/travis/wq/wq.app/master.svg)](https://travis-ci.org/wq/wq.app)
-[![Python Wheel](https://img.shields.io/bintray/v/wq/wq.app/wq.app.svg)](https://bintray.com/wq/wq.app/wq.app/_latestVersion)
+[![Package Tests](https://github.com/wq/wq.app/actions/workflows/test.yml/badge.svg)](https://github.com/wq/wq.app/actions/workflows/test.yml)
 
 # Getting Started
 
@@ -75,7 +74,7 @@ module | description
 [@wq/react]+[@wq/material] | New Material Design renderer based on [React] and [React Native]
 [@wq/jquery-mobile] | Legacy renderer based on [jQuery Mobile] and [Mustache.js], used in wq.app 1.2 and all earlier versions
 
-When installing @wq/app directly from NPM, one of the two renderers should be installed and registered explicitly.  When using the wq.app PyPI package, a default renderer will be provided based on the version of [wq start][wq.start] used to create the project.  (New ESM-based projects will default to the @wq/material renderer, while older AMD/RequireJS projects will default to the @wq/jquery-mobile renderer.)
+When installing @wq/app directly from NPM, one of the two renderers should be installed and registered explicitly.  When using the wq.app PyPI package, a default renderer will be provided based on the version of [wq create / wq start][wq.create] used to create the project.  (New ESM-based projects will default to the @wq/material renderer, while older AMD/RequireJS projects will default to the @wq/jquery-mobile renderer.)
 
 ### Map Engines
 
@@ -86,10 +85,10 @@ module | description
 [@wq/map]+[@wq/mapbox] | [Mapbox GL JS] integration for web and Mapbox Maps SDK for [Android][mapbox-android] & [iOS][mapbox-ios].
 [@wq/map]+[@wq/leaflet] | [Leaflet] integration (web only).  Compatible with @wq/map 1.2 and earlier
 
-[wq framework]: https://wq.io
-[wq.db]: https://wq.io/wq.db
-[wq.start]: https://wq.io/wq.start
-[setup]: https://wq.io/docs/setup
+[wq framework]: ../index.md
+[wq.db]: ../wq.db/index.md
+[wq.create]: ../wq.create/index.md
+[setup]: ../overview/setup.md
  
 [React]: https://reactjs.org/
 [React Native]: https://reactnative.dev/

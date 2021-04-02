@@ -12,8 +12,8 @@ date: 2017-07-24
 
 ##  Other changes since wq.core 0.8.1
 
-* [Changes in Alpha](./wq.core-1.0.0a1.md)
+* [Changes in Alpha](./wq.build-1.0.0a1.md)
   * List installed wq.* submodules and warn if any are missing. (#1)
 
-* [Changes in Beta](./wq.core-1.0.0b1.md)
+* [Changes in Beta](./wq.build-1.0.0b1.md)
   * Incorporate `wq versions` command from wq.start

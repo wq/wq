@@ -9,7 +9,7 @@ date: 2016-09-08
 
 See the submodule release notes for details:
 - [wq.app 1.0.0b1](./wq.app-1.0.0b1.md)
-- [wq.core 1.0.0b1](./wq.core-1.0.0b1.md)
+- [wq.core 1.0.0b1](./wq.build-1.0.0b1.md)
 - [wq.db 1.0.0b2](./wq.db-1.0.0b2.md)
 - [wq.io 1.0.0b1](./itertable-1.0.0b1.md)
-- [wq.start 1.0.0b2](./wq.start-1.0.0b2.md)
+- [wq.start 1.0.0b2](./wq.create-1.0.0b2.md)

@@ -47,4 +47,4 @@ Thanks to @tomaszn for reporting several of these issues.
 [wq/map.js]: ../@wq/map.md
 [wq/mapserv.js]: ../@wq/map.md
 [wq/locate.js]: ../inputs/Geo.md
-[wq/markdown.js]: https://github.com/wq/markdown
+[wq/markdown.js]: https://github.com/wq/wq.markdown
