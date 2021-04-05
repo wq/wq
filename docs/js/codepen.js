@@ -60,7 +60,8 @@ function wrapCode(code) {
     const match = code.match(/\/\/ navigate to (.*)/),
         startPage = match ? match[1].replace(/^\//, '') : '',
         config = code.indexOf('config =') === -1 ? 'const config = {};\n' : '',
-        mapConfig = code.indexOf('map') === -1 ? 'const mapConfig = {};\n' : MAP_CONF,
+        mapConfig =
+            code.indexOf('map') === -1 ? 'const mapConfig = {};\n' : MAP_CONF,
         init = `${COMMENT}\const startPage = '${startPage}';\n${config}${mapConfig}${INIT}`;
 
     return code
@@ -98,11 +99,13 @@ function CodePen({ code }) {
             className: 'codepen',
             'data-editable': true,
             'data-prefill': JSON.stringify({
-                'title': 'wq Framework demo',
-                'stylesheets': code.match(/map/) ? [
-                    'https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css',
-                    'https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.2.0/mapbox-gl-draw.css'
-                ] : []
+                title: 'wq Framework demo',
+                stylesheets: code.match(/map/)
+                    ? [
+                          'https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css',
+                          'https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.2.0/mapbox-gl-draw.css',
+                      ]
+                    : [],
             }),
             'data-default-tab': 'js,result',
             'data-height': code.match(/map/) ? 480 : 360,

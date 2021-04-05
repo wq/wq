@@ -7,6 +7,7 @@ import markdown, { renderers } from 'https://unpkg.com/@wq/markdown@next';
 import CodePen from './codepen.js';
 
 const React = modules['react'];
+const { Typography, Link } = modules['@wq/material'];
 
 renderers.code = CodePen;
 
@@ -18,6 +19,14 @@ const config = {
         service: '',
         defaults: {
             format: 'json',
+        },
+    },
+    markdown: {
+        getEditUrl({ page_config, item_id }) {
+            return `https://github.com/wq/wq/edit/main/docs/${page_config.url}/${item_id}.md`;
+        },
+        getNewUrl({ page_config }) {
+            return `https://github.com/wq/wq/new/main/docs/${page_config.url}`;
         },
     },
     pages: {
@@ -55,6 +64,39 @@ const ICONS = {
 
 wq.use({
     icons: makeIcons(),
+    components: {
+        Footer() {
+            return React.createElement(
+                'div',
+                {
+                    style: {
+                        height: '3em',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        backgroundColor: 'white',
+                        borderTop: '1px solid rgba(0, 0, 0, 0.12)',
+                    },
+                },
+                React.createElement(
+                    Typography,
+                    { variant: 'caption', color: 'textSecondary' },
+                    [
+                        '© 2012-2021 by ',
+                        React.createElement(
+                            Link,
+                            {
+                                component: 'a',
+                                href: 'https://andrewsheppard.net',
+                                target: '_blank',
+                            },
+                            'S. Andrew Sheppard'
+                        ),
+                    ]
+                )
+            );
+        },
+    },
     start() {
         document.getElementById('content').remove();
     },
