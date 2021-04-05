@@ -116,7 +116,7 @@ If you are upgrading from an older version of wq with npm, install and import `@
 [Mapbox GL JS]: https://docs.mapbox.com/mapbox-gl-js/
 [@wq/map]: ../@wq/map.md
 [@wq/leaflet]: https://github.com/wq/wq.app/tree/main/packages/leaflet
-[@wq/mapbox]: ../@wq/mapbox.md
+[@wq/mapbox]: ../@wq/map-gl.md
 [mapbox-android]: https://docs.mapbox.com/android/maps/overview/
 [mapbox-ios]: https://docs.mapbox.com/ios-sdk/maps/overview/
 

@@ -11,6 +11,6 @@ tag_color: secondary
 
  * Ensure `can_add`, `can_change` & `can_delete` flags are correctly applied from auth state (#124)
  * Fix handling of field-level errors when opening outbox entry (#125)
- * Improve handling of Map & Camera refs when running [@wq/mapbox](../@wq/mapbox.md) in react-native
+ * Improve handling of Map & Camera refs when running [@wq/mapbox](../@wq/map-gl.md) in react-native
  * Improve handling of non-root-URL deployments in `wq serviceworker` and [`<Breadcrumbs/>`](../components/Breadcrumbs.md)
  * Move [`<PropertyTable/>`](../components/PropertyTable.md) out of [`<DefaultDetail/>`](../views/DefaultDetail.md) to a standalone component

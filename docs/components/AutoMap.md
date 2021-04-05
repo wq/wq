@@ -35,12 +35,12 @@ The source code for `<AutoMap/>` is available here:
 
  * [AutoMap.js (@wq/map)][map-src]
 
-The [@wq/map] implementation leverages [`useComponents()`][useComponents] and [`useOverlayComponents()`][useOverlayComponents]  to facilitate customization, so there is no alternate [@wq/mapbox] or native version.
+The [@wq/map] implementation leverages [`useComponents()`][useComponents] and [`useOverlayComponents()`][useOverlayComponents]  to facilitate customization, so there is no alternate [@wq/map-gl] or native version.
 
 [component]: ./index.md
 [Map]: ./Map.md
 [@wq/map]: ../@wq/map.md
-[@wq/mapbox]: ../@wq/mapbox.md
+[@wq/map-gl]: ../@wq/map-gl.md
 [useComponents]: ../hooks/useComponents.md
 [useOverlayComponents]: ../hooks/useOverlayComponents.md
 

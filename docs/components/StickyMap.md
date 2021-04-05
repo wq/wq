@@ -48,12 +48,12 @@ The source code for `<StickyMap/>` is available here:
 
  * [StickyMap.js (@wq/map)][map-src]
 
-The [@wq/map] implementation has no engine-specific components, so there is no alternate [@wq/mapbox] or native version.
+The [@wq/map] implementation has no engine-specific components, so there is no alternate [@wq/map-gl] or native version.
 
 [component]: ./index.md
 [AutoMap]: ./AutoMap.md
 [Main]: ./Main.md
 [@wq/map]: ../@wq/map.md
-[@wq/mapbox]: ../@wq/mapbox.md
+[@wq/map-gl]: ../@wq/map-gl.md
 
 [map-src]: https://github.com/wq/wq.app/blob/main/packages/map/src/components/StickyMap.js

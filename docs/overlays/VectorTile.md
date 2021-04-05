@@ -1,23 +1,23 @@
 ---
-module: "@wq/mapbox"
+module: "@wq/map-gl"
 ---
 
 # VectorTile
 
-@wq/mapbox's `<VectorTile/>` [overlay component][overlay] displays one or more vector tile sources and layers.  It is similar to the [VectorTile basemap component][VectorTile-basemap], but can be added and removed without changing the base style.
+@wq/map-gl's `<VectorTile/>` [overlay component][overlay] displays one or more vector tile sources and layers.  It is similar to the [VectorTile basemap component][VectorTile-basemap], but can be added and removed without changing the base style.
 
 ## Source
 
-This basemap type is only supported by [@wq/mapbox].
+This basemap type is only supported by [@wq/map-gl].
 
- * [VectorTile.js (@wq/mapbox)][mapbox-src]
- * [VectorTile.native.js (@wq/mapbox)][mapbox-native-src]
- * [VectorTile.expo.js (@wq/mapbox)][mapbox-expo-src]
+ * [VectorTile.js (@wq/map-gl)][mapgl-src]
+ * [VectorTile.native.js (@wq/map-gl)][mapgl-native-src]
+ * [VectorTile.expo.js (@wq/map-gl)][mapgl-expo-src]
 
 [overlay]: ./index.md
 [VectorTile-basemap]: ../basemaps/VectorTile.md
-[@wq/mapbox]: ../@wq/mapbox.md
+[@wq/map-gl]: ../@wq/map-gl.md
 
-[mapbox-src]: https://github.com/wq/wq.app/blob/main/packages/mapbox/src/overlays/VectorTile.js
-[mapbox-native-src]: https://github.com/wq/wq.app/blob/main/packages/mapbox/src/overlays/VectorTile.native.js
-[mapbox-expo-src]: https://github.com/wq/wq.app/blob/main/packages/mapbox/src/overlays/VectorTile.expo.js
+[mapgl-src]: https://github.com/wq/wq.app/blob/main/packages/map-gl/src/overlays/VectorTile.js
+[mapgl-native-src]: https://github.com/wq/wq.app/blob/main/packages/map-gl/src/overlays/VectorTile.native.js
+[mapgl-expo-src]: https://github.com/wq/wq.app/blob/main/packages/map-gl/src/overlays/VectorTile.expo.js

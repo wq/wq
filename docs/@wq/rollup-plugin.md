@@ -72,7 +72,7 @@ In addition to keeping bundle sizes small, @wq/rollup-plugin helps ensure that t
 -   `@wq/react`
 -   `@wq/material`
 -   `@wq/map`
--   `@wq/mapbox`
+-   `@wq/map-gl`
 
 [source]: https://github.com/wq/wq.create/tree/main/packages/cra-template
 [wq.app]: ../wq.app/index.md

@@ -48,7 +48,7 @@ wq.app ships with a selection of predefined plugins for common use cases.  These
 |--------|-------------|
 | [@wq/app auth plugin][auth] | Client support for wq.db.rest.auth
 | [@wq/react] + [@wq/material] | React renderer + Material UI components
-| [@wq/map] + [@wq/mapbox] | Map state and form integration + Mapbox GL JS vector tiles & geojson support
+| [@wq/map] + [@wq/map-gl] | Map state and form integration + Mapbox GL JS vector tiles & geojson support
 
 [ajax]: ./ajax.md
 [onsync]: ./onsync.md
@@ -64,5 +64,5 @@ wq.app ships with a selection of predefined plugins for common use cases.  These
 [@wq/react]: ../@wq/react.md
 [@wq/material]: ../@wq/material.md
 [@wq/map]: ../@wq/map.md
-[@wq/mapbox]: ../@wq/mapbox.md
+[@wq/map-gl]: ../@wq/map-gl.md
 [wq.js]: ../wq.md

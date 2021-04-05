@@ -1,5 +1,5 @@
 ---
-module: "@wq/mapbox"
+module: "@wq/map-gl"
 ---
 
 # VectorTile
@@ -8,15 +8,15 @@ wq's `<VectorTile/>` [basemap component][basemap] is used to configure the base 
 
 ## Source
 
-This basemap type is only supported by [@wq/mapbox].
+This basemap type is only supported by [@wq/map-gl].
 
- * [VectorTile.js (@wq/mapbox)][mapbox-src]
- * [VectorTile.native.js (@wq/mapbox)][mapbox-native-src]
- * [VectorTile.expo.js (@wq/mapbox)][mapbox-expo-src]
+ * [VectorTile.js (@wq/map-gl)][mapgl-src]
+ * [VectorTile.native.js (@wq/map-gl)][mapgl-native-src]
+ * [VectorTile.expo.js (@wq/map-gl)][mapgl-expo-src]
 
 [basemap]: ./index.md
-[@wq/mapbox]: ../@wq/mapbox.md
+[@wq/map-gl]: ../@wq/map-gl.md
 
-[mapbox-src]: https://github.com/wq/wq.app/blob/main/packages/mapbox/src/basemaps/VectorTile.js
-[mapbox-native-src]: https://github.com/wq/wq.app/blob/main/packages/mapbox/src/basemaps/VectorTile.native.js
-[mapbox-expo-src]: https://github.com/wq/wq.app/blob/main/packages/mapbox/src/basemaps/VectorTile.expo.js
+[mapgl-src]: https://github.com/wq/wq.app/blob/main/packages/map-gl/src/basemaps/VectorTile.js
+[mapgl-native-src]: https://github.com/wq/wq.app/blob/main/packages/map-gl/src/basemaps/VectorTile.native.js
+[mapgl-expo-src]: https://github.com/wq/wq.app/blob/main/packages/map-gl/src/basemaps/VectorTile.expo.js

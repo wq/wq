@@ -9,7 +9,7 @@ module: wq.app
 
 **@wq/map** is a plugin for [@wq/app] that adds mapping capabilities.  @wq/map can leverage the [wq configuration object][config] to generate interactive maps for pages rendered via @wq/app.  The generated maps can automatically download and display GeoJSON data rendered by [wq.db's REST API][wq.db] or any third party service.
 
-@wq/map is meant to be used with [@wq/mapbox] or [@wq/leaflet], which respectively provide integration with [Mapbox] and [Leaflet] mapping APIs.
+@wq/map is meant to be used with [@wq/map-gl] or [@wq/leaflet], which respectively provide integration with [Mapbox GL JS] and [Leaflet] mapping APIs.
 
 
 ## Installation
@@ -26,19 +26,19 @@ python3 -m pip install wq # install wq framework (wq.app, wq.db, etc.)
 ### @wq/map for npm
 
 ```bash
-npm install @wq/mapbox # install @wq/mapbox, @wq/map, and deps
+npm install @wq/map-gl # install @wq/map-gl, @wq/map, and deps
 # npm install @wq/map  # install only @wq/map and deps
 ```
 
 ## API
 
-@wq/map should be registered with @wq/app as a plugin, either directly or indirectly via [@wq/mapbox] or [@wq/leaflet].
+@wq/map should be registered with @wq/app as a plugin, either directly or indirectly via [@wq/map-gl] or [@wq/leaflet].
 
 ```javascript
 import app from '@wq/app';
-import mapbox from '@wq/mapbox';
+import mapgl from '@wq/map-gl';
 
-app.use(mapbox);  // Automatically registers @wq/map
+app.use(mapgl);  // Automatically registers @wq/map
 
 app.init(...);
 ```
@@ -116,13 +116,13 @@ To override components in any of these categories, register a [custom components
 [@wq/router]: ./router.md
 [@wq/react]: ./react.md
 [@wq/material]: ./material.md
-[@wq/mapbox]: ./mapbox.md
+[@wq/map-gl]: ./map-gl.md
 [@wq/leaflet]: https://github.com/wq/wq.app/tree/main/packages/leaflet
 [Legend]: ../components/Legend.md
 [StickyMap]: ../components/StickyMap.md
 [components-plugin]: ../plugins/components.md
 
-[Mapbox]: https://docs.mapbox.com/mapbox-gl-js/
+[Mapbox GL JS]: https://docs.mapbox.com/mapbox-gl-js/
 [Leaflet]: https://leafletjs.com/
 [wq.db]: ../wq.db/index.md
 [config]: ../config.md
