@@ -75,7 +75,7 @@ name | purpose
 
 > **Changed in wq.app 1.2:**  @wq/outbox no longer uses an internal @wq/model instance for managing unsynced records.  Instead, the underlying [Redux Offline] `outbox` state is wrapped with a model-like API.  If you have code relying on `outbox.model.load()`, change it to use `outbox.loadItems()` instead which provides an equivalent structure.
 
-### Initialization
+### Configuration
 
 #### `outbox.init(config)`
 
@@ -96,13 +96,13 @@ name | purpose
 `applyResult()` | **Removed in wq.app 1.2**.  This option was used to customize whether a form submission is successful.  In wq.app 1.2 this can be done with an [ajax() plugin][ajax] that throws an error on failure.
 `updateModels()` | **Removed in wq.app 1.2**. This was used to configure how local models are updated based on the server response.  In wq.app 1.2, this is done by dispatching the appropriate Redux actions to update the local state.
 
-### Plugin Hooks
+### Plugin Types
 
 @wq/outbox provides support for the following [@wq/app plugin type][plugins].
 
  * [onsync(item)][onsync]
 
-### Outbox Methods
+### Methods
 
 As discussed above, all data being sent to the server (e.g. as a result of a form submission) is queued through an outbox.  This section describes the available functions for working with the outbox.
 

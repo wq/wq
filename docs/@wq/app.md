@@ -81,7 +81,7 @@ app.init(config).then(() => {
 
 `@wq/app` is typically imported as `app`, or as `wq` when imported from the [wq.js bundle][wq].  Any local variable name can be used.  The app module provides the following methods and properties.
 
-### Initialization
+### Configuration
 
 #### `app.init(config)`
 
@@ -158,7 +158,7 @@ export default {
 }
 ```
 
-### Other Methods
+### Methods
 
 #### `app.use(plugin)`
 

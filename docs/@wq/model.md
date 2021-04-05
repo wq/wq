@@ -46,7 +46,7 @@ const items = model({'url': 'items', 'name': 'item'});
 // const items = new Model(...);
 ```
 
-### Initialization
+### Configuration
 
 The model constructor accepts a [page configuration object][wq configuration object] that configures the name, data source, and caching strategy.
 
@@ -101,7 +101,7 @@ var myModel = model("bookmark");
 ```
 
 
-### Query APIs
+### Methods
 
 #### `[model].objects`
 

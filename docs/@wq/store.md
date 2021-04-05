@@ -71,7 +71,7 @@ A web query is usually stored locally after being loaded for the first time.
 
 > Note: When working with a collection of items retreived from a remote URL, it is generally best to use the [@wq/model] API rather than `ds.get()`.
 
-### Initialization
+### Configuration
 
 #### `ds.init(config)`
 
@@ -95,7 +95,7 @@ name | purpose
  * [ajax(url, data, method, headers)][ajax]
  * [reducer() & actions{}][reducer]
 
-### Storage Methods
+### Methods
 
 #### `ds.dispatch(action)`
 

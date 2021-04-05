@@ -43,7 +43,7 @@ router.start();
 
 The router module provides the following methods and properties.
 
-### Initialization
+### Configuration
 
 #### `router.init(config)`
 
@@ -111,7 +111,7 @@ For server rendering, wq.db includes a `router_info` context processor that mimi
  * [context(ctx, routeInfo)][context]
  * [thunks{}][thunks]
 
-### Direct Route Configuration
+### Methods
 
 #### `router.register()`
 
