@@ -3,7 +3,7 @@ permalink: /components/
 wq_config:
   name: component
   url: components
-  order: 24
+  order: 23
   section: "API Reference"
   subsection: "React Components"
   icon_data: "M14.6,16.6L19.2,12L14.6,7.4L16,6L22,12L16,18L14.6,16.6M9.4,16.6L4.8,12L9.4,7.4L8,6L2,12L8,18L9.4,16.6Z"
@@ -19,6 +19,7 @@ The [wq framework] comes with a built in component library implementing wq's [da
  * [View components][views]
  * [Basemap components][basemaps]
  * [Overlay components][overlays]
+ * [Hooks][hooks]
 
 To add custom components or override the defaults in any of these categories, register a [components plugin] with [@wq/app].
 
@@ -30,5 +31,6 @@ To add custom components or override the defaults in any of these categories, re
 [views]: ../views/index.md
 [basemaps]: ../basemaps/index.md
 [overlays]: ../overlays/index.md
+[hooks]: ../hooks/index.md
 [components plugin]: ../plugins/components.md
 [@wq/app]: ../@wq/app.md

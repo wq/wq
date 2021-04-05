@@ -3,7 +3,7 @@ permalink: /inputs/
 wq_config:
   name: input
   url: inputs
-  order: 23
+  order: 25
   section: API Reference
   subsection: "React Components"
   autoindex: false
