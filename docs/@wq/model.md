@@ -1,11 +1,9 @@
 ---
+title: "@wq/model"
 module: wq.app
 ---
 
-@wq/model
-========
-
-[@wq/model][source]
+![@wq/model](https://wq.io/images/@wq/model.svg)
 
 **@wq/model** is a [wq.app] module providing a simple API for working with lists, or collections of similar objects.  It uses [@wq/store] to retrieve the underlying JSON data from e.g. a REST API.
 
@@ -306,6 +304,10 @@ myModel.dispatch('UPDATE', [{"id": 35, "name": "Updated Item"}]);
 myModel.dispatch('DELETE', 12);
 myModel.dispatch('OVERWRITE', []);
 ```
+
+## Source
+
+The source code for @wq/model is in the [wq.app repository][source].
 
 [source]: https://github.com/wq/wq.app/blob/main/packages/model
 

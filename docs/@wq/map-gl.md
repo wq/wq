@@ -1,11 +1,9 @@
 ---
+title: "@wq/map-gl"
 module: wq.app
 ---
 
-@wq/map-gl
-======
-
-[@wq/map-gl][source]
+![@wq/map-gl](https://wq.io/images/@wq/map-gl.svg)
 
 **@wq/map-gl** is a plugin for [@wq/app] that provides integration with [Mapbox GL JS] (for web) and the Mapbox Map SDK for [Android][mapbox-android] and [iOS][mapbox-ios].   When used together with [@wq/map], @wq/map-gl can leverage the [wq configuration object][config] to generate interactive maps for pages rendered via @wq/app.  The generated maps can automatically download and display GeoJSON data rendered by [wq.db's REST API][wq.db] or any third party service.
 
@@ -59,6 +57,10 @@ plugin key | description
 [components] | High-level map components (Map, Legend, etc.)
 [basemaps] | Basemap layers, typically tiled imagery or road network
 [overlays] | Overlay layers, such as GeoJSON vectors
+
+## Source
+
+The source code for @wq/map-gl is in the [wq.app repository][source].
 
 [source]: https://github.com/wq/wq.app/tree/main/packages/map-gl
 

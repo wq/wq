@@ -1,11 +1,9 @@
 ---
+title: "@wq/store"
 module: wq.app
 ---
 
-@wq/store
-========
-
-[@wq/store][source]
+![@wq/store](https://wq.io/images/@wq/store.svg)
 
 **@wq/store** is a [wq.app] module providing a persistent storage API for retrieving and querying JSON data from a web service via AJAX.  @wq/store is used internally by [@wq/app] to store model data (via [@wq/model]) and application configuration.  As of wq.app 1.2, @wq/store relies extensively on [Redux] to manage state, with [Redux Persist] and [localForage] to handle the work of storing data offline in IndexedDB.
 
@@ -221,6 +219,10 @@ function | loads from | saves to storage
 ## Browser Compatibility Notes
 
 To persist storage across user sessions, @wq/store requires some kind of offline storage to function as designed.  Nearly all browsers in use today (including IE 11) have `IndexedDB` available.  [localForage] handles most the heavy lifting on automatically determining browser capabilities.  However, note that a significant fraction of web users prefer to disable offline storage.  Most notably, the "Block Cookies" setting for iOS Safari will also disable other offline storage options.  If @wq/store is unable to leverage localForage, it will still work but values will not be persisted.  This will work fine for most users, though any unsynced items in the outbox (see [@wq/outbox]) will be lost if the browser window is closed.
+
+## Source
+
+The source code for @wq/store is in the [wq.app repository][source].
 
 [source]: https://github.com/wq/wq.app/blob/main/packages/store
 [Promise]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise

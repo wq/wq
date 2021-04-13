@@ -1,11 +1,9 @@
 ---
+title: "@wq/router"
 module: wq.app
 ---
 
-@wq/router
-========
-
-[@wq/router][source]
+![@wq/router](https://wq.io/images/@wq/router.svg)
 
 **@wq/router** is a [wq.app] module that captures URL changes and "responds" with locally-rendered HTML pages.  @wq/router is primarily used with [@wq/app], a higher-level module that automatically registers the appropriate routes via the [wq configuration object].  If you have a route that does not match @wq/app's conventions, you can use the direct route registration APIs described at the bottom.
 
@@ -172,6 +170,10 @@ Regenerates the context for the current route and renders it.
 #### `router.push(url)`
 
 Navigates to the specified URL (assuming it matches a registered route).
+
+## Source
+
+The source code for @wq/router is in the [wq.app repository][source].
 
 [source]: https://github.com/wq/wq.app/blob/main/packages/router
 [wq.app]: ../wq.app/index.md

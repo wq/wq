@@ -1,11 +1,9 @@
 ---
+title: "@wq/cra-template"
 module: wq.create
 ---
 
-@wq/cra-template
-================
-
-[@wq/cra-template][source]
+![@wq/cra-template](https://wq.io/images/@wq/cra-template.svg)
 
 This is the [Create React App][create-react-app] template for projects utilizing the [wq framework].  It uses [@wq/app] and [@wq/material] to generate a configuration-driven interface for collecting and managing geospatial field data.   This template is meant to be used together with [wq.create].  See wq's [Getting Started] docs for more information.
 
@@ -30,7 +28,12 @@ wq create --with-npm
 
 See the [Create React App documentation][create-react-app] for more information on the available NPM scripts.
 
+## Source
+
+The source code for @wq/cra-template is in the [wq.create repository][source].
+
 [source]: https://github.com/wq/wq.create/tree/main/packages/cra-template
+
 [wq framework]: ../index.md
 [@wq/app]: ./app.md
 [@wq/material]: ./material.md

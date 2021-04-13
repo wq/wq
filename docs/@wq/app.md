@@ -1,11 +1,9 @@
 ---
+title: "@wq/app"
 module: wq.app
 ---
 
-@wq/app
-======
-
-[@wq/app][source]
+![@wq/app](https://wq.io/images/@wq/app.svg)
 
 **@wq/app** provides a configuration-driven JavaScript application controller to facilitate the creation of complete mobile web apps for viewing and submitting field data.   @wq/app is primarily intended for use as a client for [wq.db.rest], but can be customized for use with any REST service.
 
@@ -190,6 +188,10 @@ app.models.item.filter({'type_id': 2}).then(function(type2items) {
     });
 });
 ```
+
+## Source
+
+The source code for @wq/app is in the [wq.app repository][source].
 
 [source]: https://github.com/wq/wq.app/blob/main/packages/app
 

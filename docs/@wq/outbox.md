@@ -1,11 +1,9 @@
 ---
+title: "@wq/outbox"
 module: wq.app
 ---
 
-@wq/outbox
-========
-
-[@wq/outbox][source]
+![@wq/outbox](https://wq.io/images/@wq/outbox.svg)
 
 **@wq/outbox** is a [wq.app] module providing an offline-cabable "outbox" of unsynced form entries for submission to a web service.  @wq/outbox integrates with [@wq/store] to handle offline storage, and with [@wq/model] for managing collections of editable objects.
 
@@ -228,6 +226,10 @@ Like `unsyncedItems()`, but limited to items that haven't been sent at all (or a
 #### `outbox.empty()`
 
 **New in wq.app 1.2.** Wipe out all outbox records, including those that have not been synced.  Internally, this is accomplished by resetting Redux Offline to its initial state.
+
+## Source
+
+The source code for @wq/outbox is in the [wq.app repository][source].
 
 [source]: https://github.com/wq/wq.app/blob/main/packages/outbox
 [wq.app]: ../wq.app/index.md

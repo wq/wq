@@ -7,7 +7,7 @@ wq_config:
    show_in_index: false
 ---
 
-![wq.build](https://raw.github.com/wq/wq/master/images/256/wq.build.png)
+![wq.build](https://wq.io/images/wq.build.svg)
 
 **wq.build** (fomerly wq.core) provides the core `wq` command line application for use by [wq.app] and other modules in the [wq framework].
 

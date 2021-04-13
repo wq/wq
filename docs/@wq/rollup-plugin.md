@@ -1,10 +1,9 @@
 ---
+title: "@wq/rollup-plugin"
 module: wq.create
 ---
 
-# @wq/rollup-plugin
-
-[@wq/rollup-plugin][source]
+![@wq/rollup-plugin](https://wq.io/images/@wq/rollup-plugin.svg)
 
 @wq/rollup-plugin makes it possible to create custom plugins that integrate with [wq.app]'s pre-built [**wq.js**][wq] bundle. @wq/rollup-plugin remaps certain module imports to leverage exports from the bundle.
 
@@ -73,6 +72,10 @@ In addition to keeping bundle sizes small, @wq/rollup-plugin helps ensure that t
 -   `@wq/material`
 -   `@wq/map`
 -   `@wq/map-gl`
+
+## Source
+
+The source code for @wq/cra-template is in the [wq.create repository][source].
 
 [source]: https://github.com/wq/wq.create/tree/main/packages/cra-template
 [wq.app]: ../wq.app/index.md

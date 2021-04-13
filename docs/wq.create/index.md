@@ -7,7 +7,7 @@ wq_config:
   show_in_index: false
 ---
 
-![wq.create](https://raw.github.com/wq/wq/master/images/256/wq.create.png)
+![wq.create](https://wq.io/images/wq.create.svg)
 
 wq.create (formerly wq.start) provides a simple command-line interface (`wq create`) for starting a new project with the [wq framework], with [wq.app] for the front end and [wq.db] as the backend.  wq.create also provides a `wq addform` command that can generate and configure new Django apps from an [XLSForm](http://xlsform.org) definition.
 

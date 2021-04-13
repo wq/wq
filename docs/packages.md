@@ -13,17 +13,17 @@ wq is made up of the following submodules, which are distributed as separate PyP
 
  Module                     | Github               | PyPI              | npm              | Description
 ----------------------------|----------------------|-------------------|------------------|---------
-[![wq][wq.png]][wq/wq]      | [wq/wq][gh/wq]       | [wq][py/wq]       | [wq][npm/wq]     | Top level package (specifies submodules as dependencies)
-[![wq.app][a.png]][wq/a]    | [wq/wq.app][gh/a]    | [wq.app][py/a]    | [@wq/app][npm/a] | A JavaScript+Python library for building robust offline-capable HTML5 data entry apps.
-[![wq.build][b.png]][wq/b]  | [wq/wq.build][gh/b]  | [wq.build][py/b]  |                  | wq command line interface.
-[![wq.create][c.png]][wq/c] | [wq/wq.create][gh/c] | [wq.create][py/c] |                  | Project template and scaffolding tools.
-[![wq.db][d.png]][wq/d]     | [wq/wq.db][gh/d]     | [wq.db][py/d]     |                  | Django REST framework extension with design patterns for CRUD APIs.
+[![wq][wq.svg]][wq/wq]      | [wq/wq][gh/wq]       | [wq][py/wq]       | [wq][npm/wq]     | Top level package (specifies submodules as dependencies)
+[![wq.app][a.svg]][wq/a]    | [wq/wq.app][gh/a]    | [wq.app][py/a]    | [@wq/app][npm/a] | A JavaScript+Python library for building robust offline-capable HTML5 data entry apps.
+[![wq.build][b.svg]][wq/b]  | [wq/wq.build][gh/b]  | [wq.build][py/b]  |                  | wq command line interface.
+[![wq.create][c.svg]][wq/c] | [wq/wq.create][gh/c] | [wq.create][py/c] |                  | Project template and scaffolding tools.
+[![wq.db][d.svg]][wq/d]     | [wq/wq.db][gh/d]     | [wq.db][py/d]     |                  | Django REST framework extension with design patterns for CRUD APIs.
 
-[wq.png]: https://raw.githubusercontent.com/wq/wq/master/images/80/wq.png
-[a.png]: https://raw.githubusercontent.com/wq/wq/master/images/80/wq.app.png
-[b.png]: https://raw.githubusercontent.com/wq/wq/master/images/80/wq.build.png
-[c.png]: https://raw.githubusercontent.com/wq/wq/master/images/80/wq.create.png
-[d.png]: https://raw.githubusercontent.com/wq/wq/master/images/80/wq.db.png
+[wq.svg]: https://wq.io/images/icons/wq.svg
+[a.svg]: https://wq.io/images/icons/wq.app.svg
+[b.svg]: https://wq.io/images/icons/wq.build.svg
+[c.svg]: https://wq.io/images/icons/wq.create.svg
+[d.svg]: https://wq.io/images/icons/wq.db.svg
 
 [@wq]: ./@wq/index.md
 [wq/wq]: ./wq.md

@@ -7,9 +7,9 @@ wq_config:
   show_in_index: false
 ---
 
-![wq.app](https://raw.github.com/wq/wq/master/images/256/wq.app.png)
+![wq.app](https://wq.io/images/wq.app.svg)
 
-**wq.app** (@wq/app) is a suite of JavaScript modules created to facilitate the rapid deployment of offline-cabable HTML5 mobile and desktop data collection apps.  Potential use cases include **surveys**, **geographic data capture & management**, and **crowdsourcing**/**citizen science**.  wq.app is the client component of the [wq framework], and can be used with a [wq.db] server or adapted for use with any API.
+**wq.app** is a suite of JavaScript modules created to facilitate the rapid deployment of offline-cabable HTML5 mobile and desktop data collection apps.  Potential use cases include **surveys**, **geographic data capture & management**, and **crowdsourcing**/**citizen science**.  wq.app is the client component of the [wq framework], and can be used with a [wq.db] server or adapted for use with any API.
 
 [![Latest PyPI Release](https://img.shields.io/pypi/v/wq.app.svg)](https://pypi.org/project/wq.app)
 [![Release Notes](https://img.shields.io/github/release/wq/wq.app.svg)](https://github.com/wq/wq.app/releases)

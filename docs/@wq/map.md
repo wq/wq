@@ -1,11 +1,9 @@
 ---
+title: "@wq/map"
 module: wq.app
 ---
 
-@wq/map
-======
-
-[@wq/map][source]
+![@wq/map](https://wq.io/images/@wq/map.svg)
 
 **@wq/map** is a plugin for [@wq/app] that adds mapping capabilities.  @wq/map can leverage the [wq configuration object][config] to generate interactive maps for pages rendered via @wq/app.  The generated maps can automatically download and display GeoJSON data rendered by [wq.db's REST API][wq.db] or any third party service.
 
@@ -108,6 +106,10 @@ To override components in any of these categories, register a [custom components
 ### Hooks
 
 @wq/map exports a few [React hooks][hooks] that can be used to access various parts of the application state and plugin framework.
+
+## Source
+
+The source code for @wq/map is in the [wq.app repository][source].
 
 [source]: https://github.com/wq/wq.app/tree/main/packages/map
 [@wq/map plugin]: https://github.com/wq/wq.app/tree/main/packages/map/src/map.js

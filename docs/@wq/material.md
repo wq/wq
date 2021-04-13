@@ -1,11 +1,9 @@
 ---
+title: "@wq/material"
 module: wq.app
 ---
 
-@wq/material
-========
-
-[@wq/material][source]
+![@wq/material](https://wq.io/images/@wq/material.svg)
 
 **@wq/material** provides a complete set of layout, navigation, and form components for use with the [@wq/react] renderer for [@wq/app].  All provided components work in [React] web environments (via [Material UI]), as well as in [React Native] and [Expo] (via [React Native Paper]).  @wq/material provides a consistent API in all three environments, reducing the need for project-specific ".native.js" implementations.
 
@@ -92,6 +90,10 @@ app.use({ inputs: { PercentInput });
 ```
 
 See [the components plugin documentation][components-plugin] for information on how to override the default components.
+
+## Source
+
+The source code for @wq/material is in the [wq.app repository][source].
 
 [source]: https://github.com/wq/wq.app/tree/main/packages/material
 [@wq/react]: ./react.md

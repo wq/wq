@@ -1,11 +1,9 @@
 ---
+title: "@wq/react"
 module: wq.app
 ---
 
-@wq/react
-========
-
-[@wq/react][source]
+![@wq/react](https://wq.io/images/@wq/react.svg)
 
 **@wq/react** is a renderer plugin for [@wq/app] that seamlessly integrates with the [React] and [React Native] frameworks.  @wq/react provides a number of default [components] and [hooks] to facilitate rapid deployment of applications backed by @wq/app's storage, data model, routing, and syncing engines ([@wq/store], [@wq/model], [@wq/router], and [@wq/outbox], respectively.)
 
@@ -62,6 +60,10 @@ Many of @wq/react's general components, and all of its icon and input components
 ### Hooks
 
 @wq/react exports a number of [React hooks][hooks] that can be used to access various parts of the application state and plugin framework.
+
+## Source
+
+The source code for @wq/react is in the [wq.app repository][source].
 
 [source]: https://github.com/wq/wq.app/tree/main/packages/react
 
