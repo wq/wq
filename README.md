@@ -1,4 +1,4 @@
-[![wq](https://raw.github.com/wq/wq/master/images/128/wq.png)](https://wq.io/)
+[![wq](https://wq.io/images/wq.svg)](https://wq.io/)
 
 [wq](https://wq.io) is a modular framework for field data collection and surveys via offline-capable mobile web apps.
 

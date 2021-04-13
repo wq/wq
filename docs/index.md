@@ -1,11 +1,12 @@
 ---
+title: wq Framework
 wq_config:
   name: index
   url: ""
   show_in_index: false
 ---
 
-# wq Framework
+![wq Framework logo](https://wq.io/images/wq.svg)
 
 wq is a modular framework for bespoke **survey and geospatial data collection** apps, with built-in support for **offline installation and sync**.  With just a few CLI commands and an **XLSForm** definition, wq can automatically generate a fully functional **Django + React** application that syncs directly to your existing database.  You can then directly modify the resulting code to integrate third party (or your own) Django apps and React components.  [Learn More...](./overview/intro.md)
 
@@ -17,8 +18,8 @@ import wq from './wq.js';
 const config = {
     material: {
         theme: {
-            primary: '#330077',
-            secondary: '#0dccb1',
+            primary: '#0088bd',
+            secondary: '#7500ae',
         }
     },
     pages: {
