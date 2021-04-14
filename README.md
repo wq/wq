@@ -4,7 +4,7 @@
 
 ## Getting Started
 
-wq can be installed via PyPI, NPM, or plain `<script>` tag via CDN.  See [the documentation](https://wq.io/docs) for more information on getting started.
+wq can be installed via PyPI, NPM, or plain `<script>` tag via CDN.  See [the documentation](https://wq.io/overview/setup) for more information on getting started.
 
 ### Python
 
@@ -48,10 +48,10 @@ wq is made up of the following submodules, which are maintained as separate pack
 [d.svg]: https://wq.io/images/icons/wq.db.svg
 
 [wq/wq]: https://wq.io/
-[wq/a]: https://wq.io/wq.app
-[wq/b]: https://wq.io/wq.build
-[wq/c]: https://wq.io/wq.create
-[wq/d]: https://wq.io/wq.db
+[wq/a]: https://wq.io/wq.app/
+[wq/b]: https://wq.io/wq.build/
+[wq/c]: https://wq.io/wq.create/
+[wq/d]: https://wq.io/wq.db/
 
 [py/wq]: https://pypi.org/project/wq
 [py/a]: https://pypi.org/project/wq.app

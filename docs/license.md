@@ -33,8 +33,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
 
-Note that [wq.app] is packaged with a number of "vendored" third party JavaScript libraries.  The licenses for these libraries may have different terms than those in wq.app.
+Note that [wq.app] is packaged with a number of "vendored" third party JavaScript libraries.  The licenses for these libraries are generally MIT, BSD-3-Clause, or compatible.  See [LICENSES.md] for the full list.
 
 [wq]: ./index.md
 [wq.app]: ./wq.app/index.md
 [wq.db]: ./wq.db/index.md
+[LICENSES.md]: https://github.com/wq/wq.app/blob/main/LICENSES.md
