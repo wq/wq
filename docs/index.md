@@ -135,3 +135,5 @@ wq.init(config).then(...);
 > [Install](./overview/setup.md) • [View Release Notes](./releases/wq-1.3.0a1.md)
 
 ## Documentation
+
+> Note: The legacy jQuery Mobile-based documentation has moved to [v1.wq.io](https://v1.wq.io).
