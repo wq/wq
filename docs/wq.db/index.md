@@ -56,7 +56,6 @@ A collection of abstract models and serializers for use in constructing advanced
 [wq.app]: ../wq.app/index.md
 [Django]: https://www.djangoproject.com/
 [setup]: ../overview/setup.md
-[license]: ../license.md
 
 [rest]: ./rest.md
 [Django REST Framework]: http://django-rest-framework.org

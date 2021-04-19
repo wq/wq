@@ -9,24 +9,15 @@ wq_config:
 
 ![wq.app](https://wq.io/images/wq.app.svg)
 
-**wq.app** is a suite of JavaScript modules created to facilitate the rapid deployment of offline-cabable HTML5 mobile and desktop data collection apps.  Potential use cases include **surveys**, **geographic data capture & management**, and **crowdsourcing**/**citizen science**.  wq.app is the client component of the [wq framework], and can be used with a [wq.db] server or adapted for use with any API.
+**wq.app** is a suite of JavaScript modules created to facilitate the rapid deployment of offline-capable HTML5 mobile and desktop data collection apps.  Potential use cases include **surveys**, **geographic data capture & management**, and **crowdsourcing**/**citizen science**.  wq.app is the client component of the [wq framework], and can be used with a [wq.db] server or adapted for use with any API.
 
-[![Latest PyPI Release](https://img.shields.io/pypi/v/wq.app.svg)](https://pypi.org/project/wq.app)
-[![Release Notes](https://img.shields.io/github/release/wq/wq.app.svg)](https://github.com/wq/wq.app/releases)
-[![License](https://img.shields.io/pypi/l/wq.app.svg)](../license.md)
-[![GitHub Stars](https://img.shields.io/github/stars/wq/wq.app.svg)](https://github.com/wq/wq.app/stargazers)
-[![GitHub Forks](https://img.shields.io/github/forks/wq/wq.app.svg)](https://github.com/wq/wq.app/network)
-[![GitHub Issues](https://img.shields.io/github/issues/wq/wq.app.svg)](https://github.com/wq/wq.app/issues)
+[**wq.app on GitHub**](https://github.com/wq/wq.app)
 
-#### Latest Build
-
-[![Package Tests](https://github.com/wq/wq.app/actions/workflows/test.yml/badge.svg)](https://github.com/wq/wq.app/actions/workflows/test.yml)
-
-# Getting Started
+## Installation
 
 wq.app is available via both npm (as [@wq/app](https://npmjs.com/package/@wq/app)) and PyPI (as [wq.app](https://pypi.org/project/wq.app)).  To facilitate rapid deployment with [wq.db] and Django, the wq.app Python package comes with pre-bundled builds of @wq/app's core dependencies and recommended plugins.
 
-## Python
+### Python
 ```bash
 # Recommended: create virtual environment
 # python3 -m venv venv
@@ -39,7 +30,7 @@ python3 -m pip install wq
 python3 -m pip install wq.app
 ```
 
-## Node
+### Node
 ```bash
 # Install @wq/app and recommended plugins
 npm install wq
@@ -50,11 +41,11 @@ npm install @wq/app
 
 See [the documentation][setup] for more information.
 
-# Modules
+## API
 
 wq.app provides a complete suite of JavaScript modules for offline GIS data collection and management.  These include the core @wq/app package and its dependencies, as well as plugins for UI renderers and map engines.  See the notes in [Getting Started][setup] for more information about setting up a project layout that utilizes wq.app and/or the @wq/* JavaScript libraries.
 
-## Core Stack
+### Core Stack
 
 name | description
 --|--
@@ -64,8 +55,8 @@ name | description
 [@wq/model] | Provides a client-side ORM for collections retrieved from a REST API (such as [wq.db])
 [@wq/outbox] | Saves form submissions while offline and syncs to the server later
 
-## Plugins
-### UI Renderers
+### Plugins
+#### UI Renderers
 
 As of wq.app 1.3, UI rendering is handled via plugins, with two main alternative renderers available.  This is part of the [roadmap for wq.app 2.0](https://github.com/wq/wq.app/issues/111).
 
@@ -76,7 +67,7 @@ module | description
 
 When installing @wq/app directly from NPM, one of the two renderers should be installed and registered explicitly.  When using the wq.app PyPI package, a default renderer will be provided based on the version of [wq create / wq start][wq.create] used to create the project.  (New ESM-based projects will default to the @wq/material renderer, while older AMD/RequireJS projects will default to the @wq/jquery-mobile renderer.)
 
-### Map Engines
+#### Map Engines
 
 wq.app also provides optional map plugins for projects needing interactive GIS capabilities such as GPS point collection.  In wq.app 1.3, there are two alternative map engines available.
 

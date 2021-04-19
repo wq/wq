@@ -75,9 +75,9 @@ In addition to keeping bundle sizes small, @wq/rollup-plugin helps ensure that t
 
 ## Source
 
-The source code for @wq/cra-template is in the [wq.create repository][source].
+The source code for @wq/rollup-plugin is in the [wq.create repository][source].
 
-[source]: https://github.com/wq/wq.create/tree/main/packages/cra-template
+[source]: https://github.com/wq/wq.create/tree/main/packages/rollup-plugin
 [wq.app]: ../wq.app/index.md
 [wq]: ../wq.md
 [@wq/cra-template]: ./cra-template.md

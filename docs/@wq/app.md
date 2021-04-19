@@ -175,7 +175,7 @@ app.nav('items/1');
 If the application supports authentication and the user is logged in, `app.user` will be set with information about the current user provided by the server.  This information will also be available in the [render context][useRenderContext] and [auth plugin state][usePluginState].
 
 #### `app.config`, `app.wq_config`
-A copy of the @wq/app configuration object (see above) and the [wq configuration object][config], respectively.  Initially `app.config.pages` and `app.wq_config.pages` are the same, but after logging in, `app.wq_config` is overwritten with an updated wq configuration object with permissions information specific to the logged-in user.  `app.config` is made available in the [template contexts][templates] as `{{app_config}}`, while `app.wq_config` is provided as `{{wq_config}}`.
+A copy of the @wq/app configuration object (see above) and the [wq configuration object][config], respectively.  Initially `app.config.pages` and `app.wq_config.pages` are the same, but after logging in, `app.wq_config` is overwritten with an updated wq configuration object with permissions information specific to the logged-in user.
 
 #### `app.models`
 
