@@ -1,4 +1,5 @@
 export default {
+    site_title: 'wq Demo App',
     router: {
         base_url: window.location.pathname
     },
