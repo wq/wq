@@ -30,15 +30,17 @@ Options:
 Command | Module | Description
 --------|--------|-------------
 [addform] | [wq.create] | Convert an XLSForm into a Django app for wq.
-[create] | [wq.create] | Start a new project with wq.app and wq.db.
 [collectjson] | [wq.build] | Load directory files into a JSON object.
+[create] | [wq.create] | Start a new project with wq.app and wq.db.
 [icons] | [wq.build] | Generate resized icons from source image.
+[serviceworker] | [wq.build] | Generate a service-worker.js.
 [setversion] | [wq.build] | Update version.txt (and version.js).
 
+[wq.build]: ../wq.build/index.md
 [wq.create]: ../wq.create/index.md
-[wq.build]: ./index.md
 [addform]: ../wq.create/addform.md
-[collectjson]: ./collectjson.md
-[icons]: ./icons.md
-[setversion]: ./setversion.md
+[collectjson]: ../wq.build/collectjson.md
 [create]: ../wq.create/create.md
+[icons]: ../wq.build/icons.md
+[serviceworker]: ../wq.build/serviceworker.md
+[setversion]: ../wq.build/setversion.md

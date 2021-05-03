@@ -16,6 +16,8 @@ Usage: wq setversion [OPTIONS] VERSION
 Options:
   -f, --filename TEXT  Name of text file (default is version.txt)
   --jsout TEXT         Name of an AMD module (e.g. myapp/version.js)
+  --esm TEXT           Name of an ESM module (e.g. myapp/version.js)
+  --package TEXT       Path to package.json
   --help               Show this message and exit.
 ```
 

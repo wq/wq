@@ -14,9 +14,14 @@ Usage: wq addform [OPTIONS] XLSFORM
 
       db/[form_name]/models.py
       db/[form_name]/rest.py
-      templates/[form_name]_detail.html
-      templates/[form_name]_edit.html
-      templates/[form_name]_list.html
+      templates/[form_name]_detail.html (if applicable)
+      templates/[form_name]_edit.html (if applicable)
+      templates/[form_name]_list.html (if applicable)
+
+  Note that Mustache templates are only used for projects generated with
+  wq.start 1.2 and earlier, which use the @wq/jquery-mobile renderer. Newer
+  projects leverage the @wq/react + @wq/material renderer, which uses React
+  components instead of Mustache templates.
 
 Options:
   --input-dir PATH           Source / master templates
