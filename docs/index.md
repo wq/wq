@@ -16,6 +16,7 @@ wq is a modular framework for bespoke **survey and geospatial data collection** 
 import wq from './wq.js';
 
 const config = {
+    site_title: "Demo App",
     material: {
         theme: {
             primary: '#0088bd',

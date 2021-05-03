@@ -106,23 +106,7 @@ wq.use({
         }
     },
     thunks: {
-        RENDER(dispatch, getState, { action }) {
-            const {
-                router_info: { mode, page_config },
-                label,
-            } = action.payload;
-            let title;
-            if (label) {
-                title = label;
-            } else if (mode === 'list') {
-                title = page_config.verbose_name_plural;
-            } else {
-                title = page_config.verbose_name;
-            }
-            if (title !== config.site_title) {
-                title = `${title} - ${config.site_title}`;
-            }
-            document.title = title;
+        RENDER() {
             if (location.hash) {
                 const el = document.getElementById(location.hash.slice(1));
                 if (el) {
