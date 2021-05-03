@@ -1,8 +1,6 @@
 ---
 repo: wq.db
 date: 2020-09-29
-tag: next
-tag_color: secondary
 ---
 
 # wq.db 1.3 alpha

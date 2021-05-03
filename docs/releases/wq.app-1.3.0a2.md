@@ -1,8 +1,6 @@
 ---
 repo: wq.app
 date: 2020-10-23
-tag: next
-tag_color: secondary
 ---
 
 # wq.app 1.3 alpha 2

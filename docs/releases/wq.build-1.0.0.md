@@ -1,5 +1,5 @@
 ---
-repo: wq.core
+repo: wq.build
 date: 2017-07-24
 ---
 
