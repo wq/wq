@@ -2,7 +2,7 @@ import os
 from setuptools import setup
 
 LONG_DESCRIPTION = """
-A modular framework for citizen science field data collection via offline-capable mobile web apps.
+A modular framework for mobile surveys and field data collection via offline-capable mobile web apps.
 """
 
 
@@ -46,6 +46,7 @@ setup(
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
         'Programming Language :: Python :: 3 :: Only',
         'Framework :: Django',
         'Framework :: Django :: 1.11',
@@ -54,6 +55,7 @@ setup(
         'Framework :: Django :: 2.2',
         'Framework :: Django :: 3.1',
         'Framework :: Django :: 3.0',
+        'Framework :: Django :: 3.2',
         'Topic :: Software Development :: Libraries :: Application Frameworks',
         'Topic :: Text Processing :: Markup :: HTML',
         'Topic :: Scientific/Engineering :: GIS',
@@ -67,7 +69,7 @@ setup(
     ],
     project_urls={
         'Homepage': 'https://wq.io/',
-        'Documentation': 'https://wq.io/docs/',
+        'Documentation': 'https://wq.io/',
         'Source': 'https://github.com/wq/wq',
         'Release Notes': 'https://github.com/wq/wq/releases',
         'Issues': 'https://github.com/wq/wq/issues',

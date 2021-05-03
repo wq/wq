@@ -1,6 +1,12 @@
-[![wq](https://wq.io/images/wq.svg)](https://wq.io/)
+<p align="center">
+  <a href="https://wq.io">
+    <img src="https://wq.io/images/wq.svg" alt="wq">
+  </a>
+</p>
 
-[wq](https://wq.io) is a modular framework for field data collection and surveys via offline-capable mobile web apps.
+<p align="center">
+  <a href="https://wq.io"><strong>wq</strong></a> is a modular framework for field data collection and surveys via offline-capable mobile web apps.
+</p>
 
 ## Getting Started
 
@@ -11,7 +17,7 @@ wq can be installed via PyPI, NPM, or plain `<script>` tag via CDN.  See [the do
 ```bash
 python3 -m venv venv
 . venv/bin/activate
-python3 -m pip install wq
+python3 -m pip install wq==1.3.0b1
 wq create -d myproject.example.com myproject
 ```
 
