@@ -27,7 +27,7 @@ setup(
     long_description_content_type='text/markdown',
     install_requires=[
         'wq.app>=1.3.0a1,<1.4.0',
-        'wq.build>=1.3.0a1,<1.4.0',
+        'wq.build>=1.3.0b1,<1.4.0',
         'wq.create>=1.3.0a1,<1.4.0',
         'wq.db>=1.3.0b1,<1.4.0',
     ],
