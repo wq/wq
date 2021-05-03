@@ -31,6 +31,7 @@ A plugin can have multiple types depending on the properties.  For example, many
 type | processed by | properties
 -----|-------------|---------
 [AJAX/Fetch][ajax] | @wq/store | `ajax(url, data, method, headers)`
+[Form Validation][validate] | @wq/outbox | `validate(values, modelConf)`
 [onsync] | @wq/outbox | `onsync()`
 [postsaveurl] | @wq/app | `postsaveurl(item, alreadySynced)`
 [Render Context][context] | @wq/router | `context(ctx, routeInfo)`
@@ -58,6 +59,7 @@ wq.app ships with a selection of predefined plugins for common use cases.  These
 [components]: ./components.md
 [reducer]: ./reducer.md
 [thunks]: ./thunks.md
+[validate]: ./validate.md
 
 [auth]: ../wq.db/auth.md
 [@wq/app]: ../@wq/app.md
