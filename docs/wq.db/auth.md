@@ -11,9 +11,9 @@ Authentication
 
 url | purpose
 ----|--------
-`/login` | Displays a form for entering username and password.  Note that it is up to you to provide the required template, `login.html`.
+`/login` | Displays a form for entering username and password.  Uses the [Login] view.
 `/login.json` | Used by [@wq/app] to submit and/or verify login information.  A successful login will return the user information as well as a user-specific [wq configuration object].
-`/logout` | Logs out the user and displays a success message.  Note that it is up to you to provide the required template, `logout.html`.
+`/logout` | Logs out the user and displays a success message.  Uses the [Logout] view.
 `/logout.json` | Used by [@wq/app] to log out the user via AJAX.
 
 [wq.db.rest.auth]: https://github.com/wq/wq.db/blob/main/rest/auth/
@@ -23,3 +23,5 @@ url | purpose
 [router]: ./router.md
 [@wq/app]: ../@wq/app.md
 [wq configuration object]: ../config.md
+[Login]: ../views/Login.md
+[Logout]: ../views/Logout.md
