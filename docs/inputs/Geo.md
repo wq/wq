@@ -226,4 +226,4 @@ The [@wq/map] implementation is a wrapper around other components (including [Dr
 [wq]: ../wq.md
 [Draw]: ../overlays/Draw.md
 [plugins]: ../plugins/index.md
-[map-src]: https://github.com/wq/wq.app/blob/main/packages/react/src/inputs/Map.js
+[map-src]: https://github.com/wq/wq.app/blob/main/packages/map/src/inputs/Geo.js
