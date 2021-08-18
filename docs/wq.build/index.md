@@ -37,4 +37,4 @@ See [the documentation][setup] for more information.
 
 [wq.app]: ../wq.app/index.md
 [wq framework]: ../index.md
-[setup]: ../overviews/setup.md
+[setup]: ../overview/setup.md
