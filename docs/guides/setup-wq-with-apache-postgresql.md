@@ -7,7 +7,7 @@ icon: pin
 
 The [wq framework] is designed to create fully custom applications, so most wq-powered projects eventually require running a public web server and installing a number of software packages.  If you are planning to self-host, you can follow the process below to get an application up and running.
 
-To run wq on a public website, you will need a WGSI-capable webserver like [Apache], and a database to host the application.  You will also need to obtain or configure a DNS record pointing a domain or subdomain to your server.  wq.db is generally used with [PostgreSQL] and [PostGIS], but any Django-supported database will work.  These instructions assume you will be using Apache and PostGIS.  These steps are tested on [Ubuntu 20.04 LTS][Ubuntu].
+To run wq on a public website, you will need a WSGI-capable webserver like [Apache], and a database to host the application.  You will also need to obtain or configure a DNS record pointing a domain or subdomain to your server.  wq.db is generally used with [PostgreSQL] and [PostGIS], but any Django-supported database will work.  These instructions assume you will be using Apache and PostGIS.  These steps are tested on [Ubuntu 20.04 LTS][Ubuntu].
 
 1. [Install System Libraries](#install-system-libraries)
 2. [Create Project Directory](#create-project-directory)
