@@ -33,6 +33,7 @@ Command | Module | Description
 [collectjson] | [wq.build] | Load directory files into a JSON object.
 [create] | [wq.create] | Start a new project with wq.app and wq.db.
 [icons] | [wq.build] | Generate resized icons from source image.
+[movefiles] | [wq.build] | Move one or more files to a different folder.
 [serviceworker] | [wq.build] | Generate a service-worker.js.
 [setversion] | [wq.build] | Update version.txt (and version.js).
 
@@ -42,5 +43,6 @@ Command | Module | Description
 [collectjson]: ../wq.build/collectjson.md
 [create]: ../wq.create/create.md
 [icons]: ../wq.build/icons.md
+[movefiles]: ../wq.build/movefiles.md
 [serviceworker]: ../wq.build/serviceworker.md
 [setversion]: ../wq.build/setversion.md

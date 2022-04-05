@@ -17,9 +17,9 @@ Usage: wq serviceworker [OPTIONS] VERSION
      of each file, but fall back to the cached version after the specified
      timeout.
 
-  This ensures the app can work offline as needed, without requiring a
-  double refresh whenever a new version is available.  Specify the
-  --template option to override the default.
+  This ensures the app can work offline as needed, without requiring a double
+  refresh whenever a new version is available.  Specify the --template option
+  to override the default.
 
   The list of files to cache should be relative to the directory containing
   service-worker.js.  Wildcard paths will be resolved to existing filenames,
