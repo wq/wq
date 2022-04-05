@@ -133,9 +133,9 @@ wq.init(config).then(...);
 
 ## News
 
-> wq 1.3 beta was released on May 3, 2021!
+> wq 1.3 was released on April 5, 2022!
 >
-> [Install](./overview/setup.md) • [View Release Notes](./releases/wq-1.3.0b1.md)
+> [Install](./overview/setup.md) • [View Release Notes](./releases/wq-1.3.0.md)
 
 ## Documentation
 

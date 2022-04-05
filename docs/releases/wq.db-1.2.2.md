@@ -1,8 +1,6 @@
 ---
 repo: wq.db
 date: 2021-04-27
-tag: latest
-tag_color: primary
 ---
 
 # wq.db 1.2.2

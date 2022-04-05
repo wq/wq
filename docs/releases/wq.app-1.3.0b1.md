@@ -1,8 +1,6 @@
 ---
 repo: wq.app
 date: 2021-05-03
-tag: next
-tag_color: secondary
 ---
 
 # wq.app 1.3 beta
@@ -118,8 +116,8 @@ The following commands are not deprecated, but the implementations have moved fr
 
 The deprecated commands are not needed for newer projects, so the associated dependencies are are now optional (e6f279b).  Use `pip install wq.app[compat]` if you have a fresh install of wq.app 1.3.0 and need to use the old commands.  (Users upgrading from an older version of wq.app should already have the required dependencies installed.)
 
-[wq.app]: ../wq.app/.md
-[wq]: ../wq/index.md
+[wq.app]: ../wq.app/index.md
+[wq]: ../wq.md
 [@wq/app]: ../@wq/app.md
 [@wq/store]: ../@wq/store.md
 [@wq/model]: ../@wq/model.md

@@ -1,8 +1,6 @@
 ---
 repo: wq-django-template
 date: 2020-09-02
-tag: latest
-tag_color: primary
 ---
 
 # wq-django-template 1.2.1

@@ -1,8 +1,6 @@
 ---
 repo: xlsform-converter
 date: 2020-09-02
-tag: latest
-tag_color: primary
 ---
 
 # xlsconv 1.2.0

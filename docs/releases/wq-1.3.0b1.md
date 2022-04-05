@@ -1,8 +1,6 @@
 ---
 repo: wq
 date: 2021-05-03
-tag: next
-tag_color: secondary
 ---
 
 # wq 1.3 beta
