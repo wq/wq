@@ -6,9 +6,12 @@ order: -1
 How To: Describe your Data Model
 =====================
 
-The [wq framework] does not come with a canned data model by default.  This makes the framework extremely flexible to adapt to a variety of project workflows, but means you will need to think a bit about how to structure your data before continuing.  In the simplest case, you will have a single web form that populates a single database table.  More advanced cases will have multiple inter-related tables, some filled in at the same time and others filled out separately.  wq makes it easy to start simple and add more complexity later.
+The [wq framework]'s default project template provides a simple survey schema with Category and Observation models, but this is designed to be replaced with a custom schema.  wq is extremely flexible to adapt to a variety of project workflows, but you may need to think a bit about how to structure your data before continuing.  In the simplest case, you will have a single web form that populates a single database table.  More advanced cases will have multiple inter-related tables, some filled in at the same time and others filled out separately.  wq makes it easy to start simple and add more complexity later.
 
-wq uses the [Django model syntax][Django model] as the primary way to define a data schema.  After installing wq and starting a project via `wq create`, you'll need to create a [Django application] folder containing two files: `models.py` and a `rest.py`.  The `models.py` is used to tell Django how to create the database table(s) corresponding to your schema.  Then, `rest.py` registers the same model definition with the wq.db REST API so that records can be retrieved and updated from the client application.
+wq uses the [Django model syntax][Django model] as the primary way to define a data schema.  After installing wq and starting a project via `wq create`, you'll have a Django project (under db/myproject) and a separate [Django application] folder (under db/myproject_survey).  This Django application contains three key files: `models.py`, `rest.py`, and `serializers.py`.
+  * `models.py` is used to tell Django how to create the database table(s) corresponding to your schema.
+  * `rest.py` registers the same model definition with the wq.db REST API so that records can be retrieved and updated from the client application.
+  * `serializers.py` defines how database fields are mapped from the database to the REST API, and configures how they are rendered in the UI.  (`serializers.py` is not required if the default mapping and configuration is sufficient)
 
 ## Model Definition
 There are three ways to create a new model definition.  The list of available field/question types is listed [here][inputs].
@@ -24,7 +27,7 @@ wq addform ~/survey.xlsx
  You should see a new folder, `survey/`, with the files `models.py`, `rest.py`, and (depending on your data model `serializers.py`).
 
 ### Option 2: Django Model syntax
-You can create a Django application folder manually (or with `./manage.py startapp`) and define `models.py` via [Django model] classes.  You will then want to create a `rest.py` file that registers each model class with the [wq.db router].   You may also need to define a custom serializer in `serializers.py`, for example to support [nested forms] or [custom input types].
+You can create a Django application folder manually (or by copying myproject_survey) and define `models.py` via [Django model] classes.  You will then want to create a `rest.py` file that registers each model class with the [wq.db router].   You may also need to define a custom serializer in `serializers.py`, for example to support [nested forms] or [custom input types].
 
 ```python
 # survey/models.py
@@ -48,7 +51,7 @@ rest.router.register_model(
 
 ### Option 3: SQL Syntax
 
-Finally, if you are handy with SQL (or have an existing database) you can define the tables there and generate an initial `models.py` by running [./manage.py inspectdb][inspectdb].
+Finally, if you are more comfortable with SQL (or have an existing database) you can define the tables there and generate an initial `models.py` by running [python manage.py inspectdb][inspectdb].
 
 ## Creating the Database Tables
 
@@ -71,11 +74,11 @@ INSTALLED_APPS = [
 Then, run Django's built in [migration commands] to create database tables in PostgreSQL corresponding to your model classes.  For above example, the following should work:
 
 ```bash
-./manage.py makemigrations survey
-./manage.py migrate
+python manage.py makemigrations survey
+python manage.py migrate
 ```
 
-After the commands complete, you can use `./manage.py dbshell`, psql, or pgAdmin to confirm that the tables are present.  If all goes well, you should also be able to open a browser and visit your website's [/config.json] and [/modelnames.json] to confirm that the model(s) are registered.
+After the commands complete, you can use `python manage.py dbshell`, psql, or pgAdmin to confirm that the tables are present.  If all goes well, you should also be able to open a browser and visit your website's [/config.json] and [/modelnames.json] to confirm that the model(s) are registered.
 
 [wq framework]: ../index.md
 [Django Model]: https://docs.djangoproject.com/en/1.10/topics/db/models/

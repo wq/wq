@@ -18,11 +18,11 @@ python3 -m venv ./venv
 . ./venv/bin/activate
 
 # Install wq
-python3 -m pip install wq==1.3.0b1
+python3 -m pip install wq
 wq create
 ```
 
-> Note that the command name changed from `wq start` to `wq create` in wq 1.3.0b1.
+> Note that the command name changed from `wq start` to `wq create` in wq 1.3.
 
 When called without any arguments, the `wq create` command will prompt for several project attributes including the project name and web domain.  `wq create` also asks whether to enable GIS support and/or Node.js/npm support.  (Since both options require the installation of additional software, they are are disabled by default.)  All of the prompts can also be specified as command-line arguments - see [wq create --help] for the full list.
 
@@ -35,7 +35,7 @@ If you are unsure, start with the Local Development process.  You will be able t
 
 ## II. Define your Data Model
 
-wq does not come with a canned data model by default.  This makes it extremely flexible to adapt to a variety of project workflows, but means you need to think a bit about how you want to structure your data before continuing.  The data schema you define will be used to create one or more database tables as well as the HTML forms for entering data.
+To help get started, wq provides a simple survey schema with Observation and Category models.  This can (and usually should) be replaced with a custom schema specific to your project needs.  wq is extremely flexible to adapt to a variety of project workflows, but you may need to think a bit about how you want to structure your data before continuing.  Once defined, the data schema will be used to automatically generate database tables as well as the forms for entering data.
 
 See the following for more information on defining a data schema:
 

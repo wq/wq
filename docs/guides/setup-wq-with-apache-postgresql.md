@@ -30,6 +30,8 @@ sudo apt install apache2 libapache2-mod-wsgi-py3 postgresql-12-postgis-3 python3
 
 If you plan on using wq's optional npm integration, you will also need to install node and npm.  If you do so, we recommend installing from NodeSource.  You can also install npm from Ubuntu universe, but (as of this writing) that requires 563MB of dependencies including the deprecated Python 2.
 
+> Note: wq currently supports Node 14 and npm 6.  Support for Node 16 and npm 7 / 8 will be added in a future release.
+
 ```bash
 curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 sudo apt install nodejs
@@ -49,16 +51,16 @@ sudo chown `whoami` $PROJECTNAME
 cd $PROJECTNAME
 python3 -m venv venv
 . venv/bin/activate
-python3 -m pip install --upgrade pip
-python3 -m pip install wheel
+python -m pip install --upgrade pip
+python -m pip install wheel
 ```
 
 ## Initialize wq Framework
 
-> Note that the command name changed from `wq start` to `wq create` in wq 1.3.0b1.
+> Note that the command name changed from `wq start` to `wq create` in wq 1.3.
 
 ```bash
-python3 -m pip install wq==1.3.0b1
+python -m pip install wq
 
 # Note the trailing dot since we are already in the project folder
 wq create $PROJECTNAME .
@@ -114,7 +116,11 @@ sudo certbot --apache
 # (edit /etc/apache2/sites-enabled/$PROJECTNAME-le-ssl.conf, uncomment WSGIDaemonProcess line)
 ```
 
-Visit the site in a web browser to verify the new installation.  You'll probably need to type in the server's IP address instead of the project name until your DNS is configured.  When the application loads, you should see the default wq-themed app template with links to log in and out.  You are now ready to start [describing your data model][data-model] to create surveys that appear on the home screen after you rebuild the application with deploy.sh.
+Visit the site in a web browser to verify the new installation.  You'll probably need to type in the server's IP address instead of the project name until your DNS is configured.  When the application loads, you should see the default wq-themed app template with links to log in and out, as well as to manage the default Category and Observation tables.
+
+> Hint: Try logging in, then creating a Category, then creating an Observation.
+
+You are now ready to start [describing your data model][data-model] to create additional survey types, which will appear on the home screen after you rebuild the application with deploy.sh.
 
 [install wq]: ../overview/setup.md
 [setup-local]: ./setup-wq-with-sqlite.md

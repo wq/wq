@@ -41,7 +41,9 @@ curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 sudo apt install nodejs
 ```
 
-> Note that the [framework initialization step](#initialize-wq-framework) will take a few minutes when using npm, since it requires installing hundreds of npm packages instead of the prebuilt libraries included with the Python package.  On the other hand, enabling npm makes it easier to integrate additional third-party JavaScript libraries and development tools as needed.
+> Note: wq currently supports Node 14 and npm 6.  Support for Node 16 and npm 7 / 8 will be added in a future release.
+
+The [framework initialization step](#initialize-wq-framework) will take a few minutes when using npm, since it requires installing hundreds of npm packages instead of the prebuilt libraries included with the Python package.  On the other hand, enabling npm makes it easier to integrate additional third-party JavaScript libraries and development tools as needed.
 
 ### Windows
 
@@ -56,17 +58,17 @@ mkdir myproject
 cd myproject
 
 python3 -m venv venv
-. venv/bin/activate
-python3 -m pip install --upgrade pip
-python3 -m pip install wheel
+. venv/bin/activate  # (on Windows: venv\Scripts\activate)
+python -m pip install --upgrade pip
+python -m pip install wheel
 ```
 
 ## Initialize wq framework
 
-> Note that the command name changed from `wq start` to `wq create` in wq 1.3.0b1.
+> Note that the command name changed from `wq start` to `wq create` in wq 1.3.
 
 ```bash
-python3 -m pip install wq==1.3.0b1
+python -m pip install wq
 
 # Note the trailing dot since we are already in the project folder
 wq create myproject .
@@ -84,8 +86,8 @@ Run the commands below to create the initial database tables and admin account.
 
 ```bash
 cd db/
-./manage.py migrate
-./manage.py createsuperuser
+python manage.py migrate
+python manage.py createsuperuser
 cd ..
 ```
 
@@ -95,14 +97,18 @@ This should create a sqlite database in the conf/ directory.
 
 ```bash
 # generate htdocs folder via wq build
-./deploy.sh 0.0.1
+./deploy.sh 0.0.1  # (on Windows: deploy.bat 0.0.0)
 
 # Start local Django server
 cd db/
-./manage.py runserver
+python manage.py runserver
 ```
 
-Visit http://localhost:8000/ in a web browser to verify the new installation.  When the application loads, you should see the default wq-themed app template with links to log in and out.  You are now ready to start [describing your data model][data-model] to create surveys which will appear on the home screen after you rebuild the application with deploy.sh.
+Visit http://localhost:8000/ in a web browser to verify the new installation.  When the application loads, you should see the default wq-themed app template with links to log in and out, as well as to manage the default Category and Observation models.
+
+> Hint: Try logging in, then adding a Category, then adding an Observation.
+
+You are now ready to start [describing your own data model][data-model] to create additional survey types, which will appear on the home screen after you rebuild the application.
 
 ## Optional: Enable GIS Support
 
