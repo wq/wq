@@ -1,6 +1,5 @@
 import { modules } from 'https://unpkg.com/wq';
 import { renderers } from 'https://unpkg.com/@wq/markdown@next';
-import('https://static.codepen.io/assets/embed/ei.js');
 
 const React = modules.react;
 const Code = renderers.code;
