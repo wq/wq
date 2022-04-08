@@ -1,6 +1,6 @@
-import 'https://static.codepen.io/assets/embed/ei.js';
 import { modules } from 'https://unpkg.com/wq';
 import { renderers } from 'https://unpkg.com/@wq/markdown@next';
+import('https://static.codepen.io/assets/embed/ei.js');
 
 const React = modules.react;
 const Code = renderers.code;
@@ -86,7 +86,14 @@ export default function CodeDetect(props) {
         value.indexOf("import wq from './wq.js';") !== -1 &&
         value.indexOf('wq.init(config).then(...);') !== -1
     ) {
-        return React.createElement(CodePen, { code: value });
+        if (window.__CPEmbed) {
+            return React.createElement(CodePen, { code: value });
+        } else {
+            return React.createElement(Code, {
+                ...props,
+                value: '// Warning: Failed to initialize CodePen!\n\n' + value,
+            });
+        }
     } else {
         return React.createElement(Code, props);
     }
