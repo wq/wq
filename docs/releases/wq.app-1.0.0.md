@@ -40,7 +40,7 @@ date: 2017-07-24
   * Flatten [wq/map.js](../@wq/map.md) configuration
   * Improve handling of images, labels and foreign keys in [wq/outbox.js](../@wq/outbox.md)
   * Update to Leaflet 1.0 and d3.js 4.2
-  * Add [wq/chartapp.js](https://github.com/wq/django-rest-pandas)
+  * Add [wq/chartapp.js](https://django-rest-pandas.wq.io/@wq/chart)
   * Drop wq/appcache.js, wq/online.js, and wq/owl.js
   * Various plugin updates
 * [Changes in RC 1](./wq.app-1.0.0rc1.md)

@@ -15,7 +15,7 @@ date: 2014-11-03
 ### API improvements
 - [wq/app.js](../@wq/app.md):
   - Support for markdown attachments (see wq/wq.db#30)
-- [wq/chart.js](https://github.com/wq/django-rest-pandas):
+- [wq/chart.js](https://django-rest-pandas.wq.io/@wq/chart):
   - remove existing lines/points if needed when draw mode changes (bc2351b)
 - [wq/map.js](../@wq/map.md): 
   - option to force minimum bounding box when autozooming (2447491)

@@ -23,7 +23,7 @@ date: 2017-07-19
      * [django-natural-keys](https://github.com/wq/django-natural-keys) (#50)
      * [html-json-forms](https://github.com/wq/html-json-forms)
      * [django-mustache](https://github.com/wq/django-mustache) (#48)
-     * [django-rest-pandas](https://github.com/wq/django-rest-pandas) (wq/django-rest-pandas#17)
+     * [django-rest-pandas](https://django-rest-pandas.wq.io/) (wq/django-rest-pandas#17)
  * [Changes in Beta 1](./wq.db-1.0.0b1.md)
    * Minor fixes
  * [Changes in Beta 2](./wq.db-1.0.0b2.md)

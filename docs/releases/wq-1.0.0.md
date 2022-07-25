@@ -11,5 +11,5 @@ See the submodule release notes for details:
 - [wq.app 1.0.0](./wq.app-1.0.0.md)
 - [wq.core 1.0.0](./wq.build-1.0.0.md)
 - [wq.db 1.0.0](./wq.db-1.0.0.md)
-- [wq.io 1.0.0](./itertable-1.0.0.md)
+- [wq.io 1.0.0](https://django-data-wizard.wq.io/releases/itertable-1.0.0)
 - [wq.start 1.0.0](./wq.create-1.0.0.md)

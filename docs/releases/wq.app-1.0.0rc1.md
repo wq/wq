@@ -42,8 +42,8 @@ Thanks to @tomaszn for reporting several of these issues.
  * [wq/markdown.js] syntax highlighting for server-rendered markdown (014b75d)
 
 [wq/app.js]: ../@wq/app.md
-[wq/pandas.js]: https://github.com/wq/django-rest-pandas
-[wq/chartapp.js]: https://github.com/wq/django-rest-pandas
+[wq/pandas.js]: https://django-rest-pandas.wq.io/@wq/pandas
+[wq/chartapp.js]: https://django-rest-pandas.wq.io/@wq/chart
 [wq/map.js]: ../@wq/map.md
 [wq/mapserv.js]: ../@wq/map.md
 [wq/locate.js]: ../inputs/Geo.md

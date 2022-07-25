@@ -79,7 +79,6 @@ React Native / Expo Support
       - Introduce new [`validate()`](../plugins/validate.md) plugin type
       - Support anonymous top-level [fieldset](../guides/organize-inputs-into-fieldsets.md)
       - Various new and improved React [components](../components/index.md) and [hooks](../hooks/index.md)
-plugin)
   * [@wq/model](../@wq/model.md) & [@wq/router](../@wq/router.md)
       - Replicate Django `ordering` for locally cached ORM records
       - Improve data loading spinner (#61, #103)

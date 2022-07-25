@@ -11,5 +11,5 @@ date: 2013-12-11
 
 ### Other Changes
 - Integrated test framework and [Travis CI](https://travis-ci.org/wq/wq.db) - see #8.
-- Made `wq.db.rest.search` and `wq.db.contrib.vera.io` their own contrib apps, [wq.db.contrib.search](../wq.db/patterns.md) and [wq.db.contrib.dbio](https://github.com/wq/django-data-wizard).
+- Made `wq.db.rest.search` and `wq.db.contrib.vera.io` their own contrib apps, [wq.db.contrib.search](../wq.db/patterns.md) and [wq.db.contrib.dbio](https://django-data-wizard.wq.io/).
 - Updated to [Python Social Auth](https://github.com/omab/python-social-auth), the designated successor of [Django Social Auth](https://github.com/omab/django-social-auth).

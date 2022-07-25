@@ -1,8 +1,6 @@
 ---
 repo: django-natural-keys
 date: 2020-01-10
-tag: latest
-tag_color: primary
 ---
 
 # natural-keys 1.6.0

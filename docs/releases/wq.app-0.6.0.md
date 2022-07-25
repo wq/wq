@@ -8,7 +8,7 @@ date: 2014-06-16
 This release provides a number of minor improvements to wq.app 0.5.1.
 
 ### New Modules
-- **[wq/progress.js](../wq.app/index.md)**:  A tool for updating an HTML5 `<progress>` bar with updates from an AJAX rest service (e.g. a [dbio](https://github.com/wq/django-data-wizard) Celery task)
+- **[wq/progress.js](https://django-data-wizard.wq.io/@wq/progress-element)**:  A tool for updating an HTML5 `<progress>` bar with updates from an AJAX rest service (e.g. a [dbio](https://django-data-wizard.wq.io/) Celery task)
 
 ### API improvements
 - **[wq/app.js](../@wq/app.md)**:

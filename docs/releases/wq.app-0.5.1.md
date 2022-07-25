@@ -8,10 +8,10 @@ date: 2014-02-08
 As part of the [wq 0.5.0 "Charted Waters"](./wq-0.5.0.md) release, this release of brings a number of enhancements to the data exploration capabilities of wq.app.
 
 ### New Modules
-- **[wq/pandas.js](https://github.com/wq/django-rest-pandas)**:  A tool for loading Pandas DataFrames via `d3.csv` and [Django REST Pandas](https://github.com/wq/django-rest-pandas).
+- **[wq/pandas.js](https://django-rest-pandas.wq.io/@wq/pandas)**:  A tool for loading Pandas DataFrames via `d3.csv` and [Django REST Pandas](https://django-rest-pandas.wq.io/).
 
 ### API improvements
-- **[wq/chart.js](https://github.com/wq/django-rest-pandas)**:
+- **[wq/chart.js](https://django-rest-pandas.wq.io/@wq/chart)**:
   - Full data-join support, making it possible to re-use existing SVG charts<br>
     (transition support will be added in a future release)
   - `timeSeries` and `scatter` charts can render as both lines and/or points.<br>Points now include a tooltip with information about the series and current value.

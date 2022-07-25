@@ -39,7 +39,7 @@ Here are a few things to keep in mind:
 
 ### wq/chartapp.js
 
-A number of changes [wq/chart.js](https://github.com/wq/django-rest-pandas) and the [wq/chartapp.js plugin](https://github.com/wq/django-rest-pandas) make it possible to configure the main chart options via custom `data-wq-*` attributes.  For example:
+A number of changes [wq/chart.js](https://django-rest-pandas.wq.io/@wq/chart) and the [wq/chartapp.js plugin](https://django-rest-pandas.wq.io/@wq/chart) make it possible to configure the main chart options via custom `data-wq-*` attributes.  For example:
 
 ```svg
 <svg data-wq-url="/api/data/timeseries.csv"

@@ -8,7 +8,7 @@ date: 2015-01-31
 **wq.app 0.7.1** brings a number of minor new features and bug fixes to version 0.7.0.
 - **[wq/app.js](../@wq/app.md)**
   - `postsave` configuration option now supports returning to "list" or "edit" views (2589c0e), in addition to detail views which were already supported.  It also supports returning to the same page after a save (3e67d1e). See the updated [wq configuration docs](../config.md) for more information.
-- **[wq/chart.js](https://github.com/wq/django-rest-pandas)**
+- **[wq/chart.js](https://django-rest-pandas.wq.io/@wq/chart)**
   - Better responsive design support by automatically computing an SVG `viewBox` property (
     9787f86).  See the [climata-viewer](https://github.com/heigeo/climata-viewer) project for an example.
 - **[wq/pages.js](../@wq/router.md)**

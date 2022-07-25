@@ -22,16 +22,16 @@ wq/autocomplete.js | removed
 [wq/pandas.js] | moved to [Django REST Pandas]
 [wq/progress.js] | moved to [Django Data Wizard]
 
-[wq/chart.js]: https://github.com/wq/django-rest-pandas
-[wq/chartapp.js]: https://github.com/wq/django-rest-pandas
+[wq/chart.js]: https://django-rest-pandas.wq.io/@wq/chart
+[wq/chartapp.js]: https://django-rest-pandas.wq.io/@wq/chart
 [other]: ../wq.app/index.md
 [wq/markdown.js]: https://github.com/wq/wq.markdown
-[wq/pandas.js]: https://github.com/wq/django-rest-pandas
-[wq/progress.js]: https://github.com/wq/django-data-wizard/tree/main/packages/progress
+[wq/pandas.js]: https://django-rest-pandas.wq.io/@wq/pandas
+[wq/progress.js]: https://django-data-wizard.wq.io/@wq/progress-element
 
-[Django REST Pandas]: https://github.com/wq/django-rest-pandas/pull/40
-[Django Data Wizard]: https://github.com/wq/django-data-wizard 
-[@wq/markdown]: https://github.com/wq/markdown
+[Django REST Pandas]: https://django-rest-pandas.wq.io/
+[Django Data Wizard]: https://django-data-wizard.wq.io/
+[@wq/markdown]: https://github.com/wq/wq.markdown
 
 ## Changes since wq.app 1.2 beta
  * Publish development builds of each NPM package to Bintray (see #115)

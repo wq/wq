@@ -13,7 +13,7 @@ tag_color: primary
  * Ignore `__version__` metadata field (#4)
  * Better default pluralization for repeat fields (#5)
  * Use AST for code generation (#7)
- * Register models with [Django Data Wizard](https://github.com/wq/django-data-wizard) (3a9ae09)
+ * Register models with [Django Data Wizard](https://django-data-wizard.wq.io/) (3a9ae09)
  * Support `group` types via [wq_fieldsets configuration](../guides/organize-inputs-into-fieldsets.md) (0d085f5)
 
 In addition, [pyxform 1.8.0](https://github.com/XLSForm/pyxform/releases/tag/v1.8.0) now supports openpyxl and xlrd 2.0.

@@ -14,8 +14,8 @@ As part of the [wq 0.5.0 "Charted Waters"](./wq-0.5.0.md) release, this release 
 - Don't set CRS object when serializing models with simple latitude and longitude in GeoJSON (in #17)
 
 ### New Modules (in `contrib`)
-- **[dbio](https://github.com/wq/django-data-wizard)**: Replaces `vera.io` as part of the above reorganization (#10)
-- **[chart](https://github.com/wq/django-rest-pandas)**: a charting service for [wq.app's](../wq.app/index.md) [chart.js](https://github.com/wq/django-rest-pandas) that utilizes the new `vera.EventResult` model.  Uses the new [Django REST Pandas](https://github.com/wq/django-rest-pandas) library to facilitated data transformation. (#10, #17) 
+- **[dbio](https://django-data-wizard.wq.io/)**: Replaces `vera.io` as part of the above reorganization (#10)
+- **[chart](https://django-rest-pandas.wq.io/serializers/)**: a charting service for [wq.app's](wq.app)&nbsp;[chart.js](http://django-rest-pandas.wq.io/@wq/chart) that utilizes the new `vera.EventResult` model.  Uses the new [Django REST Pandas](https://django-rest-pandas.wq.io/) library to facilitated data transformation. (#10, #17) 
 
 ### Other Changes
 - Extended the wq.db test suite with tests for `annotate`, `vera`, and `dbio`, and `files`.  The plan is that going forward, each improvement to wq.db will generally start as a pull request with a failing test.

@@ -52,6 +52,6 @@ Fortunately, all three use the same XLSForm standard, so once you have a survey 
 [xlsform]: https://xlsform.org/
 [Survey123]: https://survey123.arcgis.com/
 [KoBoToolbox]: https://www.kobotoolbox.org/
-[django-rest-pandas]: https://github.com/wq/django-rest-pandas
-[django-data-wizard]: https://github.com/wq/django-data-wizard
+[django-rest-pandas]: https://django-rest-pandas.wq.io/
+[django-data-wizard]: https://django-data-wizard.wq.io/
 [custom-input]: ../guides/define-a-custom-input-type.md

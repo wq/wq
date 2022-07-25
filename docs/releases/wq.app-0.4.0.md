@@ -7,7 +7,7 @@ date: 2013-10-08
 
 ### New Modules
 - **[wq/map.js](../@wq/map.md)**: Simplifies Leaflet integration for `app.js` list and detail screens with new [wq.db](../wq.db/index.md) GeoJSON support
-- **[wq/chart.js](https://github.com/wq/django-rest-pandas)**: d3-based [reusable charts](https://bost.ocks.org/mike/chart/) for time-series data: `scatter`, `timeSeries`, and `contour`, `boxplot`.
+- **[wq/chart.js](https://django-rest-pandas.wq.io/@wq/chart)**: d3-based [reusable charts](https://bost.ocks.org/mike/chart/) for time-series data: `scatter`, `timeSeries`, and `contour`, `boxplot`.
 
 ### API improvements
 - **[wq/app.js](../@wq/app.md)**: Full read-write support for all [wq.db](../wq.db/index.md) design patterns (`annotate`, `identify`, `locate`, and `relate`)

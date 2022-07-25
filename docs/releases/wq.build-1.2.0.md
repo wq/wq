@@ -15,4 +15,4 @@ date: 2020-01-15
   * [Changes in Beta](./wq.build-1.2.0b1.md)
      * Update Package metadata
      * Improve YAML parsing
-     * Remove check for wq.io (renamed to [IterTable](https://github.com/wq/itertable))
+     * Remove check for wq.io (renamed to [IterTable](https://django-data-wizard.wq.io/itertable/))

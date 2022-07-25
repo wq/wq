@@ -23,7 +23,7 @@ All changes by @sheppard.
  *  Improve npm integration ([@wq/cra-template](../@wq/cra-template.md))
      * Pin `react-scripts` to v4 to work around ESM import issues (wq/wq#58).  CRA v5 support will be added in a future release of wq.app (wq/wq.app#130)
      * Use server-generated config as-is (wq/wq#54)
- * Support generating `wizard.py` file to register new models with [Django Data Wizard](https://github.com/wq/django-data-wizard) (f263137)
+ * Support generating `wizard.py` file to register new models with [Django Data Wizard](https://django-data-wizard.wq.io/) (f263137)
 
 ## Other changes since wq.start 1.2.1
   * [Changes in Alpha](./wq.create-1.3.0a1.md)

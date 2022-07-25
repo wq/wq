@@ -9,6 +9,6 @@ date: 2019-10-07
 
  * use setuptools_scm & markdown readme (1a4cfab)
  * use safe_load() to avoid YAML warning (ce2dca7)
- * don't check if wq.io is installed - it was renamed to [IterTable](https://github.com/wq/itertable) (509c90f)
+ * don't check if wq.io is installed - it was renamed to [IterTable](https://django-data-wizard.wq.io/itertable/) (509c90f)
 
 

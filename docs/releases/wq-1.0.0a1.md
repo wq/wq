@@ -13,7 +13,7 @@ See the submodule release notes for details:
 - [wq.app 1.0.0a2](./wq.app-1.0.0a2.md)
 - [wq.core 1.0.0a1](./wq.build-1.0.0a1.md)
 - [wq.db 1.0.0a1](./wq.db-1.0.0a1.md)
-- [wq.io 1.0.0a1](./itertable-1.0.0a1.md)
+- [wq.io 1.0.0a1](https://django-data-wizard.wq.io/releases/itertable-1.0.0a1)
 - [wq.start 1.0.0a1](./wq-django-template-1.0.0a1.md)
 
 A number of new packages were also created for this release:

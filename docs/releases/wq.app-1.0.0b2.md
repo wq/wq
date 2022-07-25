@@ -41,5 +41,5 @@ For the full set of changes, compare the list in [wq.app 1.0.0b1](https://github
 
 ## Other modules
 - Update `wq/markdown.js` and `wq/progress.js` to work as [wq/app.js plugins](../@wq/app.md)
-- Add `wq/chartapp.js`, a wq/app.js plugin combining [wq/chart.js](https://github.com/wq/django-rest-pandas) and [wq/pandas.js](https://github.com/wq/django-rest-pandas)
+- Add `wq/chartapp.js`, a wq/app.js plugin combining [wq/chart.js](https://django-rest-pandas.wq.io/@wq/chart) and [wq/pandas.js](https://django-rest-pandas.wq.io/@wq/pandas)
 - Drop `wq/appcache.js`, `wq/online.js`, and `wq/owl.js`
