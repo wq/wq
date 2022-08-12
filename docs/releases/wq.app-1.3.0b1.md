@@ -9,7 +9,7 @@ date: 2021-05-03
 
 #### Breaking Change
 
-While most of the changes below extend and enhance existing behavior, note that there is a backwards-incompatible change in [@wq/map](../@wq/map.md).  Map bounds coordinates must now be specified using the standard [lng, lat] order, rather than the Leaflet-style [lat, lng] supported in older versions of wq (b11bcd3).  If you are upgrading from wq.app 1.3.0a1 or older, you will need to update your `config.map.bounds` setting.  This applies even if you are using the legacy [@wq/jquery-mobile](https://github.com/wq/wq.app/tree/main/packages/jquery-mobile) renderer.
+While most of the changes below extend and enhance existing behavior, note that there is a backwards-incompatible change in [@wq/map](../@wq/map.md).  Map bounds coordinates must now be specified using the standard [lng, lat] order, rather than the Leaflet-style [lat, lng] supported in older versions of wq (b11bcd3).  If you are upgrading from wq.app 1.3.0a1 or older, you will need to update your `config.map.bounds` setting.  This applies even if you are using the legacy [@wq/jquery-mobile](https://github.com/wq/wq.app/tree/v1.3.0/packages/jquery-mobile) renderer.
 
 ## Core Modules
 

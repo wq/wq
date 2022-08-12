@@ -119,7 +119,7 @@ The source code for @wq/map is in the [wq.app repository][source].
 [@wq/react]: ./react.md
 [@wq/material]: ./material.md
 [@wq/map-gl]: ./map-gl.md
-[@wq/leaflet]: https://github.com/wq/wq.app/tree/main/packages/leaflet
+[@wq/leaflet]: https://github.com/wq/wq.app/tree/v1.3.0/packages/leaflet
 [Legend]: ../components/Legend.md
 [StickyMap]: ../components/StickyMap.md
 [components-plugin]: ../plugins/components.md

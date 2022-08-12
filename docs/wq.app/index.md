@@ -100,5 +100,5 @@ module | description
 [@wq/material]: ../@wq/material.md
 [@wq/map-gl]: ../@wq/map-gl.md
 
-[@wq/jquery-mobile]: https://github.com/wq/wq.app/tree/main/packages/jquery-mobile
-[@wq/leaflet]: https://github.com/wq/wq.app/tree/main/packages/leaflet
+[@wq/jquery-mobile]: https://github.com/wq/wq.app/tree/v1.3.0/packages/jquery-mobile
+[@wq/leaflet]: https://github.com/wq/wq.app/tree/v1.3.0/packages/leaflet

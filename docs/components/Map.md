@@ -20,7 +20,7 @@ While [@wq/map] defines a [placeholder implementation][map-src], [@wq/map-gl] an
 [component]: ./index.md
 [@wq/map]: ../@wq/map.md
 [@wq/map-gl]: ../@wq/map-gl.md
-[@wq/leaflet]: https://github.com/wq/wq.app/tree/main/packages/leaflet
+[@wq/leaflet]: https://github.com/wq/wq.app/tree/v1.3.0/packages/leaflet
 
 [react-mapbox-gl]: http://alex3165.github.io/react-mapbox-gl/
 [@react-native-mapbox-gl/maps]: https://github.com/react-native-mapbox-gl/maps
@@ -30,4 +30,4 @@ While [@wq/map] defines a [placeholder implementation][map-src], [@wq/map-gl] an
 [mapgl-src]: https://github.com/wq/wq.app/blob/main/packages/map-gl/src/components/Map.js
 [mapgl-native-src]: https://github.com/wq/wq.app/blob/main/packages/map-gl/src/components/Map.native.js
 [mapgl-expo-src]: https://github.com/wq/wq.app/blob/main/packages/map-gl/src/components/Map.expo.js
-[leaflet-src]: https://github.com/wq/wq.app/blob/main/packages/leaflet/src/components/Map.js
+[leaflet-src]: https://github.com/wq/wq.app/blob/v1.3.0/packages/leaflet/src/components/Map.js

@@ -17,11 +17,11 @@ wq's `<Highlight/>` [overlay component][overlay] is a dynamic layer to facilitat
 [overlay]: ./index.md
 [@wq/map]: ../@wq/map.md
 [@wq/map-gl]: ../@wq/map-gl.md
-[@wq/leaflet]: https://github.com/wq/wq.app/tree/main/packages/leaflet
+[@wq/leaflet]: https://github.com/wq/wq.app/tree/v1.3.0/packages/leaflet
 [Geojson]: ./Geojson.md
 [useMapState]: ../hooks/useMapState.md
 
 [map-src]: https://github.com/wq/wq.app/blob/main/packages/map/src/map.js
 [mapgl-src]: https://github.com/wq/wq.app/blob/main/packages/map-gl/src/overlays/Highlight.js
 [mapgl-expo-src]: https://github.com/wq/wq.app/blob/main/packages/map-gl/src/overlays/Highlight.expo.js
-[leaflet-src]: https://github.com/wq/wq.app/blob/main/packages/leaflet/src/overlays/Highlight.js
+[leaflet-src]: https://github.com/wq/wq.app/blob/v1.3.0/packages/leaflet/src/overlays/Highlight.js

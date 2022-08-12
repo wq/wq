@@ -19,8 +19,8 @@ While [@wq/map] defines a [placeholder implementation][map-src], [@wq/map-gl] an
 [OverlayToggle]: ./OverlayToggle.md
 [@wq/map]: ../@wq/map.md
 [@wq/map-gl]: ../@wq/map-gl.md
-[@wq/leaflet]: https://github.com/wq/wq.app/tree/main/packages/leaflet
+[@wq/leaflet]: https://github.com/wq/wq.app/tree/v1.3.0/packages/leaflet
 
 [map-src]: https://github.com/wq/wq.app/blob/main/packages/map/src/components/Legend.js
 [mapgl-src]: https://github.com/wq/wq.app/blob/main/packages/map-gl/src/components/Legend.js
-[leaflet-src]: https://github.com/wq/wq.app/blob/main/packages/leaflet/src/components/Legend.js
+[leaflet-src]: https://github.com/wq/wq.app/blob/v1.3.0/packages/leaflet/src/components/Legend.js

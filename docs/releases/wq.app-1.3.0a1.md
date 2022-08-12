@@ -62,7 +62,7 @@ module | description
 [React Native Paper]: https://callstack.github.io/react-native-paper/
 [@wq/react]: ../@wq/react.md
 [@wq/material]: ../@wq/material.md
-[@wq/jquery-mobile]: https://github.com/wq/wq.app/tree/main/packages/jquery-mobile
+[@wq/jquery-mobile]: https://github.com/wq/wq.app/tree/v1.3.0/packages/jquery-mobile
 [react-components]: ../components/index.md
 [config]: ../config.md
 
@@ -115,7 +115,7 @@ If you are upgrading from an older version of wq with npm, install and import `@
 [Leaflet]: https://leafletjs.com
 [Mapbox GL JS]: https://docs.mapbox.com/mapbox-gl-js/
 [@wq/map]: ../@wq/map.md
-[@wq/leaflet]: https://github.com/wq/wq.app/tree/main/packages/leaflet
+[@wq/leaflet]: https://github.com/wq/wq.app/tree/v1.3.0/packages/leaflet
 [@wq/mapbox]: ../@wq/map-gl.md
 [mapbox-android]: https://docs.mapbox.com/android/maps/overview/
 [mapbox-ios]: https://docs.mapbox.com/ios-sdk/maps/overview/

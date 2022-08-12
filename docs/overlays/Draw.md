@@ -19,7 +19,7 @@ While [@wq/map] defines a [placeholder implementation][map-src], [@wq/map-gl] an
 [overlay]: ./index.md
 [@wq/map]: ../@wq/map.md
 [@wq/map-gl]: ../@wq/map-gl.md
-[@wq/leaflet]: https://github.com/wq/wq.app/tree/main/packages/leaflet
+[@wq/leaflet]: https://github.com/wq/wq.app/tree/v1.3.0/packages/leaflet
 [Geo]: ../inputs/Geo.md
 
 [react-mapbox-gl-draw]: https://github.com/amaurymartiny/react-mapbox-gl-draw
@@ -27,4 +27,4 @@ While [@wq/map] defines a [placeholder implementation][map-src], [@wq/map-gl] an
 [map-src]: https://github.com/wq/wq.app/blob/main/packages/map/src/map.js
 [mapgl-src]: https://github.com/wq/wq.app/blob/main/packages/map-gl/src/overlays/Draw.js
 [mapgl-native-src]: https://github.com/wq/wq.app/blob/main/packages/map-gl/src/overlays/Draw.native.js
-[leaflet-src]: https://github.com/wq/wq.app/blob/main/packages/leaflet/src/overlays/Draw.js
+[leaflet-src]: https://github.com/wq/wq.app/blob/v1.3.0/packages/leaflet/src/overlays/Draw.js

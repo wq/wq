@@ -8,7 +8,7 @@ date: 2014-11-03
 **wq.app 0.7.0** includes the latest version of jQuery Mobile, 1.4.5.  This version of jQuery Mobile includes a new "flatter" look in keeping with current design trends, and a number of other improvements.
 
 ### jQuery Mobile 1.4 (#3)
-- Updated the [SCSS theme builder](https://github.com/wq/wq.app/tree/v1.3.0a1/packages/jquery-mobile) to match jQuery Mobile 1.4 styles.  See [the documentation](https://github.com/wq/wq.app/tree/v1.3.0a1/packages/jquery-mobile) for new usage info.
+- Updated the [SCSS theme builder](https://github.com/wq/wq.app/blob/v1.3.0/packages/jquery-mobile/scss/jquery-mobile.scss) to match jQuery Mobile 1.4 styles.  See [the documentation](https://github.com/wq/wq.app/tree/v1.3.0/packages/jquery-mobile) for new usage info.
 - The bundled jQuery Mobile is customized to prevent automatic initialization; be sure to call `app.jqmInit()` or `pages.jqmInit()` after all routes have been registered.  This makes it easier to register page show events and be sure they will execute even on deep links.  (81a6f2f; See https://github.com/wq/wq-website/commit/af182eba31d1ce1ed717ac6a9f8217468c259120 for an example of an `activePage` workaround that is no longer needed).
 - Other minor bug fixes, including support for external toolbars and the new `<div role="main">` style (8f6ee446b9ebf3f2891fb6ad315c7d660b288a86, 6c91e0c)
 
