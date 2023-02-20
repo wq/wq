@@ -17,7 +17,7 @@ wq can be installed via PyPI, NPM, or plain `<script>` tag via CDN.  See [the do
 ```bash
 python3 -m venv venv
 . venv/bin/activate
-python3 -m pip install wq==1.3.0b1
+python3 -m pip install wq==2.0.0a0
 wq create -d myproject.example.com myproject
 ```
 
@@ -30,7 +30,7 @@ npx create-react-app myproject --template @wq
 ### CDN
 ```html
 <script type="module">
-    import wq from 'https://unpkg.com/wq';
+    import wq from 'https://unpkg.com/wq@next';
     wq.init({});
 </script>
 ```
