@@ -4,7 +4,7 @@ Thanks for contributing to the wq framework!  Here are some guidelines to help y
 
 ## Questions
 
-Feel free to use the issue tracker to ask questions!  We don't currently have a separate mailing list or active chat tool.  However, note that as wq grows we may eventually move questions to a separate tool.
+Questions and ideas can be submitted to the main [wq discussion board](https://github.com/wq/wq/discussions).
 
 ## Bug Reports
 
@@ -12,9 +12,10 @@ wq is a highly modular framework and the code is split across several repositori
 
  * [wq](https://github.com/wq/wq/issues): General API design & documentation
  * [wq.app](https://github.com/wq/wq.app/issues): JavaScript client & build tool
+ * [wq.build](https://github.com/wq/wq.build/issues): CLI & Project build tools
+ * [wq.create](https://github.com/wq/wq.create/issues): `wq create` command & project templates
  * [wq.db](https://github.com/wq/wq.db/issues): Web server & REST API (Django REST Framework)
- * [wq.create](https://github.com/wq/wq.create/issues): `wq create` command & questions about getting started
- * [xlsconv](https://github.com/wq/xlsform-converter/issues): XLSForm converter and default HTML templates
+ * [xlsconv](https://github.com/wq/xlsform-converter/issues): XLSForm converter
 
 Don't worry about getting the repository exactly right - many issues span multiple repositories and we can always reference the fix back to the original ticket.
 
@@ -23,12 +24,12 @@ Don't worry about getting the repository exactly right - many issues span multip
 Pull requests are very welcome and will be reviewed and merged as time allows.  To speed up reviews, try to include the following whenever possible:
  * Reference the issue that the PR fixes (e.g. [#22](https://github.com/wq/wq/issues/22) or [wq/wq#22](https://github.com/wq/wq/issues/22) if in a different repository).
  * Failing test case fixed by the PR
- * If the PR provides new functionality to wq, a separate PR updating the [wq documentation](https://github.com/wq/wq/tree/master/docs).
+ * If the PR provides new functionality, a separate PR updating the [wq documentation](https://github.com/wq/wq/tree/main/docs).
  * Ensure the PR passes lint and unit tests.  This happens automatically, but you can also run these locally with the following commands:
  
 ```bash 
-./runtests.sh # run the test suite
-LINT=1 ./runtests.sh # run code style checking
+python -m unittest discover -s tests -t . # run the test suite
+flake8 # run code style checking
 ```
 
 If you would like help implementing any part of your PR, feel free to enable write access and we'll take a look as time allows.
@@ -37,7 +38,7 @@ If you would like help implementing any part of your PR, feel free to enable wri
 
 Small changes and documentation fixes can usually be done using Github's online file editors.  For larger changes, we recommend the following workflow.
 
-Because wq is split across several repositories, we recommend installing the entire suite from PyPI, starting a test project, and then cloning the specific module you want to update.  For example, to work on [wq.db](https://github.com/wq/wq.db), clone it to your account and then do something like this:
+Because wq is split across several repositories, we recommend installing the `wq` package, starting a test project, and then cloning the specific module you want to update.  For example, to work on [wq.db](https://github.com/wq/wq.db), clone it to your account and then do something like this:
 
 ### Initial Setup
 ```bash
@@ -55,12 +56,13 @@ git clone git@github.com:[my-username]/wq.db.git
 cd wq.db
 git checkout -b my-wqdb-branch
 ```
+
 ### Ongoing Development
 ```bash
 cd $WORKSPACE/wq.db
-vim rest/some_file.py # (make changes to wq.db)
-./runtests.sh # run the test suite
-LINT=1 ./runtests.sh # run code style checking
+vim wq/db/rest/some_file.py # (make changes to wq.db)
+python -m unittest discover -s tests -t . # run the test suite
+flake8 # run code style checking
 
 pip install --upgrade .  # overwrites PyPI wq.db with local version
 cd $WORKSPACE/

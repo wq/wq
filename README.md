@@ -17,7 +17,7 @@ wq can be installed via PyPI, NPM, or plain `<script>` tag via CDN.  See [the do
 ```bash
 python3 -m venv venv
 . venv/bin/activate
-python3 -m pip install wq==2.0.0a0
+python3 -m pip install wq==2.0.0a1
 wq create -d myproject.example.com myproject
 ```
 
