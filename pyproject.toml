@@ -1,0 +1,56 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+
+[project]
+name = "wq"
+dynamic = ["version"]
+authors = [
+    {name = "S. Andrew Sheppard", email = "andrew@wq.io"},
+]
+description = "A modular framework for mobile surveys and field data collection via offline-capable mobile web apps."
+readme = "README.md"
+requires-python = ">=3.7"
+license = {text = "MIT"}
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Web Environment",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Programming Language :: JavaScript",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Framework :: Django",
+    "Framework :: Django :: 3.2",
+    "Framework :: Django :: 4.0",
+    "Framework :: Django :: 4.1",
+    "Framework :: Django :: 4.2",
+    "Topic :: Software Development :: Libraries :: Application Frameworks",
+    "Topic :: Text Processing :: Markup :: HTML",
+    "Topic :: Scientific/Engineering :: GIS",
+    "Topic :: Software Development :: Build Tools",
+    "Topic :: Software Development :: Pre-processors",
+    "Topic :: Database :: Database Engines/Servers",
+    "Topic :: Text Processing :: Markup :: XML",
+]
+dependencies = [
+    "wq.app>=2.0.0a1,<2.1.0",
+    "wq.build>=2.0.0a1,<2.1.0",
+    "wq.create>=2.0.0a1,<2.1.0",
+    "wq.db>=2.0.0a1,<2.1.0",
+]
+
+[project.urls]
+Homepage = "https://wq.io/wq"
+Documentation = "https://wq.io/"
+Source = "https://github.com/wq/wq"
+"Release Notes" = "https://github.com/wq/wq/releases"
+Issues = "https://github.com/wq/wq/issues"
+
+[tool.setuptools]
+packages = []
+
+[tool.setuptools_scm]
