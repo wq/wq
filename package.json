@@ -1,6 +1,6 @@
 {
     "name": "wq",
-    "version": "2.0.0-alpha.2",
+    "version": "2.0.0",
     "description": "Mobile data collection & survey framework",
     "type": "module",
     "main": "index.js",
@@ -36,11 +36,11 @@
     },
     "homepage": "https://wq.io/",
     "dependencies": {
-        "@wq/app": "^2.0.0-alpha.2",
-        "@wq/map-gl": "^2.0.0-alpha.1",
-        "@wq/map-gl-web": "^2.0.0-alpha.2",
-        "@wq/material": "^2.0.0-alpha.1",
-        "@wq/material-web": "^2.0.0-alpha.2"
+        "@wq/app": "^2.0.0",
+        "@wq/map-gl": "^2.0.0",
+        "@wq/map-gl-web": "^2.0.0",
+        "@wq/material": "^2.0.0",
+        "@wq/material-web": "^2.0.0"
     },
     "devDependencies": {
         "@rollup/plugin-babel": "^6.0.3",
