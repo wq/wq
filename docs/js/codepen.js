@@ -1,5 +1,5 @@
 import { modules } from 'https://unpkg.com/wq';
-import { renderers } from 'https://unpkg.com/@wq/markdown@next';
+import { renderers } from 'https://unpkg.com/@wq/markdown';
 
 const React = modules.react;
 const Code = renderers.code;

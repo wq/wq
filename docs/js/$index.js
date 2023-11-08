@@ -3,7 +3,7 @@ layout: null
 ---
 
 import wq, { modules } from 'https://unpkg.com/wq';
-import markdown, { renderers } from 'https://unpkg.com/@wq/markdown@next';
+import markdown, { renderers } from 'https://unpkg.com/@wq/markdown';
 import CodePen from './codepen.js';
 
 const React = modules['react'];
