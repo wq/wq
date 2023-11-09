@@ -1,8 +1,8 @@
 import { modules } from 'https://unpkg.com/wq';
-import { renderers } from 'https://unpkg.com/@wq/markdown';
+import { components } from 'https://unpkg.com/@wq/markdown';
 
 const React = modules.react;
-const Code = renderers.code;
+const Code = components.code;
 
 const COMMENT = `// wq.init(config).then(...);
 
@@ -36,6 +36,15 @@ wq.use({
             throw new Error("Sync not supported in demo")
         }
     }
+});
+wq.use({
+    name: 'auth',
+    reducer(state) {
+        return state || {};
+    },
+    getState() {
+        return this.app.store.getState().auth;
+    },
 });
 wq.init({
     ...config,
@@ -79,9 +88,8 @@ function wrapCode(code) {
 }
 
 export default function CodeDetect(props) {
-    const { language, value } = props;
+    const { children: value } = props;
     if (
-        (language === 'javascript' || language === 'js') &&
         value.indexOf("import wq from './wq.js';") !== -1 &&
         value.indexOf('wq.init(config).then(...);') !== -1
     ) {
@@ -90,7 +98,7 @@ export default function CodeDetect(props) {
         } else {
             return React.createElement(Code, {
                 ...props,
-                value: '// Warning: Failed to initialize CodePen!\n\n' + value,
+                children: '// Warning: Failed to initialize CodePen!\n\n' + value,
             });
         }
     } else {
@@ -111,8 +119,8 @@ function CodePen({ code }) {
                 title: 'wq Framework demo',
                 stylesheets: code.match(/map/)
                     ? [
-                          'https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css',
-                          'https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.2.0/mapbox-gl-draw.css',
+                          'https://unpkg.com/maplibre-gl@latest/dist/maplibre-gl.css',
+                          'https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.4.1/mapbox-gl-draw.css',
                       ]
                     : [],
             }),

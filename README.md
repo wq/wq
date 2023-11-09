@@ -30,7 +30,7 @@ npx create-react-app myproject --template @wq
 ### CDN
 ```html
 <script type="module">
-    import wq from 'https://unpkg.com/wq@next';
+    import wq from 'https://unpkg.com/wq';
     wq.init({});
 </script>
 ```
