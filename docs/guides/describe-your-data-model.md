@@ -1,6 +1,6 @@
 ---
 icon: pin
-order: -1
+order: -2
 ---
 
 How To: Describe your Data Model

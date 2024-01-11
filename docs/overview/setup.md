@@ -10,28 +10,23 @@ The following steps will help you get wq-powered application up and running quic
 
 ## I. Install wq
 
-The easiest way to install wq is via the [Python Package Index].  Assuming you already have Python 3 installed, you can usually just run the following commands:
+The easiest way to install wq is via the [wq docker template][template], which includes a [Dev Container][devcontainer] as well as a production-ready Dockerfile for deployment to a cloud container service.
 
-```bash
-# Create virtual environment
-python3 -m venv ./venv
-. ./venv/bin/activate
+For more details, refer to any of the setup guides below:
 
-# Install wq
-python3 -m pip install wq
-wq create
-```
+### Development Container
+ * [GitHub Codespaces][setup-codespaces]
+ * [Docker Desktop][setup-docker]
 
-> Note that the command name changed from `wq start` to `wq create` in wq 1.3.
+### Production Container
+ * [Azure App Service][setup-appservice]
+ * [AWS App Runner][setup-apprunner]
 
-When called without any arguments, the `wq create` command will prompt for several project attributes including the project name and web domain.  `wq create` also asks whether to enable GIS support and/or Node.js/npm support.  (Since both options require the installation of additional software, they are are disabled by default.)  All of the prompts can also be specified as command-line arguments - see [wq create --help] for the full list.
+### Direct Install
+  * [SQLite on Ubuntu or Windows][setup-venv]
+  * [WSGI Webserver (Apache & PostgreSQL on Ubuntu)][setup-wsgi]
 
-Depending on your use case, you may want to follow either of the following more detailed installation guides.
-
-### [Local Development (SQLite on Ubuntu or Windows)][setup-local]
-### [Public Webserver (Apache & PostgreSQL on Ubuntu)][setup-ubuntu]
-
-If you are unsure, start with the Local Development process.  You will be able to deploy the same project to a public webserver later.
+If you are unsure which setup to start out with, try a [Github Codespace][setup-codespaces] since the setup process is fully automated.
 
 ## II. Define your Data Model
 
@@ -52,9 +47,15 @@ Instructions for defining nested forms ("repeat groups" in XLSForm syntax) as we
 
 Once your data model is defined and your REST API is running, wq will automatically generate fully functional "list", "detail", and "edit"/"new" views for managing the database.  You can customize the UI by implementing custom views, [input types], and/or other components.
 
-[Python Package Index]: https://pypi.org/project/wq
-[setup-local]: ../guides/setup-wq-with-sqlite.md
-[setup-ubuntu]: ../guides/setup-wq-with-apache-postgresql.md
+[template]: https://github.com/wq/wq-docker-template
+[devcontainer]: https://containers.dev/
+[apprunner]: https://aws.amazon.com/apprunner/
+[setup-codespaces]: ../guides/setup-wq-with-github-codespaces.md
+[setup-docker]: ../guides/setup-wq-with-docker-desktop.md
+[setup-appservice]: ../guides/setup-wq-with-azure-app-service.md
+[setup-apprunner]: ../guides/setup-wq-with-aws-app-runner.md
+[setup-venv]: ../guides/setup-wq-with-sqlite.md
+[setup-wsgi]: ../guides/setup-wq-with-apache-postgresql.md
 [Data Model]: ../guides/describe-your-data-model.md
 [Common Field Types]: ../inputs/index.md
 [Nested Forms]: ../guides/implement-repeating-nested-forms.md

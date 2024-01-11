@@ -10,7 +10,23 @@
 
 ## Getting Started
 
-wq can be installed via PyPI, NPM, or plain `<script>` tag via CDN.  See [the documentation](https://wq.io/overview/setup) for more information on getting started.
+wq can be installed via GitHub, Docker, PyPI, NPM, or a `<script>` tag via CDN.  See [the documentation](https://wq.io/overview/setup) for more information on getting started.
+
+
+### Dev Container (recommended)
+
+1. Go to <https://github.com/wq/wq-docker-template>
+2. Select "Use this template" -> "Create a new repository"
+3. Open the dev container via [GitHub Codespaces][codespaces] or [Docker Desktop][docker]
+
+[codespaces]: https://wq.io/guides/setup-wq-with-github-codespaces
+[docker]: https://wq.io/guides/setup-wq-with-docker-desktop
+
+### Docker Base Image
+
+```bash
+docker run ghcr.io/wq/base:main
+```
 
 ### Python
 

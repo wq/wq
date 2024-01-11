@@ -1,11 +1,6 @@
----
-order: -2
-icon: pin
----
-
 # How To: Set up wq with Apache & PostgreSQL
 
-The [wq framework] is designed to create fully custom applications, so most wq-powered projects eventually require running a public web server and installing a number of software packages.  If you are planning to self-host, you can follow the process below to get an application up and running.
+> Note: We highly recomend deploying to a hosted container service like [Azure App Service][setup-appservice] or [AWS App Runner][setup-apprunner].  The instructions below do not leverage a container and require manual install steps that may interfere with other software on your server.
 
 To run wq on a public website, you will need a WSGI-capable webserver like [Apache], and a database to host the application.  You will also need to obtain or configure a DNS record pointing a domain or subdomain to your server.  wq.db is generally used with [PostgreSQL] and [PostGIS], but any Django-supported database will work.  These instructions assume you will be using Apache and PostGIS.  These steps are tested on [Ubuntu 20.04 LTS][Ubuntu].
 
@@ -122,6 +117,8 @@ Visit the site in a web browser to verify the new installation.  You'll probably
 
 You are now ready to start [describing your data model][data-model] to create additional survey types, which will appear on the home screen after you rebuild the application with deploy.sh.
 
+[setup-appservice]: ./setup-wq-with-azure-app-service.md
+[setup-apprunner]: ./setup-wq-with-aws-app-runner.md
 [install wq]: ../overview/setup.md
 [setup-local]: ./setup-wq-with-sqlite.md
 [Ubuntu]: http://www.ubuntu.com/

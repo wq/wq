@@ -15,6 +15,7 @@ wq.use(markdown);
 
 const config = {
     site_title: 'wq Framework',
+    logo: '/images/icons/wq.svg',
     store: {
         service: '',
         defaults: {
@@ -169,7 +170,7 @@ wq.use({
 
 function processPage(page) {
     page.id = page.name.replace('.md', '');
-    page.label = page.title = page.title.replace('&amp;', '&');
+    page.label = page.title = (page.title || page.id).replace('&amp;', '&');
     page.icon = page.icon || null;
     page.order = page.order || 0;
     page.markdown = page.content;

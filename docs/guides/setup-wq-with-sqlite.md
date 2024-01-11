@@ -1,10 +1,7 @@
----
-order: -3
-icon: pin
----
-
 How To: Set up wq with SQLite
 =============================
+
+> Note: We highly recomend leveraging the wq Dev Container via [GitHub Codespaces][setup-codespaces] or [Docker Desktop][setup-docker].  The instructions below do not leverage a container and require manual install steps that may interfere with other software on your machine.
 
 The following steps should help you [install wq] and get a wq-powered web application running for local development and testing.  These steps are tested on [Ubuntu 20.04 LTS][Ubuntu], but should work with minor changes on any OS that can run Python (Windows, OS X, etc.).  On Windows, we recommend installing the [Windows Subsystem for Linux][WSL] (WSL) if possible.
 
@@ -15,7 +12,6 @@ The following steps should help you [install wq] and get a wq-powered web applic
 5. [Start Django Server](#start-django-server)
 6. [Optional: Enable GIS Support](#optional-enable-gis-support)
 
-> Note: If you want to deploy wq on a public-facing webserver, you may want to [set up wq with Apache & PostgreSQL][setup-ubuntu] instead of the process documented here.
 
 ## Install Python
 The first step in installing wq is to install [Python].  We recommend installing wq in a Python 3 [venv] virtual environment.
@@ -132,6 +128,8 @@ In addition, ensure that the `SPATIALITE_LIBRARY_PATH` line in db/myproject/sett
 
 Installing GDAL and other GeoDjango requirements on Windows somewhat more involved.  See the [GeoDjango documentation] for more information.  Also, note that you will need to remove the `.so` extension from `SPATIALITE_LIBRARY_PATH`.
 
+[setup-codespaces]: ./setup-wq-with-github-codespaces.md
+[setup-docker]: ./setup-wq-with-docker-desktop.md
 [install wq]: ../overview/setup.md
 [setup-ubuntu]: ./setup-wq-with-apache-postgresql.md
 [Python]: https://python.org
