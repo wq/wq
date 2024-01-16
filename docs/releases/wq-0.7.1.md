@@ -9,4 +9,4 @@ date: 2015-02-02
 - [wq.app 0.7.1](./wq.app-0.7.1.md)
 - [wq.db 0.7.1](./wq.db-0.7.1.md)
 - [wq.io 0.7.1](https://django-data-wizard.wq.io/releases/itertable-0.7.1)
-- [wq.start](https://github.com/wq/wq-django-template) is still on version v0.7.0
+- [wq.start](../wq.create/index.md) is still on version v0.7.0

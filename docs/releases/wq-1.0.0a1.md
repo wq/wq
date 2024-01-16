@@ -17,7 +17,7 @@ See the submodule release notes for details:
 - [wq.start 1.0.0a1](./wq-django-template-1.0.0a1.md)
 
 A number of new packages were also created for this release:
-- [django-mustache](https://github.com/wq/django-mustache) (extracted from wq.db)
+- [django-mustache](https://github.com/sheppard/django-mustache) (extracted from wq.db)
 - [django-natural-keys](https://github.com/wq/django-natural-keys) (extracted from wq.db)
 - [html-json-forms](https://github.com/wq/html-json-forms) (extracted from wq.db)
 - [xlsform-converter (xlsconv)](https://github.com/wq/xlsform-converter) (for use with wq.start)

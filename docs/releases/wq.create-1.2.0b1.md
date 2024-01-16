@@ -5,7 +5,7 @@ date: 2019-10-07
 
 # wq.start 1.2 beta
 
-**wq.start 1.2.0b1** introduces a new command-line flag, `--with-npm/--without-npm`, that toggles an alternative project layout based on [Create React App (CRA)](https://create-react-app.dev/) (see wq/wq#44).  Other template changes are documented in the release notes for [wq-django-template 1.2 beta](./wq-django-template-1.2.0b1.md).
+**wq.start 1.2.0b1** introduces a new command-line flag, `--with-npm/--without-npm`, that toggles an alternative project layout based on [Create React App (CRA)](https://create-react-app.dev/) (see [wq/wq#44](https://github.com/wq/wq/issues/44)).  Other template changes are documented in the release notes for [wq-django-template 1.2 beta](./wq-django-template-1.2.0b1.md).
 
 Since the number of potentially useful flags is increasing, the `wq start` command now includes an interactive mode that prompts for each choice if not provided explicitly.  Type `wq start` without any arguments to go through the full process.
 

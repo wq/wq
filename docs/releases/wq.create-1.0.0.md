@@ -15,7 +15,7 @@ date: 2017-07-24
 ##  Other changes since wq.start 0.8.5
 
 * [Changes in Beta 1](./wq.create-1.0.0b1.md)
-  * Split [wq-django-template](https://github.com/wq/wq-django-template) and [wq.start](https://github.com/wq/wq.start) into separate repositories.
+  * Split [wq-django-template](../wq.create/index.md) and [wq.start](../wq.create/index.md) into separate repositories.
 * [Changes in Beta 2](./wq.create-1.0.0b2.md)
   * Django 1.10 support
 * [Changes in Beta 3](./wq.create-1.0.0b3.md)

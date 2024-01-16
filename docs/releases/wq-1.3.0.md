@@ -1,8 +1,6 @@
 ---
 repo: wq
 date: 2022-04-05
-tag: latest
-tag_color: primary
 ---
 
 # wq 1.3.0

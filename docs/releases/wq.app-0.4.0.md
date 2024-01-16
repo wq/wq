@@ -14,5 +14,5 @@ date: 2013-10-08
 - **[wq/pages.js](../@wq/router.md)**: `addRoute` now uses (and expects) the same callback signature as `register`.
 
 ### Other
-- Third-party Library updates: jQuery Mobile 1.3.2, Leaflet 0.6.4, d3 3.2.8 and others
+- [Third-party Library](https://github.com/wq/wq.app/tree/v1.1.1/js/README.md) updates: jQuery Mobile 1.3.2, Leaflet 0.6.4, d3 3.2.8 and others
 - Various minor bug fixes & syntax improvements

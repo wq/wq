@@ -7,7 +7,7 @@ date: 2016-08-26
 
 **xlsconv 0.2.0** brings a couple of new features:
 - Support for non-repeat, nested groups
-- Integrated a number of additional default templates from [wq.start](https://github.com/wq/wq.start):
+- Integrated a number of additional default templates from [wq.start](../wq.create/index.md):
 
 #### Django App Templates
 - `models.py` (existed in 0.1.0)

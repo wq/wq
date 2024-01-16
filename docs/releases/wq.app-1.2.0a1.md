@@ -5,7 +5,7 @@ date: 2019-08-08
 
 # wq.app 1.2 alpha
 
-**wq.app 1.2 alpha** is a preview of the next version of wq.app.  The primary change is the integration of [Redux] and related libraries as part of a comprehensive overhaul of the data model layer (#105).
+**wq.app 1.2 alpha** is a preview of the next version of wq.app.  The primary change is the integration of [Redux] and related libraries as part of a comprehensive overhaul of the data model layer ([#105](https://github.com/wq/wq.app/issues/105)).
 
 This release achieves the second goal in the [2019 roadmap for wq.app](https://github.com/wq/wq.app/issues/111).
 
@@ -19,7 +19,7 @@ This release achieves the second goal in the [2019 roadmap for wq.app](https://g
 
 ## New Features
 
-### Redux Integration (#105, #113)
+### Redux Integration ([#105](https://github.com/wq/wq.app/issues/105), [#113](https://github.com/wq/wq.app/issues/113))
  * [@wq/store] now provides `dispatch()`, `getState()`, and `subscribe()` methods, which directly wrap the corresponding Redux store methods.
  * The following [@wq/app] plugin hooks are now available:
     * `reducer()` and `actions` for plugin-specific Redux state ([@wq/store])
@@ -31,21 +31,21 @@ This release achieves the second goal in the [2019 roadmap for wq.app](https://g
  * [@wq/outbox] supports several new methods to control syncing: `waitForItem()`, `waitForAll()`, `retryItem()`, `retryAll()`, `pause()`, `resume()`, and `empty()`.
 
 ### Other Improvements
- * The first loaded page is now always re-rendered by the client during application startup, as well as after authentication changes (#79)
- * New `applyState` configuration option to control when updates are applied to the local model (#85, #86).  A different set of Redux actions will be applied for form submission/success/error depending on this setting.  The available options are:
+ * The first loaded page is now always re-rendered by the client during application startup, as well as after authentication changes ([#79](https://github.com/wq/wq.app/issues/79))
+ * New `applyState` configuration option to control when updates are applied to the local model ([#85](https://github.com/wq/wq.app/issues/85), [#86](https://github.com/wq/wq.app/issues/86)).  A different set of Redux actions will be applied for form submission/success/error depending on this setting.  The available options are:
    * `"ON_SUCCESS"` (default): form submissions will not be reflected in the local model state until after the form is successfully synced to the server.
    * `"IMMEDIATE"`: form submissions are optimistically reflected in the local model state before they are sent to the server.
    * `"LOCAL_ONLY"`: form submissions are not synced to the server at all. In this case, nothing is stored in the outbox, so the only reason to use outbox.save() is to maintain API consistency with other forms.
- * Support syncing multiple items in a single `fetch()` (#110), by leveraging @tomaszn's fork of [Django Batch Requests].
- * Support registering a top-level model and also having it as an attachment (nested record) for another model (#114).  The records will be normalized for local storage and denormalized for the API.
-* Add `removeattachment` action to [@wq/app:patterns][@wq/app] plugin (d5372ff)
-* Generate sourcemaps for wq/* AMD modules (43222ff)
+ * Support syncing multiple items in a single `fetch()` ([#110](https://github.com/wq/wq.app/issues/110)), by leveraging [@tomaszn](https://github.com/tomaszn)'s fork of [Django Batch Requests].
+ * Support registering a top-level model and also having it as an attachment (nested record) for another model ([#114](https://github.com/wq/wq.app/issues/114)).  The records will be normalized for local storage and denormalized for the API.
+* Add `removeattachment` action to [@wq/app:patterns][@wq/app] plugin ([`d5372ff`](https://github.com/wq/wq.app/commit/d5372ff))
+* Generate sourcemaps for wq/* AMD modules ([`43222ff`](https://github.com/wq/wq.app/commit/43222ff))
 
 ## Bug Fixes
- * The integration of [Redux Offline] addresses a number of issues with offline state and syncing, particulary #33, #94/#95, and #102.
+ * The integration of [Redux Offline] addresses a number of issues with offline state and syncing, particulary [#33](https://github.com/wq/wq.app/issues/33), [#94](https://github.com/wq/wq.app/issues/94)[/#95](https://github.com///issues/95), and [#102](https://github.com/wq/wq.app/issues/102).
  * @wq/map:
-    * Copy layer config in case it is modified by function (440dc9b)
-    * Don't update sticky bounds when map is off-screen (5952fe6)
+    * Copy layer config in case it is modified by function ([`440dc9b`](https://github.com/wq/wq.app/commit/440dc9b))
+    * Don't update sticky bounds when map is off-screen ([`5952fe6`](https://github.com/wq/wq.app/commit/5952fe6))
 
 ## Breaking Changes
 

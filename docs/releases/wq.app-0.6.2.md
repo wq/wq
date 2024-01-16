@@ -13,7 +13,7 @@ This release provides a number of minor improvements to wq.app 0.6.1.
 ### API improvements
 - **[wq/app.js](../@wq/app.md)**: option to sync form data in the background (`backgroundSync`)
 - **[wq/chart.js](https://django-rest-pandas.wq.io/@wq/chart)**: options to override x-axis ticks and legend items
-- debug mode for **wq/app.js**, **wq.pages.js**, and **wq/store.js** (#25)
+- debug mode for **wq/app.js**, **wq.pages.js**, and **wq/store.js** ([#25](https://github.com/wq/wq.app/issues/25))
 
 ### Other Changes
 - Complete, up-to-date [documentation](../wq.app/index.md) for all wq.app JavaScript modules

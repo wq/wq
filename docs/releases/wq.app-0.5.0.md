@@ -6,11 +6,11 @@ date: 2013-12-11
 # wq.app 0.5.0
 
 ### Major Changes
-- The primary change since 0.4.2 is the reorganization of the JavaScript modules to a more standard AMD layout (#12).  This change makes `lib/` the AMD/RequireJS `baseUrl` so third-party libraries can be require()d via their standard names (`jquery`, `leaflet`, etc) rather than the old non-standard `wq/lib/jquery` style paths.  [wq init](../wq.build/cli.md), the [tests](https://github.com/wq/wq.app/blob/master/tests/), the [documentation](../index.md), and the [project template](https://github.com/wq/django-wq-template) have  all been updated to reflect this new layout.
+- The primary change since 0.4.2 is the reorganization of the JavaScript modules to a more standard AMD layout ([#12](https://github.com/wq/wq.app/issues/12)).  This change makes `lib/` the AMD/RequireJS `baseUrl` so third-party libraries can be require()d via their standard names (`jquery`, `leaflet`, etc) rather than the old non-standard `wq/lib/jquery` style paths.  [wq init](../wq.build/cli.md), the [tests](https://github.com/wq/wq.app/blob/main/tests/), the [documentation](../index.md), and the [project template](../wq.create/index.md) have  all been updated to reflect this new layout.
 
 ### Other Changes
 - Some improvements to outbox support in [wq/store.js](../@wq/store.md).
-- Added AMD definition to proj4leaflet upstream (kartena/Proj4Leaflet#41)
+- Added AMD definition to proj4leaflet upstream ([kartena/Proj4Leaflet#41](https://github.com/kartena/Proj4Leaflet/issues/41))
 - Updated third party libraries:
   - d3.js 3.3.10
   - highlight.js 7.5

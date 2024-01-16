@@ -5,15 +5,15 @@ date: 2020-01-22
 
 # wq.app 1.2.0
 
-**wq.app 1.2.0** is the first stable release of the wq.app 1.2 series.  The biggest improvement is the integration of the Redux ecosystem for the outbox and model store (#105).  This achieves the second goal in the [2019 roadmap for wq.app](https://github.com/wq/wq.app/issues/111).
+**wq.app 1.2.0** is the first stable release of the wq.app 1.2 series.  The biggest improvement is the integration of the Redux ecosystem for the outbox and model store ([#105](https://github.com/wq/wq.app/issues/105)).  This achieves the second goal in the [2019 roadmap for wq.app](https://github.com/wq/wq.app/issues/111).
 
-> wq.app 1.3 will bring full integration with React and Material UI - see #115 for a preview.
+> wq.app 1.3 will bring full integration with React and Material UI - see [#115](https://github.com/wq/wq.app/issues/115) for a preview.
 
 In addition to the Redux integration, a number of nonessential and deprecated AMD modules have been removed from wq.app 1.2.
 
 module | status
 ---|---
-wq/autocomplete.js | removed
+[wq/autocomplete.js] | removed
 [wq/chart.js] | moved to [Django REST Pandas]
 [wq/chartapp.js] | moved to [Django REST Pandas]
 [wq/console.js][other] | removed
@@ -22,30 +22,31 @@ wq/autocomplete.js | removed
 [wq/pandas.js] | moved to [Django REST Pandas]
 [wq/progress.js] | moved to [Django Data Wizard]
 
+[wq/autocomplete.js]: https://github.com/wq/wq.app/blob/v1.1.1/js/wq/autocomplete.js
 [wq/chart.js]: https://django-rest-pandas.wq.io/@wq/chart
 [wq/chartapp.js]: https://django-rest-pandas.wq.io/@wq/chart
 [other]: ../wq.app/index.md
 [wq/markdown.js]: https://github.com/wq/wq.markdown
 [wq/pandas.js]: https://django-rest-pandas.wq.io/@wq/pandas
-[wq/progress.js]: https://django-data-wizard.wq.io/@wq/progress-element
+[wq/progress.js]: https://django-data-wizard.wq.io/@wq/progress
 
-[Django REST Pandas]: https://django-rest-pandas.wq.io/
-[Django Data Wizard]: https://django-data-wizard.wq.io/
+[Django REST Pandas]: https://github.com/wq/django-rest-pandas/pull/40
+[Django Data Wizard]: https://django-data-wizard.wq.io 
 [@wq/markdown]: https://github.com/wq/wq.markdown
 
 ## Changes since wq.app 1.2 beta
- * Publish development builds of each NPM package to Bintray (see #115)
- * Remove `noBackgroundSync` option in favor of `backgroundSync: false` (f53f118)
+ * Publish development builds of each NPM package to Bintray (see [#115](https://github.com/wq/wq.app/issues/115))
+ * Remove `noBackgroundSync` option in favor of `backgroundSync: false` ([`f53f118`](https://github.com/wq/wq.app/commit/f53f118))
  * Move @wq/chart to [Django REST Pandas] 
  * Move @wq/markdown to a [separate repository][@wq/markdown] 
- * Improve module documentation (60bf04a)
+ * Improve module documentation ([`60bf04a`](https://github.com/wq/wq.app/commit/60bf04a))
 
 ##  Other changes since wq.app 1.1.2
 
 * [Changes in Alpha](./wq.app-1.2.0a1.md)
 
     * [@wq/app]
-        * The first page is automatically re-rendered on startup and after auth changes, so jQuery events and other workarounds are no longer needed (#79). 
+        * The first page is automatically re-rendered on startup and after auth changes, so jQuery events and other workarounds are no longer needed ([#79](https://github.com/wq/wq.app/issues/79)). 
         * `app.go()` has been removed in favor of `app.nav()`
         * `app.sync(true)` has been renamed to `app.retryAll()`.  In general, sync is managed by [@wq/outbox] and Redux Offline (see below).
 
@@ -68,13 +69,13 @@ wq/autocomplete.js | removed
         * The Redux-ORM queryset is available via `[model].objects.all()`.
         * `[model].filter()` now wraps `objects.filter()`, which supports predicate functions and better indexing.  Note that `objects.filter()` uses strict equality when comparing object attributes.
         * `find()`, `update()`, `fetchUpdate()` and `remove()` no longer support specifying an id column.   Instead, define `idCol` when configuring/initializing the model.
-        * @wq/model now supports (de)normalization for nested models returned from server APIs (#114)
+        * @wq/model now supports (de)normalization for nested models returned from server APIs ([#114](https://github.com/wq/wq.app/issues/114))
 
     * [@wq/outbox] is now a wrapper around [Redux Offline].
-        * Fix various offline state and syncing issues (e.g. #33, #94/#95, and #102).
+        * Fix various offline state and syncing issues (e.g. [#33](https://github.com/wq/wq.app/issues/33), [#94](https://github.com/wq/wq.app/issues/94)[/#95](https://github.com///issues/95), and [#102](https://github.com/wq/wq.app/issues/102)).
         * Several new methods to control syncing: `waitForItem()`, `waitForAll()`, `retryItem()`, `retryAll()`, `pause()`, `resume()`, and `empty()`.  Use these instead of `sendItem()`, `sendAll()`, and the `noSend` option for `save()`, all of which have been removed.
-        * Batch sync support (#110) via [Django Batch Requests]
-        * `applyState` configuration option for form submissions (#85, #86):
+        * Batch sync support ([#110](https://github.com/wq/wq.app/issues/110)) via [Django Batch Requests]
+        * `applyState` configuration option for form submissions ([#85](https://github.com/wq/wq.app/issues/85), [#86](https://github.com/wq/wq.app/issues/86)):
             * `"ON_SUCCESS"` (default): update local model after sync.
             * `"IMMEDIATE"`: optimistically update local model before sync
             * `"LOCAL_ONLY"`: update local model without syncing
@@ -82,10 +83,10 @@ wq/autocomplete.js | removed
         * `parseBatchResult()`, `applyResult()` and `updateModels()` are no longer available.
 
     * Other Changes
-        * [@wq/map]: copy layer config in case it is modified by function (440dc9b)
-        * [@wq/map]: don't update sticky bounds when map is off-screen (5952fe6)
-        * `removeattachment` action in [@wq/app:patterns][@wq/app] plugin (d5372ff)
-        * Sourcemaps for wq/* AMD modules (43222ff)
+        * [@wq/map]: copy layer config in case it is modified by function ([`440dc9b`](https://github.com/wq/wq.app/commit/440dc9b))
+        * [@wq/map]: don't update sticky bounds when map is off-screen ([`5952fe6`](https://github.com/wq/wq.app/commit/5952fe6))
+        * `removeattachment` action in [@wq/app:patterns][@wq/app] plugin ([`d5372ff`](https://github.com/wq/wq.app/commit/d5372ff))
+        * Sourcemaps for wq/* AMD modules ([`43222ff`](https://github.com/wq/wq.app/commit/43222ff))
         * Remove compatibility versions of wq/autocomplete.js, wq/console.js, wq/json.js, and wq/progress.js, which were deprecated in [wq.app 1.1.2](./wq.app-1.1.2.md).
 
 [@wq/app]: ../@wq/app.md
@@ -104,10 +105,10 @@ wq/autocomplete.js | removed
 [Django Batch Requests]: https://github.com/tomaszn/django-batch-requests
 
 * [Changes in Beta](./wq.app-1.2.0b1.md)
-  - Automatically navigate to permanent URL once new items are synced (#98, #99)
-  - `filter_fields` and `filter_ignore` options for @wq/model (#88).
-  - Preserve URL params during pagination (778631c, c2b5ab0)
-  - `onsync(item)` plugin hook (#96)
+  - Automatically navigate to permanent URL once new items are synced ([#98](https://github.com/wq/wq.app/issues/98), [#99](https://github.com/wq/wq.app/issues/99))
+  - `filter_fields` and `filter_ignore` options for @wq/model ([#88](https://github.com/wq/wq.app/issues/88)).
+  - Preserve URL params during pagination ([`778631c`](https://github.com/wq/wq.app/commit/778631c), [`c2b5ab0`](https://github.com/wq/wq.app/commit/c2b5ab0))
+  - `onsync(item)` plugin hook ([#96](https://github.com/wq/wq.app/issues/96))
   - Remove several hooks and events in favor of newer options:
      * Removed Hooks: `onsave()`, `saveerror()`, `showOutboxErrors()`, `postsave()`, `presync()`, `postsync()`
      * Removed Events: `"login"`, `"logout"`

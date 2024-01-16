@@ -12,4 +12,4 @@ wq 0.8.0 is perhaps the most ambitious release of wq to date.  A number of APIs 
 - [wq.io 0.8.0](https://django-data-wizard.wq.io/releases/itertable-0.8.0)
 - [wq.start 0.8.1](./wq-django-template-0.8.1.md)
 
-As discussed in the release notes for [wq.db 0.8.0](./wq.db-0.8.0.md), this is expected to be the last major change to wq before version 1.0.  The jump from wq 0.8 to wq 1.0 is expected to be relatively minor, consisting primarily of bug fixes and improvements to the Patterns API (wq/wq.db#35, wq/wq.app#38).
+As discussed in the release notes for [wq.db 0.8.0](./wq.db-0.8.0.md), this is expected to be the last major change to wq before version 1.0.  The jump from wq 0.8 to wq 1.0 is expected to be relatively minor, consisting primarily of bug fixes and improvements to the Patterns API ([wq/wq.db#35](https://github.com/wq/wq.db/issues/35), [wq/wq.app#38](https://github.com/wq/wq.app/issues/38)).

@@ -10,4 +10,4 @@ Minor update to [wq](../index.md), with various fixes since [0.3.0](./wq-0.3.0.m
 - [wq.db 0.3.1](./wq.db-0.3.1.md)
 - [wq.io 0.3.0](https://django-data-wizard.wq.io/releases/itertable-0.3.0)
 
-You may also be interested in reading the newly updated documentation at ../index.md.
+You may also be interested in reading the newly updated documentation at <https://wq.io/>.

@@ -1,8 +1,6 @@
 ---
 repo: wq.create
 date: 2022-04-05
-tag: latest
-tag_color: primary
 ---
 
 # wq.create 1.3.0
@@ -14,16 +12,16 @@ Projects generated with... | ...are compatible with
 wq.start 1.2 | wq.app 1.2 & 1.3
 wq.create 1.3 | wq.app 1.3 & 2.0 (future)
 
-All changes by @sheppard.
+All changes by [@sheppard](https://github.com/sheppard).
 
 ## Changes since wq.create 1.3 beta
 
  * Update to [wq-django-template 1.3.0](./wq-django-template-1.3.0.md)
-    * Ensure Windows support for `wq create` command (wq/wq-django-template#20)
+    * Ensure Windows support for `wq create` command ([wq/wq-django-template#20](https://github.com/wq/wq-django-template/issues/20))
  *  Improve npm integration ([@wq/cra-template](../@wq/cra-template.md))
-     * Pin `react-scripts` to v4 to work around ESM import issues (wq/wq#58).  CRA v5 support will be added in a future release of wq.app (wq/wq.app#130)
-     * Use server-generated config as-is (wq/wq#54)
- * Support generating `wizard.py` file to register new models with [Django Data Wizard](https://django-data-wizard.wq.io/) (f263137)
+     * Pin `react-scripts` to v4 to work around ESM import issues ([wq/wq#58](https://github.com/wq/wq/issues/58)).  CRA v5 support will be added in a future release of wq.app ([wq/wq.app#130](https://github.com/wq/wq.app/issues/130))
+     * Use server-generated config as-is ([wq/wq#54](https://github.com/wq/wq/issues/54))
+ * Support generating `wizard.py` file to register new models with [Django Data Wizard](https://django-data-wizard.wq.io) ([`f263137`](https://github.com/wq/wq.create/commit/f263137))
 
 ## Other changes since wq.start 1.2.1
   * [Changes in Alpha](./wq.create-1.3.0a1.md)

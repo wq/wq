@@ -8,7 +8,7 @@ date: 2014-02-08
 As part of the [wq 0.5.0 "Charted Waters"](./wq-0.5.0.md) release, this release of brings a number of enhancements to the data exploration capabilities of wq.app.
 
 ### New Modules
-- **[wq/pandas.js](https://django-rest-pandas.wq.io/@wq/pandas)**:  A tool for loading Pandas DataFrames via `d3.csv` and [Django REST Pandas](https://django-rest-pandas.wq.io/).
+- **[wq/pandas.js](https://django-rest-pandas.wq.io/@wq/pandas)**:  A tool for loading Pandas DataFrames via `d3.csv` and [Django REST Pandas](https://django-rest-pandas.wq.io).
 
 ### API improvements
 - **[wq/chart.js](https://django-rest-pandas.wq.io/@wq/chart)**:
@@ -27,12 +27,12 @@ As part of the [wq 0.5.0 "Charted Waters"](./wq-0.5.0.md) release, this release 
   - Better support for optional server-side rendering of list and edit views
   - Better handling of attachmentType lookups in locally rendered edit views
   - Fix issues with preventDefault handling in URL routes
-- **[wq build](../wq.build/cli.md)**: Fix handling of Leaflet CSS `url(#default#VML)` in r.js (jrburke/r.js#588)
+- **[wq build](../wq.build/cli.md)**: Fix handling of Leaflet CSS `url(#default#VML)` in r.js ([jrburke/r.js#588](https://github.com/jrburke/r.js/issues/588))
 
 ### Other
 
 Updated third party libraries:
-- d3.js 3.4.1 (AMD definition upstream in mbostock/d3#1689)
+- d3.js 3.4.1 (AMD definition upstream in [mbostock/d3#1689](https://github.com/mbostock/d3/issues/1689))
 - es5-shim.js 2.3.0
 - highlight.js 8.0
 - leaflet 0.7.2
@@ -40,4 +40,4 @@ Updated third party libraries:
 - marked 0.3.1
 - mustache.js 0.8.1
 - proj4 2.1.0
-- rbush 1.3 (new to wq.app; AMD definition upstream in mourner/rbush#8)
+- rbush 1.3 (new to wq.app; AMD definition upstream in [mourner/rbush#8](https://github.com/mourner/rbush/issues/8))

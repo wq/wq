@@ -8,12 +8,12 @@ date: 2017-07-24
 **wq.core 1.0.0** is finally here!  This is the first stable release of wq.core 1.0, which is now ready for production use. 
 
 ## Changes since wq.core 1.0.0 beta
- * New internal command to generate documentation for all registered CLI commands (wq/wq#17).  The documentation is online at <../wq.build/cli.md>.
+ * New internal command to generate documentation for all registered CLI commands ([wq/wq#17](https://github.com/wq/wq/issues/17)).  The documentation is online at <../wq.build/cli.md>.
 
 ##  Other changes since wq.core 0.8.1
 
 * [Changes in Alpha](./wq.build-1.0.0a1.md)
-  * List installed wq.* submodules and warn if any are missing. (#1)
+  * List installed wq.* submodules and warn if any are missing. ([#1](https://github.com/wq/wq.build/issues/1))
 
 * [Changes in Beta](./wq.build-1.0.0b1.md)
   * Incorporate `wq versions` command from wq.start

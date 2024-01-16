@@ -9,21 +9,21 @@ The **0.8.0** release of **[wq.db](../wq.db/index.md)** brings significant impro
 
 Admittedly, this release breaks more things than previous releases, but the DRF change was significant enough on its own that it made sense to get everything else over with at the same time.  If you have an existing project running wq.db 0.7.2 or earlier and would like to upgrade, be sure you are ready to simultaneously upgrade Django and Django REST Framework, as well as make a number of small changes to your use of the [model registration API](../wq.db/router.md).  The upgrade notes below should help you migrate over.
 
-This will be the last major release of wq.db before version 1.0.  wq.db 1.0 will likely be very similar to 0.8.0, but with a cleaner separation of the [patterns](../wq.db/patterns.md) and [rest](../wq.db/rest.md) components and a clearer route for defining custom patterns (#35).
+This will be the last major release of wq.db before version 1.0.  wq.db 1.0 will likely be very similar to 0.8.0, but with a cleaner separation of the [patterns](../wq.db/patterns.md) and [rest](../wq.db/rest.md) components and a clearer route for defining custom patterns ([#35](https://github.com/wq/wq.db/issues/35)).
 
 > **The Road to 1.0**
 > 1. wq.app 0.8 ([open issues](https://github.com/wq/wq.app/milestones/0.8.0))
-> 2. wq 0.8 (waiting on wq.app 0.8 and wq/wq#9)
-> 3. Patterns API Improvements (wq/wq.db#35, wq/wq.app#38)
+> 2. wq 0.8 (waiting on wq.app 0.8 and [wq/wq#9](https://github.com/wq/wq/issues/9))
+> 3. Patterns API Improvements ([wq/wq.db#35](https://github.com/wq/wq.db/issues/35), [wq/wq.app#38](https://github.com/wq/wq.app/issues/38))
 > 4. wq (.app,.db,.io) 1.0
 
 ## Enhancements
-- Updates to support Django REST Framework 3 and Django 1.8 (#32, #34, #36)
-- Improved [patterns](../wq.db/patterns.md) with support for the [HTML JSON forms](https://www.w3.org/TR/html-json-forms/) field naming convention for submitting "child"/"attachment" records together with a parent object (#33).  The "classic" form syntax is still supported but will be dropped in wq.db 1.0.  To facilitate rendering lists of attachments in edit views, an array `@index` attribute (inspired by Handlebars) has been added to the Mustache template context.
-- Added `{{wq_config}}` and `{{page_config}}` to the `wq.db.rest.context_processors`, for better compatibility with [wq/app.js](../@wq/app.md) (#25).
-- Include a serialization of the referenced `content_object` in serializers for attachment models in `patterns` (#7).
-- Throw a configuration error if a model is registered with the same name or url as an existing model (#21).
-- Ensure that patterns models aren't added to content types if they aren't used (#14).
+- Updates to support Django REST Framework 3 and Django 1.8 ([#32](https://github.com/wq/wq.db/issues/32), [#34](https://github.com/wq/wq.db/issues/34), [#36](https://github.com/wq/wq.db/issues/36))
+- Improved [patterns](../wq.db/patterns.md) with support for the [HTML JSON forms](https://www.w3.org/TR/html-json-forms/) field naming convention for submitting "child"/"attachment" records together with a parent object ([#33](https://github.com/wq/wq.db/issues/33)).  The "classic" form syntax is still supported but will be dropped in wq.db 1.0.  To facilitate rendering lists of attachments in edit views, an array `@index` attribute (inspired by Handlebars) has been added to the Mustache template context.
+- Added `{{wq_config}}` and `{{page_config}}` to the `wq.db.rest.context_processors`, for better compatibility with [wq/app.js](../@wq/app.md) ([#25](https://github.com/wq/wq.db/issues/25)).
+- Include a serialization of the referenced `content_object` in serializers for attachment models in `patterns` ([#7](https://github.com/wq/wq.db/issues/7)).
+- Throw a configuration error if a model is registered with the same name or url as an existing model ([#21](https://github.com/wq/wq.db/issues/21)).
+- Ensure that patterns models aren't added to content types if they aren't used ([#14](https://github.com/wq/wq.db/issues/14)).
 - Significantly increased test coverage.
 - Various minor bug fixes.
 
@@ -31,10 +31,10 @@ This will be the last major release of wq.db before version 1.0.  wq.db 1.0 will
 1. The model registration API in `wq.db.rest.app` has been moved to `wq.db.rest`.  This makes the API even more similar to Django's `admin`, and also eliminates the already overloaded use of "app" as an identifier.
    As part of this change, `wq.db.rest.settings` has been moved to `wq.db.default_settings`.  For examples, see item 1 in the upgrade notes below.
 2. The `patterns` convenience modules (e.g. `wq.db.patterns.models`, `wq.db.patterns.admin`, and the new `wq.db.patterns.serializers`) no longer import everything from the corresponding Django or DRF namespaces.  This makes it clearer where various classes are coming from.  For examples, see item 2 in upgrade notes below.
-3. Dropped compatibility with Django 1.6 (#31) and Django REST Framework 2.X.  wq.db 0.8.0 and later **will not work** with these versions.  All compatibility hacks for Django 1.6 have been removed, as has support for South, now that migrations are built in to Django 1.7 and higher.
-4. The default `ModelSerializer` class no longer attempts to automatically create certain one-to-many nested serializers, e.g. the `annotations` attribute on serializers for `AnnotatedModel` subclasses (#22).  This "magic" behavior proved to be confusing and hard to override.  Instead, models extending  `AnnotatedModel` or other patterns should be registered with custom serializers, e.g. `AnnotatedModelSerializer`.  For an example, see Item 2 in the upgrade notes below.  Custom nested serializers can be added using the standard Django REST Framework serializer syntax.
-5. Since it's now much easier to create custom patterns and nested serializers, the [annotate](../wq.db/patterns.md) pattern is no longer swappable (see #6) and no longer includes a `contenttype` property on `AnnotationType`.
-6. Previous versions of the `ModelSerializer` would serialize foreign keys as `[fieldname]_id`, but expect form submissions to use `[fieldname]` (without the `_id` suffix).  Needless to say, this inconsistency was confusing to work with.  In wq.db 0.8.0, foreign keys are both sent and recieved with the `_id` suffix (#11).  For an example, see item 4 in the upgrade notes below.  As before, the `[fieldname]` without the suffix can be used in detail templates to retrieve properties from the referenced object. 
+3. Dropped compatibility with Django 1.6 ([#31](https://github.com/wq/wq.db/issues/31)) and Django REST Framework 2.X.  wq.db 0.8.0 and later **will not work** with these versions.  All compatibility hacks for Django 1.6 have been removed, as has support for South, now that migrations are built in to Django 1.7 and higher.
+4. The default `ModelSerializer` class no longer attempts to automatically create certain one-to-many nested serializers, e.g. the `annotations` attribute on serializers for `AnnotatedModel` subclasses ([#22](https://github.com/wq/wq.db/issues/22)).  This "magic" behavior proved to be confusing and hard to override.  Instead, models extending  `AnnotatedModel` or other patterns should be registered with custom serializers, e.g. `AnnotatedModelSerializer`.  For an example, see Item 2 in the upgrade notes below.  Custom nested serializers can be added using the standard Django REST Framework serializer syntax.
+5. Since it's now much easier to create custom patterns and nested serializers, the [annotate](../wq.db/patterns.md) pattern is no longer swappable (see [#6](https://github.com/wq/wq.db/issues/6)) and no longer includes a `contenttype` property on `AnnotationType`.
+6. Previous versions of the `ModelSerializer` would serialize foreign keys as `[fieldname]_id`, but expect form submissions to use `[fieldname]` (without the `_id` suffix).  Needless to say, this inconsistency was confusing to work with.  In wq.db 0.8.0, foreign keys are both sent and recieved with the `_id` suffix ([#11](https://github.com/wq/wq.db/issues/11)).  For an example, see item 4 in the upgrade notes below.  As before, the `[fieldname]` without the suffix can be used in detail templates to retrieve properties from the referenced object. 
 7. The JSONP-based AMD serializer has been removed.  This was primarily there to make it possible to load the [wq configuration object](../config.md) via `config.js`.  This file can be generated from the command line via `./manage.py dump_config`.
 8. The `{{csrftoken}}` context variable has been removed in favor of Django's built-in `{{csrf_token}}`.
 

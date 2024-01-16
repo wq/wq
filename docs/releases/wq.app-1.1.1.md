@@ -7,11 +7,11 @@ date: 2019-04-18
 
 **wq.app 1.1.1** brings a couple of bug fixes, a new `ajax()` plugin hook, and an improved wq/chartapp.js API.
 
-> Note: there are a number of exciting changes in the works, and wq.app 1.1.1 will be the last release before the big upgrades begin.  See #111 for more information.
+> Note: there are a number of exciting changes in the works, and wq.app 1.1.1 will be the last release before the big upgrades begin.  See [#111](https://github.com/wq/wq.app/issues/111) for more information.
 
 ## Bug Fixes
- * Prevent users accidentally double-clicking the submit button (#100)
- * `wq phonegap` command compatibility with 8-bit icons (#108 via @tomaszn)
+ * Prevent users accidentally double-clicking the submit button ([#100](https://github.com/wq/wq.app/issues/100))
+ * `wq phonegap` command compatibility with 8-bit icons ([#108](https://github.com/wq/wq.app/issues/108) via [@tomaszn](https://github.com/tomaszn))
 
 ## New Features
 

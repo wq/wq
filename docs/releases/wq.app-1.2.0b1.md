@@ -9,17 +9,17 @@ date: 2019-10-07
 
 ## New Features
 
-Thanks to @tomaszn for feedback on the design of many of these features.
+Thanks to [@tomaszn](https://github.com/tomaszn) for feedback on the design of many of these features.
 
- * If the current URL contains the temporary ID of an unsynced record (e.g. `"outbox-123"`), automatically navigate to the new URL once synced (#98, #99)
- * New `filter_fields` and `filter_ignore` configuration options for [@wq/model](../@wq/model.md).  If a URL parameter is not found in`form`, `functions`, or `filter_fields`, it will be ignored when filtering list views (#88).
- * Simplified `onsync(item)` plugin hook, called after each outbox item is synced to the server (#96)
- * Better management of URL params during pagination (778631c, c2b5ab0)
+ * If the current URL contains the temporary ID of an unsynced record (e.g. `"outbox-123"`), automatically navigate to the new URL once synced ([#98](https://github.com/wq/wq.app/issues/98), [#99](https://github.com/wq/wq.app/issues/99))
+ * New `filter_fields` and `filter_ignore` configuration options for [@wq/model](../@wq/model.md).  If a URL parameter is not found in`form`, `functions`, or `filter_fields`, it will be ignored when filtering list views ([#88](https://github.com/wq/wq.app/issues/88)).
+ * Simplified `onsync(item)` plugin hook, called after each outbox item is synced to the server ([#96](https://github.com/wq/wq.app/issues/96))
+ * Better management of URL params during pagination ([`778631c`](https://github.com/wq/wq.app/commit/778631c), [`c2b5ab0`](https://github.com/wq/wq.app/commit/c2b5ab0))
 
 
 ## Removed Features
 
-To clean up the API and prepare for a future migration away from jQuery Mobile (#111), this release removes several older hooks and events, as noted in the updated [@wq/app documentation](../@wq/app.md) and below.
+To clean up the API and prepare for a future migration away from jQuery Mobile ([#111](https://github.com/wq/wq.app/issues/111)), this release removes several older hooks and events, as noted in the updated [@wq/app documentation](../@wq/app.md) and below.
 
 name | type | suggested migration path
 -----|------|-------------------------
@@ -34,6 +34,6 @@ name | type | suggested migration path
 In addition to the above, note that the `ui` option passed to jQuery Mobile navigation events is no longer used, as [Redux First Router](https://github.com/faceyspacey/redux-first-router) now handles all navigation.  Among other things, this means that setting `data-transition` or `data-direction` on an `<a href>` no longer has any effect.
 
 ## Bug Fixes
- * Confirm rare sync timing issue no longer exists in @wq/outbox (#102)
- * Fix issues with refresh logic (c738019) and sync navigation logic (b42d152)
- * Bind `this` to plugin for `reducer()` and `render()` plugin hooks (e94ebd6)
+ * Confirm rare sync timing issue no longer exists in @wq/outbox ([#102](https://github.com/wq/wq.app/issues/102))
+ * Fix issues with refresh logic ([`c738019`](https://github.com/wq/wq.app/commit/c738019)) and sync navigation logic ([`b42d152`](https://github.com/wq/wq.app/commit/b42d152))
+ * Bind `this` to plugin for `reducer()` and `render()` plugin hooks ([`e94ebd6`](https://github.com/wq/wq.app/commit/e94ebd6))

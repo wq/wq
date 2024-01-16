@@ -10,7 +10,7 @@ Major update to [wq](../index.md), with various API and project layout improveme
 - [wq.db 0.4.0](./wq.db-0.4.0.md)
 - [wq.io 0.4.0](https://django-data-wizard.wq.io/releases/itertable-0.4.0)
 
-To simplify the [Getting Started](../overview/setup.md) workflow, the [wq PyPI package](https://pypi.python.org/pypi/wq) also now includes a copy of the [django-wq-template](https://github.com/wq/django-wq-template) and a `wq-start` command.
+To simplify the [Getting Started](../overview/setup.md) workflow, the [wq PyPI package](https://pypi.python.org/pypi/wq) also now includes a copy of the [django-wq-template](../wq.create/index.md) and a `wq-start` command.
 
 ``` bash
 # new way
