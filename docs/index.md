@@ -135,10 +135,8 @@ wq.init(config).then(...);
 
 ## News
 
-> wq 1.3 was released on April 5, 2022!
+> wq 2.0 was released on November 8, 2023!
 >
-> [Install](./overview/setup.md) • [View Release Notes](./releases/wq-1.3.0.md)
+> [Install](./overview/setup.md) • [View Release Notes](./releases/wq-2.0.0.md)
 
 ## Documentation
-
-> Note: The legacy jQuery Mobile-based documentation has moved to [v1.wq.io](https://v1.wq.io).
