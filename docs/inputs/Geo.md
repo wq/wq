@@ -1,6 +1,10 @@
+---
+module: "@wq/map"
+---
+
 # Geo
 
-The `<Geo/>` [input component][inputs] provides geospatial support for point, line, and polygon types.
+[@wq/map]'s `<Geo/>` [input component][index] provides geospatial support for point, line, and polygon types.
 
 > `Geo` is provided via [@wq/map], which is included in the default [wq.js][wq] build.  If you use a custom React template it is up to you to install and register the @wq/map plugin.
 
@@ -219,11 +223,11 @@ The source code for `<Geo/>` is available here:
 
  * [Geo.js (@wq/map)][map-src]
 
-The [@wq/map] implementation is a wrapper around other components (including [Draw]), so there is no alternate `Geo.native.js`.
+This component should not generally need to be overridden directly.
 
-[inputs]: ./index.md
+[index]: ./index.md
 [@wq/map]: ../@wq/map.md
-[wq]: ../wq.md
 [Draw]: ../overlays/Draw.md
 [plugins]: ../plugins/index.md
+[wq]: ../wq.md
 [map-src]: https://github.com/wq/wq.app/blob/main/packages/map/src/inputs/Geo.js

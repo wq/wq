@@ -1,6 +1,10 @@
-# Date & Time Fields
+---
+module: "@wq/material"
+---
 
-The `<DateTime/>` [input component][inputs] provides support for `date`, `time`, and `dateTime` field types, which correspond to the HTML5 `date`, `time`, and `datetime-local` input types.
+# DateTime
+
+[@wq/material]'s `<DateTime/>` [input component][index] provides support for `date`, `time`, and `dateTime` field types, which correspond to the HTML5 `date`, `time`, and `datetime-local` input types.
 
 ## Date
 
@@ -147,12 +151,13 @@ class MyModel(models.Model):
 
 While [@wq/react] defines a [placeholder implementation][react-src], [@wq/material]'s versions are more useful as reference:
 
- * [DateTime.js (@wq/material)][material-src]
- * [DateTime.native.js (@wq/material)][material-native-src]
+ * [DateTime.js (@wq/material-web)][material-web-src]
+ * [DateTime.js (@wq/material-native)][material-native-src]
 
-[inputs]: ./index.md
+
+[index]: ./index.md
 [@wq/react]: ../@wq/react.md
 [@wq/material]: ../@wq/material.md
 [react-src]: https://github.com/wq/wq.app/blob/main/packages/react/src/inputs/DateTime.js
-[material-src]: https://github.com/wq/wq.app/blob/main/packages/material/src/inputs/DateTime.js
-[material-native-src]: https://github.com/wq/wq.app/blob/main/packages/material/src/inputs/DateTime.native.js
+[material-web-src]: https://github.com/wq/wq.app/blob/main/packages/material-web/src/inputs/DateTime.js
+[material-native-src]: https://github.com/wq/wq.app/blob/main/packages/material-native/src/inputs/DateTime.js

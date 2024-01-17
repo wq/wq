@@ -5,30 +5,22 @@ purpose: navigation
 
 # Link
 
-wq's `<Link/>` [component] facilitates navigation between [@wq/router] routes.  `<Link/>` is formatted as a hyperlink, even when navigating to other app screens.  In many cases, [`<ButtonLink/>`][ButtonLink] or [`<ListItemLink/>`][ListItemLink] may be more useful.  `<Link/>` should rarely be overridden.
+[@wq/material]'s `<Link/>` [component][index] facilitates navigation between [@wq/router] routes.  `<Link/>` is formatted as a hyperlink, even when navigating to other app screens.  In many cases, [`<ButtonLink/>`][ButtonLink] or [`<ListItemLink/>`][ListItemLink] may be more useful.  `<Link/>` should rarely be overridden.
 
 ## Source
 
-The [@wq/react] source code for `<Link/>` is available here:
+While [@wq/react] defines a [placeholder implementation][react-src], [@wq/material]'s versions are more useful as reference:
 
- * [Link.js (@wq/react)][react-src]
+ * [Link.js (@wq/material-web)][material-web-src]
+ * [Link.js (@wq/material-native)][material-native-src]
 
-This base implementation is extended by [@wq/material] to integrate with [@material-ui/core] and [react-native-paper]:
 
- * [Link.js (@wq/material)][material-src]
- * [Link.native.js (@wq/material)][material-native-src]
-
-[component]: ./index.md
-[inputs]: ../inputs/index.md
-[ButtonLink]: ./ButtonLink.md
-[ListItemLink]: ./ListItemLink.md
-[@wq/router]: ../@wq/router.md
+[index]: ./index.md
 [@wq/react]: ../@wq/react.md
 [@wq/material]: ../@wq/material.md
-
-[@material-ui/core]: https://material-ui.com/
-[react-native-paper]: https://callstack.github.io/react-native-paper/
-
+[@wq/router]: ../@wq/router.md
+[ButtonLink]: ./ButtonLink.md
+[ListItemLink]: ./ListItemLink.md
 [react-src]: https://github.com/wq/wq.app/blob/main/packages/react/src/components/Link.js
-[material-src]: https://github.com/wq/wq.app/blob/main/packages/material/src/components/Link.js
-[material-native-src]: https://github.com/wq/wq.app/blob/main/packages/material/src/components/Link.native.js
+[material-web-src]: https://github.com/wq/wq.app/blob/main/packages/material-web/src/components/Link.js
+[material-native-src]: https://github.com/wq/wq.app/blob/main/packages/material-native/src/components/Link.js

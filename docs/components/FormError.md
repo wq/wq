@@ -5,27 +5,20 @@ purpose: forms
 
 # FormError
 
-wq's `<FormError/>` [component] displays any top-level form errors.  (Field-level errors are displayed within each [input component][inputs]).  It is generally not necessary to override `<FormError/>`.
+[@wq/material]'s `<FormError/>` [component][index] displays any top-level form errors.  (Field-level errors are displayed within each [input component][inputs]).  It is generally not necessary to override `<FormError/>`.
 
 ## Source
 
-The [@wq/react] source code for `<FormError/>` is available here:
+While [@wq/react] defines a [placeholder implementation][react-src], [@wq/material]'s versions are more useful as reference:
 
- * [FormError.js (@wq/react)][react-src]
+ * [FormError.js (@wq/material-web)][material-web-src]
+ * [FormError.js (@wq/material-native)][material-native-src]
 
-This base implementation is extended by [@wq/material] to integrate with [@material-ui/core] and [react-native-paper]:
 
- * [FormError.js (@wq/material)][material-src]
- * [FormError.native.js (@wq/material)][material-native-src]
-
-[component]: ./index.md
-[inputs]: ../inputs/index.md
+[index]: ./index.md
 [@wq/react]: ../@wq/react.md
 [@wq/material]: ../@wq/material.md
-
-[@material-ui/core]: https://material-ui.com/
-[react-native-paper]: https://callstack.github.io/react-native-paper/
-
+[inputs]: ../inputs/index.md
 [react-src]: https://github.com/wq/wq.app/blob/main/packages/react/src/components/FormError.js
-[material-src]: https://github.com/wq/wq.app/blob/main/packages/material/src/components/FormError.js
-[material-native-src]: https://github.com/wq/wq.app/blob/main/packages/material/src/components/FormError.native.js
+[material-web-src]: https://github.com/wq/wq.app/blob/main/packages/material-web/src/components/FormError.js
+[material-native-src]: https://github.com/wq/wq.app/blob/main/packages/material-native/src/components/FormError.js

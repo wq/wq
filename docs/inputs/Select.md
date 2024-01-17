@@ -1,6 +1,10 @@
+---
+module: "@wq/material"
+---
+
 # Select
 
-The `<Select/>` [input component][inputs] is used by default for choice fields with 10 or more choices.  It can also be set explicitly via "appearance" for fields with any number of choices.
+[@wq/material]'s `<Select/>` [input component][index] is used by default for choice fields with 10 or more choices.  It can also be set explicitly via "appearance" for fields with any number of choices.
 
 > These other choice input types may be useful depending on your use case:
 >  * [Toggle] for fields with fewer than 5 static choices
@@ -137,15 +141,16 @@ class MyModel(models.Model):
 
 While [@wq/react] defines a [placeholder implementation][react-src], [@wq/material]'s versions are more useful as reference:
 
- * [Select.js (@wq/material)][material-src]
- * [Select.native.js (@wq/material)][material-native-src]
+ * [Select.js (@wq/material-web)][material-web-src]
+ * [Select.js (@wq/material-native)][material-native-src]
 
-[inputs]: ./index.md
-[Toggle]: ./Toggle.md
-[Radio]: ./Radio.md
-[ForeignKey]: ./ForeignKey.md
+
+[index]: ./index.md
 [@wq/react]: ../@wq/react.md
 [@wq/material]: ../@wq/material.md
+[ForeignKey]: ./ForeignKey.md
+[Radio]: ./Radio.md
+[Toggle]: ./Toggle.md
 [react-src]: https://github.com/wq/wq.app/blob/main/packages/react/src/inputs/Select.js
-[material-src]: https://github.com/wq/wq.app/blob/main/packages/material/src/inputs/Select.js
-[material-native-src]: https://github.com/wq/wq.app/blob/main/packages/material/src/inputs/Select.native.js
+[material-web-src]: https://github.com/wq/wq.app/blob/main/packages/material-web/src/inputs/Select.js
+[material-native-src]: https://github.com/wq/wq.app/blob/main/packages/material-native/src/inputs/Select.js

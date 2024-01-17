@@ -1,6 +1,10 @@
+---
+module: "@wq/material"
+---
+
 # Image
 
-The `<Image/>` [input component][inputs] provides an interface for selecting and uploading individual `image/*` files.
+[@wq/material]'s `<Image/>` [input component][index] provides an interface for selecting and uploading individual `image/*` files.
 
 > Depending on your use case, you may be interested in the following components:
 >  * [File] allows submission of any file type.
@@ -58,14 +62,15 @@ class MyModel(models.Model):
 
 While [@wq/react] defines a [placeholder implementation][react-src], [@wq/material]'s versions are more useful as reference:
 
- * [Image.js (@wq/material)][material-src]
- * [Image.native.js (@wq/material)][material-native-src]
+ * [Image.js (@wq/material-web)][material-web-src]
+ * [Image.js (@wq/material-native)][material-native-src]
 
-[inputs]: ./index.md
-[File]: ./File.md
-[FileArray]: ../components/FileArray.md
+
+[index]: ./index.md
 [@wq/react]: ../@wq/react.md
 [@wq/material]: ../@wq/material.md
+[File]: ./File.md
+[FileArray]: ./FileArray.md
 [react-src]: https://github.com/wq/wq.app/blob/main/packages/react/src/inputs/Image.js
-[material-src]: https://github.com/wq/wq.app/blob/main/packages/material/src/inputs/Image.js
-[material-native-src]: https://github.com/wq/wq.app/blob/main/packages/material/src/inputs/Image.native.js
+[material-web-src]: https://github.com/wq/wq.app/blob/main/packages/material-web/src/inputs/Image.js
+[material-native-src]: https://github.com/wq/wq.app/blob/main/packages/material-native/src/inputs/Image.js

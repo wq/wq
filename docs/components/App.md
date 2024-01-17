@@ -13,11 +13,11 @@ The source code for `<App/>` is available here:
 
  * [App.js (@wq/react)][react-src]
 
-This base implementation is extended by (not replaced) by both [@wq/react] and [@wq/material], to integrate with [@material-ui/core], [react-native], and [react-native-paper]:
+This base implementation is extended by (not replaced) by both [@wq/react] and [@wq/material], to integrate with [@mui/material], [react-native], and [react-native-paper]:
 
- * [App.js (@wq/material)][material-src]
+ * [App.js (@wq/material-web)][material-web-src]
  * [App.native.js (@wq/react)][react-native-src]
- * [App.native.js (@wq/material)][material-native-src]
+ * [App.js (@wq/material-native)][material-native-src]
 
 [component]: ./index.md
 [Header]: ./Header.md
@@ -29,11 +29,11 @@ This base implementation is extended by (not replaced) by both [@wq/react] and [
 [@wq/react]: ../@wq/react.md
 [@wq/material]: ../@wq/material.md
 
-[@material-ui/core]: https://material-ui.com/
+[@mui/material]: https://mui.com/material-ui
 [react-native]: https://reactnative.dev/
 [react-native-paper]: https://callstack.github.io/react-native-paper/
 
 [react-src]: https://github.com/wq/wq.app/blob/main/packages/react/src/App.js
-[material-src]: https://github.com/wq/wq.app/blob/main/packages/material/src/App.js
+[material-web-src]: https://github.com/wq/wq.app/blob/main/packages/material-web/src/App.js
 [react-native-src]: https://github.com/wq/wq.app/blob/main/packages/react/src/App.native.js
-[material-native-src]: https://github.com/wq/wq.app/blob/main/packages/material/src/App.native.js
+[material-native-src]: https://github.com/wq/wq.app/blob/main/packages/material-native/src/App.js

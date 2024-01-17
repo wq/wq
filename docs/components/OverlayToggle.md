@@ -1,25 +1,21 @@
 ---
-module: "@wq/map-gl"
+module: "@wq/map"
 purpose: maps
 ---
 
 # OverlayToggle
 
-wq's `<OverlayToggle/>` [component] wraps [`<AutoOverlay/>`][AutoOverlay] with a checkbox that controls active state.
+[@wq/map]'s `<OverlayToggle/>` [component][index] wraps [`<AutoOverlay/>`][AutoOverlay] with a checkbox that controls active state.
 
 ## Source
 
-While [@wq/map] defines a [placeholder implementation][map-src], [@wq/map-gl] and [@wq/leaflet]'s versions are more useful as reference:
+The source code for `<OverlayToggle/>` is available here:
 
- * [OverlayToggle.js (@wq/map-gl)][mapgl-src]
- * [Legend.js (@wq/leaflet)][leaflet-src]
+ * [OverlayToggle.js (@wq/map)][map-src]
 
-[component]: ./index.md
-[AutoOverlay]: ./AutoOverlay.md
+This component should not generally need to be overridden directly.
+
+[index]: ./index.md
 [@wq/map]: ../@wq/map.md
-[@wq/map-gl]: ../@wq/map-gl.md
-[@wq/leaflet]: https://github.com/wq/wq.app/tree/v1.3.0/packages/leaflet
-
-[map-src]: https://github.com/wq/wq.app/blob/main/packages/map/src/components/Legend.js
-[mapgl-src]: https://github.com/wq/wq.app/blob/main/packages/map-gl/src/components/OverlayToggle.js
-[leaflet-src]: https://github.com/wq/wq.app/blob/v1.3.0/packages/leaflet/src/components/Legend.js
+[AutoOverlay]: ./AutoOverlay.md
+[map-src]: https://github.com/wq/wq.app/blob/main/packages/map/src/components/OverlayToggle.js

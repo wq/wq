@@ -1,6 +1,10 @@
+---
+module: "@wq/material"
+---
+
 # Checkbox
 
-The `<Checkbox/>` [input component][inputs] provides a simple boolean toggle.  Since the user does not have to do anything to leave the box unchecked, it is best to only use this component for confirmation and opt-in questions.
+[@wq/material]'s `<Checkbox/>` [input component][index] provides a simple boolean toggle.  Since the user does not have to do anything to leave the box unchecked, it is best to only use this component for confirmation and opt-in questions.
 
 > By default, Boolean fields are rendered as a [Toggle] with Yes and No choices.  To use the Checkbox component instead, set the "appearance" attribute in the field config, as shown below.
 
@@ -86,14 +90,15 @@ rest.router.register_model(
 
 While [@wq/react] defines a [placeholder implementation][react-src], [@wq/material]'s versions are more useful as reference:
 
- * [Checkbox.js (@wq/material)][material-src]
- * [Checkbox.native.js (@wq/material)][material-native-src]
+ * [Checkbox.js (@wq/material-web)][material-web-src]
+ * [Checkbox.js (@wq/material-native)][material-native-src]
 
-[inputs]: ./index.md
-[Toggle]: ./Toggle.md
-[config]: ../config.md
+
+[index]: ./index.md
 [@wq/react]: ../@wq/react.md
 [@wq/material]: ../@wq/material.md
+[Toggle]: ./Toggle.md
+[config]: ../config.md
 [react-src]: https://github.com/wq/wq.app/blob/main/packages/react/src/inputs/Checkbox.js
-[material-src]: https://github.com/wq/wq.app/blob/main/packages/material/src/inputs/Checkbox.js
-[material-native-src]: https://github.com/wq/wq.app/blob/main/packages/material/src/inputs/Checkbox.native.js
+[material-web-src]: https://github.com/wq/wq.app/blob/main/packages/material-web/src/inputs/Checkbox.js
+[material-native-src]: https://github.com/wq/wq.app/blob/main/packages/material-native/src/inputs/Checkbox.js

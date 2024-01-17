@@ -1,6 +1,10 @@
+---
+module: "@wq/material"
+---
+
 # Radio
 
-The `<Radio/>` [input component][inputs] is used by default for choice fields with 5 to 9 choices.  It can also be set explicitly via "appearance" for fields with any number of choices.
+[@wq/material]'s `<Radio/>` [input component][index] is used by default for choice fields with 5 to 9 choices.  It can also be set explicitly via "appearance" for fields with any number of choices.
 
 > These other choice input types may be useful depending on your use case:
 >  * [Toggle] for fields with fewer than 5 static choices
@@ -107,15 +111,16 @@ class MyModel(models.Model):
 
 While [@wq/react] defines a [placeholder implementation][react-src], [@wq/material]'s versions are more useful as reference:
 
- * [Radio.js (@wq/material)][material-src]
- * [Radio.native.js (@wq/material)][material-native-src]
+ * [Radio.js (@wq/material-web)][material-web-src]
+ * [Radio.js (@wq/material-native)][material-native-src]
 
-[inputs]: ./index.md
-[Toggle]: ./Toggle.md
-[Select]: ./Select.md
-[ForeignKey]: ./ForeignKey.md
+
+[index]: ./index.md
 [@wq/react]: ../@wq/react.md
 [@wq/material]: ../@wq/material.md
+[ForeignKey]: ./ForeignKey.md
+[Select]: ./Select.md
+[Toggle]: ./Toggle.md
 [react-src]: https://github.com/wq/wq.app/blob/main/packages/react/src/inputs/Radio.js
-[material-src]: https://github.com/wq/wq.app/blob/main/packages/material/src/inputs/Radio.js
-[material-native-src]: https://github.com/wq/wq.app/blob/main/packages/material/src/inputs/Radio.native.js
+[material-web-src]: https://github.com/wq/wq.app/blob/main/packages/material-web/src/inputs/Radio.js
+[material-native-src]: https://github.com/wq/wq.app/blob/main/packages/material-native/src/inputs/Radio.js

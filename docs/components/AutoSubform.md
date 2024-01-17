@@ -5,7 +5,7 @@ purpose: forms
 
 # AutoSubform
 
-@wq/react's `<AutoSubform/>` [component] generates a [`<Fieldset/>`][Fieldset] containing [`<AutoInput/>`][AutoInput]s for each of the fields in the specified group from the [form configuration][config]).  `<AutoSubform/>` is primarily used with [`<AutoForm/>`][AutoForm], and should never be overridden.  Instead, you can configure a custom [fieldset][fieldsets] and register it as the "appearance" for the group.
+[@wq/react]'s `<AutoSubform/>` [component][index] generates a [`<Fieldset/>`][Fieldset] containing [`<AutoInput/>`][AutoInput]s for each of the fields in the specified group from the [form configuration][config]).  `<AutoSubform/>` is primarily used with [`<AutoForm/>`][AutoForm], and should never be overridden.  Instead, you can configure a custom [fieldset][fieldsets] and register it as the "appearance" for the group.
 
 ## Source
 
@@ -13,16 +13,13 @@ The source code for `<AutoSubform/>` is available here:
 
  * [AutoSubform.js (@wq/react)][react-src]
 
-The [@wq/react] implementation automatically determines which actual components to render, so there is no alternate [@wq/material] or native version.
+This component should not generally need to be overridden directly.
 
-[component]: ./index.md
-[Fieldset]: ./Fieldset.md
-[AutoInput]: ./AutoInput.md
-[AutoForm]: ./AutoForm.md
-[config]: ../config.md
+[index]: ./index.md
 [@wq/react]: ../@wq/react.md
-[@wq/material]: ../@wq/material.md
-
-[fieldsets]: ../guides/organize-inputs-into-fieldsets.md 
-
+[AutoForm]: ./AutoForm.md
+[AutoInput]: ./AutoInput.md
+[Fieldset]: ../inputs/Fieldset.md
+[config]: ../config.md
+[fieldsets]: ../guides/organize-inputs-into-fieldsets.md
 [react-src]: https://github.com/wq/wq.app/blob/main/packages/react/src/components/AutoSubform.js

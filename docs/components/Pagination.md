@@ -5,20 +5,20 @@ purpose: navigation
 
 # Pagination
 
-[@wq/material]'s `<Pagination/>` [component] is used on list views with more records than can fit on one screen.
+[@wq/material]'s `<Pagination/>` [component][index] is used on list views with more records than can fit on one screen.
 
 ## Source
 
 While [@wq/react] defines a [placeholder implementation][react-src], [@wq/material]'s versions are more useful as reference:
 
- * [Pagination.js (@wq/material)][material-src]
- * [Pagination.native.js (@wq/material)][material-native-src]
+ * [Pagination.js (@wq/material-web)][material-web-src]
+ * [Pagination.js (@wq/material-native)][material-native-src]
 
-[component]: ./index.md
+> The @wq/material-native implementation is currently just a placeholder.
+
+[index]: ./index.md
 [@wq/react]: ../@wq/react.md
 [@wq/material]: ../@wq/material.md
-
 [react-src]: https://github.com/wq/wq.app/blob/main/packages/react/src/components/Pagination.js
-[material-src]: https://github.com/wq/wq.app/blob/main/packages/material/src/components/Pagination.js
-[material-native-src]: https://github.com/wq/wq.app/blob/main/packages/material/src/components/Pagination.native.js
-
+[material-web-src]: https://github.com/wq/wq.app/blob/main/packages/material-web/src/components/Pagination.js
+[material-native-src]: https://github.com/wq/wq.app/blob/main/packages/material-native/src/components/Pagination.js

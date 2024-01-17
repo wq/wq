@@ -5,7 +5,7 @@ purpose: forms
 
 # FileArray
 
-[@wq/material]'s `<FileArray/>` [component] is a specialized version of [`<FieldsetArray/>`][FieldsetArray] providing a streamlined UI for uploading an array of files.  Django does not support `FileField(multiple=True)`, but the same result can be achieved through a related model; e.g. an XLSForm "repeat" with only a single "file" or "image" field.  [`<AutoSubformArray/>`][AutoSubformArray] will detect this configuration and render `<FileArray>` instead of the default.  `<FileArray/>` is analogous to `<input type="file" multiple>` in HTML, though the JSON representation is different.
+[@wq/material]'s `<FileArray/>` [input component][index] is a specialized version of [`<FieldsetArray/>`][FieldsetArray] providing a streamlined UI for uploading an array of files.  Django does not support `FileField(multiple=True)`, but the same result can be achieved through a related model; e.g. an XLSForm "repeat" with only a single "file" or "image" field.  [`<AutoSubformArray/>`][AutoSubformArray] will detect this configuration and render `<FileArray>` instead of the default.  `<FileArray/>` is analogous to `<input type="file" multiple>` in HTML, though the JSON representation is different.
 
 > FileArray uses the same underlying UI as the individual [File] and [Image] input components, but enables support for multiple files.
 
@@ -52,18 +52,17 @@ wq.init(config).then(...);
 
 While [@wq/react] defines a [placeholder implementation][react-src], [@wq/material]'s versions are more useful as reference:
 
- * [FileArray.js (@wq/material)][material-src]
- * [FileArray.native.js (@wq/material)][material-native-src]
+ * [FileArray.js (@wq/material-web)][material-web-src]
+ * [FileArray.js (@wq/material-native)][material-native-src]
 
-[component]: ./index.md
+
+[index]: ./index.md
 [@wq/react]: ../@wq/react.md
 [@wq/material]: ../@wq/material.md
-[FieldsetArray]: ./FieldsetArray.md
 [AutoSubformArray]: ./AutoSubformArray.md
+[FieldsetArray]: ./FieldsetArray.md
 [File]: ../inputs/File.md
 [Image]: ../inputs/Image.md
-
-[react-src]: https://github.com/wq/wq.app/blob/main/packages/react/src/components/FileArray.js
-[material-src]: https://github.com/wq/wq.app/blob/main/packages/material/src/components/FileArray.js
-[material-native-src]: https://github.com/wq/wq.app/blob/main/packages/material/src/components/FileArray.native.js
-
+[react-src]: https://github.com/wq/wq.app/blob/main/packages/react/src/inputs/FileArray.js
+[material-web-src]: https://github.com/wq/wq.app/blob/main/packages/material-web/src/inputs/FileArray.js
+[material-native-src]: https://github.com/wq/wq.app/blob/main/packages/material-native/src/inputs/FileArray.js

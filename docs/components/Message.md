@@ -5,7 +5,7 @@ purpose: forms
 
 # Message
 
-@wq/react's `<Message/>` [component], and the corresponding [`useMessages()`][useMessages] hook, provide a general way to customize certain user messages in the application without needing to implement fully custom components.  To override a message, [register a plugin][plugins] with a `messages` attribute.  Do not override the `<Message/>` component itself.
+[@wq/react]'s `<Message/>` [component][index] , and the corresponding [`useMessages()`][useMessages] hook, provide a general way to customize certain user messages in the application without needing to implement fully custom components.  To override a message, [register a plugin][plugins] with a `messages` attribute.  Do not override the `<Message/>` component itself.
 
 ```javascript
 app.use({
@@ -39,31 +39,23 @@ code | message | used in
 
 ## Source
 
-The list of default messages is implemented here:
- * [messages.js (@wq/react)][react-messages-src]
-
-While the `<Message/>` component is available here:
+The source code for `<Message/>` is available here:
 
  * [Message.js (@wq/react)][react-src]
 
-The [@wq/react] implementation just renders the message in a fragment as a string, so there is no alternate [@wq/material] or native version.
+This component should not generally need to be overridden directly.
 
-[component]: ./index.md
-[useMessages]: ../hooks/useMessages.md
-[plugins]: ../plugins/index.md
-
-[Index]: ../views/Index.md
-[AutoForm]: ./AutoForm.md
-[Login]: ../views/Login.md
-[DefaultList]: ../views/DefaultList.md
-[DefaultEdit]: ../views/DefaultEdit.md
-[DeleteForm]: ./DeleteForm.md
-[OutboxList]: ../views/OutboxList.md
-[Logout]: ../views/Logout.md
-[Loading]: ../views/Loading.md
-
+[index]: ./index.md
 [@wq/react]: ../@wq/react.md
-[@wq/material]: ../@wq/material.md
-
-[react-messages-src]: https://github.com/wq/wq.app/blob/main/packages/react/src/messages.js
+[AutoForm]: ./AutoForm.md
+[DefaultEdit]: ../views/DefaultEdit.md
+[DefaultList]: ../views/DefaultList.md
+[DeleteForm]: ./DeleteForm.md
+[Index]: ../views/Index.md
+[Loading]: ../views/Loading.md
+[Login]: ../views/Login.md
+[Logout]: ../views/Logout.md
+[OutboxList]: ../views/OutboxList.md
+[plugins]: ../plugins/index.md
+[useMessages]: ../hooks/useMessages.md
 [react-src]: https://github.com/wq/wq.app/blob/main/packages/react/src/components/Message.js

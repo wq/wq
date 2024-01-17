@@ -5,22 +5,21 @@ purpose: forms
 
 # IconSubmitButton
 
-[@wq/material]'s `<IconSubmitButton/>` [component] enhances [`<IconButton/>`][IconButton] with [`<SubmitButton/>`][SubmitButton] functionality
+[@wq/material]'s `<IconSubmitButton/>` [component][index] enhances [`<IconButton/>`][IconButton] with [`<SubmitButton/>`][SubmitButton] functionality
 
 ## Source
 
 While [@wq/react] defines a [placeholder implementation][react-src], [@wq/material]'s versions are more useful as reference:
 
- * [IconSubmitButton.js (@wq/material)][material-src]
- * [IconSubmitButton.native.js (@wq/material)][material-native-src]
+ * [IconSubmitButton.js (@wq/material-web)][material-web-src]
+ * [IconSubmitButton.js (@wq/material-native)][material-native-src]
 
-[component]: ./index.md
+
+[index]: ./index.md
 [@wq/react]: ../@wq/react.md
 [@wq/material]: ../@wq/material.md
 [IconButton]: ./IconButton.md
 [SubmitButton]: ./SubmitButton.md
-
 [react-src]: https://github.com/wq/wq.app/blob/main/packages/react/src/components/IconSubmitButton.js
-[material-src]: https://github.com/wq/wq.app/blob/main/packages/material/src/components/IconSubmitButton.js
-[material-native-src]: https://github.com/wq/wq.app/blob/main/packages/material/src/components/IconSubmitButton.native.js
-
+[material-web-src]: https://github.com/wq/wq.app/blob/main/packages/material-web/src/components/IconSubmitButton.js
+[material-native-src]: https://github.com/wq/wq.app/blob/main/packages/material-native/src/components/IconSubmitButton.js

@@ -1,6 +1,10 @@
+---
+module: "@wq/material"
+---
+
 # Input
 
-The `<Input/>` [input component][inputs] provides a simple text input corresponding to a HTML `<input>`.  As the default fallback component, `Input` supports several HTML input types, including `text`, `number`, `password`, `email`, `tel`, and `color`.
+[@wq/material]'s `<Input/>` [input component][index] provides a simple text input corresponding to a HTML `<input>`.  As the default fallback component, `Input` supports several HTML input types, including `text`, `number`, `password`, `email`, `tel`, and `color`.
 
 > The following HTML input types are supported in wq via separate dedicated components:
 >  * [Checkbox]
@@ -213,18 +217,19 @@ class MyModel(models.Model):
 
 While [@wq/react] defines a [placeholder implementation][react-src], [@wq/material]'s versions are more useful as reference:
 
- * [Input.js (@wq/material)][material-src]
- * [Input.native.js (@wq/material)][material-native-src]
+ * [Input.js (@wq/material-web)][material-web-src]
+ * [Input.js (@wq/material-native)][material-native-src]
 
-[inputs]: ./index.md
+
+[index]: ./index.md
+[@wq/react]: ../@wq/react.md
+[@wq/material]: ../@wq/material.md
 [Checkbox]: ./Checkbox.md
 [DateTime]: ./DateTime.md
 [File]: ./File.md
 [Hidden]: ./Hidden.md
 [Radio]: ./Radio.md
 [SubmitButton]: ../components/SubmitButton.md
-[@wq/react]: ../@wq/react.md
-[@wq/material]: ../@wq/material.md
 [react-src]: https://github.com/wq/wq.app/blob/main/packages/react/src/inputs/Input.js
-[material-src]: https://github.com/wq/wq.app/blob/main/packages/material/src/inputs/Input.js
-[material-native-src]: https://github.com/wq/wq.app/blob/main/packages/material/src/inputs/Input.native.js
+[material-web-src]: https://github.com/wq/wq.app/blob/main/packages/material-web/src/inputs/Input.js
+[material-native-src]: https://github.com/wq/wq.app/blob/main/packages/material-native/src/inputs/Input.js

@@ -1,6 +1,10 @@
+---
+module: "@wq/material"
+---
+
 # Toggle
 
-The `<Toggle/>` [input component][inputs] is used by default for choice fields with fewer than 5 choices.  Toggle is also used by default for boolean fields.
+[@wq/material]'s `<Toggle/>` [input component][index] is used by default for choice fields with fewer than 5 choices.  Toggle is also used by default for boolean fields.
 
 > These other choice input types may be useful depending on your use case:
 >  * [Checkbox] for Boolean fields indicating an opt-in or confirmation step
@@ -145,17 +149,18 @@ class MyModel(models.Model):
 
 While [@wq/react] defines a [placeholder implementation][react-src], [@wq/material]'s versions are more useful as reference:
 
- * [Toggle.js (@wq/material)][material-src]
- * [Toggle.native.js (@wq/material)][material-native-src]
+ * [Toggle.js (@wq/material-web)][material-web-src]
+ * [Toggle.js (@wq/material-native)][material-native-src]
 
-[inputs]: ./index.md
-[Checkbox]: ./Checkbox.md
-[Radio]: ./Radio.md
-[Select]: ./Select.md
-[ForeignKey]: ./ForeignKey.md
-[config]: ../config.md
+
+[index]: ./index.md
 [@wq/react]: ../@wq/react.md
 [@wq/material]: ../@wq/material.md
+[Checkbox]: ./Checkbox.md
+[ForeignKey]: ./ForeignKey.md
+[Radio]: ./Radio.md
+[Select]: ./Select.md
+[config]: ../config.md
 [react-src]: https://github.com/wq/wq.app/blob/main/packages/react/src/inputs/Toggle.js
-[material-src]: https://github.com/wq/wq.app/blob/main/packages/material/src/inputs/Toggle.js
-[material-native-src]: https://github.com/wq/wq.app/blob/main/packages/material/src/inputs/Toggle.native.js
+[material-web-src]: https://github.com/wq/wq.app/blob/main/packages/material-web/src/inputs/Toggle.js
+[material-native-src]: https://github.com/wq/wq.app/blob/main/packages/material-native/src/inputs/Toggle.js

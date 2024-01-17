@@ -5,20 +5,19 @@ purpose: navigation
 
 # Spinner
 
-[@wq/material]'s `<Spinner/>` [component] is shown while submitting forms and (very briefly) when navigating between views.
+[@wq/material]'s `<Spinner/>` [component][index] is shown while submitting forms and (very briefly) when navigating between views.
 
 ## Source
 
 While [@wq/react] defines a [placeholder implementation][react-src], [@wq/material]'s versions are more useful as reference:
 
- * [Spinner.js (@wq/material)][material-src]
- * [Spinner.native.js (@wq/material)][material-native-src]
+ * [Spinner.js (@wq/material-web)][material-web-src]
+ * [Spinner.js (@wq/material-native)][material-native-src]
 
-[component]: ./index.md
+
+[index]: ./index.md
 [@wq/react]: ../@wq/react.md
 [@wq/material]: ../@wq/material.md
-
 [react-src]: https://github.com/wq/wq.app/blob/main/packages/react/src/components/Spinner.js
-[material-src]: https://github.com/wq/wq.app/blob/main/packages/material/src/components/Spinner.js
-[material-native-src]: https://github.com/wq/wq.app/blob/main/packages/material/src/components/Spinner.native.js
-
+[material-web-src]: https://github.com/wq/wq.app/blob/main/packages/material-web/src/components/Spinner.js
+[material-native-src]: https://github.com/wq/wq.app/blob/main/packages/material-native/src/components/Spinner.js

@@ -1,6 +1,10 @@
+---
+module: "@wq/material"
+---
+
 # File
 
-The `<File/>` [input component][inputs] provides an interface for selecting and uploading single files.
+[@wq/material]'s `<File/>` [input component][index] provides an interface for selecting and uploading single files.
 
 > Depending on your use case, you may be interested in the following components:
 >  * [Image] is based on File, but only accepts `image/*` file types.
@@ -62,14 +66,15 @@ By specifying the `accept` prop, you can restrict which types of files the user 
 
 While [@wq/react] defines a [placeholder implementation][react-src], [@wq/material]'s versions are more useful as reference:
 
- * [File.js (@wq/material)][material-src]
- * [File.native.js (@wq/material)][material-native-src]
+ * [File.js (@wq/material-web)][material-web-src]
+ * [File.js (@wq/material-native)][material-native-src]
 
-[inputs]: ./index.md
-[Image]: ./Image.md
-[FileArray]: ../components/FileArray.md
+
+[index]: ./index.md
 [@wq/react]: ../@wq/react.md
 [@wq/material]: ../@wq/material.md
+[FileArray]: ./FileArray.md
+[Image]: ./Image.md
 [react-src]: https://github.com/wq/wq.app/blob/main/packages/react/src/inputs/File.js
-[material-src]: https://github.com/wq/wq.app/blob/main/packages/material/src/inputs/File.js
-[material-native-src]: https://github.com/wq/wq.app/blob/main/packages/material/src/inputs/File.native.js
+[material-web-src]: https://github.com/wq/wq.app/blob/main/packages/material-web/src/inputs/File.js
+[material-native-src]: https://github.com/wq/wq.app/blob/main/packages/material-native/src/inputs/File.js

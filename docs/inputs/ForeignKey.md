@@ -1,6 +1,10 @@
-# Dynamic Choices (ForeignKey)
+---
+module: "@wq/react"
+---
 
-In addition to static choice inputs like [`<Select/>`][Select], wq supports implementing dynamic choices that make it possible for any user of your application to dynamically update the available domain values, without you needing to recompile the application.
+# ForeignKey
+
+[@wq/react]'s `<ForeignKey/>` [input component][index] makes it possible for any user of your application to dynamically update the available domain values, without you needing to recompile the application.
 
 Under the hood, dynamic choices are implemented as foreign keys to other existing relational tables.  In fact, wq does not distinguish in any meaningful way between tables used as domain values versus tables used to manage the actual observation data.  This means all tables can be registered with the REST API and managed from the client app (assuming that the appropriate permissions are given to each respective user.)  For example, one of the most common schema designs has been to split the observation timeseries into separate "Site" and "Observation" tables, with a ForeignKey pointing from Observation to Site.  Users then can manage their list of sites separately from their observational data.
 
@@ -108,13 +112,16 @@ class MyModel(models.Model):
 
 ## Source
 
-The code for handling foreign keys is spread throughout wq.app, and there is no specific `ForeignKey` component.  Foreign keys are typically rendered as [`<Select/>`][Select] by [<AutoInput/>][AutoInput], which loads the list of choices from the context proved by [@wq/app].  [@wq/model] and [@wq/outbox] handle managing and syncing related records from the client.
+The source code for `<ForeignKey/>` is available here:
 
-[Select]: ./Select.md
-[AutoInput]: ../components/AutoInput.md
+ * [ForeignKey.js (@wq/react)][react-src]
+
+This component should not generally need to be overridden directly.
+
+[index]: ./index.md
+[@wq/react]: ../@wq/react.md
+[@wq/outbox]: ../@wq/outbox.md
 [config]: ../config.md
 [nested-forms]: ../guides/implement-repeating-nested-forms.md
 [wq framework]: ../index.md
-[@wq/app]: ../@wq/app.md
-[@wq/outbox]: ../@wq/outbox.md
-[@wq/model]: ../@wq/model.md
+[react-src]: https://github.com/wq/wq.app/blob/main/packages/react/src/inputs/ForeignKey.js

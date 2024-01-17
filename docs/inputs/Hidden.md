@@ -1,6 +1,10 @@
+---
+module: "@wq/material"
+---
+
 # Hidden
 
-The `<Hidden/>` [input component][inputs] is entirely invisible, unless there is a validation error specific to the field.  Use `Hidden` when you want a field to be present in the [Serializer] output but not in the form.
+[@wq/material]'s `<Hidden/>` [input component][index] is entirely invisible, unless there is a validation error specific to the field.  Use `Hidden` when you want a field to be present in the [Serializer] output but not in the form.
 
 
 ```python
@@ -42,13 +46,14 @@ rest.router.register_model(
 
 While [@wq/react] defines a [placeholder implementation][react-src], [@wq/material]'s versions are more useful as reference:
 
- * [Hidden.js (@wq/material)][material-src]
- * [Hidden.native.js (@wq/material)][material-native-src]
+ * [Hidden.js (@wq/material-web)][material-web-src]
+ * [Hidden.js (@wq/material-native)][material-native-src]
 
-[inputs]: ./index.md
-[Serializer]: ../wq.db/serializers.md
+
+[index]: ./index.md
 [@wq/react]: ../@wq/react.md
 [@wq/material]: ../@wq/material.md
+[Serializer]: ../wq.db/serializers.md
 [react-src]: https://github.com/wq/wq.app/blob/main/packages/react/src/inputs/Hidden.js
-[material-src]: https://github.com/wq/wq.app/blob/main/packages/material/src/inputs/Hidden.js
-[material-native-src]: https://github.com/wq/wq.app/blob/main/packages/material/src/inputs/Hidden.native.js
+[material-web-src]: https://github.com/wq/wq.app/blob/main/packages/material-web/src/inputs/Hidden.js
+[material-native-src]: https://github.com/wq/wq.app/blob/main/packages/material-native/src/inputs/Hidden.js
