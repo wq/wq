@@ -18,7 +18,7 @@ wq.db.rest now provides a top-level `@register` decorator that directly mimics t
 from wq.db import rest
 from .models import MyModel
 
-[@rest](https://github.com/rest).register(MyModel, url="customurl")
+@rest.register(MyModel, url="customurl")
 class MyCustomSerializer(rest.ModelSerializer)
      class Meta:
          wq_field_config = {...}
@@ -59,7 +59,7 @@ class ChildSerializer(rest.ModelSerializer):
     class Meta:
         model = ChildModel
 
-[@rest](https://github.com/rest).register(ParentModel)
+@rest.register(ParentModel)
 class ParentSerializer(rest.ModelSerializer):
     children =  ChildSerializer(
         many=True,

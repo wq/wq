@@ -271,7 +271,7 @@ def link_commits(body, repo_name):
 
 def link_users(body):
     def link_user(match):
-        if match[0] in ("@wq", "@index", "@register"):
+        if match[0] in ("@wq", "@index", "@rest", "@register"):
             return match[0]
         return f"[{match[0]}](https://github.com/{match[1]})"
 
@@ -299,8 +299,6 @@ def process_repo(repo_name):
         date = release["published_at"].split("T")[0]
         try:
             body = update_body(release["body"], repo_name)
-            if tag == "0.7.z":
-                raise Exception("HERE")
         except Exception as e:
             print("#" * 80)
             print(f"Error while processing {repo_name} {tag}:")
