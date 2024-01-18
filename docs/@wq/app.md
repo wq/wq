@@ -83,7 +83,7 @@ app.init(config).then(() => {
 
 #### `app.init(config)`
 
-The main required usage of @wq/app is to initialize it with `app.init()`.  The function returns a [Promise] that will be resolved when the initialization is complete.  After the app is configured,`app.prefetchAll()` can be used to preload and cache data from all registered models (i.e. all entries in the `pages` configuration that have `list` set to `true`).
+The main required usage of @wq/app is to initialize by passing a [wq Configuration object][config] to `app.init()`.  The function returns a [Promise] that will be resolved when the initialization is complete.  After the app is configured,`app.prefetchAll()` can be used to preload and cache data from all registered models (i.e. all entries in the `pages` configuration that have `list` set to `true`).
 
 ```javascript
 app.init(config).then(() => {
@@ -91,7 +91,7 @@ app.init(config).then(() => {
 });
 ```
 
-The available configuration options are shown below with their default values.
+The available [configuration options][config] are shown below with their default values.
 
 ```javascript
 {
@@ -113,7 +113,7 @@ The available configuration options are shown below with their default values.
 }
 ```
 
-The configuration sections for the other core modules are passed on to the `init()` function for each module.  In a few instances, @wq/app overrides the default settings for the respective modules.  See the documentation for [@wq/router], [@wq/store], [@wq/outbox], and [@wq/model] for more information about the available configuration options for each module.  Similarly, any registered plugins can be configured via sections with the same name as the respective plugins.
+The configuration sections for the other core modules are passed on to the `init()` function for each module.  In a few instances, @wq/app overrides the default settings for the respective modules.  See the documentation for [wq Configuration object][config], [@wq/router], [@wq/store], [@wq/outbox], and [@wq/model] for more information about the available configuration options for each module.  Similarly, any registered plugins can be configured via sections with the same name as the respective plugins.
 
 ##### Scalar Options
 
@@ -208,6 +208,7 @@ The source code for @wq/app is in the [wq.app repository][source].
 [@wq/material]: ../@wq/material.md
 [@wq/map]: ../@wq/map.md
 
+[config]: ../config.md
 [plugins]: ../plugins/index.md
 [URL structure]: ../wq.db/url-structure.md
 [auth]: ../wq.db/auth.md

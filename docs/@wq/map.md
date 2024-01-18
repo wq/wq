@@ -52,12 +52,12 @@ When used with [@wq/app], `map.init()` is called automatically by `app.init()` w
 name | default | purpose
 -----|---------|---------
 `bounds` | `[[-4,-4],[4,4]]` | Default extent for initially rendered map.  This is specified as a bounds rather than a center and zoom, to ensure the full intended extent is visible regardless of screen size.
+`basemaps` | Array | Basemap configuration(s) to use on every map.  The first entry the array will be used as the default basemap. Each object should have a `name` attribute (for the [Legend]) and a `type` specifying which [basemap component][basemaps] to use.  All other object props will be passed to the component.
 `autoZoom` | Object | By default, rendered maps will automatically zoom (and pan) to the extent of their embedded GeoJSON feature layers using the following options.  To disable auto-zooming entirely, set `autoZoom` to `false`.
 `autoZoom.animate` | `true` | Whether to animate the auto-zooming.  Incorporating animation is valuable as it gives the user a chance to visually orient the rendered features in relation to the original zoom level.
 `autoZoom.wait` | `0.5` | How long to wait before triggering auto-zooming, in seconds.  Waiting gives the map a chance to settle and makes the animation more salient.
 `autoZoom.sticky` | `true` | Whether to save the last zoom and center (from auto-zooming and/or regular panning) for use in the next map (`true`) or to always start out new maps from the default zoom and center (`false`).  Particularly useful in maintaining visual consistency for the user when they are quickly navigating between a series of list or detail pages in succession.
 `autoZoom.maxZoom` | `13` | The maximum zoom level to use when auto-zooming.  (Useful to avoid zooming in too far when the only feature is a single point)
-`maps.basemaps` | Array | Basemap configuration(s) to use on every map.  The first entry the array will be used as the default basemap. Each object should have a `name` attribute (for the [Legend]) and a `type` specifying which [basemap component][basemaps] to use.  All other object props will be passed to the component.
 
 #### Page Configuration
 

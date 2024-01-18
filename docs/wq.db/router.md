@@ -76,8 +76,8 @@ The available keyword arguments to `router.register_model()` include:
 | `fields` | None | List of fields to include on the auto-generated serializer.  Use `"__all__"` to include all fields (the old default behavior). |
 | `serializer` | `wq.db.rest.serializers.ModelSerializer` | One of `fields` or `serializer` must be set or the API will throw a configuration error.
 | `filter` | No-op. | The argument should be a function that accepts a queryset and a request object and filters the former. |
-| `cache` | `"first_page"` | Controls which data is set to the client model storage for offline use.  Can also be set to `"all"`, `"none"`, or `"filter"` (see [configuration][config])
-| `cache_filter` | None | For use with `cache="filter"`.
+| `cache` | `"first_page"` | Controls which data is set to the client model storage for offline use.  Can also be set to `"all"`, `"none"`, `"filter"`, or `"autoupdate"` (see [configuration][config])
+| `cache_filter` | None | For use with `cache="filter"` and `cache="autoupdate"`.
 | `url` | `[Model]._meta.verbose_name_plural` | (with spaces removed) |
 | `queryset` | `[Model].objects.all()` | |
 | `viewset` | `wq.db.rest.views.ModelViewSet` | |
@@ -102,24 +102,16 @@ Any other options given will be assigned to the model's [page configuration][con
 
 ## Config Object (`dump_config`)
 
-The router can generate a JSON-formatted [wq configuration object][config] for use by [@wq/app].  The `dump_config` management command can be used to create an AMD configuration module as part of your build process.
+The router can generate a JSON-formatted [wq configuration object][config] for use by [@wq/app].  The `dump_config` management command can be used to create an ESM configuration module as part of your build process.
 
 ```bash
 # deploy.sh
-db/manage.py dump_config --format amd > app/js/data/config.js
+db/manage.py dump_config --format esm > app/js/data/config.js
 ```
 
 ```javascript
-// myapp/main.js
-requirejs.config({
-    'paths': {
-        'data': '../data/',
-    }
-});
-define(["data/config", ...],
-function(config, ...) {
-    // Do stuff with config
-});
+// app/js/myapp.js
+import config from './data/config.js';
 ```
 
 The default [wq Django Template] uses `dump_config` in the provided `deploy.sh`.

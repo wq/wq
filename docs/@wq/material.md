@@ -21,36 +21,14 @@ python3 -m pip install wq # install wq framework (wq.app, wq.db, etc.)
 ### @wq/material for npm
 
 ```bash
-npm install @wq/material # install @wq/material, @wq/react, and web deps
+npm install @wq/material @wq/material-web  # install @wq/material, @wq/react, and web deps
 ```
 
-@wq/material specifies all required dependencies for web usage.  For use with [React Native] or [Expo], you will need to install the following additional libraries:
-
-```bash
-# Expo
-expo install react-native-paper \
-  @react-navigation/native \
-  @react-navigation/stack \
-  @react-native-community/masked-view \
-  @react-native-community/netinfo \
-  @react-native-community/datetimepicker \
-  react-native-picker-select \
-  react-native-modal-datetime-picker
-
-# React Native
-npm install react-native-paper \
-  @react-navigation/native \
-  @react-navigation/stack \
-  @react-native-community/masked-view \
-  @react-native-community/netinfo \
-  @react-native-community/datetimepicker \
-  react-native-picker-select \
-  react-native-modal-datetime-picker
-```
+@wq/material-web specifies all required dependencies for web usage.  For use with [React Native] or [Expo], install @wq/material-native instead.  In either case, @wq/material will automatically forward imports to the appropriate implementation.
 
 ## API
 
-The [wq.js][wq] build provided by wq.app includes @wq/material by default.  So, you do not need to explicitly register @wq/material when using wq.app for PyPI.
+The [wq.js][wq] build provided by wq.app includes @wq/material and @wq/material-web by default.  So, you do not need to explicitly register @wq/material when using wq.app for PyPI.
 
 When using @wq/app for npm, @wq/material should be registered with @wq/app as a plugin.  It will automatically register [@wq/react] as well.
 
@@ -63,10 +41,35 @@ app.use(material);  // Automatically registers @wq/react
 
 app.init(...);
 ```
+### Configuration
+
+@wq/material will look for a "material" section in the [wq Configuration object][config].
+
+```python
+WQ_CONFIG = {
+    "material": {
+        "theme": {
+            "primary": "#7500ae",
+            "secondary": "#0088bd"
+        }
+    }
+}
+```
+
+The following options are supported:
+
+Option | Description
+--|--
+`theme.primary` | Color to use for primary action buttons and headers
+`theme.secondary` | Color to use for secondary action buttons (a.k.a. "accent" color in [React Native Paper]).
+`theme.background` | Background color.
+`theme.type` | Theme type (dark or light).  Corresponds to [Material UI]'s [mode setting] and React Native Paper's [dark setting][theming].
+`theme.pallete` | Directly specify [theme pallete] for Material UI. (Web only)
+`theme.version` | Material design [version][theming] (2 or 3) for React Native Paper. (Native only)
 
 ### Components
 
-Once installed and @wq/material registeres default implementations of the component types defined by [@wq/react].  The components are grouped into four categories:
+@wq/material registers default implementations of many the component types defined by [@wq/react].  The components are grouped into four categories:
 
 plugin key | description
 --|--
@@ -100,15 +103,20 @@ The source code for @wq/material is in the [wq.app repository][source].
 [@wq/app]: ./app.md
 [@wq/router]: ./router.md
 [wq]: ../wq.md
+[config]: ../config.md
 [components]: ../components/index.md
 [icons]: ../icons.md
 [inputs]: ../inputs/index.md
 [components-plugin]: ../plugins/components.md
 
+[mode setting]: https://mui.com/material-ui/customization/dark-mode/
+[theme pallete]: https://mui.com/material-ui/customization/palette/
+[theming]: https://callstack.github.io/react-native-paper/docs/guides/theming
+
 [React]: https://reactjs.org
 [React Native]: https://reactnative.dev/
 [Expo]: https://expo.io/
-[Material UI]: https://material-ui.com/
+[Material UI]: https://mui.com/material-ui/
 [React Native Paper]: https://callstack.github.io/react-native-paper/
 [Formik]: https://formik.org
 [React Navigation]: https://reactnavigation.org/
