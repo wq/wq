@@ -513,6 +513,7 @@ NEW_PATHS = [
     "inputs/",
     "plugins/",
     "views/",
+    "overlays/",
     "wq",
     "wq.app/",
     "wq.build/",
