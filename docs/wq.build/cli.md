@@ -13,10 +13,10 @@ $ wq --help
 
 Usage: wq [OPTIONS] COMMAND [ARGS]...
 
-  wq is a suite of command line utilities for building citizen science apps.
-  Each of the commands below can be configured by creating a wq.yml file in
-  the current directory.  Many of the commands can also be configured via
-  command line options.
+  wq is a suite of command line utilities for building offline GIS apps. Each
+  of the commands below can be configured by creating a wq.yml file in the
+  current directory.  Many of the commands can also be configured via command
+  line options.
 
   Installed modules: wq.app, wq.build, wq.create, wq.db
 

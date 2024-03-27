@@ -2,7 +2,6 @@ wq movefiles
 ============
 
 wq movefiles: Move one or more files to a different folder.
-Useful for e.g.
 Provided by [wq.build].
 
 ```shell

@@ -32,6 +32,7 @@ Options:
   --template PATH    Override service worker template
   --output PATH      Destination file (default: ./htdocs/service-worker.js)
   --cache PATH       File(s) or directories to cache
+  --exclude PATH     Individual file names to exclude from cache
   --scope TEXT       Path prefix for service worker and cached files
   --timeout INTEGER  Timeout to use before falling back to cache.
   --help             Show this message and exit.
