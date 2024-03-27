@@ -60,7 +60,7 @@ wq is made up of the following submodules, which are maintained as separate pack
 [![wq][wq.svg]][wq/wq]     | [wq/wq][gh/wq]      | [wq][py/wq]      | [wq]      | Top level package (specifies submodules as dependencies)
 [![wq.app][a.svg]][wq/a]   | [wq/wq.app][gh/a]   | [wq.app][py/a]   | [@wq/app] | A JavaScript+Python library for building robust offline-capable HTML5 data entry apps.
 [![wq.build][b.svg]][wq/b]  | [wq/wq.build][gh/b]  | [wq.build][py/b]  |           | wq command line interface.
-[![wq.create][c.svg]][wq/c] | [wq/wq.create][gh/c] | [wq.create][py/c] |           | Project template and scaffolding tools.
+[![wq.create][c.svg]][wq/c] | [wq/wq.create][gh/c] | [wq.create][py/c] | [@wq/create] | Project template and scaffolding tools.
 [![wq.db][d.svg]][wq/d]    | [wq/wq.db][gh/d]    | [wq.db][py/d]    |           | Django REST framework extension with design patterns for CRUD APIs.
 
 [wq.svg]: https://wq.io/images/icons/wq.svg
@@ -89,3 +89,4 @@ wq is made up of the following submodules, which are maintained as separate pack
 
 [wq]: https://npmjs.com/package/wq
 [@wq/app]: https://npmjs.com/package/@wq/app
+[@wq/create]: https://npmjs.com/package/@wq/create
