@@ -135,8 +135,8 @@ wq.init(config).then(...);
 
 ## News
 
-> wq 2.0 was released on November 8, 2023!
+> wq 2.1 was released on March 27, 2024!
 >
-> [Install](./overview/setup.md) • [View Release Notes](./releases/wq-2.0.0.md)
+> [Install](./overview/setup.md) • [View Release Notes](./releases/wq-2.1.0.md)
 
 ## Documentation

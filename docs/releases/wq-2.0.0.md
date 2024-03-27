@@ -1,8 +1,6 @@
 ---
 repo: wq
 date: 2023-11-08
-tag: latest
-tag_color: primary
 ---
 
 # wq 2.0
