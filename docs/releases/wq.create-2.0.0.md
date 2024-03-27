@@ -1,8 +1,6 @@
 ---
 repo: wq.create
 date: 2023-11-08
-tag: latest
-tag_color: primary
 ---
 
 # wq.create 2.0

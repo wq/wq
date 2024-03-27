@@ -34,13 +34,13 @@ docker run ghcr.io/wq/base:main
 python3 -m venv venv
 . venv/bin/activate
 python -m pip install wq
-wq create -d myproject.example.com myproject
+wq create myproject
 ```
 
 ### Node
 
 ```bash
-npx create-react-app myproject --template @wq
+npm init @wq myproject
 ```
 
 ### CDN
