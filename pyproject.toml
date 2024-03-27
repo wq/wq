@@ -9,7 +9,7 @@ authors = [
 ]
 description = "A modular framework for mobile surveys and field data collection via offline-capable mobile web apps."
 readme = "README.md"
-requires-python = ">=3.7"
+requires-python = ">=3.8"
 license = {text = "MIT"}
 classifiers = [
     "Development Status :: 5 - Production/Stable",
@@ -23,11 +23,12 @@ classifiers = [
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
     "Framework :: Django",
-    "Framework :: Django :: 3.2",
     "Framework :: Django :: 4.0",
     "Framework :: Django :: 4.1",
     "Framework :: Django :: 4.2",
+    "Framework :: Django :: 5.0",
     "Topic :: Software Development :: Libraries :: Application Frameworks",
     "Topic :: Text Processing :: Markup :: HTML",
     "Topic :: Scientific/Engineering :: GIS",
@@ -40,7 +41,7 @@ dependencies = [
     "wq.app>=2.0.0,<2.1.0",
     "wq.build>=2.1.0,<2.2.0",
     "wq.create>=2.0.0,<2.1.0",
-    "wq.db>=2.0.0,<2.1.0",
+    "wq.db>=2.1.0,<2.2.0",
 ]
 
 [project.urls]
